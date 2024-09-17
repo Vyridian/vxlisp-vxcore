@@ -1,5 +1,5 @@
 #!/bin/bash
-options="doc srcjava testjava"
+options="doc srcswift testswift"
 # runablefolder=../../vxlisp-runtime
 runablefolder=../../vxlisp-compiler
 currentfolder=$PWD
