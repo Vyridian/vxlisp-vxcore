@@ -63,11 +63,11 @@
         }
       }
     } else {
-	     output = text.IndexOf(find);
-		  }
+      output = text.IndexOf(find);
+    }
     output += 1;
-		  return output;
- 	}
+    return output;
+  }
 
   // vx_int_from_string_findkeyword(string, string)
   public static Vx.Core.Type_int vx_int_from_string_findkeyword(

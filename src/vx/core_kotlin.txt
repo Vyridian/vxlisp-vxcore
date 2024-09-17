@@ -533,11 +533,11 @@
     mapconst : Map<String, vx_core.Type_any>,
     mapfunc : Map<String, vx_core.Type_func>) : Unit {
     val typemap : vx_core.Class_typemap = vx_core.Class_typemap()
-		  typemap.vx_p_map = vx_core.immutablemap(maptype)
-	   val constmap : vx_core.Class_constmap = vx_core.Class_constmap()
-		  constmap.vx_p_map = vx_core.immutablemap(mapconst)
-		  val funcmap : vx_core.Class_funcmap = vx_core.Class_funcmap()
-		  funcmap.vx_p_map = vx_core.immutablemap(mapfunc)
+    typemap.vx_p_map = vx_core.immutablemap(maptype)
+    val constmap : vx_core.Class_constmap = vx_core.Class_constmap()
+    constmap.vx_p_map = vx_core.immutablemap(mapconst)
+    val funcmap : vx_core.Class_funcmap = vx_core.Class_funcmap()
+    funcmap.vx_p_map = vx_core.immutablemap(mapfunc)
     val global : vx_core.Class_project = vx_core.c_global as vx_core.Class_project
     var typepackagemap : vx_core.Type_packagemap? = global.vx_p_packagemap
     var packagemap : vx_core.Class_packagemap = vx_core.Class_packagemap()
@@ -549,10 +549,10 @@
     val mappackage : MutableMap<String, vx_core.Type_package> = LinkedHashMap<String, vx_core.Type_package>(
       packagemap.vx_p_map
     )
-		  val pkg : vx_core.Class_package = vx_core.Class_package()
-		  pkg.vx_p_constmap = constmap
-		  pkg.vx_p_typemap = typemap
-		  pkg.vx_p_funcmap = funcmap
+    val pkg : vx_core.Class_package = vx_core.Class_package()
+    pkg.vx_p_constmap = constmap
+    pkg.vx_p_typemap = typemap
+    pkg.vx_p_funcmap = funcmap
     mappackage.put(pkgname, pkg)
     packagemap.vx_p_map = vx_core.immutablemap<vx_core.Type_package>(mappackage)
   }

@@ -1,5 +1,6 @@
 #ifndef VX_TYPE_HPP
 #define VX_TYPE_HPP
+#include <string>
 #include "../vx/core.hpp"
 
 namespace vx_type {
@@ -113,7 +114,43 @@ namespace vx_type {
   class Abstract_traits_from_typedef;
   typedef Abstract_traits_from_typedef* Func_traits_from_typedef;
   extern Func_traits_from_typedef e_traits_from_typedef;
-  extern Func_traits_from_typedef t_traits_from_typedef;
+  extern Func_traits_from_typedef t_traits_from_typedef;// :headerfirst
+// :header
+
+  // vx_int_from_string_find(string, string)
+  int vx_int_from_string_find(std::string text, std::string find);
+
+  // vx_int_from_string_find(string, string)
+  vx_core::Type_int vx_int_from_string_find(vx_core::Type_string text, vx_core::Type_string find);
+
+  // vx_int_from_string_findkeyword(string, string)
+  int vx_int_from_string_findkeyword(std::string text, std::string find);
+
+  // vx_int_from_string_findkeyword(string, string)
+  vx_core::Type_int vx_int_from_string_findkeyword(vx_core::Type_string text, vx_core::Type_string find);
+
+  // vx_int_from_string_findlast(string, string)
+  int vx_int_from_string_findlast(std::string text, std::string find);
+
+  // vx_int_from_string_findlast(string, string)
+  vx_core::Type_int vx_int_from_string_findlast(vx_core::Type_string text, vx_core::Type_string findlast);
+
+  // vx_string_from_stringlist_join(stringlist, string)
+  vx_core::Type_string vx_string_from_stringlist_join(vx_core::Type_stringlist vals, vx_core::Type_string delim);
+
+  // vx_string_lowercase(string)
+  vx_core::Type_string vx_string_lowercase(vx_core::Type_string text);
+
+  // vx_string_trim(string)
+  vx_core::Type_string vx_string_trim(vx_core::Type_string text);
+
+  // vx_string_uppercase(string)
+  vx_core::Type_string vx_string_uppercase(vx_core::Type_string text);
+
+  // vx_stringlist_from_string_split(string, string)
+  vx_core::Type_stringlist vx_stringlist_from_string_split(vx_core::Type_string text, vx_core::Type_string delim);
+
+
   // (func allowtypenames<-type)
   vx_core::Type_stringlist f_allowtypenames_from_type(vx_core::Type_any type);
 

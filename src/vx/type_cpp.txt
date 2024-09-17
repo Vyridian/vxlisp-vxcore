@@ -122,7 +122,7 @@
     }
     vx_core::Type_string output = vx_core::vx_new_string(str);
     return output;
- 	}
+  }
 
   // vx_string_lowercase(string)
   vx_core::Type_string vx_string_lowercase(vx_core::Type_string text) {

@@ -2,6 +2,7 @@
 #define VX_CORE_HPP
 #include <exception>
 #include <functional>
+#include <future>
 #include <map>
 #include <string>
 #include <vector>
@@ -1022,18 +1023,2674 @@ namespace vx_core {
   class Abstract_user_from_context;
   typedef Abstract_user_from_context* Func_user_from_context;
   extern Func_user_from_context e_user_from_context;
-  extern Func_user_from_context t_user_from_context;
+  extern Func_user_from_context t_user_from_context;// :headerfirst
+
+// :header
+
+  extern long refcount;
+
+  typedef std::vector<vx_core::Type_any> vx_Type_listany;
+  typedef std::vector<vx_core::Type_string> vx_Type_liststring;
+  typedef std::map<std::string, vx_core::Type_any> vx_Type_mapany;
+  typedef std::map<std::string, vx_core::Type_func> vx_Type_mapfunc;
+
+  typedef std::initializer_list<Type_any> vx_Type_listarg;
+
+  extern vx_Type_listany emptylistany;
+  extern vx_Type_mapany emptymapany;
+
+  typedef std::future<vx_core::Type_any>* vx_Type_future;
+  typedef std::function<vx_core::Type_any(vx_core::Type_any)> vx_Type_fn_any_from_any;
+
+  // class vx_Class_async
+  class vx_Class_async {
+  public:
+    vx_Class_async() {
+      vx_core::refcount += 1;
+    }
+    ~vx_Class_async() {
+      vx_core::refcount -= 1;
+      vx_dispose();
+    }
+    long vx_p_iref = 0;
+    vx_core::Type_any type = NULL;
+    vx_core::Type_any value = NULL;
+    vx_core::vx_Type_future future = NULL;
+    vx_core::vx_Class_async* async_parent = NULL;
+    std::vector<vx_core::vx_Class_async*> listasync;
+    std::map<std::string, vx_core::vx_Class_async*> mapasync;
+    vx_core::vx_Type_fn_any_from_any fn = NULL;
+    vx_core::vx_Type_listany lambdavars;
+    void vx_dispose();
+    vx_core::Type_any sync_value();
+  };
+
+  typedef vx_Class_async* vx_Type_async;
+  typedef std::vector<vx_Type_async> vx_Type_listasync;
+  typedef std::map<std::string, vx_Type_async> vx_Type_mapasync;
+  typedef std::function<vx_core::vx_Type_async(vx_core::Type_any)> vx_Type_fn_async_from_any;
+
+  class Abstract_replfunc {
+  public:
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist);
+  };
+  typedef Abstract_replfunc* Type_replfunc;
+  
+  class Abstract_replfunc_async {
+  public:
+    virtual vx_core::vx_Type_async vx_repl(
+      vx_core::Type_anylist arglist);
+  };
+  typedef Abstract_replfunc_async* Type_replfunc_async;
+
+  // vx_any_from_func_1(generic_any_1, func, args...)
+  vx_core::Type_any vx_any_from_func_1(
+    vx_core::Type_any generic_any_1,
+    vx_core::Type_replfunc func,
+    vx_core::vx_Type_listany args);
+
+  // vx_any_from_list_result_next(generic_any_1, list, any<-reduce-next)
+  vx_core::Type_any vx_any_from_list_result_next(
+    vx_core::Type_any generic_any_1,
+    vx_core::Type_list list,
+    vx_core::Type_any valstart,
+    vx_core::Func_any_from_reduce_next fn_reduce_next);
+
+  // vx_any_from_map_start_reduce(generic_any_1, map, any<-any-key-value)
+  vx_core::Type_any vx_any_from_map_start_reduce(
+    vx_core::Type_any generic_any_1,
+    vx_core::Type_map map,
+    vx_core::Type_any start,
+    vx_core::Func_any_from_any_key_value fn_reduce);
+
+  // vx_anylist_from_arraystring(long, array<string>)
+  vx_core::Type_anylist vx_anylist_from_arraystring(
+    long ilen,
+    char* arraystring[],
+    bool isskipfirst);
+
+  // vx_argmap_from_listarg(List<arg>)
+  vx_core::Type_argmap vx_argmap_from_listarg(
+    std::initializer_list<vx_core::Type_arg> listarg);
+
+  // vx_async_from_async_fn(async, type, fn<any>(any))
+  vx_core::vx_Type_async vx_async_from_async_fn(
+    vx_core::vx_Type_async async,
+    vx_core::Type_any type,
+    vx_core::vx_Type_listany lambavars,
+    vx_core::vx_Type_fn_any_from_any fn);
+
+  // vx_async_new_from_future(T, future<T>)
+  vx_core::vx_Type_async vx_async_new_from_future(
+    vx_core::Type_any generic_any_1,
+    vx_core::vx_Type_future future);
+
+  // vx_async_new_from_listasync(T, List<async>)
+  vx_core::vx_Type_async vx_async_new_from_listasync(
+    vx_core::Type_any generic_list_1,
+    vx_core::vx_Type_listasync listasync);
+
+  // vx_async_new_from_value(any)
+  vx_core::vx_Type_async vx_async_new_from_value(
+    vx_core::Type_any value);
+
+  // vx_boolean_from_string_ends(string, string)
+  bool vx_boolean_from_string_ends(
+    std::string text,
+    std::string ends);
+
+  // vx_boolean_from_string_find(string, string)
+  bool vx_boolean_from_string_find(
+    std::string text,
+    std::string find);
+
+  // vx_boolean_from_string_starts(string, string)
+  bool vx_boolean_from_string_starts(
+    std::string text,
+    std::string starts);
+
+  // vx_boolean_from_type_trait(type, type)
+  bool vx_boolean_from_type_trait(
+    vx_core::Type_any type,
+    vx_core::Type_any trait);
+
+  // vx_boolean_write_from_map_name_value(map, string, any)
+  vx_core::Type_boolean vx_boolean_write_from_map_name_value(
+    vx_core::Type_map valuemap,
+    vx_core::Type_string name,
+    vx_core::Type_any value);
+
+  // vx_compare(any, any)
+  long vx_compare(
+    vx_core::Type_any val1,
+    vx_core::Type_any val2);
+
+  // vx_constdefnew(string, string)
+  vx_core::Type_constdef vx_constdef_new(
+    std::string pkgname,
+    std::string name);
+
+  // vx_eqeq(any, any)
+  bool vx_eqeq(
+    vx_core::Type_any val1,
+    vx_core::Type_any val2);
+
+  // vx_float_from_number(number)
+  float vx_float_from_number(
+    vx_core::Type_number num);
+
+  // vx_float_from_string(string)
+  float vx_float_from_string(
+    std::string text);
+
+  // vx_funclist_from_listfunc(List<func>)
+  vx_core::Type_funclist vx_funclist_from_listfunc(
+    std::initializer_list<vx_core::Type_func> listfunc);
+
+  // vx_global_package_set(string, map<any>, map<any>, map<func>)
+  void vx_global_package_set(
+    std::string pkgname,
+    vx_core::vx_Type_mapany maptype,
+    vx_core::vx_Type_mapany mapconst,
+    vx_core::vx_Type_mapfunc mapfunc);
+
+  // vx_if_thenelselist(type, thenelselist)
+  vx_core::Type_any vx_if_thenelselist(
+    vx_core::Type_any generic_any_1,
+    vx_core::Type_thenelselist thenelselist);
+
+  // vx_int_from_sizet(size_t)
+  long vx_int_from_sizet(
+    std::size_t size);
+
+  // vx_int_from_string(string)
+  int vx_int_from_string(
+    std::string text);
+
+  // vx_is_float(string)
+  bool vx_is_float(
+    std::string value);
+
+  // vx_is_float(any)
+  bool vx_is_float(
+    vx_core::Type_any value);
+
+  // vx_is_int(string)
+  bool vx_is_int(
+    std::string value);
+
+  // vx_is_int(any)
+  bool vx_is_int(
+    vx_core::Type_any value);
+
+  // vx_list_from_array(arrayval)
+  vx_core::vx_Type_listany vx_list_from_array(
+    vx_core::vx_Type_listarg vals);
+
+  // vx_list_from_list_intany_helper(generic_list_1, list-2, any<-int-any)
+  vx_core::Type_list vx_list_from_list_intany_helper(
+    vx_core::Type_list generic_list_1,
+    vx_core::Type_list valuelist,
+    vx_core::Func_any_from_int_any fn_any_from_int_any);
+
+  // vx_list_from_map_1(generic_list_1, map, fn-any<-key-value)
+  vx_core::Type_any vx_list_from_map_1(
+    vx_core::Type_any generic_list_1,
+    vx_core::Type_map valuemap,
+    vx_core::Func_any_from_key_value fn_any_from_key_value);
+
+  // vx_list_join_from_list_fn(generic_list_1, list, fn-any<-any)
+  vx_core::Type_any vx_list_join_from_list_fn(
+    vx_core::Type_any generic_list_1,
+    vx_core::Type_list values,
+    vx_core::Func_any_from_any fn_any_from_any);
+
+  // vx_listany_from_listany_fn(List<any>, (Function (any) : any))
+  vx_core::vx_Type_listany vx_listany_from_listany_fn(
+    vx_core::vx_Type_listany list_any,
+    vx_core::vx_Type_fn_any_from_any fn);
+
+  // vx_listasync_from_listany_fn(List<any>, (Function (any) : any))
+  vx_core::vx_Type_listasync vx_listasync_from_listany_fn(
+    vx_core::vx_Type_listany list_any,
+    vx_core::vx_Type_fn_async_from_any fn);
+
+  // vx_liststring_from_arraystring(long, array<string>)
+  std::vector<std::string> vx_liststring_from_arraystring(
+    long ilen,
+    char* arraystring[]);
+
+  // vx_log()
+  void vx_log();
+
+  // vx_log(int)
+  void vx_log(long ival);
+
+  // vx_log(text)
+  void vx_log(std::string sval);
+
+  // vx_log(any)
+  void vx_log(vx_core::Type_any val);
+
+  // vx_log(async)
+  void vx_log(
+    vx_core::vx_Type_async async);
+
+  // vx_log(list<any>)
+  void vx_log(
+    vx_core::vx_Type_listany listany);
+
+  // vx_log(string, string)
+  void vx_log(
+    std::string code,
+    std::string text);
+
+  // vx_log(string, any)
+  void vx_log(
+    std::string code,
+    vx_core::Type_any val);
+
+  // vx_log(string, async)
+  void vx_log(
+    std::string code,
+    vx_core::vx_Type_async async);
+
+  // vx_map_from_list(listany, any<-any)
+  vx_core::vx_Type_mapany vx_map_from_list(
+    vx_core::vx_Type_listany listany,
+    vx_core::Func_any_from_any fn_any_from_any);
+
+  // vx_map_from_map_fn(generic_map_1, map, fn-any<-key-value)
+  vx_core::Type_any vx_map_from_map_fn(
+    vx_core::Type_map generic_map_1,
+    vx_core::Type_map valuemap,
+    vx_core::Func_any_from_key_value fn_any_from_key_value);
+
+  // vx_memory_leak_test()
+  bool vx_memory_leak_test();
+
+  // vx_memory_leak_test(string, int)
+  bool vx_memory_leak_test(
+    std::string id,
+    long initialcount);
+
+  // vx_memory_leak_test(string, int, int)
+  bool vx_memory_leak_test(
+    std::string id,
+    long initialcount,
+    long expectedcount);
+
+  // vx_msg_from_errortext(string)
+  vx_core::Type_msg vx_msg_from_errortext(
+    const std::string errortext);
+
+  // vx_msg_from_exception(string, exception)
+  vx_core::Type_msg vx_msg_from_exception(
+    const std::string text,
+    std::exception err);
+
+  // vx_msgblock_from_copy_listval(msgblock, List<any>)
+  vx_core::Type_msgblock vx_msgblock_from_copy_listval(
+    vx_core::Type_msgblock msgblock,
+    vx_core::vx_Type_listany vals);
+
+  // vx_new_anylist(any...)
+  vx_core::Type_anylist vx_new_anylist(
+    vx_core::vx_Type_listany listany);
+
+  // vx_new_arg(string, type)
+  vx_core::Type_arg vx_new_arg(
+    std::string name,
+    vx_core::Type_any type);
+
+  // vx_new_boolean(boolean)
+  vx_core::Type_boolean vx_new_boolean(bool isval);
+
+  // vx_new_decimal_from_float(float)
+  vx_core::Type_decimal vx_new_decimal_from_float(float fval);
+
+  // vx_new_decimal_from_string(string)
+  vx_core::Type_decimal vx_new_decimal_from_string(std::string sval);
+
+  // vx_new_float(float)
+  vx_core::Type_float vx_new_float(float fval);
+
+  // vx_new_int(long)
+  vx_core::Type_int vx_new_int(long ival);
+
+  // vx_new_string(string)
+  vx_core::Type_string vx_new_string(std::string text);
+
+  // vx_ref(any)
+  long vx_ref(vx_core::Type_any any);
+
+  // vx_ref_minus(any)
+  long vx_ref_minus(vx_core::Type_any any);
+
+  // vx_ref_plus(any)
+  long vx_ref_plus(vx_core::Type_any any);
+
+  // vx_release(any)
+  void vx_release(vx_core::Type_any any);
+
+  // vx_release(any...)
+  void vx_release(vx_core::vx_Type_listany listany);
+
+  // vx_release_async(async)
+  void vx_release_async(vx_core::vx_Type_async async);
+
+  // vx_release_except(any, except)
+  void vx_release_except(
+    vx_core::Type_any any,
+    vx_core::Type_any except);
+
+  // vx_release_except(any..., except)
+  void vx_release_except(
+    vx_core::vx_Type_listany listany,
+    vx_core::Type_any except);
+
+  // vx_release_except_async(async, except)
+  void vx_release_except_async(
+    vx_core::vx_Type_async async,
+    vx_core::Type_any except);
+
+  // vx_release_one(any)
+  void vx_release_one(vx_core::Type_any any);
+
+  // vx_release_one(any...)
+  void vx_release_one(vx_core::vx_Type_listany listany);
+
+  // vx_release_one_async(async)
+  void vx_release_one_async(vx_core::vx_Type_async async);
+
+  // vx_release_one_async(async...)
+  void vx_release_one_async(vx_core::vx_Type_listasync listasync);
+
+  // vx_release_one_except(any, except)
+  void vx_release_one_except(
+    vx_core::Type_any any,
+    vx_core::Type_any except);
+
+  // vx_release_one_except(any..., except)
+  void vx_release_one_except(
+    vx_core::vx_Type_listany listany,
+    vx_core::Type_any except);
+
+  // vx_release_one_except_async(async, except)
+  void vx_release_one_except_async(
+    vx_core::vx_Type_async async,
+    vx_core::Type_any except);
+
+  // vx_release_one_except_async(async..., except)
+  void vx_release_one_except_async(
+    vx_core::vx_Type_listasync listasync,
+    vx_core::Type_any except);
+
+  // vx_reserve(any)
+  void vx_reserve(
+    vx_core::Type_any any);
+
+  // vx_reserve(any...)
+  void vx_reserve(
+    vx_core::vx_Type_listany listany);
+
+  // vx_reserve_async(async)
+  void vx_reserve_async(
+    vx_core::vx_Type_async async);
+
+  // vx_reserve_async(listasync)
+  void vx_reserve_async(
+    vx_core::vx_Type_listasync listasync);
+
+  // vx_reserve_context(context)
+  void vx_reserve_context(
+    vx_core::Type_context context);
+
+  // vx_reserve_empty(any)
+  void vx_reserve_empty(
+    vx_core::Type_any any);
+
+  // vx_reserve_type(any)
+  void vx_reserve_type(
+    vx_core::Type_any any);
+
+  // vx_string_from_any(value)
+  std::string vx_string_from_any(
+    vx_core::Type_any value);
+
+  // vx_string_from_any_indent(any, int, boolean, boolean)
+  std::string vx_string_from_any_indent(
+    vx_core::Type_any value,
+    long indent,
+    bool linefeed,
+    bool refcount);
+
+  // vx_string_from_any_refcount(value)
+  std::string vx_string_from_any_refcount(
+    vx_core::Type_any value);
+
+  // vx_string_from_async(async)
+  std::string vx_string_from_async(
+    vx_core::vx_Type_async async);
+
+  // vx_string_from_async_indent(async, indent, linefeed, refcount)
+  std::string vx_string_from_async_indent(
+    vx_core::vx_Type_async async,
+    long indent,
+    bool linefeed,
+    bool refcount);
+
+  // vx_string_from_async_refcount(async)
+  std::string vx_string_from_async_refcount(
+    vx_core::vx_Type_async async);
+
+  // vx_string_from_int(long)
+  std::string vx_string_from_int(
+    long value);
+
+  // vx_string_from_float(float)
+  std::string vx_string_from_float(
+    float value);
+
+  // vx_string_from_liststring_pos(list<string>, long)
+  std::string vx_string_from_liststring_pos(
+    std::vector<std::string> liststring,
+    long pos);
+
+  // vx_string_from_string_find_replace(string, string, string)
+  std::string vx_string_from_string_find_replace(
+    std::string text,
+    std::string find,
+    std::string replace);
+
+  // vx_string_from_string_find_replace(string, string, string)
+  vx_core::Type_string vx_string_from_string_find_replace(
+    vx_core::Type_string text,
+    vx_core::Type_string find,
+    vx_core::Type_string replace);
+
+  // vx_string_from_string_find_replacefirst(string, string, string)
+  std::string vx_string_from_string_find_replacefirst(
+    std::string text,
+    std::string find,
+    std::string replacefirst);
+
+  // vx_string_from_string_repeat(string, int)
+  std::string vx_string_from_string_repeat(
+    std::string text,
+    long repeat);
+
+  // vx_string_from_string_start(string, int)
+  std::string vx_string_from_string_start(
+    std::string text,
+    long start);
+
+  // vx_string_from_string_start_end(string, int, int)
+  std::string vx_string_from_string_start_end(
+    std::string text,
+    long start,
+    long end);
+
+  // vx_switch(type, val, thenelselist)
+  vx_core::Type_any vx_switch(
+    vx_core::Type_any generic_any_1,
+    vx_core::Type_any val,
+    vx_core::Type_thenelselist thenelselist);
+
+  // vx_typelist_from_listany(list<any>)
+  vx_core::Type_typelist vx_typelist_from_listany(
+    vx_core::vx_Type_listany listany);
+
+  // vx_any_from_any(T, val)
+  template <class T> static T* vx_any_from_any(
+    T* generic_any_1,
+    vx_core::Type_any val) {
+    T* output = dynamic_cast<T*>(val);
+    return output;
+  }
+
+  // vx_empty(T)
+  template <class T> static T* vx_empty(
+    T* generic_any_1) {
+    T* output;
+    vx_core::Type_any val = generic_any_1->vx_empty();
+    output = vx_core::vx_any_from_any(generic_any_1, val);
+    return output;
+  }
+
+  // vx_any_from_func(generic_any_1, func, args...)
+  template <class T> static T* vx_any_from_func(
+    T* generic_any_1,
+    vx_core::Type_replfunc func,
+    vx_core::vx_Type_listany args) {
+    vx_core::Type_any val = vx_core::vx_any_from_func_1(generic_any_1, func, args);
+    T* output = vx_core::vx_any_from_any(generic_any_1, val);
+    return output;
+  }
+
+  // vx_any_from_map(T, key, defaultval)
+  template <class T> static T* vx_any_from_map(
+    const std::map<std::string, T*> &map,
+    const std::string key,
+    T* defaultval) {
+    T* output = defaultval;
+    auto iter = map.find(key);
+    if (iter != map.end()) {
+      output = iter->second;
+    }
+    return output;
+  }
+
+  // vx_boolean_from_list_find(list<T>, T find)
+  template <class T> static bool vx_boolean_from_list_find(
+    std::vector<T> list,
+    T find) {
+    return std::find(list.begin(), list.end(), find) != list.end();
+  }
+
+  // vx_copy(T, args)
+  template <class T> static T* vx_copy(
+    T* copyval,
+    vx_core::vx_Type_listany vals) {
+    T* output;
+    vx_core::Type_any val = copyval->vx_copy(copyval, vals);
+    output = vx_core::vx_any_from_any(copyval, val);
+    return output;
+  }
+
+  // vx_copy(T, copyval, args)
+  template <class T, class U> static T* vx_copy(
+    T* generic_any_1, U* copyval,
+    vx_core::vx_Type_listany vals) {
+    T* output;
+    vx_core::Type_any val = copyval->vx_copy(copyval, vals);
+    output = vx_core::vx_any_from_any(generic_any_1, val);
+    return output;
+  }
+
+  // vx_listaddall(list, listadd)
+  template <class T> static std::vector<T*> vx_listaddall(
+    std::vector<T*> listtarget,
+    std::vector<T*> listadd) {
+    std::vector<T*> list;
+    list.insert(list.end(), listtarget.begin(), listtarget.end());
+    list.insert(list.end(), listadd.begin(), listadd.end());
+    return list;
+  }
+
+  // vx_list_from_list(T, list<U>)
+  template <class T, class U> static std::vector<T*> vx_list_from_list(
+    T* generic_any_1,
+    std::vector<U*> list) {
+    std::vector<T*> output;
+    long len = vx_core::vx_int_from_sizet(list.size());
+    for (int i = 0; i < len; ++i) {
+      U* itemu = list[i];
+      T* itemt = static_cast<T*>(itemu);
+      output.push_back(itemt);
+    }
+    return output;
+  }
+
+  // vx_map_from_map(T, map<U>)
+  template <class T, class U> static std::map<std::string, T*> vx_map_from_map(
+    T* generic_any_1,
+    std::map<std::string, U*> map) {
+    std::map<std::string, T*> output;
+    for (auto const& [key, itemu] : map) {
+      T* itemt = static_cast<T*>(itemu);
+      output[key] = itemu;
+    }
+    return output;
+  }
+
+  // vx_new(T, args)
+  template <class T> static T* vx_new(
+    T* generic_any_1,
+    vx_core::vx_Type_listany vals) {
+    T* output;
+    vx_core::Type_any val = generic_any_1->vx_new(vals);
+    output = vx_core::vx_any_from_any(generic_any_1, val);
+    return output;
+  }
+
+  // vx_new_list(T, List<any>)
+  template <class T> static T* vx_new_list(
+    T* generic_any_1,
+    vx_core::vx_Type_listany listval) {
+    T* output;
+    vx_core::Type_any val = generic_any_1->vx_new(listval);
+    output = vx_core::vx_any_from_any(generic_any_1, val);
+    return output;
+  }
+
+  // vx_new_map(T, Map<string, any>)
+  template <class T> static T* vx_new_map(
+    T* generic_any_1,
+    vx_core::vx_Type_mapany mapval) {
+    T* output;
+    vx_core::Type_any val = generic_any_1->vx_new_from_map(mapval);
+    output = vx_core::vx_any_from_any(generic_any_1, val);
+    return output;
+  }
+
+  // vx_list_from_list_intany(generic_list_1, list-2, any<-int-any)
+  template <class T, class U> static T* vx_list_from_list_intany(
+    T* generic_list_1,
+    U* valuelist,
+    vx_core::Func_any_from_int_any fn_any_from_int_any) {
+    T* output = vx_core::vx_empty(generic_list_1);
+    vx_core::Type_list outputlist = vx_core::vx_list_from_list_intany_helper(generic_list_1, valuelist, fn_any_from_int_any);
+    output = vx_core::vx_any_from_any(generic_list_1, outputlist);
+    return output;
+  }
+
+  // vx_sync_from_async(async)
+  template <class T> static T* vx_sync_from_async(
+    T* generic_any_1,
+    vx_core::vx_Type_async async) {
+    vx_core::Type_any value = async->sync_value();
+    vx_core::vx_release_except_async(async, value);
+    T* output = vx_core::vx_any_from_any(generic_any_1, value);
+    return output;
+  }
+
+  // vx_type(T)
+  template <class T> static T* vx_type(T* generic_any_1) {
+    T* output;
+    vx_core::Type_any val = generic_any_1->vx_type();
+    output = vx_core::vx_any_from_any(generic_any_1, val);
+    return output;
+  }
+
+
+  // (type any)
+  class Abstract_any {
+  public:
+    Abstract_any() {};
+    virtual ~Abstract_any() = 0;
+    long vx_p_iref = 0;
+    vx_core::Type_constdef vx_p_constdef = NULL;
+    vx_core::Type_msgblock vx_p_msgblock = NULL;
+    virtual vx_core::Type_msgblock vx_msgblock() const {return this->vx_p_msgblock;};
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const = 0;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const = 0;
+    virtual vx_core::Type_any vx_empty() const = 0;
+    virtual vx_core::Type_any vx_type() const = 0;
+    virtual vx_core::Type_typedef vx_typedef() const = 0;
+    virtual vx_core::Type_constdef vx_constdef() const = 0;
+    virtual vx_core::vx_Type_listany vx_dispose() = 0;
+  };
+  class Class_any : public virtual Abstract_any {
+  public:
+    Class_any();
+    virtual ~Class_any() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+  };
+
+  // (type list)
+  class Abstract_list : public virtual vx_core::Abstract_any {
+  public:
+    Abstract_list() {};
+    virtual ~Abstract_list() = 0;
+    vx_core::vx_Type_listany vx_p_list;
+    virtual vx_core::vx_Type_listany vx_list() const = 0;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const = 0;
+    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const = 0;
+  };
+  class Class_list : public virtual vx_core::Abstract_list {
+  public:
+    Class_list();
+    virtual ~Class_list() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::vx_Type_listany vx_list() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const override;
+    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const override;
+  };
+
+  // (type map)
+  class Abstract_map : public virtual vx_core::Abstract_any {
+  public:
+    Abstract_map() {};
+    virtual ~Abstract_map() = 0;
+    std::vector<std::string> vx_p_keys;
+    vx_core::vx_Type_mapany vx_p_map;
+    virtual vx_core::vx_Type_mapany vx_map() const = 0;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
+    virtual vx_core::Type_boolean vx_set(vx_core::Type_string name, vx_core::Type_any value) = 0;
+    virtual vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const = 0;
+  };
+  class Class_map : public virtual vx_core::Abstract_map {
+  public:
+    Class_map();
+    virtual ~Class_map() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::vx_Type_mapany vx_map() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
+    virtual vx_core::Type_boolean vx_set(vx_core::Type_string name, vx_core::Type_any value) override;
+    virtual vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const override;
+  };
+
+  // (type struct)
+  class Abstract_struct : public virtual vx_core::Abstract_any {
+  public:
+    Abstract_struct() {};
+    virtual ~Abstract_struct() = 0;
+    virtual vx_core::vx_Type_mapany vx_map() const = 0;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
+  };
+  class Class_struct : public virtual vx_core::Abstract_struct {
+  public:
+    Class_struct();
+    virtual ~Class_struct() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::vx_Type_mapany vx_map() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
+  };
+
+  // (type msg)
+  class Abstract_msg : public virtual vx_core::Abstract_struct {
+  public:
+    Abstract_msg() {};
+    virtual ~Abstract_msg() = 0;
+    std::exception err;
+    // vx_map()
+    virtual vx_core::vx_Type_mapany vx_map() const = 0;
+    // vx_get_any(key)
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
+    // code()
+    vx_core::Type_string vx_p_code = NULL;
+    virtual vx_core::Type_string code() const = 0;
+    // detail()
+    vx_core::Type_any vx_p_detail = NULL;
+    virtual vx_core::Type_any detail() const = 0;
+    // path()
+    vx_core::Type_string vx_p_path = NULL;
+    virtual vx_core::Type_string path() const = 0;
+    // severity()
+    vx_core::Type_int vx_p_severity = NULL;
+    virtual vx_core::Type_int severity() const = 0;
+    // text()
+    vx_core::Type_string vx_p_text = NULL;
+    virtual vx_core::Type_string text() const = 0;
+  };
+  class Class_msg : public virtual Abstract_msg {
+  public:
+    Class_msg();
+    virtual ~Class_msg() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::vx_Type_mapany vx_map() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
+    virtual vx_core::Type_string code() const override;
+    virtual vx_core::Type_any detail() const override;
+    virtual vx_core::Type_string path() const override;
+    virtual vx_core::Type_int severity() const override;
+    virtual vx_core::Type_string text() const override;
+  };
+
+  // (type msglist)
+  class Abstract_msglist : public virtual vx_core::Abstract_list {
+  public:
+    Abstract_msglist() {};
+    virtual ~Abstract_msglist() = 0;
+    // vx_get_any(index)
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const = 0;
+    // vx_list()
+    virtual vx_core::vx_Type_listany vx_list() const = 0;
+    // vx_new_from_list(T, List<T>)
+    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const = 0;
+    std::vector<vx_core::Type_msg> vx_p_list;
+    // vx_listmsg()
+    virtual std::vector<vx_core::Type_msg> vx_listmsg() const = 0;
+    // vx_get_msg(index)
+    virtual vx_core::Type_msg vx_get_msg(vx_core::Type_int index) const = 0;
+  };
+  class Class_msglist : public virtual Abstract_msglist {
+  public:
+    Class_msglist();
+    virtual ~Class_msglist() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const override;
+    virtual vx_core::vx_Type_listany vx_list() const override;
+    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const override;
+    virtual std::vector<vx_core::Type_msg> vx_listmsg() const override;
+    virtual vx_core::Type_msg vx_get_msg(vx_core::Type_int index) const override;
+  };
+
+  // (type msgblock)
+  class Abstract_msgblock : public virtual vx_core::Abstract_struct {
+  public:
+    Abstract_msgblock() {};
+    virtual ~Abstract_msgblock() = 0;
+    // vx_map()
+    virtual vx_core::vx_Type_mapany vx_map() const = 0;
+    // vx_get_any(key)
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
+    // msgs()
+    vx_core::Type_msglist vx_p_msgs = NULL;
+    virtual vx_core::Type_msglist msgs() const = 0;
+    // msgblocks()
+    vx_core::Type_msgblocklist vx_p_msgblocks = NULL;
+    virtual vx_core::Type_msgblocklist msgblocks() const = 0;
+  };
+  class Class_msgblock : public virtual Abstract_msgblock {
+  public:
+    Class_msgblock();
+    virtual ~Class_msgblock() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::vx_Type_mapany vx_map() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
+    virtual vx_core::Type_msglist msgs() const override;
+    virtual vx_core::Type_msgblocklist msgblocks() const override;
+  };
+
+  // (type msgblocklist)
+  class Abstract_msgblocklist : public virtual vx_core::Abstract_list {
+  public:
+    Abstract_msgblocklist() {};
+    virtual ~Abstract_msgblocklist() = 0;
+    // vx_get_any(index)
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const = 0;
+    // vx_list()
+    virtual vx_core::vx_Type_listany vx_list() const = 0;
+    // vx_new_from_list(T, List<T>)
+    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const = 0;
+    std::vector<vx_core::Type_msgblock> vx_p_list;
+    // vx_listmsgblock()
+    virtual std::vector<vx_core::Type_msgblock> vx_listmsgblock() const = 0;
+    // vx_get_msgblock(index)
+    virtual vx_core::Type_msgblock vx_get_msgblock(vx_core::Type_int index) const = 0;
+  };
+  class Class_msgblocklist : public virtual Abstract_msgblocklist {
+  public:
+    Class_msgblocklist();
+    virtual ~Class_msgblocklist() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const override;
+    virtual vx_core::vx_Type_listany vx_list() const override;
+    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const override;
+    virtual std::vector<vx_core::Type_msgblock> vx_listmsgblock() const override;
+    virtual vx_core::Type_msgblock vx_get_msgblock(vx_core::Type_int index) const override;
+  };
+
+  // (type boolean)
+  class Abstract_boolean : public virtual vx_core::Abstract_any {
+  public:
+    Abstract_boolean() {};
+    virtual ~Abstract_boolean() = 0;
+    bool vx_p_boolean = false;
+    virtual bool vx_boolean() const = 0;
+  };
+  class Class_boolean : public virtual vx_core::Abstract_boolean {
+  public:
+    Class_boolean();
+    virtual ~Class_boolean() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual bool vx_boolean() const override;
+  };
+
+  // (type number)
+  class Abstract_number : public virtual vx_core::Abstract_any {
+  public:
+    Abstract_number() {};
+    virtual ~Abstract_number() = 0;
+  };
+  class Class_number : public virtual Abstract_number {
+  public:
+    Class_number();
+    virtual ~Class_number() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+  };
+
+  // (type decimal)
+  class Abstract_decimal : public virtual vx_core::Abstract_number {
+  public:
+    Abstract_decimal() {};
+    virtual ~Abstract_decimal() = 0;
+    std::string vx_p_decimal = "0.0";
+    virtual float vx_float() const = 0;
+    virtual std::string vx_string() const = 0;
+  };
+  class Class_decimal : public virtual vx_core::Abstract_decimal {
+  public:
+    Class_decimal();
+    virtual ~Class_decimal() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual float vx_float() const override;
+    virtual std::string vx_string() const override;
+  };
+
+  // (type float)
+  class Abstract_float : public virtual vx_core::Abstract_number {
+  public:
+    Abstract_float() {};
+    virtual ~Abstract_float() = 0;
+    float vx_p_float = 0;
+    virtual float vx_float() const = 0;
+  };
+  class Class_float : public virtual vx_core::Abstract_float {
+  public:
+    Class_float();
+    virtual ~Class_float() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual float vx_float() const override;
+  };
+
+  // (type int)
+  class Abstract_int : public virtual vx_core::Abstract_number {
+  public:
+    Abstract_int() {};
+    virtual ~Abstract_int() = 0;
+    long vx_p_int = 0;
+    virtual long vx_int() const = 0;
+  };
+  class Class_int : public virtual vx_core::Abstract_int {
+  public:
+    Class_int();
+    virtual ~Class_int() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual long vx_int() const override;
+  };
+
+  // (type string)
+  class Abstract_string : public virtual vx_core::Abstract_any {
+  public:
+    Abstract_string() {};
+    virtual ~Abstract_string() = 0;
+    std::string vx_p_string = "";
+    virtual std::string vx_string() const = 0;
+  };
+  class Class_string : public virtual vx_core::Abstract_string {
+  public:
+    Class_string();
+    virtual ~Class_string() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual std::string vx_string() const override;
+  };
+
+  // (type func)
+  class Abstract_func : public virtual vx_core::Abstract_any {
+  public:
+    Abstract_func() {};
+    virtual ~Abstract_func() = 0;
+    virtual vx_core::Type_funcdef vx_funcdef() const = 0;
+  };
+  class Class_func : public virtual vx_core::Abstract_func {
+  public:
+    Class_func();
+    virtual ~Class_func() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+  };
+
+  // (type typedef)
+  class Abstract_typedef : public virtual vx_core::Abstract_struct {
+  public:
+    Abstract_typedef() {};
+    virtual ~Abstract_typedef() = 0;
+    // vx_map()
+    virtual vx_core::vx_Type_mapany vx_map() const = 0;
+    // vx_get_any(key)
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
+    // pkgname()
+    vx_core::Type_string vx_p_pkgname = NULL;
+    virtual vx_core::Type_string pkgname() const = 0;
+    // name()
+    vx_core::Type_string vx_p_name = NULL;
+    virtual vx_core::Type_string name() const = 0;
+    // extends()
+    vx_core::Type_string vx_p_extend = NULL;
+    virtual vx_core::Type_string extend() const = 0;
+    // allowfuncs()
+    vx_core::Type_funclist vx_p_allowfuncs = NULL;
+    virtual vx_core::Type_funclist allowfuncs() const = 0;
+    // allowtypes()
+    vx_core::Type_typelist vx_p_allowtypes = NULL;
+    virtual vx_core::Type_typelist allowtypes() const = 0;
+    // allowvalues()
+    vx_core::Type_anylist vx_p_allowvalues = NULL;
+    virtual vx_core::Type_anylist allowvalues() const = 0;
+    // disallowfuncs()
+    vx_core::Type_funclist vx_p_disallowfuncs = NULL;
+    virtual vx_core::Type_funclist disallowfuncs() const = 0;
+    // disallowtypes()
+    vx_core::Type_typelist vx_p_disallowtypes = NULL;
+    virtual vx_core::Type_typelist disallowtypes() const = 0;
+    // disallowvalues()
+    vx_core::Type_anylist vx_p_disallowvalues = NULL;
+    virtual vx_core::Type_anylist disallowvalues() const = 0;
+    // properties()
+    vx_core::Type_argmap vx_p_properties = NULL;
+    virtual vx_core::Type_argmap properties() const = 0;
+    // proplast()
+    vx_core::Type_arg vx_p_proplast = NULL;
+    virtual vx_core::Type_arg proplast() const = 0;
+    // traits()
+    vx_core::Type_typelist vx_p_traits = NULL;
+    virtual vx_core::Type_typelist traits() const = 0;
+  };
+  class Class_typedef : public virtual Abstract_typedef {
+  public:
+    Class_typedef();
+    virtual ~Class_typedef() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    static vx_core::Type_typedef vx_typedef_new(
+      std::string pkgname,
+      std::string name,
+      std::string extend,
+      vx_core::Type_typelist traits,
+      vx_core::Type_typelist allowtypes,
+      vx_core::Type_typelist disallowtypes,
+      vx_core::Type_funclist allowfuncs,
+      vx_core::Type_funclist disallowfuncs,
+      vx_core::Type_anylist allowvalues,
+      vx_core::Type_anylist disallowvalues,
+      vx_core::Type_argmap properties
+    );
+    virtual vx_core::vx_Type_mapany vx_map() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
+    virtual vx_core::Type_string pkgname() const override;
+    virtual vx_core::Type_string name() const override;
+    virtual vx_core::Type_string extend() const override;
+    virtual vx_core::Type_funclist allowfuncs() const override;
+    virtual vx_core::Type_typelist allowtypes() const override;
+    virtual vx_core::Type_anylist allowvalues() const override;
+    virtual vx_core::Type_funclist disallowfuncs() const override;
+    virtual vx_core::Type_typelist disallowtypes() const override;
+    virtual vx_core::Type_anylist disallowvalues() const override;
+    virtual vx_core::Type_argmap properties() const override;
+    virtual vx_core::Type_arg proplast() const override;
+    virtual vx_core::Type_typelist traits() const override;
+  };
+
+  // (type funcdef)
+  class Abstract_funcdef : public virtual vx_core::Abstract_struct {
+  public:
+    Abstract_funcdef() {};
+    virtual ~Abstract_funcdef() = 0;
+    // vx_map()
+    virtual vx_core::vx_Type_mapany vx_map() const = 0;
+    // vx_get_any(key)
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
+    // pkgname()
+    vx_core::Type_string vx_p_pkgname = NULL;
+    virtual vx_core::Type_string pkgname() const = 0;
+    // name()
+    vx_core::Type_string vx_p_name = NULL;
+    virtual vx_core::Type_string name() const = 0;
+    // idx()
+    vx_core::Type_int vx_p_idx = NULL;
+    virtual vx_core::Type_int idx() const = 0;
+    // type()
+    vx_core::Type_any vx_p_type = NULL;
+    virtual vx_core::Type_any type() const = 0;
+    // async()
+    vx_core::Type_boolean vx_p_async = NULL;
+    virtual vx_core::Type_boolean async() const = 0;
+  };
+  class Class_funcdef : public virtual Abstract_funcdef {
+  public:
+    Class_funcdef();
+    virtual ~Class_funcdef() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    static vx_core::Type_funcdef vx_funcdef_new(
+      std::string pkgname,
+      std::string name,
+      long idx,
+      bool async,
+      vx_core::Type_any typ
+    );
+    virtual vx_core::vx_Type_mapany vx_map() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
+    virtual vx_core::Type_string pkgname() const override;
+    virtual vx_core::Type_string name() const override;
+    virtual vx_core::Type_int idx() const override;
+    virtual vx_core::Type_any type() const override;
+    virtual vx_core::Type_boolean async() const override;
+  };
+
+  // (func any<-any)
+  class Abstract_any_from_any : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_any() {};
+    virtual ~Abstract_any_from_any() = 0;
+    typedef std::function<vx_core::Type_any(vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_any : public virtual Abstract_any_from_any {
+  public:
+    Class_any_from_any();
+    virtual ~Class_any_from_any() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-any-async)
+  class Abstract_any_from_any_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_any_from_any_async() {};
+    virtual ~Abstract_any_from_any_async() = 0;
+    typedef std::function<vx_core::vx_Type_async(vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_any_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const = 0;
+    virtual vx_core::vx_Type_async vx_any_from_any_async(vx_core::Type_any generic_any_1, vx_core::Type_any value) const = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_any_async : public virtual Abstract_any_from_any_async {
+  public:
+    Class_any_from_any_async();
+    virtual ~Class_any_from_any_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const;
+    virtual vx_core::vx_Type_async vx_any_from_any_async(vx_core::Type_any generic_any_1, vx_core::Type_any value) const;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-any-context)
+  class Abstract_any_from_any_context : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_any_context() {};
+    virtual ~Abstract_any_from_any_context() = 0;
+    typedef std::function<vx_core::Type_any(vx_core::Type_context, vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_any_context vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context::IFn fn) const = 0;
+    virtual vx_core::Type_any vx_any_from_any_context(vx_core::Type_context context, vx_core::Type_any value) const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_any_context : public virtual Abstract_any_from_any_context {
+  public:
+    Class_any_from_any_context();
+    virtual ~Class_any_from_any_context() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any_context vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context::IFn fn) const;
+    virtual vx_core::Type_any vx_any_from_any_context(vx_core::Type_context context, vx_core::Type_any value) const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-any-context-async)
+  class Abstract_any_from_any_context_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_any_from_any_context_async() {};
+    virtual ~Abstract_any_from_any_context_async() = 0;
+    typedef std::function<vx_core::vx_Type_async(vx_core::Type_context, vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_any_context_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context_async::IFn fn) const = 0;
+    virtual vx_core::vx_Type_async vx_any_from_any_context_async(vx_core::Type_any generic_any_1, vx_core::Type_context context, vx_core::Type_any value) const = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_any_context_async : public virtual Abstract_any_from_any_context_async {
+  public:
+    Class_any_from_any_context_async();
+    virtual ~Class_any_from_any_context_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any_context_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context_async::IFn fn) const;
+    virtual vx_core::vx_Type_async vx_any_from_any_context_async(vx_core::Type_any generic_any_1, vx_core::Type_context context, vx_core::Type_any value) const;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-func)
+  class Abstract_any_from_func : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_func() {};
+    virtual ~Abstract_any_from_func() = 0;
+    typedef std::function<vx_core::Type_any()> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_func vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_func::IFn fn) const = 0;
+    virtual vx_core::Type_any vx_any_from_func() const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_func : public virtual Abstract_any_from_func {
+  public:
+    Class_any_from_func();
+    virtual ~Class_any_from_func() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_func vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_func::IFn fn) const;
+    virtual vx_core::Type_any vx_any_from_func() const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-func-async)
+  class Abstract_any_from_func_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_any_from_func_async() {};
+    virtual ~Abstract_any_from_func_async() = 0;
+    typedef std::function<vx_core::vx_Type_async()> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_func_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_func_async::IFn fn) const = 0;
+    virtual vx_core::vx_Type_async vx_any_from_func_async(vx_core::Type_any generic_any_1) const = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_func_async : public virtual Abstract_any_from_func_async {
+  public:
+    Class_any_from_func_async();
+    virtual ~Class_any_from_func_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_func_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_func_async::IFn fn) const;
+    virtual vx_core::vx_Type_async vx_any_from_func_async(vx_core::Type_any generic_any_1) const;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-key-value)
+  class Abstract_any_from_key_value : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_key_value() {};
+    virtual ~Abstract_any_from_key_value() = 0;
+    typedef std::function<vx_core::Type_any(vx_core::Type_string, vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_key_value vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_key_value::IFn fn) const = 0;
+    virtual vx_core::Type_any vx_any_from_key_value(vx_core::Type_string key, vx_core::Type_any value) const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_key_value : public virtual Abstract_any_from_key_value {
+  public:
+    Class_any_from_key_value();
+    virtual ~Class_any_from_key_value() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_key_value vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_key_value::IFn fn) const;
+    virtual vx_core::Type_any vx_any_from_key_value(vx_core::Type_string key, vx_core::Type_any value) const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-key-value-async)
+  class Abstract_any_from_key_value_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_any_from_key_value_async() {};
+    virtual ~Abstract_any_from_key_value_async() = 0;
+    typedef std::function<vx_core::vx_Type_async(vx_core::Type_string, vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_key_value_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_key_value_async::IFn fn) const = 0;
+    virtual vx_core::vx_Type_async vx_any_from_key_value_async(vx_core::Type_any generic_any_1, vx_core::Type_string key, vx_core::Type_any value) const = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_key_value_async : public virtual Abstract_any_from_key_value_async {
+  public:
+    Class_any_from_key_value_async();
+    virtual ~Class_any_from_key_value_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_key_value_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_key_value_async::IFn fn) const;
+    virtual vx_core::vx_Type_async vx_any_from_key_value_async(vx_core::Type_any generic_any_1, vx_core::Type_string key, vx_core::Type_any value) const;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-list)
+  class Abstract_any_from_list : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_list() {};
+    virtual ~Abstract_any_from_list() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_list : public virtual Abstract_any_from_list {
+  public:
+    Class_any_from_list();
+    virtual ~Class_any_from_list() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-list-start-reduce)
+  class Abstract_any_from_list_start_reduce : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_list_start_reduce() {};
+    virtual ~Abstract_any_from_list_start_reduce() = 0;
+    typedef std::function<vx_core::Type_any(vx_core::Type_list, vx_core::Type_any, vx_core::Func_any_from_reduce)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_list_start_reduce : public virtual Abstract_any_from_list_start_reduce {
+  public:
+    Class_any_from_list_start_reduce();
+    virtual ~Class_any_from_list_start_reduce() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-list-start-reduce-next)
+  class Abstract_any_from_list_start_reduce_next : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_list_start_reduce_next() {};
+    virtual ~Abstract_any_from_list_start_reduce_next() = 0;
+    typedef std::function<vx_core::Type_any(vx_core::Type_list, vx_core::Type_any, vx_core::Func_any_from_reduce_next)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_list_start_reduce_next : public virtual Abstract_any_from_list_start_reduce_next {
+  public:
+    Class_any_from_list_start_reduce_next();
+    virtual ~Class_any_from_list_start_reduce_next() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-map)
+  class Abstract_any_from_map : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_map() {};
+    virtual ~Abstract_any_from_map() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_map : public virtual Abstract_any_from_map {
+  public:
+    Class_any_from_map();
+    virtual ~Class_any_from_map() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-none)
+  class Abstract_any_from_none : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_none() {};
+    virtual ~Abstract_any_from_none() = 0;
+    typedef std::function<vx_core::Type_any()> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_none vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_none::IFn fn) const = 0;
+    virtual vx_core::Type_any vx_any_from_none() const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_none : public virtual Abstract_any_from_none {
+  public:
+    Class_any_from_none();
+    virtual ~Class_any_from_none() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_none vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_none::IFn fn) const;
+    virtual vx_core::Type_any vx_any_from_none() const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-none-async)
+  class Abstract_any_from_none_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_any_from_none_async() {};
+    virtual ~Abstract_any_from_none_async() = 0;
+    typedef std::function<vx_core::vx_Type_async()> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_none_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_none_async::IFn fn) const = 0;
+    virtual vx_core::vx_Type_async vx_any_from_none_async(vx_core::Type_any generic_any_1) const = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_none_async : public virtual Abstract_any_from_none_async {
+  public:
+    Class_any_from_none_async();
+    virtual ~Class_any_from_none_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_none_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_none_async::IFn fn) const;
+    virtual vx_core::vx_Type_async vx_any_from_none_async(vx_core::Type_any generic_any_1) const;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-reduce)
+  class Abstract_any_from_reduce : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_reduce() {};
+    virtual ~Abstract_any_from_reduce() = 0;
+    typedef std::function<vx_core::Type_any(vx_core::Type_any, vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_reduce vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce::IFn fn) const = 0;
+    virtual vx_core::Type_any vx_any_from_reduce(vx_core::Type_any result, vx_core::Type_any item) const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_reduce : public virtual Abstract_any_from_reduce {
+  public:
+    Class_any_from_reduce();
+    virtual ~Class_any_from_reduce() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_reduce vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce::IFn fn) const;
+    virtual vx_core::Type_any vx_any_from_reduce(vx_core::Type_any result, vx_core::Type_any item) const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-reduce-async)
+  class Abstract_any_from_reduce_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_any_from_reduce_async() {};
+    virtual ~Abstract_any_from_reduce_async() = 0;
+    typedef std::function<vx_core::vx_Type_async(vx_core::Type_any, vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_reduce_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_async::IFn fn) const = 0;
+    virtual vx_core::vx_Type_async vx_any_from_reduce_async(vx_core::Type_any generic_any_1, vx_core::Type_any result, vx_core::Type_any item) const = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_reduce_async : public virtual Abstract_any_from_reduce_async {
+  public:
+    Class_any_from_reduce_async();
+    virtual ~Class_any_from_reduce_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_reduce_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_async::IFn fn) const;
+    virtual vx_core::vx_Type_async vx_any_from_reduce_async(vx_core::Type_any generic_any_1, vx_core::Type_any result, vx_core::Type_any item) const;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-reduce-next)
+  class Abstract_any_from_reduce_next : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_reduce_next() {};
+    virtual ~Abstract_any_from_reduce_next() = 0;
+    typedef std::function<vx_core::Type_any(vx_core::Type_any, vx_core::Type_any, vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_reduce_next vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_next::IFn fn) const = 0;
+    virtual vx_core::Type_any vx_any_from_reduce_next(vx_core::Type_any result, vx_core::Type_any current, vx_core::Type_any next) const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_reduce_next : public virtual Abstract_any_from_reduce_next {
+  public:
+    Class_any_from_reduce_next();
+    virtual ~Class_any_from_reduce_next() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_reduce_next vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_next::IFn fn) const;
+    virtual vx_core::Type_any vx_any_from_reduce_next(vx_core::Type_any result, vx_core::Type_any current, vx_core::Type_any next) const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-reduce-next-async)
+  class Abstract_any_from_reduce_next_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_any_from_reduce_next_async() {};
+    virtual ~Abstract_any_from_reduce_next_async() = 0;
+    typedef std::function<vx_core::vx_Type_async(vx_core::Type_any, vx_core::Type_any, vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_any_from_reduce_next_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_next_async::IFn fn) const = 0;
+    virtual vx_core::vx_Type_async vx_any_from_reduce_next_async(vx_core::Type_any generic_any_1, vx_core::Type_any result, vx_core::Type_any current, vx_core::Type_any next) const = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_reduce_next_async : public virtual Abstract_any_from_reduce_next_async {
+  public:
+    Class_any_from_reduce_next_async();
+    virtual ~Class_any_from_reduce_next_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_reduce_next_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_next_async::IFn fn) const;
+    virtual vx_core::vx_Type_async vx_any_from_reduce_next_async(vx_core::Type_any generic_any_1, vx_core::Type_any result, vx_core::Type_any current, vx_core::Type_any next) const;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func any<-struct)
+  class Abstract_any_from_struct : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_any_from_struct() {};
+    virtual ~Abstract_any_from_struct() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_any_from_struct : public virtual Abstract_any_from_struct {
+  public:
+    Class_any_from_struct();
+    virtual ~Class_any_from_struct() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func async)
+  class Abstract_async : public vx_core::Abstract_any_from_any_async, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_async() {};
+    virtual ~Abstract_async() = 0;
+    virtual vx_core::Func_any_from_any_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const override = 0;
+    virtual vx_core::vx_Type_async vx_any_from_any_async(vx_core::Type_any generic_any_1, vx_core::Type_any val) const override = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_async : public virtual Abstract_async {
+  public:
+    Class_async();
+    virtual ~Class_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const override;
+    virtual vx_core::vx_Type_async vx_any_from_any_async(vx_core::Type_any generic_any_1, vx_core::Type_any val) const override;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func boolean<-any)
+  class Abstract_boolean_from_any : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_boolean_from_any() {};
+    virtual ~Abstract_boolean_from_any() = 0;
+    typedef std::function<vx_core::Type_boolean(vx_core::Type_any)> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_boolean_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_any::IFn fn) const = 0;
+    virtual vx_core::Type_boolean vx_boolean_from_any(vx_core::Type_any value) const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_boolean_from_any : public virtual Abstract_boolean_from_any {
+  public:
+    Class_boolean_from_any();
+    virtual ~Class_boolean_from_any() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_boolean_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_any::IFn fn) const;
+    virtual vx_core::Type_boolean vx_boolean_from_any(vx_core::Type_any value) const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func boolean<-func)
+  class Abstract_boolean_from_func : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_boolean_from_func() {};
+    virtual ~Abstract_boolean_from_func() = 0;
+    typedef std::function<vx_core::Type_boolean()> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_boolean_from_func vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_func::IFn fn) const = 0;
+    virtual vx_core::Type_boolean vx_boolean_from_func() const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_boolean_from_func : public virtual Abstract_boolean_from_func {
+  public:
+    Class_boolean_from_func();
+    virtual ~Class_boolean_from_func() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_boolean_from_func vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_func::IFn fn) const;
+    virtual vx_core::Type_boolean vx_boolean_from_func() const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func boolean<-none)
+  class Abstract_boolean_from_none : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_boolean_from_none() {};
+    virtual ~Abstract_boolean_from_none() = 0;
+    typedef std::function<vx_core::Type_boolean()> IFn;
+    IFn fn;
+    vx_core::vx_Type_listany lambdavars;
+    virtual vx_core::Func_boolean_from_none vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_func::IFn fn) const = 0;
+    virtual vx_core::Type_boolean vx_boolean_from_none() const = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_boolean_from_none : public virtual Abstract_boolean_from_none {
+  public:
+    Class_boolean_from_none();
+    virtual ~Class_boolean_from_none() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_boolean_from_none vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_func::IFn fn) const;
+    virtual vx_core::Type_boolean vx_boolean_from_none() const;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func empty)
+  class Abstract_empty : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_empty() {};
+    virtual ~Abstract_empty() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_empty : public virtual Abstract_empty {
+  public:
+    Class_empty();
+    virtual ~Class_empty() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func new)
+  class Abstract_new : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_new() {};
+    virtual ~Abstract_new() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_new : public virtual Abstract_new {
+  public:
+    Class_new();
+    virtual ~Class_new() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func copy)
+  class Abstract_copy : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_copy() {};
+    virtual ~Abstract_copy() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_copy : public virtual Abstract_copy {
+  public:
+    Class_copy();
+    virtual ~Class_copy() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func is-empty)
+  class Abstract_is_empty : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_is_empty() {};
+    virtual ~Abstract_is_empty() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_is_empty : public virtual Abstract_is_empty {
+  public:
+    Class_is_empty();
+    virtual ~Class_is_empty() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func is-empty)
+  class Abstract_is_empty_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_is_empty_1() {};
+    virtual ~Abstract_is_empty_1() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_is_empty_1 : public virtual Abstract_is_empty_1 {
+  public:
+    Class_is_empty_1();
+    virtual ~Class_is_empty_1() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func !)
+  class Abstract_not : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_not() {};
+    virtual ~Abstract_not() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_not : public virtual Abstract_not {
+  public:
+    Class_not();
+    virtual ~Class_not() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func !-empty)
+  class Abstract_notempty : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_notempty() {};
+    virtual ~Abstract_notempty() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_notempty : public virtual Abstract_notempty {
+  public:
+    Class_notempty();
+    virtual ~Class_notempty() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func !-empty)
+  class Abstract_notempty_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_notempty_1() {};
+    virtual ~Abstract_notempty_1() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_notempty_1 : public virtual Abstract_notempty_1 {
+  public:
+    Class_notempty_1();
+    virtual ~Class_notempty_1() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func =)
+  class Abstract_eq : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_eq() {};
+    virtual ~Abstract_eq() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_eq : public virtual Abstract_eq {
+  public:
+    Class_eq();
+    virtual ~Class_eq() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func =)
+  class Abstract_eq_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_eq_1() {};
+    virtual ~Abstract_eq_1() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_eq_1 : public virtual Abstract_eq_1 {
+  public:
+    Class_eq_1();
+    virtual ~Class_eq_1() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func !=)
+  class Abstract_ne : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_ne() {};
+    virtual ~Abstract_ne() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_ne : public virtual Abstract_ne {
+  public:
+    Class_ne();
+    virtual ~Class_ne() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func then)
+  class Abstract_then : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_then() {};
+    virtual ~Abstract_then() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_then : public virtual Abstract_then {
+  public:
+    Class_then();
+    virtual ~Class_then() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func else)
+  class Abstract_else : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_else() {};
+    virtual ~Abstract_else() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_else : public virtual Abstract_else {
+  public:
+    Class_else();
+    virtual ~Class_else() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func if)
+  class Abstract_if : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_if() {};
+    virtual ~Abstract_if() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_if : public virtual Abstract_if {
+  public:
+    Class_if();
+    virtual ~Class_if() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func if)
+  class Abstract_if_1 : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_if_1() {};
+    virtual ~Abstract_if_1() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_if_1 : public virtual Abstract_if_1 {
+  public:
+    Class_if_1();
+    virtual ~Class_if_1() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func if)
+  class Abstract_if_2 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_if_2() {};
+    virtual ~Abstract_if_2() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_if_2 : public virtual Abstract_if_2 {
+  public:
+    Class_if_2();
+    virtual ~Class_if_2() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func case)
+  class Abstract_case : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_case() {};
+    virtual ~Abstract_case() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_case : public virtual Abstract_case {
+  public:
+    Class_case();
+    virtual ~Class_case() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func case)
+  class Abstract_case_1 : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_case_1() {};
+    virtual ~Abstract_case_1() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_case_1 : public virtual Abstract_case_1 {
+  public:
+    Class_case_1();
+    virtual ~Class_case_1() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func switch)
+  class Abstract_switch : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_switch() {};
+    virtual ~Abstract_switch() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_switch : public virtual Abstract_switch {
+  public:
+    Class_switch();
+    virtual ~Class_switch() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func length)
+  class Abstract_length : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_length() {};
+    virtual ~Abstract_length() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_length : public virtual Abstract_length {
+  public:
+    Class_length();
+    virtual ~Class_length() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func length)
+  class Abstract_length_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_length_1() {};
+    virtual ~Abstract_length_1() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_length_1 : public virtual Abstract_length_1 {
+  public:
+    Class_length_1();
+    virtual ~Class_length_1() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func length)
+  class Abstract_length_2 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_length_2() {};
+    virtual ~Abstract_length_2() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_length_2 : public virtual Abstract_length_2 {
+  public:
+    Class_length_2();
+    virtual ~Class_length_2() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func and)
+  class Abstract_and : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_and() {};
+    virtual ~Abstract_and() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_and : public virtual Abstract_and {
+  public:
+    Class_and();
+    virtual ~Class_and() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func and)
+  class Abstract_and_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_and_1() {};
+    virtual ~Abstract_and_1() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_and_1 : public virtual Abstract_and_1 {
+  public:
+    Class_and_1();
+    virtual ~Class_and_1() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func or)
+  class Abstract_or : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_or() {};
+    virtual ~Abstract_or() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_or : public virtual Abstract_or {
+  public:
+    Class_or();
+    virtual ~Class_or() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func or)
+  class Abstract_or_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_or_1() {};
+    virtual ~Abstract_or_1() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_or_1 : public virtual Abstract_or_1 {
+  public:
+    Class_or_1();
+    virtual ~Class_or_1() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func let)
+  class Abstract_let : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_let() {};
+    virtual ~Abstract_let() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_let : public virtual Abstract_let {
+  public:
+    Class_let();
+    virtual ~Class_let() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func let-async)
+  class Abstract_let_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
+  public:
+    Abstract_let_async() {};
+    virtual ~Abstract_let_async() = 0;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_let_async : public virtual Abstract_let_async {
+  public:
+    Class_let_async();
+    virtual ~Class_let_async() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func boolean<-any)
+  vx_core::Type_boolean f_boolean_from_any(vx_core::Type_any value);
+
+  // (func boolean<-func)
+  vx_core::Type_boolean f_boolean_from_func();
+
+  // (func boolean<-none)
+  vx_core::Type_boolean f_boolean_from_none();
+
+  // (func is-empty)
+  vx_core::Type_boolean f_is_empty(vx_core::Type_string text);
+
+  // (func is-empty)
+  vx_core::Type_boolean f_is_empty_1(vx_core::Type_any value);
+
   // (func !)
   vx_core::Type_boolean f_not(vx_core::Type_boolean value);
 
   // (func !-empty)
-  vx_core::Type_boolean f_notempty_1(vx_core::Type_any value);
+  vx_core::Type_boolean f_notempty(vx_core::Type_string text);
 
   // (func !-empty)
-  vx_core::Type_boolean f_notempty(vx_core::Type_string text);
+  vx_core::Type_boolean f_notempty_1(vx_core::Type_any value);
+
+  // (func =)
+  vx_core::Type_boolean f_eq(vx_core::Type_any val1, vx_core::Type_any val2);
+
+  // (func =)
+  vx_core::Type_boolean f_eq_1(vx_core::Type_anylist values);
 
   // (func !=)
   vx_core::Type_boolean f_ne(vx_core::Type_any val1, vx_core::Type_any val2);
+
+  // (func then)
+  vx_core::Type_thenelse f_then(vx_core::Func_boolean_from_func fn_cond, vx_core::Func_any_from_func fn_any);
+
+  // (func else)
+  vx_core::Type_thenelse f_else(vx_core::Func_any_from_func fn_any);
+
+  // (func case)
+  vx_core::Type_thenelse f_case(vx_core::Type_list values, vx_core::Func_any_from_func fn_any);
+
+  // (func case)
+  vx_core::Type_thenelse f_case_1(vx_core::Type_any value, vx_core::Func_any_from_func fn_any);
+
+  // (func length)
+  vx_core::Type_int f_length(vx_core::Type_string text);
+
+  // (func length)
+  vx_core::Type_int f_length_1(vx_core::Type_list values);
+
+  // (func length)
+  vx_core::Type_int f_length_2(vx_core::Type_map valuemap);
+
+  // (func and)
+  vx_core::Type_boolean f_and(vx_core::Type_boolean val1, vx_core::Type_boolean val2);
+
+  // (func and)
+  vx_core::Type_boolean f_and_1(vx_core::Type_booleanlist values);
+
+  // (func or)
+  vx_core::Type_boolean f_or(vx_core::Type_boolean val1, vx_core::Type_boolean val2);
+
+  // (func or)
+  vx_core::Type_boolean f_or_1(vx_core::Type_booleanlist values);
 
   // (func !==)
   vx_core::Type_boolean f_neqeq(vx_core::Type_any val1, vx_core::Type_any val2);
@@ -1098,12 +3755,6 @@ namespace vx_core {
   // (func <=)
   vx_core::Type_boolean f_le(vx_core::Type_any val1, vx_core::Type_any val2);
 
-  // (func =)
-  vx_core::Type_boolean f_eq_1(vx_core::Type_anylist values);
-
-  // (func =)
-  vx_core::Type_boolean f_eq(vx_core::Type_any val1, vx_core::Type_any val2);
-
   // (func ==)
   vx_core::Type_boolean f_eqeq(vx_core::Type_any val1, vx_core::Type_any val2);
 
@@ -1128,32 +3779,11 @@ namespace vx_core {
   // (func allowtypes<-typedef)
   vx_core::Type_typelist f_allowtypes_from_typedef(vx_core::Type_typedef vtypedef);
 
-  // (func and)
-  vx_core::Type_boolean f_and_1(vx_core::Type_booleanlist values);
-
-  // (func and)
-  vx_core::Type_boolean f_and(vx_core::Type_boolean val1, vx_core::Type_boolean val2);
-
   // (func boolean-permission<-func)
   vx_core::Type_boolean f_boolean_permission_from_func(vx_core::Type_context context, vx_core::Type_func func);
 
   // (func boolean-write<-map-name-value)
   vx_core::Type_boolean f_boolean_write_from_map_name_value(vx_core::Type_map valuemap, vx_core::Type_string name, vx_core::Type_any value);
-
-  // (func boolean<-any)
-  vx_core::Type_boolean f_boolean_from_any(vx_core::Type_any value);
-
-  // (func boolean<-func)
-  vx_core::Type_boolean f_boolean_from_func();
-
-  // (func boolean<-none)
-  vx_core::Type_boolean f_boolean_from_none();
-
-  // (func case)
-  vx_core::Type_thenelse f_case_1(vx_core::Type_any value, vx_core::Func_any_from_func fn_any);
-
-  // (func case)
-  vx_core::Type_thenelse f_case(vx_core::Type_list values, vx_core::Func_any_from_func fn_any);
 
   // (func compare)
   vx_core::Type_int f_compare(vx_core::Type_any val1, vx_core::Type_any val2);
@@ -1166,9 +3796,6 @@ namespace vx_core {
 
   // (func context-main)
   vx_core::Type_context f_context_main(vx_core::Type_anylist args);
-
-  // (func else)
-  vx_core::Type_thenelse f_else(vx_core::Func_any_from_func fn_any);
 
   // (func extends<-any)
   vx_core::Type_string f_extends_from_any(vx_core::Type_any value);
@@ -1191,12 +3818,6 @@ namespace vx_core {
   // (func int<-string)
   vx_core::Type_int f_int_from_string(vx_core::Type_string value);
 
-  // (func is-empty)
-  vx_core::Type_boolean f_is_empty_1(vx_core::Type_any value);
-
-  // (func is-empty)
-  vx_core::Type_boolean f_is_empty(vx_core::Type_string text);
-
   // (func is-endswith)
   vx_core::Type_boolean f_is_endswith(vx_core::Type_string text, vx_core::Type_string find);
 
@@ -1214,15 +3835,6 @@ namespace vx_core {
 
   // (func is-pass<-permission)
   vx_core::Type_boolean f_is_pass_from_permission(vx_core::Type_context context, vx_core::Type_permission permission);
-
-  // (func length)
-  vx_core::Type_int f_length_2(vx_core::Type_map valuemap);
-
-  // (func length)
-  vx_core::Type_int f_length_1(vx_core::Type_list values);
-
-  // (func length)
-  vx_core::Type_int f_length(vx_core::Type_string text);
 
   // (func list<-type)
   vx_core::Type_any f_list_from_type(vx_core::Type_any type);
@@ -1259,12 +3871,6 @@ namespace vx_core {
 
   // (func number<-func)
   vx_core::Type_number f_number_from_func();
-
-  // (func or)
-  vx_core::Type_boolean f_or_1(vx_core::Type_booleanlist values);
-
-  // (func or)
-  vx_core::Type_boolean f_or(vx_core::Type_boolean val1, vx_core::Type_boolean val2);
 
   // (func package-global<-name)
   vx_core::Type_package f_package_global_from_name(vx_core::Type_string name);
@@ -1317,9 +3923,6 @@ namespace vx_core {
   // (func stringlist<-map)
   vx_core::Type_stringlist f_stringlist_from_map(vx_core::Type_map map);
 
-  // (func then)
-  vx_core::Type_thenelse f_then(vx_core::Func_boolean_from_func fn_cond, vx_core::Func_any_from_func fn_any);
-
   // (func traits<-typedef)
   vx_core::Type_typelist f_traits_from_typedef(vx_core::Type_typedef vtypedef);
 
@@ -1346,37 +3949,6 @@ namespace vx_core {
 
   // (func user<-context)
   vx_core::Type_user f_user_from_context(vx_core::Type_context context);
-
-  // (type any)
-  class Abstract_any {
-  public:
-    Abstract_any() {};
-    virtual ~Abstract_any() = 0;
-    long vx_p_iref = 0;
-    vx_core::Type_constdef vx_p_constdef = NULL;
-    vx_core::Type_msgblock vx_p_msgblock = NULL;
-    virtual vx_core::Type_msgblock vx_msgblock() const {return this->vx_p_msgblock;};
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const = 0;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const = 0;
-    virtual vx_core::Type_any vx_empty() const = 0;
-    virtual vx_core::Type_any vx_type() const = 0;
-    virtual vx_core::Type_typedef vx_typedef() const = 0;
-    virtual vx_core::Type_constdef vx_constdef() const = 0;
-    virtual vx_core::vx_Type_listany vx_dispose() = 0;
-  };
-  class Class_any : public virtual Abstract_any {
-  public:
-    Class_any();
-    virtual ~Class_any() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-  };
 
   // (type any-async<-func)
   class Abstract_any_async_from_func : public virtual vx_core::Abstract_any {
@@ -1631,29 +4203,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const override;
     virtual std::map<std::string, vx_core::Type_arg> vx_maparg() const override;
     virtual vx_core::Type_arg vx_get_arg(vx_core::Type_string key) const override;
-  };
-
-  // (type boolean)
-  class Abstract_boolean : public virtual vx_core::Abstract_any {
-  public:
-    Abstract_boolean() {};
-    virtual ~Abstract_boolean() = 0;
-    bool vx_p_boolean = false;
-    virtual bool vx_boolean() const = 0;
-  };
-  class Class_boolean : public virtual vx_core::Abstract_boolean {
-  public:
-    Class_boolean();
-    virtual ~Class_boolean() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual bool vx_boolean() const override;
   };
 
   // (type booleanlist)
@@ -2009,31 +4558,6 @@ namespace vx_core {
     virtual vx_core::vx_Type_listany vx_dispose() override;
   };
 
-  // (type decimal)
-  class Abstract_decimal : public virtual vx_core::Abstract_number {
-  public:
-    Abstract_decimal() {};
-    virtual ~Abstract_decimal() = 0;
-    std::string vx_p_decimal = "0.0";
-    virtual float vx_float() const = 0;
-    virtual std::string vx_string() const = 0;
-  };
-  class Class_decimal : public virtual vx_core::Abstract_decimal {
-  public:
-    Class_decimal();
-    virtual ~Class_decimal() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual float vx_float() const override;
-    virtual std::string vx_string() const override;
-  };
-
   // (type error)
   class Abstract_error : public virtual vx_core::Abstract_any {
   public:
@@ -2052,104 +4576,6 @@ namespace vx_core {
     virtual vx_core::Type_constdef vx_constdef() const override;
     virtual vx_core::Type_msgblock vx_msgblock() const override;
     virtual vx_core::vx_Type_listany vx_dispose() override;
-  };
-
-  // (type float)
-  class Abstract_float : public virtual vx_core::Abstract_number {
-  public:
-    Abstract_float() {};
-    virtual ~Abstract_float() = 0;
-    float vx_p_float = 0;
-    virtual float vx_float() const = 0;
-  };
-  class Class_float : public virtual vx_core::Abstract_float {
-  public:
-    Class_float();
-    virtual ~Class_float() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual float vx_float() const override;
-  };
-
-  // (type func)
-  class Abstract_func : public virtual vx_core::Abstract_any {
-  public:
-    Abstract_func() {};
-    virtual ~Abstract_func() = 0;
-    virtual vx_core::Type_funcdef vx_funcdef() const = 0;
-  };
-  class Class_func : public virtual vx_core::Abstract_func {
-  public:
-    Class_func();
-    virtual ~Class_func() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-  };
-
-  // (type funcdef)
-  class Abstract_funcdef : public virtual vx_core::Abstract_struct {
-  public:
-    Abstract_funcdef() {};
-    virtual ~Abstract_funcdef() = 0;
-    // vx_map()
-    virtual vx_core::vx_Type_mapany vx_map() const = 0;
-    // vx_get_any(key)
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
-    // pkgname()
-    vx_core::Type_string vx_p_pkgname = NULL;
-    virtual vx_core::Type_string pkgname() const = 0;
-    // name()
-    vx_core::Type_string vx_p_name = NULL;
-    virtual vx_core::Type_string name() const = 0;
-    // idx()
-    vx_core::Type_int vx_p_idx = NULL;
-    virtual vx_core::Type_int idx() const = 0;
-    // type()
-    vx_core::Type_any vx_p_type = NULL;
-    virtual vx_core::Type_any type() const = 0;
-    // async()
-    vx_core::Type_boolean vx_p_async = NULL;
-    virtual vx_core::Type_boolean async() const = 0;
-  };
-  class Class_funcdef : public virtual Abstract_funcdef {
-  public:
-    Class_funcdef();
-    virtual ~Class_funcdef() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    static vx_core::Type_funcdef vx_funcdef_new(
-      std::string pkgname,
-      std::string name,
-      long idx,
-      bool async,
-      vx_core::Type_any typ
-    );
-    virtual vx_core::vx_Type_mapany vx_map() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
-    virtual vx_core::Type_string pkgname() const override;
-    virtual vx_core::Type_string name() const override;
-    virtual vx_core::Type_int idx() const override;
-    virtual vx_core::Type_any type() const override;
-    virtual vx_core::Type_boolean async() const override;
   };
 
   // (type funclist)
@@ -2227,29 +4653,6 @@ namespace vx_core {
     virtual vx_core::Type_func vx_get_func(vx_core::Type_string key) const override;
   };
 
-  // (type int)
-  class Abstract_int : public virtual vx_core::Abstract_number {
-  public:
-    Abstract_int() {};
-    virtual ~Abstract_int() = 0;
-    long vx_p_int = 0;
-    virtual long vx_int() const = 0;
-  };
-  class Class_int : public virtual vx_core::Abstract_int {
-  public:
-    Class_int();
-    virtual ~Class_int() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual long vx_int() const override;
-  };
-
   // (type intlist)
   class Abstract_intlist : public virtual vx_core::Abstract_list {
   public:
@@ -2325,33 +4728,6 @@ namespace vx_core {
     virtual vx_core::Type_int vx_get_int(vx_core::Type_string key) const override;
   };
 
-  // (type list)
-  class Abstract_list : public virtual vx_core::Abstract_any {
-  public:
-    Abstract_list() {};
-    virtual ~Abstract_list() = 0;
-    vx_core::vx_Type_listany vx_p_list;
-    virtual vx_core::vx_Type_listany vx_list() const = 0;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const = 0;
-    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const = 0;
-  };
-  class Class_list : public virtual vx_core::Abstract_list {
-  public:
-    Class_list();
-    virtual ~Class_list() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::vx_Type_listany vx_list() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const override;
-    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const override;
-  };
-
   // (type listtype)
   class Abstract_listtype : public virtual vx_core::Abstract_any {
   public:
@@ -2396,36 +4772,6 @@ namespace vx_core {
     virtual vx_core::vx_Type_listany vx_dispose() override;
     virtual vx_core::vx_Type_mapany vx_map() const override;
     virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
-  };
-
-  // (type map)
-  class Abstract_map : public virtual vx_core::Abstract_any {
-  public:
-    Abstract_map() {};
-    virtual ~Abstract_map() = 0;
-    std::vector<std::string> vx_p_keys;
-    vx_core::vx_Type_mapany vx_p_map;
-    virtual vx_core::vx_Type_mapany vx_map() const = 0;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
-    virtual vx_core::Type_boolean vx_set(vx_core::Type_string name, vx_core::Type_any value) = 0;
-    virtual vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const = 0;
-  };
-  class Class_map : public virtual vx_core::Abstract_map {
-  public:
-    Class_map();
-    virtual ~Class_map() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::vx_Type_mapany vx_map() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
-    virtual vx_core::Type_boolean vx_set(vx_core::Type_string name, vx_core::Type_any value) override;
-    virtual vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const override;
   };
 
   // (type maptype)
@@ -2478,159 +4824,6 @@ namespace vx_core {
     virtual vx_core::Type_value valuepool() const override;
   };
 
-  // (type msg)
-  class Abstract_msg : public virtual vx_core::Abstract_struct {
-  public:
-    Abstract_msg() {};
-    virtual ~Abstract_msg() = 0;
-    std::exception err;
-    // vx_map()
-    virtual vx_core::vx_Type_mapany vx_map() const = 0;
-    // vx_get_any(key)
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
-    // code()
-    vx_core::Type_string vx_p_code = NULL;
-    virtual vx_core::Type_string code() const = 0;
-    // detail()
-    vx_core::Type_any vx_p_detail = NULL;
-    virtual vx_core::Type_any detail() const = 0;
-    // path()
-    vx_core::Type_string vx_p_path = NULL;
-    virtual vx_core::Type_string path() const = 0;
-    // severity()
-    vx_core::Type_int vx_p_severity = NULL;
-    virtual vx_core::Type_int severity() const = 0;
-    // text()
-    vx_core::Type_string vx_p_text = NULL;
-    virtual vx_core::Type_string text() const = 0;
-  };
-  class Class_msg : public virtual Abstract_msg {
-  public:
-    Class_msg();
-    virtual ~Class_msg() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::vx_Type_mapany vx_map() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
-    virtual vx_core::Type_string code() const override;
-    virtual vx_core::Type_any detail() const override;
-    virtual vx_core::Type_string path() const override;
-    virtual vx_core::Type_int severity() const override;
-    virtual vx_core::Type_string text() const override;
-  };
-
-  // (type msgblock)
-  class Abstract_msgblock : public virtual vx_core::Abstract_struct {
-  public:
-    Abstract_msgblock() {};
-    virtual ~Abstract_msgblock() = 0;
-    // vx_map()
-    virtual vx_core::vx_Type_mapany vx_map() const = 0;
-    // vx_get_any(key)
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
-    // msgs()
-    vx_core::Type_msglist vx_p_msgs = NULL;
-    virtual vx_core::Type_msglist msgs() const = 0;
-    // msgblocks()
-    vx_core::Type_msgblocklist vx_p_msgblocks = NULL;
-    virtual vx_core::Type_msgblocklist msgblocks() const = 0;
-  };
-  class Class_msgblock : public virtual Abstract_msgblock {
-  public:
-    Class_msgblock();
-    virtual ~Class_msgblock() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::vx_Type_mapany vx_map() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
-    virtual vx_core::Type_msglist msgs() const override;
-    virtual vx_core::Type_msgblocklist msgblocks() const override;
-  };
-
-  // (type msgblocklist)
-  class Abstract_msgblocklist : public virtual vx_core::Abstract_list {
-  public:
-    Abstract_msgblocklist() {};
-    virtual ~Abstract_msgblocklist() = 0;
-    // vx_get_any(index)
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const = 0;
-    // vx_list()
-    virtual vx_core::vx_Type_listany vx_list() const = 0;
-    // vx_new_from_list(T, List<T>)
-    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const = 0;
-    std::vector<vx_core::Type_msgblock> vx_p_list;
-    // vx_listmsgblock()
-    virtual std::vector<vx_core::Type_msgblock> vx_listmsgblock() const = 0;
-    // vx_get_msgblock(index)
-    virtual vx_core::Type_msgblock vx_get_msgblock(vx_core::Type_int index) const = 0;
-  };
-  class Class_msgblocklist : public virtual Abstract_msgblocklist {
-  public:
-    Class_msgblocklist();
-    virtual ~Class_msgblocklist() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const override;
-    virtual vx_core::vx_Type_listany vx_list() const override;
-    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const override;
-    virtual std::vector<vx_core::Type_msgblock> vx_listmsgblock() const override;
-    virtual vx_core::Type_msgblock vx_get_msgblock(vx_core::Type_int index) const override;
-  };
-
-  // (type msglist)
-  class Abstract_msglist : public virtual vx_core::Abstract_list {
-  public:
-    Abstract_msglist() {};
-    virtual ~Abstract_msglist() = 0;
-    // vx_get_any(index)
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const = 0;
-    // vx_list()
-    virtual vx_core::vx_Type_listany vx_list() const = 0;
-    // vx_new_from_list(T, List<T>)
-    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const = 0;
-    std::vector<vx_core::Type_msg> vx_p_list;
-    // vx_listmsg()
-    virtual std::vector<vx_core::Type_msg> vx_listmsg() const = 0;
-    // vx_get_msg(index)
-    virtual vx_core::Type_msg vx_get_msg(vx_core::Type_int index) const = 0;
-  };
-  class Class_msglist : public virtual Abstract_msglist {
-  public:
-    Class_msglist();
-    virtual ~Class_msglist() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_int index) const override;
-    virtual vx_core::vx_Type_listany vx_list() const override;
-    virtual vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const override;
-    virtual std::vector<vx_core::Type_msg> vx_listmsg() const override;
-    virtual vx_core::Type_msg vx_get_msg(vx_core::Type_int index) const override;
-  };
-
   // (type none)
   class Abstract_none : public virtual vx_core::Abstract_any {
   public:
@@ -2661,26 +4854,6 @@ namespace vx_core {
   public:
     Class_notype();
     virtual ~Class_notype() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-  };
-
-  // (type number)
-  class Abstract_number : public virtual vx_core::Abstract_any {
-  public:
-    Abstract_number() {};
-    virtual ~Abstract_number() = 0;
-  };
-  class Class_number : public virtual Abstract_number {
-  public:
-    Class_number();
-    virtual ~Class_number() override;
     virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_empty() const override;
@@ -3211,29 +5384,6 @@ namespace vx_core {
     virtual vx_core::Type_statelistener vx_get_statelistener(vx_core::Type_string key) const override;
   };
 
-  // (type string)
-  class Abstract_string : public virtual vx_core::Abstract_any {
-  public:
-    Abstract_string() {};
-    virtual ~Abstract_string() = 0;
-    std::string vx_p_string = "";
-    virtual std::string vx_string() const = 0;
-  };
-  class Class_string : public virtual vx_core::Abstract_string {
-  public:
-    Class_string();
-    virtual ~Class_string() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual std::string vx_string() const override;
-  };
-
   // (type stringlist)
   class Abstract_stringlist : public virtual vx_core::Abstract_list {
   public:
@@ -3382,30 +5532,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const override;
     virtual std::map<std::string, vx_core::Type_string> vx_mapstring() const override;
     virtual vx_core::Type_string vx_get_string(vx_core::Type_string key) const override;
-  };
-
-  // (type struct)
-  class Abstract_struct : public virtual vx_core::Abstract_any {
-  public:
-    Abstract_struct() {};
-    virtual ~Abstract_struct() = 0;
-    virtual vx_core::vx_Type_mapany vx_map() const = 0;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
-  };
-  class Class_struct : public virtual vx_core::Abstract_struct {
-  public:
-    Class_struct();
-    virtual ~Class_struct() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::vx_Type_mapany vx_map() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
   };
 
   // (type thenelse)
@@ -3617,93 +5743,6 @@ namespace vx_core {
     virtual vx_core::Type_constdef vx_constdef() const override;
     virtual vx_core::Type_msgblock vx_msgblock() const override;
     virtual vx_core::vx_Type_listany vx_dispose() override;
-  };
-
-  // (type typedef)
-  class Abstract_typedef : public virtual vx_core::Abstract_struct {
-  public:
-    Abstract_typedef() {};
-    virtual ~Abstract_typedef() = 0;
-    // vx_map()
-    virtual vx_core::vx_Type_mapany vx_map() const = 0;
-    // vx_get_any(key)
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
-    // pkgname()
-    vx_core::Type_string vx_p_pkgname = NULL;
-    virtual vx_core::Type_string pkgname() const = 0;
-    // name()
-    vx_core::Type_string vx_p_name = NULL;
-    virtual vx_core::Type_string name() const = 0;
-    // extends()
-    vx_core::Type_string vx_p_extend = NULL;
-    virtual vx_core::Type_string extend() const = 0;
-    // allowfuncs()
-    vx_core::Type_funclist vx_p_allowfuncs = NULL;
-    virtual vx_core::Type_funclist allowfuncs() const = 0;
-    // allowtypes()
-    vx_core::Type_typelist vx_p_allowtypes = NULL;
-    virtual vx_core::Type_typelist allowtypes() const = 0;
-    // allowvalues()
-    vx_core::Type_anylist vx_p_allowvalues = NULL;
-    virtual vx_core::Type_anylist allowvalues() const = 0;
-    // disallowfuncs()
-    vx_core::Type_funclist vx_p_disallowfuncs = NULL;
-    virtual vx_core::Type_funclist disallowfuncs() const = 0;
-    // disallowtypes()
-    vx_core::Type_typelist vx_p_disallowtypes = NULL;
-    virtual vx_core::Type_typelist disallowtypes() const = 0;
-    // disallowvalues()
-    vx_core::Type_anylist vx_p_disallowvalues = NULL;
-    virtual vx_core::Type_anylist disallowvalues() const = 0;
-    // properties()
-    vx_core::Type_argmap vx_p_properties = NULL;
-    virtual vx_core::Type_argmap properties() const = 0;
-    // proplast()
-    vx_core::Type_arg vx_p_proplast = NULL;
-    virtual vx_core::Type_arg proplast() const = 0;
-    // traits()
-    vx_core::Type_typelist vx_p_traits = NULL;
-    virtual vx_core::Type_typelist traits() const = 0;
-  };
-  class Class_typedef : public virtual Abstract_typedef {
-  public:
-    Class_typedef();
-    virtual ~Class_typedef() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    static vx_core::Type_typedef vx_typedef_new(
-      std::string pkgname,
-      std::string name,
-      std::string extend,
-      vx_core::Type_typelist traits,
-      vx_core::Type_typelist allowtypes,
-      vx_core::Type_typelist disallowtypes,
-      vx_core::Type_funclist allowfuncs,
-      vx_core::Type_funclist disallowfuncs,
-      vx_core::Type_anylist allowvalues,
-      vx_core::Type_anylist disallowvalues,
-      vx_core::Type_argmap properties
-    );
-    virtual vx_core::vx_Type_mapany vx_map() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
-    virtual vx_core::Type_string pkgname() const override;
-    virtual vx_core::Type_string name() const override;
-    virtual vx_core::Type_string extend() const override;
-    virtual vx_core::Type_funclist allowfuncs() const override;
-    virtual vx_core::Type_typelist allowtypes() const override;
-    virtual vx_core::Type_anylist allowvalues() const override;
-    virtual vx_core::Type_funclist disallowfuncs() const override;
-    virtual vx_core::Type_typelist disallowtypes() const override;
-    virtual vx_core::Type_anylist disallowvalues() const override;
-    virtual vx_core::Type_argmap properties() const override;
-    virtual vx_core::Type_arg proplast() const override;
-    virtual vx_core::Type_typelist traits() const override;
   };
 
   // (type typelist)
@@ -3941,110 +5980,6 @@ namespace vx_core {
   public:
     static void vx_const_new(vx_core::Const_true output);
     bool vx_boolean() const override;
-  };
-
-  // (func !)
-  class Abstract_not : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_not() {};
-    virtual ~Abstract_not() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_not : public virtual Abstract_not {
-  public:
-    Class_not();
-    virtual ~Class_not() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func !-empty)
-  class Abstract_notempty_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_notempty_1() {};
-    virtual ~Abstract_notempty_1() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_notempty_1 : public virtual Abstract_notempty_1 {
-  public:
-    Class_notempty_1();
-    virtual ~Class_notempty_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func !-empty)
-  class Abstract_notempty : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_notempty() {};
-    virtual ~Abstract_notempty() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_notempty : public virtual Abstract_notempty {
-  public:
-    Class_notempty();
-    virtual ~Class_notempty() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func !=)
-  class Abstract_ne : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_ne() {};
-    virtual ~Abstract_ne() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_ne : public virtual Abstract_ne {
-  public:
-    Class_ne();
-    virtual ~Class_ne() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
   // (func !==)
@@ -4616,56 +6551,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
-  // (func =)
-  class Abstract_eq_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_eq_1() {};
-    virtual ~Abstract_eq_1() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_eq_1 : public virtual Abstract_eq_1 {
-  public:
-    Class_eq_1();
-    virtual ~Class_eq_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func =)
-  class Abstract_eq : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_eq() {};
-    virtual ~Abstract_eq() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_eq : public virtual Abstract_eq {
-  public:
-    Class_eq();
-    virtual ~Class_eq() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
   // (func ==)
   class Abstract_eqeq : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
   public:
@@ -4870,176 +6755,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
-  // (func and)
-  class Abstract_and_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_and_1() {};
-    virtual ~Abstract_and_1() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_and_1 : public virtual Abstract_and_1 {
-  public:
-    Class_and_1();
-    virtual ~Class_and_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func and)
-  class Abstract_and : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_and() {};
-    virtual ~Abstract_and() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_and : public virtual Abstract_and {
-  public:
-    Class_and();
-    virtual ~Class_and() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-any)
-  class Abstract_any_from_any : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_any() {};
-    virtual ~Abstract_any_from_any() = 0;
-    typedef std::function<vx_core::Type_any(vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_any : public virtual Abstract_any_from_any {
-  public:
-    Class_any_from_any();
-    virtual ~Class_any_from_any() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-any-async)
-  class Abstract_any_from_any_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_any_from_any_async() {};
-    virtual ~Abstract_any_from_any_async() = 0;
-    typedef std::function<vx_core::vx_Type_async(vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_any_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const = 0;
-    virtual vx_core::vx_Type_async vx_any_from_any_async(vx_core::Type_any generic_any_1, vx_core::Type_any value) const = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_any_async : public virtual Abstract_any_from_any_async {
-  public:
-    Class_any_from_any_async();
-    virtual ~Class_any_from_any_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const;
-    virtual vx_core::vx_Type_async vx_any_from_any_async(vx_core::Type_any generic_any_1, vx_core::Type_any value) const;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-any-context)
-  class Abstract_any_from_any_context : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_any_context() {};
-    virtual ~Abstract_any_from_any_context() = 0;
-    typedef std::function<vx_core::Type_any(vx_core::Type_context, vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_any_context vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context::IFn fn) const = 0;
-    virtual vx_core::Type_any vx_any_from_any_context(vx_core::Type_context context, vx_core::Type_any value) const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_any_context : public virtual Abstract_any_from_any_context {
-  public:
-    Class_any_from_any_context();
-    virtual ~Class_any_from_any_context() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any_context vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context::IFn fn) const;
-    virtual vx_core::Type_any vx_any_from_any_context(vx_core::Type_context context, vx_core::Type_any value) const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-any-context-async)
-  class Abstract_any_from_any_context_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_any_from_any_context_async() {};
-    virtual ~Abstract_any_from_any_context_async() = 0;
-    typedef std::function<vx_core::vx_Type_async(vx_core::Type_context, vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_any_context_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context_async::IFn fn) const = 0;
-    virtual vx_core::vx_Type_async vx_any_from_any_context_async(vx_core::Type_any generic_any_1, vx_core::Type_context context, vx_core::Type_any value) const = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_any_context_async : public virtual Abstract_any_from_any_context_async {
-  public:
-    Class_any_from_any_context_async();
-    virtual ~Class_any_from_any_context_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any_context_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context_async::IFn fn) const;
-    virtual vx_core::vx_Type_async vx_any_from_any_context_async(vx_core::Type_any generic_any_1, vx_core::Type_context context, vx_core::Type_any value) const;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
   // (func any<-any-key-value)
   class Abstract_any_from_any_key_value : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
   public:
@@ -5068,66 +6783,6 @@ namespace vx_core {
     virtual vx_core::Func_any_from_any_key_value vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_key_value::IFn fn) const;
     virtual vx_core::Type_any vx_any_from_any_key_value(vx_core::Type_any current, vx_core::Type_string key, vx_core::Type_any value) const;
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-func)
-  class Abstract_any_from_func : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_func() {};
-    virtual ~Abstract_any_from_func() = 0;
-    typedef std::function<vx_core::Type_any()> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_func vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_func::IFn fn) const = 0;
-    virtual vx_core::Type_any vx_any_from_func() const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_func : public virtual Abstract_any_from_func {
-  public:
-    Class_any_from_func();
-    virtual ~Class_any_from_func() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_func vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_func::IFn fn) const;
-    virtual vx_core::Type_any vx_any_from_func() const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-func-async)
-  class Abstract_any_from_func_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_any_from_func_async() {};
-    virtual ~Abstract_any_from_func_async() = 0;
-    typedef std::function<vx_core::vx_Type_async()> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_func_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_func_async::IFn fn) const = 0;
-    virtual vx_core::vx_Type_async vx_any_from_func_async(vx_core::Type_any generic_any_1) const = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_func_async : public virtual Abstract_any_from_func_async {
-  public:
-    Class_any_from_func_async();
-    virtual ~Class_any_from_func_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_func_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_func_async::IFn fn) const;
-    virtual vx_core::vx_Type_async vx_any_from_func_async(vx_core::Type_any generic_any_1) const;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
   };
 
   // (func any<-int)
@@ -5190,164 +6845,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
-  // (func any<-key-value)
-  class Abstract_any_from_key_value : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_key_value() {};
-    virtual ~Abstract_any_from_key_value() = 0;
-    typedef std::function<vx_core::Type_any(vx_core::Type_string, vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_key_value vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_key_value::IFn fn) const = 0;
-    virtual vx_core::Type_any vx_any_from_key_value(vx_core::Type_string key, vx_core::Type_any value) const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_key_value : public virtual Abstract_any_from_key_value {
-  public:
-    Class_any_from_key_value();
-    virtual ~Class_any_from_key_value() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_key_value vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_key_value::IFn fn) const;
-    virtual vx_core::Type_any vx_any_from_key_value(vx_core::Type_string key, vx_core::Type_any value) const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-key-value-async)
-  class Abstract_any_from_key_value_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_any_from_key_value_async() {};
-    virtual ~Abstract_any_from_key_value_async() = 0;
-    typedef std::function<vx_core::vx_Type_async(vx_core::Type_string, vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_key_value_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_key_value_async::IFn fn) const = 0;
-    virtual vx_core::vx_Type_async vx_any_from_key_value_async(vx_core::Type_any generic_any_1, vx_core::Type_string key, vx_core::Type_any value) const = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_key_value_async : public virtual Abstract_any_from_key_value_async {
-  public:
-    Class_any_from_key_value_async();
-    virtual ~Class_any_from_key_value_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_key_value_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_key_value_async::IFn fn) const;
-    virtual vx_core::vx_Type_async vx_any_from_key_value_async(vx_core::Type_any generic_any_1, vx_core::Type_string key, vx_core::Type_any value) const;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-list)
-  class Abstract_any_from_list : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_list() {};
-    virtual ~Abstract_any_from_list() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_list : public virtual Abstract_any_from_list {
-  public:
-    Class_any_from_list();
-    virtual ~Class_any_from_list() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-list-start-reduce)
-  class Abstract_any_from_list_start_reduce : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_list_start_reduce() {};
-    virtual ~Abstract_any_from_list_start_reduce() = 0;
-    typedef std::function<vx_core::Type_any(vx_core::Type_list, vx_core::Type_any, vx_core::Func_any_from_reduce)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_list_start_reduce : public virtual Abstract_any_from_list_start_reduce {
-  public:
-    Class_any_from_list_start_reduce();
-    virtual ~Class_any_from_list_start_reduce() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-list-start-reduce-next)
-  class Abstract_any_from_list_start_reduce_next : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_list_start_reduce_next() {};
-    virtual ~Abstract_any_from_list_start_reduce_next() = 0;
-    typedef std::function<vx_core::Type_any(vx_core::Type_list, vx_core::Type_any, vx_core::Func_any_from_reduce_next)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_list_start_reduce_next : public virtual Abstract_any_from_list_start_reduce_next {
-  public:
-    Class_any_from_list_start_reduce_next();
-    virtual ~Class_any_from_list_start_reduce_next() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-map)
-  class Abstract_any_from_map : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_map() {};
-    virtual ~Abstract_any_from_map() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_map : public virtual Abstract_any_from_map {
-  public:
-    Class_any_from_map();
-    virtual ~Class_any_from_map() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
   // (func any<-map-start-reduce)
   class Abstract_any_from_map_start_reduce : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
   public:
@@ -5369,236 +6866,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_empty() const override;
     virtual vx_core::Type_any vx_type() const override;
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-none)
-  class Abstract_any_from_none : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_none() {};
-    virtual ~Abstract_any_from_none() = 0;
-    typedef std::function<vx_core::Type_any()> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_none vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_none::IFn fn) const = 0;
-    virtual vx_core::Type_any vx_any_from_none() const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_none : public virtual Abstract_any_from_none {
-  public:
-    Class_any_from_none();
-    virtual ~Class_any_from_none() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_none vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_none::IFn fn) const;
-    virtual vx_core::Type_any vx_any_from_none() const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-none-async)
-  class Abstract_any_from_none_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_any_from_none_async() {};
-    virtual ~Abstract_any_from_none_async() = 0;
-    typedef std::function<vx_core::vx_Type_async()> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_none_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_none_async::IFn fn) const = 0;
-    virtual vx_core::vx_Type_async vx_any_from_none_async(vx_core::Type_any generic_any_1) const = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_none_async : public virtual Abstract_any_from_none_async {
-  public:
-    Class_any_from_none_async();
-    virtual ~Class_any_from_none_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_none_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_none_async::IFn fn) const;
-    virtual vx_core::vx_Type_async vx_any_from_none_async(vx_core::Type_any generic_any_1) const;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-reduce)
-  class Abstract_any_from_reduce : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_reduce() {};
-    virtual ~Abstract_any_from_reduce() = 0;
-    typedef std::function<vx_core::Type_any(vx_core::Type_any, vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_reduce vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce::IFn fn) const = 0;
-    virtual vx_core::Type_any vx_any_from_reduce(vx_core::Type_any result, vx_core::Type_any item) const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_reduce : public virtual Abstract_any_from_reduce {
-  public:
-    Class_any_from_reduce();
-    virtual ~Class_any_from_reduce() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_reduce vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce::IFn fn) const;
-    virtual vx_core::Type_any vx_any_from_reduce(vx_core::Type_any result, vx_core::Type_any item) const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-reduce-async)
-  class Abstract_any_from_reduce_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_any_from_reduce_async() {};
-    virtual ~Abstract_any_from_reduce_async() = 0;
-    typedef std::function<vx_core::vx_Type_async(vx_core::Type_any, vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_reduce_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_async::IFn fn) const = 0;
-    virtual vx_core::vx_Type_async vx_any_from_reduce_async(vx_core::Type_any generic_any_1, vx_core::Type_any result, vx_core::Type_any item) const = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_reduce_async : public virtual Abstract_any_from_reduce_async {
-  public:
-    Class_any_from_reduce_async();
-    virtual ~Class_any_from_reduce_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_reduce_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_async::IFn fn) const;
-    virtual vx_core::vx_Type_async vx_any_from_reduce_async(vx_core::Type_any generic_any_1, vx_core::Type_any result, vx_core::Type_any item) const;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-reduce-next)
-  class Abstract_any_from_reduce_next : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_reduce_next() {};
-    virtual ~Abstract_any_from_reduce_next() = 0;
-    typedef std::function<vx_core::Type_any(vx_core::Type_any, vx_core::Type_any, vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_reduce_next vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_next::IFn fn) const = 0;
-    virtual vx_core::Type_any vx_any_from_reduce_next(vx_core::Type_any result, vx_core::Type_any current, vx_core::Type_any next) const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_reduce_next : public virtual Abstract_any_from_reduce_next {
-  public:
-    Class_any_from_reduce_next();
-    virtual ~Class_any_from_reduce_next() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_reduce_next vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_next::IFn fn) const;
-    virtual vx_core::Type_any vx_any_from_reduce_next(vx_core::Type_any result, vx_core::Type_any current, vx_core::Type_any next) const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-reduce-next-async)
-  class Abstract_any_from_reduce_next_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_any_from_reduce_next_async() {};
-    virtual ~Abstract_any_from_reduce_next_async() = 0;
-    typedef std::function<vx_core::vx_Type_async(vx_core::Type_any, vx_core::Type_any, vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_any_from_reduce_next_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_next_async::IFn fn) const = 0;
-    virtual vx_core::vx_Type_async vx_any_from_reduce_next_async(vx_core::Type_any generic_any_1, vx_core::Type_any result, vx_core::Type_any current, vx_core::Type_any next) const = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_reduce_next_async : public virtual Abstract_any_from_reduce_next_async {
-  public:
-    Class_any_from_reduce_next_async();
-    virtual ~Class_any_from_reduce_next_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_reduce_next_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_reduce_next_async::IFn fn) const;
-    virtual vx_core::vx_Type_async vx_any_from_reduce_next_async(vx_core::Type_any generic_any_1, vx_core::Type_any result, vx_core::Type_any current, vx_core::Type_any next) const;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func any<-struct)
-  class Abstract_any_from_struct : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_any_from_struct() {};
-    virtual ~Abstract_any_from_struct() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_any_from_struct : public virtual Abstract_any_from_struct {
-  public:
-    Class_any_from_struct();
-    virtual ~Class_any_from_struct() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func async)
-  class Abstract_async : public vx_core::Abstract_any_from_any_async, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_async() {};
-    virtual ~Abstract_async() = 0;
-    virtual vx_core::Func_any_from_any_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const override = 0;
-    virtual vx_core::vx_Type_async vx_any_from_any_async(vx_core::Type_any generic_any_1, vx_core::Type_any val) const override = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_async : public virtual Abstract_async {
-  public:
-    Class_async();
-    virtual ~Class_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any_async vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const override;
-    virtual vx_core::vx_Type_async vx_any_from_any_async(vx_core::Type_any generic_any_1, vx_core::Type_any val) const override;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
   };
 
   // (func boolean-permission<-func)
@@ -5639,142 +6906,6 @@ namespace vx_core {
   public:
     Class_boolean_write_from_map_name_value();
     virtual ~Class_boolean_write_from_map_name_value() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func boolean<-any)
-  class Abstract_boolean_from_any : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_boolean_from_any() {};
-    virtual ~Abstract_boolean_from_any() = 0;
-    typedef std::function<vx_core::Type_boolean(vx_core::Type_any)> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_boolean_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_any::IFn fn) const = 0;
-    virtual vx_core::Type_boolean vx_boolean_from_any(vx_core::Type_any value) const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_boolean_from_any : public virtual Abstract_boolean_from_any {
-  public:
-    Class_boolean_from_any();
-    virtual ~Class_boolean_from_any() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_boolean_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_any::IFn fn) const;
-    virtual vx_core::Type_boolean vx_boolean_from_any(vx_core::Type_any value) const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func boolean<-func)
-  class Abstract_boolean_from_func : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_boolean_from_func() {};
-    virtual ~Abstract_boolean_from_func() = 0;
-    typedef std::function<vx_core::Type_boolean()> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_boolean_from_func vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_func::IFn fn) const = 0;
-    virtual vx_core::Type_boolean vx_boolean_from_func() const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_boolean_from_func : public virtual Abstract_boolean_from_func {
-  public:
-    Class_boolean_from_func();
-    virtual ~Class_boolean_from_func() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_boolean_from_func vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_func::IFn fn) const;
-    virtual vx_core::Type_boolean vx_boolean_from_func() const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func boolean<-none)
-  class Abstract_boolean_from_none : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_boolean_from_none() {};
-    virtual ~Abstract_boolean_from_none() = 0;
-    typedef std::function<vx_core::Type_boolean()> IFn;
-    IFn fn;
-    vx_core::vx_Type_listany lambdavars;
-    virtual vx_core::Func_boolean_from_none vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_func::IFn fn) const = 0;
-    virtual vx_core::Type_boolean vx_boolean_from_none() const = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_boolean_from_none : public virtual Abstract_boolean_from_none {
-  public:
-    Class_boolean_from_none();
-    virtual ~Class_boolean_from_none() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_boolean_from_none vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_boolean_from_func::IFn fn) const;
-    virtual vx_core::Type_boolean vx_boolean_from_none() const;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func case)
-  class Abstract_case_1 : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_case_1() {};
-    virtual ~Abstract_case_1() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_case_1 : public virtual Abstract_case_1 {
-  public:
-    Class_case_1();
-    virtual ~Class_case_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func case)
-  class Abstract_case : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_case() {};
-    virtual ~Abstract_case() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_case : public virtual Abstract_case {
-  public:
-    Class_case();
-    virtual ~Class_case() override;
     virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_funcdef vx_funcdef() const override;
@@ -5869,83 +7000,6 @@ namespace vx_core {
   public:
     Class_context_main();
     virtual ~Class_context_main() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func copy)
-  class Abstract_copy : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_copy() {};
-    virtual ~Abstract_copy() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_copy : public virtual Abstract_copy {
-  public:
-    Class_copy();
-    virtual ~Class_copy() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func else)
-  class Abstract_else : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_else() {};
-    virtual ~Abstract_else() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_else : public virtual Abstract_else {
-  public:
-    Class_else();
-    virtual ~Class_else() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func empty)
-  class Abstract_empty : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_empty() {};
-    virtual ~Abstract_empty() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_empty : public virtual Abstract_empty {
-  public:
-    Class_empty();
-    virtual ~Class_empty() override;
     virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_funcdef vx_funcdef() const override;
@@ -6168,79 +7222,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
-  // (func if)
-  class Abstract_if_2 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_if_2() {};
-    virtual ~Abstract_if_2() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_if_2 : public virtual Abstract_if_2 {
-  public:
-    Class_if_2();
-    virtual ~Class_if_2() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func if)
-  class Abstract_if_1 : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_if_1() {};
-    virtual ~Abstract_if_1() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_if_1 : public virtual Abstract_if_1 {
-  public:
-    Class_if_1();
-    virtual ~Class_if_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func if)
-  class Abstract_if : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_if() {};
-    virtual ~Abstract_if() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_if : public virtual Abstract_if {
-  public:
-    Class_if();
-    virtual ~Class_if() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
   // (func int<-func)
   class Abstract_int_from_func : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
   public:
@@ -6284,60 +7265,6 @@ namespace vx_core {
   public:
     Class_int_from_string();
     virtual ~Class_int_from_string() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func is-empty)
-  class Abstract_is_empty_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_is_empty_1() {};
-    virtual ~Abstract_is_empty_1() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_is_empty_1 : public virtual Abstract_is_empty_1 {
-  public:
-    Class_is_empty_1();
-    virtual ~Class_is_empty_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func is-empty)
-  class Abstract_is_empty : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_is_empty() {};
-    virtual ~Abstract_is_empty() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_is_empty : public virtual Abstract_is_empty {
-  public:
-    Class_is_empty();
-    virtual ~Class_is_empty() override;
     virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_funcdef vx_funcdef() const override;
@@ -6535,133 +7462,6 @@ namespace vx_core {
     virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
     virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func length)
-  class Abstract_length_2 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_length_2() {};
-    virtual ~Abstract_length_2() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_length_2 : public virtual Abstract_length_2 {
-  public:
-    Class_length_2();
-    virtual ~Class_length_2() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func length)
-  class Abstract_length_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_length_1() {};
-    virtual ~Abstract_length_1() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_length_1 : public virtual Abstract_length_1 {
-  public:
-    Class_length_1();
-    virtual ~Class_length_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func length)
-  class Abstract_length : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_length() {};
-    virtual ~Abstract_length() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_length : public virtual Abstract_length {
-  public:
-    Class_length();
-    virtual ~Class_length() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func let)
-  class Abstract_let : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_let() {};
-    virtual ~Abstract_let() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_let : public virtual Abstract_let {
-  public:
-    Class_let();
-    virtual ~Class_let() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func let-async)
-  class Abstract_let_async : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc_async {
-  public:
-    Abstract_let_async() {};
-    virtual ~Abstract_let_async() = 0;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_let_async : public virtual Abstract_let_async {
-  public:
-    Class_let_async();
-    virtual ~Class_let_async() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::vx_Type_async vx_repl(vx_core::Type_anylist arglist) override;
   };
 
   // (func list-join<-list)
@@ -7287,29 +8087,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
-  // (func new)
-  class Abstract_new : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_new() {};
-    virtual ~Abstract_new() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_new : public virtual Abstract_new {
-  public:
-    Class_new();
-    virtual ~Class_new() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
   // (func number<-func)
   class Abstract_number_from_func : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
   public:
@@ -7321,56 +8098,6 @@ namespace vx_core {
   public:
     Class_number_from_func();
     virtual ~Class_number_from_func() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func or)
-  class Abstract_or_1 : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_or_1() {};
-    virtual ~Abstract_or_1() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_or_1 : public virtual Abstract_or_1 {
-  public:
-    Class_or_1();
-    virtual ~Class_or_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func or)
-  class Abstract_or : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_or() {};
-    virtual ~Abstract_or() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_or : public virtual Abstract_or {
-  public:
-    Class_or();
-    virtual ~Class_or() override;
     virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_funcdef vx_funcdef() const override;
@@ -7952,52 +8679,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
-  // (func switch)
-  class Abstract_switch : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_switch() {};
-    virtual ~Abstract_switch() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_switch : public virtual Abstract_switch {
-  public:
-    Class_switch();
-    virtual ~Class_switch() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func then)
-  class Abstract_then : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_then() {};
-    virtual ~Abstract_then() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_then : public virtual Abstract_then {
-  public:
-    Class_then();
-    virtual ~Class_then() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
   // (func traits<-typedef)
   class Abstract_traits_from_typedef : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
   public:
@@ -8237,22 +8918,6 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
-  // (func <-)
-  template <class T> T* f_chainfirst(T* generic_any_1, T* value, vx_core::Type_any_from_anylist fnlist) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve({value, fnlist});
-    vx_core::vx_release_one_except({value, fnlist}, output);
-    return output;
-  }
-
-  // (func <<-)
-  template <class T> T* f_chainlast(T* generic_any_1, T* value, vx_core::Type_any_from_anylist fnlist) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve({value, fnlist});
-    vx_core::vx_release_one_except({value, fnlist}, output);
-    return output;
-  }
-
   // (func any<-any)
   template <class T, class U> T* f_any_from_any(T* generic_any_1, U* value) {
     T* output = vx_core::vx_empty(generic_any_1);
@@ -8292,14 +8957,6 @@ namespace vx_core {
     return output;
   }
 
-  // (func any<-any-key-value)
-  template <class T, class U> T* f_any_from_any_key_value(T* generic_any_1, T* current, vx_core::Type_string key, U* value) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve({current, key, value});
-    vx_core::vx_release_one_except({current, key, value}, output);
-    return output;
-  }
-
   // (func any<-func)
   template <class T> T* f_any_from_func(T* generic_any_1) {
     T* output = vx_core::vx_empty(generic_any_1);
@@ -8312,22 +8969,6 @@ namespace vx_core {
     if (!output) {
       output = vx_core::vx_async_new_from_value(vx_core::vx_empty(generic_any_1));
     }
-    return output;
-  }
-
-  // (func any<-int)
-  template <class T> T* f_any_from_int(T* generic_any_1, vx_core::Type_int value) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve(value);
-    vx_core::vx_release_one_except(value, output);
-    return output;
-  }
-
-  // (func any<-int-any)
-  template <class T, class U> T* f_any_from_int_any(T* generic_any_1, vx_core::Type_int num, U* value) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve({num, value});
-    vx_core::vx_release_one_except({num, value}, output);
     return output;
   }
 
@@ -8396,16 +9037,6 @@ namespace vx_core {
     vx_core::Type_any val = valuemap->vx_get_any(key);
     output = vx_core::vx_any_from_any(generic_any_1, val);
     vx_core::vx_release_one_except({valuemap, key}, output);
-    return output;
-  }
-
-  // (func any<-map-start-reduce)
-  template <class T, class N> T* f_any_from_map_start_reduce(T* generic_any_1, N* map, T* start, vx_core::Func_any_from_any_key_value fn_reduce) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve({map, start, fn_reduce});
-    vx_core::Type_any result = vx_core::vx_any_from_map_start_reduce(generic_any_1, map, start, fn_reduce);
-    output = vx_core::vx_any_from_any(generic_any_1, result);
-    vx_core::vx_release_one_except({map, start, fn_reduce}, output);
     return output;
   }
 
@@ -8483,6 +9114,22 @@ namespace vx_core {
     return output;
   }
 
+  // (func empty)
+  template <class T> T* f_empty(T* type) {
+    vx_core::vx_reserve(type);
+    T* output = vx_core::vx_any_from_any(type, type->vx_empty());
+    vx_core::vx_release_one_except(type, output);
+    return output;
+  }
+
+  // (func new)
+  template <class T> T* f_new(T* type, vx_core::Type_anylist values) {
+    vx_core::vx_reserve({type, values});
+    T* output = vx_core::vx_new(type, values->vx_list());
+    vx_core::vx_release_one_except({type, values}, output);
+    return output;
+  }
+
   // (func copy)
   template <class T> T* f_copy(T* generic_any_1, vx_core::Type_any value, vx_core::Type_anylist values) {
     vx_core::vx_reserve({value, values});
@@ -8491,11 +9138,119 @@ namespace vx_core {
     return output;
   }
 
-  // (func empty)
-  template <class T> T* f_empty(T* type) {
-    vx_core::vx_reserve(type);
-    T* output = vx_core::vx_any_from_any(type, type->vx_empty());
-    vx_core::vx_release_one_except(type, output);
+  // (func if)
+  template <class T> T* f_if(T* generic_any_1, vx_core::Type_boolean clause, T* then) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve({clause, then});
+    if (clause->vx_boolean()) {
+      output = then;
+    };
+    vx_core::vx_release_one_except({clause, then}, output);
+    return output;
+  }
+
+  // (func if)
+  template <class T> T* f_if_1(T* generic_any_1, vx_core::Type_boolean clause, T* thenval, T* elseval) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve({clause, thenval, elseval});
+    if (clause->vx_boolean()) {
+      output = thenval;
+    } else {
+      output = elseval;
+    };
+    vx_core::vx_release_one_except({clause, thenval, elseval}, output);
+    return output;
+  }
+
+  // (func if)
+  template <class T> T* f_if_2(T* generic_any_1, vx_core::Type_thenelselist thenelselist) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve(thenelselist);
+    vx_core::Type_any any = vx_core::vx_if_thenelselist(generic_any_1, thenelselist);
+    output = vx_core::vx_any_from_any(generic_any_1, any);
+    vx_core::vx_release_one_except(thenelselist, output);
+    return output;
+  }
+
+  // (func switch)
+  template <class T, class U> T* f_switch(T* generic_any_1, U* value, vx_core::Type_thenelselist thenelselist) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve({value, thenelselist});
+    vx_core::Type_any any = vx_core::vx_switch(generic_any_1, value, thenelselist);
+    output = vx_core::vx_any_from_any(generic_any_1, any);
+    vx_core::vx_release_one_except({value, thenelselist}, output);
+    return output;
+  }
+
+  // (func let)
+  template <class T> T* f_let(T* generic_any_1, vx_core::Func_any_from_func fn_any) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve(fn_any);
+    vx_core::Type_any any = fn_any->vx_any_from_func();
+    output = vx_core::vx_any_from_any(generic_any_1, any);
+    vx_core::vx_release_one_except(fn_any, output);
+    return output;
+  }
+
+  // (func let-async)
+  template <class T> vx_core::vx_Type_async f_let_async(T* generic_any_1, vx_core::Func_any_from_func_async fn_any_async) {
+    vx_core::vx_Type_async output = NULL;
+    vx_core::vx_reserve(fn_any_async);
+    output = fn_any_async->vx_any_from_func_async(generic_any_1);
+    vx_core::vx_release_one(fn_any_async);
+    if (!output) {
+      output = vx_core::vx_async_new_from_value(vx_core::vx_empty(generic_any_1));
+    }
+    return output;
+  }
+
+  // (func <-)
+  template <class T> T* f_chainfirst(T* generic_any_1, T* value, vx_core::Type_any_from_anylist fnlist) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve({value, fnlist});
+    vx_core::vx_release_one_except({value, fnlist}, output);
+    return output;
+  }
+
+  // (func <<-)
+  template <class T> T* f_chainlast(T* generic_any_1, T* value, vx_core::Type_any_from_anylist fnlist) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve({value, fnlist});
+    vx_core::vx_release_one_except({value, fnlist}, output);
+    return output;
+  }
+
+  // (func any<-any-key-value)
+  template <class T, class U> T* f_any_from_any_key_value(T* generic_any_1, T* current, vx_core::Type_string key, U* value) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve({current, key, value});
+    vx_core::vx_release_one_except({current, key, value}, output);
+    return output;
+  }
+
+  // (func any<-int)
+  template <class T> T* f_any_from_int(T* generic_any_1, vx_core::Type_int value) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve(value);
+    vx_core::vx_release_one_except(value, output);
+    return output;
+  }
+
+  // (func any<-int-any)
+  template <class T, class U> T* f_any_from_int_any(T* generic_any_1, vx_core::Type_int num, U* value) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve({num, value});
+    vx_core::vx_release_one_except({num, value}, output);
+    return output;
+  }
+
+  // (func any<-map-start-reduce)
+  template <class T, class N> T* f_any_from_map_start_reduce(T* generic_any_1, N* map, T* start, vx_core::Func_any_from_any_key_value fn_reduce) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve({map, start, fn_reduce});
+    vx_core::Type_any result = vx_core::vx_any_from_map_start_reduce(generic_any_1, map, start, fn_reduce);
+    output = vx_core::vx_any_from_any(generic_any_1, result);
+    vx_core::vx_release_one_except({map, start, fn_reduce}, output);
     return output;
   }
 
@@ -8532,40 +9287,6 @@ namespace vx_core {
     return output;
   }
 
-  // (func if)
-  template <class T> T* f_if_2(T* generic_any_1, vx_core::Type_thenelselist thenelselist) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve(thenelselist);
-    vx_core::Type_any any = vx_core::vx_if_thenelselist(generic_any_1, thenelselist);
-    output = vx_core::vx_any_from_any(generic_any_1, any);
-    vx_core::vx_release_one_except(thenelselist, output);
-    return output;
-  }
-
-  // (func if)
-  template <class T> T* f_if_1(T* generic_any_1, vx_core::Type_boolean clause, T* thenval, T* elseval) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve({clause, thenval, elseval});
-    if (clause->vx_boolean()) {
-      output = thenval;
-    } else {
-      output = elseval;
-    };
-    vx_core::vx_release_one_except({clause, thenval, elseval}, output);
-    return output;
-  }
-
-  // (func if)
-  template <class T> T* f_if(T* generic_any_1, vx_core::Type_boolean clause, T* then) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve({clause, then});
-    if (clause->vx_boolean()) {
-      output = then;
-    };
-    vx_core::vx_release_one_except({clause, then}, output);
-    return output;
-  }
-
   // (func last<-list)
   template <class T, class X> T* f_last_from_list(T* generic_any_1, X* values) {
     T* output = vx_core::vx_empty(generic_any_1);
@@ -8581,28 +9302,6 @@ namespace vx_core {
       })
     );
     vx_core::vx_release_one_except(values, output);
-    return output;
-  }
-
-  // (func let)
-  template <class T> T* f_let(T* generic_any_1, vx_core::Func_any_from_func fn_any) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve(fn_any);
-    vx_core::Type_any any = fn_any->vx_any_from_func();
-    output = vx_core::vx_any_from_any(generic_any_1, any);
-    vx_core::vx_release_one_except(fn_any, output);
-    return output;
-  }
-
-  // (func let-async)
-  template <class T> vx_core::vx_Type_async f_let_async(T* generic_any_1, vx_core::Func_any_from_func_async fn_any_async) {
-    vx_core::vx_Type_async output = NULL;
-    vx_core::vx_reserve(fn_any_async);
-    output = fn_any_async->vx_any_from_func_async(generic_any_1);
-    vx_core::vx_release_one(fn_any_async);
-    if (!output) {
-      output = vx_core::vx_async_new_from_value(vx_core::vx_empty(generic_any_1));
-    }
     return output;
   }
 
@@ -8783,14 +9482,6 @@ namespace vx_core {
     return output;
   }
 
-  // (func new)
-  template <class T> T* f_new(T* type, vx_core::Type_anylist values) {
-    vx_core::vx_reserve({type, values});
-    T* output = vx_core::vx_new(type, values->vx_list());
-    vx_core::vx_release_one_except({type, values}, output);
-    return output;
-  }
-
   // (func resolve)
   template <class T> T* f_resolve_1(T* generic_any_1, vx_core::Func_any_from_func fn_any) {
     T* output = vx_core::vx_empty(generic_any_1);
@@ -8855,16 +9546,6 @@ namespace vx_core {
       })
     );
     vx_core::vx_release_one_except(clauses, output);
-    return output;
-  }
-
-  // (func switch)
-  template <class T, class U> T* f_switch(T* generic_any_1, U* value, vx_core::Type_thenelselist thenelselist) {
-    T* output = vx_core::vx_empty(generic_any_1);
-    vx_core::vx_reserve({value, thenelselist});
-    vx_core::Type_any any = vx_core::vx_switch(generic_any_1, value, thenelselist);
-    output = vx_core::vx_any_from_any(generic_any_1, any);
-    vx_core::vx_release_one_except({value, thenelselist}, output);
     return output;
   }
 

@@ -1,8 +1,6 @@
 /**
- * App
- */
-import vx.core
-import vx.translation.en
+* App
+/import vx.core
 
       
       

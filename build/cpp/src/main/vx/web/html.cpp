@@ -8,7 +8,384 @@
 
 namespace vx_web_html {
 
+// :body
 
+
+  // (type node)
+  // class Class_node {
+    Abstract_node::~Abstract_node() {}
+
+    Class_node::Class_node() : Abstract_node::Abstract_node() {
+      vx_core::refcount += 1;
+    }
+
+    Class_node::~Class_node() {
+      vx_core::refcount -= 1;
+      if (this->vx_p_msgblock) {
+        vx_core::vx_release_one(this->vx_p_msgblock);
+      }
+      vx_core::vx_release_one({
+        this->vx_p_id,
+        this->vx_p_eventmap,
+        this->vx_p_style,
+        this->vx_p_style_unique,
+        this->vx_p_stylelist
+      });
+    }
+
+    // id()
+    vx_core::Type_string Class_node::id() const {
+      vx_core::Type_string output = this->vx_p_id;
+      if (!output) {
+        output = vx_core::e_string;
+      }
+      return output;
+    }
+
+    // eventmap()
+    vx_event::Type_eventmap Class_node::eventmap() const {
+      vx_event::Type_eventmap output = this->vx_p_eventmap;
+      if (!output) {
+        output = vx_event::e_eventmap;
+      }
+      return output;
+    }
+
+    // style()
+    vx_web_html::Type_style Class_node::style() const {
+      vx_web_html::Type_style output = this->vx_p_style;
+      if (!output) {
+        output = vx_web_html::e_style;
+      }
+      return output;
+    }
+
+    // style_unique()
+    vx_web_html::Type_style Class_node::style_unique() const {
+      vx_web_html::Type_style output = this->vx_p_style_unique;
+      if (!output) {
+        output = vx_web_html::e_style;
+      }
+      return output;
+    }
+
+    // stylelist()
+    vx_web_html::Type_stylelist Class_node::stylelist() const {
+      vx_web_html::Type_stylelist output = this->vx_p_stylelist;
+      if (!output) {
+        output = vx_web_html::e_stylelist;
+      }
+      return output;
+    }
+
+    // vx_get_any(key)
+    vx_core::Type_any Class_node::vx_get_any(vx_core::Type_string key) const {
+      vx_core::Type_any output = vx_core::e_any;
+      std::string skey = key->vx_string();
+      if (false) {
+      } else if (skey == ":id") {
+        output = this->id();
+      } else if (skey == ":eventmap") {
+        output = this->eventmap();
+      } else if (skey == ":style") {
+        output = this->style();
+      } else if (skey == ":style-unique") {
+        output = this->style_unique();
+      } else if (skey == ":stylelist") {
+        output = this->stylelist();
+      }
+      vx_core::vx_release_except(key, output);
+      return output;
+    }
+
+    // vx_map()
+    vx_core::vx_Type_mapany Class_node::vx_map() const {
+      vx_core::vx_Type_mapany output;
+      output[":id"] = this->id();
+      output[":eventmap"] = this->eventmap();
+      output[":style"] = this->style();
+      output[":style-unique"] = this->style_unique();
+      output[":stylelist"] = this->stylelist();
+      return output;
+    }
+
+    vx_core::Type_any Class_node::vx_new(vx_core::vx_Type_listany vals) const {
+      return this->vx_copy(vx_web_html::e_node, vals);
+    }
+
+    vx_core::Type_any Class_node::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+      vx_web_html::Type_node output = vx_web_html::e_node;
+      bool ischanged = false;
+      if (copyval->vx_p_constdef != NULL) {
+        ischanged = true;
+      }
+      vx_web_html::Type_node val = vx_core::vx_any_from_any(vx_web_html::t_node, copyval);
+      output = val;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
+      vx_core::Type_string vx_p_id = val->id();
+      vx_event::Type_eventmap vx_p_eventmap = val->eventmap();
+      vx_web_html::Type_style vx_p_style = val->style();
+      vx_web_html::Type_style vx_p_style_unique = val->style_unique();
+      vx_web_html::Type_stylelist vx_p_stylelist = val->stylelist();
+      std::string key = "";
+      for (vx_core::Type_any valsub : vals) {
+        vx_core::Type_any valsubtype = valsub->vx_type();
+        if (valsubtype == vx_core::t_msgblock) {
+          msgblock = vx_core::vx_copy(msgblock, {valsub});
+        } else if (valsubtype == vx_core::t_msg) {
+          msgblock = vx_core::vx_copy(msgblock, {valsub});
+        } else if (key == "") {
+          std::string testkey = "";
+          if (valsubtype == vx_core::t_string) {
+            vx_core::Type_string valstr = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+            testkey = valstr->vx_string();
+          }
+          if (false) {
+          } else if (testkey == ":id") {
+            key = testkey;
+          } else if (testkey == ":eventmap") {
+            key = testkey;
+          } else if (testkey == ":style") {
+            key = testkey;
+          } else if (testkey == ":style-unique") {
+            key = testkey;
+          } else if (testkey == ":stylelist") {
+            key = testkey;
+          } else {
+            vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node) - Invalid Key Type: " + vx_core::vx_string_from_any(valsub));
+            msgblock = vx_core::vx_copy(msgblock, {msg});
+          }
+        } else {
+          if (false) {
+          } else if (key == ":id") {
+            if (vx_p_id == valsub) {
+            } else if (valsubtype == vx_core::t_string) {
+              ischanged = true;
+              vx_p_id = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+            } else {
+              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :id " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
+              msgblock = vx_core::vx_copy(msgblock, {msg});
+            }
+          } else if (key == ":eventmap") {
+            if (vx_p_eventmap == valsub) {
+            } else if (valsubtype == vx_event::t_eventmap) {
+              ischanged = true;
+              vx_p_eventmap = vx_core::vx_any_from_any(vx_event::t_eventmap, valsub);
+            } else {
+              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :eventmap " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
+              msgblock = vx_core::vx_copy(msgblock, {msg});
+            }
+          } else if (key == ":style") {
+            if (vx_p_style == valsub) {
+            } else if (valsubtype == vx_web_html::t_style) {
+              ischanged = true;
+              vx_p_style = vx_core::vx_any_from_any(vx_web_html::t_style, valsub);
+            } else {
+              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :style " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
+              msgblock = vx_core::vx_copy(msgblock, {msg});
+            }
+          } else if (key == ":style-unique") {
+            if (vx_p_style_unique == valsub) {
+            } else if (valsubtype == vx_web_html::t_style) {
+              ischanged = true;
+              vx_p_style_unique = vx_core::vx_any_from_any(vx_web_html::t_style, valsub);
+            } else {
+              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :style-unique " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
+              msgblock = vx_core::vx_copy(msgblock, {msg});
+            }
+          } else if (key == ":stylelist") {
+            if (vx_p_stylelist == valsub) {
+            } else if (valsubtype == vx_web_html::t_stylelist) {
+              ischanged = true;
+              vx_p_stylelist = vx_core::vx_any_from_any(vx_web_html::t_stylelist, valsub);
+            } else {
+              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :stylelist " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
+              msgblock = vx_core::vx_copy(msgblock, {msg});
+            }
+          } else {
+            vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node) - Invalid Key: " + key);
+            msgblock = vx_core::vx_copy(msgblock, {msg});
+          }
+          key = "";
+        }
+      }
+      if (ischanged || (msgblock != vx_core::e_msgblock)) {
+        output = new vx_web_html::Class_node();
+        if (output->vx_p_id != vx_p_id) {
+          if (output->vx_p_id) {
+            vx_core::vx_release_one(output->vx_p_id);
+          }
+          output->vx_p_id = vx_p_id;
+          vx_core::vx_reserve(vx_p_id);
+        }
+        if (output->vx_p_eventmap != vx_p_eventmap) {
+          if (output->vx_p_eventmap) {
+            vx_core::vx_release_one(output->vx_p_eventmap);
+          }
+          output->vx_p_eventmap = vx_p_eventmap;
+          vx_core::vx_reserve(vx_p_eventmap);
+        }
+        if (output->vx_p_style != vx_p_style) {
+          if (output->vx_p_style) {
+            vx_core::vx_release_one(output->vx_p_style);
+          }
+          output->vx_p_style = vx_p_style;
+          vx_core::vx_reserve(vx_p_style);
+        }
+        if (output->vx_p_style_unique != vx_p_style_unique) {
+          if (output->vx_p_style_unique) {
+            vx_core::vx_release_one(output->vx_p_style_unique);
+          }
+          output->vx_p_style_unique = vx_p_style_unique;
+          vx_core::vx_reserve(vx_p_style_unique);
+        }
+        if (output->vx_p_stylelist != vx_p_stylelist) {
+          if (output->vx_p_stylelist) {
+            vx_core::vx_release_one(output->vx_p_stylelist);
+          }
+          output->vx_p_stylelist = vx_p_stylelist;
+          vx_core::vx_reserve(vx_p_stylelist);
+        }
+      }
+      if (msgblock != vx_core::e_msgblock) {
+        output->vx_p_msgblock = msgblock;
+        vx_core::vx_reserve(msgblock);
+      }
+      vx_core::vx_release_except(copyval, output);
+      vx_core::vx_release_except(vals, output);
+      return output;
+    }
+
+    vx_core::Type_msgblock Class_node::vx_msgblock() const {return this->vx_p_msgblock;}
+    vx_core::vx_Type_listany vx_web_html::Class_node::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_node::vx_empty() const {return vx_web_html::e_node;}
+    vx_core::Type_any Class_node::vx_type() const {return vx_web_html::t_node;}
+
+    vx_core::Type_typedef Class_node::vx_typedef() const {
+      vx_core::Type_typedef output = vx_core::Class_typedef::vx_typedef_new(
+        "vx/web/html", // pkgname
+        "node", // name
+        ":struct", // extends
+        vx_core::e_typelist, // traits
+        vx_core::e_typelist, // allowtypes
+        vx_core::e_typelist, // disallowtypes
+        vx_core::e_funclist, // allowfuncs
+        vx_core::e_funclist, // disallowfuncs
+        vx_core::e_anylist, // allowvalues
+        vx_core::e_anylist, // disallowvalues
+        vx_core::vx_argmap_from_listarg({
+          vx_core::vx_new_arg(
+            "id", // name
+            vx_core::t_string // type
+          ),
+          vx_core::vx_new_arg(
+            "eventmap", // name
+            vx_event::t_eventmap // type
+          ),
+          vx_core::vx_new_arg(
+            "style", // name
+            vx_web_html::t_style // type
+          ),
+          vx_core::vx_new_arg(
+            "style-unique", // name
+            vx_web_html::t_style // type
+          ),
+          vx_core::vx_new_arg(
+            "stylelist", // name
+            vx_web_html::t_stylelist // type
+          )
+        }) // properties
+      );
+      return output;
+    }
+
+    vx_core::Type_constdef Class_node::vx_constdef() const {return this->vx_p_constdef;}
+
+
+  //}
+
+  // (type divchild)
+  // class Class_divchild {
+    Abstract_divchild::~Abstract_divchild() {}
+
+    Class_divchild::Class_divchild() : Abstract_divchild::Abstract_divchild() {
+      vx_core::refcount += 1;
+    }
+
+    Class_divchild::~Class_divchild() {
+      vx_core::refcount -= 1;
+      if (this->vx_p_msgblock) {
+        vx_core::vx_release_one(this->vx_p_msgblock);
+      }
+      vx_core::vx_release_one({
+        
+      });
+    }
+
+    // vx_get_any(key)
+    vx_core::Type_any Class_divchild::vx_get_any(vx_core::Type_string key) const {
+      vx_core::Type_any output = vx_core::e_any;
+      std::string skey = key->vx_string();
+      if (false) {
+      }
+      vx_core::vx_release_except(key, output);
+      return output;
+    }
+
+    // vx_map()
+    vx_core::vx_Type_mapany Class_divchild::vx_map() const {
+      vx_core::vx_Type_mapany output;
+      return output;
+    }
+
+    vx_core::Type_any Class_divchild::vx_new(vx_core::vx_Type_listany vals) const {
+      return this->vx_copy(vx_web_html::e_divchild, vals);
+    }
+
+    vx_core::Type_any Class_divchild::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+      vx_web_html::Type_divchild output = vx_web_html::e_divchild;
+      bool ischanged = false;
+      if (copyval->vx_p_constdef != NULL) {
+        ischanged = true;
+      }
+      vx_web_html::Type_divchild val = vx_core::vx_any_from_any(vx_web_html::t_divchild, copyval);
+      output = val;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
+      if (msgblock != vx_core::e_msgblock) {
+        output->vx_p_msgblock = msgblock;
+        vx_core::vx_reserve(msgblock);
+      }
+      vx_core::vx_release_except(copyval, output);
+      vx_core::vx_release_except(vals, output);
+      return output;
+    }
+
+    vx_core::Type_msgblock Class_divchild::vx_msgblock() const {return this->vx_p_msgblock;}
+    vx_core::vx_Type_listany vx_web_html::Class_divchild::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_divchild::vx_empty() const {return vx_web_html::e_divchild;}
+    vx_core::Type_any Class_divchild::vx_type() const {return vx_web_html::t_divchild;}
+
+    vx_core::Type_typedef Class_divchild::vx_typedef() const {
+      vx_core::Type_typedef output = vx_core::Class_typedef::vx_typedef_new(
+        "vx/web/html", // pkgname
+        "divchild", // name
+        ":struct", // extends
+        vx_core::e_typelist, // traits
+        vx_core::e_typelist, // allowtypes
+        vx_core::e_typelist, // disallowtypes
+        vx_core::e_funclist, // allowfuncs
+        vx_core::e_funclist, // disallowfuncs
+        vx_core::e_anylist, // allowvalues
+        vx_core::e_anylist, // disallowvalues
+        vx_core::e_argmap // properties
+      );
+      return output;
+    }
+
+    vx_core::Type_constdef Class_divchild::vx_constdef() const {return this->vx_p_constdef;}
+
+
+  //}
 
   // (type body)
   // class Class_body {
@@ -833,89 +1210,6 @@ namespace vx_web_html {
     }
 
     vx_core::Type_constdef Class_div::vx_constdef() const {return this->vx_p_constdef;}
-
-
-  //}
-
-  // (type divchild)
-  // class Class_divchild {
-    Abstract_divchild::~Abstract_divchild() {}
-
-    Class_divchild::Class_divchild() : Abstract_divchild::Abstract_divchild() {
-      vx_core::refcount += 1;
-    }
-
-    Class_divchild::~Class_divchild() {
-      vx_core::refcount -= 1;
-      if (this->vx_p_msgblock) {
-        vx_core::vx_release_one(this->vx_p_msgblock);
-      }
-      vx_core::vx_release_one({
-        
-      });
-    }
-
-    // vx_get_any(key)
-    vx_core::Type_any Class_divchild::vx_get_any(vx_core::Type_string key) const {
-      vx_core::Type_any output = vx_core::e_any;
-      std::string skey = key->vx_string();
-      if (false) {
-      }
-      vx_core::vx_release_except(key, output);
-      return output;
-    }
-
-    // vx_map()
-    vx_core::vx_Type_mapany Class_divchild::vx_map() const {
-      vx_core::vx_Type_mapany output;
-      return output;
-    }
-
-    vx_core::Type_any Class_divchild::vx_new(vx_core::vx_Type_listany vals) const {
-      return this->vx_copy(vx_web_html::e_divchild, vals);
-    }
-
-    vx_core::Type_any Class_divchild::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
-      vx_web_html::Type_divchild output = vx_web_html::e_divchild;
-      bool ischanged = false;
-      if (copyval->vx_p_constdef != NULL) {
-        ischanged = true;
-      }
-      vx_web_html::Type_divchild val = vx_core::vx_any_from_any(vx_web_html::t_divchild, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
-      }
-      vx_core::vx_release_except(copyval, output);
-      vx_core::vx_release_except(vals, output);
-      return output;
-    }
-
-    vx_core::Type_msgblock Class_divchild::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_web_html::Class_divchild::vx_dispose() {return vx_core::emptylistany;}
-    vx_core::Type_any Class_divchild::vx_empty() const {return vx_web_html::e_divchild;}
-    vx_core::Type_any Class_divchild::vx_type() const {return vx_web_html::t_divchild;}
-
-    vx_core::Type_typedef Class_divchild::vx_typedef() const {
-      vx_core::Type_typedef output = vx_core::Class_typedef::vx_typedef_new(
-        "vx/web/html", // pkgname
-        "divchild", // name
-        ":struct", // extends
-        vx_core::e_typelist, // traits
-        vx_core::e_typelist, // allowtypes
-        vx_core::e_typelist, // disallowtypes
-        vx_core::e_funclist, // allowfuncs
-        vx_core::e_funclist, // disallowfuncs
-        vx_core::e_anylist, // allowvalues
-        vx_core::e_anylist, // disallowvalues
-        vx_core::e_argmap // properties
-      );
-      return output;
-    }
-
-    vx_core::Type_constdef Class_divchild::vx_constdef() const {return this->vx_p_constdef;}
 
 
   //}
@@ -3672,299 +3966,6 @@ namespace vx_web_html {
     }
 
     vx_core::Type_constdef Class_meta::vx_constdef() const {return this->vx_p_constdef;}
-
-
-  //}
-
-  // (type node)
-  // class Class_node {
-    Abstract_node::~Abstract_node() {}
-
-    Class_node::Class_node() : Abstract_node::Abstract_node() {
-      vx_core::refcount += 1;
-    }
-
-    Class_node::~Class_node() {
-      vx_core::refcount -= 1;
-      if (this->vx_p_msgblock) {
-        vx_core::vx_release_one(this->vx_p_msgblock);
-      }
-      vx_core::vx_release_one({
-        this->vx_p_id,
-        this->vx_p_eventmap,
-        this->vx_p_style,
-        this->vx_p_style_unique,
-        this->vx_p_stylelist
-      });
-    }
-
-    // id()
-    vx_core::Type_string Class_node::id() const {
-      vx_core::Type_string output = this->vx_p_id;
-      if (!output) {
-        output = vx_core::e_string;
-      }
-      return output;
-    }
-
-    // eventmap()
-    vx_event::Type_eventmap Class_node::eventmap() const {
-      vx_event::Type_eventmap output = this->vx_p_eventmap;
-      if (!output) {
-        output = vx_event::e_eventmap;
-      }
-      return output;
-    }
-
-    // style()
-    vx_web_html::Type_style Class_node::style() const {
-      vx_web_html::Type_style output = this->vx_p_style;
-      if (!output) {
-        output = vx_web_html::e_style;
-      }
-      return output;
-    }
-
-    // style_unique()
-    vx_web_html::Type_style Class_node::style_unique() const {
-      vx_web_html::Type_style output = this->vx_p_style_unique;
-      if (!output) {
-        output = vx_web_html::e_style;
-      }
-      return output;
-    }
-
-    // stylelist()
-    vx_web_html::Type_stylelist Class_node::stylelist() const {
-      vx_web_html::Type_stylelist output = this->vx_p_stylelist;
-      if (!output) {
-        output = vx_web_html::e_stylelist;
-      }
-      return output;
-    }
-
-    // vx_get_any(key)
-    vx_core::Type_any Class_node::vx_get_any(vx_core::Type_string key) const {
-      vx_core::Type_any output = vx_core::e_any;
-      std::string skey = key->vx_string();
-      if (false) {
-      } else if (skey == ":id") {
-        output = this->id();
-      } else if (skey == ":eventmap") {
-        output = this->eventmap();
-      } else if (skey == ":style") {
-        output = this->style();
-      } else if (skey == ":style-unique") {
-        output = this->style_unique();
-      } else if (skey == ":stylelist") {
-        output = this->stylelist();
-      }
-      vx_core::vx_release_except(key, output);
-      return output;
-    }
-
-    // vx_map()
-    vx_core::vx_Type_mapany Class_node::vx_map() const {
-      vx_core::vx_Type_mapany output;
-      output[":id"] = this->id();
-      output[":eventmap"] = this->eventmap();
-      output[":style"] = this->style();
-      output[":style-unique"] = this->style_unique();
-      output[":stylelist"] = this->stylelist();
-      return output;
-    }
-
-    vx_core::Type_any Class_node::vx_new(vx_core::vx_Type_listany vals) const {
-      return this->vx_copy(vx_web_html::e_node, vals);
-    }
-
-    vx_core::Type_any Class_node::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
-      vx_web_html::Type_node output = vx_web_html::e_node;
-      bool ischanged = false;
-      if (copyval->vx_p_constdef != NULL) {
-        ischanged = true;
-      }
-      vx_web_html::Type_node val = vx_core::vx_any_from_any(vx_web_html::t_node, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_id = val->id();
-      vx_event::Type_eventmap vx_p_eventmap = val->eventmap();
-      vx_web_html::Type_style vx_p_style = val->style();
-      vx_web_html::Type_style vx_p_style_unique = val->style_unique();
-      vx_web_html::Type_stylelist vx_p_stylelist = val->stylelist();
-      std::string key = "";
-      for (vx_core::Type_any valsub : vals) {
-        vx_core::Type_any valsubtype = valsub->vx_type();
-        if (valsubtype == vx_core::t_msgblock) {
-          msgblock = vx_core::vx_copy(msgblock, {valsub});
-        } else if (valsubtype == vx_core::t_msg) {
-          msgblock = vx_core::vx_copy(msgblock, {valsub});
-        } else if (key == "") {
-          std::string testkey = "";
-          if (valsubtype == vx_core::t_string) {
-            vx_core::Type_string valstr = vx_core::vx_any_from_any(vx_core::t_string, valsub);
-            testkey = valstr->vx_string();
-          }
-          if (false) {
-          } else if (testkey == ":id") {
-            key = testkey;
-          } else if (testkey == ":eventmap") {
-            key = testkey;
-          } else if (testkey == ":style") {
-            key = testkey;
-          } else if (testkey == ":style-unique") {
-            key = testkey;
-          } else if (testkey == ":stylelist") {
-            key = testkey;
-          } else {
-            vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node) - Invalid Key Type: " + vx_core::vx_string_from_any(valsub));
-            msgblock = vx_core::vx_copy(msgblock, {msg});
-          }
-        } else {
-          if (false) {
-          } else if (key == ":id") {
-            if (vx_p_id == valsub) {
-            } else if (valsubtype == vx_core::t_string) {
-              ischanged = true;
-              vx_p_id = vx_core::vx_any_from_any(vx_core::t_string, valsub);
-            } else {
-              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :id " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
-              msgblock = vx_core::vx_copy(msgblock, {msg});
-            }
-          } else if (key == ":eventmap") {
-            if (vx_p_eventmap == valsub) {
-            } else if (valsubtype == vx_event::t_eventmap) {
-              ischanged = true;
-              vx_p_eventmap = vx_core::vx_any_from_any(vx_event::t_eventmap, valsub);
-            } else {
-              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :eventmap " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
-              msgblock = vx_core::vx_copy(msgblock, {msg});
-            }
-          } else if (key == ":style") {
-            if (vx_p_style == valsub) {
-            } else if (valsubtype == vx_web_html::t_style) {
-              ischanged = true;
-              vx_p_style = vx_core::vx_any_from_any(vx_web_html::t_style, valsub);
-            } else {
-              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :style " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
-              msgblock = vx_core::vx_copy(msgblock, {msg});
-            }
-          } else if (key == ":style-unique") {
-            if (vx_p_style_unique == valsub) {
-            } else if (valsubtype == vx_web_html::t_style) {
-              ischanged = true;
-              vx_p_style_unique = vx_core::vx_any_from_any(vx_web_html::t_style, valsub);
-            } else {
-              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :style-unique " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
-              msgblock = vx_core::vx_copy(msgblock, {msg});
-            }
-          } else if (key == ":stylelist") {
-            if (vx_p_stylelist == valsub) {
-            } else if (valsubtype == vx_web_html::t_stylelist) {
-              ischanged = true;
-              vx_p_stylelist = vx_core::vx_any_from_any(vx_web_html::t_stylelist, valsub);
-            } else {
-              vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node :stylelist " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
-              msgblock = vx_core::vx_copy(msgblock, {msg});
-            }
-          } else {
-            vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new node) - Invalid Key: " + key);
-            msgblock = vx_core::vx_copy(msgblock, {msg});
-          }
-          key = "";
-        }
-      }
-      if (ischanged || (msgblock != vx_core::e_msgblock)) {
-        output = new vx_web_html::Class_node();
-        if (output->vx_p_id != vx_p_id) {
-          if (output->vx_p_id) {
-            vx_core::vx_release_one(output->vx_p_id);
-          }
-          output->vx_p_id = vx_p_id;
-          vx_core::vx_reserve(vx_p_id);
-        }
-        if (output->vx_p_eventmap != vx_p_eventmap) {
-          if (output->vx_p_eventmap) {
-            vx_core::vx_release_one(output->vx_p_eventmap);
-          }
-          output->vx_p_eventmap = vx_p_eventmap;
-          vx_core::vx_reserve(vx_p_eventmap);
-        }
-        if (output->vx_p_style != vx_p_style) {
-          if (output->vx_p_style) {
-            vx_core::vx_release_one(output->vx_p_style);
-          }
-          output->vx_p_style = vx_p_style;
-          vx_core::vx_reserve(vx_p_style);
-        }
-        if (output->vx_p_style_unique != vx_p_style_unique) {
-          if (output->vx_p_style_unique) {
-            vx_core::vx_release_one(output->vx_p_style_unique);
-          }
-          output->vx_p_style_unique = vx_p_style_unique;
-          vx_core::vx_reserve(vx_p_style_unique);
-        }
-        if (output->vx_p_stylelist != vx_p_stylelist) {
-          if (output->vx_p_stylelist) {
-            vx_core::vx_release_one(output->vx_p_stylelist);
-          }
-          output->vx_p_stylelist = vx_p_stylelist;
-          vx_core::vx_reserve(vx_p_stylelist);
-        }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
-      }
-      vx_core::vx_release_except(copyval, output);
-      vx_core::vx_release_except(vals, output);
-      return output;
-    }
-
-    vx_core::Type_msgblock Class_node::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_web_html::Class_node::vx_dispose() {return vx_core::emptylistany;}
-    vx_core::Type_any Class_node::vx_empty() const {return vx_web_html::e_node;}
-    vx_core::Type_any Class_node::vx_type() const {return vx_web_html::t_node;}
-
-    vx_core::Type_typedef Class_node::vx_typedef() const {
-      vx_core::Type_typedef output = vx_core::Class_typedef::vx_typedef_new(
-        "vx/web/html", // pkgname
-        "node", // name
-        ":struct", // extends
-        vx_core::e_typelist, // traits
-        vx_core::e_typelist, // allowtypes
-        vx_core::e_typelist, // disallowtypes
-        vx_core::e_funclist, // allowfuncs
-        vx_core::e_funclist, // disallowfuncs
-        vx_core::e_anylist, // allowvalues
-        vx_core::e_anylist, // disallowvalues
-        vx_core::vx_argmap_from_listarg({
-          vx_core::vx_new_arg(
-            "id", // name
-            vx_core::t_string // type
-          ),
-          vx_core::vx_new_arg(
-            "eventmap", // name
-            vx_event::t_eventmap // type
-          ),
-          vx_core::vx_new_arg(
-            "style", // name
-            vx_web_html::t_style // type
-          ),
-          vx_core::vx_new_arg(
-            "style-unique", // name
-            vx_web_html::t_style // type
-          ),
-          vx_core::vx_new_arg(
-            "stylelist", // name
-            vx_web_html::t_stylelist // type
-          )
-        }) // properties
-      );
-      return output;
-    }
-
-    vx_core::Type_constdef Class_node::vx_constdef() const {return this->vx_p_constdef;}
 
 
   //}
@@ -12811,14 +12812,16 @@ namespace vx_web_html {
 
   //}
 
+  vx_web_html::Type_node e_node = NULL;
+  vx_web_html::Type_node t_node = NULL;
+  vx_web_html::Type_divchild e_divchild = NULL;
+  vx_web_html::Type_divchild t_divchild = NULL;
   vx_web_html::Type_body e_body = NULL;
   vx_web_html::Type_body t_body = NULL;
   vx_web_html::Type_details e_details = NULL;
   vx_web_html::Type_details t_details = NULL;
   vx_web_html::Type_div e_div = NULL;
   vx_web_html::Type_div t_div = NULL;
-  vx_web_html::Type_divchild e_divchild = NULL;
-  vx_web_html::Type_divchild t_divchild = NULL;
   vx_web_html::Type_divchildlist e_divchildlist = NULL;
   vx_web_html::Type_divchildlist t_divchildlist = NULL;
   vx_web_html::Type_divlist e_divlist = NULL;
@@ -12843,8 +12846,6 @@ namespace vx_web_html {
   vx_web_html::Type_img t_img = NULL;
   vx_web_html::Type_meta e_meta = NULL;
   vx_web_html::Type_meta t_meta = NULL;
-  vx_web_html::Type_node e_node = NULL;
-  vx_web_html::Type_node t_node = NULL;
   vx_web_html::Type_nodelist e_nodelist = NULL;
   vx_web_html::Type_nodelist t_nodelist = NULL;
   vx_web_html::Type_p e_p = NULL;
@@ -12965,6 +12966,14 @@ namespace vx_web_html {
       init();
     }
     void vx_Class_package::init() {
+      vx_web_html::e_node = new Class_node();
+      vx_core::vx_reserve_empty(vx_web_html::e_node);
+      vx_web_html::t_node = new Class_node();
+      vx_core::vx_reserve_type(vx_web_html::t_node);
+      vx_web_html::e_divchild = new Class_divchild();
+      vx_core::vx_reserve_empty(vx_web_html::e_divchild);
+      vx_web_html::t_divchild = new Class_divchild();
+      vx_core::vx_reserve_type(vx_web_html::t_divchild);
       vx_web_html::e_body = new Class_body();
       vx_core::vx_reserve_empty(vx_web_html::e_body);
       vx_web_html::t_body = new Class_body();
@@ -12977,10 +12986,6 @@ namespace vx_web_html {
       vx_core::vx_reserve_empty(vx_web_html::e_div);
       vx_web_html::t_div = new Class_div();
       vx_core::vx_reserve_type(vx_web_html::t_div);
-      vx_web_html::e_divchild = new Class_divchild();
-      vx_core::vx_reserve_empty(vx_web_html::e_divchild);
-      vx_web_html::t_divchild = new Class_divchild();
-      vx_core::vx_reserve_type(vx_web_html::t_divchild);
       vx_web_html::e_divchildlist = new Class_divchildlist();
       vx_core::vx_reserve_empty(vx_web_html::e_divchildlist);
       vx_web_html::t_divchildlist = new Class_divchildlist();
@@ -13029,10 +13034,6 @@ namespace vx_web_html {
       vx_core::vx_reserve_empty(vx_web_html::e_meta);
       vx_web_html::t_meta = new Class_meta();
       vx_core::vx_reserve_type(vx_web_html::t_meta);
-      vx_web_html::e_node = new Class_node();
-      vx_core::vx_reserve_empty(vx_web_html::e_node);
-      vx_web_html::t_node = new Class_node();
-      vx_core::vx_reserve_type(vx_web_html::t_node);
       vx_web_html::e_nodelist = new Class_nodelist();
       vx_core::vx_reserve_empty(vx_web_html::e_nodelist);
       vx_web_html::t_nodelist = new Class_nodelist();
@@ -13265,10 +13266,11 @@ namespace vx_web_html {
       vx_core::vx_Type_mapany mapconst;
       vx_core::vx_Type_mapfunc mapfunc;
       vx_core::vx_Type_mapany mapempty;
+      maptype["node"] = vx_web_html::t_node;
+      maptype["divchild"] = vx_web_html::t_divchild;
       maptype["body"] = vx_web_html::t_body;
       maptype["details"] = vx_web_html::t_details;
       maptype["div"] = vx_web_html::t_div;
-      maptype["divchild"] = vx_web_html::t_divchild;
       maptype["divchildlist"] = vx_web_html::t_divchildlist;
       maptype["divlist"] = vx_web_html::t_divlist;
       maptype["footer"] = vx_web_html::t_footer;
@@ -13281,7 +13283,6 @@ namespace vx_web_html {
       maptype["html"] = vx_web_html::t_html;
       maptype["img"] = vx_web_html::t_img;
       maptype["meta"] = vx_web_html::t_meta;
-      maptype["node"] = vx_web_html::t_node;
       maptype["nodelist"] = vx_web_html::t_nodelist;
       maptype["p"] = vx_web_html::t_p;
       maptype["propmap"] = vx_web_html::t_propmap;

@@ -1,5 +1,6 @@
 #ifndef VX_REPL_HPP
 #define VX_REPL_HPP
+#include <string>
 #include <vector>
 #include "../vx/core.hpp"
 #include "../vx/collection.hpp"
@@ -118,7 +119,13 @@ namespace vx_repl {
   class Abstract_typefunc_from_string;
   typedef Abstract_typefunc_from_string* Func_typefunc_from_string;
   extern Func_typefunc_from_string e_typefunc_from_string;
-  extern Func_typefunc_from_string t_typefunc_from_string;
+  extern Func_typefunc_from_string t_typefunc_from_string;// :headerfirst
+// :header
+
+  // vx_string_from_listarg(context, type, liststring)
+  std::string vx_string_from_listarg(vx_core::Type_context context, vx_core::Type_any type, std::vector<std::string> listarg);
+
+
   // (func any-repl<-functype-args)
   vx_core::Type_any f_any_repl_from_functype_args(vx_core::Type_any type, vx_core::Type_anylist args);
 

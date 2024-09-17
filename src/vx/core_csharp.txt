@@ -543,11 +543,11 @@
   // vx_global_package_set(string, map<any>, map<any>, map<func>)
   public static void vx_global_package_set(string pkgname, Map<string, Vx.Core.Type_any> maptype, Map<string, Vx.Core.Type_any> mapconst, Map<string, Vx.Core.Type_func> mapfunc) {
     Vx.Core.Class_typemap typemap = new Vx.Core.Class_typemap();
-		  typemap.vx_p_map = maptype;
-	   Vx.Core.Class_constmap constmap = new Vx.Core.Class_constmap();
-		  constmap.vx_p_map = mapconst;
-		  Vx.Core.Class_funcmap funcmap = new Vx.Core.Class_funcmap();
-		  funcmap.vx_p_map = mapfunc;
+    typemap.vx_p_map = maptype;
+    Vx.Core.Class_constmap constmap = new Vx.Core.Class_constmap();
+    constmap.vx_p_map = mapconst;
+    Vx.Core.Class_funcmap funcmap = new Vx.Core.Class_funcmap();
+    funcmap.vx_p_map = mapfunc;
     Vx.Core.Class_project global = (Vx.Core.Class_project)Vx.Core.c_global;
     Vx.Core.Class_packagemap packagemap = (Vx.Core.Class_packagemap)global.packagemap();
     if (packagemap != Vx.Core.e_packagemap) {
@@ -555,10 +555,10 @@
       global.vx_p_packagemap = packagemap;
     }
     Map<string, Vx.Core.Type_package> mappackage = new LinkedHashMap<string, Vx.Core.Type_package>(packagemap.vx_p_map);
-		  Vx.Core.Class_package pkg = new Vx.Core.Class_package();
-		  pkg.vx_p_constmap = constmap;
-		  pkg.vx_p_typemap = typemap;
-		  pkg.vx_p_funcmap = funcmap;
+    Vx.Core.Class_package pkg = new Vx.Core.Class_package();
+    pkg.vx_p_constmap = constmap;
+    pkg.vx_p_typemap = typemap;
+    pkg.vx_p_funcmap = funcmap;
     mappackage.put(pkgname, pkg);
     packagemap.vx_p_map = mappackage;
   }

@@ -67,11 +67,11 @@
         }
       }
     } else {
-	     output = text.indexOf(find)
-		  }
+      output = text.indexOf(find)
+    }
     output += 1
     return output
- 	}
+  }
 
   // vx_int_from_string_findkeyword(string, string)
   fun vx_int_from_string_findkeyword(

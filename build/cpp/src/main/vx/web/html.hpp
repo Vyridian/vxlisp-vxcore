@@ -306,7 +306,83 @@ namespace vx_web_html {
   class Abstract_uri_from_string;
   typedef Abstract_uri_from_string* Func_uri_from_string;
   extern Func_uri_from_string e_uri_from_string;
-  extern Func_uri_from_string t_uri_from_string;
+  extern Func_uri_from_string t_uri_from_string;// :headerfirst
+
+// :header
+
+
+  // (type node)
+  class Abstract_node : public virtual vx_core::Abstract_struct {
+  public:
+    Abstract_node() {};
+    virtual ~Abstract_node() = 0;
+    // vx_map()
+    virtual vx_core::vx_Type_mapany vx_map() const = 0;
+    // vx_get_any(key)
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
+    // id()
+    vx_core::Type_string vx_p_id = NULL;
+    virtual vx_core::Type_string id() const = 0;
+    // eventmap()
+    vx_event::Type_eventmap vx_p_eventmap = NULL;
+    virtual vx_event::Type_eventmap eventmap() const = 0;
+    // style()
+    vx_web_html::Type_style vx_p_style = NULL;
+    virtual vx_web_html::Type_style style() const = 0;
+    // style-unique()
+    vx_web_html::Type_style vx_p_style_unique = NULL;
+    virtual vx_web_html::Type_style style_unique() const = 0;
+    // stylelist()
+    vx_web_html::Type_stylelist vx_p_stylelist = NULL;
+    virtual vx_web_html::Type_stylelist stylelist() const = 0;
+  };
+  class Class_node : public virtual Abstract_node {
+  public:
+    Class_node();
+    virtual ~Class_node() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::vx_Type_mapany vx_map() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
+    virtual vx_core::Type_string id() const override;
+    virtual vx_event::Type_eventmap eventmap() const override;
+    virtual vx_web_html::Type_style style() const override;
+    virtual vx_web_html::Type_style style_unique() const override;
+    virtual vx_web_html::Type_stylelist stylelist() const override;
+  };
+
+  // (type divchild)
+  class Abstract_divchild : public virtual vx_core::Abstract_struct {
+  public:
+    Abstract_divchild() {};
+    virtual ~Abstract_divchild() = 0;
+    // vx_map()
+    virtual vx_core::vx_Type_mapany vx_map() const = 0;
+    // vx_get_any(key)
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
+  };
+  class Class_divchild : public virtual Abstract_divchild {
+  public:
+    Class_divchild();
+    virtual ~Class_divchild() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::vx_Type_mapany vx_map() const override;
+    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
+  };
+
   // (func htmlstring<-string)
   vx_core::Type_string f_htmlstring_from_string(vx_core::Type_string text);
 
@@ -565,32 +641,6 @@ namespace vx_web_html {
     virtual vx_web_html::Type_style style_unique() const override;
     virtual vx_web_html::Type_stylelist stylelist() const override;
     virtual vx_web_html::Type_divchildlist nodes() const override;
-  };
-
-  // (type divchild)
-  class Abstract_divchild : public virtual vx_core::Abstract_struct {
-  public:
-    Abstract_divchild() {};
-    virtual ~Abstract_divchild() = 0;
-    // vx_map()
-    virtual vx_core::vx_Type_mapany vx_map() const = 0;
-    // vx_get_any(key)
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
-  };
-  class Class_divchild : public virtual Abstract_divchild {
-  public:
-    Class_divchild();
-    virtual ~Class_divchild() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::vx_Type_mapany vx_map() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
   };
 
   // (type divchildlist)
@@ -1085,52 +1135,6 @@ namespace vx_web_html {
     virtual vx_core::Type_string charset() const override;
     virtual vx_core::Type_string name() const override;
     virtual vx_core::Type_string content() const override;
-  };
-
-  // (type node)
-  class Abstract_node : public virtual vx_core::Abstract_struct {
-  public:
-    Abstract_node() {};
-    virtual ~Abstract_node() = 0;
-    // vx_map()
-    virtual vx_core::vx_Type_mapany vx_map() const = 0;
-    // vx_get_any(key)
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const = 0;
-    // id()
-    vx_core::Type_string vx_p_id = NULL;
-    virtual vx_core::Type_string id() const = 0;
-    // eventmap()
-    vx_event::Type_eventmap vx_p_eventmap = NULL;
-    virtual vx_event::Type_eventmap eventmap() const = 0;
-    // style()
-    vx_web_html::Type_style vx_p_style = NULL;
-    virtual vx_web_html::Type_style style() const = 0;
-    // style-unique()
-    vx_web_html::Type_style vx_p_style_unique = NULL;
-    virtual vx_web_html::Type_style style_unique() const = 0;
-    // stylelist()
-    vx_web_html::Type_stylelist vx_p_stylelist = NULL;
-    virtual vx_web_html::Type_stylelist stylelist() const = 0;
-  };
-  class Class_node : public virtual Abstract_node {
-  public:
-    Class_node();
-    virtual ~Class_node() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::vx_Type_mapany vx_map() const override;
-    virtual vx_core::Type_any vx_get_any(vx_core::Type_string key) const override;
-    virtual vx_core::Type_string id() const override;
-    virtual vx_event::Type_eventmap eventmap() const override;
-    virtual vx_web_html::Type_style style() const override;
-    virtual vx_web_html::Type_style style_unique() const override;
-    virtual vx_web_html::Type_stylelist stylelist() const override;
   };
 
   // (type nodelist)
