@@ -208,7 +208,9 @@ namespace vx_sample {
 
   // (func main)
   vx_core::Type_none f_main() {
+    vx_core::Type_none output = vx_core::e_none;
     vx_sample::f_myfunc(vx_core::vx_new_int(2));
+    return output;
   }
   /**
    * @function main
