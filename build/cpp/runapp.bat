@@ -1,2 +1,2 @@
 cls
-build\main\app.exe
+build/main/app.exe

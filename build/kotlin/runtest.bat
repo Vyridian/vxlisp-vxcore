@@ -1,2 +1,2 @@
 cls
-gradlew test
+./gradlew test

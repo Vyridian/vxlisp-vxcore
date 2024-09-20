@@ -1,7 +1,7 @@
 #!/bin/bash
 options="doc srccpp testcpp srccsharp testcsharp srcjava testjava srcjs testjs srckotlin testkotlin"
-# runablefolder=../../vxlisp-runtime
-runablefolder=../../vxlisp-compiler
+# runablefolder=../../vxlisp/dist
+runablefolder=../../vxlisp/src
 currentfolder=$PWD
 srcfolder=%currentfolder%/../src
 # runable=vxlisp_linux64

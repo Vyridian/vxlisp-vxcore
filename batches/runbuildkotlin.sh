@@ -1,7 +1,7 @@
 #!/bin/bash
 options="doc srckotlin testkotlin"
-# runablefolder=../../vxlisp-runtime
-runablefolder=../../vxlisp-compiler
+# runablefolder=../../vxlisp/dist
+runablefolder=../../vxlisp/src
 currentfolder=$PWD
 srcfolder=%currentfolder%/../src
 # runable=vxlisp_linux64
