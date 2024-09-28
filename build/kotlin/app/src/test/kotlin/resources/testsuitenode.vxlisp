@@ -13120,7 +13120,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "66% 18/27")
+                  :text "69% 18/26")
                  (p
                   :style
                    (style
@@ -13144,7 +13144,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "66% 18/27")
+                  :text "69% 18/26")
                  (p
                   :style
                    (style
@@ -13152,7 +13152,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "81% 22/27")
+                  :text "80% 21/26")
                  (p
                   :style
                    (style
@@ -13160,7 +13160,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "0% 0/27")
+                  :text "0% 0/26")
                  (p
                   :style
                    (style
@@ -13168,7 +13168,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "0% 0/27"))
+                  :text "0% 0/26"))
                :nodes
                 (divchildlist
                  (div
@@ -13467,7 +13467,7 @@
                                  `(test
  3
  (int<-string-findkeyword
-  "ab cdefg"
+  "ab	cdefg"
   ":whitespace"))`)))
                             (td
                              :nodes
@@ -13547,9 +13547,8 @@
                                  `(test
  5
  (int<-string-findkeyword
-  "  
-
-ab"
+  " 	
+ab"
   ":nonwhitespace"))`)))
                             (td
                              :nodes
@@ -14885,9 +14884,9 @@ b"`)))))
                                  `(test
  "ab"
  (string-trim
-  "  
+  " 	
 ab
-  "))`)))
+	 "))`)))
                             (td
                              :nodes
                               (divchildlist

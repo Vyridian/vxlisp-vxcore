@@ -2920,112 +2920,6 @@ public final class Type {
     return output;
   }
 
-  /**
-   * @function traits_from_typedef
-   * Get the traits of a given typedef
-   * @param  {typedef} vtypedef
-   * @return {typelist}
-   * (func traits<-typedef)
-   */
-  public interface Func_traits_from_typedef extends Core.Func_any_from_any {
-    public Core.Type_typelist vx_traits_from_typedef(final Core.Type_typedef vtypedef);
-  }
-
-  public static class Class_traits_from_typedef extends Core.Class_base implements Func_traits_from_typedef {
-
-    @Override
-    public Core.Type_any vx_new(final Object... vals) {
-      Type.Class_traits_from_typedef output = new Type.Class_traits_from_typedef();
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_copy(final Object... vals) {
-      Type.Class_traits_from_typedef output = new Type.Class_traits_from_typedef();
-      return output;
-    }
-
-    @Override
-    public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
-      return output;
-    }
-
-    @Override
-    public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
-        "vx/type", // pkgname
-        "traits<-typedef", // name
-        0, // idx
-        false, // async
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        ) // typedef
-      );
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_empty() {
-      Core.Type_any output = Type.e_traits_from_typedef;
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_type() {
-      Core.Type_any output = Type.t_traits_from_typedef;
-      return output;
-    }
-
-    @Override
-    public Core.Func_any_from_any vx_fn_new(Core.Class_any_from_any.IFn fn) {
-      return Core.e_any_from_any;
-    }
-
-    @Override
-    public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
-      T output = Core.f_empty(generic_any_1);
-      Core.Type_typedef inputval = (Core.Type_typedef)value;
-      Core.Type_any outputval = Type.f_traits_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
-      Core.Type_any output = Core.e_any;
-      Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
-      output = Type.f_traits_from_typedef(vtypedef);
-      return output;
-    }
-
-    @Override
-    public Core.Type_typelist vx_traits_from_typedef(final Core.Type_typedef vtypedef) {
-      Core.Type_typelist output = Type.f_traits_from_typedef(vtypedef);
-      return output;
-    }
-
-  }
-
-  public static final Type.Func_traits_from_typedef e_traits_from_typedef = new Type.Class_traits_from_typedef();
-  public static final Type.Func_traits_from_typedef t_traits_from_typedef = new Type.Class_traits_from_typedef();
-
-  public static Core.Type_typelist f_traits_from_typedef(final Core.Type_typedef vtypedef) {
-    Core.Type_typelist output = Core.e_typelist;
-    output = vtypedef.traits();
-    return output;
-  }
-
 
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();
@@ -3057,7 +2951,6 @@ public final class Type {
     mapfunc.put("stringlist<-string-split", Type.t_stringlist_from_string_split);
     mapfunc.put("traitnames<-any", Type.t_traitnames_from_any);
     mapfunc.put("traits<-any", Type.t_traits_from_any);
-    mapfunc.put("traits<-typedef", Type.t_traits_from_typedef);
     Core.vx_global_package_set("vx/type", maptype, mapconst, mapfunc);
   }
 

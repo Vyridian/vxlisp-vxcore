@@ -5288,19 +5288,19 @@
                  (vx/web/html/p
                   :text "vx/type")
                  (vx/web/html/p
-                  :text "66% 18/27")
+                  :text "69% 18/26")
                  (vx/web/html/p
                   :text "100% 0/0")
                  (vx/web/html/p
                   :text "100% 0/0")
                  (vx/web/html/p
-                  :text "66% 18/27")
+                  :text "69% 18/26")
                  (vx/web/html/p
-                  :text "81% 22/27")
+                  :text "80% 21/26")
                  (vx/web/html/p
-                  :text "0% 0/27")
+                  :text "0% 0/26")
                  (vx/web/html/p
-                  :text "0% 0/27"))
+                  :text "0% 0/26"))
                :nodes
                 (vx/web/html/divchildlist
                  (vx/web/html/div

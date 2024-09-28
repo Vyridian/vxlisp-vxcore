@@ -110,11 +110,7 @@ namespace vx_type {
   class Abstract_traits_from_any;
   typedef Abstract_traits_from_any* Func_traits_from_any;
   extern Func_traits_from_any e_traits_from_any;
-  extern Func_traits_from_any t_traits_from_any;
-  class Abstract_traits_from_typedef;
-  typedef Abstract_traits_from_typedef* Func_traits_from_typedef;
-  extern Func_traits_from_typedef e_traits_from_typedef;
-  extern Func_traits_from_typedef t_traits_from_typedef;// :headerfirst
+  extern Func_traits_from_any t_traits_from_any;// :headerfirst
 // :header
 
   // vx_int_from_string_find(string, string)
@@ -225,9 +221,6 @@ namespace vx_type {
 
   // (func traits<-any)
   vx_core::Type_typelist f_traits_from_any(vx_core::Type_any value);
-
-  // (func traits<-typedef)
-  vx_core::Type_typelist f_traits_from_typedef(vx_core::Type_typedef vtypedef);
 
   // (func allowtypenames<-type)
   class Abstract_allowtypenames_from_type : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
@@ -869,33 +862,6 @@ namespace vx_type {
   public:
     Class_traits_from_any();
     virtual ~Class_traits_from_any() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func traits<-typedef)
-  class Abstract_traits_from_typedef : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_traits_from_typedef() {};
-    virtual ~Abstract_traits_from_typedef() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_traits_from_typedef : public virtual Abstract_traits_from_typedef {
-  public:
-    Class_traits_from_typedef();
-    virtual ~Class_traits_from_typedef() override;
     virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_funcdef vx_funcdef() const override;

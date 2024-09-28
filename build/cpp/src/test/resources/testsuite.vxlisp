@@ -3519,36 +3519,35 @@ ab
       :string<-stringlist-join 1
       :stringlist<-string-split 1
       :traitnames<-any 0
-      :traits<-any 0
-      :traits<-typedef 0)
+      :traits<-any 0)
     :testpkg "vx/type")
   :coveragesummary
    (vx/test/testcoveragesummary
     :bigospacenums
      (vx/test/testcoveragenums
-      :total 27)
+      :total 26)
     :bigotimenums
      (vx/test/testcoveragenums
-      :total 27)
+      :total 26)
     :constnums
      (vx/test/testcoveragenums
       :pct 100)
     :docnums
      (vx/test/testcoveragenums
-      :pct 81
-      :tests 22
-      :total 27)
+      :pct 80
+      :tests 21
+      :total 26)
     :funcnums
      (vx/test/testcoveragenums
-      :pct 66
+      :pct 69
       :tests 18
-      :total 27)
+      :total 26)
     :testpkg "vx/type"
     :totalnums
      (vx/test/testcoveragenums
-      :pct 66
+      :pct 69
       :tests 18
-      :total 27)
+      :total 26)
     :typenums
      (vx/test/testcoveragenums
       :pct 100))

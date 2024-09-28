@@ -717,26 +717,6 @@ export default class vx_type {
     return output
   }
 
-  /**
-   * @function traits_from_typedef
-   * Get the traits of a given typedef
-   * @param  {typedef} vtypedef
-   * @return {typelist}
-   */
-  static t_traits_from_typedef = {
-    vx_type: vx_core.t_type
-  }
-  static e_traits_from_typedef = {
-    vx_type: vx_type.t_traits_from_typedef
-  }
-
-  // (func traits<-typedef)
-  static f_traits_from_typedef(vtypedef) {
-    let output = vx_core.e_typelist
-    output = vx_core.f_any_from_struct({"any-1": vx_core.t_typelist, "struct-2": vx_core.t_typedef}, vtypedef, ":traits")
-    return output
-  }
-
 
 
   static {
@@ -769,8 +749,7 @@ export default class vx_type {
       "string<-stringlist-join": vx_type.e_string_from_stringlist_join,
       "stringlist<-string-split": vx_type.e_stringlist_from_string_split,
       "traitnames<-any": vx_type.e_traitnames_from_any,
-      "traits<-any": vx_type.e_traits_from_any,
-      "traits<-typedef": vx_type.e_traits_from_typedef
+      "traits<-any": vx_type.e_traits_from_any
     })
     const funcmap = vx_core.vx_new_map(vx_core.t_funcmap, {
       "allowtypenames<-type": vx_type.t_allowtypenames_from_type,
@@ -798,8 +777,7 @@ export default class vx_type {
       "string<-stringlist-join": vx_type.t_string_from_stringlist_join,
       "stringlist<-string-split": vx_type.t_stringlist_from_string_split,
       "traitnames<-any": vx_type.t_traitnames_from_any,
-      "traits<-any": vx_type.t_traits_from_any,
-      "traits<-typedef": vx_type.t_traits_from_typedef
+      "traits<-any": vx_type.t_traits_from_any
     })
     const typemap = vx_core.vx_new_map(vx_core.t_typemap, {
       
@@ -1279,24 +1257,6 @@ export default class vx_type {
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_traits_from_any
-    }
-
-    // (func traits<-typedef)
-    vx_type.t_traits_from_typedef['vx_value'] = {
-      name          : "traits<-typedef",
-      pkgname       : "vx/type",
-      extends       : ":func",
-      idx           : 0,
-      allowfuncs    : [],
-      disallowfuncs : [],
-      allowtypes    : [],
-      disallowtypes : [],
-      allowvalues   : [],
-      disallowvalues: [],
-      traits        : [],
-      properties    : [],
-      proplast      : {},
-      fn            : vx_type.f_traits_from_typedef
     }
 
   }

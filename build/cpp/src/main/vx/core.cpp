@@ -28962,7 +28962,7 @@ namespace vx_core {
   }
   /**
    * @function traits_from_typedef
-   * Return trait list from type
+   * Get the traits of a given typedef
    * @param  {typedef} vtypedef
    * @return {typelist}
    * (func traits<-typedef)

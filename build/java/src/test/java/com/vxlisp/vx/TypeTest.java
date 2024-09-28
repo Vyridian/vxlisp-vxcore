@@ -976,11 +976,11 @@ public final class TypeTest {
       Test.t_testcoveragesummary,
       ":testpkg", "vx/type", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 81, ":tests", 22, ":total", 27), 
-      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 66, ":tests", 18, ":total", 27), 
-      ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 66, ":tests", 18, ":total", 27), 
+      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 80, ":tests", 21, ":total", 26), 
+      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 69, ":tests", 18, ":total", 26), 
+      ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 26), 
+      ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 26), 
+      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 69, ":tests", 18, ":total", 26), 
       ":typenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     );
     return output;
@@ -1019,8 +1019,7 @@ public final class TypeTest {
         ":string<-stringlist-join", 1,
         ":stringlist<-string-split", 1,
         ":traitnames<-any", 0,
-        ":traits<-any", 0,
-        ":traits<-typedef", 0
+        ":traits<-any", 0
       )
     );
     return output;

@@ -28647,6 +28647,7 @@ object vx_core {
 
   fun f_traits_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_typelist {
     var output : vx_core.Type_typelist = vx_core.e_typelist
+    output = vtypedef.traits()
     return output
   }
 

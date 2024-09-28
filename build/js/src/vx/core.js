@@ -5676,7 +5676,7 @@ export default class vx_core {
 
   /**
    * @function traits_from_typedef
-   * Return trait list from type
+   * Get the traits of a given typedef
    * @param  {typedef} vtypedef
    * @return {typelist}
    */
@@ -5690,7 +5690,7 @@ export default class vx_core {
   // (func traits<-typedef)
   static f_traits_from_typedef(vtypedef) {
     let output = vx_core.e_typelist
-    output = vtypedef['vx_value']['traits']
+    output = vx_core.f_any_from_struct({"any-1": vx_core.t_typelist, "struct-2": vx_core.t_typedef}, vtypedef, ":traits")
     return output
   }
 

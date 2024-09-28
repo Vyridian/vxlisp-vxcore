@@ -2742,102 +2742,6 @@ public static class Type {
     return output;
   }
 
-  /**
-   * @function traits_from_typedef
-   * Get the traits of a given typedef
-   * @param  {typedef} vtypedef
-   * @return {typelist}
-   * (func traits<-typedef)
-   */
-  public interface Func_traits_from_typedef : Vx.Core.Func_any_from_any {
-    public Vx.Core.Type_typelist vx_traits_from_typedef(Vx.Core.Type_typedef vtypedef);
-  }
-
-  public class Class_traits_from_typedef : Vx.Core.Class_base, Func_traits_from_typedef {
-
-    public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Type.Class_traits_from_typedef output = new Vx.Type.Class_traits_from_typedef();
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_copy(params object[] vals) {
-      Vx.Type.Class_traits_from_typedef output = new Vx.Type.Class_traits_from_typedef();
-      return output;
-    }
-
-    public override Vx.Core.Type_typedef vx_typedef() {
-      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
-      return output;
-    }
-
-    public Vx.Core.Type_funcdef vx_funcdef() {
-      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
-        "vx/type", // pkgname
-        "traits<-typedef", // name
-        0, // idx
-        false, // async
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        ) // typedef
-      );
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_empty() {
-      Vx.Core.Type_any output = Vx.Type.e_traits_from_typedef;
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_type() {
-      Vx.Core.Type_any output = Vx.Type.t_traits_from_typedef;
-      return output;
-    }
-
-    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
-      return Vx.Core.e_any_from_any;
-    }
-
-    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      T output = Vx.Core.f_empty(generic_any_1);
-      Vx.Core.Type_typedef inputval = (Vx.Core.Type_typedef)value;
-      Vx.Core.Type_any outputval = Vx.Type.f_traits_from_typedef(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
-      return output;
-    }
-
-    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
-      Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_typedef vtypedef = Vx.Core.f_any_from_any(Vx.Core.t_typedef, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      output = Vx.Type.f_traits_from_typedef(vtypedef);
-      return output;
-    }
-
-    public Vx.Core.Type_typelist vx_traits_from_typedef(Vx.Core.Type_typedef vtypedef) {
-      Vx.Core.Type_typelist output = Vx.Type.f_traits_from_typedef(vtypedef);
-      return output;
-    }
-
-  }
-
-  public static Vx.Type.Func_traits_from_typedef e_traits_from_typedef = new Vx.Type.Class_traits_from_typedef();
-  public static Vx.Type.Func_traits_from_typedef t_traits_from_typedef = new Vx.Type.Class_traits_from_typedef();
-
-  public static Vx.Core.Type_typelist f_traits_from_typedef(Vx.Core.Type_typedef vtypedef) {
-    Vx.Core.Type_typelist output = Vx.Core.e_typelist;
-    output = vtypedef.traits();
-    return output;
-  }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {
@@ -2870,7 +2774,6 @@ public static class Type {
     mapfunc.put("stringlist<-string-split", Vx.Type.t_stringlist_from_string_split);
     mapfunc.put("traitnames<-any", Vx.Type.t_traitnames_from_any);
     mapfunc.put("traits<-any", Vx.Type.t_traits_from_any);
-    mapfunc.put("traits<-typedef", Vx.Type.t_traits_from_typedef);
     Vx.Core.vx_global_package_set("vx/type", maptype, mapconst, mapfunc);
       return true;
     }

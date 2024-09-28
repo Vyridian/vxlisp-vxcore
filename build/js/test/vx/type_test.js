@@ -24,11 +24,11 @@ export default class vx_type_test {
       vx_test.t_testcoveragesummary,
       "testpkg",   "vx/type", 
       "constnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "docnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 81, ":tests", 22, ":total", 27), 
-      "funcnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 66, ":tests", 18, ":total", 27), 
+      "docnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 80, ":tests", 21, ":total", 26), 
+      "funcnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 69, ":tests", 18, ":total", 26), 
       "bigospacenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
       "bigotimenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 66, ":tests", 18, ":total", 27), 
+      "totalnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 69, ":tests", 18, ":total", 26), 
       "typenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     )
   }
@@ -73,8 +73,7 @@ export default class vx_type_test {
           "string<-stringlist-join", 1,
           "stringlist<-string-split", 1,
           "traitnames<-any", 0,
-          "traits<-any", 0,
-          "traits<-typedef", 0
+          "traits<-any", 0
         )
     )
   }

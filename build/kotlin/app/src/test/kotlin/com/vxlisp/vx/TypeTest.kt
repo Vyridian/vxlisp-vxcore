@@ -974,11 +974,11 @@ object vx_typeTest {
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/type", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 81, ":tests", 22, ":total", 27), 
-      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 66, ":tests", 18, ":total", 27), 
-      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 66, ":tests", 18, ":total", 27), 
+      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 80, ":tests", 21, ":total", 26), 
+      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 69, ":tests", 18, ":total", 26), 
+      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 26), 
+      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 26), 
+      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 69, ":tests", 18, ":total", 26), 
       ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     )
     return output
@@ -1017,8 +1017,7 @@ object vx_typeTest {
         ":string<-stringlist-join", 1,
         ":stringlist<-string-split", 1,
         ":traitnames<-any", 0,
-        ":traits<-any", 0,
-        ":traits<-typedef", 0
+        ":traits<-any", 0
       )
     )
     return output

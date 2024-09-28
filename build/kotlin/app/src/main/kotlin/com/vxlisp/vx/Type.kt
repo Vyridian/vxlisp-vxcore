@@ -2610,97 +2610,6 @@ object vx_type {
   }
 
 
-  interface Func_traits_from_typedef : vx_core.Func_any_from_any {
-    fun vx_traits_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_typelist
-  }
-
-  class Class_traits_from_typedef : vx_core.Class_base, Func_traits_from_typedef {
-    constructor() {}
-
-    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      val output : vx_type.Class_traits_from_typedef = vx_type.Class_traits_from_typedef()
-      return output
-    }
-
-    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
-      val output : vx_type.Class_traits_from_typedef = vx_type.Class_traits_from_typedef()
-      return output
-    }
-
-    override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
-      return output
-    }
-
-    override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
-        "vx/type", // pkgname
-        "traits<-typedef", // name
-        0, // idx
-        false, // async
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        ) // typedef
-      )
-      return output
-    }
-
-    override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_type.e_traits_from_typedef
-      return output
-    }
-
-    override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_type.t_traits_from_typedef
-      return output
-    }
-
-    override fun vx_fn_new(fn : vx_core.Class_any_from_any.IFn) : vx_core.Func_any_from_any {
-      return vx_core.e_any_from_any
-    }
-
-    override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
-      var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_typedef = value as vx_core.Type_typedef
-      var outputval : vx_core.Type_any = vx_type.f_traits_from_typedef(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
-      return output
-    }
-
-    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_core.e_any
-      var vtypedef : vx_core.Type_typedef = vx_core.f_any_from_any(vx_core.t_typedef, arglist.vx_any(vx_core.vx_new_int(0)))
-      output = vx_type.f_traits_from_typedef(vtypedef)
-      return output
-    }
-
-    override fun vx_traits_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_typelist {
-      var output : vx_core.Type_typelist = vx_type.f_traits_from_typedef(vtypedef)
-      return output
-    }
-
-  }
-
-  val e_traits_from_typedef : vx_type.Func_traits_from_typedef = vx_type.Class_traits_from_typedef()
-  val t_traits_from_typedef : vx_type.Func_traits_from_typedef = vx_type.Class_traits_from_typedef()
-
-  fun f_traits_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_typelist {
-    var output : vx_core.Type_typelist = vx_core.e_typelist
-    output = vtypedef.traits()
-    return output
-  }
-
-
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
     var mapconst : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
@@ -2731,7 +2640,6 @@ object vx_type {
     mapfunc.put("stringlist<-string-split", vx_type.t_stringlist_from_string_split)
     mapfunc.put("traitnames<-any", vx_type.t_traitnames_from_any)
     mapfunc.put("traits<-any", vx_type.t_traits_from_any)
-    mapfunc.put("traits<-typedef", vx_type.t_traits_from_typedef)
     vx_core.vx_global_package_set("vx/type", maptype, mapconst, mapfunc)
   }
 

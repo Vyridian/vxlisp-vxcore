@@ -2756,106 +2756,6 @@ namespace vx_type {
 
   //}
 
-  // (func traits<-typedef)
-  vx_core::Type_typelist f_traits_from_typedef(vx_core::Type_typedef vtypedef) {
-    vx_core::Type_typelist output = vx_core::e_typelist;
-    vx_core::vx_reserve(vtypedef);
-    output = vtypedef->traits();
-    vx_core::vx_release_one_except(vtypedef, output);
-    return output;
-  }
-  /**
-   * @function traits_from_typedef
-   * Get the traits of a given typedef
-   * @param  {typedef} vtypedef
-   * @return {typelist}
-   * (func traits<-typedef)
-   */
-  // (func traits<-typedef)
-  // class Class_traits_from_typedef {
-    Abstract_traits_from_typedef::~Abstract_traits_from_typedef() {}
-
-    Class_traits_from_typedef::Class_traits_from_typedef() : Abstract_traits_from_typedef::Abstract_traits_from_typedef() {
-      vx_core::refcount += 1;
-    }
-
-    Class_traits_from_typedef::~Class_traits_from_typedef() {
-      vx_core::refcount -= 1;
-      if (this->vx_p_msgblock) {
-        vx_core::vx_release_one(this->vx_p_msgblock);
-      }
-    }
-
-    vx_core::Type_any Class_traits_from_typedef::vx_new(vx_core::vx_Type_listany vals) const {
-      vx_type::Func_traits_from_typedef output = vx_type::e_traits_from_typedef;
-      vx_core::vx_release(vals);
-      return output;
-    }
-
-    vx_core::Type_any Class_traits_from_typedef::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
-      vx_type::Func_traits_from_typedef output = vx_type::e_traits_from_typedef;
-      vx_core::vx_release_except(copyval, output);
-      vx_core::vx_release_except(vals, output);
-      return output;
-    }
-
-    vx_core::Type_typedef Class_traits_from_typedef::vx_typedef() const {
-      vx_core::Type_typedef output = vx_core::Class_typedef::vx_typedef_new(
-        "vx/type", // pkgname
-        "traits<-typedef", // name
-        ":func", // extends
-        vx_core::vx_new(vx_core::t_typelist, {vx_core::t_func}), // traits
-        vx_core::e_typelist, // allowtypes
-        vx_core::e_typelist, // disallowtypes
-        vx_core::e_funclist, // allowfuncs
-        vx_core::e_funclist, // disallowfuncs
-        vx_core::e_anylist, // allowvalues
-        vx_core::e_anylist, // disallowvalues
-        vx_core::e_argmap // properties
-      );
-      return output;
-    }
-
-    vx_core::Type_constdef Class_traits_from_typedef::vx_constdef() const {return this->vx_p_constdef;}
-
-    vx_core::Type_funcdef Class_traits_from_typedef::vx_funcdef() const {
-      vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
-        "vx/type", // pkgname
-        "traits<-typedef", // name
-        0, // idx
-        false, // async
-        this->vx_typedef() // typedef
-      );
-      return output;
-    }
-
-    vx_core::Type_any Class_traits_from_typedef::vx_empty() const {return vx_type::e_traits_from_typedef;}
-    vx_core::Type_any Class_traits_from_typedef::vx_type() const {return vx_type::t_traits_from_typedef;}
-    vx_core::Type_msgblock Class_traits_from_typedef::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_traits_from_typedef::vx_dispose() {return vx_core::emptylistany;}
-
-    vx_core::Func_any_from_any Class_traits_from_typedef::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
-      return vx_core::e_any_from_any;
-    }
-
-    vx_core::Type_any Class_traits_from_typedef::vx_any_from_any(vx_core::Type_any val) const {
-      vx_core::Type_any output = vx_core::e_any;
-      vx_core::Type_typedef inputval = vx_core::vx_any_from_any(vx_core::t_typedef, val);
-      output = vx_type::f_traits_from_typedef(inputval);
-      vx_core::vx_release_except(val, output);
-      return output;
-    }
-
-    vx_core::Type_any Class_traits_from_typedef::vx_repl(vx_core::Type_anylist arglist) {
-      vx_core::Type_any output = vx_core::e_any;
-      vx_core::Type_typedef vtypedef = vx_core::vx_any_from_any(vx_core::t_typedef, arglist->vx_get_any(vx_core::vx_new_int(0)));
-      output = vx_type::f_traits_from_typedef(vtypedef);
-      vx_core::vx_release_except(arglist, output);
-      return output;
-    }
-
-  //}
-
   vx_type::Func_allowtypenames_from_type e_allowtypenames_from_type = NULL;
   vx_type::Func_allowtypenames_from_type t_allowtypenames_from_type = NULL;
   vx_type::Func_allowtypes_from_type e_allowtypes_from_type = NULL;
@@ -2908,8 +2808,6 @@ namespace vx_type {
   vx_type::Func_traitnames_from_any t_traitnames_from_any = NULL;
   vx_type::Func_traits_from_any e_traits_from_any = NULL;
   vx_type::Func_traits_from_any t_traits_from_any = NULL;
-  vx_type::Func_traits_from_typedef e_traits_from_typedef = NULL;
-  vx_type::Func_traits_from_typedef t_traits_from_typedef = NULL;
 
   // class vx_Class_package {
     vx_Class_package::vx_Class_package() {
@@ -3020,10 +2918,6 @@ namespace vx_type {
       vx_core::vx_reserve_empty(vx_type::e_traits_from_any);
       vx_type::t_traits_from_any = new vx_type::Class_traits_from_any();
       vx_core::vx_reserve_type(vx_type::t_traits_from_any);
-      vx_type::e_traits_from_typedef = new vx_type::Class_traits_from_typedef();
-      vx_core::vx_reserve_empty(vx_type::e_traits_from_typedef);
-      vx_type::t_traits_from_typedef = new vx_type::Class_traits_from_typedef();
-      vx_core::vx_reserve_type(vx_type::t_traits_from_typedef);
       vx_core::vx_Type_mapany maptype;
       vx_core::vx_Type_mapany mapconst;
       vx_core::vx_Type_mapfunc mapfunc;
@@ -3054,7 +2948,6 @@ namespace vx_type {
       mapfunc["stringlist<-string-split"] = vx_type::t_stringlist_from_string_split;
       mapfunc["traitnames<-any"] = vx_type::t_traitnames_from_any;
       mapfunc["traits<-any"] = vx_type::t_traits_from_any;
-      mapfunc["traits<-typedef"] = vx_type::t_traits_from_typedef;
       vx_core::vx_global_package_set("vx/type", maptype, mapconst, mapfunc);
 	   }
   // }

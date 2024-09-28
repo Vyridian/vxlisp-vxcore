@@ -2847,7 +2847,7 @@
          `(test
  3
  (int<-string-findkeyword
-  "ab cdefg"
+  "ab	cdefg"
   ":whitespace"))`
         :testresult
          (testresult
@@ -2860,9 +2860,8 @@
          `(test
  5
  (int<-string-findkeyword
-  "  
-
-ab"
+  " 	
+ab"
   ":nonwhitespace"))`
         :testresult
          (testresult
@@ -3097,9 +3096,9 @@ b"))))
          `(test
  "ab"
  (string-trim
-  "  
+  " 	
 ab
-  "))`
+	 "))`
         :testresult
          (testresult
           :code ":eq"
@@ -3398,8 +3397,7 @@ ab
       :string<-stringlist-join 1
       :stringlist<-string-split 1
       :traitnames<-any 0
-      :traits<-any 0
-      :traits<-typedef 0)
+      :traits<-any 0)
     :testpkg "vx/type")
   :coveragesummary
    (testcoveragesummary
@@ -3407,12 +3405,12 @@ ab
      (testcoveragenums
       :pct 0
       :tests 0
-      :total 27)
+      :total 26)
     :bigotimenums
      (testcoveragenums
       :pct 0
       :tests 0
-      :total 27)
+      :total 26)
     :constnums
      (testcoveragenums
       :pct 100
@@ -3420,20 +3418,20 @@ ab
       :total 0)
     :docnums
      (testcoveragenums
-      :pct 81
-      :tests 22
-      :total 27)
+      :pct 80
+      :tests 21
+      :total 26)
     :funcnums
      (testcoveragenums
-      :pct 66
+      :pct 69
       :tests 18
-      :total 27)
+      :total 26)
     :testpkg "vx/type"
     :totalnums
      (testcoveragenums
-      :pct 66
+      :pct 69
       :tests 18
-      :total 27)
+      :total 26)
     :typenums
      (testcoveragenums
       :pct 100

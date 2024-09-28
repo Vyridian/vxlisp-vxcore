@@ -974,11 +974,11 @@ public class TypeTest {
       Vx.Test.t_testcoveragesummary,
       ":testpkg", "vx/type", 
       ":constnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 81, ":tests", 22, ":total", 27), 
-      ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 66, ":tests", 18, ":total", 27), 
-      ":bigospacenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":bigotimenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 66, ":tests", 18, ":total", 27), 
+      ":docnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 80, ":tests", 21, ":total", 26), 
+      ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 69, ":tests", 18, ":total", 26), 
+      ":bigospacenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 26), 
+      ":bigotimenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 26), 
+      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 69, ":tests", 18, ":total", 26), 
       ":typenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     );
     return output;
@@ -1017,8 +1017,7 @@ public class TypeTest {
         ":string<-stringlist-join", 1,
         ":stringlist<-string-split", 1,
         ":traitnames<-any", 0,
-        ":traits<-any", 0,
-        ":traits<-typedef", 0
+        ":traits<-any", 0
       )
     );
     return output;
