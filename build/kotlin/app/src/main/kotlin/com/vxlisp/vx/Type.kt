@@ -149,7 +149,7 @@ object vx_type {
   fun vx_string_lowercase(
     text : vx_core.Type_string) : vx_core.Type_string {
     var stext : String = text.vx_string()
-    stext = stext.toLowerCase()
+    stext = stext.lowercase()
     val output : vx_core.Type_string = vx_core.vx_new_string(stext)
     return output
   }
@@ -167,7 +167,7 @@ object vx_type {
   fun vx_string_uppercase(
     text : vx_core.Type_string) : vx_core.Type_string {
     var stext : String = text.vx_string()
-    stext = stext.toUpperCase()
+    stext = stext.uppercase()
     val output : vx_core.Type_string = vx_core.vx_new_string(stext)
     return output
   }

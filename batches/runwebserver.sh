@@ -1,9 +1,9 @@
 #!/bin/bash
 options="webserver"
-# runablefolder=../../vxlisp/dist
-runablefolder=../../vxlisp/src
 currentfolder=$PWD
 srcfolder=%currentfolder%/../src
+# runablefolder=../../vxlisp/dist
+runablefolder=../../vxlisp/src
 # runable=vxlisp_linux64
 # runable=vxlisp_mac64
 runable="go run ."
