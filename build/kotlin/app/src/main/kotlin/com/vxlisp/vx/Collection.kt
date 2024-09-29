@@ -202,6 +202,217 @@ object vx_collection {
     return output
   }
 
+  interface Func_minus : vx_core.Type_func, vx_core.Type_replfunc {
+    fun <X : vx_core.Type_list> vx_minus(generic_list_1 : X, listmain : X, listremove : X) : X
+  }
+
+  class Class_minus : vx_core.Class_base, Func_minus {
+    constructor() {}
+
+    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_collection.Class_minus = vx_collection.Class_minus()
+      return output
+    }
+
+    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_collection.Class_minus = vx_collection.Class_minus()
+      return output
+    }
+
+    override fun vx_typedef() : vx_core.Type_typedef {
+      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      return output
+    }
+
+    override fun vx_funcdef() : vx_core.Type_funcdef {
+      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+        "vx/collection", // pkgname
+        "-", // name
+        0, // idx
+        false, // async
+        vx_core.typedef_new(
+          "vx/core", // pkgname
+          "list-1", // name
+          ":list", // extends
+          vx_core.e_typelist, // traits
+          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
+          vx_core.e_typelist, // disallowtypes
+          vx_core.e_funclist, // allowfuncs
+          vx_core.e_funclist, // disallowfuncs
+          vx_core.e_anylist, // allowvalues
+          vx_core.e_anylist, // disallowvalues
+          vx_core.e_argmap // properties
+        ) // typedef
+      )
+      return output
+    }
+
+    override fun vx_empty() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_collection.e_minus
+      return output
+    }
+
+    override fun vx_type() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_collection.t_minus
+      return output
+    }
+
+    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_any
+      var generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
+      var listmain : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
+      var listremove : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(1)))
+      output = vx_collection.f_minus(generic_list_1, listmain, listremove)
+      return output
+    }
+
+    override fun <X : vx_core.Type_list> vx_minus(generic_list_1 : X, listmain : X, listremove : X) : X {
+      var output : X = vx_collection.f_minus(generic_list_1, listmain, listremove)
+      return output
+    }
+
+  }
+
+  val e_minus : vx_collection.Func_minus = vx_collection.Class_minus()
+  val t_minus : vx_collection.Func_minus = vx_collection.Class_minus()
+
+  fun <X : vx_core.Type_list> f_minus(generic_list_1 : X, listmain : X, listremove : X) : X {
+    var output : X = vx_core.f_empty(generic_list_1)
+    output = vx_collection.f_list_from_list_filter(
+      generic_list_1,
+      listmain,
+      vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
+        var item : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, item_any)
+        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+          vx_core.t_any,
+          vx_core.vx_new(
+            vx_core.t_thenelselist,
+            vx_core.f_then(
+              vx_core.t_boolean_from_func.vx_fn_new({ ->
+                var output_2 : vx_core.Type_any = vx_core.f_not(
+                  vx_core.f_contains_1(
+                    listremove,
+                    item
+                  )
+                )
+                output_2
+              }),
+              vx_core.t_any_from_func.vx_fn_new({ ->
+                var output_3 : vx_core.Type_any = item
+                output_3
+              })
+            )
+          )
+        )
+        output_1
+      })
+    )
+    return output
+  }
+
+
+  interface Func_minus_1 : vx_core.Type_func, vx_core.Type_replfunc {
+    fun <N : vx_core.Type_map> vx_minus_1(generic_map_1 : N, mapmain : N, mapremove : N) : N
+  }
+
+  class Class_minus_1 : vx_core.Class_base, Func_minus_1 {
+    constructor() {}
+
+    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_collection.Class_minus_1 = vx_collection.Class_minus_1()
+      return output
+    }
+
+    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_collection.Class_minus_1 = vx_collection.Class_minus_1()
+      return output
+    }
+
+    override fun vx_typedef() : vx_core.Type_typedef {
+      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      return output
+    }
+
+    override fun vx_funcdef() : vx_core.Type_funcdef {
+      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+        "vx/collection", // pkgname
+        "-", // name
+        1, // idx
+        false, // async
+        vx_core.typedef_new(
+          "vx/core", // pkgname
+          "map-1", // name
+          ":map", // extends
+          vx_core.e_typelist, // traits
+          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
+          vx_core.e_typelist, // disallowtypes
+          vx_core.e_funclist, // allowfuncs
+          vx_core.e_funclist, // disallowfuncs
+          vx_core.e_anylist, // allowvalues
+          vx_core.e_anylist, // disallowvalues
+          vx_core.e_argmap // properties
+        ) // typedef
+      )
+      return output
+    }
+
+    override fun vx_empty() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_collection.e_minus_1
+      return output
+    }
+
+    override fun vx_type() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_collection.t_minus_1
+      return output
+    }
+
+    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_any
+      var generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
+      var mapmain : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
+      var mapremove : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(1)))
+      output = vx_collection.f_minus_1(generic_map_1, mapmain, mapremove)
+      return output
+    }
+
+    override fun <N : vx_core.Type_map> vx_minus_1(generic_map_1 : N, mapmain : N, mapremove : N) : N {
+      var output : N = vx_collection.f_minus_1(generic_map_1, mapmain, mapremove)
+      return output
+    }
+
+  }
+
+  val e_minus_1 : vx_collection.Func_minus_1 = vx_collection.Class_minus_1()
+  val t_minus_1 : vx_collection.Func_minus_1 = vx_collection.Class_minus_1()
+
+  fun <N : vx_core.Type_map> f_minus_1(generic_map_1 : N, mapmain : N, mapremove : N) : N {
+    var output : N = vx_core.f_empty(generic_map_1)
+    output = vx_core.f_let(
+      generic_map_1,
+      vx_core.t_any_from_func.vx_fn_new({ ->
+        var keysmain : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
+          mapmain
+        )
+        var keysremove : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
+          mapremove
+        )
+        var keysremain : vx_core.Type_stringlist = vx_collection.f_minus(
+          vx_core.t_stringlist,
+          keysmain,
+          keysremove
+        )
+        var output_1 : vx_core.Type_any = vx_collection.f_map_from_map_keys(
+          generic_map_1,
+          mapmain,
+          keysremain
+        )
+        output_1
+      })
+    )
+    return output
+  }
+
+
   interface Func_any_from_for_until_loop : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_from_for_until_loop(generic_any_1 : T, start : T, fn_until : vx_core.Func_boolean_from_any, fn_loop : vx_core.Func_any_from_any) : T
   }
@@ -2470,6 +2681,8 @@ object vx_collection {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
     var mapconst : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
     var mapfunc : MutableMap<String, vx_core.Type_func> = LinkedHashMap<String, vx_core.Type_func>()
+    mapfunc.put("-", vx_collection.t_minus)
+    mapfunc.put("-_1", vx_collection.t_minus_1)
     mapfunc.put("any<-for-until-loop", vx_collection.t_any_from_for_until_loop)
     mapfunc.put("any<-for-until-loop-max", vx_collection.t_any_from_for_until_loop_max)
     mapfunc.put("any<-for-while-loop", vx_collection.t_any_from_for_while_loop)

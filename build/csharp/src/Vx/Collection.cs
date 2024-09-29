@@ -206,6 +206,229 @@ public static class Collection {
     return output;
   }
   /**
+   * @function minus
+   * Returns a list from listmain after removing listremove.
+   * @param  {list-1} listmain
+   * @param  {list-1} listremove
+   * @return {list-1}
+   * (func -)
+   */
+  public interface Func_minus : Vx.Core.Type_func, Vx.Core.Type_replfunc {
+    public X vx_minus<X>(X generic_list_1, X listmain, X listremove) where X : Vx.Core.Type_list;
+  }
+
+  public class Class_minus : Vx.Core.Class_base, Func_minus {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Collection.Class_minus output = new Vx.Collection.Class_minus();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Collection.Class_minus output = new Vx.Collection.Class_minus();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/collection", // pkgname
+        "-", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "list-1", // name
+          ":list", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Collection.e_minus;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Collection.t_minus;
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_list listmain = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_list listremove = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      output = Vx.Collection.f_minus(generic_list_1, listmain, listremove);
+      return output;
+    }
+
+    public X vx_minus<X>(X generic_list_1, X listmain, X listremove) where X : Vx.Core.Type_list {
+      X output = Vx.Collection.f_minus(generic_list_1, listmain, listremove);
+      return output;
+    }
+
+  }
+
+  public static Vx.Collection.Func_minus e_minus = new Vx.Collection.Class_minus();
+  public static Vx.Collection.Func_minus t_minus = new Vx.Collection.Class_minus();
+
+  public static X f_minus<X>(X generic_list_1, X listmain, X listremove) where X : Vx.Core.Type_list {
+    X output = Vx.Core.f_empty(generic_list_1);
+    output = Vx.Collection.f_list_from_list_filter(
+      generic_list_1,
+      listmain,
+      Vx.Core.t_any_from_any.vx_fn_new((item_any) => {
+        Vx.Core.Type_any item = Vx.Core.f_any_from_any(Vx.Core.t_any, item_any);
+        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+          Vx.Core.t_any,
+          Vx.Core.vx_new(
+            Vx.Core.t_thenelselist,
+            Vx.Core.f_then(
+              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
+                Vx.Core.Type_any output_2 = Vx.Core.f_not(
+                  Vx.Core.f_contains_1(
+                    listremove,
+                    item
+                  )
+                );
+                return output_2;
+              }),
+              Vx.Core.t_any_from_func.vx_fn_new(() => {
+                Vx.Core.Type_any output_3 = item;
+                return output_3;
+              })
+            )
+          )
+        );
+        return output_1;
+      })
+    );
+    return output;
+  }
+
+  /**
+   * @function minus 1
+   * Returns a map from mapmain after removing keys from mapremove.
+   * @param  {map-1} mapmain
+   * @param  {map-1} mapremove
+   * @return {map-1}
+   * (func -)
+   */
+  public interface Func_minus_1 : Vx.Core.Type_func, Vx.Core.Type_replfunc {
+    public N vx_minus_1<N>(N generic_map_1, N mapmain, N mapremove) where N : Vx.Core.Type_map;
+  }
+
+  public class Class_minus_1 : Vx.Core.Class_base, Func_minus_1 {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Collection.Class_minus_1 output = new Vx.Collection.Class_minus_1();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Collection.Class_minus_1 output = new Vx.Collection.Class_minus_1();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/collection", // pkgname
+        "-", // name
+        1, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "map-1", // name
+          ":map", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Collection.e_minus_1;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Collection.t_minus_1;
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_map mapmain = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_map mapremove = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      output = Vx.Collection.f_minus_1(generic_map_1, mapmain, mapremove);
+      return output;
+    }
+
+    public N vx_minus_1<N>(N generic_map_1, N mapmain, N mapremove) where N : Vx.Core.Type_map {
+      N output = Vx.Collection.f_minus_1(generic_map_1, mapmain, mapremove);
+      return output;
+    }
+
+  }
+
+  public static Vx.Collection.Func_minus_1 e_minus_1 = new Vx.Collection.Class_minus_1();
+  public static Vx.Collection.Func_minus_1 t_minus_1 = new Vx.Collection.Class_minus_1();
+
+  public static N f_minus_1<N>(N generic_map_1, N mapmain, N mapremove) where N : Vx.Core.Type_map {
+    N output = Vx.Core.f_empty(generic_map_1);
+    output = Vx.Core.f_let(
+      generic_map_1,
+      Vx.Core.t_any_from_func.vx_fn_new(() => {
+        Vx.Core.Type_stringlist keysmain = Vx.Core.f_stringlist_from_map(
+          mapmain
+        );
+        Vx.Core.Type_stringlist keysremove = Vx.Core.f_stringlist_from_map(
+          mapremove
+        );
+        Vx.Core.Type_stringlist keysremain = Vx.Collection.f_minus(
+          Vx.Core.t_stringlist,
+          keysmain,
+          keysremove
+        );
+        Vx.Core.Type_any output_1 = Vx.Collection.f_map_from_map_keys(
+          generic_map_1,
+          mapmain,
+          keysremain
+        );
+        return output_1;
+      })
+    );
+    return output;
+  }
+
+  /**
    * @function any_from_for_until_loop
    * Returns a value using an until loop. Maximum 10000 times.
    * @param  {any-1} start
@@ -2667,6 +2890,8 @@ public static class Collection {
     Vx.Core.Map<string, Vx.Core.Type_any> maptype = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
     Vx.Core.Map<string, Vx.Core.Type_any> mapconst = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
     Vx.Core.Map<string, Vx.Core.Type_func> mapfunc = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_func>();
+    mapfunc.put("-", Vx.Collection.t_minus);
+    mapfunc.put("-_1", Vx.Collection.t_minus_1);
     mapfunc.put("any<-for-until-loop", Vx.Collection.t_any_from_for_until_loop);
     mapfunc.put("any<-for-until-loop-max", Vx.Collection.t_any_from_for_until_loop_max);
     mapfunc.put("any<-for-while-loop", Vx.Collection.t_any_from_for_while_loop);

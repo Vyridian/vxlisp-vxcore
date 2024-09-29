@@ -1266,9 +1266,6 @@
           <li class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-any')">
             (f) traits&lt;-any
           </li>
-          <li class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-typedef')">
-            (f) traits&lt;-typedef
-          </li>
         </ul>
       </details>
       <details>
@@ -1505,6 +1502,12 @@
           <span class="npackage" onclick="docjs.navigate('pkg_vx/collection')">vx/collection</span>
         </summary>
         <ul class="packagenav" id="n_pkgnav_vx/collection">
+          <li class="nfunc" onclick="docjs.navigate('func_vx/collection/-')">
+            (f) -
+          </li>
+          <li class="nfunc" onclick="docjs.navigate('func_vx/collection/-_1')">
+            (f) -
+          </li>
           <li class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-until-loop')">
             (f) any&lt;-for-until-loop
           </li>
@@ -2996,7 +2999,7 @@
                 <div class="tr">
                   <div class="td">doc</div>
                   <div class="td">:doc</div>
-                  <div class="td">../doc</div>
+                  <div class="td">../build/doc</div>
                   <div class="td"></div>
                   <div class="td"></div>
                   <div class="td"></div>
@@ -3016,7 +3019,7 @@
                 <div class="tr">
                   <div class="td">srccpp</div>
                   <div class="td">:source</div>
-                  <div class="td">../cpp/src/main</div>
+                  <div class="td">../build/cpp/src/main</div>
                   <div class="td">:cpp</div>
                   <div class="td">vx/core/main</div>
                   <div class="td">vx/translation/en/context-en</div>
@@ -3026,7 +3029,7 @@
                 <div class="tr">
                   <div class="td">testcpp</div>
                   <div class="td">:test</div>
-                  <div class="td">../cpp/src/test</div>
+                  <div class="td">../build/cpp/src/test</div>
                   <div class="td">:cpp</div>
                   <div class="td"></div>
                   <div class="td">vx/translation/en/context-test</div>
@@ -3036,7 +3039,7 @@
                 <div class="tr">
                   <div class="td">srccsharp</div>
                   <div class="td">:source</div>
-                  <div class="td">../csharp/src</div>
+                  <div class="td">../build/csharp/src</div>
                   <div class="td">:csharp</div>
                   <div class="td">vx/core/main</div>
                   <div class="td">vx/translation/en/context-en</div>
@@ -3046,7 +3049,7 @@
                 <div class="tr">
                   <div class="td">testcsharp</div>
                   <div class="td">:test</div>
-                  <div class="td">../csharp/test</div>
+                  <div class="td">../build/csharp/test</div>
                   <div class="td">:csharp</div>
                   <div class="td"></div>
                   <div class="td">vx/translation/en/context-test</div>
@@ -3056,7 +3059,7 @@
                 <div class="tr">
                   <div class="td">srcjava</div>
                   <div class="td">:source</div>
-                  <div class="td">../java/src/main/java</div>
+                  <div class="td">../build/java/src/main/java</div>
                   <div class="td">:java</div>
                   <div class="td">vx/core/main</div>
                   <div class="td">vx/translation/en/context-en</div>
@@ -3066,7 +3069,7 @@
                 <div class="tr">
                   <div class="td">testjava</div>
                   <div class="td">:test</div>
-                  <div class="td">../java/src/test/java</div>
+                  <div class="td">../build/java/src/test/java</div>
                   <div class="td">:java</div>
                   <div class="td"></div>
                   <div class="td">vx/translation/en/context-test</div>
@@ -3076,7 +3079,7 @@
                 <div class="tr">
                   <div class="td">srcjs</div>
                   <div class="td">:source</div>
-                  <div class="td">../js/src</div>
+                  <div class="td">../build/js/src</div>
                   <div class="td">:js</div>
                   <div class="td">vx/core/main</div>
                   <div class="td">vx/translation/en/context-en</div>
@@ -3086,7 +3089,7 @@
                 <div class="tr">
                   <div class="td">testjs</div>
                   <div class="td">:test</div>
-                  <div class="td">../js/test</div>
+                  <div class="td">../build/js/test</div>
                   <div class="td">:js</div>
                   <div class="td"></div>
                   <div class="td">vx/translation/en/context-test</div>
@@ -3096,7 +3099,7 @@
                 <div class="tr">
                   <div class="td">srckotlin</div>
                   <div class="td">:source</div>
-                  <div class="td">../kotlin/app/src/main/kotlin</div>
+                  <div class="td">../build/kotlin/app/src/main/kotlin</div>
                   <div class="td">:kotlin</div>
                   <div class="td">vx/core/main</div>
                   <div class="td">vx/translation/en/context-en</div>
@@ -3106,7 +3109,7 @@
                 <div class="tr">
                   <div class="td">testkotlin</div>
                   <div class="td">:test</div>
-                  <div class="td">../kotlin/app/src/test/kotlin</div>
+                  <div class="td">../build/kotlin/app/src/test/kotlin</div>
                   <div class="td">:kotlin</div>
                   <div class="td"></div>
                   <div class="td">vx/translation/en/context-test</div>
@@ -3116,7 +3119,7 @@
                 <div class="tr">
                   <div class="td">srcswift</div>
                   <div class="td">:source</div>
-                  <div class="td">../swift/src/main</div>
+                  <div class="td">../build/swift/src/main</div>
                   <div class="td">:swift</div>
                   <div class="td">vx/core/main</div>
                   <div class="td">vx/translation/en/context-en</div>
@@ -3126,7 +3129,7 @@
                 <div class="tr">
                   <div class="td">testswift</div>
                   <div class="td">:test</div>
-                  <div class="td">../swift/src/test</div>
+                  <div class="td">../build/swift/src/test</div>
                   <div class="td">:swift</div>
                   <div class="td"></div>
                   <div class="td">vx/translation/en/context-test</div>
@@ -3196,7 +3199,7 @@
  :cmds
   (cmd doc
    :code :doc
-   :path ../doc
+   :path ../build/doc
    :doc  &quot;Build documentation html&quot;)
   (cmd webserver
    :code :webserver
@@ -3206,79 +3209,79 @@
   (cmd srccpp
    :code    :source
    :lang    :cpp
-   :path    ../cpp/src/main
+   :path    ../build/cpp/src/main
    :main    vx/core/main
    :context vx/translation/en/context-en
    :doc     &quot;Build C++ Source Code&quot;)
   (cmd testcpp
    :code    :test
    :lang    :cpp
-   :path    ../cpp/src/test
+   :path    ../build/cpp/src/test
    :context vx/translation/en/context-test
    :doc     &quot;Build C++ Test Code&quot;)
   (cmd srccsharp
    :code    :source
    :lang    :csharp
-   :path    ../csharp/src
+   :path    ../build/csharp/src
    :main    vx/core/main
    :context vx/translation/en/context-en
    :doc     &quot;Build C# Source Code&quot;)
   (cmd testcsharp
    :code    :test
    :lang    :csharp
-   :path    ../csharp/test
+   :path    ../build/csharp/test
    :context vx/translation/en/context-test
    :doc     &quot;Build C# Test Code&quot;)
   (cmd srcjava
    :code    :source
    :lang    :java
-   :path    ../java/src/main/java
+   :path    ../build/java/src/main/java
    :main    vx/core/main
    :context vx/translation/en/context-en
    :doc     &quot;Build Java Source Code&quot;)
   (cmd testjava
    :code    :test
    :lang    :java
-   :path    ../java/src/test/java
+   :path    ../build/java/src/test/java
    :context vx/translation/en/context-test
    :doc     &quot;Build Java Test Code&quot;)
   (cmd srcjs
    :code    :source
    :lang    :js
-   :path    ../js/src
+   :path    ../build/js/src
    :main    vx/core/main
    :context vx/translation/en/context-en
    :doc     &quot;Build JavaScript Source Code&quot;)
   (cmd testjs
    :code    :test
    :lang    :js
-   :path    ../js/test
+   :path    ../build/js/test
    :context vx/translation/en/context-test
    :doc     &quot;Build JavaScript Test Code&quot;)
   (cmd srckotlin
    :code    :source
    :lang    :kotlin
-   :path    ../kotlin/app/src/main/kotlin
+   :path    ../build/kotlin/app/src/main/kotlin
    :main    vx/core/main
    :context vx/translation/en/context-en
    :doc     &quot;Build Kotlin Source Code&quot;)
   (cmd testkotlin
    :code    :test
    :lang    :kotlin
-   :path    ../kotlin/app/src/test/kotlin
+   :path    ../build/kotlin/app/src/test/kotlin
    :context vx/translation/en/context-test
    :doc     &quot;Build Kotlin Test Code&quot;)
   (cmd srcswift
    :code    :source
    :lang    :swift
-   :path    ../swift/src/main
+   :path    ../build/swift/src/main
    :main    vx/core/main
    :context vx/translation/en/context-en
    :doc     &quot;Build Swift Source Code&quot;)
   (cmd testswift
    :code    :test
    :lang    :swift
-   :path    ../swift/src/test
+   :path    ../build/swift/src/test
    :context vx/translation/en/context-test
    :doc     &quot;Build Swift Test Code&quot;)
 )
@@ -6819,6 +6822,12 @@
 
 (func traits&lt;-typedef : typelist
  [vtypedef : typedef]
+ (:traits vtypedef)
+ :doc &quot;Get the traits of a given typedef&quot;)
+
+/*
+(func traits&lt;-typedef : typelist
+ [vtypedef : typedef]
  (native
   :cpp
    &quot;vtypedef-&gt;traits();&quot;
@@ -6829,6 +6838,7 @@
   :js
    &quot;vtypedef['vx_value']['traits']&quot;)
  :doc &quot;Return trait list from type&quot;)
+*/
 
 (func type&lt;-any : any
  [value : any-1]
@@ -25001,7 +25011,7 @@ improves readability.</div>
             <div class="lbl">Description:</div>
             <ul>
               <li>
-                <div class="txt">Return trait list from type</div>
+                <div class="txt">Get the traits of a given typedef</div>
               </li>
             </ul>
             <div class="lbl">Function Name:</div>
@@ -25053,16 +25063,8 @@ improves readability.</div>
                 <li>
                   <div class="source">(func traits&lt;-typedef : typelist
  [vtypedef : typedef]
- (native
-  :cpp
-   &quot;vtypedef-&gt;traits();&quot;
-  :csharp
-   &quot;vtypedef.traits();&quot;
-  :java
-   &quot;vtypedef.traits();&quot;
-  :js
-   &quot;vtypedef['vx_value']['traits']&quot;)
- :doc &quot;Return trait list from type&quot;)</div>
+ (:traits vtypedef)
+ :doc &quot;Get the traits of a given typedef&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -30768,7 +30770,7 @@ improves readability.</div>
           </summary>
           <ul>
             <li>
-      <span class="nfunc" onclick="docjs.navigate('func_vx/type/allowtypenames&lt;-type')">allowtypenames&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/allowtypes&lt;-type')">allowtypes&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/any&lt;-int')">any&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/boolean&lt;-string-ends')">boolean&lt;-string-ends</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/boolean&lt;-string-starts')">boolean&lt;-string-starts</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-find')">int&lt;-string-find</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-findkeyword')">int&lt;-string-findkeyword</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-findlast')">int&lt;-string-findlast</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-boolean')">is-boolean</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-decimal')">is-decimal</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-none')">is-none</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-string')">is-string</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-type')">is-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-type&lt;-any-typelist')">is-type&lt;-any-typelist</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-int')">string&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-end')">string&lt;-string-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-start')">string&lt;-string-start</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-start-end')">string&lt;-string-start-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-stringlist-join')">string&lt;-stringlist-join</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-lowercase')">string-lowercase</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-outdent')">string-outdent</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-trim')">string-trim</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-uppercase')">string-uppercase</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/stringlist&lt;-string-split')">stringlist&lt;-string-split</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traitnames&lt;-any')">traitnames&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-any')">traits&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-typedef')">traits&lt;-typedef</span>
+      <span class="nfunc" onclick="docjs.navigate('func_vx/type/allowtypenames&lt;-type')">allowtypenames&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/allowtypes&lt;-type')">allowtypes&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/any&lt;-int')">any&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/boolean&lt;-string-ends')">boolean&lt;-string-ends</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/boolean&lt;-string-starts')">boolean&lt;-string-starts</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-find')">int&lt;-string-find</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-findkeyword')">int&lt;-string-findkeyword</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-findlast')">int&lt;-string-findlast</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-boolean')">is-boolean</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-decimal')">is-decimal</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-none')">is-none</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-string')">is-string</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-type')">is-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-type&lt;-any-typelist')">is-type&lt;-any-typelist</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-int')">string&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-end')">string&lt;-string-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-start')">string&lt;-string-start</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-start-end')">string&lt;-string-start-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-stringlist-join')">string&lt;-stringlist-join</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-lowercase')">string-lowercase</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-outdent')">string-outdent</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-trim')">string-trim</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-uppercase')">string-uppercase</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/stringlist&lt;-string-split')">stringlist&lt;-string-split</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traitnames&lt;-any')">traitnames&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-any')">traits&lt;-any</span>
             </li>
           </ul>
         </details>
@@ -31189,11 +31191,6 @@ improves readability.</div>
  (traits&lt;-typedef
   (typedef&lt;-any value))
  :doc &quot;Get the traits of a given value&quot;)
-
-(func traits&lt;-typedef : typelist
- [vtypedef : typedef]
- (:traits vtypedef)
- :doc &quot;Get the traits of a given typedef&quot;)
 </div>
             </li>
           </ul>
@@ -33332,69 +33329,6 @@ improves readability.</div>
  (traits&lt;-typedef
   (typedef&lt;-any value))
  :doc &quot;Get the traits of a given value&quot;)</div>
-                </li>
-              </ul>
-            </details>
-          </div>
-          <div class="d" id="d_func_vx/type/traits&lt;-typedef">
-            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/type')">vx/type</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-typedef')">traits&lt;-typedef</span></div>
-            <div class="lbl">Description:</div>
-            <ul>
-              <li>
-                <div class="txt">Get the traits of a given typedef</div>
-              </li>
-            </ul>
-            <div class="lbl">Function Name:</div>
-            <ul>
-              <li>
-                <div class="txt">traits&lt;-typedef</div>
-              </li>
-            </ul>
-            <div class="lbl">Return Type:</div>
-            <ul>
-              <li>
-                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/core/typelist')">vx/core/typelist</span></div>
-              </li>
-            </ul>
-          <details open="true">
-            <summary>
-              <span class="lbl">Arguments:</span>
-            </summary>
-            <ul>
-              <li>
-                <div class="table">
-                  <div class="th">
-                    <div class="td">Name</div>
-                    <div class="td">Type</div>
-                    <div class="td">Generic</div>
-                    <div class="td">Description</div>
-                  </div>
-                  <div class="tr">
-                    <div class="td">vtypedef</div>
-                    <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/typedef')">vx/core/typedef</span></div>
-                    <div class="td"></div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </details>
-            <details open="true">
-              <summary>
-                <span class="lbl">Usage/Test Cases:</span>
-              </summary>
-              <ul>
-              </ul>
-            </details>
-            <details open="true">
-              <summary>
-                <span class="lbl">Source Code:</span>
-              </summary>
-              <ul>
-                <li>
-                  <div class="source">(func traits&lt;-typedef : typelist
- [vtypedef : typedef]
- (:traits vtypedef)
- :doc &quot;Get the traits of a given typedef&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -39840,7 +39774,7 @@ improves readability.</div>
           </summary>
           <ul>
             <li>
-      <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-until-loop')">any&lt;-for-until-loop</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-until-loop-max')">any&lt;-for-until-loop-max</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-while-loop')">any&lt;-for-while-loop</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-while-loop-max')">any&lt;-for-while-loop-max</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-map-pos')">any&lt;-map-pos</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/anymap&lt;-struct')">anymap&lt;-struct</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/boolean-write&lt;-map-removekey')">boolean-write&lt;-map-removekey</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/boolean-write&lt;-map-removekeys')">boolean-write&lt;-map-removekeys</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/int&lt;-map-key')">int&lt;-map-key</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/int&lt;-stringlist-find')">int&lt;-stringlist-find</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/is-list')">is-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/is-map')">is-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-for-end-loop')">list&lt;-for-end-loop</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-for-while-loop')">list&lt;-for-while-loop</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-for-while-loop-max')">list&lt;-for-while-loop-max</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-end')">list&lt;-list-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-filter')">list&lt;-list-filter</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-filtertypes')">list&lt;-list-filtertypes</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-start')">list&lt;-list-start</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-start-end')">list&lt;-list-start-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-map-end')">map&lt;-map-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-map-keys')">map&lt;-map-keys</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-map-start')">map&lt;-map-start</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-map-start-end')">map&lt;-map-start-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-struct')">map&lt;-struct</span>
+      <span class="nfunc" onclick="docjs.navigate('func_vx/collection/-')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/-_1')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-until-loop')">any&lt;-for-until-loop</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-until-loop-max')">any&lt;-for-until-loop-max</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-while-loop')">any&lt;-for-while-loop</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-while-loop-max')">any&lt;-for-while-loop-max</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-map-pos')">any&lt;-map-pos</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/anymap&lt;-struct')">anymap&lt;-struct</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/boolean-write&lt;-map-removekey')">boolean-write&lt;-map-removekey</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/boolean-write&lt;-map-removekeys')">boolean-write&lt;-map-removekeys</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/int&lt;-map-key')">int&lt;-map-key</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/int&lt;-stringlist-find')">int&lt;-stringlist-find</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/is-list')">is-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/is-map')">is-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-for-end-loop')">list&lt;-for-end-loop</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-for-while-loop')">list&lt;-for-while-loop</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-for-while-loop-max')">list&lt;-for-while-loop-max</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-end')">list&lt;-list-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-filter')">list&lt;-list-filter</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-filtertypes')">list&lt;-list-filtertypes</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-start')">list&lt;-list-start</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/list&lt;-list-start-end')">list&lt;-list-start-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-map-end')">map&lt;-map-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-map-keys')">map&lt;-map-keys</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-map-start')">map&lt;-map-start</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-map-start-end')">map&lt;-map-start-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/collection/map&lt;-struct')">map&lt;-struct</span>
             </li>
           </ul>
         </details>
@@ -39853,6 +39787,54 @@ improves readability.</div>
               <div class="source">(package vx/collection
  :libs (lib type :path vx/type)
  :doc &quot;Collection Package&quot;)
+
+(func - : list-1
+ [listmain   : list-1
+  listremove : list-1]
+ (list&lt;-list-filter : list-1
+  listmain
+  (fn : any
+   [item : any]
+   (if : any
+    (then
+     (!
+      (contains listremove item))
+     item))))
+ :test (test
+        (stringlist &quot;a&quot; &quot;d&quot;)
+        (- : stringlist
+         (stringlist &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;)
+         (stringlist &quot;b&quot; &quot;c&quot;)))
+ :alias &quot;minus&quot;
+ :doc &quot;Returns a list from listmain after removing listremove.&quot;)
+
+(func - : map-1
+ [mapmain   : map-1
+  mapremove : map-1]
+ (let : map-1
+  [keysmain : stringlist :=
+    (stringlist&lt;-map mapmain)
+   keysremove : stringlist :=
+    (stringlist&lt;-map mapremove)
+   keysremain : stringlist :=
+    (- keysmain keysremove)]
+  (map&lt;-map-keys : map-1
+   mapmain keysremain))
+ :test (test
+        (stringmap
+         :a &quot;1&quot;
+         :d &quot;4&quot;)
+        (- : stringmap
+         (stringmap
+          :a &quot;1&quot;
+          :b &quot;2&quot;
+          :c &quot;3&quot;
+          :d &quot;4&quot;)
+         (stringmap
+          :b &quot;x&quot;
+          :c &quot;y&quot;)))
+ :alias &quot;minus&quot;
+ :doc &quot;Returns a map from mapmain after removing keys from mapremove.&quot;)
 
 (func any&lt;-for-until-loop : any-1
  [start    : any-1
@@ -40331,6 +40313,198 @@ output : list-1 := (empty list-1)
           </ul>
         </details>
       </div>
+          <div class="d" id="d_func_vx/collection/-">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/collection')">vx/collection</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/collection/-')">-</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt">Returns a list from listmain after removing listremove.</div>
+              </li>
+            </ul>
+            <div class="lbl">Function Name:</div>
+            <ul>
+              <li>
+                <div class="txt">- (alias: minus)</div>
+              </li>
+            </ul>
+            <div class="lbl">Return Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/core/list-1')">vx/core/list-1</span></div>
+              </li>
+            </ul>
+          <details open="true">
+            <summary>
+              <span class="lbl">Arguments:</span>
+            </summary>
+            <ul>
+              <li>
+                <div class="table">
+                  <div class="th">
+                    <div class="td">Name</div>
+                    <div class="td">Type</div>
+                    <div class="td">Generic</div>
+                    <div class="td">Description</div>
+                  </div>
+                  <div class="tr">
+                    <div class="td">listmain</div>
+                    <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/list-1')">vx/core/list-1</span></div>
+                    <div class="td"></div>
+                  </div>
+                  <div class="tr">
+                    <div class="td">listremove</div>
+                    <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/list-1')">vx/core/list-1</span></div>
+                    <div class="td"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+                <li><div class="test">(test
+ (stringlist &quot;a&quot; &quot;d&quot;)
+ (- : stringlist
+  (stringlist &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;)
+  (stringlist &quot;b&quot; &quot;c&quot;)))</div></li>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(func - : list-1
+ [listmain   : list-1
+  listremove : list-1]
+ (list&lt;-list-filter : list-1
+  listmain
+  (fn : any
+   [item : any]
+   (if : any
+    (then
+     (!
+      (contains listremove item))
+     item))))
+ :test (test
+        (stringlist &quot;a&quot; &quot;d&quot;)
+        (- : stringlist
+         (stringlist &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;)
+         (stringlist &quot;b&quot; &quot;c&quot;)))
+ :alias &quot;minus&quot;
+ :doc &quot;Returns a list from listmain after removing listremove.&quot;)</div>
+                </li>
+              </ul>
+            </details>
+          </div>
+          <div class="d" id="d_func_vx/collection/-_1">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/collection')">vx/collection</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/collection/-_1')">-</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt">Returns a map from mapmain after removing keys from mapremove.</div>
+              </li>
+            </ul>
+            <div class="lbl">Function Name:</div>
+            <ul>
+              <li>
+                <div class="txt">- (alias: minus)</div>
+              </li>
+            </ul>
+            <div class="lbl">Return Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/core/map-1')">vx/core/map-1</span></div>
+              </li>
+            </ul>
+          <details open="true">
+            <summary>
+              <span class="lbl">Arguments:</span>
+            </summary>
+            <ul>
+              <li>
+                <div class="table">
+                  <div class="th">
+                    <div class="td">Name</div>
+                    <div class="td">Type</div>
+                    <div class="td">Generic</div>
+                    <div class="td">Description</div>
+                  </div>
+                  <div class="tr">
+                    <div class="td">mapmain</div>
+                    <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/map-1')">vx/core/map-1</span></div>
+                    <div class="td"></div>
+                  </div>
+                  <div class="tr">
+                    <div class="td">mapremove</div>
+                    <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/map-1')">vx/core/map-1</span></div>
+                    <div class="td"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+                <li><div class="test">(test
+ (stringmap
+  :a &quot;1&quot;
+  :d &quot;4&quot;)
+ (- : stringmap
+  (stringmap
+   :a &quot;1&quot;
+   :b &quot;2&quot;
+   :c &quot;3&quot;
+   :d &quot;4&quot;)
+  (stringmap
+   :b &quot;x&quot;
+   :c &quot;y&quot;)))</div></li>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(func - : map-1
+ [mapmain   : map-1
+  mapremove : map-1]
+ (let : map-1
+  [keysmain : stringlist :=
+    (stringlist&lt;-map mapmain)
+   keysremove : stringlist :=
+    (stringlist&lt;-map mapremove)
+   keysremain : stringlist :=
+    (- keysmain keysremove)]
+  (map&lt;-map-keys : map-1
+   mapmain keysremain))
+ :test (test
+        (stringmap
+         :a &quot;1&quot;
+         :d &quot;4&quot;)
+        (- : stringmap
+         (stringmap
+          :a &quot;1&quot;
+          :b &quot;2&quot;
+          :c &quot;3&quot;
+          :d &quot;4&quot;)
+         (stringmap
+          :b &quot;x&quot;
+          :c &quot;y&quot;)))
+ :alias &quot;minus&quot;
+ :doc &quot;Returns a map from mapmain after removing keys from mapremove.&quot;)</div>
+                </li>
+              </ul>
+            </details>
+          </div>
           <div class="d" id="d_func_vx/collection/any&lt;-for-until-loop">
             <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/collection')">vx/collection</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/collection/any&lt;-for-until-loop')">any&lt;-for-until-loop</span></div>
             <div class="lbl">Description:</div>
@@ -65023,12 +65197,13 @@ output : list-1 := (empty list-1)
  :doc &quot;Xml handler&quot;)
 
 (type xml : struct
- :properties [tag      : string
-              text     : string
-              prop     : string
-              propmap  : stringmap
-              children : xmllist
-              parent   : xml])
+ :properties
+  [tag      : string
+   text     : string
+   prop     : string
+   propmap  : stringmap
+   children : xmllist
+   parent   : xml])
 
 (type xmllist : list
  :allowtypes [xml])
@@ -66434,12 +66609,13 @@ output : list-1 := (empty list-1)
               <ul>
                 <li>
                   <div class="source">(type xml : struct
- :properties [tag      : string
-              text     : string
-              prop     : string
-              propmap  : stringmap
-              children : xmllist
-              parent   : xml])</div>
+ :properties
+  [tag      : string
+   text     : string
+   prop     : string
+   propmap  : stringmap
+   children : xmllist
+   parent   : xml])</div>
                 </li>
               </ul>
             </details>

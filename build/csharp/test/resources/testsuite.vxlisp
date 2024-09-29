@@ -3397,8 +3397,7 @@ ab
       :string<-stringlist-join 1
       :stringlist<-string-split 1
       :traitnames<-any 0
-      :traits<-any 0
-      :traits<-typedef 0)
+      :traits<-any 0)
     :testpkg "vx/type")
   :coveragesummary
    (testcoveragesummary
@@ -3406,12 +3405,12 @@ ab
      (testcoveragenums
       :pct 0
       :tests 0
-      :total 27)
+      :total 26)
     :bigotimenums
      (testcoveragenums
       :pct 0
       :tests 0
-      :total 27)
+      :total 26)
     :constnums
      (testcoveragenums
       :pct 100
@@ -3419,20 +3418,20 @@ ab
       :total 0)
     :docnums
      (testcoveragenums
-      :pct 81
-      :tests 22
-      :total 27)
+      :pct 80
+      :tests 21
+      :total 26)
     :funcnums
      (testcoveragenums
-      :pct 66
+      :pct 69
       :tests 18
-      :total 27)
+      :total 26)
     :testpkg "vx/type"
     :totalnums
      (testcoveragenums
-      :pct 66
+      :pct 69
       :tests 18
-      :total 27)
+      :total 26)
     :typenums
      (testcoveragenums
       :pct 100
@@ -3765,6 +3764,64 @@ ab
  (testpackage
   :caselist
    (testcaselist
+    (testcase
+     :passfail true
+     :testpkg "vx/collection"
+     :casename "-"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         `(test
+ (stringlist "a" "d")
+ (- : stringlist
+  (stringlist "a" "b" "c" "d")
+  (stringlist "b" "c")))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected
+           (stringlist
+            "a"
+            "d")
+          :actual
+           (stringlist
+            "a"
+            "d")))))
+    (testcase
+     :passfail true
+     :testpkg "vx/collection"
+     :casename "-_1"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         `(test
+ (stringmap
+  :a "1"
+  :d "4")
+ (- : stringmap
+  (stringmap
+   :a "1"
+   :b "2"
+   :c "3"
+   :d "4")
+  (stringmap
+   :b "x"
+   :c "y")))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected
+           (stringmap
+            :a "1"
+            :d "4")
+          :actual
+           (stringmap
+            :a "1"
+            :d "4")))))
     (testcase
      :passfail true
      :testpkg "vx/collection"
@@ -4254,6 +4311,8 @@ ab
    (testcoveragedetail
     :funcmap
      (intmap
+      :- 1
+      :-_1 1
       :any<-for-until-loop 1
       :any<-for-until-loop-max 0
       :any<-for-while-loop 1
@@ -4286,12 +4345,12 @@ ab
      (testcoveragenums
       :pct 0
       :tests 0
-      :total 25)
+      :total 27)
     :bigotimenums
      (testcoveragenums
       :pct 0
       :tests 0
-      :total 25)
+      :total 27)
     :constnums
      (testcoveragenums
       :pct 100
@@ -4300,19 +4359,19 @@ ab
     :docnums
      (testcoveragenums
       :pct 100
-      :tests 25
-      :total 25)
+      :tests 27
+      :total 27)
     :funcnums
      (testcoveragenums
-      :pct 72
-      :tests 18
-      :total 25)
+      :pct 76
+      :tests 20
+      :total 26)
     :testpkg "vx/collection"
     :totalnums
      (testcoveragenums
-      :pct 72
-      :tests 18
-      :total 25)
+      :pct 76
+      :tests 20
+      :total 26)
     :typenums
      (testcoveragenums
       :pct 100

@@ -180,6 +180,74 @@ export default class vx_collection {
     return output
   }
   /**
+   * @function minus
+   * Returns a list from listmain after removing listremove.
+   * @param  {typemap} generic
+   * @param  {generic_list_1} listmain
+   * @param  {generic_list_1} listremove
+   * @return {list-1}
+   */
+  static t_minus = {
+    vx_type: vx_core.t_type
+  }
+  static e_minus = {
+    vx_type: vx_collection.t_minus
+  }
+
+  // (func -)
+  static f_minus(generic, listmain, listremove) {
+    const generic_list_1 = generic["list-1"]
+    let output = vx_core.f_empty(generic_list_1)
+    output = vx_collection.f_list_from_list_filter(
+      {"any-1": vx_core.t_any, "list-1": generic_list_1},
+      listmain,
+      vx_core.f_new(vx_core.t_any_from_any, (item) => 
+        vx_core.f_if_2(
+          {"any-1": vx_core.t_any},
+          vx_core.f_then(
+            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_not(
+              vx_core.f_contains_1(listremove, item)
+            )}),
+            vx_core.f_new(vx_core.t_any_from_func, () => {return item})
+          )
+        ))
+    )
+    return output
+  }
+
+  /**
+   * @function minus
+   * Returns a map from mapmain after removing keys from mapremove.
+   * @param  {typemap} generic
+   * @param  {generic_map_1} mapmain
+   * @param  {generic_map_1} mapremove
+   * @return {map-1}
+   */
+  static t_minus_1 = {
+    vx_type: vx_core.t_type
+  }
+  static e_minus_1 = {
+    vx_type: vx_collection.t_minus_1
+  }
+
+  // (func -)
+  static f_minus_1(generic, mapmain, mapremove) {
+    const generic_map_1 = generic["map-1"]
+    let output = vx_core.f_empty(generic_map_1)
+    output = vx_core.f_let(
+      {"any-1": generic_map_1, "map-1": generic_map_1},
+      [],
+      vx_core.f_new(vx_core.t_any_from_func, () => {
+        const keysmain = vx_core.f_stringlist_from_map(mapmain)
+        const keysremove = vx_core.f_stringlist_from_map(mapremove)
+        const keysremain = vx_collection.f_minus({"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist}, keysmain, keysremove)
+        return vx_collection.f_map_from_map_keys({"map-1": generic_map_1}, mapmain, keysremain)
+      })
+    )
+    return output
+  }
+
+  /**
    * @function any_from_for_until_loop
    * Returns a value using an until loop. Maximum 10000 times.
    * @param  {typemap} generic
@@ -885,6 +953,8 @@ export default class vx_collection {
       
     })
     const emptymap = vx_core.vx_new_map(vx_core.t_map, {
+      "-": vx_collection.e_minus,
+      "-_1": vx_collection.e_minus_1,
       "any<-for-until-loop": vx_collection.e_any_from_for_until_loop,
       "any<-for-until-loop-max": vx_collection.e_any_from_for_until_loop_max,
       "any<-for-while-loop": vx_collection.e_any_from_for_while_loop,
@@ -912,6 +982,8 @@ export default class vx_collection {
       "map<-struct": vx_collection.e_map_from_struct
     })
     const funcmap = vx_core.vx_new_map(vx_core.t_funcmap, {
+      "-": vx_collection.t_minus,
+      "-_1": vx_collection.t_minus_1,
       "any<-for-until-loop": vx_collection.t_any_from_for_until_loop,
       "any<-for-until-loop-max": vx_collection.t_any_from_for_until_loop_max,
       "any<-for-while-loop": vx_collection.t_any_from_for_while_loop,
@@ -949,6 +1021,42 @@ export default class vx_collection {
       "typemap": typemap
     })
     vx_core.vx_global_package_set(pkg)
+
+    // (func -)
+    vx_collection.t_minus['vx_value'] = {
+      name          : "-",
+      pkgname       : "vx/collection",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_collection.f_minus
+    }
+
+    // (func -)
+    vx_collection.t_minus_1['vx_value'] = {
+      name          : "-",
+      pkgname       : "vx/collection",
+      extends       : ":func",
+      idx           : 1,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_collection.f_minus_1
+    }
 
     // (func any<-for-until-loop)
     vx_collection.t_any_from_for_until_loop['vx_value'] = {

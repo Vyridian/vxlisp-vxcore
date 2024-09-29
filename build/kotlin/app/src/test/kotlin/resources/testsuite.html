@@ -4490,13 +4490,13 @@ ab
             <summary>
               <p class="passflag">Pass</p>
               <p class="pkgname">vx/collection</p>
-              <p class="coveragenums">72% 18/25</p>
+              <p class="coveragenums">76% 20/26</p>
               <p class="coveragenums">100% 0/0</p>
               <p class="coveragenums">100% 0/0</p>
-              <p class="coveragenums">72% 18/25</p>
-              <p class="coveragenums">100% 25/25</p>
-              <p class="coveragenums">0% 0/25</p>
-              <p class="coveragenums">0% 0/25</p>
+              <p class="coveragenums">76% 20/26</p>
+              <p class="coveragenums">100% 27/27</p>
+              <p class="coveragenums">0% 0/27</p>
+              <p class="coveragenums">0% 0/27</p>
             </summary>
             <div>
               <table>
@@ -4520,6 +4520,64 @@ ab
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">-</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (stringlist "a" "d")
+ (- : stringlist
+  (stringlist "a" "b" "c" "d")
+  (stringlist "b" "c")))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "d")</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "d")</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">-_1</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (stringmap
+  :a "1"
+  :d "4")
+ (- : stringmap
+  (stringmap
+   :a "1"
+   :b "2"
+   :c "3"
+   :d "4")
+  (stringmap
+   :b "x"
+   :c "y")))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringmap
+ :a "1"
+ :d "4")</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringmap
+ :a "1"
+ :d "4")</p>
+                    </td>
+                  </tr>
                   <tr>
                     <td>
                       <p class="passflag">Pass</p>

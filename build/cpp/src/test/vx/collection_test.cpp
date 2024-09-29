@@ -7,6 +7,122 @@
 namespace vx_collection_test {
 
 
+  vx_test::Type_testcase f_minus(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: f_minus");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_stringlist,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string("a"),
+          vx_core::vx_new_string("d")
+        })
+      ),
+      vx_collection::f_minus(
+        vx_core::t_stringlist,
+        vx_core::f_new(
+          vx_core::t_stringlist,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::vx_new_string("a"),
+            vx_core::vx_new_string("b"),
+            vx_core::vx_new_string("c"),
+            vx_core::vx_new_string("d")
+          })
+        ),
+        vx_core::f_new(
+          vx_core::t_stringlist,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::vx_new_string("b"),
+            vx_core::vx_new_string("c")
+          })
+        )
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (stringlist \"a\" \"d\")\n (- : stringlist\n  (stringlist \"a\" \"b\" \"c\" \"d\")\n  (stringlist \"b\" \"c\")))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("-"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : f_minus");
+    return output;
+  }
+
+  vx_test::Type_testcase f_minus_1(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: f_minus_1");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_stringmap,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string(":a"),
+          vx_core::vx_new_string("1"),
+          vx_core::vx_new_string(":d"),
+          vx_core::vx_new_string("4")
+        })
+      ),
+      vx_collection::f_minus_1(
+        vx_core::t_stringmap,
+        vx_core::f_new(
+          vx_core::t_stringmap,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::vx_new_string(":a"),
+            vx_core::vx_new_string("1"),
+            vx_core::vx_new_string(":b"),
+            vx_core::vx_new_string("2"),
+            vx_core::vx_new_string(":c"),
+            vx_core::vx_new_string("3"),
+            vx_core::vx_new_string(":d"),
+            vx_core::vx_new_string("4")
+          })
+        ),
+        vx_core::f_new(
+          vx_core::t_stringmap,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::vx_new_string(":b"),
+            vx_core::vx_new_string("x"),
+            vx_core::vx_new_string(":c"),
+            vx_core::vx_new_string("y")
+          })
+        )
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (stringmap\n  :a \"1\"\n  :d \"4\")\n (- : stringmap\n  (stringmap\n   :a \"1\"\n   :b \"2\"\n   :c \"3\"\n   :d \"4\")\n  (stringmap\n   :b \"x\"\n   :c \"y\")))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("-_1"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : f_minus_1");
+    return output;
+  }
+
   vx_test::Type_testcase f_any_from_for_until_loop(vx_core::Type_context context) {
     vx_core::vx_log("Test Start: f_any_from_for_until_loop");
     // testdescribe_1
@@ -903,6 +1019,8 @@ namespace vx_collection_test {
 
   vx_test::Type_testcaselist test_cases(vx_core::Type_context context) {
     vx_core::vx_Type_listany listtestcase;
+    listtestcase.push_back(vx_collection_test::f_minus(context));
+    listtestcase.push_back(vx_collection_test::f_minus_1(context));
     listtestcase.push_back(vx_collection_test::f_any_from_for_until_loop(context));
     listtestcase.push_back(vx_collection_test::f_any_from_for_while_loop(context));
     listtestcase.push_back(vx_collection_test::f_anymap_from_struct(context));
@@ -938,28 +1056,28 @@ namespace vx_collection_test {
       }),
       vx_core::vx_new_string(":docnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(100), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(25), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(25)
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(27), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(27)
       }),
       vx_core::vx_new_string(":funcnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
-        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(72), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(18), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(25)
+        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(76), 
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(20), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(26)
       }),
       vx_core::vx_new_string(":bigospacenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(0), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(0), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(25)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(27)
       }),
       vx_core::vx_new_string(":bigotimenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(0), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(0), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(25)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(27)
       }),
       vx_core::vx_new_string(":totalnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
-        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(72), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(18), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(25)
+        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(76), 
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(20), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(26)
       }),
       vx_core::vx_new_string(":typenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(100), 
@@ -980,6 +1098,8 @@ namespace vx_collection_test {
         
       }),
       vx_core::vx_new_string(":funcmap"), vx_core::vx_new(vx_core::t_intmap, {
+        vx_core::vx_new_string(":-"), vx_core::vx_new_int(1),
+        vx_core::vx_new_string(":-_1"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":any<-for-until-loop"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":any<-for-until-loop-max"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":any<-for-while-loop"), vx_core::vx_new_int(1),

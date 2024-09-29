@@ -5,6 +5,124 @@ import java.util.List;
 
 public final class CollectionTest {
 
+  public static Test.Type_testcase f_minus(final Core.Type_context context) {
+    Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "-",
+      ":describelist",
+      Core.vx_new(
+        Test.t_testdescribelist,
+        f_minus_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_minus_testdescribe_1(final Core.Type_context context) {
+    Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"d\")\n (- : stringlist\n  (stringlist \"a\" \"b\" \"c\" \"d\")\n  (stringlist \"b\" \"c\")))",
+      ":testresult", Test.f_test(
+        context,
+        Core.f_new(
+          Core.t_stringlist,
+          Core.vx_new(
+            Core.t_anylist,
+            Core.vx_new_string("a"),
+            Core.vx_new_string("d")
+          )
+        ),
+        Collection.f_minus(
+          Core.t_stringlist,
+          Core.f_new(
+            Core.t_stringlist,
+            Core.vx_new(
+              Core.t_anylist,
+              Core.vx_new_string("a"),
+              Core.vx_new_string("b"),
+              Core.vx_new_string("c"),
+              Core.vx_new_string("d")
+            )
+          ),
+          Core.f_new(
+            Core.t_stringlist,
+            Core.vx_new(
+              Core.t_anylist,
+              Core.vx_new_string("b"),
+              Core.vx_new_string("c")
+            )
+          )
+        )
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_minus_1(final Core.Type_context context) {
+    Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "-_1",
+      ":describelist",
+      Core.vx_new(
+        Test.t_testdescribelist,
+        f_minus_1_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_minus_1_testdescribe_1(final Core.Type_context context) {
+    Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      ":describename", "(test\n (stringmap\n  :a \"1\"\n  :d \"4\")\n (- : stringmap\n  (stringmap\n   :a \"1\"\n   :b \"2\"\n   :c \"3\"\n   :d \"4\")\n  (stringmap\n   :b \"x\"\n   :c \"y\")))",
+      ":testresult", Test.f_test(
+        context,
+        Core.f_new(
+          Core.t_stringmap,
+          Core.vx_new(
+            Core.t_anylist,
+            Core.vx_new_string(":a"),
+            Core.vx_new_string("1"),
+            Core.vx_new_string(":d"),
+            Core.vx_new_string("4")
+          )
+        ),
+        Collection.f_minus_1(
+          Core.t_stringmap,
+          Core.f_new(
+            Core.t_stringmap,
+            Core.vx_new(
+              Core.t_anylist,
+              Core.vx_new_string(":a"),
+              Core.vx_new_string("1"),
+              Core.vx_new_string(":b"),
+              Core.vx_new_string("2"),
+              Core.vx_new_string(":c"),
+              Core.vx_new_string("3"),
+              Core.vx_new_string(":d"),
+              Core.vx_new_string("4")
+            )
+          ),
+          Core.f_new(
+            Core.t_stringmap,
+            Core.vx_new(
+              Core.t_anylist,
+              Core.vx_new_string(":b"),
+              Core.vx_new_string("x"),
+              Core.vx_new_string(":c"),
+              Core.vx_new_string("y")
+            )
+          )
+        )
+      )
+    );
+    return output;
+  }
+
   public static Test.Type_testcase f_any_from_for_until_loop(final Core.Type_context context) {
     Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
@@ -909,6 +1027,8 @@ public final class CollectionTest {
 
   public static Test.Type_testcaselist test_cases(final Core.Type_context context) {
     List<Core.Type_any> testcases = Core.arraylist_from_array(
+      CollectionTest.f_minus(context),
+      CollectionTest.f_minus_1(context),
       CollectionTest.f_any_from_for_until_loop(context),
       CollectionTest.f_any_from_for_while_loop(context),
       CollectionTest.f_anymap_from_struct(context),
@@ -940,11 +1060,11 @@ public final class CollectionTest {
       Test.t_testcoveragesummary,
       ":testpkg", "vx/collection", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 25, ":total", 25), 
-      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 72, ":tests", 18, ":total", 25), 
-      ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 25), 
-      ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 25), 
-      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 72, ":tests", 18, ":total", 25), 
+      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 27, ":total", 27), 
+      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
+      ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
+      ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
+      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
       ":typenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     );
     return output;
@@ -958,6 +1078,8 @@ public final class CollectionTest {
       ":constmap", Core.e_intmap, 
       ":funcmap", Core.vx_new(
         Core.t_intmap,
+        ":-", 1,
+        ":-_1", 1,
         ":any<-for-until-loop", 1,
         ":any<-for-until-loop-max", 0,
         ":any<-for-while-loop", 1,

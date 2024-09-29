@@ -3,6 +3,124 @@ namespace AppTest.TestVx;
 
 public class CollectionTest {
 
+  public static Vx.Test.Type_testcase f_minus(Vx.Core.Type_context context) {
+    Vx.Test.Type_testcase output = Vx.Core.vx_new(
+      Vx.Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "-",
+      ":describelist",
+      Vx.Core.vx_new(
+        Vx.Test.t_testdescribelist,
+        f_minus_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testdescribe f_minus_testdescribe_1(Vx.Core.Type_context context) {
+    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
+      Vx.Test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"d\")\n (- : stringlist\n  (stringlist \"a\" \"b\" \"c\" \"d\")\n  (stringlist \"b\" \"c\")))",
+      ":testresult", Vx.Test.f_test(
+        context,
+        Vx.Core.f_new(
+          Vx.Core.t_stringlist,
+          Vx.Core.vx_new(
+            Vx.Core.t_anylist,
+            Vx.Core.vx_new_string("a"),
+            Vx.Core.vx_new_string("d")
+          )
+        ),
+        Vx.Collection.f_minus(
+          Vx.Core.t_stringlist,
+          Vx.Core.f_new(
+            Vx.Core.t_stringlist,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              Vx.Core.vx_new_string("a"),
+              Vx.Core.vx_new_string("b"),
+              Vx.Core.vx_new_string("c"),
+              Vx.Core.vx_new_string("d")
+            )
+          ),
+          Vx.Core.f_new(
+            Vx.Core.t_stringlist,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              Vx.Core.vx_new_string("b"),
+              Vx.Core.vx_new_string("c")
+            )
+          )
+        )
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testcase f_minus_1(Vx.Core.Type_context context) {
+    Vx.Test.Type_testcase output = Vx.Core.vx_new(
+      Vx.Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "-_1",
+      ":describelist",
+      Vx.Core.vx_new(
+        Vx.Test.t_testdescribelist,
+        f_minus_1_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testdescribe f_minus_1_testdescribe_1(Vx.Core.Type_context context) {
+    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
+      Vx.Test.t_testdescribe,
+      ":describename", "(test\n (stringmap\n  :a \"1\"\n  :d \"4\")\n (- : stringmap\n  (stringmap\n   :a \"1\"\n   :b \"2\"\n   :c \"3\"\n   :d \"4\")\n  (stringmap\n   :b \"x\"\n   :c \"y\")))",
+      ":testresult", Vx.Test.f_test(
+        context,
+        Vx.Core.f_new(
+          Vx.Core.t_stringmap,
+          Vx.Core.vx_new(
+            Vx.Core.t_anylist,
+            Vx.Core.vx_new_string(":a"),
+            Vx.Core.vx_new_string("1"),
+            Vx.Core.vx_new_string(":d"),
+            Vx.Core.vx_new_string("4")
+          )
+        ),
+        Vx.Collection.f_minus_1(
+          Vx.Core.t_stringmap,
+          Vx.Core.f_new(
+            Vx.Core.t_stringmap,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              Vx.Core.vx_new_string(":a"),
+              Vx.Core.vx_new_string("1"),
+              Vx.Core.vx_new_string(":b"),
+              Vx.Core.vx_new_string("2"),
+              Vx.Core.vx_new_string(":c"),
+              Vx.Core.vx_new_string("3"),
+              Vx.Core.vx_new_string(":d"),
+              Vx.Core.vx_new_string("4")
+            )
+          ),
+          Vx.Core.f_new(
+            Vx.Core.t_stringmap,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              Vx.Core.vx_new_string(":b"),
+              Vx.Core.vx_new_string("x"),
+              Vx.Core.vx_new_string(":c"),
+              Vx.Core.vx_new_string("y")
+            )
+          )
+        )
+      )
+    );
+    return output;
+  }
+
   public static Vx.Test.Type_testcase f_any_from_for_until_loop(Vx.Core.Type_context context) {
     Vx.Test.Type_testcase output = Vx.Core.vx_new(
       Vx.Test.t_testcase,
@@ -907,6 +1025,8 @@ public class CollectionTest {
 
   public static Vx.Test.Type_testcaselist test_cases(Vx.Core.Type_context context) {
     object[] testcases = [
+      CollectionTest.f_minus(context),
+      CollectionTest.f_minus_1(context),
       CollectionTest.f_any_from_for_until_loop(context),
       CollectionTest.f_any_from_for_while_loop(context),
       CollectionTest.f_anymap_from_struct(context),
@@ -938,11 +1058,11 @@ public class CollectionTest {
       Vx.Test.t_testcoveragesummary,
       ":testpkg", "vx/collection", 
       ":constnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 100, ":tests", 25, ":total", 25), 
-      ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 72, ":tests", 18, ":total", 25), 
-      ":bigospacenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 25), 
-      ":bigotimenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 25), 
-      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 72, ":tests", 18, ":total", 25), 
+      ":docnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 100, ":tests", 27, ":total", 27), 
+      ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
+      ":bigospacenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
+      ":bigotimenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
+      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
       ":typenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     );
     return output;
@@ -956,6 +1076,8 @@ public class CollectionTest {
       ":constmap", Vx.Core.e_intmap, 
       ":funcmap", Vx.Core.vx_new(
         Vx.Core.t_intmap,
+        ":-", 1,
+        ":-_1", 1,
         ":any<-for-until-loop", 1,
         ":any<-for-until-loop-max", 0,
         ":any<-for-while-loop", 1,

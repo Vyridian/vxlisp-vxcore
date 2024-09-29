@@ -7,6 +7,14 @@ namespace vx_collection {
 
 
   // forward declarations
+  class Abstract_minus;
+  typedef Abstract_minus* Func_minus;
+  extern Func_minus e_minus;
+  extern Func_minus t_minus;
+  class Abstract_minus_1;
+  typedef Abstract_minus_1* Func_minus_1;
+  extern Func_minus_1 e_minus_1;
+  extern Func_minus_1 t_minus_1;
   class Abstract_any_from_for_until_loop;
   typedef Abstract_any_from_for_until_loop* Func_any_from_for_until_loop;
   extern Func_any_from_for_until_loop e_any_from_for_until_loop;
@@ -382,6 +390,52 @@ namespace vx_collection {
   public:
     Class_map_from_map_start_end();
     virtual ~Class_map_from_map_start_end() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func -)
+  class Abstract_minus : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_minus() {};
+    virtual ~Abstract_minus() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_minus : public virtual Abstract_minus {
+  public:
+    Class_minus();
+    virtual ~Class_minus() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func -)
+  class Abstract_minus_1 : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_minus_1() {};
+    virtual ~Abstract_minus_1() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_minus_1 : public virtual Abstract_minus_1 {
+  public:
+    Class_minus_1();
+    virtual ~Class_minus_1() override;
     virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_funcdef vx_funcdef() const override;
@@ -880,6 +934,61 @@ namespace vx_collection {
       })
     );
     vx_core::vx_release_one_except({valuemap, start, end}, output);
+    return output;
+  }
+
+  // (func -)
+  template <class X> X* f_minus(X* generic_list_1, X* listmain, X* listremove) {
+    X* output = vx_core::vx_empty(generic_list_1);
+    vx_core::vx_reserve({listmain, listremove});
+    output = vx_collection::f_list_from_list_filter(
+      generic_list_1,
+      listmain,
+      vx_core::t_any_from_any->vx_fn_new({listremove}, [listremove](vx_core::Type_any item) {
+        vx_core::Type_any output_1 = 
+          vx_core::f_if_2(
+            vx_core::t_any,
+            vx_core::vx_new(vx_core::t_thenelselist, {
+              vx_core::f_then(
+                vx_core::t_boolean_from_func->vx_fn_new({listremove, item}, [listremove, item]() {
+                  vx_core::Type_boolean output_1 = vx_core::f_not(
+                    vx_core::f_contains_1(listremove, item)
+                  );
+                  return output_1;
+                }),
+                vx_core::t_any_from_func->vx_fn_new({item}, [item]() {
+                  vx_core::Type_any output_1 = item;
+                  return output_1;
+                })
+              )
+            })
+          );
+        return output_1;
+      })
+    );
+    vx_core::vx_release_one_except({listmain, listremove}, output);
+    return output;
+  }
+
+  // (func -)
+  template <class N> N* f_minus_1(N* generic_map_1, N* mapmain, N* mapremove) {
+    N* output = vx_core::vx_empty(generic_map_1);
+    vx_core::vx_reserve({mapmain, mapremove});
+    output = vx_core::f_let(
+      generic_map_1,
+      vx_core::t_any_from_func->vx_fn_new({mapmain, mapremove, generic_map_1}, [mapmain, mapremove, generic_map_1]() {
+        vx_core::Type_stringlist keysmain = vx_core::f_stringlist_from_map(mapmain);
+        vx_core::vx_ref_plus(keysmain);
+        vx_core::Type_stringlist keysremove = vx_core::f_stringlist_from_map(mapremove);
+        vx_core::vx_ref_plus(keysremove);
+        vx_core::Type_stringlist keysremain = vx_collection::f_minus(vx_core::t_stringlist, keysmain, keysremove);
+        vx_core::vx_ref_plus(keysremain);
+        vx_core::Type_map output_1 = vx_collection::f_map_from_map_keys(generic_map_1, mapmain, keysremain);
+        vx_core::vx_release_one_except({keysmain, keysremove, keysremain}, output_1);
+        return output_1;
+      })
+    );
+    vx_core::vx_release_one_except({mapmain, mapremove}, output);
     return output;
   }
 

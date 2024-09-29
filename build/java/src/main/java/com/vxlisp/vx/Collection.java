@@ -223,6 +223,245 @@ public final class Collection {
     return output;
   }
   /**
+   * @function minus
+   * Returns a list from listmain after removing listremove.
+   * @param  {list-1} listmain
+   * @param  {list-1} listremove
+   * @return {list-1}
+   * (func -)
+   */
+  public interface Func_minus extends Core.Type_func, Core.Type_replfunc {
+    public <X extends Core.Type_list> X vx_minus(final X generic_list_1, final X listmain, final X listremove);
+  }
+
+  public static class Class_minus extends Core.Class_base implements Func_minus {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Collection.Class_minus output = new Collection.Class_minus();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Collection.Class_minus output = new Collection.Class_minus();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/collection", // pkgname
+        "-", // name
+        0, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "list-1", // name
+          ":list", // extends
+          Core.e_typelist, // traits
+          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Collection.e_minus;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Collection.t_minus;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_list listmain = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_list listremove = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(1)));
+      output = Collection.f_minus(generic_list_1, listmain, listremove);
+      return output;
+    }
+
+    @Override
+    public <X extends Core.Type_list> X vx_minus(final X generic_list_1, final X listmain, final X listremove) {
+      X output = Collection.f_minus(generic_list_1, listmain, listremove);
+      return output;
+    }
+
+  }
+
+  public static final Collection.Func_minus e_minus = new Collection.Class_minus();
+  public static final Collection.Func_minus t_minus = new Collection.Class_minus();
+
+  public static <X extends Core.Type_list> X f_minus(final X generic_list_1, final X listmain, final X listremove) {
+    X output = Core.f_empty(generic_list_1);
+    output = Collection.f_list_from_list_filter(
+      generic_list_1,
+      listmain,
+      Core.t_any_from_any.vx_fn_new((item_any) -> {
+        Core.Type_any item = Core.f_any_from_any(Core.t_any, item_any);
+        Core.Type_any output_1 = Core.f_if_2(
+          Core.t_any,
+          Core.vx_new(
+            Core.t_thenelselist,
+            Core.f_then(
+              Core.t_boolean_from_func.vx_fn_new(() -> {
+                Core.Type_any output_2 = Core.f_not(
+                  Core.f_contains_1(
+                    listremove,
+                    item
+                  )
+                );
+                return output_2;
+              }),
+              Core.t_any_from_func.vx_fn_new(() -> {
+                Core.Type_any output_3 = item;
+                return output_3;
+              })
+            )
+          )
+        );
+        return output_1;
+      })
+    );
+    return output;
+  }
+
+  /**
+   * @function minus 1
+   * Returns a map from mapmain after removing keys from mapremove.
+   * @param  {map-1} mapmain
+   * @param  {map-1} mapremove
+   * @return {map-1}
+   * (func -)
+   */
+  public interface Func_minus_1 extends Core.Type_func, Core.Type_replfunc {
+    public <N extends Core.Type_map> N vx_minus_1(final N generic_map_1, final N mapmain, final N mapremove);
+  }
+
+  public static class Class_minus_1 extends Core.Class_base implements Func_minus_1 {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Collection.Class_minus_1 output = new Collection.Class_minus_1();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Collection.Class_minus_1 output = new Collection.Class_minus_1();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/collection", // pkgname
+        "-", // name
+        1, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "map-1", // name
+          ":map", // extends
+          Core.e_typelist, // traits
+          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Collection.e_minus_1;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Collection.t_minus_1;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_map mapmain = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_map mapremove = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(1)));
+      output = Collection.f_minus_1(generic_map_1, mapmain, mapremove);
+      return output;
+    }
+
+    @Override
+    public <N extends Core.Type_map> N vx_minus_1(final N generic_map_1, final N mapmain, final N mapremove) {
+      N output = Collection.f_minus_1(generic_map_1, mapmain, mapremove);
+      return output;
+    }
+
+  }
+
+  public static final Collection.Func_minus_1 e_minus_1 = new Collection.Class_minus_1();
+  public static final Collection.Func_minus_1 t_minus_1 = new Collection.Class_minus_1();
+
+  public static <N extends Core.Type_map> N f_minus_1(final N generic_map_1, final N mapmain, final N mapremove) {
+    N output = Core.f_empty(generic_map_1);
+    output = Core.f_let(
+      generic_map_1,
+      Core.t_any_from_func.vx_fn_new(() -> {
+        Core.Type_stringlist keysmain = Core.f_stringlist_from_map(
+          mapmain
+        );
+        Core.Type_stringlist keysremove = Core.f_stringlist_from_map(
+          mapremove
+        );
+        Core.Type_stringlist keysremain = Collection.f_minus(
+          Core.t_stringlist,
+          keysmain,
+          keysremove
+        );
+        Core.Type_any output_1 = Collection.f_map_from_map_keys(
+          generic_map_1,
+          mapmain,
+          keysremain
+        );
+        return output_1;
+      })
+    );
+    return output;
+  }
+
+  /**
    * @function any_from_for_until_loop
    * Returns a value using an until loop. Maximum 10000 times.
    * @param  {any-1} start
@@ -2891,6 +3130,8 @@ public final class Collection {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();
     Map<String, Core.Type_any> mapconst = new LinkedHashMap<String, Core.Type_any>();
     Map<String, Core.Type_func> mapfunc = new LinkedHashMap<String, Core.Type_func>();
+    mapfunc.put("-", Collection.t_minus);
+    mapfunc.put("-_1", Collection.t_minus_1);
     mapfunc.put("any<-for-until-loop", Collection.t_any_from_for_until_loop);
     mapfunc.put("any<-for-until-loop-max", Collection.t_any_from_for_until_loop_max);
     mapfunc.put("any<-for-while-loop", Collection.t_any_from_for_while_loop);

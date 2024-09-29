@@ -3,6 +3,124 @@ package com.vxlisp.vx
 
 object vx_collectionTest {
 
+  fun f_minus(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "-",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_minus_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun f_minus_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"d\")\n (- : stringlist\n  (stringlist \"a\" \"b\" \"c\" \"d\")\n  (stringlist \"b\" \"c\")))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_stringlist,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string("a"),
+            vx_core.vx_new_string("d")
+          )
+        ),
+        vx_collection.f_minus(
+          vx_core.t_stringlist,
+          vx_core.f_new(
+            vx_core.t_stringlist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              vx_core.vx_new_string("a"),
+              vx_core.vx_new_string("b"),
+              vx_core.vx_new_string("c"),
+              vx_core.vx_new_string("d")
+            )
+          ),
+          vx_core.f_new(
+            vx_core.t_stringlist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              vx_core.vx_new_string("b"),
+              vx_core.vx_new_string("c")
+            )
+          )
+        )
+      )
+    )
+    return output
+  }
+
+  fun f_minus_1(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "-_1",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_minus_1_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun f_minus_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (stringmap\n  :a \"1\"\n  :d \"4\")\n (- : stringmap\n  (stringmap\n   :a \"1\"\n   :b \"2\"\n   :c \"3\"\n   :d \"4\")\n  (stringmap\n   :b \"x\"\n   :c \"y\")))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_stringmap,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string(":a"),
+            vx_core.vx_new_string("1"),
+            vx_core.vx_new_string(":d"),
+            vx_core.vx_new_string("4")
+          )
+        ),
+        vx_collection.f_minus_1(
+          vx_core.t_stringmap,
+          vx_core.f_new(
+            vx_core.t_stringmap,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              vx_core.vx_new_string(":a"),
+              vx_core.vx_new_string("1"),
+              vx_core.vx_new_string(":b"),
+              vx_core.vx_new_string("2"),
+              vx_core.vx_new_string(":c"),
+              vx_core.vx_new_string("3"),
+              vx_core.vx_new_string(":d"),
+              vx_core.vx_new_string("4")
+            )
+          ),
+          vx_core.f_new(
+            vx_core.t_stringmap,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              vx_core.vx_new_string(":b"),
+              vx_core.vx_new_string("x"),
+              vx_core.vx_new_string(":c"),
+              vx_core.vx_new_string("y")
+            )
+          )
+        )
+      )
+    )
+    return output
+  }
+
   fun f_any_from_for_until_loop(context : vx_core.Type_context) : vx_test.Type_testcase {
     var output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
@@ -907,6 +1025,8 @@ object vx_collectionTest {
 
   fun test_cases(context : vx_core.Type_context) : vx_test.Type_testcaselist {
     var testcases : List<vx_core.Type_any> = vx_core.arraylist_from_array(
+      vx_collectionTest.f_minus(context),
+      vx_collectionTest.f_minus_1(context),
       vx_collectionTest.f_any_from_for_until_loop(context),
       vx_collectionTest.f_any_from_for_while_loop(context),
       vx_collectionTest.f_anymap_from_struct(context),
@@ -938,11 +1058,11 @@ object vx_collectionTest {
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/collection", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 25, ":total", 25), 
-      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 72, ":tests", 18, ":total", 25), 
-      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 25), 
-      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 25), 
-      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 72, ":tests", 18, ":total", 25), 
+      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 27, ":total", 27), 
+      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
+      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
+      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
+      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
       ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     )
     return output
@@ -956,6 +1076,8 @@ object vx_collectionTest {
       ":constmap", vx_core.e_intmap, 
       ":funcmap", vx_core.vx_new(
         vx_core.t_intmap,
+        ":-", 1,
+        ":-_1", 1,
         ":any<-for-until-loop", 1,
         ":any<-for-until-loop-max", 0,
         ":any<-for-while-loop", 1,

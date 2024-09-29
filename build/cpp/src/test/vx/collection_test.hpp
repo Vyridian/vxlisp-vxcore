@@ -6,6 +6,8 @@
 namespace vx_collection_test {
 
 
+  vx_test::Type_testcase f_minus(vx_core::Type_context context);
+  vx_test::Type_testcase f_minus(vx_core::Type_context context);
   vx_test::Type_testcase f_any_from_for_until_loop(vx_core::Type_context context);
   vx_test::Type_testcase f_any_from_for_while_loop(vx_core::Type_context context);
   vx_test::Type_testcase f_anymap_from_struct(vx_core::Type_context context);
