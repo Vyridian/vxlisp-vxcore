@@ -130,7 +130,7 @@ export default class vx_sample {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_sample.f_main
@@ -148,7 +148,7 @@ export default class vx_sample {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_sample.f_myfunc

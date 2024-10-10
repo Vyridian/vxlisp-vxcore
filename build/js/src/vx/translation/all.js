@@ -24,12 +24,12 @@ export default class vx_translation_all {
   // (func context-all)
   static f_context_all(...args) {
     let output = vx_core.e_context
-    args = vx_core.f_new(vx_core.t_anylist, ...args)
+    args = vx_core.f_new_from_type(vx_core.t_anylist, ...args)
     output = vx_core.f_new(
-      vx_core.t_context,
+      {"any-1": vx_core.t_context},
       ":session",
       vx_core.f_new(
-        vx_core.t_session,
+        {"any-1": vx_core.t_session},
         ":translation",
         vx_translation_en.f_translation_en(),
         ":translationmap",
@@ -99,7 +99,7 @@ export default class vx_translation_all {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_all.f_context_all
@@ -117,7 +117,7 @@ export default class vx_translation_all {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_all.f_translationmap_all

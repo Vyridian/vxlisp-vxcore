@@ -26521,13 +26521,12 @@ public static class Core {
   /**
    * @function new
    * Create a new Value of Type A
-   * @param  {any-1} type
    * @param  {anylist} values
    * @return {any-1}
    * (func new)
    */
-  public interface Func_new : Vx.Core.Type_func, Vx.Core.Type_replfunc {
-    public T vx_new<T>(T type, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any;
+  public interface Func_new : Vx.Core.Func_any_from_any {
+    public T vx_new<T>(T generic_any_1, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any;
   }
 
   public class Class_new : Vx.Core.Class_base, Func_new {
@@ -26580,16 +26579,28 @@ public static class Core {
       return output;
     }
 
-    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
-      Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any type = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_anylist values = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      output = Vx.Core.f_new(type, values);
+    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
+      return Vx.Core.e_any_from_any;
+    }
+
+    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
+      T output = Vx.Core.f_empty(generic_any_1);
+      Vx.Core.Type_anylist inputval = (Vx.Core.Type_anylist)value;
+      Vx.Core.Type_any outputval = Vx.Core.f_new(Vx.Core.t_any, inputval);
+      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
 
-    public T vx_new<T>(T type, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
-      T output = Vx.Core.f_new(type, values);
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_anylist values = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      output = Vx.Core.f_new(generic_any_1, values);
+      return output;
+    }
+
+    public T vx_new<T>(T generic_any_1, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
+      T output = Vx.Core.f_new(generic_any_1, values);
       return output;
     }
 
@@ -26598,7 +26609,95 @@ public static class Core {
   public static Vx.Core.Func_new e_new = new Vx.Core.Class_new();
   public static Vx.Core.Func_new t_new = new Vx.Core.Class_new();
 
-  public static T f_new<T>(T type, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
+  public static T f_new<T>(T generic_any_1, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
+    T output = Vx.Core.f_empty(generic_any_1);
+    Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+    object[] arrayobj = (Vx.Core.Type_any[])arrayany;
+    output = (T)(generic_any_1.vx_new(arrayobj));
+    return output;
+  }
+
+  /**
+   * @function new_from_type
+   * Create a new Value of Type A
+   * @param  {any-1} type
+   * @param  {anylist} values
+   * @return {any-1}
+   * (func new<-type)
+   */
+  public interface Func_new_from_type : Vx.Core.Type_func, Vx.Core.Type_replfunc {
+    public T vx_new_from_type<T>(T type, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any;
+  }
+
+  public class Class_new_from_type : Vx.Core.Class_base, Func_new_from_type {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Core.Class_new_from_type output = new Vx.Core.Class_new_from_type();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Core.Class_new_from_type output = new Vx.Core.Class_new_from_type();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/core", // pkgname
+        "new<-type", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "any-1", // name
+          "", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.e_typelist, // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Core.e_new_from_type;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Core.t_new_from_type;
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_any type = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_anylist values = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      output = Vx.Core.f_new_from_type(type, values);
+      return output;
+    }
+
+    public T vx_new_from_type<T>(T type, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
+      T output = Vx.Core.f_new_from_type(type, values);
+      return output;
+    }
+
+  }
+
+  public static Vx.Core.Func_new_from_type e_new_from_type = new Vx.Core.Class_new_from_type();
+  public static Vx.Core.Func_new_from_type t_new_from_type = new Vx.Core.Class_new_from_type();
+
+  public static T f_new_from_type<T>(T type, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
     Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     T output = (T)(type.vx_new(arrayobj));
@@ -30288,6 +30387,7 @@ public static class Core {
     mapfunc.put("native", Vx.Core.t_native);
     mapfunc.put("native<-any", Vx.Core.t_native_from_any);
     mapfunc.put("new", Vx.Core.t_new);
+    mapfunc.put("new<-type", Vx.Core.t_new_from_type);
     mapfunc.put("number<-func", Vx.Core.t_number_from_func);
     mapfunc.put("or", Vx.Core.t_or);
     mapfunc.put("or_1", Vx.Core.t_or_1);

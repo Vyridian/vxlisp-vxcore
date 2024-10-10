@@ -207,16 +207,20 @@ public final class Core {
   }
 
   // vx_new(generic_any_1, args...)
-  public static <T extends Core.Type_any> T vx_new(final T generic_any_1, final Object... vals) {
-    Core.Type_any val = generic_any_1.vx_new(vals);
-    T output = Core.f_any_from_any(generic_any_1, val);
+  public static <T extends Core.Type_any> T vx_new(
+    final T generic_any_1,
+    final Object... values) {
+    Core.Type_any value = generic_any_1.vx_new(values);
+    T output = Core.f_any_from_any(generic_any_1, value);
     return output;
   }
 
   // vx_copy(generic_any_1, args...)
-  public static <T extends Core.Type_any> T vx_copy(final T copyval, final Object... vals) {
-    Core.Type_any val = copyval.vx_copy(vals);
-    T output = Core.f_any_from_any(copyval, val);
+  public static <T extends Core.Type_any> T vx_copy(
+    final T copyval,
+    final Object... values) {
+    Core.Type_any value = copyval.vx_copy(values);
+    T output = Core.f_any_from_any(copyval, value);
     return output;
   }
 
@@ -26249,14 +26253,19 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
     List<Core.Type_any> list_value = values.vx_list();
     List<Core.Type_any> list_result = new ArrayList<>();
     for (Core.Type_any val : list_value) {
-      Core.Type_any listoflist = fn_any_from_any.vx_any_from_any(generic_list_1, val);
+      Core.Type_any listoflist = fn_any_from_any.vx_any_from_any(
+        generic_list_1, val
+      );
       if (listoflist instanceof Core.Type_list) {
         Core.Type_list vallist = (Core.Type_list)listoflist;
         List<Core.Type_any> listval = vallist.vx_list();
         list_result.addAll(listval);
       }
     }
-    output = Core.f_any_from_any(generic_list_1, generic_list_1.vx_new(list_result));
+    output = Core.f_any_from_any(
+      generic_list_1,
+      generic_list_1.vx_new(list_result)
+    );
     return output;
   }
 
@@ -28675,13 +28684,12 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   /**
    * @function new
    * Create a new Value of Type A
-   * @param  {any-1} type
    * @param  {anylist} values
    * @return {any-1}
    * (func new)
    */
-  public interface Func_new extends Core.Type_func, Core.Type_replfunc {
-    public <T extends Core.Type_any> T vx_new(final T type, final Core.Type_anylist values);
+  public interface Func_new extends Core.Func_any_from_any {
+    public <T extends Core.Type_any> T vx_new(final T generic_any_1, final Core.Type_anylist values);
   }
 
   public static class Class_new extends Core.Class_base implements Func_new {
@@ -28741,17 +28749,31 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
     }
 
     @Override
-    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
-      Core.Type_any output = Core.e_any;
-      Core.Type_any type = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(1)));
-      output = Core.f_new(type, values);
+    public Core.Func_any_from_any vx_fn_new(Core.Class_any_from_any.IFn fn) {
+      return Core.e_any_from_any;
+    }
+
+    @Override
+    public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
+      T output = Core.f_empty(generic_any_1);
+      Core.Type_anylist inputval = (Core.Type_anylist)value;
+      Core.Type_any outputval = Core.f_new(Core.t_any, inputval);
+      output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
 
     @Override
-    public <T extends Core.Type_any> T vx_new(final T type, final Core.Type_anylist values) {
-      T output = Core.f_new(type, values);
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      output = Core.f_new(generic_any_1, values);
+      return output;
+    }
+
+    @Override
+    public <T extends Core.Type_any> T vx_new(final T generic_any_1, final Core.Type_anylist values) {
+      T output = Core.f_new(generic_any_1, values);
       return output;
     }
 
@@ -28761,7 +28783,104 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   public static final Core.Func_new t_new = new Core.Class_new();
 
   @SuppressWarnings("unchecked")
-  public static <T extends Core.Type_any> T f_new(final T type, final Core.Type_anylist values) {
+  public static <T extends Core.Type_any> T f_new(final T generic_any_1, final Core.Type_anylist values) {
+    T output = Core.f_empty(generic_any_1);
+    Core.Type_any[] arrayany = Core.arrayany_from_anylist(values);
+    Object[] arrayobj = (Core.Type_any[])arrayany;
+    output = (T)(generic_any_1.vx_new(arrayobj));
+    return output;
+  }
+
+  /**
+   * @function new_from_type
+   * Create a new Value of Type A
+   * @param  {any-1} type
+   * @param  {anylist} values
+   * @return {any-1}
+   * (func new<-type)
+   */
+  public interface Func_new_from_type extends Core.Type_func, Core.Type_replfunc {
+    public <T extends Core.Type_any> T vx_new_from_type(final T type, final Core.Type_anylist values);
+  }
+
+  public static class Class_new_from_type extends Core.Class_base implements Func_new_from_type {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Core.Class_new_from_type output = new Core.Class_new_from_type();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Core.Class_new_from_type output = new Core.Class_new_from_type();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/core", // pkgname
+        "new<-type", // name
+        0, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "any-1", // name
+          "", // extends
+          Core.e_typelist, // traits
+          Core.e_typelist, // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Core.e_new_from_type;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Core.t_new_from_type;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_any type = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(1)));
+      output = Core.f_new_from_type(type, values);
+      return output;
+    }
+
+    @Override
+    public <T extends Core.Type_any> T vx_new_from_type(final T type, final Core.Type_anylist values) {
+      T output = Core.f_new_from_type(type, values);
+      return output;
+    }
+
+  }
+
+  public static final Core.Func_new_from_type e_new_from_type = new Core.Class_new_from_type();
+  public static final Core.Func_new_from_type t_new_from_type = new Core.Class_new_from_type();
+
+  @SuppressWarnings("unchecked")
+  public static <T extends Core.Type_any> T f_new_from_type(final T type, final Core.Type_anylist values) {
     Core.Type_any[] arrayany = Core.arrayany_from_anylist(values);
     Object[] arrayobj = (Core.Type_any[])arrayany;
     T output = (T)(type.vx_new(arrayobj));
@@ -32817,6 +32936,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
     mapfunc.put("native", Core.t_native);
     mapfunc.put("native<-any", Core.t_native_from_any);
     mapfunc.put("new", Core.t_new);
+    mapfunc.put("new<-type", Core.t_new_from_type);
     mapfunc.put("number<-func", Core.t_number_from_func);
     mapfunc.put("or", Core.t_or);
     mapfunc.put("or_1", Core.t_or_1);

@@ -162,7 +162,7 @@ export default class vx_data_file {
     output = vx_core.f_let(
       {"any-1": vx_data_file.t_file},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const pos = vx_type.f_int_from_string_findlast(path, "/")
         const name = vx_type.f_string_from_string_start(
           path,
@@ -172,13 +172,7 @@ export default class vx_data_file {
           path,
           vx_core.f_minus1(pos)
         )
-        return vx_core.f_new(
-          vx_data_file.t_file,
-          ":name",
-          name,
-          ":path",
-          pth
-        )
+        return vx_core.f_new({"any-1": vx_data_file.t_file}, ":name", name, ":path", pth)
       })
     )
     return output
@@ -261,22 +255,17 @@ export default class vx_data_file {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const path = vx_data_file.f_path_from_file(file)
         const name = vx_data_file.f_name_from_file(file)
         return vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty(path)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return name})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty(path)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return name})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-              vx_core.t_string,
-              path,
-              "/",
-              name
-            )})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, path, "/", name)})
           )
         )
       })
@@ -454,7 +443,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_boolean_exists_from_file
@@ -472,7 +461,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_boolean_write_from_file
@@ -490,7 +479,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_boolean_write_from_file_any
@@ -508,7 +497,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_boolean_write_from_file_string
@@ -526,7 +515,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_file_read_from_file
@@ -544,7 +533,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_file_from_path
@@ -562,7 +551,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_name_from_file
@@ -580,7 +569,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_path_from_file
@@ -598,7 +587,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_pathcurrent_from_os
@@ -616,7 +605,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_pathfull_from_file
@@ -634,7 +623,7 @@ export default class vx_data_file {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_file.f_string_read_from_file

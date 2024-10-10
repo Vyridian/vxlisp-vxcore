@@ -3243,12 +3243,8 @@ namespace vx_data_textblock {
                                               parent2,
                                               vx_core::vx_new(vx_core::t_anylist, {
                                                 vx_core::vx_new_string(":children"),
-                                                vx_core::f_new(
-                                                  vx_data_textblock::t_textblocklist,
-                                                  vx_core::vx_new(vx_core::t_anylist, {
-                                                    replace1
-                                                  })
-                                                )
+                                                vx_core::f_new(vx_data_textblock::t_textblocklist, vx_core::vx_new(vx_core::t_anylist, {
+                                                  replace1}))
                                               })
                                             )
                                           })

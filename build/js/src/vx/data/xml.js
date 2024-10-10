@@ -69,7 +69,7 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const lt = vx_core.f_string_from_string_find_replace(text, "&lt;", "<")
         const gt = vx_core.f_string_from_string_find_replace(text, "&gt;", ">")
         const amp = vx_core.f_string_from_string_find_replace(gt, "&amp;", "&")
@@ -103,7 +103,7 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const children = vx_core.f_any_from_struct({"any-1": vx_data_xml.t_xmllist, "struct-2": vx_data_xml.t_xml}, xml, ":children")
         const first = vx_core.f_any_from_list({"any-1": vx_data_xml.t_xml, "list-1": vx_data_xml.t_xmllist}, children, 1)
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_xml.t_xml}, first, ":text")
@@ -159,30 +159,24 @@ export default class vx_data_xml {
     output = vx_core.f_if_2(
       {"any-1": vx_data_xml.t_xml},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(
           vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_textblock}, tb, ":text"),
           vx_core.f_new(
-            vx_core.t_string,
+            {"any-1": vx_core.t_string},
             "</",
             vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_xml.t_xml}, xmlarg, ":tag"),
             ">"
           )
         )}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_data_xml.f_xml_close_from_xml_textblock(xmlarg, tb)})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_data_xml.f_xml_close_from_xml_textblock(xmlarg, tb)})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
           {"any-1": vx_data_xml.t_xml},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const children = vx_core.f_any_from_struct({"any-1": vx_data_textblock.t_textblocklist, "struct-2": vx_data_textblock.t_textblock}, tb, ":children")
-            const xmlchg = vx_core.f_new(
-              vx_data_xml.t_xml,
-              ":tag",
-              ":notag",
-              ":parent",
-              xmlarg
-            )
+            const xmlchg = vx_core.f_new({"any-1": vx_data_xml.t_xml}, ":tag", ":notag", ":parent", xmlarg)
             return vx_data_xml.f_xml_properties_from_xml_textblocklist(xmlchg, children)
           })
         )})
@@ -211,7 +205,7 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_data_xml.t_xml},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const tag = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_xml.t_xml}, xmlarg, ":tag")
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_textblock}, tb, ":text")
         const parent = vx_core.f_any_from_struct({"any-1": vx_data_xml.t_xml, "struct-2": vx_data_xml.t_xml}, xmlarg, ":parent")
@@ -219,27 +213,22 @@ export default class vx_data_xml {
         return vx_core.f_if_2(
           {"any-1": vx_data_xml.t_xml},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_or(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_or(
               vx_core.f_eq("/", text),
               vx_core.f_eq(
                 text,
-                vx_core.f_new(
-                  vx_core.t_string,
-                  "</",
-                  tag,
-                  ">"
-                )
+                vx_core.f_new({"any-1": vx_core.t_string}, "</", tag, ">")
               )
             )}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
               {"any-1": vx_data_xml.t_xml},
-              vx_core.f_then(vx_core.f_new(vx_core.t_boolean_from_func, () => {return isnoparent}), vx_core.f_new(vx_core.t_any_from_func, () => {return xmlarg})),
+              vx_core.f_then(vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return isnoparent}), vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return xmlarg})),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
                   parent,
                   ":children",
                   vx_core.f_new(
-                    vx_data_xml.t_xmllist,
+                    {"any-1": vx_data_xml.t_xmllist},
                     vx_core.f_any_from_struct({"any-1": vx_data_xml.t_xmllist, "struct-2": vx_data_xml.t_xml}, parent, ":children"),
                     vx_core.f_copy(
                       xmlarg,
@@ -254,12 +243,12 @@ export default class vx_data_xml {
             )})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
               xmlarg,
               vx_core.f_msg_from_error_1(
                 ":invalidxmlclosetag",
                 vx_core.f_new(
-                  vx_core.t_anymap,
+                  {"any-1": vx_core.t_anymap},
                   ":tag",
                   text,
                   ":startpos",
@@ -300,7 +289,7 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_data_xml.t_xml, "any-2": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const delim = vx_core.f_any_from_struct({"any-1": vx_data_textblock.t_delim, "struct-2": vx_data_textblock.t_textblock}, tb, ":delim")
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_textblock}, tb, ":text")
         const starttext = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_delim}, delim, ":starttext")
@@ -309,7 +298,7 @@ export default class vx_data_xml {
           starttext,
           vx_core.f_case_1(
             "",
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_data_xml.f_xml_text_from_xml_textblock(xmlarg, tb)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_data_xml.f_xml_text_from_xml_textblock(xmlarg, tb)})
           ),
           vx_core.f_case_1(
             vx_core.f_any_from_struct(
@@ -317,7 +306,7 @@ export default class vx_data_xml {
               vx_data_textblock.c_delimbracketangle,
               ":starttext"
             ),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_data_xml.f_xml_angle_from_xml_textblock(xmlarg, tb)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_data_xml.f_xml_angle_from_xml_textblock(xmlarg, tb)})
           ),
           vx_core.f_case_1(
             vx_core.f_any_from_struct(
@@ -325,7 +314,7 @@ export default class vx_data_xml {
               vx_data_textblock.c_delimwhitespace,
               ":starttext"
             ),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return xmlarg})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return xmlarg})
           ),
           vx_core.f_case_1(
             vx_core.f_any_from_struct(
@@ -333,7 +322,7 @@ export default class vx_data_xml {
               vx_data_xml.c_delimxmlcomment,
               ":starttext"
             ),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return xmlarg})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return xmlarg})
           ),
           vx_core.f_case_1(
             vx_core.f_any_from_struct(
@@ -341,7 +330,7 @@ export default class vx_data_xml {
               vx_data_xml.c_delimxmlcdata,
               ":starttext"
             ),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return xmlarg})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return xmlarg})
           )
         )
       })
@@ -370,7 +359,7 @@ export default class vx_data_xml {
       {"any-1": vx_data_xml.t_xml, "any-2": vx_data_textblock.t_textblock, "list-2": vx_data_textblock.t_textblocklist},
       textblocklist,
       xmlarg,
-      vx_core.f_new(vx_core.t_any_from_reduce, vx_data_xml.t_xml_parse_from_xml_textblock)
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce, vx_data_xml.t_xml_parse_from_xml_textblock)
     )
     return output
   }
@@ -395,12 +384,12 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_data_xml.t_xml},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const xmlchg = vx_core.f_any_from_list_start_reduce(
           {"any-1": vx_data_xml.t_xml, "any-2": vx_data_textblock.t_textblock, "list-2": vx_data_textblock.t_textblocklist},
           textblocklist,
           xmlarg,
-          vx_core.f_new(vx_core.t_any_from_reduce, (reduce, current) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_reduce, (reduce, current) => 
             vx_data_xml.f_xml_property_from_xml_textblock(reduce, current))
         )
         return xmlchg
@@ -429,7 +418,7 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_data_xml.t_xml, "any-2": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const delim = vx_core.f_any_from_struct({"any-1": vx_data_textblock.t_delim, "struct-2": vx_data_textblock.t_textblock}, tbarg, ":delim")
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_textblock}, tbarg, ":text")
         const delimname = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_delim}, delim, ":name")
@@ -441,25 +430,25 @@ export default class vx_data_xml {
           delimname,
           vx_core.f_case_1(
             "",
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
               {"any-1": vx_data_xml.t_xml},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_type.f_boolean_from_string_starts(text, "/")}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_data_xml.f_xml_close_from_xml_textblock(xmlarg, tbarg)})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_type.f_boolean_from_string_starts(text, "/")}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_data_xml.f_xml_close_from_xml_textblock(xmlarg, tbarg)})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(":notag", tag)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(xmlarg, ":tag", text)})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(":notag", tag)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(xmlarg, ":tag", text)})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq("", prop)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(xmlarg, ":prop", text)})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq("", prop)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(xmlarg, ":prop", text)})
               )
             )})
           ),
           vx_core.f_case_1(
             "delimquote",
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_if_1(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_if_1(
               {"any-1": vx_data_xml.t_xml},
               vx_core.f_eq("", prop),
               vx_core.f_copy(
@@ -487,7 +476,7 @@ export default class vx_data_xml {
               )
             )})
           ),
-          vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return xmlarg}))
+          vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return xmlarg}))
         )
       })
     )
@@ -513,7 +502,7 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_data_xml.t_xml},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const loaded = vx_data_file.f_file_read_from_file(context, file)
         return vx_data_xml.f_xml_from_file(loaded)
       })
@@ -541,25 +530,21 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_data_xml.t_xml},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_textblock}, tb, ":text")
-        const xmlchg = vx_core.f_new(
-          vx_data_xml.t_xml,
-          ":text",
-          text
-        )
+        const xmlchg = vx_core.f_new({"any-1": vx_data_xml.t_xml}, ":text", text)
         return vx_core.f_if_2(
           {"any-1": vx_data_xml.t_xml},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(xmlarg)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return xmlchg})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(xmlarg)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return xmlchg})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
               xmlarg,
               ":children",
               vx_core.f_new(
-                vx_data_xml.t_xmllist,
+                {"any-1": vx_data_xml.t_xmllist},
                 vx_core.f_any_from_struct({"any-1": vx_data_xml.t_xmllist, "struct-2": vx_data_xml.t_xml}, xmlarg, ":children"),
                 xmlchg
               )
@@ -590,7 +575,7 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_data_xml.t_xml},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_file.t_file}, file, ":text")
         return vx_data_xml.f_xml_from_string(text)
       })
@@ -617,7 +602,7 @@ export default class vx_data_xml {
     output = vx_core.f_let(
       {"any-1": vx_data_xml.t_xml},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const tb = vx_data_xml.f_textblock_xml_from_string(text)
         return vx_data_xml.f_xml_from_textblock(tb)
       })
@@ -811,7 +796,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_string_decodexml_from_string
@@ -829,7 +814,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_string_first_from_xml
@@ -847,7 +832,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_textblock_xml_from_string
@@ -865,7 +850,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_angle_from_xml_textblock
@@ -883,7 +868,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_close_from_xml_textblock
@@ -901,7 +886,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_parse_from_xml_textblock
@@ -919,7 +904,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_parse_from_xml_textblocklist
@@ -937,7 +922,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_properties_from_xml_textblocklist
@@ -955,7 +940,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_property_from_xml_textblock
@@ -973,7 +958,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_read_from_file
@@ -991,7 +976,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_text_from_xml_textblock
@@ -1009,7 +994,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_from_file
@@ -1027,7 +1012,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_from_string
@@ -1045,7 +1030,7 @@ export default class vx_data_xml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_data_xml.f_xml_from_textblock
@@ -1053,17 +1038,17 @@ export default class vx_data_xml {
 
     // (const delimxml)
     Object.assign(vx_data_xml.c_delimxml, vx_core.f_new(
-      vx_data_textblock.t_delim,
+      {"any-1": vx_data_textblock.t_delim},
       ":delimlist",
       vx_core.f_new(
-        vx_data_textblock.t_delimlist,
+        {"any-1": vx_data_textblock.t_delimlist},
         vx_data_xml.c_delimxmlcomment,
         vx_data_xml.c_delimxmlcdata,
         vx_core.f_copy(
           vx_data_textblock.c_delimbracketangle,
           ":delimlist",
           vx_core.f_new(
-            vx_data_textblock.t_delimlist,
+            {"any-1": vx_data_textblock.t_delimlist},
             vx_data_xml.c_delimxmlequal,
             vx_data_textblock.c_delimwhitespace,
             vx_data_textblock.c_delimquote
@@ -1073,35 +1058,13 @@ export default class vx_data_xml {
     ))
 
     // (const delimxmlcdata)
-    Object.assign(vx_data_xml.c_delimxmlcdata, vx_core.f_new(
-      vx_data_textblock.t_delim,
-      ":name",
-      "delimxmlcomment",
-      ":starttext",
-      "<![CDATA[",
-      ":endtext",
-      "]]>"
-    ))
+    Object.assign(vx_data_xml.c_delimxmlcdata, vx_core.f_new({"any-1": vx_data_textblock.t_delim}, ":name", "delimxmlcomment", ":starttext", "<![CDATA[", ":endtext", "]]>"))
 
     // (const delimxmlcomment)
-    Object.assign(vx_data_xml.c_delimxmlcomment, vx_core.f_new(
-      vx_data_textblock.t_delim,
-      ":name",
-      "delimxmlcomment",
-      ":starttext",
-      "<!--",
-      ":endtext",
-      "-->"
-    ))
+    Object.assign(vx_data_xml.c_delimxmlcomment, vx_core.f_new({"any-1": vx_data_textblock.t_delim}, ":name", "delimxmlcomment", ":starttext", "<!--", ":endtext", "-->"))
 
     // (const delimxmlequal)
-    Object.assign(vx_data_xml.c_delimxmlequal, vx_core.f_new(
-      vx_data_textblock.t_delim,
-      ":name",
-      "delimxmlequal",
-      ":starttext",
-      "="
-    ))
+    Object.assign(vx_data_xml.c_delimxmlequal, vx_core.f_new({"any-1": vx_data_textblock.t_delim}, ":name", "delimxmlequal", ":starttext", "="))
 
   }
 }

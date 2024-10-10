@@ -131,7 +131,7 @@ export default class vx_collection {
         }
       })
       //const type = vx_core.f_type_from_any(output)
-      output = vx_core.f_new(generic_list_1, ...items)
+      output = vx_core.f_new_from_type(generic_list_1, ...items)
     }
     return output
   }
@@ -175,7 +175,7 @@ export default class vx_collection {
         values.push(key)
         values.push(value)
       }
-      output = vx_core.f_new(generic_map_1, ...values)
+      output = vx_core.f_new_from_type(generic_map_1, ...values)
     }
     return output
   }
@@ -201,14 +201,14 @@ export default class vx_collection {
     output = vx_collection.f_list_from_list_filter(
       {"any-1": vx_core.t_any, "list-1": generic_list_1},
       listmain,
-      vx_core.f_new(vx_core.t_any_from_any, (item) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (item) => 
         vx_core.f_if_2(
           {"any-1": vx_core.t_any},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_not(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_not(
               vx_core.f_contains_1(listremove, item)
             )}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return item})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return item})
           )
         ))
     )
@@ -237,7 +237,7 @@ export default class vx_collection {
     output = vx_core.f_let(
       {"any-1": generic_map_1, "map-1": generic_map_1},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const keysmain = vx_core.f_stringlist_from_map(mapmain)
         const keysremove = vx_core.f_stringlist_from_map(mapremove)
         const keysremain = vx_collection.f_minus({"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist}, keysmain, keysremove)
@@ -384,7 +384,7 @@ export default class vx_collection {
     output = vx_core.f_let(
       {"any-1": generic_any_1},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const keys = vx_core.f_stringlist_from_map(map)
         const key = vx_core.f_any_from_list({"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist}, keys, pos)
         return vx_core.f_any_from_map({"any-1": generic_any_1}, map, key)
@@ -460,11 +460,11 @@ export default class vx_collection {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const writelist = vx_core.f_list_from_list_1(
           {"any-1": vx_core.t_boolean, "any-2": vx_core.t_string, "list-1": vx_core.t_booleanlist, "list-2": vx_core.t_stringlist},
           keys,
-          vx_core.f_new(vx_core.t_any_from_any, (key) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (key) => 
             vx_collection.f_boolean_write_from_map_removekey(valuemap, key))
         )
         return vx_core.f_and_1(writelist)
@@ -493,7 +493,7 @@ export default class vx_collection {
     output = vx_core.f_let(
       {"any-1": vx_core.t_int},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const keys = vx_core.f_stringlist_from_map(map)
         return vx_collection.f_int_from_stringlist_find(keys, key)
       })
@@ -521,11 +521,11 @@ export default class vx_collection {
     output = vx_core.f_let(
       {"any-1": vx_core.t_int, "list-1": vx_core.t_intlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const poslist = vx_core.f_list_from_list_intany(
           {"any-1": vx_core.t_int, "any-2": vx_core.t_string, "list-1": vx_core.t_intlist, "list-2": vx_core.t_stringlist},
           stringlist,
-          vx_core.f_new(vx_core.t_any_from_int_any, (pos, value) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_int_any, (pos, value) => 
             vx_core.f_if_1(
               {"any-1": vx_core.t_int},
               vx_core.f_eq(find, value),
@@ -536,7 +536,7 @@ export default class vx_collection {
         const gt0list = vx_collection.f_list_from_list_filter(
           {"any-1": vx_core.t_int, "any-2": vx_core.t_int, "list-1": vx_core.t_intlist, "list-2": vx_core.t_intlist},
           poslist,
-          vx_core.f_new(vx_core.t_any_from_any, (item) => item)
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (item) => item)
         )
         return vx_core.f_first_from_list({"any-1": vx_core.t_int, "list-1": vx_core.t_intlist}, gt0list)
       })
@@ -745,11 +745,11 @@ export default class vx_collection {
   static f_list_from_list_filtertypes(generic, vallist, ...filtertypes) {
     const generic_list_1 = generic["list-1"]
     let output = vx_core.f_empty(generic_list_1)
-    filtertypes = vx_core.f_new(vx_core.t_typelist, ...filtertypes)
+    filtertypes = vx_core.f_new_from_type(vx_core.t_typelist, ...filtertypes)
     output = vx_collection.f_list_from_list_filter(
       {"any-1": vx_core.t_any, "list-1": generic_list_1},
       vallist,
-      vx_core.f_new(vx_core.t_any_from_any, (value) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (value) => 
         vx_core.f_if(
           {"any-1": vx_core.t_any},
           vx_type.f_is_type_from_any_typelist(value, filtertypes),
@@ -908,7 +908,7 @@ export default class vx_collection {
     output = vx_core.f_let(
       {"any-1": generic_map_1, "map-1": generic_map_1},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const keys1 = vx_core.f_stringlist_from_map(valuemap)
         const keys2 = vx_collection.f_list_from_list_start_end({"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist}, keys1, start, end)
         return vx_collection.f_map_from_map_keys({"map-1": generic_map_1}, valuemap, keys2)
@@ -938,7 +938,7 @@ export default class vx_collection {
     output = vx_core.f_let(
       {"any-1": generic_map_1, "map-1": generic_map_1, "map-2": vx_core.t_anymap},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const anymap = vx_collection.f_anymap_from_struct(structure)
         return vx_core.f_map_from_map({"map-1": generic_map_1, "map-2": vx_core.t_anymap}, anymap)
       })
@@ -1034,7 +1034,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_minus
@@ -1052,7 +1052,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_minus_1
@@ -1070,7 +1070,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_any_from_for_until_loop
@@ -1088,7 +1088,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_any_from_for_until_loop_max
@@ -1106,7 +1106,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_any_from_for_while_loop
@@ -1124,7 +1124,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_any_from_for_while_loop_max
@@ -1142,7 +1142,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_any_from_map_pos
@@ -1160,7 +1160,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_anymap_from_struct
@@ -1178,7 +1178,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_boolean_write_from_map_removekey
@@ -1196,7 +1196,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_boolean_write_from_map_removekeys
@@ -1214,7 +1214,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_int_from_map_key
@@ -1232,7 +1232,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_int_from_stringlist_find
@@ -1250,7 +1250,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_is_list
@@ -1268,7 +1268,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_is_map
@@ -1286,7 +1286,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_for_end_loop
@@ -1304,7 +1304,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_for_while_loop
@@ -1322,7 +1322,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_for_while_loop_max
@@ -1340,7 +1340,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_list_end
@@ -1358,7 +1358,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_list_filter
@@ -1376,7 +1376,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_list_filtertypes
@@ -1394,7 +1394,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_list_start
@@ -1412,7 +1412,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_list_start_end
@@ -1430,7 +1430,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_map_from_map_end
@@ -1448,7 +1448,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_map_from_map_keys
@@ -1466,7 +1466,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_map_from_map_start
@@ -1484,7 +1484,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_map_from_map_start_end
@@ -1502,7 +1502,7 @@ export default class vx_collection {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_map_from_struct

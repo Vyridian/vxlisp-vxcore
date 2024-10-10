@@ -82,7 +82,7 @@ export default class vx_type {
 
   static vx_stringlist_from_string_split(text, delim) {
     const liststring = text.split(delim)
-    const output = vx_core.f_new(vx_core.t_stringlist, ...liststring)
+    const output = vx_core.f_new_from_type(vx_core.t_stringlist, ...liststring)
     return output
   }
   /**
@@ -399,7 +399,7 @@ export default class vx_type {
       {"any-1": vx_core.t_boolean, "list-2": vx_core.t_typelist},
       typelist,
       false,
-      vx_core.f_new(vx_core.t_any_from_reduce, (result, type) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce, (result, type) => 
         vx_core.f_or(
           result,
           vx_type.f_is_type(value, type)
@@ -447,19 +447,19 @@ export default class vx_type {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const pos = vx_type.f_int_from_string_findkeyword(text, ":nonwhitespace")
         return vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(0, pos)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return text})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(0, pos)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return text})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
               {"any-1": vx_core.t_string},
               [],
-              vx_core.f_new(vx_core.t_any_from_func, () => {
+              vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
                 const indent = vx_type.f_string_from_string_end(
                   text,
                   vx_core.f_minus1(pos)
@@ -543,21 +543,18 @@ export default class vx_type {
       value,
       vx_core.f_case_1(
         vx_core.c_infinity,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return "infinity"})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "infinity"})
       ),
       vx_core.f_case_1(
         vx_core.c_neginfinity,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return "neginfinity"})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "neginfinity"})
       ),
       vx_core.f_case_1(
         vx_core.c_notanumber,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return "notanumber"})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "notanumber"})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-          vx_core.t_string,
-          value
-        )})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, value)})
       )
     )
     return output
@@ -803,7 +800,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_allowtypenames_from_type
@@ -821,7 +818,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_allowtypes_from_type
@@ -839,7 +836,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_any_from_int
@@ -857,7 +854,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_boolean_from_string_ends
@@ -875,7 +872,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_boolean_from_string_starts
@@ -893,7 +890,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_int_from_string_find
@@ -911,7 +908,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_int_from_string_findkeyword
@@ -929,7 +926,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_int_from_string_findlast
@@ -947,7 +944,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_is_boolean
@@ -965,7 +962,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_is_decimal
@@ -983,7 +980,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_is_none
@@ -1001,7 +998,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_is_string
@@ -1019,7 +1016,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_is_type
@@ -1037,7 +1034,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_is_type_from_any_typelist
@@ -1055,7 +1052,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_lowercase
@@ -1073,7 +1070,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_outdent
@@ -1091,7 +1088,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_trim
@@ -1109,7 +1106,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_uppercase
@@ -1127,7 +1124,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_from_int
@@ -1145,7 +1142,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_from_string_end
@@ -1163,7 +1160,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_from_string_start
@@ -1181,7 +1178,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_from_string_start_end
@@ -1199,7 +1196,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_string_from_stringlist_join
@@ -1217,7 +1214,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_stringlist_from_string_split
@@ -1235,7 +1232,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_traitnames_from_any
@@ -1253,7 +1250,7 @@ export default class vx_type {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_traits_from_any

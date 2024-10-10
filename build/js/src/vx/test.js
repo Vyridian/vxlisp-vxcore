@@ -107,15 +107,15 @@ export default class vx_test {
   // (func context-test)
   static f_context_test(...args) {
     let output = vx_core.e_context
-    args = vx_core.f_new(vx_core.t_anylist, ...args)
+    args = vx_core.f_new_from_type(vx_core.t_anylist, ...args)
     output = vx_core.f_new(
-      vx_core.t_context,
+      {"any-1": vx_core.t_context},
       ":session",
       vx_core.f_new(
-        vx_core.t_session,
+        {"any-1": vx_core.t_session},
         ":user",
         vx_core.f_new(
-          vx_core.t_user,
+          {"any-1": vx_core.t_user},
           ":security",
           vx_test.f_security_test()
         )
@@ -140,59 +140,39 @@ export default class vx_test {
   static f_div_from_testcaselist(testcaselist) {
     let output = vx_web_html.e_div
     output = vx_core.f_new(
-      vx_web_html.t_div,
+      {"any-1": vx_web_html.t_div},
       vx_core.f_new(
-        vx_web_html.t_table,
+        {"any-1": vx_web_html.t_table},
         ":thead",
         vx_core.f_new(
-          vx_web_html.t_thead,
+          {"any-1": vx_web_html.t_thead},
           vx_core.f_new(
-            vx_web_html.t_tr,
+            {"any-1": vx_web_html.t_tr},
             vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.f_new(
-                vx_web_html.t_p,
-                ":text",
-                "Pass?"
-              )
+              {"any-1": vx_web_html.t_td},
+              vx_core.f_new({"any-1": vx_web_html.t_p}, ":text", "Pass?")
             ),
             vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.f_new(
-                vx_web_html.t_p,
-                ":text",
-                "Name"
-              )
+              {"any-1": vx_web_html.t_td},
+              vx_core.f_new({"any-1": vx_web_html.t_p}, ":text", "Name")
             ),
             vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.f_new(
-                vx_web_html.t_p,
-                ":text",
-                "Test"
-              )
+              {"any-1": vx_web_html.t_td},
+              vx_core.f_new({"any-1": vx_web_html.t_p}, ":text", "Test")
             ),
             vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.f_new(
-                vx_web_html.t_p,
-                ":text",
-                "Expected"
-              )
+              {"any-1": vx_web_html.t_td},
+              vx_core.f_new({"any-1": vx_web_html.t_p}, ":text", "Expected")
             ),
             vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.f_new(
-                vx_web_html.t_p,
-                ":text",
-                "Actual"
-              )
+              {"any-1": vx_web_html.t_td},
+              vx_core.f_new({"any-1": vx_web_html.t_p}, ":text", "Actual")
             )
           )
         ),
         ":tbody",
         vx_core.f_new(
-          vx_web_html.t_tbody,
+          {"any-1": vx_web_html.t_tbody},
           vx_test.f_trlist_from_testcaselist(testcaselist)
         )
       )
@@ -219,7 +199,7 @@ export default class vx_test {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_div},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const testcoveragesummary = vx_core.f_any_from_struct({"any-1": vx_test.t_testcoveragesummary, "struct-2": vx_test.t_testpackage}, testpackage, ":coveragesummary")
         const pkgname = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_test.t_testpackage}, testpackage, ":testpkg")
         const caselist = vx_core.f_any_from_struct({"any-1": vx_test.t_testcaselist, "struct-2": vx_test.t_testpackage}, testpackage, ":caselist")
@@ -229,18 +209,9 @@ export default class vx_test {
           ".pkgname"
         )
         const node = vx_test.f_div_from_testcaselist(caselist)
-        const nodes = vx_core.f_new(
-          vx_web_html.t_divchildlist,
-          node
-        )
+        const nodes = vx_core.f_new({"any-1": vx_web_html.t_divchildlist}, node)
         const p_passfail = vx_test.f_p_from_passfail(passfail)
-        const p_pkgname = vx_core.f_new(
-          vx_web_html.t_p,
-          ":style",
-          pkgnamestyle,
-          ":text",
-          pkgname
-        )
+        const p_pkgname = vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", pkgnamestyle, ":text", pkgname)
         const p_totalnums = vx_test.f_p_from_testcoveragenums(
           vx_core.f_any_from_struct({"any-1": vx_test.t_testcoveragenums, "struct-2": vx_test.t_testcoveragesummary}, testcoveragesummary, ":totalnums")
         )
@@ -262,29 +233,9 @@ export default class vx_test {
         const p_bigotimenums = vx_test.f_p_from_testcoveragenums(
           vx_core.f_any_from_struct({"any-1": vx_test.t_testcoveragenums, "struct-2": vx_test.t_testcoveragesummary}, testcoveragesummary, ":bigotimenums")
         )
-        const summary = vx_core.f_new(
-          vx_web_html.t_divchildlist,
-          p_passfail,
-          p_pkgname,
-          p_totalnums,
-          p_coveragenums,
-          p_constnums,
-          p_funcnums,
-          p_docnums,
-          p_bigospacenums,
-          p_bigotimenums
-        )
-        const details = vx_core.f_new(
-          vx_web_html.t_details,
-          ":summary",
-          summary,
-          ":nodes",
-          nodes
-        )
-        return vx_core.f_new(
-          vx_web_html.t_div,
-          details
-        )
+        const summary = vx_core.f_new({"any-1": vx_web_html.t_divchildlist}, p_passfail, p_pkgname, p_totalnums, p_coveragenums, p_constnums, p_funcnums, p_docnums, p_bigospacenums, p_bigotimenums)
+        const details = vx_core.f_new({"any-1": vx_web_html.t_details}, ":summary", summary, ":nodes", nodes)
+        return vx_core.f_new({"any-1": vx_web_html.t_div}, details)
       })
     )
     return output
@@ -308,7 +259,7 @@ export default class vx_test {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_div},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const stylepassfail = vx_web_html.f_style_from_stylesheet_name(
           vx_test.c_stylesheet_test,
           ".passfail"
@@ -326,77 +277,23 @@ export default class vx_test {
           ".coveragenums"
         )
         return vx_core.f_new(
-          vx_web_html.t_div,
+          {"any-1": vx_web_html.t_div},
           vx_core.f_new(
-            vx_web_html.t_div,
+            {"any-1": vx_web_html.t_div},
             ":style",
             stylepkgheader,
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylepassfail,
-              ":text",
-              "Pass?"
-            ),
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylepkgname,
-              ":text",
-              "Package Name"
-            ),
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylecoveragenum,
-              ":text",
-              "Coverage"
-            ),
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylecoveragenum,
-              ":text",
-              "(type)"
-            ),
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylecoveragenum,
-              ":text",
-              "(const)"
-            ),
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylecoveragenum,
-              ":text",
-              "(func)"
-            ),
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylecoveragenum,
-              ":text",
-              ":doc"
-            ),
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylecoveragenum,
-              ":text",
-              ":bigospace"
-            ),
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              stylecoveragenum,
-              ":text",
-              ":bigotime"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylepassfail, ":text", "Pass?"),
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylepkgname, ":text", "Package Name"),
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylecoveragenum, ":text", "Coverage"),
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylecoveragenum, ":text", "(type)"),
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylecoveragenum, ":text", "(const)"),
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylecoveragenum, ":text", "(func)"),
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylecoveragenum, ":text", ":doc"),
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylecoveragenum, ":text", ":bigospace"),
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", stylecoveragenum, ":text", ":bigotime")
           ),
           vx_core.f_new(
-            vx_web_html.t_div,
+            {"any-1": vx_web_html.t_div},
             vx_test.f_divchildlist_from_testpackagelist(testpackagelist)
           )
         )
@@ -424,7 +321,7 @@ export default class vx_test {
     output = vx_core.f_list_from_list_1(
       {"any-1": vx_web_html.t_divchild, "any-2": vx_test.t_testpackage, "list-1": vx_web_html.t_divchildlist, "list-2": vx_test.t_testpackagelist},
       testpackagelist,
-      vx_core.f_new(vx_core.t_any_from_any, vx_test.t_div_from_testpackage)
+      vx_core.f_new_from_type(vx_core.t_any_from_any, vx_test.t_div_from_testpackage)
     )
     return output
   }
@@ -445,7 +342,7 @@ export default class vx_test {
   static f_file_test() {
     let output = vx_data_file.e_file
     output = vx_core.f_new(
-      vx_data_file.t_file,
+      {"any-1": vx_data_file.t_file},
       ":name",
       "testsuite.vxlisp",
       ":path",
@@ -470,7 +367,7 @@ export default class vx_test {
   static f_file_testhtml() {
     let output = vx_data_file.e_file
     output = vx_core.f_new(
-      vx_data_file.t_file,
+      {"any-1": vx_data_file.t_file},
       ":name",
       "testsuite.html",
       ":path",
@@ -495,7 +392,7 @@ export default class vx_test {
   static f_file_testnode() {
     let output = vx_data_file.e_file
     output = vx_core.f_new(
-      vx_data_file.t_file,
+      {"any-1": vx_data_file.t_file},
       ":name",
       "testsuitenode.vxlisp",
       ":path",
@@ -521,40 +418,23 @@ export default class vx_test {
   static f_html_from_divtest(divtest) {
     let output = vx_web_html.e_html
     output = vx_core.f_new(
-      vx_web_html.t_html,
+      {"any-1": vx_web_html.t_html},
       ":lang",
       "en",
       ":head",
       vx_core.f_new(
-        vx_web_html.t_head,
-        vx_core.f_new(
-          vx_web_html.t_meta,
-          ":charset",
-          "utf-8"
-        ),
-        vx_core.f_new(
-          vx_web_html.t_meta,
-          ":name",
-          "viewport",
-          ":content",
-          "width=device-width, initial-scale=1.0"
-        ),
-        vx_core.f_new(
-          vx_web_html.t_title,
-          ":text",
-          "Test Suite"
-        ),
+        {"any-1": vx_web_html.t_head},
+        vx_core.f_new({"any-1": vx_web_html.t_meta}, ":charset", "utf-8"),
+        vx_core.f_new({"any-1": vx_web_html.t_meta}, ":name", "viewport", ":content", "width=device-width, initial-scale=1.0"),
+        vx_core.f_new({"any-1": vx_web_html.t_title}, ":text", "Test Suite"),
         vx_test.c_stylesheet_test
       ),
       ":body",
       vx_core.f_new(
-        vx_web_html.t_body,
+        {"any-1": vx_web_html.t_body},
         vx_core.f_new(
-          vx_web_html.t_div,
-          vx_core.f_new(
-            vx_web_html.t_h1,
-            "Test Suite"
-          )
+          {"any-1": vx_web_html.t_div},
+          vx_core.f_new({"any-1": vx_web_html.t_h1}, "Test Suite")
         ),
         divtest
       )
@@ -581,20 +461,14 @@ export default class vx_test {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_p},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const text = vx_core.f_if_1({"any-1": vx_core.t_string}, passfail, "Pass", "Fail")
         const stylename = vx_core.f_if_1({"any-1": vx_core.t_string}, passfail, ".passflag", ".failflag")
         const style = vx_web_html.f_style_from_stylesheet_name(
           vx_test.c_stylesheet_test,
           stylename
         )
-        return vx_core.f_new(
-          vx_web_html.t_p,
-          ":style",
-          style,
-          ":text",
-          text
-        )
+        return vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", style, ":text", text)
       })
     )
     return output
@@ -617,7 +491,7 @@ export default class vx_test {
   static f_p_from_testcoveragenums(nums) {
     let output = vx_web_html.e_p
     output = vx_core.f_new(
-      vx_web_html.t_p,
+      {"any-1": vx_web_html.t_p},
       ":style",
       vx_web_html.f_style_from_stylesheet_name(
         vx_test.c_stylesheet_test,
@@ -625,7 +499,7 @@ export default class vx_test {
       ),
       ":text",
       vx_core.f_new(
-        vx_core.t_string,
+        {"any-1": vx_core.t_string},
         vx_core.f_any_from_struct({"any-1": vx_core.t_int, "struct-2": vx_test.t_testcoveragenums}, nums, ":pct"),
         "% ",
         vx_core.f_any_from_struct({"any-1": vx_core.t_int, "struct-2": vx_test.t_testcoveragenums}, nums, ":tests"),
@@ -656,17 +530,17 @@ export default class vx_test {
     output = await vx_core.f_let_async(
       {"any-1": vx_test.t_testcase},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const describelist = vx_core.f_any_from_struct({"any-1": vx_test.t_testdescribelist, "struct-2": vx_test.t_testcase}, testcase, ":describelist")
         const resolvedlist = await vx_test.f_resolve_testdescribelist(describelist)
         const passfaillist = vx_core.f_list_from_list_1(
           {"any-1": vx_core.t_boolean, "any-2": vx_test.t_testdescribe, "list-1": vx_core.t_booleanlist, "list-2": vx_test.t_testdescribelist, "struct-2": vx_test.t_testresult},
           resolvedlist,
-          vx_core.f_new(vx_core.t_any_from_any, (testdescribe) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (testdescribe) => 
             vx_core.f_let(
               {"any-1": vx_core.t_boolean, "struct-2": vx_test.t_testresult},
               [],
-              vx_core.f_new(vx_core.t_any_from_func, () => {
+              vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
                 const testresult = vx_core.f_any_from_struct({"any-1": vx_test.t_testresult, "struct-2": vx_test.t_testdescribe}, testdescribe, ":testresult")
                 return vx_core.f_any_from_struct({"any-1": vx_core.t_boolean, "struct-2": vx_test.t_testresult}, testresult, ":passfail")
               })
@@ -699,7 +573,7 @@ export default class vx_test {
     output = await vx_core.f_list_from_list_async(
       {"any-1": vx_test.t_testcase, "any-2": vx_test.t_testcase, "list-1": vx_test.t_testcaselist, "list-2": vx_test.t_testcaselist},
       testcaselist,
-      vx_core.f_new(vx_core.t_any_from_any_async, vx_test.t_resolve_testcase)
+      vx_core.f_new_from_type(vx_core.t_any_from_any_async, vx_test.t_resolve_testcase)
     )
     return output
   }
@@ -724,7 +598,7 @@ export default class vx_test {
     output = await vx_core.f_let_async(
       {"any-1": vx_test.t_testdescribe},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const testresult = vx_core.f_any_from_struct({"any-1": vx_test.t_testresult, "struct-2": vx_test.t_testdescribe}, testdescribe, ":testresult")
         const resolved = await vx_test.f_resolve_testresult(testresult)
         return vx_core.f_copy(testdescribe, ":testresult", resolved)
@@ -753,7 +627,7 @@ export default class vx_test {
     output = await vx_core.f_list_from_list_async(
       {"any-1": vx_test.t_testdescribe, "any-2": vx_test.t_testdescribe, "list-1": vx_test.t_testdescribelist, "list-2": vx_test.t_testdescribelist},
       testdescribelist,
-      vx_core.f_new(vx_core.t_any_from_any_async, vx_test.t_resolve_testdescribe)
+      vx_core.f_new_from_type(vx_core.t_any_from_any_async, vx_test.t_resolve_testdescribe)
     )
     return output
   }
@@ -778,13 +652,13 @@ export default class vx_test {
     output = await vx_core.f_let_async(
       {"any-1": vx_test.t_testpackage},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const testcaselist = vx_core.f_any_from_struct({"any-1": vx_test.t_testcaselist, "struct-2": vx_test.t_testpackage}, testpackage, ":caselist")
         const resolvedlist = await vx_test.f_resolve_testcaselist(testcaselist)
         const passfaillist = vx_core.f_list_from_list_1(
           {"any-1": vx_core.t_boolean, "any-2": vx_test.t_testcase, "list-1": vx_core.t_booleanlist, "list-2": vx_test.t_testcaselist, "struct-2": vx_test.t_testcase},
           resolvedlist,
-          vx_core.f_new(vx_core.t_any_from_any, (testcase) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (testcase) => 
             vx_core.f_any_from_struct({"any-1": vx_core.t_boolean, "struct-2": vx_test.t_testcase}, testcase, ":passfail"))
         )
         const passfail = vx_core.f_and_1(passfaillist)
@@ -814,7 +688,7 @@ export default class vx_test {
     output = await vx_core.f_list_from_list_async(
       {"any-1": vx_test.t_testpackage, "any-2": vx_test.t_testpackage, "list-1": vx_test.t_testpackagelist, "list-2": vx_test.t_testpackagelist},
       testpackagelist,
-      vx_core.f_new(vx_core.t_any_from_any_async, vx_test.t_resolve_testpackage)
+      vx_core.f_new_from_type(vx_core.t_any_from_any_async, vx_test.t_resolve_testpackage)
     )
     return output
   }
@@ -839,21 +713,21 @@ export default class vx_test {
     output = await vx_core.f_let_async(
       {"any-1": vx_test.t_testresult, "struct-2": vx_test.t_testresult},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const fn_actual = vx_core.f_any_from_struct({"any-1": vx_core.t_any_from_func_async, "struct-2": vx_test.t_testresult}, testresult, ":fn-actual")
         const expected = vx_core.f_any_from_struct({"any-1": vx_core.t_any, "struct-2": vx_test.t_testresult}, testresult, ":expected")
         const actual = await vx_core.f_resolve_async({"any-1": vx_core.t_any}, fn_actual)
         return vx_core.f_if_2(
           {"any-1": vx_test.t_testresult},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(fn_actual)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return testresult})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(fn_actual)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return testresult})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
               {"any-1": vx_test.t_testresult},
               [],
-              vx_core.f_new(vx_core.t_any_from_func, () => {
+              vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
                 const passfail = vx_core.f_eq(expected, actual)
                 return vx_core.f_copy(testresult, ":passfail", passfail, ":actual", actual)
               })
@@ -881,10 +755,10 @@ export default class vx_test {
   static f_security_test() {
     let output = vx_core.e_security
     output = vx_core.f_new(
-      vx_core.t_security,
+      {"any-1": vx_core.t_security},
       ":allowfuncs",
       vx_core.f_new(
-        vx_core.t_funclist,
+        {"any-1": vx_core.t_funclist},
         vx_data_file.t_boolean_write_from_file_any,
         vx_data_file.t_boolean_write_from_file_string,
         vx_data_file.t_file_read_from_file,
@@ -913,7 +787,7 @@ export default class vx_test {
     let output = vx_test.e_testresult
     try {
     output = vx_core.f_new(
-        vx_test.t_testresult,
+        {"any-1": vx_test.t_testresult},
         ":code",
         ":eq",
         ":passfail",
@@ -947,15 +821,7 @@ export default class vx_test {
   static f_test_1(context, expected, fn_actual) {
     let output = vx_test.e_testresult
     try {
-    output = vx_core.f_new(
-        vx_test.t_testresult,
-        ":code",
-        ":eq",
-        ":expected",
-        expected,
-        ":fn-actual",
-        fn_actual
-      )
+    output = vx_core.f_new({"any-1": vx_test.t_testresult}, ":code", ":eq", ":expected", expected, ":fn-actual", fn_actual)
     } catch (err) {
       console.log(err)
     }
@@ -980,7 +846,7 @@ export default class vx_test {
     let output = vx_test.e_testresult
     try {
     output = vx_core.f_new(
-        vx_test.t_testresult,
+        {"any-1": vx_test.t_testresult},
         ":code",
         ":false",
         ":passfail",
@@ -1017,7 +883,7 @@ export default class vx_test {
     let output = vx_test.e_testresult
     try {
     output = vx_core.f_new(
-        vx_test.t_testresult,
+        {"any-1": vx_test.t_testresult},
         ":code",
         ":false",
         ":expected",
@@ -1050,7 +916,7 @@ export default class vx_test {
     let output = vx_test.e_testresult
     try {
     output = vx_core.f_new(
-        vx_test.t_testresult,
+        {"any-1": vx_test.t_testresult},
         ":code",
         ":gt",
         ":passfail",
@@ -1084,15 +950,7 @@ export default class vx_test {
   static f_test_gt_1(context, expected, fn_actual) {
     let output = vx_test.e_testresult
     try {
-    output = vx_core.f_new(
-        vx_test.t_testresult,
-        ":code",
-        ":gt",
-        ":expected",
-        expected,
-        ":fn-actual",
-        fn_actual
-      )
+    output = vx_core.f_new({"any-1": vx_test.t_testresult}, ":code", ":gt", ":expected", expected, ":fn-actual", fn_actual)
     } catch (err) {
       console.log(err)
     }
@@ -1118,7 +976,7 @@ export default class vx_test {
     let output = vx_test.e_testresult
     try {
     output = vx_core.f_new(
-        vx_test.t_testresult,
+        {"any-1": vx_test.t_testresult},
         ":code",
         ":ne",
         ":passfail",
@@ -1152,15 +1010,7 @@ export default class vx_test {
   static f_test_ne_1(context, expected, fn_actual) {
     let output = vx_test.e_testresult
     try {
-    output = vx_core.f_new(
-        vx_test.t_testresult,
-        ":code",
-        ":ne",
-        ":expected",
-        expected,
-        ":fn-actual",
-        fn_actual
-      )
+    output = vx_core.f_new({"any-1": vx_test.t_testresult}, ":code", ":ne", ":expected", expected, ":fn-actual", fn_actual)
     } catch (err) {
       console.log(err)
     }
@@ -1186,7 +1036,7 @@ export default class vx_test {
     let output = vx_test.e_testresult
     try {
     output = vx_core.f_new(
-        vx_test.t_testresult,
+        {"any-1": vx_test.t_testresult},
         ":passfail",
         vx_core.f_eq(
           vx_core.f_string_from_any(expected),
@@ -1221,15 +1071,7 @@ export default class vx_test {
   static f_test_string_1(context, expected, fn_actual) {
     let output = vx_test.e_testresult
     try {
-    output = vx_core.f_new(
-        vx_test.t_testresult,
-        ":code",
-        ":string",
-        ":expected",
-        expected,
-        ":fn-actual",
-        fn_actual
-      )
+    output = vx_core.f_new({"any-1": vx_test.t_testresult}, ":code", ":string", ":expected", expected, ":fn-actual", fn_actual)
     } catch (err) {
       console.log(err)
     }
@@ -1254,7 +1096,7 @@ export default class vx_test {
     let output = vx_test.e_testresult
     try {
     output = vx_core.f_new(
-        vx_test.t_testresult,
+        {"any-1": vx_test.t_testresult},
         ":code",
         ":true",
         ":passfail",
@@ -1291,7 +1133,7 @@ export default class vx_test {
     let output = vx_test.e_testresult
     try {
     output = vx_core.f_new(
-        vx_test.t_testresult,
+        {"any-1": vx_test.t_testresult},
         ":code",
         ":true",
         ":expected",
@@ -1325,7 +1167,7 @@ export default class vx_test {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_tr},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const describename = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_test.t_testdescribe}, testdescribe, ":describename")
         const result = vx_core.f_any_from_struct({"any-1": vx_test.t_testresult, "struct-2": vx_test.t_testdescribe}, testdescribe, ":testresult")
         const passfail = vx_core.f_any_from_struct({"any-1": vx_core.t_boolean, "struct-2": vx_test.t_testresult}, result, ":passfail")
@@ -1340,50 +1182,26 @@ export default class vx_test {
           ".preformatted"
         )
         return vx_core.f_new(
-          vx_web_html.t_tr,
+          {"any-1": vx_web_html.t_tr},
           vx_core.f_new(
-            vx_web_html.t_td,
+            {"any-1": vx_web_html.t_td},
             vx_test.f_p_from_passfail(passfail)
           ),
           vx_core.f_new(
-            vx_web_html.t_td,
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              prestyle,
-              ":text",
-              casename
-            )
+            {"any-1": vx_web_html.t_td},
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", prestyle, ":text", casename)
           ),
           vx_core.f_new(
-            vx_web_html.t_td,
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              prestyle,
-              ":text",
-              describename
-            )
+            {"any-1": vx_web_html.t_td},
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", prestyle, ":text", describename)
           ),
           vx_core.f_new(
-            vx_web_html.t_td,
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              prestyle,
-              ":text",
-              expected
-            )
+            {"any-1": vx_web_html.t_td},
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", prestyle, ":text", expected)
           ),
           vx_core.f_new(
-            vx_web_html.t_td,
-            vx_core.f_new(
-              vx_web_html.t_p,
-              ":style",
-              prestyle,
-              ":text",
-              actual
-            )
+            {"any-1": vx_web_html.t_td},
+            vx_core.f_new({"any-1": vx_web_html.t_p}, ":style", prestyle, ":text", actual)
           )
         )
       })
@@ -1409,13 +1227,13 @@ export default class vx_test {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_trlist, "any-2": vx_test.t_testdescribe, "list-1": vx_web_html.t_trlist, "list-2": vx_test.t_testdescribelist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const describelist = vx_core.f_any_from_struct({"any-1": vx_test.t_testdescribelist, "struct-2": vx_test.t_testcase}, testcase, ":describelist")
         const casename = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_test.t_testcase}, testcase, ":casename")
         return vx_core.f_list_from_list_1(
           {"any-1": vx_web_html.t_tr, "any-2": vx_test.t_testdescribe, "list-1": vx_web_html.t_trlist, "list-2": vx_test.t_testdescribelist},
           describelist,
-          vx_core.f_new(vx_core.t_any_from_any, (testdescribe) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (testdescribe) => 
             vx_test.f_tr_from_testdescribe_casename(testdescribe, casename))
         )
       })
@@ -1442,7 +1260,7 @@ export default class vx_test {
     output = vx_core.f_list_join_from_list_1(
       {"any-1": vx_web_html.t_tr, "any-2": vx_test.t_testcase, "list-1": vx_web_html.t_trlist, "list-2": vx_test.t_testcaselist},
       testcaselist,
-      vx_core.f_new(vx_core.t_any_from_any, vx_test.t_trlist_from_testcase)
+      vx_core.f_new_from_type(vx_core.t_any_from_any, vx_test.t_trlist_from_testcase)
     )
     return output
   }
@@ -1975,7 +1793,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_context_test
@@ -1993,7 +1811,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_div_from_testcaselist
@@ -2011,7 +1829,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_div_from_testpackage
@@ -2029,7 +1847,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_div_from_testpackagelist
@@ -2047,7 +1865,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_divchildlist_from_testpackagelist
@@ -2065,7 +1883,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_file_test
@@ -2083,7 +1901,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_file_testhtml
@@ -2101,7 +1919,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_file_testnode
@@ -2119,7 +1937,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_html_from_divtest
@@ -2137,7 +1955,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_p_from_passfail
@@ -2155,7 +1973,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_p_from_testcoveragenums
@@ -2173,7 +1991,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_resolve_testcase
@@ -2191,7 +2009,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_resolve_testcaselist
@@ -2209,7 +2027,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_resolve_testdescribe
@@ -2227,7 +2045,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_resolve_testdescribelist
@@ -2245,7 +2063,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_resolve_testpackage
@@ -2263,7 +2081,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_resolve_testpackagelist
@@ -2281,7 +2099,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_resolve_testresult
@@ -2299,7 +2117,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_security_test
@@ -2317,7 +2135,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test
@@ -2335,7 +2153,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_1
@@ -2353,7 +2171,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_false
@@ -2371,7 +2189,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_false_1
@@ -2389,7 +2207,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_gt
@@ -2407,7 +2225,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_gt_1
@@ -2425,7 +2243,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_ne
@@ -2443,7 +2261,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_ne_1
@@ -2461,7 +2279,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_string
@@ -2479,7 +2297,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_string_1
@@ -2497,7 +2315,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_true
@@ -2515,7 +2333,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_test_true_1
@@ -2533,7 +2351,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_tr_from_testdescribe_casename
@@ -2551,7 +2369,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_trlist_from_testcase
@@ -2569,7 +2387,7 @@ export default class vx_test {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_test.f_trlist_from_testcaselist
@@ -2578,269 +2396,137 @@ export default class vx_test {
     // (const stylesheet-test)
     Object.assign(vx_test.c_stylesheet_test, vx_web_html.f_stylesheet_loadmap(
       vx_core.f_new(
-        vx_web_html.t_stylesheet,
+        {"any-1": vx_web_html.t_stylesheet},
         ":name",
         "Test Suite",
         ":styles",
         vx_core.f_new(
-          vx_web_html.t_stylelist,
+          {"any-1": vx_web_html.t_stylelist},
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "body",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "font-size",
-              "0.9em",
-              "font-family",
-              "sans-serif"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "font-size", "0.9em", "font-family", "sans-serif")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "details summary",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "cursor",
-              "pointer",
-              "display",
-              "inline-flex",
-              "gap",
-              "10px"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "cursor", "pointer", "display", "inline-flex", "gap", "10px")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "table",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "vertical-align",
-              "top",
-              "border-collapse",
-              "collapse",
-              "margin",
-              "25px 0",
-              "min-width",
-              "400px",
-              "box-shadow",
-              "0 0 20px rgba(0, 0, 0, 0.15)"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "vertical-align", "top", "border-collapse", "collapse", "margin", "25px 0", "min-width", "400px", "box-shadow", "0 0 20px rgba(0, 0, 0, 0.15)")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "thead tr",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "background-color",
-              "#009879",
-              "color",
-              "#ffffff",
-              "text-align",
-              "left"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "background-color", "#009879", "color", "#ffffff", "text-align", "left")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "td",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "padding",
-              "10px 10px",
-              "vertical-align",
-              "top"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "padding", "10px 10px", "vertical-align", "top")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "tbody tr",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "border-bottom",
-              "1px solid #dddddd"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "border-bottom", "1px solid #dddddd")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "tbody tr:nth-of-type(even)",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "background-color",
-              "#f3f3f3"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "background-color", "#f3f3f3")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "tbody tr:last-of-type",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "border-bottom",
-              "2px solid #009879"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "border-bottom", "2px solid #009879")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             "tbody tr.active-row",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "font-weight",
-              "bold",
-              "color",
-              "#009879"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "font-weight", "bold", "color", "#009879")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".failflag",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "background-color",
-              "red",
-              "color",
-              "white",
-              "padding-left",
-              "4px",
-              "padding-right",
-              "4px",
-              "padding-top",
-              "1px",
-              "padding-bottom",
-              "1px"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "background-color", "red", "color", "white", "padding-left", "4px", "padding-right", "4px", "padding-top", "1px", "padding-bottom", "1px")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".passflag",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "background-color",
-              "green",
-              "color",
-              "white",
-              "padding-left",
-              "4px",
-              "padding-right",
-              "4px",
-              "padding-top",
-              "1px",
-              "padding-bottom",
-              "1px"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "background-color", "green", "color", "white", "padding-left", "4px", "padding-right", "4px", "padding-top", "1px", "padding-bottom", "1px")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".coveragenums",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "width",
-              "90px"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "width", "90px")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".coveragepct",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "text-align",
-              "right"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "text-align", "right")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".coveragepctgreen",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "background-color",
-              "green",
-              "color",
-              "white",
-              "text-align",
-              "right"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "background-color", "green", "color", "white", "text-align", "right")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".coveragepctred",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "background-color",
-              "red",
-              "color",
-              "white",
-              "text-align",
-              "right"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "background-color", "red", "color", "white", "text-align", "right")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".pkgheader",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "display",
-              "inline-flex",
-              "gap",
-              "10px"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "display", "inline-flex", "gap", "10px")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".pkgname",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "font-weight",
-              "bold",
-              "width",
-              "180px"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "font-weight", "bold", "width", "180px")
           ),
           vx_core.f_new(
-            vx_web_html.t_style,
+            {"any-1": vx_web_html.t_style},
             ":name",
             ".preformatted",
             ":props",
-            vx_core.f_new(
-              vx_web_html.t_propmap,
-              "display",
-              "block",
-              "unicode-bidi",
-              "embed",
-              "font-family",
-              "monospace",
-              "white-space",
-              "pre"
-            )
+            vx_core.f_new({"any-1": vx_web_html.t_propmap}, "display", "block", "unicode-bidi", "embed", "font-family", "monospace", "white-space", "pre")
           )
         )
       )

@@ -1541,7 +1541,7 @@ public static class Repl {
             ),
             Vx.Core.f_else(
               Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_6 = Vx.Core.f_new(
+                Vx.Core.Type_any output_6 = Vx.Core.f_new_from_type(
                   repltype,
                   args
                 );

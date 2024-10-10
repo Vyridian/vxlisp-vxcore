@@ -1052,12 +1052,8 @@ namespace vx_data_csv {
         vx_core::vx_ref_plus(children);
         vx_core::Type_stringlist strings = vx_data_textblock::f_stringlist_from_textblocklist(children);
         vx_core::vx_ref_plus(strings);
-        vx_data_csv::Type_csvrows output_1 = vx_core::f_new(
-          vx_data_csv::t_csvrows,
-          vx_core::vx_new(vx_core::t_anylist, {
-            strings
-          })
-        );
+        vx_data_csv::Type_csvrows output_1 = vx_core::f_new(vx_data_csv::t_csvrows, vx_core::vx_new(vx_core::t_anylist, {
+          strings}));
         vx_core::vx_release_one_except({parsedtb, children, strings}, output_1);
         return output_1;
       })

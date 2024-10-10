@@ -78,7 +78,7 @@ object TestLib {
   fun test_list_from_list_async() : Boolean {
     var testname : String = "test_list_from_list_async"
     var sparams : vx_core.Type_anylist = vx_core.vx_anylist_from_arraystring("hello", "world")
-    var slist : vx_core.Type_stringlist = vx_core.f_new(vx_core.t_stringlist, sparams)
+    var slist : vx_core.Type_stringlist = vx_core.f_new_from_type(vx_core.t_stringlist, sparams)
     val fn_async : vx_core.Func_any_from_any_async = vx_core.t_any_from_any_async.vx_fn_new({
       anyval ->
       val stringval : vx_core.Type_string = anyval as vx_core.Type_string

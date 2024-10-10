@@ -46,7 +46,7 @@ export default class app_test {
   }
 
   static f_testpackagelist_from_all_test(context) {
-    const testpackagelist = vx_core.f_new(
+    const testpackagelist = vx_core.f_new_from_type(
       vx_test.t_testpackagelist,
       vx_core_test.test_package(context),
       vx_data_db_test.test_package(context),

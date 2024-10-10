@@ -24,7 +24,7 @@ public final class TextblockTest {
   public static Test.Type_testdescribe t_delimlist_testdescribe_1(final Core.Type_context context) {
     Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      ":describename", "(test\n (new delimlist\n  delimcomma\n  delimwhitespace)\n (delimlist\n  delimcomma\n  delimwhitespace))",
+      ":describename", "(test\n (new : delimlist\n  delimcomma\n  delimwhitespace)\n (delimlist\n  delimcomma\n  delimwhitespace))",
       ":testresult", Test.f_test(
         context,
         Core.f_new(

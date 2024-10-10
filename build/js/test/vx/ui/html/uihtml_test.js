@@ -14,7 +14,7 @@ export default class vx_ui_html_uihtml_test {
 
   static test_package(context) {
     const testcaselist = vx_ui_html_uihtml_test.test_cases(context)
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testpackage,
       ":testpkg", "vx/ui/html/uihtml",
       ":caselist", testcaselist,
@@ -25,29 +25,30 @@ export default class vx_ui_html_uihtml_test {
   }
 
   static test_coveragesummary() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragesummary,
       "testpkg",   "vx/ui/html/uihtml", 
-      "constnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 7), 
-      "docnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 66, ":tests", 30, ":total", 45), 
-      "funcnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 37), 
-      "bigospacenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "bigotimenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 44), 
-      "typenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
+      "constnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 7), 
+      "docnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 66, ":tests", 30, ":total", 45), 
+      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 37), 
+      "bigospacenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "bigotimenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 44), 
+      "typenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     )
+    return output
   }
 
   static test_coveragedetail() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragedetail,
       "testpkg", "vx/ui/html/uihtml",
       "typemap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap
         ),
       "constmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "layout-app-html", 0,
           "layout-else-html", 0,
@@ -58,7 +59,7 @@ export default class vx_ui_html_uihtml_test {
           "style-selected", 0
         ),
       "funcmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "boolean-layoutremove-html", 0,
           "boolean-layoutselected-html", 0,
@@ -100,10 +101,11 @@ export default class vx_ui_html_uihtml_test {
           "ui-layout-label<-ui-orig-parent", 0
         )
     )
+    return output
   }
 
   static test_cases(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcaselist
     )
     return output

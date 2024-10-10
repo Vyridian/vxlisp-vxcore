@@ -23,12 +23,12 @@ export default class vx_translation_en {
   // (func context-en)
   static f_context_en(...args) {
     let output = vx_core.e_context
-    args = vx_core.f_new(vx_core.t_anylist, ...args)
+    args = vx_core.f_new_from_type(vx_core.t_anylist, ...args)
     output = vx_core.f_new(
-      vx_core.t_context,
+      {"any-1": vx_core.t_context},
       ":session",
       vx_core.f_new(
-        vx_core.t_session,
+        {"any-1": vx_core.t_session},
         ":translation",
         vx_translation_en.f_translation_en()
       )
@@ -52,17 +52,17 @@ export default class vx_translation_en {
   // (func context-test)
   static f_context_test(...args) {
     let output = vx_core.e_context
-    args = vx_core.f_new(vx_core.t_anylist, ...args)
+    args = vx_core.f_new_from_type(vx_core.t_anylist, ...args)
     output = vx_core.f_new(
-      vx_core.t_context,
+      {"any-1": vx_core.t_context},
       ":session",
       vx_core.f_new(
-        vx_core.t_session,
+        {"any-1": vx_core.t_session},
         ":translation",
         vx_translation_en.f_translation_en(),
         ":user",
         vx_core.f_new(
-          vx_core.t_user,
+          {"any-1": vx_core.t_user},
           ":security",
           vx_translation_en.f_securitydata_test()
         )
@@ -87,10 +87,10 @@ export default class vx_translation_en {
   static f_securitydata_test() {
     let output = vx_core.e_security
     output = vx_core.f_new(
-      vx_core.t_security,
+      {"any-1": vx_core.t_security},
       ":allowfuncs",
       vx_core.f_new(
-        vx_core.t_funclist,
+        {"any-1": vx_core.t_funclist},
         vx_data_file.t_boolean_write_from_file_any,
         vx_data_file.t_boolean_write_from_file_string,
         vx_data_file.t_file_read_from_file,
@@ -116,7 +116,7 @@ export default class vx_translation_en {
   static f_translation_en() {
     let output = vx_core.e_translation
     output = vx_core.f_new(
-      vx_core.t_translation,
+      {"any-1": vx_core.t_translation},
       ":name",
       "en",
       ":wordmap",
@@ -140,19 +140,7 @@ export default class vx_translation_en {
   // (func words)
   static f_words() {
     let output = vx_core.e_stringmap
-    output = vx_core.f_new(
-      vx_core.t_stringmap,
-      "Hello",
-      "Hello",
-      "World",
-      "World",
-      "!vx/core/func exception",
-      "Exception in Function",
-      "!vx/core/func permissiondenied",
-      "Permission Denied to Function",
-      "!vx/repl/repl/repl<-string-argmap repltypenotfound",
-      "Repl Type Not Found"
-    )
+    output = vx_core.f_new({"any-1": vx_core.t_stringmap}, "Hello", "Hello", "World", "World", "!vx/core/func exception", "Exception in Function", "!vx/core/func permissiondenied", "Permission Denied to Function", "!vx/repl/repl/repl<-string-argmap repltypenotfound", "Repl Type Not Found")
     return output
   }
 
@@ -200,7 +188,7 @@ export default class vx_translation_en {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_en.f_context_en
@@ -218,7 +206,7 @@ export default class vx_translation_en {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_en.f_context_test
@@ -236,7 +224,7 @@ export default class vx_translation_en {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_en.f_securitydata_test
@@ -254,7 +242,7 @@ export default class vx_translation_en {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_en.f_translation_en
@@ -272,7 +260,7 @@ export default class vx_translation_en {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_en.f_words

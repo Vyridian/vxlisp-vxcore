@@ -33,7 +33,7 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": generic_any_1, "map-1": vx_state.t_valuemap},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const submap = vx_state.f_valuemap_readstate_from_mapname(context, mapname)
         return vx_core.f_any_from_map({"any-1": generic_any_1, "map-1": vx_state.t_valuemap}, submap, name)
       })
@@ -85,7 +85,7 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean, "map-1": vx_core.t_statelistenermap},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const statelistenermap = vx_state.f_statelistenermap_readstate(context)
         return vx_core.f_boolean_write_from_map_name_value(
           statelistenermap,
@@ -120,34 +120,24 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const valmap = vx_state.f_any_readstate_from_name({"any-1": vx_state.t_valuemap}, context, mapname)
         return vx_core.f_if_2(
           {"any-1": vx_core.t_boolean},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(valmap)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(valmap)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
               {"any-1": vx_core.t_boolean},
               [],
-              vx_core.f_new(vx_core.t_any_from_func, () => {
-                const valmap2 = vx_core.f_new(
-                  vx_state.t_valuemap,
-                  name,
-                  value
-                )
-                const listener = vx_core.f_new(
-                  vx_core.t_statelistener,
-                  ":name",
-                  mapname,
-                  ":value",
-                  valmap2
-                )
+              vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
+                const valmap2 = vx_core.f_new({"any-1": vx_state.t_valuemap}, name, value)
+                const listener = vx_core.f_new({"any-1": vx_core.t_statelistener}, ":name", mapname, ":value", valmap2)
                 return vx_state.f_boolean_writestate_from_statelistener(context, listener)
               })
             )})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_boolean_write_from_map_name_value(valmap, name, value)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_boolean_write_from_map_name_value(valmap, name, value)})
           )
         )
       })
@@ -175,7 +165,7 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const listenercur = vx_state.f_statelistener_readstate_from_name(context, name)
         const listenerchg = vx_core.f_copy(listenercur, ":name", name, ":value", value)
         return vx_state.f_boolean_writestate_from_statelistener(context, listenerchg)
@@ -203,7 +193,7 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean, "map-1": vx_core.t_statelistenermap},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const statelistenermap = vx_state.f_statelistenermap_readstate(context)
         const name = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_statelistener}, statelistener, ":name")
         return vx_core.f_boolean_write_from_map_name_value(statelistenermap, name, statelistener)
@@ -287,7 +277,7 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": vx_core.t_statelistener, "map-1": vx_core.t_statelistenermap},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const statelistenermap = vx_state.f_statelistenermap_readstate(context)
         return vx_core.f_any_from_map({"any-1": vx_core.t_statelistener, "map-1": vx_core.t_statelistenermap}, statelistenermap, name)
       })
@@ -313,7 +303,7 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": vx_core.t_statelistenermap, "struct-2": vx_core.t_state},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const state = vx_state.f_state_from_context(context)
         return vx_core.f_any_from_struct({"any-1": vx_core.t_statelistenermap, "struct-2": vx_core.t_state}, state, ":statelistenermap")
       })
@@ -340,7 +330,7 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": vx_core.t_any, "struct-2": vx_core.t_statelistener},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const statelistener = vx_state.f_statelistener_readstate_from_name(context, name)
         return vx_core.f_any_from_struct({"any-1": vx_core.t_any, "struct-2": vx_core.t_statelistener}, statelistener, ":value")
       })
@@ -367,7 +357,7 @@ export default class vx_state {
     output = vx_core.f_let(
       {"any-1": vx_state.t_valuemap},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const value = vx_state.f_value_readstate_from_name(context, mapname)
         const valmap = vx_core.f_any_from_any({"any-1": vx_state.t_valuemap, "any-2": vx_core.t_any}, value)
         return valmap
@@ -456,7 +446,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_any_readstate_from_mapname_name
@@ -474,7 +464,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_any_readstate_from_name
@@ -492,7 +482,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_boolean_removestate_from_name
@@ -510,7 +500,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_boolean_writestate_from_mapname_name_value
@@ -528,7 +518,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_boolean_writestate_from_name_value
@@ -546,7 +536,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_boolean_writestate_from_statelistener
@@ -564,7 +554,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_change
@@ -582,7 +572,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_register
@@ -600,7 +590,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_state_from_context
@@ -618,7 +608,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_statelistener_readstate_from_name
@@ -636,7 +626,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_statelistenermap_readstate
@@ -654,7 +644,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_value_readstate_from_name
@@ -672,7 +662,7 @@ export default class vx_state {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_state.f_valuemap_readstate_from_mapname

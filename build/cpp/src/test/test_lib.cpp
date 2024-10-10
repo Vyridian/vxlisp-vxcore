@@ -107,7 +107,7 @@ namespace test_lib {
             vx_test::f_test(
  													context,
 	 												vx_core::vx_new_decimal_from_string("4.5"),
-              vx_core::f_new(
+              vx_core::f_new_from_type(
                 vx_core::t_float,
                 vx_core::vx_new(vx_core::t_anylist, {
                   vx_core::vx_new_decimal_from_string("4.5")

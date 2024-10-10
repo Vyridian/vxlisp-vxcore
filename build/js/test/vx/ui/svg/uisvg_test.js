@@ -10,7 +10,7 @@ export default class vx_ui_svg_uisvg_test {
 
   static test_package(context) {
     const testcaselist = vx_ui_svg_uisvg_test.test_cases(context)
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testpackage,
       ":testpkg", "vx/ui/svg/uisvg",
       ":caselist", testcaselist,
@@ -21,40 +21,42 @@ export default class vx_ui_svg_uisvg_test {
   }
 
   static test_coveragesummary() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragesummary,
       "testpkg",   "vx/ui/svg/uisvg", 
-      "constnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "docnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "funcnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "bigospacenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "bigotimenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "typenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
+      "constnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "docnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "bigospacenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "bigotimenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "typenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     )
+    return output
   }
 
   static test_coveragedetail() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragedetail,
       "testpkg", "vx/ui/svg/uisvg",
       "typemap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap
         ),
       "constmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap
         ),
       "funcmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap
         )
     )
+    return output
   }
 
   static test_cases(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcaselist
     )
     return output

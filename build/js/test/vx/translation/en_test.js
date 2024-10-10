@@ -11,7 +11,7 @@ export default class vx_translation_en_test {
 
   static test_package(context) {
     const testcaselist = vx_translation_en_test.test_cases(context)
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testpackage,
       ":testpkg", "vx/translation/en",
       ":caselist", testcaselist,
@@ -22,33 +22,34 @@ export default class vx_translation_en_test {
   }
 
   static test_coveragesummary() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragesummary,
       "testpkg",   "vx/translation/en", 
-      "constnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "docnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 5, ":total", 5), 
-      "funcnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 20, ":tests", 1, ":total", 5), 
-      "bigospacenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "bigotimenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 20, ":tests", 1, ":total", 5), 
-      "typenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
+      "constnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "docnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 5, ":total", 5), 
+      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 20, ":tests", 1, ":total", 5), 
+      "bigospacenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "bigotimenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 20, ":tests", 1, ":total", 5), 
+      "typenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     )
+    return output
   }
 
   static test_coveragedetail() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragedetail,
       "testpkg", "vx/translation/en",
       "typemap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap
         ),
       "constmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap
         ),
       "funcmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "context-en", 0,
           "context-test", 0,
@@ -57,18 +58,19 @@ export default class vx_translation_en_test {
           "words", 0
         )
     )
+    return output
   }
 
   static f_translation_en(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/translation/en",
       ":casename", "translation-en",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"Hello\"\n (trn/translate<-translation-string\n  (translation-en)\n  \"Hello\"))",
             ":testresult",
@@ -87,7 +89,7 @@ export default class vx_translation_en_test {
   }
 
   static test_cases(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcaselist,
       vx_translation_en_test.f_translation_en(context)
     )

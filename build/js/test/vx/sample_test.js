@@ -9,7 +9,7 @@ export default class vx_sample_test {
 
   static test_package(context) {
     const testcaselist = vx_sample_test.test_cases(context)
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testpackage,
       ":testpkg", "vx/sample",
       ":caselist", testcaselist,
@@ -20,52 +20,54 @@ export default class vx_sample_test {
   }
 
   static test_coveragesummary() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragesummary,
       "testpkg",   "vx/sample", 
-      "constnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 1, ":total", 1), 
-      "docnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 50, ":tests", 2, ":total", 4), 
-      "funcnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 50, ":tests", 1, ":total", 2), 
-      "bigospacenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "bigotimenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 50, ":tests", 2, ":total", 4), 
-      "typenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 1)
+      "constnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 1, ":total", 1), 
+      "docnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 50, ":tests", 2, ":total", 4), 
+      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 50, ":tests", 1, ":total", 2), 
+      "bigospacenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "bigotimenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 50, ":tests", 2, ":total", 4), 
+      "typenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 1)
     )
+    return output
   }
 
   static test_coveragedetail() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragedetail,
       "testpkg", "vx/sample",
       "typemap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "mytype", 0
         ),
       "constmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "myconst", 1
         ),
       "funcmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "main", 0,
           "myfunc", 1
         )
     )
+    return output
   }
 
   static c_myconst(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/sample",
       ":casename", "myconst",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n myconst\n myconst)",
             ":testresult",
@@ -81,15 +83,15 @@ export default class vx_sample_test {
   }
 
   static f_myfunc(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/sample",
       ":casename", "myfunc",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 5 (myfunc 1))",
             ":testresult",
@@ -105,9 +107,9 @@ export default class vx_sample_test {
   }
 
   static test_cases(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcaselist,
-      vx_sample_test.c_myconst(),
+      vx_sample_test.c_myconst(context),
       vx_sample_test.f_myfunc(context)
     )
     return output

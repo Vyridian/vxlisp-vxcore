@@ -231,13 +231,14 @@ export default class vx_core {
   }
 
   static vx_list_from_map_fn(
-    generic_list_1, valuemap, fn_any_from_key_value) {
+    generic_list_1,
+    valuemap,fn_any_from_key_value) {
     let output = vx_core.f_empty(generic_list_1)
     const fn = fn_any_from_key_value['vx_value']
     if (fn) {
       const entries = Object.entries(valuemap['vx_value'])
       const values = entries.map(fn)
-      output = vx_core.f_new(generic_list_1, ...values)
+      output = vx_core.f_new_from_type(generic_list_1, ...values)
     }
     return output
   }
@@ -265,7 +266,7 @@ export default class vx_core {
           values.push(chgvalue)
         }
       }
-      output = vx_core.f_new(generic_map_1, ...values)
+      output = vx_core.f_new_from_type(generic_map_1, ...values)
     }
     return output
   }
@@ -635,7 +636,9 @@ export default class vx_core {
                     value: vx_core.vx_string_from_any(value)
                   })
                 )
-                msgblock = vx_core.f_msgblock_from_msgblock_msg(msgblock, msg)
+                msgblock = vx_core.f_msgblock_from_msgblock_msg(
+                  msgblock, msg
+                )
                 break
               }
             }
@@ -672,13 +675,13 @@ export default class vx_core {
         values.map(value => {
           const valuetype = vx_core.f_type_from_any(value)
           let isfound = false
-          if (vx_core.f_is_empty(value)) {
+          if (allowany) {
+            listvals.push(value)
+            isfound = true
+          } else if (vx_core.f_is_empty(value)) {
             isfound = true
           } else if (typedef == valuetype) {
             listvals.push(...value)
-            isfound = true
-          } else if (allowany) {
-            listvals.push(value)
             isfound = true
           } else if (allowtypes.includes(valuetype)) {
             listvals.push(value)
@@ -1013,6 +1016,12 @@ export default class vx_core {
       }
       break
     }
+    return output
+  }
+
+  static vx_new_1(
+    generic_any_1, values) {
+    let output = vx_core.vx_new(generic_any_1, values)
     return output
   }
 
@@ -1990,12 +1999,12 @@ export default class vx_core {
   // (func *)
   static f_multiply_2(...nums) {
     let output = vx_core.e_int
-    nums = vx_core.f_new(vx_core.t_intlist, ...nums)
+    nums = vx_core.f_new_from_type(vx_core.t_intlist, ...nums)
     output = vx_core.f_any_from_list_start_reduce(
       {"any-1": vx_core.t_int, "any-2": vx_core.t_int, "list-2": vx_core.t_intlist},
       nums,
       1,
-      vx_core.f_new(vx_core.t_any_from_reduce, (total, num) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce, (total, num) => 
         vx_core.f_multiply(total, num))
     )
     return output
@@ -2017,12 +2026,12 @@ export default class vx_core {
   // (func *)
   static f_multiply_3(...nums) {
     let output = vx_core.e_number
-    nums = vx_core.f_new(vx_core.t_numberlist, ...nums)
+    nums = vx_core.f_new_from_type(vx_core.t_numberlist, ...nums)
     output = vx_core.f_any_from_list_start_reduce(
       {"any-1": vx_core.t_number, "any-2": vx_core.t_number, "list-2": vx_core.t_numberlist},
       nums,
       1,
-      vx_core.f_new(vx_core.t_any_from_reduce, (total, num) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce, (total, num) => 
         vx_core.f_multiply_1(total, num))
     )
     return output
@@ -2086,12 +2095,12 @@ export default class vx_core {
   // (func +)
   static f_plus_2(...nums) {
     let output = vx_core.e_int
-    nums = vx_core.f_new(vx_core.t_intlist, ...nums)
+    nums = vx_core.f_new_from_type(vx_core.t_intlist, ...nums)
     output = vx_core.f_any_from_list_start_reduce(
       {"any-1": vx_core.t_int, "any-2": vx_core.t_int, "list-2": vx_core.t_intlist},
       nums,
       0,
-      vx_core.f_new(vx_core.t_any_from_reduce, (total, num) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce, (total, num) => 
         vx_core.f_plus(total, num))
     )
     return output
@@ -2113,12 +2122,12 @@ export default class vx_core {
   // (func +)
   static f_plus_3(...nums) {
     let output = vx_core.e_number
-    nums = vx_core.f_new(vx_core.t_numberlist, ...nums)
+    nums = vx_core.f_new_from_type(vx_core.t_numberlist, ...nums)
     output = vx_core.f_any_from_list_start_reduce(
       {"any-1": vx_core.t_number, "any-2": vx_core.t_number, "list-2": vx_core.t_numberlist},
       nums,
       0,
-      vx_core.f_new(vx_core.t_any_from_reduce, (total, num) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce, (total, num) => 
         vx_core.f_plus_1(total, num))
     )
     return output
@@ -2202,12 +2211,12 @@ export default class vx_core {
   // (func -)
   static f_minus_2(...nums) {
     let output = vx_core.e_int
-    nums = vx_core.f_new(vx_core.t_intlist, ...nums)
+    nums = vx_core.f_new_from_type(vx_core.t_intlist, ...nums)
     output = vx_core.f_any_from_list_start_reduce(
       {"any-1": vx_core.t_int, "any-2": vx_core.t_int, "list-2": vx_core.t_intlist},
       nums,
       0,
-      vx_core.f_new(vx_core.t_any_from_reduce, (total, num) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce, (total, num) => 
         vx_core.f_minus(total, num))
     )
     return output
@@ -2229,12 +2238,12 @@ export default class vx_core {
   // (func -)
   static f_minus_3(...nums) {
     let output = vx_core.e_number
-    nums = vx_core.f_new(vx_core.t_numberlist, ...nums)
+    nums = vx_core.f_new_from_type(vx_core.t_numberlist, ...nums)
     output = vx_core.f_any_from_list_start_reduce(
       {"any-1": vx_core.t_number, "any-2": vx_core.t_number, "list-2": vx_core.t_numberlist},
       nums,
       0,
-      vx_core.f_new(vx_core.t_any_from_reduce, (total, num) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce, (total, num) => 
         vx_core.f_minus_1(total, num))
     )
     return output
@@ -2278,7 +2287,7 @@ export default class vx_core {
   // (func .)
   static f_dotmethod(target, method, ...parameters) {
     let output = vx_core.e_any
-    parameters = vx_core.f_new(vx_core.t_anylist, ...parameters)
+    parameters = vx_core.f_new_from_type(vx_core.t_anylist, ...parameters)
     output = target[method].apply(parameters)
     return output
   }
@@ -2326,10 +2335,10 @@ export default class vx_core {
       vx_core.f_compare(val1, val2),
       vx_core.f_case_1(
         -1,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return true})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return true})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return false})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return false})
       )
     )
     return output
@@ -2351,12 +2360,12 @@ export default class vx_core {
   // (func <)
   static f_lt_1(...values) {
     let output = vx_core.e_boolean
-    values = vx_core.f_new(vx_core.t_anylist, ...values)
+    values = vx_core.f_new_from_type(vx_core.t_anylist, ...values)
     output = vx_core.f_any_from_list_start_reduce_next(
       {"any-1": vx_core.t_boolean, "list-2": vx_core.t_anylist},
       values,
       true,
-      vx_core.f_new(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
         vx_core.f_and(
           reduce,
           vx_core.f_lt(current, next)
@@ -2386,7 +2395,7 @@ export default class vx_core {
   static f_chainfirst(generic, value, ...fnlist) {
     const generic_any_1 = generic["any-1"]
     let output = vx_core.f_empty(generic_any_1)
-    fnlist = vx_core.f_new(vx_core.t_any_from_anylist, ...fnlist)
+    fnlist = vx_core.f_new_from_type(vx_core.t_any_from_anylist, ...fnlist)
     return output
   }
 
@@ -2411,7 +2420,7 @@ export default class vx_core {
   static f_chainlast(generic, value, ...fnlist) {
     const generic_any_1 = generic["any-1"]
     let output = vx_core.f_empty(generic_any_1)
-    fnlist = vx_core.f_new(vx_core.t_any_from_anylist, ...fnlist)
+    fnlist = vx_core.f_new_from_type(vx_core.t_any_from_anylist, ...fnlist)
     return output
   }
 
@@ -2454,7 +2463,7 @@ export default class vx_core {
   // (func <=)
   static f_le_1(...args) {
     let output = vx_core.e_boolean
-    args = vx_core.f_new(vx_core.t_anylist, ...args)
+    args = vx_core.f_new_from_type(vx_core.t_anylist, ...args)
     output = vx_core.f_not(
       vx_core.f_gt_1(...args)
     )
@@ -2498,12 +2507,12 @@ export default class vx_core {
   // (func =)
   static f_eq_1(...values) {
     let output = vx_core.e_boolean
-    values = vx_core.f_new(vx_core.t_anylist, ...values)
+    values = vx_core.f_new_from_type(vx_core.t_anylist, ...values)
     output = vx_core.f_any_from_list_start_reduce_next(
       {"any-1": vx_core.t_boolean, "list-2": vx_core.t_anylist},
       values,
       false,
-      vx_core.f_new(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
         vx_core.f_and(
           reduce,
           vx_core.f_eq(current, next)
@@ -2555,10 +2564,10 @@ export default class vx_core {
       vx_core.f_compare(val1, val2),
       vx_core.f_case_1(
         1,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return true})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return true})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return false})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return false})
       )
     )
     return output
@@ -2580,12 +2589,12 @@ export default class vx_core {
   // (func >)
   static f_gt_1(...values) {
     let output = vx_core.e_boolean
-    values = vx_core.f_new(vx_core.t_anylist, ...values)
+    values = vx_core.f_new_from_type(vx_core.t_anylist, ...values)
     output = vx_core.f_any_from_list_start_reduce_next(
       {"any-1": vx_core.t_boolean, "list-2": vx_core.t_anylist},
       values,
       true,
-      vx_core.f_new(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
         vx_core.f_and(
           reduce,
           vx_core.f_gt(current, next)
@@ -2633,7 +2642,7 @@ export default class vx_core {
   // (func >=)
   static f_ge_1(...args) {
     let output = vx_core.e_boolean
-    args = vx_core.f_new(vx_core.t_anylist, ...args)
+    args = vx_core.f_new_from_type(vx_core.t_anylist, ...args)
     output = vx_core.f_not(
       vx_core.f_lt_1(...args)
     )
@@ -2743,24 +2752,24 @@ export default class vx_core {
   // (func and)
   static f_and_1(...values) {
     let output = vx_core.e_boolean
-    values = vx_core.f_new(vx_core.t_booleanlist, ...values)
+    values = vx_core.f_new_from_type(vx_core.t_booleanlist, ...values)
     output = vx_core.f_switch(
       {"any-1": vx_core.t_boolean, "any-2": vx_core.t_int},
       vx_core.f_length_1(values),
       vx_core.f_case_1(
         0,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return true})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return true})
       ),
       vx_core.f_case_1(
         1,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_any_from_list({"any-1": vx_core.t_boolean, "list-1": vx_core.t_booleanlist}, values, 1)})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_any_from_list({"any-1": vx_core.t_boolean, "list-1": vx_core.t_booleanlist}, values, 1)})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_any_from_list_start_reduce_next(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_any_from_list_start_reduce_next(
           {"any-1": vx_core.t_boolean, "any-2": vx_core.t_boolean, "list-2": vx_core.t_booleanlist},
           values,
           true,
-          vx_core.f_new(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
             vx_core.f_and(
               reduce,
               vx_core.f_and(current, next)
@@ -3458,15 +3467,7 @@ export default class vx_core {
   // (func case)
   static f_case(values, fn_any) {
     let output = vx_core.e_thenelse
-    output = vx_core.f_new(
-      vx_core.t_thenelse,
-      ":code",
-      ":casemany",
-      ":values",
-      values,
-      ":fn-any",
-      fn_any
-    )
+    output = vx_core.f_new({"any-1": vx_core.t_thenelse}, ":code", ":casemany", ":values", values, ":fn-any", fn_any)
     return output
   }
 
@@ -3486,15 +3487,7 @@ export default class vx_core {
   // (func case)
   static f_case_1(value, fn_any) {
     let output = vx_core.e_thenelse
-    output = vx_core.f_new(
-      vx_core.t_thenelse,
-      ":code",
-      ":case",
-      ":value",
-      value,
-      ":fn-any",
-      fn_any
-    )
+    output = vx_core.f_new({"any-1": vx_core.t_thenelse}, ":code", ":case", ":value", value, ":fn-any", fn_any)
     return output
   }
 
@@ -3583,7 +3576,7 @@ export default class vx_core {
   // (func context-main)
   static f_context_main(...args) {
     let output = vx_core.e_context
-    args = vx_core.f_new(vx_core.t_anylist, ...args)
+    args = vx_core.f_new_from_type(vx_core.t_anylist, ...args)
     output = vx_core.f_empty(
       vx_core.t_context
     )
@@ -3607,7 +3600,7 @@ export default class vx_core {
   // (func copy)
   static f_copy(value, ...values) {
     let output
-    output = vx_core.f_new(value, ...values)
+    output = vx_core.f_new_from_type(value, ...values)
     return output
   }
 
@@ -3626,13 +3619,7 @@ export default class vx_core {
   // (func else)
   static f_else(fn_any) {
     let output = vx_core.e_thenelse
-    output = vx_core.f_new(
-      vx_core.t_thenelse,
-      ":code",
-      ":else",
-      ":fn-any",
-      fn_any
-    )
+    output = vx_core.f_new({"any-1": vx_core.t_thenelse}, ":code", ":else", ":fn-any", fn_any)
     return output
   }
 
@@ -3829,7 +3816,7 @@ export default class vx_core {
   static f_funcname_from_funcdef(funcdef) {
     let output = vx_core.e_string
     output = vx_core.f_new(
-      vx_core.t_string,
+      {"any-1": vx_core.t_string},
       vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_funcdef}, funcdef, ":pkgname"),
       "/",
       vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_funcdef}, funcdef, ":name")
@@ -3908,7 +3895,7 @@ export default class vx_core {
   static f_if_2(generic, ...thenelselist) {
     const generic_any_1 = generic["any-1"]
     let output = vx_core.f_empty(generic_any_1)
-    thenelselist = vx_core.f_new(vx_core.t_thenelselist, ...thenelselist)
+    thenelselist = vx_core.f_new_from_type(vx_core.t_thenelselist, ...thenelselist)
     let fn_any = null
     for (const thenelseval of thenelselist) {
       const thenelse = thenelseval['vx_value']
@@ -3974,18 +3961,18 @@ export default class vx_core {
       value,
       vx_core.f_case_1(
         "notanumber",
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.c_notanumber})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.c_notanumber})
       ),
       vx_core.f_case_1(
         "infinity",
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.c_infinity})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.c_infinity})
       ),
       vx_core.f_case_1(
         "neginfinity",
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.c_neginfinity})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.c_neginfinity})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return parseInt(value)})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return parseInt(value)})
       )
     )
     return output
@@ -4144,17 +4131,11 @@ export default class vx_core {
       {"any-1": vx_core.t_boolean, "any-2": vx_core.t_string},
       vx_core.f_typename_from_any(value),
       vx_core.f_case(
-        vx_core.f_new(
-          vx_core.t_list,
-          "vx/core/decimal",
-          "vx/core/float",
-          "vx/core/int",
-          "vx/core/number"
-        ),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return true})
+        vx_core.f_new({"any-1": vx_core.t_list}, "vx/core/decimal", "vx/core/float", "vx/core/int", "vx/core/number"),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return true})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return false})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return false})
       )
     )
     return output
@@ -4179,7 +4160,7 @@ export default class vx_core {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const id = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_permission}, permission, ":id")
         const lookup = vx_core.f_permission_from_id_context(context, id)
         return vx_core.f_eq(lookup, permission)
@@ -4209,7 +4190,7 @@ export default class vx_core {
     output = vx_core.f_let(
       {"any-1": generic_any_1},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const len = vx_core.f_length_1(values)
         return vx_core.f_any_from_list({"any-1": generic_any_1}, values, len)
       })
@@ -4352,7 +4333,7 @@ export default class vx_core {
     output = vx_core.f_list_join_from_list_1(
       {"any-1": vx_core.t_any, "list-1": generic_list_1},
       values,
-      vx_core.f_new(vx_core.t_any_from_any, (value) => value)
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (value) => value)
     )
     return output
   }
@@ -4406,7 +4387,7 @@ export default class vx_core {
     output = vx_core.f_list_from_list_1(
       {"any-1": vx_core.t_any, "list-1": generic_list_1},
       values,
-      vx_core.f_new(vx_core.t_any_from_any, (value) => value)
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (value) => value)
     )
     return output
   }
@@ -4512,7 +4493,7 @@ export default class vx_core {
     output = vx_core.f_list_from_map_1(
       {"any-1": vx_core.t_any, "list-1": generic_list_1},
       valuemap,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => value)
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => value)
     )
     return output
   }
@@ -4647,11 +4628,8 @@ export default class vx_core {
   // (func main)
   static f_main(...args) {
     let output = vx_core.e_string
-    args = vx_core.f_new(vx_core.t_anylist, ...args)
-    output = vx_core.f_new(
-      vx_core.t_string,
-      args
-    )
+    args = vx_core.f_new_from_type(vx_core.t_anylist, ...args)
+    output = vx_core.f_new({"any-1": vx_core.t_string}, ...args)
     return output
   }
 
@@ -4710,7 +4688,7 @@ export default class vx_core {
     output = vx_core.f_map_from_map_1(
       {"any-1": vx_core.t_any, "map-1": generic_map_1},
       valuemap,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => value)
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => value)
     )
     return output
   }
@@ -4758,7 +4736,7 @@ export default class vx_core {
   static f_msg_from_error(error) {
     let output = vx_core.e_msg
     output = vx_core.f_new(
-      vx_core.t_msg,
+      {"any-1": vx_core.t_msg},
       ":severity",
       vx_core.c_msg_error,
       ":text",
@@ -4785,7 +4763,7 @@ export default class vx_core {
   static f_msg_from_error_1(code, detail) {
     let output = vx_core.e_msg
     output = vx_core.f_new(
-      vx_core.t_msg,
+      {"any-1": vx_core.t_msg},
       ":code",
       code,
       ":detail",
@@ -4815,7 +4793,7 @@ export default class vx_core {
   static f_msg_from_error_2(path, code, detail) {
     let output = vx_core.e_msg
     output = vx_core.f_new(
-      vx_core.t_msg,
+      {"any-1": vx_core.t_msg},
       ":code",
       code,
       ":path",
@@ -4845,7 +4823,7 @@ export default class vx_core {
   static f_msg_from_warning(warning) {
     let output = vx_core.e_msg
     output = vx_core.f_new(
-      vx_core.t_msg,
+      {"any-1": vx_core.t_msg},
       ":severity",
       vx_core.c_msg_warning,
       ":text",
@@ -4892,11 +4870,7 @@ export default class vx_core {
   // (func msgblock<-msgblock-msgblock)
   static f_msgblock_from_msgblock_msgblock(origblock, addblock) {
     let output = vx_core.e_msgblock
-    output = vx_core.f_new(
-      vx_core.t_msgblock,
-      origblock,
-      addblock
-    )
+    output = vx_core.f_new({"any-1": vx_core.t_msgblock}, origblock, addblock)
     return output
   }
 
@@ -4938,7 +4912,7 @@ export default class vx_core {
   static f_native(generic, ...clauses) {
     const generic_any_1 = generic["any-1"]
     let output = vx_core.f_empty(generic_any_1)
-    clauses = vx_core.f_new(vx_core.t_anylist, ...clauses)
+    clauses = vx_core.f_new_from_type(vx_core.t_anylist, ...clauses)
     return output
   }
 
@@ -4984,7 +4958,7 @@ export default class vx_core {
   /**
    * @function new
    * Create a new Value of Type A
-   * @param  {generic_any_1} type
+   * @param  {typemap} generic
    * @param  {anylist} ... values
    * @return {any-1}
    */
@@ -4996,7 +4970,31 @@ export default class vx_core {
   }
 
   // (func new)
-  static f_new(type, ...values) {
+  static f_new(generic, ...values) {
+    const generic_any_1 = generic["any-1"]
+    let output = vx_core.f_empty(generic_any_1)
+    values = vx_core.f_new_from_type(vx_core.t_anylist, ...values)
+    output = vx_core.vx_new(generic_any_1, values)
+    return output
+  }
+
+  /**
+   * @function new_from_type
+   * Create a new Value of Type A
+   * @param  {typemap} generic
+   * @param  {generic_any_1} type
+   * @param  {anylist} ... values
+   * @return {any-1}
+   */
+  static t_new_from_type = {
+    vx_type: vx_core.t_type
+  }
+  static e_new_from_type = {
+    vx_type: vx_core.t_new_from_type
+  }
+
+  // (func new<-type)
+  static f_new_from_type(type, ...values) {
     let output
     output = vx_core.vx_new(type, values)
     return output
@@ -5061,12 +5059,12 @@ export default class vx_core {
   // (func or)
   static f_or_1(...values) {
     let output = vx_core.e_boolean
-    values = vx_core.f_new(vx_core.t_booleanlist, ...values)
+    values = vx_core.f_new_from_type(vx_core.t_booleanlist, ...values)
     output = vx_core.f_any_from_list_start_reduce_next(
       {"any-1": vx_core.t_boolean, "any-2": vx_core.t_boolean, "list-2": vx_core.t_booleanlist},
       values,
       false,
-      vx_core.f_new(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_reduce_next, (reduce, current, next) => 
         vx_core.f_or(
           reduce,
           vx_core.f_or(current, next)
@@ -5185,7 +5183,7 @@ export default class vx_core {
     output = vx_core.f_let(
       {"any-1": vx_core.t_permission, "map-1": vx_core.t_permissionmap},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const user = vx_core.f_user_from_context(context)
         const security = vx_core.f_any_from_struct({"any-1": vx_core.t_security, "struct-2": vx_core.t_user}, user, ":security")
         const permissionmap = vx_core.f_any_from_struct({"any-1": vx_core.t_permissionmap, "struct-2": vx_core.t_security}, security, ":permissionmap")
@@ -5341,11 +5339,11 @@ export default class vx_core {
   static f_resolve_first(generic, ...clauses) {
     const generic_any_1 = generic["any-1"]
     let output = vx_core.f_empty(generic_any_1)
-    clauses = vx_core.f_new(generic_list_1, ...clauses)
+    clauses = vx_core.f_new_from_type(generic_list_1, ...clauses)
     output = vx_core.f_first_from_list_any_from_any(
       {"any-1": generic_any_1},
       clauses,
-      vx_core.f_new(vx_core.t_any_from_any, vx_core.t_resolve)
+      vx_core.f_new_from_type(vx_core.t_any_from_any, vx_core.t_resolve)
     )
     return output
   }
@@ -5370,7 +5368,7 @@ export default class vx_core {
     output = vx_core.f_list_from_list_1(
       {"list-1": generic_list_1},
       clauses,
-      vx_core.f_new(vx_core.t_any_from_any, vx_core.t_resolve)
+      vx_core.f_new_from_type(vx_core.t_any_from_any, vx_core.t_resolve)
     )
     return output
   }
@@ -5579,7 +5577,7 @@ export default class vx_core {
     output = vx_core.f_list_from_map_1(
       {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
       map,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => key)
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => key)
     )
     return output
   }
@@ -5603,7 +5601,7 @@ export default class vx_core {
   static f_switch(generic, value, ...thenelselist) {
     const generic_any_1 = generic["any-1"]
     let output = vx_core.f_empty(generic_any_1)
-    thenelselist = vx_core.f_new(vx_core.t_thenelselist, ...thenelselist)
+    thenelselist = vx_core.f_new_from_type(vx_core.t_thenelselist, ...thenelselist)
     let fn_any = null
     if (thenelselist.length > 0) {
       for (let valthenelse of thenelselist) {
@@ -5662,15 +5660,7 @@ export default class vx_core {
   // (func then)
   static f_then(fn_cond, fn_any) {
     let output = vx_core.e_thenelse
-    output = vx_core.f_new(
-      vx_core.t_thenelse,
-      ":code",
-      ":then",
-      ":fn-cond",
-      fn_cond,
-      ":fn-any",
-      fn_any
-    )
+    output = vx_core.f_new({"any-1": vx_core.t_thenelse}, ":code", ":then", ":fn-cond", fn_cond, ":fn-any", fn_any)
     return output
   }
 
@@ -5850,7 +5840,7 @@ export default class vx_core {
   static f_typename_from_typedef(vtypedef) {
     let output = vx_core.e_string
     output = vx_core.f_new(
-      vx_core.t_string,
+      {"any-1": vx_core.t_string},
       vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_typedef}, vtypedef, ":pkgname"),
       "/",
       vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_typedef}, vtypedef, ":name")
@@ -5877,7 +5867,7 @@ export default class vx_core {
     output = vx_core.f_list_from_list_1(
       {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_typelist},
       typelist,
-      vx_core.f_new(vx_core.t_any_from_any, (type) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (type) => 
         vx_core.f_typename_from_type(type))
     )
     return output
@@ -6133,6 +6123,7 @@ export default class vx_core {
       "native": vx_core.e_native,
       "native<-any": vx_core.e_native_from_any,
       "new": vx_core.e_new,
+      "new<-type": vx_core.e_new_from_type,
       "number<-func": vx_core.e_number_from_func,
       "or": vx_core.e_or,
       "or_1": vx_core.e_or_1,
@@ -6301,6 +6292,7 @@ export default class vx_core {
       "native": vx_core.t_native,
       "native<-any": vx_core.t_native_from_any,
       "new": vx_core.t_new,
+      "new<-type": vx_core.t_new_from_type,
       "number<-func": vx_core.t_number_from_func,
       "or": vx_core.t_or,
       "or_1": vx_core.t_or_1,
@@ -8296,7 +8288,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_not
@@ -8314,7 +8306,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_notempty
@@ -8332,7 +8324,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_notempty_1
@@ -8350,7 +8342,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_ne
@@ -8368,7 +8360,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_neqeq
@@ -8386,7 +8378,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_multiply
@@ -8404,7 +8396,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_multiply_1
@@ -8422,7 +8414,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_multiply_2
@@ -8440,7 +8432,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_multiply_3
@@ -8458,7 +8450,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_plus
@@ -8476,7 +8468,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_plus_1
@@ -8494,7 +8486,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_plus_2
@@ -8512,7 +8504,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_plus_3
@@ -8530,7 +8522,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_plus1
@@ -8548,7 +8540,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_minus
@@ -8566,7 +8558,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_minus_1
@@ -8584,7 +8576,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_minus_2
@@ -8602,7 +8594,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_minus_3
@@ -8620,7 +8612,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_minus1
@@ -8638,7 +8630,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_dotmethod
@@ -8656,7 +8648,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_divide
@@ -8674,7 +8666,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_lt
@@ -8692,7 +8684,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_lt_1
@@ -8710,7 +8702,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_chainfirst
@@ -8728,7 +8720,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_chainlast
@@ -8746,7 +8738,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_le
@@ -8764,7 +8756,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_le_1
@@ -8782,7 +8774,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_eq
@@ -8800,7 +8792,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_eq_1
@@ -8818,7 +8810,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_eqeq
@@ -8836,7 +8828,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_gt
@@ -8854,7 +8846,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_gt_1
@@ -8872,7 +8864,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_ge
@@ -8890,7 +8882,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_ge_1
@@ -8908,7 +8900,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_allowfuncs_from_security
@@ -8926,7 +8918,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_allowtypenames_from_typedef
@@ -8944,7 +8936,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_allowtypes_from_typedef
@@ -8962,7 +8954,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_and
@@ -8980,7 +8972,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_and_1
@@ -8998,7 +8990,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_any
@@ -9016,7 +9008,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_any_async
@@ -9034,7 +9026,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_any_context
@@ -9052,7 +9044,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_any_context_async
@@ -9070,7 +9062,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_any_key_value
@@ -9088,7 +9080,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_func
@@ -9106,7 +9098,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_func_async
@@ -9124,7 +9116,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_int
@@ -9142,7 +9134,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_int_any
@@ -9160,7 +9152,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_key_value
@@ -9178,7 +9170,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_key_value_async
@@ -9196,7 +9188,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_list
@@ -9214,7 +9206,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_list_start_reduce
@@ -9232,7 +9224,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_list_start_reduce_next
@@ -9250,7 +9242,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_map
@@ -9268,7 +9260,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_map_start_reduce
@@ -9286,7 +9278,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_none
@@ -9304,7 +9296,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_none_async
@@ -9322,7 +9314,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_reduce
@@ -9340,7 +9332,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_reduce_async
@@ -9358,7 +9350,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_reduce_next
@@ -9376,7 +9368,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_reduce_next_async
@@ -9394,7 +9386,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_any_from_struct
@@ -9412,7 +9404,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_async
@@ -9430,7 +9422,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_boolean_permission_from_func
@@ -9448,7 +9440,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_boolean_write_from_map_name_value
@@ -9466,7 +9458,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_boolean_from_any
@@ -9484,7 +9476,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_boolean_from_func
@@ -9502,7 +9494,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_boolean_from_none
@@ -9520,7 +9512,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_case
@@ -9538,7 +9530,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_case_1
@@ -9556,7 +9548,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_compare
@@ -9574,7 +9566,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_contains
@@ -9592,7 +9584,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_contains_1
@@ -9610,7 +9602,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_context_main
@@ -9628,7 +9620,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_copy
@@ -9646,7 +9638,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_else
@@ -9664,7 +9656,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_empty
@@ -9682,7 +9674,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_extends_from_any
@@ -9700,7 +9692,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_extends_from_typedef
@@ -9718,7 +9710,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_first_from_list
@@ -9736,7 +9728,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_first_from_list_any_from_any
@@ -9754,7 +9746,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_float_from_string
@@ -9772,7 +9764,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_fn
@@ -9790,7 +9782,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_funcdef_from_func
@@ -9808,7 +9800,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_funcname_from_funcdef
@@ -9826,7 +9818,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_if
@@ -9844,7 +9836,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_if_1
@@ -9862,7 +9854,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_if_2
@@ -9880,7 +9872,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_int_from_func
@@ -9898,7 +9890,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_int_from_string
@@ -9916,7 +9908,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_is_empty
@@ -9934,7 +9926,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_is_empty_1
@@ -9952,7 +9944,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_is_endswith
@@ -9970,7 +9962,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_is_float
@@ -9988,7 +9980,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_is_func
@@ -10006,7 +9998,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_is_int
@@ -10024,7 +10016,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_is_number
@@ -10042,7 +10034,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_is_pass_from_permission
@@ -10060,7 +10052,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_last_from_list
@@ -10078,7 +10070,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_length
@@ -10096,7 +10088,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_length_1
@@ -10114,7 +10106,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_length_2
@@ -10132,7 +10124,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_let
@@ -10150,7 +10142,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_let_async
@@ -10168,7 +10160,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_join_from_list
@@ -10186,7 +10178,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_join_from_list_1
@@ -10204,7 +10196,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_from_list
@@ -10222,7 +10214,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_from_list_1
@@ -10240,7 +10232,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_from_list_async
@@ -10258,7 +10250,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_from_list_intany
@@ -10276,7 +10268,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_from_map
@@ -10294,7 +10286,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_from_map_1
@@ -10312,7 +10304,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_from_map_async
@@ -10330,7 +10322,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_list_from_type
@@ -10348,7 +10340,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_log
@@ -10366,7 +10358,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_log_1
@@ -10384,7 +10376,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_main
@@ -10402,7 +10394,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_map_from_list
@@ -10420,7 +10412,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_map_from_map
@@ -10438,7 +10430,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_map_from_map_1
@@ -10456,7 +10448,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_msg_from_error
@@ -10474,7 +10466,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_msg_from_error_1
@@ -10492,7 +10484,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_msg_from_error_2
@@ -10510,7 +10502,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_msg_from_warning
@@ -10528,7 +10520,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_msgblock_from_msgblock_msg
@@ -10546,7 +10538,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_msgblock_from_msgblock_msgblock
@@ -10564,7 +10556,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_name_from_typedef
@@ -10582,7 +10574,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_native
@@ -10600,7 +10592,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_native_from_any
@@ -10618,10 +10610,28 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_new
+    }
+
+    // (func new<-type)
+    vx_core.t_new_from_type['vx_value'] = {
+      name          : "new<-type",
+      pkgname       : "vx/core",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_core.f_new_from_type
     }
 
     // (func number<-func)
@@ -10636,7 +10646,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_number_from_func
@@ -10654,7 +10664,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_or
@@ -10672,7 +10682,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_or_1
@@ -10690,7 +10700,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_package_global_from_name
@@ -10708,7 +10718,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_packagename_from_typedef
@@ -10726,7 +10736,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_path_from_context_path
@@ -10744,7 +10754,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_path_from_setting_path
@@ -10762,7 +10772,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_permission_from_id_context
@@ -10780,7 +10790,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_properties_from_typedef
@@ -10798,7 +10808,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_proplast_from_typedef
@@ -10816,7 +10826,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_resolve
@@ -10834,7 +10844,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_resolve_1
@@ -10852,7 +10862,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_resolve_async
@@ -10870,7 +10880,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_resolve_first
@@ -10888,7 +10898,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_resolve_list
@@ -10906,7 +10916,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_security_from_context
@@ -10924,7 +10934,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_security_from_user
@@ -10942,7 +10952,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_session_from_context
@@ -10960,7 +10970,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_setting_from_context
@@ -10978,7 +10988,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_string_repeat
@@ -10996,7 +11006,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_string_from_any
@@ -11014,7 +11024,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_string_from_any_indent
@@ -11032,7 +11042,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_string_from_func
@@ -11050,7 +11060,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_string_from_string_find_replace
@@ -11068,7 +11078,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_stringlist_from_map
@@ -11086,7 +11096,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_switch
@@ -11104,7 +11114,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_then
@@ -11122,7 +11132,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_traits_from_typedef
@@ -11140,7 +11150,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_type_from_any
@@ -11158,7 +11168,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_typedef_from_any
@@ -11176,7 +11186,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_typedef_from_type
@@ -11194,7 +11204,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_typename_from_any
@@ -11212,7 +11222,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_typename_from_type
@@ -11230,7 +11240,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_typename_from_typedef
@@ -11248,7 +11258,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_typenames_from_typelist
@@ -11266,7 +11276,7 @@ export default class vx_core {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_user_from_context

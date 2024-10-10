@@ -23,7 +23,7 @@ object vx_data_textblockTest {
   fun t_delimlist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
     var output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
-      ":describename", "(test\n (new delimlist\n  delimcomma\n  delimwhitespace)\n (delimlist\n  delimcomma\n  delimwhitespace))",
+      ":describename", "(test\n (new : delimlist\n  delimcomma\n  delimwhitespace)\n (delimlist\n  delimcomma\n  delimwhitespace))",
       ":testresult", vx_test.f_test(
         context,
         vx_core.f_new(

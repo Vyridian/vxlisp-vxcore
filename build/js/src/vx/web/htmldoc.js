@@ -407,7 +407,7 @@ export default class vx_web_htmldoc {
     output = await vx_core.f_let_async(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const text = vx_web_htmldoc.f_string_from_stylesheet(stylesheet)
         const iswrite = await vx_web_htmldoc.f_boolean_write_stylesheet_from_string(text)
         return iswrite
@@ -513,7 +513,7 @@ export default class vx_web_htmldoc {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const stylelist = vx_web_html.f_styles_from_stylesheet(stylesheet)
         const text = vx_web_html.f_string_from_stylelist_indent(stylelist, 0)
         return text
@@ -606,7 +606,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_print_from_id_stylesheettext
@@ -624,7 +624,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_remove_from_id
@@ -642,7 +642,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_replace_from_id_htmltext
@@ -660,7 +660,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_replace_from_id_parent_htmltext
@@ -678,7 +678,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_write_stylesheet_from_string
@@ -696,7 +696,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_write_from_id_attribute_value
@@ -714,7 +714,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_write_from_id_htmltext
@@ -732,7 +732,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_write_from_id_visible
@@ -750,7 +750,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_write_from_stylesheet
@@ -768,7 +768,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_boolean_writeevents_from_ui
@@ -786,7 +786,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_context_read
@@ -804,7 +804,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_context_write
@@ -822,7 +822,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_string_from_id
@@ -840,7 +840,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_string_from_stylesheet
@@ -858,7 +858,7 @@ export default class vx_web_htmldoc {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_htmldoc.f_ui_readstate_from_uid

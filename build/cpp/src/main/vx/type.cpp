@@ -1989,12 +1989,8 @@ namespace vx_type {
         ),
         vx_core::f_else(
           vx_core::t_any_from_func->vx_fn_new({value}, [value]() {
-            vx_core::Type_string output_1 = vx_core::f_new(
-              vx_core::t_string,
-              vx_core::vx_new(vx_core::t_anylist, {
-                value
-              })
-            );
+            vx_core::Type_string output_1 = vx_core::f_new(vx_core::t_string, vx_core::vx_new(vx_core::t_anylist, {
+            value}));
             return output_1;
           })
         )

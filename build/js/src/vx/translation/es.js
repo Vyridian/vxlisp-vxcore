@@ -22,7 +22,7 @@ export default class vx_translation_es {
   static f_translation_es() {
     let output = vx_core.e_translation
     output = vx_core.f_new(
-      vx_core.t_translation,
+      {"any-1": vx_core.t_translation},
       ":name",
       "es",
       ":wordmap",
@@ -46,13 +46,7 @@ export default class vx_translation_es {
   // (func words)
   static f_words() {
     let output = vx_core.e_stringmap
-    output = vx_core.f_new(
-      vx_core.t_stringmap,
-      "Hello",
-      "Hola",
-      "World",
-      "Mundo"
-    )
+    output = vx_core.f_new({"any-1": vx_core.t_stringmap}, "Hello", "Hola", "World", "Mundo")
     return output
   }
 
@@ -94,7 +88,7 @@ export default class vx_translation_es {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_es.f_translation_es
@@ -112,7 +106,7 @@ export default class vx_translation_es {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translation_es.f_words

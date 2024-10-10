@@ -79,7 +79,7 @@ public final class TestLib {
   public static boolean test_list_from_list_async() {
     String testname = "test_list_from_list_async";
     Core.Type_anylist sparams = Core.vx_anylist_from_arraystring("hello", "world");
-    Core.Type_stringlist slist = Core.f_new(Core.t_stringlist, sparams);
+    Core.Type_stringlist slist = Core.f_new_from_type(Core.t_stringlist, sparams);
     Core.Func_any_from_any_async fn_async = Core.t_any_from_any_async.vx_fn_new((anyval) -> {
       Core.Type_string stringval = (Core.Type_string)anyval;
       String sout = stringval.vx_string() + "!";

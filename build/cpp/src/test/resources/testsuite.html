@@ -130,13 +130,13 @@
             <summary>
               <p class="passflag">Pass</p>
               <p class="pkgname">vx/core</p>
-              <p class="coveragenums">36% 81/225</p>
-              <p class="coveragenums">6% 5/76</p>
+              <p class="coveragenums">37% 84/226</p>
+              <p class="coveragenums">9% 7/76</p>
               <p class="coveragenums">13% 2/15</p>
-              <p class="coveragenums">55% 74/134</p>
-              <p class="coveragenums">91% 235/257</p>
-              <p class="coveragenums">0% 1/166</p>
-              <p class="coveragenums">0% 1/166</p>
+              <p class="coveragenums">55% 75/135</p>
+              <p class="coveragenums">91% 236/258</p>
+              <p class="coveragenums">0% 1/167</p>
+              <p class="coveragenums">0% 1/167</p>
             </summary>
             <div>
               <table>
@@ -266,6 +266,27 @@
                     </td>
                     <td>
                       <p class="preformatted">5</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">funclist</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ 2
+ (length
+  (funclist
+   + -)))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">2</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">2</p>
                     </td>
                   </tr>
                   <tr>
@@ -419,6 +440,34 @@
                     </td>
                     <td>
                       <p class="preformatted">"ab"</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">stringlist</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (new : stringlist "a" "b" "c")
+ (stringlist
+  (anylist
+   "a"
+   (stringlist "b" "c"))))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c")</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c")</p>
                     </td>
                   </tr>
                   <tr>
@@ -1096,7 +1145,7 @@
                       <p class="preformatted">(test-true
  (=
   (stringlist "a" "b" "c")
-  (new stringlist "a" "b" "c")))</p>
+  (new : stringlist "a" "b" "c")))</p>
                     </td>
                     <td>
                       <p class="preformatted">true</p>
@@ -1116,7 +1165,7 @@
                       <p class="preformatted">(test-true
  (=
   (stringmap :a "1" :b "2")
-  (new stringmap :a "1" :b "2")))</p>
+  (new : stringmap :a "1" :b "2")))</p>
                     </td>
                     <td>
                       <p class="preformatted">true</p>
@@ -2537,7 +2586,7 @@
                       <p class="preformatted">new</p>
                     </td>
                     <td>
-                      <p class="preformatted">(test true (new boolean true))</p>
+                      <p class="preformatted">(test true (new : boolean true))</p>
                     </td>
                     <td>
                       <p class="preformatted">true</p>
@@ -2554,7 +2603,7 @@
                       <p class="preformatted">new</p>
                     </td>
                     <td>
-                      <p class="preformatted">(test 4 (new int 4))</p>
+                      <p class="preformatted">(test 4 (new : int 4))</p>
                     </td>
                     <td>
                       <p class="preformatted">4</p>
@@ -2571,7 +2620,7 @@
                       <p class="preformatted">new</p>
                     </td>
                     <td>
-                      <p class="preformatted">(test 5.4 (new float 5.4))</p>
+                      <p class="preformatted">(test 5.4 (new : float 5.4))</p>
                     </td>
                     <td>
                       <p class="preformatted">5.4</p>
@@ -2588,7 +2637,7 @@
                       <p class="preformatted">new</p>
                     </td>
                     <td>
-                      <p class="preformatted">(test "a" (new string "a"))</p>
+                      <p class="preformatted">(test "a" (new : string "a"))</p>
                     </td>
                     <td>
                       <p class="preformatted">"a"</p>
@@ -2607,7 +2656,7 @@
                     <td>
                       <p class="preformatted">(test
  (stringlist "a" "b" "c")
- (new stringlist "a" "b" "c"))</p>
+ (new : stringlist "a" "b" "c"))</p>
                     </td>
                     <td>
                       <p class="preformatted">(stringlist
@@ -2632,7 +2681,123 @@
                     <td>
                       <p class="preformatted">(test
  (stringmap :a "1" :b "2")
- (new stringmap :a "1" :b "2"))</p>
+ (new : stringmap :a "1" :b "2"))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringmap
+ :a "1"
+ :b "2")</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringmap
+ :a "1"
+ :b "2")</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">new&lt;-type</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test true (new&lt;-type boolean true))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">true</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">true</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">new&lt;-type</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test 4 (new&lt;-type int 4))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">4</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">4</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">new&lt;-type</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test 5.4 (new&lt;-type float 5.4))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">5.4</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">5.4</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">new&lt;-type</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test "a" (new&lt;-type string "a"))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"a"</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"a"</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">new&lt;-type</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (stringlist "a" "b" "c")
+ (new&lt;-type stringlist "a" "b" "c"))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c")</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c")</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">new&lt;-type</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (stringmap :a "1" :b "2")
+ (new&lt;-type stringmap :a "1" :b "2"))</p>
                     </td>
                     <td>
                       <p class="preformatted">(stringmap
@@ -5124,7 +5289,7 @@ ab
                     </td>
                     <td>
                       <p class="preformatted">(test
- (new delimlist
+ (new : delimlist
   delimcomma
   delimwhitespace)
  (delimlist

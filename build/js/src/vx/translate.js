@@ -123,16 +123,10 @@ export default class vx_translate {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const path = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_msg}, msg, ":path")
         const code = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_msg}, msg, ":code")
-        const text = vx_core.f_new(
-          vx_core.t_string,
-          "!",
-          path,
-          " ",
-          code
-        )
+        const text = vx_core.f_new({"any-1": vx_core.t_string}, "!", path, " ", code)
         return vx_translate.f_translate(context, text)
       })
     )
@@ -163,7 +157,7 @@ export default class vx_translate {
       vx_core.f_let(
         {"any-1": vx_core.t_string},
         [],
-        vx_core.f_new(vx_core.t_any_from_func, () => {
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
           const wordmap = vx_core.f_any_from_struct({"any-1": vx_core.t_stringmap, "struct-2": vx_core.t_translation}, translation, ":wordmap")
           const xlate = vx_core.f_any_from_map({"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap}, wordmap, text)
           return vx_core.f_if_1(
@@ -199,7 +193,7 @@ export default class vx_translate {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const translation = vx_core.f_any_from_map({"any-1": vx_core.t_translation, "map-1": vx_core.t_translationmap}, translationmap, name)
         return vx_translate.f_translate_from_translation_string(translation, text)
       })
@@ -269,7 +263,7 @@ export default class vx_translate {
     output = vx_core.f_let(
       {"any-1": vx_core.t_translation, "map-1": vx_core.t_translationmap},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const translationmap = vx_core.f_any_from_struct({"any-1": vx_core.t_translationmap, "struct-2": vx_core.t_session}, session, ":translationmap")
         return vx_core.f_any_from_map({"any-1": vx_core.t_translation, "map-1": vx_core.t_translationmap}, translationmap, name)
       })
@@ -293,11 +287,11 @@ export default class vx_translate {
   // (func translationmap<-translations)
   static f_translationmap_from_translations(...translations) {
     let output = vx_core.e_translationmap
-    translations = vx_core.f_new(vx_core.t_translationlist, ...translations)
+    translations = vx_core.f_new_from_type(vx_core.t_translationlist, ...translations)
     output = vx_core.f_map_from_list(
       {"any-1": vx_core.t_translation, "any-2": vx_core.t_translation, "list-2": vx_core.t_translationlist, "map-1": vx_core.t_translationmap, "struct-2": vx_core.t_translation},
       translations,
-      vx_core.f_new(vx_core.t_any_from_any, (translation) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (translation) => 
         vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_translation}, translation, ":name"))
     )
     return output
@@ -359,7 +353,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_session_from_session_name
@@ -377,7 +371,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_session_from_session_translation
@@ -395,7 +389,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_session_from_session_translationmap_name
@@ -413,7 +407,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_translate
@@ -431,7 +425,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_translate_1
@@ -449,7 +443,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_translate_from_translation_string
@@ -467,7 +461,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_translate_from_translationmap_name_string
@@ -485,7 +479,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_translation_load_session
@@ -503,7 +497,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_translation_from_context
@@ -521,7 +515,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_translation_from_session_name
@@ -539,7 +533,7 @@ export default class vx_translate {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_translate.f_translationmap_from_translations

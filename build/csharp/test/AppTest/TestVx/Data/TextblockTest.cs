@@ -21,7 +21,7 @@ public class TextblockTest {
   public static Vx.Test.Type_testdescribe t_delimlist_testdescribe_1(Vx.Core.Type_context context) {
     Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
       Vx.Test.t_testdescribe,
-      ":describename", "(test\n (new delimlist\n  delimcomma\n  delimwhitespace)\n (delimlist\n  delimcomma\n  delimwhitespace))",
+      ":describename", "(test\n (new : delimlist\n  delimcomma\n  delimwhitespace)\n (delimlist\n  delimcomma\n  delimwhitespace))",
       ":testresult", Vx.Test.f_test(
         context,
         Vx.Core.f_new(

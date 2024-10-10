@@ -3286,12 +3286,8 @@ namespace vx_test {
         vx_core::vx_ref_plus(pkgnamestyle);
         vx_web_html::Type_div node = vx_test::f_div_from_testcaselist(caselist);
         vx_core::vx_ref_plus(node);
-        vx_web_html::Type_divchildlist nodes = vx_core::f_new(
-          vx_web_html::t_divchildlist,
-          vx_core::vx_new(vx_core::t_anylist, {
-            node
-          })
-        );
+        vx_web_html::Type_divchildlist nodes = vx_core::f_new(vx_web_html::t_divchildlist, vx_core::vx_new(vx_core::t_anylist, {
+        node}));
         vx_core::vx_ref_plus(nodes);
         vx_web_html::Type_p p_passfail = vx_test::f_p_from_passfail(passfail);
         vx_core::vx_ref_plus(p_passfail);
@@ -3358,12 +3354,8 @@ namespace vx_test {
           })
         );
         vx_core::vx_ref_plus(details);
-        vx_web_html::Type_div output_1 = vx_core::f_new(
-          vx_web_html::t_div,
-          vx_core::vx_new(vx_core::t_anylist, {
-            details
-          })
-        );
+        vx_web_html::Type_div output_1 = vx_core::f_new(vx_web_html::t_div, vx_core::vx_new(vx_core::t_anylist, {
+          details}));
         vx_core::vx_release_one_except({testcoveragesummary, pkgname, caselist, passfail, pkgnamestyle, node, nodes, p_passfail, p_pkgname, p_totalnums, p_coveragenums, p_constnums, p_funcnums, p_docnums, p_bigospacenums, p_bigotimenums, summary, details}, output_1);
         return output_1;
       })
@@ -4117,12 +4109,8 @@ namespace vx_test {
             vx_core::f_new(
               vx_web_html::t_div,
               vx_core::vx_new(vx_core::t_anylist, {
-                vx_core::f_new(
-                  vx_web_html::t_h1,
-                  vx_core::vx_new(vx_core::t_anylist, {
-                    vx_core::vx_new_string("Test Suite")
-                  })
-                )
+                vx_core::f_new(vx_web_html::t_h1, vx_core::vx_new(vx_core::t_anylist, {
+                  vx_core::vx_new_string("Test Suite")}))
               })
             ),
             divtest

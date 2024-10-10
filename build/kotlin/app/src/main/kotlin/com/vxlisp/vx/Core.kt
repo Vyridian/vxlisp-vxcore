@@ -26056,8 +26056,8 @@ object vx_core {
   }
 
 
-  interface Func_new : vx_core.Type_func, vx_core.Type_replfunc {
-    fun <T : vx_core.Type_any> vx_new(type : T, values : vx_core.Type_anylist) : T
+  interface Func_new : vx_core.Func_any_from_any {
+    fun <T : vx_core.Type_any> vx_new(generic_any_1 : T, values : vx_core.Type_anylist) : T
   }
 
   class Class_new : vx_core.Class_base, Func_new {
@@ -26111,16 +26111,28 @@ object vx_core {
       return output
     }
 
-    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_core.e_any
-      var type : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      var values : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
-      output = vx_core.f_new(type, values)
+    override fun vx_fn_new(fn : vx_core.Class_any_from_any.IFn) : vx_core.Func_any_from_any {
+      return vx_core.e_any_from_any
+    }
+
+    override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
+      var output : T = vx_core.f_empty(generic_any_1)
+      var inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
+      var outputval : vx_core.Type_any = vx_core.f_new(vx_core.t_any, inputval)
+      output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
-    override fun <T : vx_core.Type_any> vx_new(type : T, values : vx_core.Type_anylist) : T {
-      var output : T = vx_core.f_new(type, values)
+    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_any
+      var generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      var values : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      output = vx_core.f_new(generic_any_1, values)
+      return output
+    }
+
+    override fun <T : vx_core.Type_any> vx_new(generic_any_1 : T, values : vx_core.Type_anylist) : T {
+      var output : T = vx_core.f_new(generic_any_1, values)
       return output
     }
 
@@ -26129,7 +26141,91 @@ object vx_core {
   val e_new : vx_core.Func_new = vx_core.Class_new()
   val t_new : vx_core.Func_new = vx_core.Class_new()
 
-  fun <T : vx_core.Type_any> f_new(type : T, values : vx_core.Type_anylist) : T {
+  fun <T : vx_core.Type_any> f_new(generic_any_1 : T, values : vx_core.Type_anylist) : T {
+    var output : T = vx_core.f_empty(generic_any_1)
+    val arrayany : Array<vx_core.Type_any> = vx_core.arrayany_from_anylist(
+      values
+    )
+    val anyvalue : vx_core.Type_any = generic_any_1.vx_new(*arrayany)
+    output = anyvalue as T
+    return output
+  }
+
+
+  interface Func_new_from_type : vx_core.Type_func, vx_core.Type_replfunc {
+    fun <T : vx_core.Type_any> vx_new_from_type(type : T, values : vx_core.Type_anylist) : T
+  }
+
+  class Class_new_from_type : vx_core.Class_base, Func_new_from_type {
+    constructor() {}
+
+    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_core.Class_new_from_type = vx_core.Class_new_from_type()
+      return output
+    }
+
+    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_core.Class_new_from_type = vx_core.Class_new_from_type()
+      return output
+    }
+
+    override fun vx_typedef() : vx_core.Type_typedef {
+      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      return output
+    }
+
+    override fun vx_funcdef() : vx_core.Type_funcdef {
+      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+        "vx/core", // pkgname
+        "new<-type", // name
+        0, // idx
+        false, // async
+        vx_core.typedef_new(
+          "vx/core", // pkgname
+          "any-1", // name
+          "", // extends
+          vx_core.e_typelist, // traits
+          vx_core.e_typelist, // allowtypes
+          vx_core.e_typelist, // disallowtypes
+          vx_core.e_funclist, // allowfuncs
+          vx_core.e_funclist, // disallowfuncs
+          vx_core.e_anylist, // allowvalues
+          vx_core.e_anylist, // disallowvalues
+          vx_core.e_argmap // properties
+        ) // typedef
+      )
+      return output
+    }
+
+    override fun vx_empty() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_new_from_type
+      return output
+    }
+
+    override fun vx_type() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.t_new_from_type
+      return output
+    }
+
+    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_any
+      var type : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      var values : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
+      output = vx_core.f_new_from_type(type, values)
+      return output
+    }
+
+    override fun <T : vx_core.Type_any> vx_new_from_type(type : T, values : vx_core.Type_anylist) : T {
+      var output : T = vx_core.f_new_from_type(type, values)
+      return output
+    }
+
+  }
+
+  val e_new_from_type : vx_core.Func_new_from_type = vx_core.Class_new_from_type()
+  val t_new_from_type : vx_core.Func_new_from_type = vx_core.Class_new_from_type()
+
+  fun <T : vx_core.Type_any> f_new_from_type(type : T, values : vx_core.Type_anylist) : T {
     val arrayany : Array<vx_core.Type_any> = vx_core.arrayany_from_anylist(
       values
     )
@@ -29640,6 +29736,7 @@ object vx_core {
     mapfunc.put("native", vx_core.t_native)
     mapfunc.put("native<-any", vx_core.t_native_from_any)
     mapfunc.put("new", vx_core.t_new)
+    mapfunc.put("new<-type", vx_core.t_new_from_type)
     mapfunc.put("number<-func", vx_core.t_number_from_func)
     mapfunc.put("or", vx_core.t_or)
     mapfunc.put("or_1", vx_core.t_or_1)

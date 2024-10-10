@@ -1658,7 +1658,7 @@ public final class Repl {
             ),
             Core.f_else(
               Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_6 = Core.f_new(
+                Core.Type_any output_6 = Core.f_new_from_type(
                   repltype,
                   args
                 );

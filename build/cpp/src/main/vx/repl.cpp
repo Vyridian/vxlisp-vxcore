@@ -1347,7 +1347,7 @@ namespace vx_repl {
             ),
             vx_core::f_else(
               vx_core::t_any_from_func->vx_fn_new({repltype, args}, [repltype, args]() {
-                vx_core::Type_any output_1 = vx_core::f_new(repltype, args);
+                vx_core::Type_any output_1 = vx_core::f_new_from_type(repltype, args);
                 return output_1;
               })
             )

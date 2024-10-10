@@ -34,7 +34,7 @@ export default class vx_web_http {
     output = await vx_core.f_let_async(
       {"any-1": vx_data_csv.t_csv},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const textblock = await vx_web_http.f_textblock_from_httpget(url, "text/csv")
         return vx_data_csv.f_csv_from_textblock(textblock)
       })
@@ -62,7 +62,7 @@ export default class vx_web_http {
     output = await vx_core.f_let_async(
       {"any-1": vx_web_http.t_response},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const response = await vx_web_http.f_response_from_httpget(url, "application/json")
         return response
       })
@@ -117,7 +117,7 @@ export default class vx_web_http {
     output = await vx_core.f_let_async(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const response = await vx_web_http.f_response_from_httpget(url, "text/plain")
         return vx_web_http.f_text_from_response(response)
       })
@@ -166,7 +166,7 @@ export default class vx_web_http {
     output = await vx_core.f_let_async(
       {"any-1": vx_data_textblock.t_textblock},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const response = await vx_web_http.f_response_from_httpget(url, contenttype)
         return vx_web_http.f_textblock_from_response(response)
       })
@@ -191,7 +191,7 @@ export default class vx_web_http {
   static f_textblock_from_response(response) {
     let output = vx_data_textblock.e_textblock
     output = vx_core.f_new(
-      vx_data_textblock.t_textblock,
+      {"any-1": vx_data_textblock.t_textblock},
       ":text",
       vx_web_http.f_text_from_response(response)
     )
@@ -218,7 +218,7 @@ export default class vx_web_http {
     output = await vx_core.f_let_async(
       {"any-1": vx_data_xml.t_xml},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const textblock = await vx_web_http.f_textblock_from_httpget(url, "text/xml")
         return vx_data_xml.f_xml_from_textblock(textblock)
       })
@@ -311,7 +311,7 @@ export default class vx_web_http {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_http.f_csv_from_httpget
@@ -329,7 +329,7 @@ export default class vx_web_http {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_http.f_json_from_httpget
@@ -347,7 +347,7 @@ export default class vx_web_http {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_http.f_response_from_httpget
@@ -365,7 +365,7 @@ export default class vx_web_http {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_http.f_text_from_httpget
@@ -383,7 +383,7 @@ export default class vx_web_http {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_http.f_text_from_response
@@ -401,7 +401,7 @@ export default class vx_web_http {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_http.f_textblock_from_httpget
@@ -419,7 +419,7 @@ export default class vx_web_http {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_http.f_textblock_from_response
@@ -437,7 +437,7 @@ export default class vx_web_http {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_http.f_xml_from_httpget

@@ -29,7 +29,7 @@ namespace vx_data_textblock_test {
       )
     );
     vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
-      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (new delimlist\n  delimcomma\n  delimwhitespace)\n (delimlist\n  delimcomma\n  delimwhitespace))"),
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (new : delimlist\n  delimcomma\n  delimwhitespace)\n (delimlist\n  delimcomma\n  delimwhitespace))"),
       vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/data/textblock"),
       vx_core::vx_new_string(":testresult"), testresult_1
     });

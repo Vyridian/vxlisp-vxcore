@@ -76,7 +76,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const id = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         return vx_web_htmldoc.f_boolean_remove_from_id(id)
       })
@@ -143,7 +143,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         const stylesheetui = vx_ui_ui.f_stylesheet_readstate(context)
         const stylesheethtml = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(stylesheetui)
@@ -173,7 +173,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const id = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         const sclass = vx_ui_html_uihtml.f_string_class_from_ui(ui)
         return vx_web_htmldoc.f_boolean_write_from_id_attribute_value(id, "class", sclass)
@@ -201,7 +201,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uimap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_uimap, "struct-2": vx_ui_ui.t_ui}, ui, ":uimap")
         const iswrite1 = vx_web_htmldoc.f_boolean_writeevents_from_ui(ui)
         const iswrite2 = vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap(uimap)
@@ -230,11 +230,11 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_boolean},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const boollist = vx_core.f_list_from_map_1(
           {"any-1": vx_core.t_boolean, "any-2": vx_ui_ui.t_ui, "list-1": vx_core.t_booleanlist, "map-2": vx_ui_ui.t_uimap},
           uimap,
-          vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
             vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(value))
         )
         return vx_core.f_and_1(boollist)
@@ -320,22 +320,14 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_div},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         const uimapchild = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_uimap, "struct-2": vx_ui_ui.t_ui}, ui, ":uimap")
         const uistyle = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_style, "struct-2": vx_ui_ui.t_ui}, ui, ":style")
         const uistyles = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_stylelist, "struct-2": vx_ui_ui.t_ui}, ui, ":stylelist")
         const styleunique = vx_ui_html_uihtml.f_style_from_style(uistyle)
         const htmlstyles = vx_ui_html_uihtml.f_stylelist_from_stylelist(uistyles)
-        return vx_core.f_new(
-          vx_web_html.t_div,
-          ":id",
-          uid,
-          ":style-unique",
-          styleunique,
-          ":stylelist",
-          htmlstyles
-        )
+        return vx_core.f_new({"any-1": vx_web_html.t_div}, ":id", uid, ":style-unique", styleunique, ":stylelist", htmlstyles)
       })
     )
     return output
@@ -360,17 +352,13 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_list_from_map_1(
       {"any-1": vx_web_html.t_divchild, "any-2": vx_ui_ui.t_ui, "list-1": vx_web_html.t_divchildlist, "map-2": vx_ui_ui.t_uimap},
       uimap,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
         vx_core.f_let(
           {"any-1": vx_web_html.t_div},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const uid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, value, ":uid")
-            return vx_core.f_new(
-              vx_web_html.t_div,
-              ":id",
-              uid
-            )
+            return vx_core.f_new({"any-1": vx_web_html.t_div}, ":id", uid)
           })
         ))
     )
@@ -396,17 +384,13 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_list_from_map_1(
       {"any-1": vx_web_html.t_divchild, "any-2": vx_ui_ui.t_ui, "list-1": vx_web_html.t_divchildlist, "map-2": vx_ui_ui.t_uimap},
       uimap,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
         vx_core.f_let(
           {"any-1": vx_web_html.t_div},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const uid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, value, ":uid")
-            return vx_core.f_new(
-              vx_web_html.t_div,
-              ":id",
-              uid
-            )
+            return vx_core.f_new({"any-1": vx_web_html.t_div}, ":id", uid)
           })
         ))
     )
@@ -434,11 +418,11 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_list_from_map_1(
       {"any-1": vx_web_html.t_divchild, "any-2": vx_ui_ui.t_ui, "list-1": vx_web_html.t_divchildlist, "map-2": vx_ui_ui.t_uimap},
       uimap,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
         vx_core.f_let(
           {"any-1": vx_web_html.t_node},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const origvalue = vx_core.f_any_from_map({"any-1": vx_ui_ui.t_ui, "map-1": vx_ui_ui.t_uimap}, origmap, key)
             return vx_ui_html_uihtml.f_node_from_ui_orig_parent(value, origvalue, parent)
           })
@@ -467,18 +451,12 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_node},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         const uimap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_uimap, "struct-2": vx_ui_ui.t_ui}, ui, ":uimap")
         const origmap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_uimap, "struct-2": vx_ui_ui.t_ui}, orig, ":uimap")
         const children = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(uimap, origmap, ui)
-        return vx_core.f_new(
-          vx_web_html.t_div,
-          ":id",
-          uid,
-          ":nodes",
-          children
-        )
+        return vx_core.f_new({"any-1": vx_web_html.t_div}, ":id", uid, ":nodes", children)
       })
     )
     return output
@@ -504,7 +482,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_node},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         const uimap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_uimap, "struct-2": vx_ui_ui.t_ui}, ui, ":uimap")
         const uistyle = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_style, "struct-2": vx_ui_ui.t_ui}, ui, ":style")
@@ -512,17 +490,7 @@ export default class vx_ui_html_uihtml {
         const style = vx_ui_html_uihtml.f_style_from_style(uistyle)
         const styles = vx_ui_html_uihtml.f_stylelist_extra_from_ui(ui)
         const children = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(uimap, origmap, ui)
-        return vx_core.f_new(
-          vx_web_html.t_div,
-          ":id",
-          uid,
-          ":style-unique",
-          style,
-          ":stylelist",
-          styles,
-          ":nodes",
-          children
-        )
+        return vx_core.f_new({"any-1": vx_web_html.t_div}, ":id", uid, ":style-unique", style, ":stylelist", styles, ":nodes", children)
       })
     )
     return output
@@ -548,7 +516,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_node},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         const uistyle = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_style, "struct-2": vx_ui_ui.t_ui}, ui, ":style")
         const data = vx_core.f_any_from_struct({"any-1": vx_core.t_any, "struct-2": vx_ui_ui.t_ui}, ui, ":data")
@@ -556,17 +524,7 @@ export default class vx_ui_html_uihtml {
         const path = vx_data_file.f_pathfull_from_file(file)
         const style = vx_ui_html_uihtml.f_style_from_style(uistyle)
         const styles = vx_ui_html_uihtml.f_stylelist_extra_from_ui(ui)
-        return vx_core.f_new(
-          vx_web_html.t_img,
-          ":id",
-          uid,
-          ":style-unique",
-          style,
-          ":stylelist",
-          styles,
-          ":src",
-          path
-        )
+        return vx_core.f_new({"any-1": vx_web_html.t_img}, ":id", uid, ":style-unique", style, ":stylelist", styles, ":src", path)
       })
     )
     return output
@@ -592,7 +550,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_node},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         const data = vx_core.f_any_from_struct({"any-1": vx_core.t_any, "struct-2": vx_ui_ui.t_ui}, ui, ":data")
         const uimap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_uimap, "struct-2": vx_ui_ui.t_ui}, ui, ":uimap")
@@ -604,27 +562,17 @@ export default class vx_ui_html_uihtml {
         const text = vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
               datatype,
               vx_core.t_string
             )}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_any_from_any({"any-1": vx_core.t_string, "any-2": vx_core.t_any}, data)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_any_from_any({"any-1": vx_core.t_string, "any-2": vx_core.t_any}, data)})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_string_from_any(data)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_string_from_any(data)})
           )
         )
-        return vx_core.f_new(
-          vx_web_html.t_p,
-          ":id",
-          uid,
-          ":style-unique",
-          style,
-          ":stylelist",
-          styles,
-          ":text",
-          text
-        )
+        return vx_core.f_new({"any-1": vx_web_html.t_p}, ":id", uid, ":style-unique", style, ":stylelist", styles, ":text", text)
       })
     )
     return output
@@ -650,7 +598,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_node},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const id = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, ui, ":uid")
         const parentid = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_ui}, parent, ":uid")
         const htmltext = vx_web_html.f_string_from_node_indent(node, 2)
@@ -681,7 +629,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_node, "any-2": vx_ui_ui.t_layout},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const style = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_style, "struct-2": vx_ui_ui.t_ui}, ui, ":style")
         const layout = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_layout, "struct-2": vx_ui_ui.t_style}, style, ":layout")
         return vx_core.f_switch(
@@ -689,14 +637,14 @@ export default class vx_ui_html_uihtml {
           layout,
           vx_core.f_case_1(
             vx_ui_ui.c_layout_image,
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_ui_html_uihtml.f_node_image_from_ui_orig_parent(ui, orig, parent)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_ui_html_uihtml.f_node_image_from_ui_orig_parent(ui, orig, parent)})
           ),
           vx_core.f_case_1(
             vx_ui_ui.c_layout_label,
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_ui_html_uihtml.f_node_label_from_ui_orig_parent(ui, orig, parent)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_ui_html_uihtml.f_node_label_from_ui_orig_parent(ui, orig, parent)})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_ui_html_uihtml.f_node_default_from_ui_orig_parent(ui, orig, parent)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_ui_html_uihtml.f_node_default_from_ui_orig_parent(ui, orig, parent)})
           )
         )
       })
@@ -723,7 +671,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const htmlstyles = vx_ui_html_uihtml.f_stylelist_extra_from_ui(ui)
         return vx_web_html.f_string_from_stylelist(htmlstyles)
       })
@@ -750,16 +698,16 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const face = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_fontface, "struct-2": vx_ui_ui.t_font}, font, ":fontface")
         const size = vx_core.f_any_from_struct({"any-1": vx_core.t_int, "struct-2": vx_ui_ui.t_font}, font, ":fontsize")
         const name = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_fontface}, face, ":name")
         const ssize = vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_gt(size, 0)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-              vx_core.t_string,
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_gt(size, 0)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+              {"any-1": vx_core.t_string},
               vx_core.f_divide(size, 100),
               "em",
               " "
@@ -769,9 +717,9 @@ export default class vx_ui_html_uihtml {
         return vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(name)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-              vx_core.t_string,
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(name)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+              {"any-1": vx_core.t_string},
               ssize,
               vx_core.c_quote,
               name,
@@ -803,23 +751,18 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_if_2(
       {"any-1": vx_core.t_string},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(image)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(image)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
           {"any-1": vx_core.t_string},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const file = vx_core.f_any_from_struct({"any-1": vx_data_file.t_file, "struct-2": vx_ui_ui.t_image}, image, ":file")
             const url = vx_data_file.f_pathfull_from_file(file)
             return vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(url)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  "url(",
-                  url,
-                  ")"
-                )})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(url)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, "url(", url, ")")})
               )
             )
           })
@@ -848,32 +791,24 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_if_2(
       {"any-1": vx_core.t_string},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq("", name)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq("", name)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
       ),
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
           styletype,
           vx_ui_ui.c_styletype_shared
         )}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-          vx_core.t_string,
-          ".",
-          name
-        )})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, ".", name)})
       ),
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
           styletype,
           vx_ui_ui.c_styletype_system
         )}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-          vx_core.t_string,
-          "#",
-          name
-        )})
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, "#", name)})
       ),
-      vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return name}))
+      vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return name}))
     )
     return output
   }
@@ -897,7 +832,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_style},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const name = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_fontface}, fontface, ":name")
         const weight = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_fontface}, fontface, ":weight")
         const unicode = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_fontface}, fontface, ":unicode")
@@ -905,48 +840,24 @@ export default class vx_ui_html_uihtml {
         const urls = vx_core.f_list_from_list_1(
           {"any-1": vx_core.t_string, "any-2": vx_data_file.t_file, "list-1": vx_core.t_stringlist, "list-2": vx_data_file.t_filelist},
           files,
-          vx_core.f_new(vx_core.t_any_from_any, (file) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (file) => 
             vx_core.f_new(
-              vx_core.t_string,
+              {"any-1": vx_core.t_string},
               "url(",
               vx_data_file.f_pathfull_from_file(file),
               ")"
             ))
         )
         const fontfamily = vx_core.f_new(
-          vx_core.t_string,
+          {"any-1": vx_core.t_string},
           vx_core.c_quote,
           name,
           vx_core.c_quote
         )
         const srcurls = vx_type.f_string_from_stringlist_join(urls, ",")
-        const src = vx_core.f_new(
-          vx_core.t_string,
-          srcurls,
-          ";"
-        )
-        const propmap = vx_core.f_new(
-          vx_web_html.t_propmap,
-          ":font-family",
-          fontfamily,
-          ":font-style",
-          "normal",
-          ":font-weight",
-          weight,
-          ":font-display",
-          "swap",
-          ":src",
-          src,
-          ":unicode-range",
-          unicode
-        )
-        return vx_core.f_new(
-          vx_web_html.t_style,
-          ":name",
-          "@font-face",
-          ":props",
-          propmap
-        )
+        const src = vx_core.f_new({"any-1": vx_core.t_string}, srcurls, ";")
+        const propmap = vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":font-family", fontfamily, ":font-style", "normal", ":font-weight", weight, ":font-display", "swap", ":src", src, ":unicode-range", unicode)
+        return vx_core.f_new({"any-1": vx_web_html.t_style}, ":name", "@font-face", ":props", propmap)
       })
     )
     return output
@@ -971,16 +882,16 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_if_2(
       {"any-1": vx_web_html.t_style},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(uistyle)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_empty(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(uistyle)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_empty(
           vx_web_html.t_style
         )})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
           {"any-1": vx_web_html.t_style},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const layout = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_layout, "struct-2": vx_ui_ui.t_style}, uistyle, ":layout")
             const name = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_ui_ui.t_style}, uistyle, ":name")
             const flip = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_flip, "struct-2": vx_ui_ui.t_style}, uistyle, ":flip")
@@ -1010,57 +921,42 @@ export default class vx_ui_html_uihtml {
             const bkgcolor = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_bkg)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  "#",
-                  color_bkg
-                )})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_bkg)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, "#", color_bkg)})
               )
             )
             const borderwidth = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_border)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "thin"})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_border)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "thin"})
               )
             )
             const bordercolor = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_border)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  "#",
-                  color_border
-                )})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_border)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, "#", color_border)})
               )
             )
             const borderstyle = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_border)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  "solid"
-                )})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_border)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, "solid")})
               )
             )
             const fontcolor = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_font)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  "#",
-                  color_font
-                )})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(color_font)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, "#", color_font)})
               )
             )
             const position = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_or_1(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_or_1(
                   vx_core.f_eqeq(
                     layout,
                     vx_ui_ui.c_layout_app
@@ -1090,71 +986,63 @@ export default class vx_ui_html_uihtml {
                     vx_ui_ui.c_layout_titlebar
                   )
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "fixed"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "fixed"})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   postype,
                   vx_ui_ui.c_pointtype_relative
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "relative"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "relative"})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   postype,
                   vx_ui_ui.c_pointtype_absolute
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "absolute"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "absolute"})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(pointpos)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "absolute"})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(pointpos)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "absolute"})
               ),
-              vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return ""}))
+              vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""}))
             )
             const top = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   pin,
                   vx_ui_ui.c_pin_expand
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  posy,
-                  "mm"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, posy, "mm")})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(0, posy)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(0, posy)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  posy,
-                  "mm"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, posy, "mm")})
               )
             )
             const bottom = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   pin,
                   vx_ui_ui.c_pin_expand
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   pin,
                   vx_ui_ui.c_pin_bottom
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "0mm"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "0mm"})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_or(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_or(
                   vx_core.f_eqeq(
                     pin,
                     vx_ui_ui.c_pin_left
@@ -1164,56 +1052,44 @@ export default class vx_ui_html_uihtml {
                     vx_ui_ui.c_pin_center_v
                   )
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  sizey,
-                  "mm"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, sizey, "mm")})
               )
             )
             const left = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   pin,
                   vx_ui_ui.c_pin_expand
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   pin,
                   vx_ui_ui.c_pin_bottom
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  posx,
-                  "mm"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, posx, "mm")})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(0, posx)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(0, posx)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  posx,
-                  "mm"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, posx, "mm")})
               )
             )
             const right = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   pin,
                   vx_ui_ui.c_pin_expand
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_or_1(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_or_1(
                   vx_core.f_eqeq(
                     pin,
                     vx_ui_ui.c_pin_top
@@ -1227,24 +1103,20 @@ export default class vx_ui_html_uihtml {
                     vx_ui_ui.c_pin_center_v
                   )
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  sizex,
-                  "mm"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, sizex, "mm")})
               )
             )
             const height = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   pin,
                   vx_ui_ui.c_pin_expand
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "100%"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "100%"})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_or_1(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_or_1(
                   vx_core.f_eqeq(
                     pin,
                     vx_ui_ui.c_pin_left
@@ -1258,42 +1130,34 @@ export default class vx_ui_html_uihtml {
                     vx_ui_ui.c_pin_center_v
                   )
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   sizetype,
                   vx_ui_ui.c_pointtype_percent
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  sizey,
-                  "%"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, sizey, "%")})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(0, sizey)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(0, sizey)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  sizey,
-                  "mm"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, sizey, "mm")})
               )
             )
             const width = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   pin,
                   vx_ui_ui.c_pin_expand
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "100%"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "100%"})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_or_1(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_or_1(
                   vx_core.f_eqeq(
                     pin,
                     vx_ui_ui.c_pin_top
@@ -1307,47 +1171,39 @@ export default class vx_ui_html_uihtml {
                     vx_ui_ui.c_pin_center_v
                   )
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   sizetype,
                   vx_ui_ui.c_pointtype_percent
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  sizex,
-                  "%"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, sizex, "%")})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(0, sizex)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(0, sizex)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  sizex,
-                  "mm"
-                )})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, sizex, "mm")})
               )
             )
             const display = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
-              vx_core.f_then(vx_core.f_new(vx_core.t_boolean_from_func, () => {return hidden}), vx_core.f_new(vx_core.t_any_from_func, () => {return "none"})),
+              vx_core.f_then(vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return hidden}), vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "none"})),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   layout,
                   vx_ui_ui.c_layout_flow_item
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "inline-block"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "inline-block"})
               )
             )
             const sfont = vx_ui_html_uihtml.f_string_style_from_font(font)
             const gap = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_or(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_or(
                   vx_core.f_eqeq(
                     layout,
                     vx_ui_ui.c_layout_flow_columns
@@ -1357,71 +1213,67 @@ export default class vx_ui_html_uihtml {
                     vx_ui_ui.c_layout_flow_rows
                   )
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "1mm"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "1mm"})
               )
             )
             const overflowx = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
-              vx_core.f_then(vx_core.f_new(vx_core.t_boolean_from_func, () => {return scroll_x}), vx_core.f_new(vx_core.t_any_from_func, () => {return "auto"}))
+              vx_core.f_then(vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return scroll_x}), vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "auto"}))
             )
             const overflowy = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
-              vx_core.f_then(vx_core.f_new(vx_core.t_boolean_from_func, () => {return scroll_y}), vx_core.f_new(vx_core.t_any_from_func, () => {return "auto"}))
+              vx_core.f_then(vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return scroll_y}), vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "auto"}))
             )
             const hoverbkgrdcolor = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_ne("", color_bkghover)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
-                  "#",
-                  color_bkghover
-                )})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_ne("", color_bkghover)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, "#", color_bkghover)})
               )
             )
             const scursor = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   cursor,
                   vx_ui_ui.t_cursor_pointer
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "pointer"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "pointer"})
               )
             )
             const textalign = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   align,
                   vx_ui_ui.c_align_left
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "left"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "left"})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   align,
                   vx_ui_ui.c_align_center
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "center"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "center"})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                   align,
                   vx_ui_ui.c_align_right
                 )}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "right"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "right"})
               )
             )
             const transform_rotate = vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(pointrotate)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(pointrotate)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
               ),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+                  {"any-1": vx_core.t_string},
                   "rotate(",
                   vx_core.f_any_from_struct({"any-1": vx_core.t_int, "struct-2": vx_ui_ui.t_point}, pointrotate, ":x"),
                   "deg)"
@@ -1433,130 +1285,64 @@ export default class vx_ui_html_uihtml {
               flip,
               vx_core.f_case_1(
                 vx_ui_ui.c_flip_x,
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "scale(-1, 1)"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "scale(-1, 1)"})
               ),
               vx_core.f_case_1(
                 vx_ui_ui.c_flip_y,
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "scale( 1,-1)"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "scale( 1,-1)"})
               ),
               vx_core.f_case_1(
                 vx_ui_ui.c_flip_xy,
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "scale(-1,-1)"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "scale(-1,-1)"})
               )
             )
-            const transforms = vx_core.f_new(
-              vx_core.t_stringlist,
-              transform_rotate,
-              transform_scale
-            )
+            const transforms = vx_core.f_new({"any-1": vx_core.t_stringlist}, transform_rotate, transform_scale)
             const transform = vx_type.f_string_from_stringlist_join(transforms, " ")
             const transformorigin = vx_core.f_switch(
               {"any-1": vx_core.t_string, "any-2": vx_ui_ui.t_point},
               pointorigin,
               vx_core.f_case_1(
                 vx_ui_ui.c_point_center,
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "center"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "center"})
               ),
               vx_core.f_case_1(
                 vx_ui_ui.c_point_lefttop,
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "left top"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "left top"})
               ),
               vx_core.f_case_1(
                 vx_ui_ui.c_point_rightbottom,
-                vx_core.f_new(vx_core.t_any_from_func, () => {return "right bottom"})
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "right bottom"})
               ),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
                   {"any-1": vx_core.t_string},
                   vx_core.f_then(
-                    vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(pointrotate)}),
-                    vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+                    vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(pointrotate)}),
+                    vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
                   ),
                   vx_core.f_then(
-                    vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
+                    vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eqeq(
                       layout,
                       vx_ui_ui.c_layout_label
                     )}),
-                    vx_core.f_new(vx_core.t_any_from_func, () => {return "left top"})
+                    vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return "left top"})
                   )
                 )})
               )
             )
-            const props = vx_core.f_new(
-              vx_web_html.t_propmap,
-              ":background-color",
-              bkgcolor,
-              ":border-color",
-              bordercolor,
-              ":border-style",
-              borderstyle,
-              ":border-width",
-              borderwidth,
-              ":color",
-              fontcolor,
-              ":cursor",
-              scursor,
-              ":display",
-              display,
-              ":font",
-              sfont,
-              ":gap",
-              gap,
-              ":position",
-              position,
-              ":top",
-              top,
-              ":bottom",
-              bottom,
-              ":left",
-              left,
-              ":right",
-              right,
-              ":height",
-              height,
-              ":width",
-              width,
-              ":overflow-x",
-              overflowx,
-              ":overflow-y",
-              overflowy,
-              ":text-align",
-              textalign,
-              ":transform",
-              transform,
-              ":transform-origin",
-              transformorigin
-            )
-            const hoverprops = vx_core.f_new(
-              vx_web_html.t_propmap,
-              ":background-color",
-              hoverbkgrdcolor
-            )
+            const props = vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":background-color", bkgcolor, ":border-color", bordercolor, ":border-style", borderstyle, ":border-width", borderwidth, ":color", fontcolor, ":cursor", scursor, ":display", display, ":font", sfont, ":gap", gap, ":position", position, ":top", top, ":bottom", bottom, ":left", left, ":right", right, ":height", height, ":width", width, ":overflow-x", overflowx, ":overflow-y", overflowy, ":text-align", textalign, ":transform", transform, ":transform-origin", transformorigin)
+            const hoverprops = vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":background-color", hoverbkgrdcolor)
             const substylelist = vx_core.f_if_2(
               {"any-1": vx_web_html.t_stylelist},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(hoverprops)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_web_html.t_stylelist,
-                  vx_core.f_new(
-                    vx_web_html.t_style,
-                    ":name",
-                    "&:hover",
-                    ":props",
-                    hoverprops
-                  )
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(hoverprops)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+                  {"any-1": vx_web_html.t_stylelist},
+                  vx_core.f_new({"any-1": vx_web_html.t_style}, ":name", "&:hover", ":props", hoverprops)
                 )})
               )
             )
-            return vx_core.f_new(
-              vx_web_html.t_style,
-              ":name",
-              stylename,
-              ":props",
-              props,
-              ":stylelist",
-              substylelist
-            )
+            return vx_core.f_new({"any-1": vx_web_html.t_style}, ":name", stylename, ":props", props, ":stylelist", substylelist)
           })
         )})
       )
@@ -1583,7 +1369,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_stylelist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uistyles = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_stylelist, "struct-2": vx_ui_ui.t_ui}, ui, ":stylelist")
         const selected = vx_core.f_any_from_struct({"any-1": vx_core.t_boolean, "struct-2": vx_ui_ui.t_ui}, ui, ":selected")
         const hidden = vx_core.f_any_from_struct({"any-1": vx_core.t_boolean, "struct-2": vx_ui_ui.t_ui}, ui, ":hidden")
@@ -1591,20 +1377,20 @@ export default class vx_ui_html_uihtml {
         const styles2 = vx_core.f_if_2(
           {"any-1": vx_web_html.t_stylelist},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return hidden}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return hidden}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
               styles1,
               vx_ui_html_uihtml.c_style_hidden
             )})
           ),
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return selected}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return selected}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
               styles1,
               vx_ui_html_uihtml.c_style_selected
             )})
           ),
-          vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return styles1}))
+          vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return styles1}))
         )
         return styles2
       })
@@ -1628,102 +1414,48 @@ export default class vx_ui_html_uihtml {
   static f_stylelist_reset() {
     let output = vx_web_html.e_stylelist
     output = vx_core.f_new(
-      vx_web_html.t_stylelist,
+      {"any-1": vx_web_html.t_stylelist},
       vx_core.f_new(
-        vx_web_html.t_style,
+        {"any-1": vx_web_html.t_style},
         ":name",
         "html",
         ":props",
-        vx_core.f_new(
-          vx_web_html.t_propmap,
-          ":border",
-          "0mm",
-          ":margin",
-          "0mm",
-          ":padding",
-          "0mm"
-        )
+        vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":border", "0mm", ":margin", "0mm", ":padding", "0mm")
       ),
       vx_core.f_new(
-        vx_web_html.t_style,
+        {"any-1": vx_web_html.t_style},
         ":name",
         "body",
         ":props",
-        vx_core.f_new(
-          vx_web_html.t_propmap,
-          ":border",
-          "0mm",
-          ":margin",
-          "0mm",
-          ":padding",
-          "0mm"
-        )
+        vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":border", "0mm", ":margin", "0mm", ":padding", "0mm")
       ),
       vx_core.f_new(
-        vx_web_html.t_style,
+        {"any-1": vx_web_html.t_style},
         ":name",
         "div",
         ":props",
-        vx_core.f_new(
-          vx_web_html.t_propmap,
-          ":border",
-          "0mm",
-          ":box-sizing",
-          "border-box",
-          ":margin",
-          "0mm",
-          ":padding",
-          "0mm",
-          ":position",
-          "relative"
-        )
+        vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":border", "0mm", ":box-sizing", "border-box", ":margin", "0mm", ":padding", "0mm", ":position", "relative")
       ),
       vx_core.f_new(
-        vx_web_html.t_style,
+        {"any-1": vx_web_html.t_style},
         ":name",
         "img",
         ":props",
-        vx_core.f_new(
-          vx_web_html.t_propmap,
-          ":border",
-          "0mm",
-          ":display",
-          "block",
-          ":margin",
-          "0mm",
-          ":padding",
-          "0mm"
-        )
+        vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":border", "0mm", ":display", "block", ":margin", "0mm", ":padding", "0mm")
       ),
       vx_core.f_new(
-        vx_web_html.t_style,
+        {"any-1": vx_web_html.t_style},
         ":name",
         "p",
         ":props",
-        vx_core.f_new(
-          vx_web_html.t_propmap,
-          ":margin-block-start",
-          "0mm",
-          ":margin-block-end",
-          "0mm",
-          ":white-space",
-          "pre-line"
-        )
+        vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":margin-block-start", "0mm", ":margin-block-end", "0mm", ":white-space", "pre-line")
       ),
       vx_core.f_new(
-        vx_web_html.t_style,
+        {"any-1": vx_web_html.t_style},
         ":name",
         "*",
         ":props",
-        vx_core.f_new(
-          vx_web_html.t_propmap,
-          ":-webkit-print-color-adjust",
-          "exact !important",
-          ":color-adjust",
-          "exact !important",
-          ":print-color-adjust",
-          "exact !important"
-        )
+        vx_core.f_new({"any-1": vx_web_html.t_propmap}, ":-webkit-print-color-adjust", "exact !important", ":color-adjust", "exact !important", ":print-color-adjust", "exact !important")
       )
     )
     return output
@@ -1748,7 +1480,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_list_from_map_1(
       {"any-1": vx_web_html.t_style, "any-2": vx_ui_ui.t_fontface, "list-1": vx_web_html.t_stylelist, "map-2": vx_ui_ui.t_fontfacemap},
       fontfacemap,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, fontface]) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, fontface]) => 
         vx_ui_html_uihtml.f_style_from_fontface(fontface))
     )
     return output
@@ -1773,7 +1505,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_list_from_list_1(
       {"any-1": vx_web_html.t_style, "any-2": vx_ui_ui.t_style, "list-1": vx_web_html.t_stylelist, "list-2": vx_ui_ui.t_stylelist},
       uistylelist,
-      vx_core.f_new(vx_core.t_any_from_any, vx_ui_html_uihtml.t_style_from_style)
+      vx_core.f_new_from_type(vx_core.t_any_from_any, vx_ui_html_uihtml.t_style_from_style)
     )
     return output
   }
@@ -1797,7 +1529,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_list_from_map_1(
       {"any-1": vx_web_html.t_style, "any-2": vx_ui_ui.t_style, "list-1": vx_web_html.t_stylelist, "map-2": vx_ui_ui.t_stylemap},
       uistylemap,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
         vx_ui_html_uihtml.f_style_from_style(value))
     )
     return output
@@ -1822,7 +1554,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_map_from_map_1(
       {"any-1": vx_web_html.t_style, "any-2": vx_ui_ui.t_style, "map-1": vx_web_html.t_stylemap, "map-2": vx_ui_ui.t_stylemap},
       uistylemap,
-      vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
         vx_ui_html_uihtml.f_style_from_style(value))
     )
     return output
@@ -1847,7 +1579,7 @@ export default class vx_ui_html_uihtml {
     output = await vx_core.f_let_async(
       {"any-1": vx_ui_ui.t_stylesheet},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, async () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, async () => {
         const stylesheethtml = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(stylesheetui)
         const write = await vx_web_htmldoc.f_boolean_write_from_stylesheet(stylesheethtml)
         return stylesheetui
@@ -1875,23 +1607,14 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_web_html.t_stylesheet},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uistylemap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_stylemap, "struct-2": vx_ui_ui.t_stylesheet}, uistylesheet, ":stylemap")
         const fontfacemap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_fontfacemap, "struct-2": vx_ui_ui.t_stylesheet}, uistylesheet, ":fontfacemap")
         const resetlist = vx_ui_html_uihtml.f_stylelist_reset()
         const fontstyles = vx_ui_html_uihtml.f_stylelist_from_fontfacemap(fontfacemap)
         const stylelist = vx_ui_html_uihtml.f_stylelist_from_stylemap(uistylemap)
-        const allstyles = vx_core.f_new(
-          vx_web_html.t_stylelist,
-          resetlist,
-          fontstyles,
-          stylelist
-        )
-        return vx_core.f_new(
-          vx_web_html.t_stylesheet,
-          ":styles",
-          allstyles
-        )
+        const allstyles = vx_core.f_new({"any-1": vx_web_html.t_stylelist}, resetlist, fontstyles, stylelist)
+        return vx_core.f_new({"any-1": vx_web_html.t_stylesheet}, ":styles", allstyles)
       })
     )
     return output
@@ -1917,7 +1640,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_ui_ui.t_ui},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const node = vx_ui_html_uihtml.f_node_app_from_ui_orig_parent(ui, orig, parent)
         const nodechg = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(node, ui, parent)
         const iswrite = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(ui)
@@ -1947,7 +1670,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_ui_ui.t_ui},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uimap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_uimap, "struct-2": vx_ui_ui.t_ui}, ui, ":uimap")
         const node = vx_ui_html_uihtml.f_node_default_from_ui_orig_parent(ui, orig, parent)
         const nodechg = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(node, ui, parent)
@@ -1978,7 +1701,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_ui_ui.t_ui},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const node = vx_ui_html_uihtml.f_node_image_from_ui_orig_parent(ui, orig, parent)
         const nodechg = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(node, ui, parent)
         const iswrite = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(ui)
@@ -2008,7 +1731,7 @@ export default class vx_ui_html_uihtml {
     output = vx_core.f_let(
       {"any-1": vx_ui_ui.t_ui},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const uimap = vx_core.f_any_from_struct({"any-1": vx_ui_ui.t_uimap, "struct-2": vx_ui_ui.t_ui}, ui, ":uimap")
         const node = vx_ui_html_uihtml.f_node_label_from_ui_orig_parent(ui, orig, parent)
         const nodechg = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(node, ui, parent)
@@ -2135,7 +1858,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_layoutremove_html
@@ -2153,7 +1876,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_layoutselected_html
@@ -2171,7 +1894,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_layoutvisible_html
@@ -2189,7 +1912,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_print_html
@@ -2207,7 +1930,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_writeclass_from_ui
@@ -2225,7 +1948,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui
@@ -2243,7 +1966,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap
@@ -2261,7 +1984,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_writeselected_from_ui
@@ -2279,7 +2002,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_boolean_writevisible_from_ui
@@ -2297,7 +2020,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_context_write
@@ -2315,7 +2038,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_divchild_from_ui
@@ -2333,7 +2056,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_divchildlist_from_uimap
@@ -2351,7 +2074,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_divchildlist_from_uimap_1
@@ -2369,7 +2092,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent
@@ -2387,7 +2110,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_node_app_from_ui_orig_parent
@@ -2405,7 +2128,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_node_default_from_ui_orig_parent
@@ -2423,7 +2146,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_node_image_from_ui_orig_parent
@@ -2441,7 +2164,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_node_label_from_ui_orig_parent
@@ -2459,7 +2182,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_node_layout_from_node_ui_parent
@@ -2477,7 +2200,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_node_from_ui_orig_parent
@@ -2495,7 +2218,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_string_class_from_ui
@@ -2513,7 +2236,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_string_style_from_font
@@ -2531,7 +2254,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_string_style_from_image
@@ -2549,7 +2272,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_string_stylename_from_name_styletype
@@ -2567,7 +2290,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_style_from_fontface
@@ -2585,7 +2308,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_style_from_style
@@ -2603,7 +2326,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_stylelist_extra_from_ui
@@ -2621,7 +2344,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_stylelist_reset
@@ -2639,7 +2362,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_stylelist_from_fontfacemap
@@ -2657,7 +2380,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_stylelist_from_stylelist
@@ -2675,7 +2398,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_stylelist_from_stylemap
@@ -2693,7 +2416,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_stylemap_from_stylemap
@@ -2711,7 +2434,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_stylesheet_layout_html
@@ -2729,7 +2452,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_stylesheet_from_stylesheet
@@ -2747,7 +2470,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_ui_layout_app_from_ui_orig_parent
@@ -2765,7 +2488,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_ui_layout_default_from_ui_orig_parent
@@ -2783,7 +2506,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_ui_layout_image_from_ui_orig_parent
@@ -2801,7 +2524,7 @@ export default class vx_ui_html_uihtml {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_ui_html_uihtml.f_ui_layout_label_from_ui_orig_parent
@@ -2837,11 +2560,11 @@ export default class vx_ui_html_uihtml {
 
     // (const layoutenginehtml)
     Object.assign(vx_ui_html_uihtml.c_layoutenginehtml, vx_core.f_new(
-      vx_ui_ui.t_layoutengine,
+      {"any-1": vx_ui_ui.t_layoutengine},
       ":layoutmap",
       vx_ui_ui.f_layoutmap_from_layoutlist(
         vx_core.f_new(
-          vx_ui_ui.t_layoutlist,
+          {"any-1": vx_ui_ui.t_layoutlist},
           vx_ui_html_uihtml.c_layout_app_html,
           vx_ui_html_uihtml.c_layout_image_html,
           vx_ui_html_uihtml.c_layout_label_html
@@ -2862,18 +2585,10 @@ export default class vx_ui_html_uihtml {
     ))
 
     // (const style-hidden)
-    Object.assign(vx_ui_html_uihtml.c_style_hidden, vx_core.f_new(
-      vx_web_html.t_style,
-      ":name",
-      ".style-hidden"
-    ))
+    Object.assign(vx_ui_html_uihtml.c_style_hidden, vx_core.f_new({"any-1": vx_web_html.t_style}, ":name", ".style-hidden"))
 
     // (const style-selected)
-    Object.assign(vx_ui_html_uihtml.c_style_selected, vx_core.f_new(
-      vx_web_html.t_style,
-      ":name",
-      ".style-selected"
-    ))
+    Object.assign(vx_ui_html_uihtml.c_style_selected, vx_core.f_new({"any-1": vx_web_html.t_style}, ":name", ".style-selected"))
 
   }
 }

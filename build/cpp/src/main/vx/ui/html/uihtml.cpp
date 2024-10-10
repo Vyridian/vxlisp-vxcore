@@ -3397,12 +3397,8 @@ namespace vx_ui_html_uihtml {
                         return output_1;
                       }),
                       vx_core::t_any_from_func->vx_fn_new({}, []() {
-                        vx_core::Type_string output_1 = vx_core::f_new(
-                          vx_core::t_string,
-                          vx_core::vx_new(vx_core::t_anylist, {
-                            vx_core::vx_new_string("solid")
-                          })
-                        );
+                        vx_core::Type_string output_1 = vx_core::f_new(vx_core::t_string, vx_core::vx_new(vx_core::t_anylist, {
+                        vx_core::vx_new_string("solid")}));
                         return output_1;
                       })
                     )

@@ -104,7 +104,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_core.t_any},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const repl = vx_repl.f_repl_from_liblist_string(liblist, text)
         return vx_repl.f_any_from_repl(context, repl)
       })
@@ -130,11 +130,11 @@ export default class vx_repl {
   static f_any_from_macro(generic, context, ...anylist) {
     const generic_any_1 = generic["any-1"]
     let output = vx_core.f_empty(generic_any_1)
-    anylist = vx_core.f_new(vx_core.t_anylist, ...anylist)
+    anylist = vx_core.f_new_from_type(vx_core.t_anylist, ...anylist)
     output = vx_core.f_let(
       {"any-1": generic_any_1, "any-2": vx_core.t_any},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const repl = vx_repl.f_repl_from_macro(context, ...anylist)
         const value = vx_repl.f_any_from_repl(context, repl)
         return vx_core.f_any_from_any({"any-1": generic_any_1, "any-2": vx_core.t_any}, value)
@@ -162,7 +162,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_core.t_any},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const value = vx_core.f_any_from_struct({"any-1": vx_core.t_any, "struct-2": vx_repl.t_repl}, repl, ":value")
         const repltype = vx_core.f_any_from_struct({"any-1": vx_core.t_any, "struct-2": vx_repl.t_repl}, repl, ":type")
         const repllist = vx_core.f_any_from_struct({"any-1": vx_repl.t_repllist, "struct-2": vx_repl.t_repl}, repl, ":repllist")
@@ -170,15 +170,15 @@ export default class vx_repl {
         return vx_core.f_if_2(
           {"any-1": vx_core.t_any},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(value)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return value})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(value)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return value})
           ),
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_func(repltype)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_repl.f_any_repl_from_functype_args(repltype, args)})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_func(repltype)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_repl.f_any_repl_from_functype_args(repltype, args)})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(repltype, args)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new_from_type(repltype, args)})
           )
         )
       })
@@ -205,7 +205,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_core.t_any},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const textblock = vx_repl.f_textblock_from_script(script)
         const repl = vx_repl.f_repl_from_textblock(textblock)
         return vx_repl.f_any_from_repl(context, repl)
@@ -233,7 +233,7 @@ export default class vx_repl {
     output = vx_core.f_list_from_list_1(
       {"any-1": vx_core.t_any, "any-2": vx_repl.t_repl, "list-1": vx_core.t_anylist, "list-2": vx_repl.t_repllist},
       repllist,
-      vx_core.f_new(vx_core.t_any_from_any, (repl) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (repl) => 
         vx_repl.f_any_from_repl(context, repl))
     )
     return output
@@ -291,7 +291,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_core.t_any},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const pkgpos = vx_type.f_int_from_string_findlast(text, "/")
         const pkgname = vx_core.f_if_1(
           {"any-1": vx_core.t_string},
@@ -370,7 +370,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_repl.t_repl, "any-2": vx_core.t_int},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const children = vx_core.f_any_from_struct({"any-1": vx_data_textblock.t_textblocklist, "struct-2": vx_data_textblock.t_textblock}, textblock, ":children")
         const len = vx_core.f_length_1(children)
         return vx_core.f_switch(
@@ -378,21 +378,21 @@ export default class vx_repl {
           len,
           vx_core.f_case_1(
             0,
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_repl.f_repl_from_string_argmap(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_repl.f_repl_from_string_argmap(
               vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_textblock}, textblock, ":text"),
               argmap
             )})
           ),
           vx_core.f_case_1(
             1,
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_repl.f_repl_from_textblock_argmap(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_repl.f_repl_from_textblock_argmap(
               vx_core.f_any_from_list({"any-1": vx_data_textblock.t_textblock, "list-1": vx_data_textblock.t_textblocklist}, children, 1),
               argmap
             )})
           ),
           vx_core.f_else(
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-              vx_repl.t_repl,
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+              {"any-1": vx_repl.t_repl},
               vx_core.f_msg_from_error("Empty delim cannot have more than one child.")
             )})
           )
@@ -422,7 +422,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_repl.t_repl},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const childlst = vx_core.f_any_from_struct({"any-1": vx_data_textblock.t_textblocklist, "struct-2": vx_data_textblock.t_textblock}, textblock, ":children")
         const children = vx_data_textblock.f_textblocklist_from_textblocklist_remove(
           childlst,
@@ -437,32 +437,32 @@ export default class vx_repl {
           typefunc,
           vx_core.f_case_1(
             vx_core.t_let,
-            vx_core.f_new(vx_core.t_any_from_func, () => {return 3})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return 3})
           ),
           vx_core.f_case_1(
             vx_core.t_fn,
-            vx_core.f_new(vx_core.t_any_from_func, () => {return 3})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return 3})
           ),
-          vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return 2}))
+          vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return 2}))
         )
         const argmap2 = vx_core.f_switch(
           {"any-1": vx_core.t_argmap, "any-2": vx_core.t_any},
           typefunc,
           vx_core.f_case_1(
             vx_core.t_let,
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_repl.f_argmap_from_textblock_argmap(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_repl.f_argmap_from_textblock_argmap(
               vx_core.f_any_from_list({"any-1": vx_data_textblock.t_textblock, "list-1": vx_data_textblock.t_textblocklist}, children, 3),
               argmap
             )})
           ),
           vx_core.f_case_1(
             vx_core.t_fn,
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_repl.f_argmap_from_textblock_argmap(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_repl.f_argmap_from_textblock_argmap(
               vx_core.f_any_from_list({"any-1": vx_data_textblock.t_textblock, "list-1": vx_data_textblock.t_textblocklist}, children, 3),
               argmap
             )})
           ),
-          vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return argmap}))
+          vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return argmap}))
         )
         const tbargs = vx_collection.f_list_from_list_start({"any-1": vx_data_textblock.t_textblock, "list-1": vx_data_textblock.t_textblocklist}, children, posarg)
         const replargs = vx_repl.f_repllist_from_textblocklist_argmap(tbargs, argmap)
@@ -508,29 +508,29 @@ export default class vx_repl {
   // (func repl<-macro)
   static f_repl_from_macro(context, ...anylist) {
     let output = vx_repl.e_repl
-    anylist = vx_core.f_new(vx_core.t_anylist, ...anylist)
+    anylist = vx_core.f_new_from_type(vx_core.t_anylist, ...anylist)
     output = vx_core.f_let(
       {"any-1": vx_repl.t_repl},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const textlist = vx_core.f_list_from_list_1(
           {"any-1": vx_core.t_string, "any-2": vx_core.t_any, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_anylist},
           anylist,
-          vx_core.f_new(vx_core.t_any_from_any, (item) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (item) => 
             vx_core.f_let(
               {"any-1": vx_core.t_string, "any-2": vx_core.t_any},
               [],
-              vx_core.f_new(vx_core.t_any_from_func, () => {
+              vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
                 const typ = vx_core.f_type_from_any(item)
                 return vx_core.f_switch(
                   {"any-1": vx_core.t_string, "any-2": vx_core.t_any},
                   typ,
                   vx_core.f_case_1(
                     vx_core.t_string,
-                    vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_any_from_any({"any-1": vx_core.t_string, "any-2": vx_core.t_any}, item)})
+                    vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_any_from_any({"any-1": vx_core.t_string, "any-2": vx_core.t_any}, item)})
                   ),
                   vx_core.f_else(
-                    vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_string_from_any(item)})
+                    vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_string_from_any(item)})
                   )
                 )
               })
@@ -563,7 +563,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_repl.t_repl},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const textblock = vx_repl.f_textblock_from_script(script)
         return vx_repl.f_repl_from_textblock(textblock)
       })
@@ -591,7 +591,7 @@ export default class vx_repl {
     output = vx_core.f_if_2(
       {"any-1": vx_repl.t_repl},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_and(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_and(
           vx_type.f_boolean_from_string_starts(
             text,
             vx_core.c_quote
@@ -601,79 +601,67 @@ export default class vx_repl {
             vx_core.c_quote
           )
         )}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-          vx_repl.t_repl,
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+          {"any-1": vx_repl.t_repl},
           ":value",
           vx_type.f_string_from_string_start_end(text, 2, -1)
         )})
       ),
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_int(text)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-          vx_repl.t_repl,
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_int(text)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+          {"any-1": vx_repl.t_repl},
           ":value",
           vx_core.f_int_from_string(text)
         )})
       ),
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_float(text)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-          vx_repl.t_repl,
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_float(text)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+          {"any-1": vx_repl.t_repl},
           ":value",
           vx_core.f_float_from_string(text)
         )})
       ),
       vx_core.f_else(
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
           {"any-1": vx_repl.t_repl},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const arg = vx_core.f_any_from_map({"any-1": vx_core.t_arg, "map-1": vx_core.t_argmap}, argmap, text)
             return vx_core.f_if_2(
               {"any-1": vx_repl.t_repl},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(arg)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_repl.t_repl,
-                  ":value",
-                  arg
-                )})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(arg)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_repl.t_repl}, ":value", arg)})
               ),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
                   {"any-1": vx_repl.t_repl},
                   [],
-                  vx_core.f_new(vx_core.t_any_from_func, () => {
+                  vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
                     const cnst = vx_repl.f_const_from_string(text)
                     return vx_core.f_if_2(
                       {"any-1": vx_repl.t_repl},
                       vx_core.f_then(
-                        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(cnst)}),
-                        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                          vx_repl.t_repl,
-                          ":value",
-                          cnst
-                        )})
+                        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(cnst)}),
+                        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_repl.t_repl}, ":value", cnst)})
                       ),
                       vx_core.f_else(
-                        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+                        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
                           {"any-1": vx_repl.t_repl},
                           [],
-                          vx_core.f_new(vx_core.t_any_from_func, () => {
+                          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
                             const typefunc = vx_repl.f_typefunc_from_string(text)
                             return vx_core.f_if_2(
                               {"any-1": vx_repl.t_repl},
                               vx_core.f_then(
-                                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(typefunc)}),
-                                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                                  vx_repl.t_repl,
-                                  ":type",
-                                  typefunc
-                                )})
+                                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(typefunc)}),
+                                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_repl.t_repl}, ":type", typefunc)})
                               ),
                               vx_core.f_else(
-                                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                                  vx_repl.t_repl,
+                                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+                                  {"any-1": vx_repl.t_repl},
                                   vx_core.f_msg_from_error_1(":repltypenotfound", text)
                                 )})
                               )
@@ -738,7 +726,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_repl.t_repl, "any-2": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const delim = vx_core.f_any_from_struct({"any-1": vx_data_textblock.t_delim, "struct-2": vx_data_textblock.t_textblock}, textblock, ":delim")
         const starttext = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_data_textblock.t_delim}, delim, ":starttext")
         return vx_core.f_switch(
@@ -746,7 +734,7 @@ export default class vx_repl {
           starttext,
           vx_core.f_case_1(
             "",
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_repl.f_repl_empty_from_textblock_argmap(textblock, argmap)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_repl.f_repl_empty_from_textblock_argmap(textblock, argmap)})
           ),
           vx_core.f_case_1(
             vx_core.f_any_from_struct(
@@ -754,7 +742,7 @@ export default class vx_repl {
               vx_data_textblock.c_delimparen,
               ":starttext"
             ),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_repl.f_repl_paren_from_textblock_argmap(textblock, argmap)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_repl.f_repl_paren_from_textblock_argmap(textblock, argmap)})
           ),
           vx_core.f_case_1(
             vx_core.f_any_from_struct(
@@ -762,7 +750,7 @@ export default class vx_repl {
               vx_data_textblock.c_delimbracketsquare,
               ":starttext"
             ),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_repl.f_repl_bracket_from_textblock_argmap(textblock, argmap)})
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_repl.f_repl_bracket_from_textblock_argmap(textblock, argmap)})
           )
         )
       })
@@ -791,7 +779,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_repl.t_replarglist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const key = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_repl.t_replarglist}, replargs, ":key")
         const current = vx_core.f_any_from_struct({"any-1": vx_repl.t_repl, "struct-2": vx_repl.t_replarglist}, replargs, ":current")
         const repllist = vx_core.f_any_from_struct({"any-1": vx_repl.t_repllist, "struct-2": vx_repl.t_replarglist}, replargs, ":repllist")
@@ -804,30 +792,26 @@ export default class vx_repl {
         return vx_core.f_if_2(
           {"any-1": vx_repl.t_replarglist},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(key, "")}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(key, "")}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
               {"any-1": vx_repl.t_replarglist},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq_1(text)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(replargs, ":key", text)})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq_1(text)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(replargs, ":key", text)})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(text, ":=")}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(replargs, ":key", text)})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(text, ":=")}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(replargs, ":key", text)})
               ),
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(text, ":doc")}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(replargs, ":key", text)})
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(text, ":doc")}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(replargs, ":key", text)})
               ),
               vx_core.f_else(
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
                   replargs,
                   ":current",
-                  vx_core.f_new(
-                    vx_repl.t_repl,
-                    ":name",
-                    text
-                  ),
+                  vx_core.f_new({"any-1": vx_repl.t_repl}, ":name", text),
                   ":repllist",
                   vx_core.f_copy(repllist, current)
                 )})
@@ -835,8 +819,8 @@ export default class vx_repl {
             )})
           ),
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq_1(key)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq_1(key)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
               replargs,
               ":key",
               "",
@@ -845,8 +829,8 @@ export default class vx_repl {
             )})
           ),
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(key, ":=")}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(key, ":=")}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
               replargs,
               ":key",
               "",
@@ -862,8 +846,8 @@ export default class vx_repl {
             )})
           ),
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(key, ":doc")}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_copy(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(key, ":doc")}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
               replargs,
               ":key",
               "",
@@ -871,7 +855,7 @@ export default class vx_repl {
               vx_core.f_copy(current, ":doc", text)
             )})
           ),
-          vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return replargs}))
+          vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return replargs}))
         )
       })
     )
@@ -898,7 +882,7 @@ export default class vx_repl {
     output = vx_core.f_list_from_list_1(
       {"any-1": vx_repl.t_repl, "any-2": vx_data_textblock.t_textblock, "list-1": vx_repl.t_repllist, "list-2": vx_data_textblock.t_textblocklist},
       textblocklist,
-      vx_core.f_new(vx_core.t_any_from_any, (textblock) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (textblock) => 
         vx_repl.f_repl_from_textblock(textblock))
     )
     return output
@@ -946,7 +930,7 @@ export default class vx_repl {
     output = vx_core.f_let(
       {"any-1": vx_core.t_any},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const pkgpos = vx_type.f_int_from_string_findlast(text, "/")
         const pkgname = vx_core.f_if_1(
           {"any-1": vx_core.t_string},
@@ -976,7 +960,7 @@ export default class vx_repl {
           vx_core.f_let(
             {"any-1": vx_core.t_any},
             [],
-            vx_core.f_new(vx_core.t_any_from_func, () => {
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
               const funcmap = vx_core.f_any_from_struct({"any-1": vx_core.t_funcmap, "struct-2": vx_core.t_package}, pkg, ":funcmap")
               const funcval = vx_core.f_any_from_map({"any-1": vx_core.t_func, "map-1": vx_core.t_funcmap}, funcmap, name)
               return vx_core.f_if_1(
@@ -1209,7 +1193,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_any_repl_from_functype_args
@@ -1227,7 +1211,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_any_from_liblist_string
@@ -1245,7 +1229,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_any_from_macro
@@ -1263,7 +1247,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_any_from_repl
@@ -1281,7 +1265,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_any_from_script
@@ -1299,7 +1283,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_anylist_from_repllist
@@ -1317,7 +1301,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_argmap_from_textblock_argmap
@@ -1335,7 +1319,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_const_from_string
@@ -1353,7 +1337,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_bracket_from_textblock_argmap
@@ -1371,7 +1355,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_empty_from_textblock_argmap
@@ -1389,7 +1373,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_paren_from_textblock_argmap
@@ -1407,7 +1391,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_from_liblist_string
@@ -1425,7 +1409,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_from_macro
@@ -1443,7 +1427,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_from_script
@@ -1461,7 +1445,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_from_string_argmap
@@ -1479,7 +1463,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_from_textblock
@@ -1497,7 +1481,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repl_from_textblock_argmap
@@ -1515,7 +1499,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_replarglist_from_replarglist_textblock_argmap
@@ -1533,7 +1517,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_repllist_from_textblocklist_argmap
@@ -1551,7 +1535,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_textblock_from_script
@@ -1569,7 +1553,7 @@ export default class vx_repl {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_repl.f_typefunc_from_string
@@ -1577,12 +1561,12 @@ export default class vx_repl {
 
     // (const delimvxlisp)
     Object.assign(vx_repl.c_delimvxlisp, vx_core.f_new(
-      vx_data_textblock.t_delim,
+      {"any-1": vx_data_textblock.t_delim},
       ":name",
       "delimvxlisp",
       ":delimlist",
       vx_core.f_new(
-        vx_data_textblock.t_delimlist,
+        {"any-1": vx_data_textblock.t_delimlist},
         vx_repl.c_delimvxlispparen,
         vx_data_textblock.c_delimcomment,
         vx_data_textblock.c_delimcommentblock
@@ -1596,7 +1580,7 @@ export default class vx_repl {
       "delimvxlispbracketsquare",
       ":delimlist",
       vx_core.f_new(
-        vx_data_textblock.t_delimlist,
+        {"any-1": vx_data_textblock.t_delimlist},
         vx_data_textblock.c_delimcomment,
         vx_data_textblock.c_delimcommentblock,
         vx_data_textblock.c_delimquote,
@@ -1613,7 +1597,7 @@ export default class vx_repl {
       "delimvxlispparen",
       ":delimlist",
       vx_core.f_new(
-        vx_data_textblock.t_delimlist,
+        {"any-1": vx_data_textblock.t_delimlist},
         vx_data_textblock.c_delimcomment,
         vx_data_textblock.c_delimcommentblock,
         vx_data_textblock.c_delimquote,

@@ -10,7 +10,7 @@ export default class vx_collection_test {
 
   static test_package(context) {
     const testcaselist = vx_collection_test.test_cases(context)
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testpackage,
       ":testpkg", "vx/collection",
       ":caselist", testcaselist,
@@ -21,33 +21,34 @@ export default class vx_collection_test {
   }
 
   static test_coveragesummary() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragesummary,
       "testpkg",   "vx/collection", 
-      "constnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "docnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 27, ":total", 27), 
-      "funcnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
-      "bigospacenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "bigotimenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
-      "typenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
+      "constnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "docnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 27, ":total", 27), 
+      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
+      "bigospacenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "bigotimenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
+      "typenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     )
+    return output
   }
 
   static test_coveragedetail() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragedetail,
       "testpkg", "vx/collection",
       "typemap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap
         ),
       "constmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap
         ),
       "funcmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "-", 1,
           "-_1", 1,
@@ -78,42 +79,29 @@ export default class vx_collection_test {
           "map<-struct", 1
         )
     )
+    return output
   }
 
   static f_minus(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "-",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist \"a\" \"d\")\n (- : stringlist\n  (stringlist \"a\" \"b\" \"c\" \"d\")\n  (stringlist \"b\" \"c\")))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a",
-                "d"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "d"),
               vx_collection.f_minus(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c",
-                  "d"
-                ),
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "b",
-                  "c"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c", "d"),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "b", "c")
               )
             )
           )
@@ -123,47 +111,25 @@ export default class vx_collection_test {
   }
 
   static f_minus_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "-",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  :a \"1\"\n  :d \"4\")\n (- : stringmap\n  (stringmap\n   :a \"1\"\n   :b \"2\"\n   :c \"3\"\n   :d \"4\")\n  (stringmap\n   :b \"x\"\n   :c \"y\")))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":a",
-                "1",
-                ":d",
-                "4"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":d", "4"),
               vx_collection.f_minus_1(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "1",
-                  ":b",
-                  "2",
-                  ":c",
-                  "3",
-                  ":d",
-                  "4"
-                ),
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":b",
-                  "x",
-                  ":c",
-                  "y"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2", ":c", "3", ":d", "4"),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":b", "x", ":c", "y")
               )
             )
           )
@@ -173,15 +139,15 @@ export default class vx_collection_test {
   }
 
   static f_any_from_for_until_loop(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "any<-for-until-loop",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 8\n (any<-for-until-loop\n  1\n  (fn : boolean\n   [current : int]\n   (> current 6))\n  (fn : int\n   [current : int]\n   (+ current current))))",
             ":testresult",
@@ -191,9 +157,9 @@ export default class vx_collection_test {
               vx_collection.f_any_from_for_until_loop(
                 {"any-1": vx_core.t_int},
                 1,
-                vx_core.f_new(vx_core.t_boolean_from_any, (current) => 
+                vx_core.f_new_from_type(vx_core.t_boolean_from_any, (current) => 
                   vx_core.f_gt(current, 6)),
-                vx_core.f_new(vx_core.t_any_from_any, (current) => 
+                vx_core.f_new_from_type(vx_core.t_any_from_any, (current) => 
                   vx_core.f_plus(current, current))
               )
             )
@@ -204,15 +170,15 @@ export default class vx_collection_test {
   }
 
   static f_any_from_for_while_loop(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "any<-for-while-loop",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 8\n (any<-for-while-loop\n  1\n  (fn : boolean\n   [current : int]\n   (< current 5))\n  (fn : int\n   [current : int]\n   (+ current current))))",
             ":testresult",
@@ -222,9 +188,9 @@ export default class vx_collection_test {
               vx_collection.f_any_from_for_while_loop(
                 {"any-1": vx_core.t_int},
                 1,
-                vx_core.f_new(vx_core.t_boolean_from_any, (current) => 
+                vx_core.f_new_from_type(vx_core.t_boolean_from_any, (current) => 
                   vx_core.f_lt(current, 5)),
-                vx_core.f_new(vx_core.t_any_from_any, (current) => 
+                vx_core.f_new_from_type(vx_core.t_any_from_any, (current) => 
                   vx_core.f_plus(current, current))
               )
             )
@@ -235,42 +201,34 @@ export default class vx_collection_test {
   }
 
   static f_anymap_from_struct(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "anymap<-struct",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (anymap\n  :name \"sname\"\n  :wordmap\n   (stringmap\n    :a \"x\"))\n (anymap<-struct\n  (translation\n   :name \"sname\"\n   :wordmap\n    (stringmap\n     :a \"x\"))))",
             ":testresult",
             vx_test.f_test(
               context,
               vx_core.f_new(
-                vx_core.t_anymap,
+                {"any-1": vx_core.t_anymap},
                 ":name",
                 "sname",
                 ":wordmap",
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "x"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "x")
               ),
               vx_collection.f_anymap_from_struct(
                 vx_core.f_new(
-                  vx_core.t_translation,
+                  {"any-1": vx_core.t_translation},
                   ":name",
                   "sname",
                   ":wordmap",
-                  vx_core.f_new(
-                    vx_core.t_stringmap,
-                    ":a",
-                    "x"
-                  )
+                  vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "x")
                 )
               )
             )
@@ -281,15 +239,15 @@ export default class vx_collection_test {
   }
 
   static f_int_from_map_key(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "int<-map-key",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 2\n (int<-map-key\n  (stringmap\n   :a \"x\"\n   :b \"y\")\n  \"b\"))",
             ":testresult",
@@ -297,13 +255,7 @@ export default class vx_collection_test {
               context,
               2,
               vx_collection.f_int_from_map_key(
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "x",
-                  ":b",
-                  "y"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "x", ":b", "y"),
                 "b"
               )
             )
@@ -314,15 +266,15 @@ export default class vx_collection_test {
   }
 
   static f_int_from_stringlist_find(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "int<-stringlist-find",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 2\n (int<-stringlist-find\n  (stringlist \"a\" \"b\")\n  \"b\"))",
             ":testresult",
@@ -330,11 +282,7 @@ export default class vx_collection_test {
               context,
               2,
               vx_collection.f_int_from_stringlist_find(
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b"),
                 "b"
               )
             )
@@ -345,15 +293,15 @@ export default class vx_collection_test {
   }
 
   static f_is_list(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "is-list",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (is-list (empty stringlist)))",
             ":testresult",
@@ -372,15 +320,15 @@ export default class vx_collection_test {
   }
 
   static f_is_map(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "is-map",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (is-map (empty stringmap)))",
             ":testresult",
@@ -399,30 +347,26 @@ export default class vx_collection_test {
   }
 
   static f_list_from_for_end_loop(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "list<-for-end-loop",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (intlist 4 9)\n (list<-for-end-loop : intlist\n  2\n  3\n  (fn\n   [current : int]\n   (* current current))))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_intlist,
-                4,
-                9
-              ),
+              vx_core.f_new({"any-1": vx_core.t_intlist}, 4, 9),
               vx_collection.f_list_from_for_end_loop(
                 {"any-1": vx_core.t_int, "list-1": vx_core.t_intlist},
                 2,
                 3,
-                vx_core.f_new(vx_core.t_any_from_int, (current) => 
+                vx_core.f_new_from_type(vx_core.t_any_from_int, (current) => 
                   vx_core.f_multiply(current, current))
               )
             )
@@ -433,35 +377,24 @@ export default class vx_collection_test {
   }
 
   static f_list_from_list_end(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "list<-list-end",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist\n  \"a\" \"b\" \"c\")\n (list<-list-end\n  (stringlist\n   \"a\" \"b\" \"c\" \"d\")\n  3))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a",
-                "b",
-                "c"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c"),
               vx_collection.f_list_from_list_end(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c",
-                  "d"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c", "d"),
                 3
               )
             )
@@ -472,31 +405,25 @@ export default class vx_collection_test {
   }
 
   static f_list_from_list_filter(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "list<-list-filter",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist\n  \"a1\" \"b1\" \"c1\" \"d1\")\n (list<-list-filter : stringlist\n  (list\n   \"a\" 4 \"b\" (list) \"c\" (map) \"d\")\n  (fn : string\n   [value : any]\n   (if\n    (then\n     (is-string value)\n     (string value \"1\"))))))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a1",
-                "b1",
-                "c1",
-                "d1"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a1", "b1", "c1", "d1"),
               vx_collection.f_list_from_list_filter(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_list},
                 vx_core.f_new(
-                  vx_core.t_list,
+                  {"any-1": vx_core.t_list},
                   "a",
                   4,
                   "b",
@@ -509,16 +436,12 @@ export default class vx_collection_test {
                   ),
                   "d"
                 ),
-                vx_core.f_new(vx_core.t_any_from_any, (value) => 
+                vx_core.f_new_from_type(vx_core.t_any_from_any, (value) => 
                   vx_core.f_if_2(
                     {"any-1": vx_core.t_string},
                     vx_core.f_then(
-                      vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_type.f_is_string(value)}),
-                      vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                        vx_core.t_string,
-                        value,
-                        "1"
-                      )})
+                      vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_type.f_is_string(value)}),
+                      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new({"any-1": vx_core.t_string}, value, "1")})
                     )
                   ))
               )
@@ -530,37 +453,24 @@ export default class vx_collection_test {
   }
 
   static f_list_from_list_filtertypes(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "list<-list-filtertypes",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (list\n  \"a\" 1 \"b\" \"c\")\n (list<-list-filtertypes : list\n  (list\n   \"a\" 1 \"b\" \"c\" 4.5)\n  string int))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_list,
-                "a",
-                1,
-                "b",
-                "c"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_list}, "a", 1, "b", "c"),
               vx_collection.f_list_from_list_filtertypes(
                 {"list-1": vx_core.t_list, "list-2": vx_core.t_list},
-                vx_core.f_new(
-                  vx_core.t_list,
-                  "a",
-                  1,
-                  "b",
-                  "c",
-                  4.5
-                ),
+                vx_core.f_new({"any-1": vx_core.t_list}, "a", 1, "b", "c", 4.5),
                 vx_core.t_string,
                 vx_core.t_int
               )
@@ -572,35 +482,24 @@ export default class vx_collection_test {
   }
 
   static f_list_from_list_start(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "list<-list-start",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist\n  \"b\" \"c\" \"d\")\n (list<-list-start\n  (stringlist\n   \"a\" \"b\" \"c\" \"d\")\n  2))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "b",
-                "c",
-                "d"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "b", "c", "d"),
               vx_collection.f_list_from_list_start(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c",
-                  "d"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c", "d"),
                 2
               )
             )
@@ -611,34 +510,24 @@ export default class vx_collection_test {
   }
 
   static f_list_from_list_start_end(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "list<-list-start-end",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist\n  \"b\" \"c\")\n (list<-list-start-end\n  (stringlist\n   \"a\" \"b\" \"c\" \"d\")\n  2 3))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "b",
-                "c"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "b", "c"),
               vx_collection.f_list_from_list_start_end(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c",
-                  "d"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c", "d"),
                 2,
                 3
               )
@@ -650,38 +539,24 @@ export default class vx_collection_test {
   }
 
   static f_map_from_map_end(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "map<-map-end",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  :b \"1\"\n  :a \"2\")\n (map<-map-end\n  (stringmap\n   :b \"1\"\n   :a \"2\"\n   :c \"3\")\n  2))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":b",
-                "1",
-                ":a",
-                "2"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":b", "1", ":a", "2"),
               vx_collection.f_map_from_map_end(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":b",
-                  "1",
-                  ":a",
-                  "2",
-                  ":c",
-                  "3"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":b", "1", ":a", "2", ":c", "3"),
                 2
               )
             )
@@ -692,43 +567,25 @@ export default class vx_collection_test {
   }
 
   static f_map_from_map_keys(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "map<-map-keys",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  :c \"3\"\n  :a \"1\")\n (map<-map-keys\n  (stringmap\n   :a \"1\"\n   :b \"2\"\n   :c \"3\")\n  (stringlist\n   \"c\" \"a\")))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":c",
-                "3",
-                ":a",
-                "1"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":c", "3", ":a", "1"),
               vx_collection.f_map_from_map_keys(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "1",
-                  ":b",
-                  "2",
-                  ":c",
-                  "3"
-                ),
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "c",
-                  "a"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2", ":c", "3"),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "c", "a")
               )
             )
           )
@@ -738,38 +595,24 @@ export default class vx_collection_test {
   }
 
   static f_map_from_map_start(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "map<-map-start",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  :a \"2\"\n  :c \"3\")\n (map<-map-start\n  (stringmap\n   :b \"1\"\n   :a \"2\"\n   :c \"3\")\n  2))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":a",
-                "2",
-                ":c",
-                "3"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "2", ":c", "3"),
               vx_collection.f_map_from_map_start(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":b",
-                  "1",
-                  ":a",
-                  "2",
-                  ":c",
-                  "3"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":b", "1", ":a", "2", ":c", "3"),
                 2
               )
             )
@@ -780,40 +623,24 @@ export default class vx_collection_test {
   }
 
   static f_map_from_map_start_end(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "map<-map-start-end",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  :a \"2\"\n  :c \"3\")\n (map<-map-start-end\n  (stringmap\n   :b \"1\"\n   :a \"2\"\n   :c \"3\"\n   :d \"4\")\n  2 3))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":a",
-                "2",
-                ":c",
-                "3"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "2", ":c", "3"),
               vx_collection.f_map_from_map_start_end(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":b",
-                  "1",
-                  ":a",
-                  "2",
-                  ":c",
-                  "3",
-                  ":d",
-                  "4"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":b", "1", ":a", "2", ":c", "3", ":d", "4"),
                 2,
                 3
               )
@@ -825,37 +652,29 @@ export default class vx_collection_test {
   }
 
   static f_map_from_struct(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
       ":casename", "map<-struct",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  :name \"sname\")\n (map<-struct : stringmap\n  (translation\n   :name \"sname\"\n   :wordmap\n    (stringmap\n     :a \"x\"))))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":name",
-                "sname"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":name", "sname"),
               vx_collection.f_map_from_struct(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap, "struct-2": vx_core.t_translation},
                 vx_core.f_new(
-                  vx_core.t_translation,
+                  {"any-1": vx_core.t_translation},
                   ":name",
                   "sname",
                   ":wordmap",
-                  vx_core.f_new(
-                    vx_core.t_stringmap,
-                    ":a",
-                    "x"
-                  )
+                  vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "x")
                 )
               )
             )
@@ -866,7 +685,7 @@ export default class vx_collection_test {
   }
 
   static test_cases(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcaselist,
       vx_collection_test.f_minus(context),
       vx_collection_test.f_minus_1(context),

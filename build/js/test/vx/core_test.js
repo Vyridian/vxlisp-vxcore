@@ -8,7 +8,7 @@ export default class vx_core_test {
 
   static test_package(context) {
     const testcaselist = vx_core_test.test_cases(context)
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testpackage,
       ":testpkg", "vx/core",
       ":caselist", testcaselist,
@@ -19,25 +19,26 @@ export default class vx_core_test {
   }
 
   static test_coveragesummary() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragesummary,
       "testpkg",   "vx/core", 
-      "constnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
-      "docnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 91, ":tests", 235, ":total", 257), 
-      "funcnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 74, ":total", 134), 
-      "bigospacenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "bigotimenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 36, ":tests", 81, ":total", 225), 
-      "typenums", vx_core.f_new(vx_test.t_testcoveragenums, ":pct", 6, ":tests", 5, ":total", 76)
+      "constnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
+      "docnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
+      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 135), 
+      "bigospacenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "bigotimenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
+      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 226), 
+      "typenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
     )
+    return output
   }
 
   static test_coveragedetail() {
-    return vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcoveragedetail,
       "testpkg", "vx/core",
       "typemap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "any", 0,
           "any-async<-func", 0,
@@ -66,7 +67,7 @@ export default class vx_core_test {
           "float", 1,
           "func", 1,
           "funcdef", 0,
-          "funclist", 0,
+          "funclist", 1,
           "funcmap", 0,
           "int", 7,
           "intlist", 0,
@@ -99,7 +100,7 @@ export default class vx_core_test {
           "statelistener", 0,
           "statelistenermap", 0,
           "string", 2,
-          "stringlist", 0,
+          "stringlist", 1,
           "stringlistlist", 0,
           "stringmap", 0,
           "stringmutablemap", 0,
@@ -117,7 +118,7 @@ export default class vx_core_test {
           "value", 0
         ),
       "constmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "false", 1,
           "global", 0,
@@ -136,7 +137,7 @@ export default class vx_core_test {
           "true", 1
         ),
       "funcmap",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_core.t_intmap,
           "!", 2,
           "!-empty", 0,
@@ -268,6 +269,7 @@ export default class vx_core_test {
           "native", 0,
           "native<-any", 0,
           "new", 6,
+          "new<-type", 6,
           "number<-func", 0,
           "or", 3,
           "or_1", 2,
@@ -306,18 +308,19 @@ export default class vx_core_test {
           "user<-context", 0
         )
     )
+    return output
   }
 
   static t_boolean(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "boolean",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true true)",
             ":testresult", vx_test.f_test_true(
@@ -325,7 +328,7 @@ export default class vx_core_test {
               true
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false false)",
             ":testresult", vx_test.f_test_false(
@@ -333,24 +336,24 @@ export default class vx_core_test {
               false
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (boolean true))",
             ":testresult", vx_test.f_test_true(
               context,
               vx_core.f_new(
-                vx_core.t_boolean,
+                {"any-1": vx_core.t_boolean},
                 true
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (boolean false))",
             ":testresult", vx_test.f_test_false(
               context,
               vx_core.f_new(
-                vx_core.t_boolean,
+                {"any-1": vx_core.t_boolean},
                 false
               )
             )
@@ -361,24 +364,21 @@ export default class vx_core_test {
   }
 
   static t_float(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "float",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 4.5\n (float 4.5))",
             ":testresult", vx_test.f_test(
               context,
               4.5,
-              vx_core.f_new(
-                vx_core.t_float,
-                4.5
-              )
+              vx_core.f_new({"any-1": vx_core.t_float}, 4.5)
             )
           )
         )
@@ -387,15 +387,15 @@ export default class vx_core_test {
   }
 
   static t_func(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "func",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 5\n (let\n  [funcvar : + := +]\n  (funcvar 2 3)))",
             ":testresult", vx_test.f_test(
@@ -404,7 +404,7 @@ export default class vx_core_test {
               vx_core.f_let(
                 {"any-1": vx_core.t_int},
                 [],
-                vx_core.f_new(vx_core.t_any_from_func, () => {
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
                   const funcvar =   vx_core.t_plus
                   return vx_core.vx_any_from_func(vx_core.t_int, funcvar, 2, 3)
                 })
@@ -416,16 +416,45 @@ export default class vx_core_test {
     return output
   }
 
+  static t_funclist(context) {
+    const output = vx_core.f_new_from_type(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "funclist",
+      ":describelist",
+        vx_core.f_new_from_type(
+          vx_test.t_testdescribelist,
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n 2\n (length\n  (funclist\n   + -)))",
+            ":testresult", vx_test.f_test(
+              context,
+              2,
+              vx_core.f_length_1(
+                vx_core.f_new(
+                  {"any-1": vx_core.t_funclist},
+                  vx_core.t_plus,
+                  vx_core.t_minus
+                )
+              )
+            )
+          )
+        )
+    )
+    return output
+  }
+
   static t_int(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "int",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true  (is-int 4))",
             ":testresult", vx_test.f_test_true(
@@ -433,7 +462,7 @@ export default class vx_core_test {
               vx_core.f_is_int(4)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true  (is-int \"4\"))",
             ":testresult", vx_test.f_test_true(
@@ -441,7 +470,7 @@ export default class vx_core_test {
               vx_core.f_is_int("4")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true  (is-int infinity))",
             ":testresult", vx_test.f_test_true(
@@ -451,7 +480,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true  (is-int neginfinity))",
             ":testresult", vx_test.f_test_true(
@@ -461,7 +490,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true  (is-int notanumber))",
             ":testresult", vx_test.f_test_true(
@@ -471,7 +500,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (is-int \"a\"))",
             ":testresult", vx_test.f_test_false(
@@ -479,7 +508,7 @@ export default class vx_core_test {
               vx_core.f_is_int("a")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (is-int 5.5))",
             ":testresult", vx_test.f_test_false(
@@ -493,36 +522,59 @@ export default class vx_core_test {
   }
 
   static t_string(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "string",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"a\" (string \"a\"))",
             ":testresult", vx_test.f_test(
               context,
               "a",
-              vx_core.f_new(
-                vx_core.t_string,
-                "a"
-              )
+              vx_core.f_new({"any-1": vx_core.t_string}, "a")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"ab\" (string \"a\" \"b\"))",
             ":testresult", vx_test.f_test(
               context,
               "ab",
+              vx_core.f_new({"any-1": vx_core.t_string}, "a", "b")
+            )
+          )
+        )
+    )
+    return output
+  }
+
+  static t_stringlist(context) {
+    const output = vx_core.f_new_from_type(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "stringlist",
+      ":describelist",
+        vx_core.f_new_from_type(
+          vx_test.t_testdescribelist,
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n (new : stringlist \"a\" \"b\" \"c\")\n (stringlist\n  (anylist\n   \"a\"\n   (stringlist \"b\" \"c\"))))",
+            ":testresult", vx_test.f_test(
+              context,
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c"),
               vx_core.f_new(
-                vx_core.t_string,
-                "a",
-                "b"
+                {"any-1": vx_core.t_stringlist},
+                vx_core.f_new(
+                  {"any-1": vx_core.t_anylist},
+                  "a",
+                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "b", "c")
+                )
               )
             )
           )
@@ -532,15 +584,15 @@ export default class vx_core_test {
   }
 
   static c_false(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "false",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false false)",
             ":testresult",
@@ -555,15 +607,15 @@ export default class vx_core_test {
   }
 
   static c_true(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "true",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true true)",
             ":testresult",
@@ -578,15 +630,15 @@ export default class vx_core_test {
   }
 
   static f_not(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "!",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false false)",
             ":testresult",
@@ -595,7 +647,7 @@ export default class vx_core_test {
               false
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (! true))",
             ":testresult",
@@ -612,15 +664,15 @@ export default class vx_core_test {
   }
 
   static f_ne(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "!=",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-ne true false)",
             ":testresult",
@@ -630,7 +682,7 @@ export default class vx_core_test {
               false
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-ne \"a\" \"b\")",
             ":testresult",
@@ -642,15 +694,15 @@ export default class vx_core_test {
   }
 
   static f_multiply(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "*",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 6 (* 3 2))",
             ":testresult",
@@ -660,7 +712,7 @@ export default class vx_core_test {
               vx_core.f_multiply(3, 2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test -10 (* 5 -2))",
             ":testresult",
@@ -676,15 +728,15 @@ export default class vx_core_test {
   }
 
   static f_multiply_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "*",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 6.4 (* 3.2 2))",
             ":testresult",
@@ -694,7 +746,7 @@ export default class vx_core_test {
               vx_core.f_multiply_1(3.2, 2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test -10.2 (* 5.1 -2))",
             ":testresult",
@@ -710,15 +762,15 @@ export default class vx_core_test {
   }
 
   static f_multiply_2(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "*",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 24 (* 3 2 4))",
             ":testresult",
@@ -728,7 +780,7 @@ export default class vx_core_test {
               vx_core.f_multiply_2(3, 2, 4)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test -20 (* 5 -2 2))",
             ":testresult",
@@ -744,15 +796,15 @@ export default class vx_core_test {
   }
 
   static f_multiply_3(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "*",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 24 (* 3 2 4))",
             ":testresult",
@@ -762,7 +814,7 @@ export default class vx_core_test {
               vx_core.f_multiply_2(3, 2, 4)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test -20 (* 5 -2 2))",
             ":testresult",
@@ -778,15 +830,15 @@ export default class vx_core_test {
   }
 
   static f_plus(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "+",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 5 (+ 2 3))",
             ":testresult",
@@ -796,7 +848,7 @@ export default class vx_core_test {
               vx_core.f_plus(2, 3)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 3 (+ 5 -2))",
             ":testresult",
@@ -812,15 +864,15 @@ export default class vx_core_test {
   }
 
   static f_plus_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "+",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 5 (+ 2  3))",
             ":testresult",
@@ -830,7 +882,7 @@ export default class vx_core_test {
               vx_core.f_plus(2, 3)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 3 (+ 5 -2))",
             ":testresult",
@@ -846,15 +898,15 @@ export default class vx_core_test {
   }
 
   static f_plus1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "+1",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test  3 (+1  2))",
             ":testresult",
@@ -864,7 +916,7 @@ export default class vx_core_test {
               vx_core.f_plus1(2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test -1 (+1 -2))",
             ":testresult",
@@ -880,15 +932,15 @@ export default class vx_core_test {
   }
 
   static f_minus(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "-",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 1 (- 3 2))",
             ":testresult",
@@ -898,7 +950,7 @@ export default class vx_core_test {
               vx_core.f_minus(3, 2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 7 (- 5 -2))",
             ":testresult",
@@ -914,15 +966,15 @@ export default class vx_core_test {
   }
 
   static f_minus_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "-",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 5 (+ 2 3))",
             ":testresult",
@@ -932,7 +984,7 @@ export default class vx_core_test {
               vx_core.f_plus(2, 3)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 3 (+ 5 -2))",
             ":testresult",
@@ -948,15 +1000,15 @@ export default class vx_core_test {
   }
 
   static f_minus1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "-1",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test  1 (-1  2))",
             ":testresult",
@@ -966,7 +1018,7 @@ export default class vx_core_test {
               vx_core.f_minus1(2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test -3 (-1 -2))",
             ":testresult",
@@ -982,15 +1034,15 @@ export default class vx_core_test {
   }
 
   static f_divide(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "/",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 3 (/ 6 2))",
             ":testresult",
@@ -1000,7 +1052,7 @@ export default class vx_core_test {
               vx_core.f_divide(6, 2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test -5 (/ 10 -2))",
             ":testresult",
@@ -1016,15 +1068,15 @@ export default class vx_core_test {
   }
 
   static f_lt(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "<",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (< 2 3))",
             ":testresult",
@@ -1039,15 +1091,15 @@ export default class vx_core_test {
   }
 
   static f_lt_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "<",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (< 2 3))",
             ":testresult",
@@ -1056,7 +1108,7 @@ export default class vx_core_test {
               vx_core.f_lt(2, 3)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (< \"b\" \"d\" \"z\"))",
             ":testresult",
@@ -1071,15 +1123,15 @@ export default class vx_core_test {
   }
 
   static f_chainfirst(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "<-",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (*\n  (+\n   (- 5 3)\n   3)\n  2)\n (<-\n  5\n  (- 3)\n  (+ 3)\n  (* 2)))",
             ":testresult",
@@ -1107,15 +1159,15 @@ export default class vx_core_test {
   }
 
   static f_chainlast(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "<<-",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (* (+ (- 3 5) 3) 2)\n (<<-\n  5\n  (- 3)\n  (+ 3)\n  (* 2)))",
             ":testresult",
@@ -1143,15 +1195,15 @@ export default class vx_core_test {
   }
 
   static f_le(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "<=",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (<= 2 3))",
             ":testresult",
@@ -1166,15 +1218,15 @@ export default class vx_core_test {
   }
 
   static f_le_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "<=",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (<= \"b\" \"d\" \"z\"))",
             ":testresult",
@@ -1189,15 +1241,15 @@ export default class vx_core_test {
   }
 
   static f_eq(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "=",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (= true true))",
             ":testresult",
@@ -1209,7 +1261,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (= 2 2))",
             ":testresult",
@@ -1218,7 +1270,7 @@ export default class vx_core_test {
               vx_core.f_eq(2, 2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (= \"a\" \"a\"))",
             ":testresult",
@@ -1227,49 +1279,27 @@ export default class vx_core_test {
               vx_core.f_eq("a", "a")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test-true\n (=\n  (stringlist \"a\" \"b\" \"c\")\n  (new stringlist \"a\" \"b\" \"c\")))",
+            ":describename", "(test-true\n (=\n  (stringlist \"a\" \"b\" \"c\")\n  (new : stringlist \"a\" \"b\" \"c\")))",
             ":testresult",
             vx_test.f_test_true(
               context,
               vx_core.f_eq(
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c"
-                ),
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c"),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c")
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test-true\n (=\n  (stringmap :a \"1\" :b \"2\")\n  (new stringmap :a \"1\" :b \"2\")))",
+            ":describename", "(test-true\n (=\n  (stringmap :a \"1\" :b \"2\")\n  (new : stringmap :a \"1\" :b \"2\")))",
             ":testresult",
             vx_test.f_test_true(
               context,
               vx_core.f_eq(
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "1",
-                  ":b",
-                  "2"
-                ),
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "1",
-                  ":b",
-                  "2"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2"),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2")
               )
             )
           )
@@ -1279,15 +1309,15 @@ export default class vx_core_test {
   }
 
   static f_eq_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "=",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (= 2 2 3))",
             ":testresult",
@@ -1302,15 +1332,15 @@ export default class vx_core_test {
   }
 
   static f_eqeq(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "==",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (== 0 0))",
             ":testresult",
@@ -1319,7 +1349,7 @@ export default class vx_core_test {
               vx_core.f_eqeq(0, 0)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (== \"\" \"\"))",
             ":testresult",
@@ -1334,15 +1364,15 @@ export default class vx_core_test {
   }
 
   static f_gt(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", ">",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (> 3 2))",
             ":testresult",
@@ -1357,15 +1387,15 @@ export default class vx_core_test {
   }
 
   static f_gt_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", ">",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (> \"z\" \"y\" \"b\"))",
             ":testresult",
@@ -1380,15 +1410,15 @@ export default class vx_core_test {
   }
 
   static f_ge(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", ">=",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (>= 3 2))",
             ":testresult",
@@ -1403,15 +1433,15 @@ export default class vx_core_test {
   }
 
   static f_ge_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", ">=",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (>= \"z\" \"b\" \"b\"))",
             ":testresult",
@@ -1426,15 +1456,15 @@ export default class vx_core_test {
   }
 
   static f_and(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "and",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (and true true))",
             ":testresult",
@@ -1446,7 +1476,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false\n (and true false))",
             ":testresult",
@@ -1464,15 +1494,15 @@ export default class vx_core_test {
   }
 
   static f_and_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "and",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (and true true true))",
             ":testresult",
@@ -1485,7 +1515,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false\n (and true true false))",
             ":testresult",
@@ -1504,15 +1534,15 @@ export default class vx_core_test {
   }
 
   static f_any_from_list(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "any<-list",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"b\"\n (any<-list\n  (list \"a\" \"b\" \"c\")\n  2))",
             ":testresult",
@@ -1521,17 +1551,12 @@ export default class vx_core_test {
               "b",
               vx_core.f_any_from_list(
                 {"any-1": vx_core.t_any, "list-1": vx_core.t_list},
-                vx_core.f_new(
-                  vx_core.t_list,
-                  "a",
-                  "b",
-                  "c"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_list}, "a", "b", "c"),
                 2
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"b\"\n (:2 (stringlist \"a\" \"b\" \"c\")))",
             ":testresult",
@@ -1540,12 +1565,7 @@ export default class vx_core_test {
               "b",
               vx_core.f_any_from_list(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c"),
                 2
               )
             )
@@ -1556,15 +1576,15 @@ export default class vx_core_test {
   }
 
   static f_any_from_list_start_reduce(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "any<-list-start-reduce",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 24\n (any<-list-start-reduce : int\n  (intlist 3 2 4)\n  1\n  (fn : int\n   [total : int\n    num   : int]\n   (* total num))))",
             ":testresult",
@@ -1573,14 +1593,9 @@ export default class vx_core_test {
               24,
               vx_core.f_any_from_list_start_reduce(
                 {"any-1": vx_core.t_int, "any-2": vx_core.t_int, "list-2": vx_core.t_intlist},
-                vx_core.f_new(
-                  vx_core.t_intlist,
-                  3,
-                  2,
-                  4
-                ),
+                vx_core.f_new({"any-1": vx_core.t_intlist}, 3, 2, 4),
                 1,
-                vx_core.f_new(vx_core.t_any_from_reduce, (total, num) => 
+                vx_core.f_new_from_type(vx_core.t_any_from_reduce, (total, num) => 
                   vx_core.f_multiply(total, num))
               )
             )
@@ -1591,15 +1606,15 @@ export default class vx_core_test {
   }
 
   static f_any_from_map(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "any<-map",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"v2\"\n (any<-map\n  (stringmap\n   :a \"v1\"\n   :b \"v2\"\n   :c \"v3\")\n  :b))",
             ":testresult",
@@ -1608,15 +1623,7 @@ export default class vx_core_test {
               "v2",
               vx_core.f_any_from_map(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "v1",
-                  ":b",
-                  "v2",
-                  ":c",
-                  "v3"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "v1", ":b", "v2", ":c", "v3"),
                 ":b"
               )
             )
@@ -1627,15 +1634,15 @@ export default class vx_core_test {
   }
 
   static f_any_from_map_start_reduce(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "any<-map-start-reduce",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"xayb\"\n (any<-map-start-reduce\n  (stringmap\n   :a \"x\"\n   :b \"y\")\n  \"\"\n  (fn : string\n   [current : string\n    key     : string\n    value   : any]\n   (copy current\n    value\n    key))))",
             ":testresult",
@@ -1644,15 +1651,9 @@ export default class vx_core_test {
               "xayb",
               vx_core.f_any_from_map_start_reduce(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "x",
-                  ":b",
-                  "y"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "x", ":b", "y"),
                 "",
-                vx_core.f_new(vx_core.t_any_from_any_key_value, (current, key, value) => 
+                vx_core.f_new_from_type(vx_core.t_any_from_any_key_value, (current, key, value) => 
                   vx_core.f_copy(current, value, key))
               )
             )
@@ -1663,64 +1664,44 @@ export default class vx_core_test {
   }
 
   static f_boolean_write_from_map_name_value(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "boolean-write<-map-name-value",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmutablemap\n  :b \"y\"\n  :a \"x\")\n (let : stringmutablemap\n  [smap : stringmutablemap :=\n    (stringmutablemap\n     :b \"y\")\n   iswrite : boolean :=\n    (boolean-write<-map-name-value\n     smap :a \"x\")]\n  smap))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmutablemap,
-                ":b",
-                "y",
-                ":a",
-                "x"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmutablemap}, ":b", "y", ":a", "x"),
               vx_core.f_let(
                 {"any-1": vx_core.t_stringmutablemap},
                 [],
-                vx_core.f_new(vx_core.t_any_from_func, () => {
-                  const smap = vx_core.f_new(
-                    vx_core.t_stringmutablemap,
-                    ":b",
-                    "y"
-                  )
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
+                  const smap = vx_core.f_new({"any-1": vx_core.t_stringmutablemap}, ":b", "y")
                   const iswrite = vx_core.f_boolean_write_from_map_name_value(smap, ":a", "x")
                   return smap
                 })
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmutablemap\n  :a \"x\")\n (let : stringmutablemap\n  [smap : stringmutablemap :=\n    (stringmutablemap\n     :b \"y\"\n     :a \"x\")\n   iswrite : boolean :=\n    (boolean-write<-map-name-value\n     smap :b \"\")]\n  smap))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmutablemap,
-                ":a",
-                "x"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmutablemap}, ":a", "x"),
               vx_core.f_let(
                 {"any-1": vx_core.t_stringmutablemap},
                 [],
-                vx_core.f_new(vx_core.t_any_from_func, () => {
-                  const smap = vx_core.f_new(
-                    vx_core.t_stringmutablemap,
-                    ":b",
-                    "y",
-                    ":a",
-                    "x"
-                  )
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
+                  const smap = vx_core.f_new({"any-1": vx_core.t_stringmutablemap}, ":b", "y", ":a", "x")
                   const iswrite = vx_core.f_boolean_write_from_map_name_value(smap, ":b", "")
                   return smap
                 })
@@ -1733,15 +1714,15 @@ export default class vx_core_test {
   }
 
   static f_compare(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "compare",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 1 (compare 3 2))",
             ":testresult",
@@ -1751,7 +1732,7 @@ export default class vx_core_test {
               vx_core.f_compare(3, 2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 1 (compare \"z\" \"a\"))",
             ":testresult",
@@ -1767,15 +1748,15 @@ export default class vx_core_test {
   }
 
   static f_contains(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "contains",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true  (contains \"abcde\" \"cd\"))",
             ":testresult",
@@ -1784,7 +1765,7 @@ export default class vx_core_test {
               vx_core.f_contains("abcde", "cd")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (contains \"abcde\" \"dc\"))",
             ":testresult",
@@ -1799,61 +1780,46 @@ export default class vx_core_test {
   }
 
   static f_contains_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "contains",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (contains (stringlist \"1\" \"2\" \"3\") \"2\"))",
             ":testresult",
             vx_test.f_test_true(
               context,
               vx_core.f_contains_1(
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "1",
-                  "2",
-                  "3"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "1", "2", "3"),
                 "2"
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (contains (intlist 1 2 3) 2))",
             ":testresult",
             vx_test.f_test_true(
               context,
               vx_core.f_contains_1(
-                vx_core.f_new(
-                  vx_core.t_intlist,
-                  1,
-                  2,
-                  3
-                ),
+                vx_core.f_new({"any-1": vx_core.t_intlist}, 1, 2, 3),
                 2
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false\n (contains (list 1 \"2\" 3) 2))",
             ":testresult",
             vx_test.f_test_false(
               context,
               vx_core.f_contains_1(
-                vx_core.f_new(
-                  vx_core.t_list,
-                  1,
-                  "2",
-                  3
-                ),
+                vx_core.f_new({"any-1": vx_core.t_list}, 1, "2", 3),
                 2
               )
             )
@@ -1864,33 +1830,23 @@ export default class vx_core_test {
   }
 
   static f_copy(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "copy",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  :a \"1\"\n  :b \"2\")\n (copy\n  (stringmap :a \"1\")\n  :b \"2\"))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":a",
-                "1",
-                ":b",
-                "2"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2"),
               vx_core.f_copy(
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "1"
-                ),
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1"),
                 ":b",
                 "2"
               )
@@ -1902,15 +1858,15 @@ export default class vx_core_test {
   }
 
   static f_empty(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "empty",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test false  (empty boolean))",
             ":testresult",
@@ -1922,7 +1878,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"\"     (empty string))",
             ":testresult",
@@ -1934,7 +1890,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test (list) (empty list))",
             ":testresult",
@@ -1948,7 +1904,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test (map)  (empty map))",
             ":testresult",
@@ -1968,15 +1924,15 @@ export default class vx_core_test {
   }
 
   static f_first_from_list(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "first<-list",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"b\"\n (first<-list\n  (stringlist\n   \"b\"\n   \"c\")))",
             ":testresult",
@@ -1985,11 +1941,7 @@ export default class vx_core_test {
               "b",
               vx_core.f_first_from_list(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "b",
-                  "c"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "b", "c")
               )
             )
           )
@@ -1999,15 +1951,15 @@ export default class vx_core_test {
   }
 
   static f_first_from_list_any_from_any(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "first<-list-any<-any",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"b\"\n (first<-list-any<-any : string\n  (list nothing \"b\" \"c\")\n  resolve))",
             ":testresult",
@@ -2017,12 +1969,12 @@ export default class vx_core_test {
               vx_core.f_first_from_list_any_from_any(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_list},
                 vx_core.f_new(
-                  vx_core.t_list,
+                  {"any-1": vx_core.t_list},
                   vx_core.c_nothing,
                   "b",
                   "c"
                 ),
-                vx_core.f_new(vx_core.t_any_from_any, vx_core.t_resolve)
+                vx_core.f_new_from_type(vx_core.t_any_from_any, vx_core.t_resolve)
               )
             )
           )
@@ -2032,24 +1984,21 @@ export default class vx_core_test {
   }
 
   static f_float_from_string(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "float<-string",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (float 2.3)\n (float<-string\n  \"2.3\"))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_float,
-                2.3
-              ),
+              vx_core.f_new({"any-1": vx_core.t_float}, 2.3),
               vx_core.f_float_from_string("2.3")
             )
           )
@@ -2059,15 +2008,15 @@ export default class vx_core_test {
   }
 
   static f_if(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "if",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"a\"\n (if (= 2 2) \"a\"))",
             ":testresult",
@@ -2081,7 +2030,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"\"\n (if : string\n  (= 1 2)\n  \"a\"))",
             ":testresult",
@@ -2101,15 +2050,15 @@ export default class vx_core_test {
   }
 
   static f_if_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "if",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"a\"\n (if\n  (= 2 2)\n  \"a\"\n  \"b\"))",
             ":testresult",
@@ -2124,7 +2073,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"b\"\n (if\n  (= 1 2)\n  \"a\"\n  \"b\"))",
             ":testresult",
@@ -2145,15 +2094,15 @@ export default class vx_core_test {
   }
 
   static f_if_2(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "if",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (if\n  (then (= 2 3) false)\n  (then (!= 3 3) false)\n  (else (! false))))",
             ":testresult",
@@ -2162,15 +2111,15 @@ export default class vx_core_test {
               vx_core.f_if_2(
                 {"any-1": vx_core.t_any},
                 vx_core.f_then(
-                  vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(2, 3)}),
-                  vx_core.f_new(vx_core.t_any_from_func, () => {return false})
+                  vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(2, 3)}),
+                  vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return false})
                 ),
                 vx_core.f_then(
-                  vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_ne(3, 3)}),
-                  vx_core.f_new(vx_core.t_any_from_func, () => {return false})
+                  vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_ne(3, 3)}),
+                  vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return false})
                 ),
                 vx_core.f_else(
-                  vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_not(
+                  vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_not(
                     false
                   )})
                 )
@@ -2183,15 +2132,15 @@ export default class vx_core_test {
   }
 
   static f_int_from_string(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "int<-string",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 4 (int<-string \"4\"))",
             ":testresult",
@@ -2201,7 +2150,7 @@ export default class vx_core_test {
               vx_core.f_int_from_string("4")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 5 (int<-string \"5.4\"))",
             ":testresult",
@@ -2211,7 +2160,7 @@ export default class vx_core_test {
               vx_core.f_int_from_string("5.4")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 5 (int<-string \"5.9\"))",
             ":testresult",
@@ -2221,7 +2170,7 @@ export default class vx_core_test {
               vx_core.f_int_from_string("5.9")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test notanumber  (int<-string \"notanumber\"))",
             ":testresult",
@@ -2231,7 +2180,7 @@ export default class vx_core_test {
               vx_core.f_int_from_string("notanumber")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test infinity    (int<-string \"infinity\"))",
             ":testresult",
@@ -2241,7 +2190,7 @@ export default class vx_core_test {
               vx_core.f_int_from_string("infinity")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test neginfinity (int<-string \"neginfinity\"))",
             ":testresult",
@@ -2257,15 +2206,15 @@ export default class vx_core_test {
   }
 
   static f_is_empty_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "is-empty",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (is-empty false))",
             ":testresult",
@@ -2276,7 +2225,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (is-empty \"\"))",
             ":testresult",
@@ -2285,7 +2234,7 @@ export default class vx_core_test {
               vx_core.f_is_empty("")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (is-empty (list)))",
             ":testresult",
@@ -2298,7 +2247,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (is-empty (map)))",
             ":testresult",
@@ -2317,15 +2266,15 @@ export default class vx_core_test {
   }
 
   static f_is_int(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "is-int",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (is-int 2))",
             ":testresult",
@@ -2334,7 +2283,7 @@ export default class vx_core_test {
               vx_core.f_is_int(2)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (is-int \"2\"))",
             ":testresult",
@@ -2343,7 +2292,7 @@ export default class vx_core_test {
               vx_core.f_is_int("2")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (is-int infinity))",
             ":testresult",
@@ -2354,7 +2303,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true\n (is-int \"infinity\"))",
             ":testresult",
@@ -2369,15 +2318,15 @@ export default class vx_core_test {
   }
 
   static f_is_number(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "is-number",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true  (is-number 5))",
             ":testresult",
@@ -2386,7 +2335,7 @@ export default class vx_core_test {
               vx_core.f_is_number(5)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true  (is-number 5.5))",
             ":testresult",
@@ -2395,7 +2344,7 @@ export default class vx_core_test {
               vx_core.f_is_number(5.5)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (is-number \"a\"))",
             ":testresult",
@@ -2410,15 +2359,15 @@ export default class vx_core_test {
   }
 
   static f_last_from_list(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "last<-list",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"c\"\n (last<-list\n  (stringlist\n   \"b\"\n   \"c\")))",
             ":testresult",
@@ -2427,11 +2376,7 @@ export default class vx_core_test {
               "c",
               vx_core.f_last_from_list(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "b",
-                  "c"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "b", "c")
               )
             )
           )
@@ -2441,15 +2386,15 @@ export default class vx_core_test {
   }
 
   static f_length(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "length",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 4\n (length \"abcd\"))",
             ":testresult",
@@ -2459,7 +2404,7 @@ export default class vx_core_test {
               vx_core.f_length("abcd")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 0\n (length \"\"))",
             ":testresult",
@@ -2475,15 +2420,15 @@ export default class vx_core_test {
   }
 
   static f_length_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "length",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 3\n (length\n  (stringlist \"a\" \"b\" \"c\")))",
             ":testresult",
@@ -2491,12 +2436,7 @@ export default class vx_core_test {
               context,
               3,
               vx_core.f_length_1(
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c")
               )
             )
           )
@@ -2506,15 +2446,15 @@ export default class vx_core_test {
   }
 
   static f_let(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "let",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n 7\n (let\n  [v1 : int := 2\n   v2 : int := (+ v1 3)]\n  (+ v1 v2)))",
             ":testresult",
@@ -2524,7 +2464,7 @@ export default class vx_core_test {
               vx_core.f_let(
                 {"any-1": vx_core.t_int},
                 [],
-                vx_core.f_new(vx_core.t_any_from_func, () => {
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
                   const v1 = 2
                   const v2 = vx_core.f_plus(v1, 3)
                   return vx_core.f_plus(v1, v2)
@@ -2538,41 +2478,27 @@ export default class vx_core_test {
   }
 
   static f_list_join_from_list(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "list-join<-list",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list-join<-list : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a",
-                "b",
-                "c",
-                "d"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c", "d"),
               vx_core.f_list_join_from_list(
                 {"any-1": vx_core.t_string, "any-2": vx_core.t_stringlist, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_stringlistlist},
                 vx_core.f_new(
-                  vx_core.t_stringlistlist,
-                  vx_core.f_new(
-                    vx_core.t_stringlist,
-                    "a",
-                    "b"
-                  ),
-                  vx_core.f_new(
-                    vx_core.t_stringlist,
-                    "c",
-                    "d"
-                  )
+                  {"any-1": vx_core.t_stringlistlist},
+                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b"),
+                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "c", "d")
                 )
               )
             )
@@ -2583,43 +2509,29 @@ export default class vx_core_test {
   }
 
   static f_list_join_from_list_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "list-join<-list",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list-join<-list : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))\n  (fn : stringlist\n   [values : stringlist]\n   values)))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a",
-                "b",
-                "c",
-                "d"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c", "d"),
               vx_core.f_list_join_from_list_1(
                 {"any-1": vx_core.t_string, "any-2": vx_core.t_stringlist, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_stringlistlist},
                 vx_core.f_new(
-                  vx_core.t_stringlistlist,
-                  vx_core.f_new(
-                    vx_core.t_stringlist,
-                    "a",
-                    "b"
-                  ),
-                  vx_core.f_new(
-                    vx_core.t_stringlist,
-                    "c",
-                    "d"
-                  )
+                  {"any-1": vx_core.t_stringlistlist},
+                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b"),
+                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "c", "d")
                 ),
-                vx_core.f_new(vx_core.t_any_from_any, (values) => values)
+                vx_core.f_new_from_type(vx_core.t_any_from_any, (values) => values)
               )
             )
           )
@@ -2629,32 +2541,24 @@ export default class vx_core_test {
   }
 
   static f_list_from_list(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "list<-list",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist \"10\" \"20\")\n (list<-list : stringlist\n  (anylist \"10\" \"20\")))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "10",
-                "20"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "10", "20"),
               vx_core.f_list_from_list(
                 {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_anylist},
-                vx_core.f_new(
-                  vx_core.t_anylist,
-                  "10",
-                  "20"
-                )
+                vx_core.f_new({"any-1": vx_core.t_anylist}, "10", "20")
               )
             )
           )
@@ -2664,38 +2568,26 @@ export default class vx_core_test {
   }
 
   static f_list_from_list_intany(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "list<-list-intany",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist \"a1\" \"b2\")\n (list<-list-intany : stringlist\n  (stringlist \"a\" \"b\")\n  (fn : stringlist\n   [index : int\n    value : string]\n   (string value index))))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a1",
-                "b2"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a1", "b2"),
               vx_core.f_list_from_list_intany(
                 {"any-1": vx_core.t_string, "any-2": vx_core.t_string, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_stringlist},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b"
-                ),
-                vx_core.f_new(vx_core.t_any_from_int_any, (index, value) => 
-                  vx_core.f_new(
-                    vx_core.t_string,
-                    value,
-                    index
-                  ))
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b"),
+                vx_core.f_new_from_type(vx_core.t_any_from_int_any, (index, value) => 
+                  vx_core.f_new({"any-1": vx_core.t_string}, value, index))
               )
             )
           )
@@ -2705,34 +2597,24 @@ export default class vx_core_test {
   }
 
   static f_list_from_map(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "list<-map",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist \"a1\" \"b2\")\n (list<-map : stringlist\n  (stringmap\n   :x \"a1\"\n   :y \"b2\")))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a1",
-                "b2"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a1", "b2"),
               vx_core.f_list_from_map(
                 {"any-1": vx_core.t_string, "any-2": vx_core.t_string, "list-1": vx_core.t_stringlist, "map-2": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":x",
-                  "a1",
-                  ":y",
-                  "b2"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":x", "a1", ":y", "b2")
               )
             )
           )
@@ -2742,40 +2624,26 @@ export default class vx_core_test {
   }
 
   static f_list_from_map_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "list<-map",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist \"a1\" \"b2\")\n (list<-map : stringlist\n  (stringmap \"a\" \"1\" \"b\" \"2\")\n  (fn : string\n   [key   : string\n    value : string]\n   (string key value))))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a1",
-                "b2"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a1", "b2"),
               vx_core.f_list_from_map_1(
                 {"any-1": vx_core.t_string, "any-2": vx_core.t_string, "list-1": vx_core.t_stringlist, "map-2": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  "a",
-                  "1",
-                  "b",
-                  "2"
-                ),
-                vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
-                  vx_core.f_new(
-                    vx_core.t_string,
-                    key,
-                    value
-                  ))
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, "a", "1", "b", "2"),
+                vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
+                  vx_core.f_new({"any-1": vx_core.t_string}, key, value))
               )
             )
           )
@@ -2785,40 +2653,26 @@ export default class vx_core_test {
   }
 
   static f_map_from_list(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "map<-list",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  \"keya\" \"a\"\n  \"keyb\" \"b\")\n (map<-list : stringmap\n  (stringlist \"a\" \"b\")\n  (fn : string\n   [value : string]\n   (string \"key\" value))))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                "keya",
-                "a",
-                "keyb",
-                "b"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, "keya", "a", "keyb", "b"),
               vx_core.f_map_from_list(
                 {"any-1": vx_core.t_string, "any-2": vx_core.t_string, "list-2": vx_core.t_stringlist, "map-1": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b"
-                ),
-                vx_core.f_new(vx_core.t_any_from_any, (value) => 
-                  vx_core.f_new(
-                    vx_core.t_string,
-                    "key",
-                    value
-                  ))
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b"),
+                vx_core.f_new_from_type(vx_core.t_any_from_any, (value) => 
+                  vx_core.f_new({"any-1": vx_core.t_string}, "key", value))
               )
             )
           )
@@ -2828,32 +2682,24 @@ export default class vx_core_test {
   }
 
   static f_map_from_map(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "map<-map",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap :a \"1\")\n (map<-map : stringmap\n  (anymap :a \"1\")))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":a",
-                "1"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1"),
               vx_core.f_map_from_map(
                 {"any-1": vx_core.t_string, "map-1": vx_core.t_stringmap, "map-2": vx_core.t_anymap},
-                vx_core.f_new(
-                  vx_core.t_anymap,
-                  ":a",
-                  "1"
-                )
+                vx_core.f_new({"any-1": vx_core.t_anymap}, ":a", "1")
               )
             )
           )
@@ -2863,42 +2709,26 @@ export default class vx_core_test {
   }
 
   static f_map_from_map_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "map<-map",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringmap\n  :a \"a1\"\n  :b \"b2\")\n (map<-map : stringmap\n  (stringmap\n   :a \"1\"\n   :b \"2\")\n  (fn : string\n   [key : string\n    value : string]\n   (string key value))))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":a",
-                "a1",
-                ":b",
-                "b2"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "a1", ":b", "b2"),
               vx_core.f_map_from_map_1(
                 {"any-1": vx_core.t_string, "any-2": vx_core.t_string, "map-1": vx_core.t_stringmap, "map-2": vx_core.t_stringmap},
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "1",
-                  ":b",
-                  "2"
-                ),
-                vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
-                  vx_core.f_new(
-                    vx_core.t_string,
-                    key,
-                    value
-                  ))
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2"),
+                vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
+                  vx_core.f_new({"any-1": vx_core.t_string}, key, value))
               )
             )
           )
@@ -2908,79 +2738,151 @@ export default class vx_core_test {
   }
 
   static f_new(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "new",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test true (new boolean true))",
+            ":describename", "(test true (new : boolean true))",
             ":testresult",
             vx_test.f_test(
               context,
               true,
               vx_core.f_new(
+                {"any-1": vx_core.t_boolean},
+                true
+              )
+            )
+          ),
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test 4 (new : int 4))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              4,
+              vx_core.f_new({"any-1": vx_core.t_int}, 4)
+            )
+          ),
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test 5.4 (new : float 5.4))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              5.4,
+              vx_core.f_new({"any-1": vx_core.t_float}, 5.4)
+            )
+          ),
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test \"a\" (new : string \"a\"))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              "a",
+              vx_core.f_new({"any-1": vx_core.t_string}, "a")
+            )
+          ),
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (new : stringlist \"a\" \"b\" \"c\"))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c"),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c")
+            )
+          ),
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n (stringmap :a \"1\" :b \"2\")\n (new : stringmap :a \"1\" :b \"2\"))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2"),
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2")
+            )
+          )
+        )
+    )
+    return output
+  }
+
+  static f_new_from_type(context) {
+    const output = vx_core.f_new_from_type(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "new<-type",
+      ":describelist",
+        vx_core.f_new_from_type(
+          vx_test.t_testdescribelist,
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test true (new<-type boolean true))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              true,
+              vx_core.f_new_from_type(
                 vx_core.t_boolean,
                 true
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test 4 (new int 4))",
+            ":describename", "(test 4 (new<-type int 4))",
             ":testresult",
             vx_test.f_test(
               context,
               4,
-              vx_core.f_new(
+              vx_core.f_new_from_type(
                 vx_core.t_int,
                 4
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test 5.4 (new float 5.4))",
+            ":describename", "(test 5.4 (new<-type float 5.4))",
             ":testresult",
             vx_test.f_test(
               context,
               5.4,
-              vx_core.f_new(
+              vx_core.f_new_from_type(
                 vx_core.t_float,
                 5.4
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test \"a\" (new string \"a\"))",
+            ":describename", "(test \"a\" (new<-type string \"a\"))",
             ":testresult",
             vx_test.f_test(
               context,
               "a",
-              vx_core.f_new(
+              vx_core.f_new_from_type(
                 vx_core.t_string,
                 "a"
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (new stringlist \"a\" \"b\" \"c\"))",
+            ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (new<-type stringlist \"a\" \"b\" \"c\"))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "a",
-                "b",
-                "c"
-              ),
-              vx_core.f_new(
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c"),
+              vx_core.f_new_from_type(
                 vx_core.t_stringlist,
                 "a",
                 "b",
@@ -2988,20 +2890,14 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test\n (stringmap :a \"1\" :b \"2\")\n (new stringmap :a \"1\" :b \"2\"))",
+            ":describename", "(test\n (stringmap :a \"1\" :b \"2\")\n (new<-type stringmap :a \"1\" :b \"2\"))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringmap,
-                ":a",
-                "1",
-                ":b",
-                "2"
-              ),
-              vx_core.f_new(
+              vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2"),
+              vx_core.f_new_from_type(
                 vx_core.t_stringmap,
                 ":a",
                 "1",
@@ -3016,15 +2912,15 @@ export default class vx_core_test {
   }
 
   static f_or(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "or",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (or true true))",
             ":testresult",
@@ -3036,7 +2932,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (or true false))",
             ":testresult",
@@ -3048,7 +2944,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (or false false))",
             ":testresult",
@@ -3066,15 +2962,15 @@ export default class vx_core_test {
   }
 
   static f_or_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "or",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-true (or false true false))",
             ":testresult",
@@ -3087,7 +2983,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test-false (or false false false))",
             ":testresult",
@@ -3106,15 +3002,15 @@ export default class vx_core_test {
   }
 
   static f_resolve(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "resolve",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"a\" (resolve \"a\"))",
             ":testresult",
@@ -3130,15 +3026,15 @@ export default class vx_core_test {
   }
 
   static f_resolve_1(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "resolve",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 4 (resolve (fn : int [] (+ 1 3))))",
             ":testresult",
@@ -3147,7 +3043,7 @@ export default class vx_core_test {
               4,
               vx_core.f_resolve_1(
                 {"any-1": vx_core.t_int},
-                vx_core.f_new(vx_core.t_any_from_func, () => 
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => 
                   vx_core.f_plus(1, 3))
               )
             )
@@ -3158,15 +3054,15 @@ export default class vx_core_test {
   }
 
   static f_resolve_async(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "resolve-async",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 4 (resolve : int (fn : int [] (+ 1 3))))",
             ":testresult",
@@ -3175,7 +3071,7 @@ export default class vx_core_test {
               4,
               vx_core.f_resolve_1(
                 {"any-1": vx_core.t_int},
-                vx_core.f_new(vx_core.t_any_from_func, () => 
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => 
                   vx_core.f_plus(1, 3))
               )
             )
@@ -3186,15 +3082,15 @@ export default class vx_core_test {
   }
 
   static f_string_repeat(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "string-repeat",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"abab\" (string-repeat \"ab\" 2))",
             ":testresult",
@@ -3210,15 +3106,15 @@ export default class vx_core_test {
   }
 
   static f_string_from_any(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "string<-any",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"true\"  (string<-any true))",
             ":testresult",
@@ -3230,7 +3126,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"4\"     (string<-any 4))",
             ":testresult",
@@ -3240,7 +3136,7 @@ export default class vx_core_test {
               vx_core.f_string_from_any(4)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"5.4\"   (string<-any 5.4))",
             ":testresult",
@@ -3250,7 +3146,7 @@ export default class vx_core_test {
               vx_core.f_string_from_any(5.4)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"\\\"a\\\"\" (string<-any \"a\"))",
             ":testresult",
@@ -3260,7 +3156,7 @@ export default class vx_core_test {
               vx_core.f_string_from_any("a")
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"(stringlist\n   \\\"a\\\"\n   \\\"b\\\"\n   \\\"c\\\")\"\n (string<-any (stringlist \"a\" \"b\" \"c\")))",
             ":testresult",
@@ -3268,16 +3164,11 @@ export default class vx_core_test {
               context,
               "(stringlist\n \"a\"\n \"b\"\n \"c\")",
               vx_core.f_string_from_any(
-                vx_core.f_new(
-                  vx_core.t_stringlist,
-                  "a",
-                  "b",
-                  "c"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c")
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"(stringmap\n   :a \\\"1\\\"\n   :b \\\"2\\\")\"\n (string<-any (stringmap :a \"1\" :b \"2\")))",
             ":testresult",
@@ -3285,13 +3176,7 @@ export default class vx_core_test {
               context,
               "(stringmap\n :a \"1\"\n :b \"2\")",
               vx_core.f_string_from_any(
-                vx_core.f_new(
-                  vx_core.t_stringmap,
-                  ":a",
-                  "1",
-                  ":b",
-                  "2"
-                )
+                vx_core.f_new({"any-1": vx_core.t_stringmap}, ":a", "1", ":b", "2")
               )
             )
           )
@@ -3301,15 +3186,15 @@ export default class vx_core_test {
   }
 
   static f_string_from_string_find_replace(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "string<-string-find-replace",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n \"a!b!c\"\n (string<-string-find-replace\n  \"axybxyc\"\n  \"xy\"\n  \"!\"))",
             ":testresult",
@@ -3325,33 +3210,23 @@ export default class vx_core_test {
   }
 
   static f_stringlist_from_map(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "stringlist<-map",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n (stringlist \"b\" \"a\")\n (stringlist<-map\n  (intmap\n   :b 1\n   :a 2)))",
             ":testresult",
             vx_test.f_test(
               context,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                "b",
-                "a"
-              ),
+              vx_core.f_new({"any-1": vx_core.t_stringlist}, "b", "a"),
               vx_core.f_stringlist_from_map(
-                vx_core.f_new(
-                  vx_core.t_intmap,
-                  ":b",
-                  1,
-                  ":a",
-                  2
-                )
+                vx_core.f_new({"any-1": vx_core.t_intmap}, ":b", 1, ":a", 2)
               )
             )
           )
@@ -3361,15 +3236,15 @@ export default class vx_core_test {
   }
 
   static f_switch(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "switch",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test 1\n (switch : int\n  \"d\"\n  (case (list \"b\" \"c\" \"d\") 1)\n  (else 2)))",
             ":testresult",
@@ -3380,15 +3255,10 @@ export default class vx_core_test {
                 {"any-1": vx_core.t_int, "any-2": vx_core.t_string},
                 "d",
                 vx_core.f_case(
-                  vx_core.f_new(
-                    vx_core.t_list,
-                    "b",
-                    "c",
-                    "d"
-                  ),
-                  vx_core.f_new(vx_core.t_any_from_func, () => {return 1})
+                  vx_core.f_new({"any-1": vx_core.t_list}, "b", "c", "d"),
+                  vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return 1})
                 ),
-                vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return 2}))
+                vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return 2}))
               )
             )
           )
@@ -3398,15 +3268,15 @@ export default class vx_core_test {
   }
 
   static f_type_from_any(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "type<-any",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n boolean\n (type<-any false))",
             ":testresult",
@@ -3418,7 +3288,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n int\n (type<-any 5))",
             ":testresult",
@@ -3428,7 +3298,7 @@ export default class vx_core_test {
               vx_core.f_type_from_any(5)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test\n string\n (type<-any \"a\"))",
             ":testresult",
@@ -3444,15 +3314,15 @@ export default class vx_core_test {
   }
 
   static f_typename_from_any(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
       ":casename", "typename<-any",
       ":describelist",
-        vx_core.f_new(
+        vx_core.f_new_from_type(
           vx_test.t_testdescribelist,
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"vx/core/boolean\" (typename<-any false))",
             ":testresult",
@@ -3464,7 +3334,7 @@ export default class vx_core_test {
               )
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"vx/core/int\"     (typename<-any 5))",
             ":testresult",
@@ -3474,7 +3344,7 @@ export default class vx_core_test {
               vx_core.f_typename_from_any(5)
             )
           ),
-          vx_core.f_new(
+          vx_core.f_new_from_type(
             vx_test.t_testdescribe,
             ":describename", "(test \"vx/core/string\"  (typename<-any \"a\"))",
             ":testresult",
@@ -3490,15 +3360,17 @@ export default class vx_core_test {
   }
 
   static test_cases(context) {
-    const output = vx_core.f_new(
+    const output = vx_core.f_new_from_type(
       vx_test.t_testcaselist,
-      vx_core_test.t_boolean(),
-      vx_core_test.t_float(),
-      vx_core_test.t_func(),
-      vx_core_test.t_int(),
-      vx_core_test.t_string(),
-      vx_core_test.c_false(),
-      vx_core_test.c_true(),
+      vx_core_test.t_boolean(context),
+      vx_core_test.t_float(context),
+      vx_core_test.t_func(context),
+      vx_core_test.t_funclist(context),
+      vx_core_test.t_int(context),
+      vx_core_test.t_string(context),
+      vx_core_test.t_stringlist(context),
+      vx_core_test.c_false(context),
+      vx_core_test.c_true(context),
       vx_core_test.f_not(context),
       vx_core_test.f_ne(context),
       vx_core_test.f_multiply(context),
@@ -3561,6 +3433,7 @@ export default class vx_core_test {
       vx_core_test.f_map_from_map(context),
       vx_core_test.f_map_from_map_1(context),
       vx_core_test.f_new(context),
+      vx_core_test.f_new_from_type(context),
       vx_core_test.f_or(context),
       vx_core_test.f_or_1(context),
       vx_core_test.f_resolve(context),

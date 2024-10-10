@@ -16032,7 +16032,6 @@ namespace vx_core {
   /**
    * @function new
    * Create a new Value of Type A
-   * @param  {any-1} type
    * @param  {anylist} values
    * @return {any-1}
    * (func new)
@@ -16100,11 +16099,23 @@ namespace vx_core {
     vx_core::Type_msgblock Class_new::vx_msgblock() const {return this->vx_p_msgblock;}
     vx_core::vx_Type_listany Class_new::vx_dispose() {return vx_core::emptylistany;}
 
+    vx_core::Func_any_from_any Class_new::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
+      return vx_core::e_any_from_any;
+    }
+
+    vx_core::Type_any Class_new::vx_any_from_any(vx_core::Type_any val) const {
+      vx_core::Type_any output = vx_core::e_any;
+      vx_core::Type_anylist inputval = vx_core::vx_any_from_any(vx_core::t_anylist, val);
+      output = vx_core::f_new(vx_core::t_any, inputval);
+      vx_core::vx_release_except(val, output);
+      return output;
+    }
+
     vx_core::Type_any Class_new::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
-      vx_core::Type_any type = vx_core::vx_any_from_any(vx_core::t_any, arglist->vx_get_any(vx_core::vx_new_int(0)));
-      vx_core::Type_anylist values = vx_core::vx_any_from_any(vx_core::t_anylist, arglist->vx_get_any(vx_core::vx_new_int(1)));
-      output = vx_core::f_new(type, values);
+      vx_core::Type_any generic_any_1 = vx_core::vx_any_from_any(vx_core::t_any, arglist->vx_get_any(vx_core::vx_new_int(0)));
+      vx_core::Type_anylist values = vx_core::vx_any_from_any(vx_core::t_anylist, arglist->vx_get_any(vx_core::vx_new_int(0)));
+      output = vx_core::f_new(generic_any_1, values);
       vx_core::vx_release_except(arglist, output);
       return output;
     }
@@ -25501,10 +25512,7 @@ namespace vx_core {
   vx_core::Type_string f_main(vx_core::Type_anylist args) {
     vx_core::Type_string output = vx_core::e_string;
     vx_core::vx_reserve(args);
-    output = vx_core::f_new(
-      vx_core::t_string,
-      args
-    );
+    output = vx_core::f_new(vx_core::t_string, args);
     vx_core::vx_release_one_except(args, output);
     return output;
   }
@@ -26748,6 +26756,87 @@ namespace vx_core {
       vx_core::Type_any output = vx_core::e_any;
       vx_core::Type_any value = vx_core::vx_any_from_any(vx_core::t_any, arglist->vx_get_any(vx_core::vx_new_int(0)));
       output = vx_core::f_native_from_any(value);
+      vx_core::vx_release_except(arglist, output);
+      return output;
+    }
+
+  //}
+  /**
+   * @function new_from_type
+   * Create a new Value of Type A
+   * @param  {any-1} type
+   * @param  {anylist} values
+   * @return {any-1}
+   * (func new<-type)
+   */
+  // (func new<-type)
+  // class Class_new_from_type {
+    Abstract_new_from_type::~Abstract_new_from_type() {}
+
+    Class_new_from_type::Class_new_from_type() : Abstract_new_from_type::Abstract_new_from_type() {
+      vx_core::refcount += 1;
+    }
+
+    Class_new_from_type::~Class_new_from_type() {
+      vx_core::refcount -= 1;
+      if (this->vx_p_msgblock) {
+        vx_core::vx_release_one(this->vx_p_msgblock);
+      }
+    }
+
+    vx_core::Type_any Class_new_from_type::vx_new(vx_core::vx_Type_listany vals) const {
+      vx_core::Func_new_from_type output = vx_core::e_new_from_type;
+      vx_core::vx_release(vals);
+      return output;
+    }
+
+    vx_core::Type_any Class_new_from_type::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+      vx_core::Func_new_from_type output = vx_core::e_new_from_type;
+      vx_core::vx_release_except(copyval, output);
+      vx_core::vx_release_except(vals, output);
+      return output;
+    }
+
+    vx_core::Type_typedef Class_new_from_type::vx_typedef() const {
+      vx_core::Type_typedef output = vx_core::Class_typedef::vx_typedef_new(
+        "vx/core", // pkgname
+        "new<-type", // name
+        ":func", // extends
+        vx_core::vx_new(vx_core::t_typelist, {vx_core::t_func}), // traits
+        vx_core::e_typelist, // allowtypes
+        vx_core::e_typelist, // disallowtypes
+        vx_core::e_funclist, // allowfuncs
+        vx_core::e_funclist, // disallowfuncs
+        vx_core::e_anylist, // allowvalues
+        vx_core::e_anylist, // disallowvalues
+        vx_core::e_argmap // properties
+      );
+      return output;
+    }
+
+    vx_core::Type_constdef Class_new_from_type::vx_constdef() const {return this->vx_p_constdef;}
+
+    vx_core::Type_funcdef Class_new_from_type::vx_funcdef() const {
+      vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
+        "vx/core", // pkgname
+        "new<-type", // name
+        0, // idx
+        false, // async
+        this->vx_typedef() // typedef
+      );
+      return output;
+    }
+
+    vx_core::Type_any Class_new_from_type::vx_empty() const {return vx_core::e_new_from_type;}
+    vx_core::Type_any Class_new_from_type::vx_type() const {return vx_core::t_new_from_type;}
+    vx_core::Type_msgblock Class_new_from_type::vx_msgblock() const {return this->vx_p_msgblock;}
+    vx_core::vx_Type_listany Class_new_from_type::vx_dispose() {return vx_core::emptylistany;}
+
+    vx_core::Type_any Class_new_from_type::vx_repl(vx_core::Type_anylist arglist) {
+      vx_core::Type_any output = vx_core::e_any;
+      vx_core::Type_any type = vx_core::vx_any_from_any(vx_core::t_any, arglist->vx_get_any(vx_core::vx_new_int(0)));
+      vx_core::Type_anylist values = vx_core::vx_any_from_any(vx_core::t_anylist, arglist->vx_get_any(vx_core::vx_new_int(1)));
+      output = vx_core::f_new_from_type(type, values);
       vx_core::vx_release_except(arglist, output);
       return output;
     }
@@ -30297,6 +30386,8 @@ namespace vx_core {
   vx_core::Func_native t_native = NULL;
   vx_core::Func_native_from_any e_native_from_any = NULL;
   vx_core::Func_native_from_any t_native_from_any = NULL;
+  vx_core::Func_new_from_type e_new_from_type = NULL;
+  vx_core::Func_new_from_type t_new_from_type = NULL;
   vx_core::Func_number_from_func e_number_from_func = NULL;
   vx_core::Func_number_from_func t_number_from_func = NULL;
   vx_core::Func_package_global_from_name e_package_global_from_name = NULL;
@@ -31221,6 +31312,10 @@ namespace vx_core {
       vx_core::vx_reserve_empty(vx_core::e_native_from_any);
       vx_core::t_native_from_any = new vx_core::Class_native_from_any();
       vx_core::vx_reserve_type(vx_core::t_native_from_any);
+      vx_core::e_new_from_type = new vx_core::Class_new_from_type();
+      vx_core::vx_reserve_empty(vx_core::e_new_from_type);
+      vx_core::t_new_from_type = new vx_core::Class_new_from_type();
+      vx_core::vx_reserve_type(vx_core::t_new_from_type);
       vx_core::e_number_from_func = new vx_core::Class_number_from_func();
       vx_core::vx_reserve_empty(vx_core::e_number_from_func);
       vx_core::t_number_from_func = new vx_core::Class_number_from_func();
@@ -31593,6 +31688,7 @@ namespace vx_core {
       mapfunc["name<-typedef"] = vx_core::t_name_from_typedef;
       mapfunc["native"] = vx_core::t_native;
       mapfunc["native<-any"] = vx_core::t_native_from_any;
+      mapfunc["new<-type"] = vx_core::t_new_from_type;
       mapfunc["number<-func"] = vx_core::t_number_from_func;
       mapfunc["package-global<-name"] = vx_core::t_package_global_from_name;
       mapfunc["packagename<-typedef"] = vx_core::t_packagename_from_typedef;

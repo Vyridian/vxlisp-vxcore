@@ -9,8 +9,10 @@ namespace vx_core_test {
   vx_test::Type_testcase t_boolean(vx_core::Type_context context);
   vx_test::Type_testcase t_float(vx_core::Type_context context);
   vx_test::Type_testcase t_func(vx_core::Type_context context);
+  vx_test::Type_testcase t_funclist(vx_core::Type_context context);
   vx_test::Type_testcase t_int(vx_core::Type_context context);
   vx_test::Type_testcase t_string(vx_core::Type_context context);
+  vx_test::Type_testcase t_stringlist(vx_core::Type_context context);
   vx_test::Type_testcase c_false(vx_core::Type_context context);
   vx_test::Type_testcase c_true(vx_core::Type_context context);
   vx_test::Type_testcase f_not(vx_core::Type_context context);
@@ -75,6 +77,7 @@ namespace vx_core_test {
   vx_test::Type_testcase f_map_from_map(vx_core::Type_context context);
   vx_test::Type_testcase f_map_from_map(vx_core::Type_context context);
   vx_test::Type_testcase f_new(vx_core::Type_context context);
+  vx_test::Type_testcase f_new_from_type(vx_core::Type_context context);
   vx_test::Type_testcase f_or(vx_core::Type_context context);
   vx_test::Type_testcase f_or(vx_core::Type_context context);
   vx_test::Type_testcase f_resolve(vx_core::Type_context context);

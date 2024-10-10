@@ -295,7 +295,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string, "list-1": vx_web_html.t_divchildlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_divchildlist, "struct-2": vx_web_html.t_body}, body, ":nodes")
         return vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, "body", "", indent)
       })
@@ -323,7 +323,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const summary = vx_core.f_any_from_struct({"any-1": vx_web_html.t_divchildlist, "struct-2": vx_web_html.t_details}, details, ":summary")
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_divchildlist, "struct-2": vx_web_html.t_details}, details, ":nodes")
@@ -335,19 +335,7 @@ export default class vx_web_html {
           nodes,
           vx_core.f_plus(indent, 1)
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<details>",
-          sindent,
-          "  <summary>",
-          ssummary,
-          sindent,
-          "  </summary>",
-          snodes,
-          sindent,
-          "</details>"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<details>", sindent, "  <summary>", ssummary, sindent, "  </summary>", snodes, sindent, "</details>")
       })
     )
     return output
@@ -373,7 +361,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string, "list-1": vx_web_html.t_divchildlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_divchildlist, "struct-2": vx_web_html.t_div}, div, ":nodes")
         const sid = vx_web_html.f_string_from_propname_val(
           "id",
@@ -389,12 +377,7 @@ export default class vx_web_html {
         return vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           "div",
-          vx_core.f_new(
-            vx_core.t_string,
-            sid,
-            sclass,
-            sstyle
-          ),
+          vx_core.f_new({"any-1": vx_core.t_string}, sid, sclass, sstyle),
           indent
         )
       })
@@ -422,7 +405,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string, "list-1": vx_web_html.t_divchildlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_divchildlist, "struct-2": vx_web_html.t_footer}, footer, ":nodes")
         return vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, "footer", "", indent)
       })
@@ -450,22 +433,14 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_h1}, h1, ":text")
         const sid = vx_web_html.f_string_from_propname_val(
           "id",
           vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_h1}, h1, ":id")
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<h1",
-          sid,
-          ">",
-          text,
-          "</h1>"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<h1", sid, ">", text, "</h1>")
       })
     )
     return output
@@ -491,22 +466,14 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_h2}, h2, ":text")
         const sindent = vx_web_html.f_string_from_indent(indent)
         const sid = vx_web_html.f_string_from_propname_val(
           "id",
           vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_h2}, h2, ":id")
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<h2",
-          sid,
-          ">",
-          text,
-          "</h2>"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<h2", sid, ">", text, "</h2>")
       })
     )
     return output
@@ -532,22 +499,14 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_h3}, h3, ":text")
         const sindent = vx_web_html.f_string_from_indent(indent)
         const sid = vx_web_html.f_string_from_propname_val(
           "id",
           vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_h3}, h3, ":id")
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<h3",
-          sid,
-          ">",
-          text,
-          "</h3>"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<h3", sid, ">", text, "</h3>")
       })
     )
     return output
@@ -573,7 +532,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string, "list-1": vx_web_html.t_headchildlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_headchildlist, "struct-2": vx_web_html.t_head}, head, ":nodes")
         return vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, "head", "", indent)
       })
@@ -600,7 +559,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const lang = vx_web_html.f_string_from_propname_val(
           "lang",
           vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_html}, html, ":lang")
@@ -612,7 +571,7 @@ export default class vx_web_html {
         const sbody = vx_web_html.f_string_from_body_indent(body, 1)
         const sfooter = vx_web_html.f_string_from_footer_indent(footer, 1)
         return vx_core.f_new(
-          vx_core.t_string,
+          {"any-1": vx_core.t_string},
           "<!DOCTYPE html>",
           vx_core.c_newline,
           "<html",
@@ -649,7 +608,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const ssrc = vx_web_html.f_string_from_propname_val(
           "src",
@@ -666,16 +625,7 @@ export default class vx_web_html {
         const sstyle = vx_web_html.f_string_from_propstyleunique(
           vx_core.f_any_from_struct({"any-1": vx_web_html.t_style, "struct-2": vx_web_html.t_img}, img, ":style-unique")
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<img",
-          sid,
-          sclass,
-          sstyle,
-          ssrc,
-          " />"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<img", sid, sclass, sstyle, ssrc, " />")
       })
     )
     return output
@@ -702,7 +652,7 @@ export default class vx_web_html {
       vx_core.f_eq(indent, 0),
       "",
       vx_core.f_new(
-        vx_core.t_string,
+        {"any-1": vx_core.t_string},
         vx_core.c_newline,
         vx_web_html.f_string_indent(indent)
       )
@@ -730,7 +680,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const charset = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_meta}, meta, ":charset")
         const name = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_meta}, meta, ":name")
@@ -738,33 +688,25 @@ export default class vx_web_html {
         const scharset = vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_ne("", charset)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propname_val("charset", charset)})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_ne("", charset)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propname_val("charset", charset)})
           )
         )
         const sname = vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_ne("", name)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propname_val("name", name)})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_ne("", name)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propname_val("name", name)})
           )
         )
         const scontext = vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_ne("", content)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propname_val("content", content)})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_ne("", content)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propname_val("content", content)})
           )
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<meta",
-          scharset,
-          sname,
-          scontext,
-          " />"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<meta", scharset, sname, scontext, " />")
       })
     )
     return output
@@ -812,126 +754,126 @@ export default class vx_web_html {
       vx_core.f_type_from_any(node),
       vx_core.f_case_1(
         vx_web_html.t_body,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_body_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_body_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_body}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_details,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_details_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_details_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_details}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_div,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_div_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_div_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_div}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_h1,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_h1_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_h1_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_h1}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_h2,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_h2_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_h2_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_h2}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_h3,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_h3_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_h3_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_h3}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_head,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_head_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_head_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_head}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_footer,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_footer_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_footer_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_footer}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_img,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_img_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_img_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_img}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_meta,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_meta_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_meta_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_meta}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_p,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_p_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_p_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_p}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_stylesheet,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_stylesheet_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_stylesheet_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_stylesheet}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_table,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_table_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_table_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_table}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_title,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_title_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_title_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_title}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_tbody,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_tbody_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_tbody_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_tbody}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_thead,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_thead_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_thead_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_thead}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_td,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_td_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_td_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_td}, node),
           indent
         )})
       ),
       vx_core.f_case_1(
         vx_web_html.t_tr,
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_tr_indent(
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_tr_indent(
           vx_core.f_any_from_any({"any-1": vx_web_html.t_tr}, node),
           indent
         )})
@@ -960,11 +902,11 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const textlist = vx_core.f_list_from_list_1(
           {"any-1": vx_core.t_string, "list-1": vx_core.t_stringlist},
           nodelist,
-          vx_core.f_new(vx_core.t_any_from_any, (node) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (node) => 
             vx_web_html.f_string_from_node_indent(node, indent))
         )
         return vx_type.f_string_from_stringlist_join(textlist, "")
@@ -995,7 +937,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const text = vx_web_html.f_string_from_nodelist_indent(
           nodes,
           vx_core.f_plus1(indent)
@@ -1004,28 +946,16 @@ export default class vx_web_html {
         const eindent = vx_core.f_if_2(
           {"any-1": vx_core.t_string},
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty(text)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return ""})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty(text)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
           ),
           vx_core.f_then(
-            vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty(sindent)}),
-            vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.c_newline})
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty(sindent)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.c_newline})
           ),
-          vx_core.f_else(vx_core.f_new(vx_core.t_any_from_func, () => {return sindent}))
+          vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return sindent}))
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<",
-          tag,
-          prop,
-          ">",
-          text,
-          eindent,
-          "</",
-          tag,
-          ">"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<", tag, prop, ">", text, eindent, "</", tag, ">")
       })
     )
     return output
@@ -1051,7 +981,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const text = vx_web_html.f_htmlstring_from_string(
           vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_p}, p, ":text")
@@ -1067,17 +997,7 @@ export default class vx_web_html {
         const sstyle = vx_web_html.f_string_from_propstyleunique(
           vx_core.f_any_from_struct({"any-1": vx_web_html.t_style, "struct-2": vx_web_html.t_p}, p, ":style-unique")
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<p",
-          sid,
-          sclass,
-          sstyle,
-          ">",
-          text,
-          "</p>"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<p", sid, sclass, sstyle, ">", text, "</p>")
       })
     )
     return output
@@ -1104,7 +1024,7 @@ export default class vx_web_html {
       {"any-1": vx_core.t_string},
       vx_core.f_notempty(value),
       vx_core.f_new(
-        vx_core.t_string,
+        {"any-1": vx_core.t_string},
         " ",
         key,
         "=",
@@ -1135,9 +1055,9 @@ export default class vx_web_html {
     output = vx_core.f_if_2(
       {"any-1": vx_core.t_string},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(style)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-          vx_core.t_string,
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(style)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+          {"any-1": vx_core.t_string},
           " class=",
           vx_core.c_quote,
           vx_type.f_string_from_string_start(
@@ -1171,12 +1091,12 @@ export default class vx_web_html {
     output = vx_core.f_if_2(
       {"any-1": vx_core.t_string},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(style)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propstyle(style)})
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(style)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propstyle(style)})
       ),
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(stylelist)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propstylelist(stylelist)})
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(stylelist)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_web_html.f_string_from_propstylelist(stylelist)})
       )
     )
     return output
@@ -1201,17 +1121,17 @@ export default class vx_web_html {
     output = vx_core.f_if_2(
       {"any-1": vx_core.t_string},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(stylelist)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(stylelist)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
           {"any-1": vx_core.t_string},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const joined = vx_web_html.f_string_from_stylelist(stylelist)
             return vx_core.f_if(
               {"any-1": vx_core.t_string},
               vx_core.f_ne("", joined),
               vx_core.f_new(
-                vx_core.t_string,
+                {"any-1": vx_core.t_string},
                 " class=",
                 vx_core.c_quote,
                 joined,
@@ -1244,19 +1164,19 @@ export default class vx_web_html {
     output = vx_core.f_if_2(
       {"any-1": vx_core.t_string},
       vx_core.f_then(
-        vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(style)}),
-        vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_let(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(style)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_let(
           {"any-1": vx_core.t_string},
           [],
-          vx_core.f_new(vx_core.t_any_from_func, () => {
+          vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
             const props = vx_core.f_any_from_struct({"any-1": vx_web_html.t_propmap, "struct-2": vx_web_html.t_style}, style, ":props")
             const text = vx_web_html.f_string_from_stylepropmap_indent(props, 0)
             return vx_core.f_if_2(
               {"any-1": vx_core.t_string},
               vx_core.f_then(
-                vx_core.f_new(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(text)}),
-                vx_core.f_new(vx_core.t_any_from_func, () => {return vx_core.f_new(
-                  vx_core.t_string,
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty(text)}),
+                vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+                  {"any-1": vx_core.t_string},
                   " style=",
                   vx_core.c_quote,
                   text,
@@ -1291,7 +1211,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const name = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_style}, style, ":name")
         const propmap = vx_core.f_any_from_struct({"any-1": vx_web_html.t_propmap, "struct-2": vx_web_html.t_style}, style, ":props")
@@ -1304,16 +1224,7 @@ export default class vx_web_html {
           sublist,
           vx_core.f_plus1(indent)
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          name,
-          " {",
-          stext,
-          subtext,
-          sindent,
-          "}"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, name, " {", stext, subtext, sindent, "}")
       })
     )
     return output
@@ -1338,11 +1249,11 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const namelist = vx_core.f_list_from_list_1(
           {"any-1": vx_core.t_string, "any-2": vx_web_html.t_style, "list-1": vx_core.t_stringlist, "list-2": vx_web_html.t_stylelist},
           stylelist,
-          vx_core.f_new(vx_core.t_any_from_any, (item) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (item) => 
             vx_type.f_string_from_string_start(
               vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_style}, item, ":name"),
               2
@@ -1374,11 +1285,11 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sstyles = vx_core.f_list_from_list_1(
           {"any-1": vx_core.t_string, "any-2": vx_web_html.t_style, "list-1": vx_core.t_stringlist, "list-2": vx_web_html.t_stylelist},
           stylelist,
-          vx_core.f_new(vx_core.t_any_from_any, (substyle) => 
+          vx_core.f_new_from_type(vx_core.t_any_from_any, (substyle) => 
             vx_web_html.f_string_from_style_indent(substyle, indent))
         )
         return vx_type.f_string_from_stringlist_join(
@@ -1410,20 +1321,13 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const sprops = vx_core.f_list_from_map_1(
           {"any-1": vx_core.t_string, "any-2": vx_core.t_string, "list-1": vx_core.t_stringlist, "map-2": vx_web_html.t_propmap},
           propmap,
-          vx_core.f_new(vx_core.t_any_from_key_value, ([key, value]) => 
-            vx_core.f_new(
-              vx_core.t_string,
-              sindent,
-              key,
-              ": ",
-              value,
-              ";"
-            ))
+          vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
+            vx_core.f_new({"any-1": vx_core.t_string}, sindent, key, ": ", value, ";"))
         )
         return vx_type.f_string_from_stringlist_join(sprops, "")
       })
@@ -1451,7 +1355,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const styles = vx_core.f_any_from_struct({"any-1": vx_web_html.t_stylelist, "struct-2": vx_web_html.t_stylesheet}, stylesheet, ":styles")
         const sstyles = vx_web_html.f_string_from_stylelist_indent(
           styles,
@@ -1463,14 +1367,7 @@ export default class vx_web_html {
           vx_core.f_notempty(sstyles),
           sindent
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<style>",
-          sstyles,
-          eindent,
-          "</style>"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<style>", sstyles, eindent, "</style>")
       })
     )
     return output
@@ -1496,7 +1393,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const sid = vx_web_html.f_string_from_propname_val(
           "id",
@@ -1512,17 +1409,7 @@ export default class vx_web_html {
           tbody,
           vx_core.f_plus1(indent)
         )
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<table",
-          sid,
-          ">",
-          shead,
-          sbody,
-          sindent,
-          "</table>"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<table", sid, ">", shead, sbody, sindent, "</table>")
       })
     )
     return output
@@ -1548,7 +1435,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string, "list-1": vx_web_html.t_trlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_trlist, "struct-2": vx_web_html.t_tbody}, tbody, ":nodes")
         return vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, "tbody", "", indent)
       })
@@ -1576,7 +1463,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string, "list-1": vx_web_html.t_divchildlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_divchildlist, "struct-2": vx_web_html.t_td}, td, ":nodes")
         return vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, "td", "", indent)
       })
@@ -1604,7 +1491,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string, "list-1": vx_web_html.t_trlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_trlist, "struct-2": vx_web_html.t_thead}, thead, ":nodes")
         return vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, "thead", "", indent)
       })
@@ -1632,16 +1519,10 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const sindent = vx_web_html.f_string_from_indent(indent)
         const text = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_title}, title, ":text")
-        return vx_core.f_new(
-          vx_core.t_string,
-          sindent,
-          "<title>",
-          text,
-          "</title>"
-        )
+        return vx_core.f_new({"any-1": vx_core.t_string}, sindent, "<title>", text, "</title>")
       })
     )
     return output
@@ -1667,7 +1548,7 @@ export default class vx_web_html {
     output = vx_core.f_let(
       {"any-1": vx_core.t_string, "list-1": vx_web_html.t_tdlist},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const nodes = vx_core.f_any_from_struct({"any-1": vx_web_html.t_tdlist, "struct-2": vx_web_html.t_tr}, tr, ":nodes")
         return vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, "tr", "", indent)
       })
@@ -1739,7 +1620,7 @@ export default class vx_web_html {
     output = vx_core.f_map_from_list(
       {"any-1": vx_web_html.t_style, "any-2": vx_web_html.t_style, "list-2": vx_web_html.t_stylelist, "map-1": vx_web_html.t_stylemap, "struct-2": vx_web_html.t_style},
       stylelist,
-      vx_core.f_new(vx_core.t_any_from_any, (style) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (style) => 
         vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_web_html.t_style}, style, ":name"))
     )
     return output
@@ -3273,7 +3154,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_htmlstring_from_string
@@ -3291,7 +3172,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_indent
@@ -3309,7 +3190,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_body_indent
@@ -3327,7 +3208,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_details_indent
@@ -3345,7 +3226,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_div_indent
@@ -3363,7 +3244,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_footer_indent
@@ -3381,7 +3262,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_h1_indent
@@ -3399,7 +3280,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_h2_indent
@@ -3417,7 +3298,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_h3_indent
@@ -3435,7 +3316,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_head_indent
@@ -3453,7 +3334,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_html
@@ -3471,7 +3352,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_img_indent
@@ -3489,7 +3370,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_indent
@@ -3507,7 +3388,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_meta_indent
@@ -3525,7 +3406,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_node
@@ -3543,7 +3424,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_node_indent
@@ -3561,7 +3442,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_nodelist_indent
@@ -3579,7 +3460,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_nodelist_tag_prop_indent
@@ -3597,7 +3478,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_p_indent
@@ -3615,7 +3496,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_propname_val
@@ -3633,7 +3514,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_propstyle
@@ -3651,7 +3532,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_propstyle_stylelist
@@ -3669,7 +3550,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_propstylelist
@@ -3687,7 +3568,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_propstyleunique
@@ -3705,7 +3586,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_style_indent
@@ -3723,7 +3604,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_stylelist
@@ -3741,7 +3622,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_stylelist_indent
@@ -3759,7 +3640,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_stylepropmap_indent
@@ -3777,7 +3658,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_stylesheet_indent
@@ -3795,7 +3676,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_table_indent
@@ -3813,7 +3694,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_tbody_indent
@@ -3831,7 +3712,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_td_indent
@@ -3849,7 +3730,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_thead_indent
@@ -3867,7 +3748,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_title_indent
@@ -3885,7 +3766,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_tr_indent
@@ -3903,7 +3784,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_string_from_uri
@@ -3921,7 +3802,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_style_from_stylesheet_name
@@ -3939,7 +3820,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_stylemap_from_stylelist
@@ -3957,7 +3838,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_stylemap_from_stylesheet
@@ -3975,7 +3856,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_styles_from_stylesheet
@@ -3993,7 +3874,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_stylesheet_loadmap
@@ -4011,7 +3892,7 @@ export default class vx_web_html {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_web_html.f_uri_from_string

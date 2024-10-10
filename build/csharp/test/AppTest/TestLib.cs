@@ -102,7 +102,7 @@ public static class TestLib {
   public static bool test_list_from_list_async() {
     string testname = "test_list_from_list_async";
     Vx.Core.Type_anylist sparams = Vx.Core.vx_anylist_from_arraystring("hello", "world");
-    Vx.Core.Type_stringlist slist = Vx.Core.f_new(Vx.Core.t_stringlist, sparams);
+    Vx.Core.Type_stringlist slist = Vx.Core.f_new_from_type(Vx.Core.t_stringlist, sparams);
     Vx.Core.Func_any_from_any_async fn_async = Vx.Core.t_any_from_any_async.vx_fn_new((anyval) => {
       Vx.Core.Type_string stringval = (Vx.Core.Type_string)anyval;
       string sout = stringval.vx_string() + "!";

@@ -74,7 +74,7 @@ export default class vx_event {
     output = vx_core.f_let(
       {"any-1": generic_any_1, "any-2": vx_core.t_any},
       [],
-      vx_core.f_new(vx_core.t_any_from_func, () => {
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
         const value = vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_event.t_event}, evt, ":from")
         return vx_core.f_any_from_any({"any-1": generic_any_1, "any-2": vx_core.t_any}, value)
       })
@@ -141,7 +141,7 @@ export default class vx_event {
     output = vx_core.f_map_from_list(
       {"any-1": vx_event.t_event, "any-2": vx_event.t_event, "list-2": vx_event.t_eventlist, "map-1": vx_event.t_eventmap, "struct-2": vx_event.t_event},
       eventlist,
-      vx_core.f_new(vx_core.t_any_from_any, (evt) => 
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (evt) => 
         vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_event.t_event}, evt, ":name"))
     )
     return output
@@ -288,7 +288,7 @@ export default class vx_event {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_event.f_any_from_from_event
@@ -306,7 +306,7 @@ export default class vx_event {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_event.f_event_from_event
@@ -324,7 +324,7 @@ export default class vx_event {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_event.f_event_from_event_async
@@ -342,39 +342,23 @@ export default class vx_event {
       disallowtypes : [],
       allowvalues   : [],
       disallowvalues: [],
-      traits        : [],
+      traits        : [vx_core.t_func],
       properties    : [],
       proplast      : {},
       fn            : vx_event.f_eventmap_from_eventlist
     }
 
     // (const event-change)
-    Object.assign(vx_event.c_event_change, vx_core.f_new(
-      vx_event.t_event,
-      ":name",
-      "change"
-    ))
+    Object.assign(vx_event.c_event_change, vx_core.f_new({"any-1": vx_event.t_event}, ":name", "change"))
 
     // (const event-click)
-    Object.assign(vx_event.c_event_click, vx_core.f_new(
-      vx_event.t_event,
-      ":name",
-      "click"
-    ))
+    Object.assign(vx_event.c_event_click, vx_core.f_new({"any-1": vx_event.t_event}, ":name", "click"))
 
     // (const event-move)
-    Object.assign(vx_event.c_event_move, vx_core.f_new(
-      vx_event.t_event,
-      ":name",
-      "move"
-    ))
+    Object.assign(vx_event.c_event_move, vx_core.f_new({"any-1": vx_event.t_event}, ":name", "move"))
 
     // (const event-select)
-    Object.assign(vx_event.c_event_select, vx_core.f_new(
-      vx_event.t_event,
-      ":name",
-      "move"
-    ))
+    Object.assign(vx_event.c_event_select, vx_core.f_new({"any-1": vx_event.t_event}, ":name", "move"))
 
   }
 }

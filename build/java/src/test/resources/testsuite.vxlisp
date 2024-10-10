@@ -76,6 +76,25 @@
     (testcase
      :passfail true
      :testpkg "vx/core"
+     :casename "funclist"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         "(test
+ 2
+ (length
+  (funclist
+   + -)))"
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected 2
+          :actual 2))))
+    (testcase
+     :passfail true
+     :testpkg "vx/core"
      :casename "int"
      :describelist
       (testdescribelist
@@ -153,6 +172,34 @@
           :passfail true
           :expected "ab"
           :actual "ab"))))
+    (testcase
+     :passfail true
+     :testpkg "vx/core"
+     :casename "stringlist"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         `(test
+ (new : stringlist "a" "b" "c")
+ (stringlist
+  (anylist
+   "a"
+   (stringlist "b" "c"))))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected
+           (stringlist
+            "a"
+            "b"
+            "c")
+          :actual
+           (stringlist
+            "a"
+            "b"
+            "c")))))
     (testcase
      :passfail true
      :testpkg "vx/core"
@@ -609,7 +656,7 @@
          `(test-true
  (=
   (stringlist "a" "b" "c")
-  (new stringlist "a" "b" "c")))`
+  (new : stringlist "a" "b" "c")))`
         :testresult
          (testresult
           :code ":true"
@@ -621,7 +668,7 @@
          `(test-true
  (=
   (stringmap :a "1" :b "2")
-  (new stringmap :a "1" :b "2")))`
+  (new : stringmap :a "1" :b "2")))`
         :testresult
          (testresult
           :code ":true"
@@ -1705,7 +1752,7 @@
      :describelist
       (testdescribelist
        (testdescribe
-        :describename "(test true (new boolean true))"
+        :describename "(test true (new : boolean true))"
         :testresult
          (testresult
           :code ":eq"
@@ -1713,7 +1760,7 @@
           :expected true
           :actual true))
        (testdescribe
-        :describename "(test 4 (new int 4))"
+        :describename "(test 4 (new : int 4))"
         :testresult
          (testresult
           :code ":eq"
@@ -1721,7 +1768,7 @@
           :expected 4
           :actual 4))
        (testdescribe
-        :describename "(test 5.4 (new float 5.4))"
+        :describename "(test 5.4 (new : float 5.4))"
         :testresult
          (testresult
           :code ":eq"
@@ -1729,7 +1776,7 @@
           :expected 5.4
           :actual 5.4))
        (testdescribe
-        :describename `(test "a" (new string "a"))`
+        :describename `(test "a" (new : string "a"))`
         :testresult
          (testresult
           :code ":eq"
@@ -1740,7 +1787,7 @@
         :describename
          `(test
  (stringlist "a" "b" "c")
- (new stringlist "a" "b" "c"))`
+ (new : stringlist "a" "b" "c"))`
         :testresult
          (testresult
           :code ":eq"
@@ -1759,7 +1806,81 @@
         :describename
          `(test
  (stringmap :a "1" :b "2")
- (new stringmap :a "1" :b "2"))`
+ (new : stringmap :a "1" :b "2"))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected
+           (stringmap
+            :a "1"
+            :b "2")
+          :actual
+           (stringmap
+            :a "1"
+            :b "2")))))
+    (testcase
+     :passfail true
+     :testpkg "vx/core"
+     :casename "new<-type"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename "(test true (new<-type boolean true))"
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected true
+          :actual true))
+       (testdescribe
+        :describename "(test 4 (new<-type int 4))"
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected 4
+          :actual 4))
+       (testdescribe
+        :describename "(test 5.4 (new<-type float 5.4))"
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected 5.4
+          :actual 5.4))
+       (testdescribe
+        :describename `(test "a" (new<-type string "a"))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected "a"
+          :actual "a"))
+       (testdescribe
+        :describename
+         `(test
+ (stringlist "a" "b" "c")
+ (new<-type stringlist "a" "b" "c"))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected
+           (stringlist
+            "a"
+            "b"
+            "c")
+          :actual
+           (stringlist
+            "a"
+            "b"
+            "c")))
+       (testdescribe
+        :describename
+         `(test
+ (stringmap :a "1" :b "2")
+ (new<-type stringmap :a "1" :b "2"))`
         :testresult
          (testresult
           :code ":eq"
@@ -2240,6 +2361,7 @@
       :native 0
       :native<-any 0
       :new 6
+      :new<-type 6
       :number<-func 0
       :or 3
       :or_1 2
@@ -2306,7 +2428,7 @@
       :float 1
       :func 1
       :funcdef 0
-      :funclist 0
+      :funclist 1
       :funcmap 0
       :int 7
       :intlist 0
@@ -2339,7 +2461,7 @@
       :statelistener 0
       :statelistenermap 0
       :string 2
-      :stringlist 0
+      :stringlist 1
       :stringlistlist 0
       :stringmap 0
       :stringmutablemap 0
@@ -2361,12 +2483,12 @@
      (testcoveragenums
       :pct 0
       :tests 1
-      :total 166)
+      :total 167)
     :bigotimenums
      (testcoveragenums
       :pct 0
       :tests 1
-      :total 166)
+      :total 167)
     :constnums
      (testcoveragenums
       :pct 13
@@ -2375,23 +2497,23 @@
     :docnums
      (testcoveragenums
       :pct 91
-      :tests 235
-      :total 257)
+      :tests 236
+      :total 258)
     :funcnums
      (testcoveragenums
       :pct 55
-      :tests 74
-      :total 134)
+      :tests 75
+      :total 135)
     :testpkg "vx/core"
     :totalnums
      (testcoveragenums
-      :pct 36
-      :tests 81
-      :total 225)
+      :pct 37
+      :tests 84
+      :total 226)
     :typenums
      (testcoveragenums
-      :pct 6
-      :tests 5
+      :pct 9
+      :tests 7
       :total 76))
   :passfail true
   :testpkg "vx/core")
@@ -4391,7 +4513,7 @@ ab
        (testdescribe
         :describename
          "(test
- (new delimlist
+ (new : delimlist
   delimcomma
   delimwhitespace)
  (delimlist

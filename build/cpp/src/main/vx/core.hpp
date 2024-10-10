@@ -880,6 +880,10 @@ namespace vx_core {
   typedef Abstract_new* Func_new;
   extern Func_new e_new;
   extern Func_new t_new;
+  class Abstract_new_from_type;
+  typedef Abstract_new_from_type* Func_new_from_type;
+  extern Func_new_from_type e_new_from_type;
+  extern Func_new_from_type t_new_from_type;
   class Abstract_number_from_func;
   typedef Abstract_number_from_func* Func_number_from_func;
   extern Func_number_from_func e_number_from_func;
@@ -2954,10 +2958,12 @@ namespace vx_core {
   };
 
   // (func new)
-  class Abstract_new : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  class Abstract_new : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
   public:
     Abstract_new() {};
     virtual ~Abstract_new() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
   };
   class Class_new : public virtual Abstract_new {
@@ -2973,6 +2979,8 @@ namespace vx_core {
     virtual vx_core::vx_Type_listany vx_dispose() override;
     virtual vx_core::Type_any vx_empty() const override;
     virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
@@ -8087,6 +8095,29 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
+  // (func new<-type)
+  class Abstract_new_from_type : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_new_from_type() {};
+    virtual ~Abstract_new_from_type() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_new_from_type : public virtual Abstract_new_from_type {
+  public:
+    Class_new_from_type();
+    virtual ~Class_new_from_type() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
   // (func number<-func)
   class Abstract_number_from_func : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
   public:
@@ -9123,10 +9154,11 @@ namespace vx_core {
   }
 
   // (func new)
-  template <class T> T* f_new(T* type, vx_core::Type_anylist values) {
-    vx_core::vx_reserve({type, values});
-    T* output = vx_core::vx_new(type, values->vx_list());
-    vx_core::vx_release_one_except({type, values}, output);
+  template <class T> T* f_new(T* generic_any_1, vx_core::Type_anylist values) {
+    T* output = vx_core::vx_empty(generic_any_1);
+    vx_core::vx_reserve(values);
+    output = vx_core::vx_new(generic_any_1, values->vx_list());
+    vx_core::vx_release_one_except(values, output);
     return output;
   }
 
@@ -9309,8 +9341,15 @@ namespace vx_core {
   template <class X, class Y> X* f_list_join_from_list_1(X* generic_list_1, Y* values, vx_core::Func_any_from_any fn_any_from_any) {
     X* output = vx_core::vx_empty(generic_list_1);
     vx_core::vx_reserve({values, fn_any_from_any});
-    vx_core::Type_any list = vx_core::vx_list_join_from_list_fn(generic_list_1, values, fn_any_from_any);
-    output = vx_core::vx_any_from_any(generic_list_1, list);
+    vx_core::Type_any list = vx_core::vx_list_join_from_list_fn(
+      generic_list_1,
+      values,
+      fn_any_from_any
+    );
+    output = vx_core::vx_any_from_any(
+      generic_list_1,
+      list
+    );
     vx_core::vx_release_one_except({values, fn_any_from_any}, output);
     return output;
   }
@@ -9479,6 +9518,14 @@ namespace vx_core {
     T* output = vx_core::vx_empty(generic_any_1);
     vx_core::vx_reserve(clauses);
     vx_core::vx_release_one_except(clauses, output);
+    return output;
+  }
+
+  // (func new<-type)
+  template <class T> T* f_new_from_type(T* type, vx_core::Type_anylist values) {
+    vx_core::vx_reserve({type, values});
+    T* output = vx_core::vx_new(type, values->vx_list());
+    vx_core::vx_release_one_except({type, values}, output);
     return output;
   }
 

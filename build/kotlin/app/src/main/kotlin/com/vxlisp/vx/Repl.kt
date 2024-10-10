@@ -1495,7 +1495,7 @@ object vx_repl {
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_6 : vx_core.Type_any = vx_core.f_new(
+                var output_6 : vx_core.Type_any = vx_core.f_new_from_type(
                   repltype,
                   args
                 )
