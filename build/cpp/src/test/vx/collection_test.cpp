@@ -649,6 +649,207 @@ namespace vx_collection_test {
     return output;
   }
 
+  vx_test::Type_testcase f_list_from_list_flatten(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: f_list_from_list_flatten");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_stringlist,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string("a"),
+          vx_core::vx_new_string("b"),
+          vx_core::vx_new_string("c")
+        })
+      ),
+      vx_collection::f_list_from_list_flatten(
+        vx_core::t_stringlist,
+        vx_core::f_new(
+          vx_core::t_intlist,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::vx_new_int(1),
+            vx_core::vx_new_int(2)
+          })
+        ),
+        vx_core::t_any_from_any->vx_fn_new({}, [](vx_core::Type_any index_any) {
+          vx_core::Type_int index = vx_core::vx_any_from_any(vx_core::t_int, index_any);
+          vx_core::Type_any output_1 = 
+            vx_core::f_switch(
+              vx_core::t_stringlist,
+              index,
+              vx_core::vx_new(vx_core::t_thenelselist, {
+                vx_core::f_case_1(
+                  vx_core::vx_new_int(1),
+                  vx_core::t_any_from_func->vx_fn_new({}, []() {
+                    vx_core::Type_stringlist output_1 = vx_core::f_new(
+                      vx_core::t_stringlist,
+                      vx_core::vx_new(vx_core::t_anylist, {
+                        vx_core::vx_new_string("a"),
+                        vx_core::vx_new_string("b")
+                      })
+                    );
+                    return output_1;
+                  })
+                ),
+                vx_core::f_case_1(
+                  vx_core::vx_new_int(2),
+                  vx_core::t_any_from_func->vx_fn_new({}, []() {
+                    vx_core::Type_stringlist output_1 = vx_core::f_new(vx_core::t_stringlist, vx_core::vx_new(vx_core::t_anylist, {
+                    vx_core::vx_new_string("c")}));
+                    return output_1;
+                  })
+                )
+              })
+            );
+          return output_1;
+        })
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (stringlist \"a\" \"b\" \"c\")\n (list<-list-flatten : stringlist\n  (intlist 1 2)\n  (fn : stringlist\n   [index : int]\n   (switch : stringlist\n    index\n    (case 1\n     (stringlist \"a\" \"b\"))\n    (case 2\n     (stringlist \"c\"))))))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("list<-list-flatten"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : f_list_from_list_flatten");
+    return output;
+  }
+
+  vx_test::Type_testcase f_list_from_list_join(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: f_list_from_list_join");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_stringlist,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string("a"),
+          vx_core::vx_new_string("b"),
+          vx_core::vx_new_string("c"),
+          vx_core::vx_new_string("d")
+        })
+      ),
+      vx_collection::f_list_from_list_join(
+        vx_core::t_stringlist,
+        vx_core::f_new(
+          vx_core::t_stringlistlist,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::f_new(
+              vx_core::t_stringlist,
+              vx_core::vx_new(vx_core::t_anylist, {
+                vx_core::vx_new_string("a"),
+                vx_core::vx_new_string("b")
+              })
+            ),
+            vx_core::f_new(
+              vx_core::t_stringlist,
+              vx_core::vx_new(vx_core::t_anylist, {
+                vx_core::vx_new_string("c"),
+                vx_core::vx_new_string("d")
+              })
+            )
+          })
+        )
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list<-list-join : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("list<-list-join"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : f_list_from_list_join");
+    return output;
+  }
+
+  vx_test::Type_testcase f_list_from_list_join_1(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: f_list_from_list_join_1");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_stringlist,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string("a"),
+          vx_core::vx_new_string("b"),
+          vx_core::vx_new_string("c"),
+          vx_core::vx_new_string("d")
+        })
+      ),
+      vx_collection::f_list_from_list_join_1(
+        vx_core::t_stringlist,
+        vx_core::f_new(
+          vx_core::t_stringlistlist,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::f_new(
+              vx_core::t_stringlist,
+              vx_core::vx_new(vx_core::t_anylist, {
+                vx_core::vx_new_string("a"),
+                vx_core::vx_new_string("b")
+              })
+            ),
+            vx_core::f_new(
+              vx_core::t_stringlist,
+              vx_core::vx_new(vx_core::t_anylist, {
+                vx_core::vx_new_string("c"),
+                vx_core::vx_new_string("d")
+              })
+            )
+          })
+        ),
+        vx_core::t_any_from_any->vx_fn_new({}, [](vx_core::Type_any values_any) {
+          vx_core::Type_stringlist values = vx_core::vx_any_from_any(vx_core::t_stringlist, values_any);
+          vx_core::Type_any output_1 = values;
+          return output_1;
+        })
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list<-list-join : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))\n  (fn : stringlist\n   [values : stringlist]\n   values)))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/collection"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("list<-list-join_1"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : f_list_from_list_join_1");
+    return output;
+  }
+
   vx_test::Type_testcase f_list_from_list_start(vx_core::Type_context context) {
     vx_core::vx_log("Test Start: f_list_from_list_start");
     // testdescribe_1
@@ -1032,6 +1233,9 @@ namespace vx_collection_test {
     listtestcase.push_back(vx_collection_test::f_list_from_list_end(context));
     listtestcase.push_back(vx_collection_test::f_list_from_list_filter(context));
     listtestcase.push_back(vx_collection_test::f_list_from_list_filtertypes(context));
+    listtestcase.push_back(vx_collection_test::f_list_from_list_flatten(context));
+    listtestcase.push_back(vx_collection_test::f_list_from_list_join(context));
+    listtestcase.push_back(vx_collection_test::f_list_from_list_join_1(context));
     listtestcase.push_back(vx_collection_test::f_list_from_list_start(context));
     listtestcase.push_back(vx_collection_test::f_list_from_list_start_end(context));
     listtestcase.push_back(vx_collection_test::f_map_from_map_end(context));
@@ -1056,28 +1260,28 @@ namespace vx_collection_test {
       }),
       vx_core::vx_new_string(":docnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(100), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(27), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(27)
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(30), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(30)
       }),
       vx_core::vx_new_string(":funcnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
-        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(76), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(20), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(26)
+        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(82), 
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(23), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(28)
       }),
       vx_core::vx_new_string(":bigospacenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(0), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(0), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(27)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(30)
       }),
       vx_core::vx_new_string(":bigotimenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(0), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(0), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(27)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(30)
       }),
       vx_core::vx_new_string(":totalnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
-        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(76), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(20), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(26)
+        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(82), 
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(23), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(28)
       }),
       vx_core::vx_new_string(":typenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(100), 
@@ -1118,6 +1322,9 @@ namespace vx_collection_test {
         vx_core::vx_new_string(":list<-list-end"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":list<-list-filter"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":list<-list-filtertypes"), vx_core::vx_new_int(1),
+        vx_core::vx_new_string(":list<-list-flatten"), vx_core::vx_new_int(1),
+        vx_core::vx_new_string(":list<-list-join"), vx_core::vx_new_int(1),
+        vx_core::vx_new_string(":list<-list-join_1"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":list<-list-start"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":list<-list-start-end"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":map<-map-end"), vx_core::vx_new_int(1),

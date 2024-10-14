@@ -1187,19 +1187,7 @@ public static class Tree {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-down", // name
-        Vx.Core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Data.Tree.t_brancharrow
       );
       return output;
     }
@@ -1223,19 +1211,7 @@ public static class Tree {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-up", // name
-        Vx.Core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Data.Tree.t_brancharrow
       );
       return output;
     }
@@ -1259,19 +1235,7 @@ public static class Tree {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-updown", // name
-        Vx.Core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Data.Tree.t_brancharrow
       );
       return output;
     }

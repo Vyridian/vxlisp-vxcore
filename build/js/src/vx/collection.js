@@ -760,6 +760,90 @@ export default class vx_collection {
   }
 
   /**
+   * @function list_from_list_flatten
+   * Return a list of items from another list. fn-any<-any may return individual items or lists of items. Any sublists are flattened into the single list.
+   * @param  {typemap} generic
+   * @param  {generic_list_2} listsrc
+   * @param  {any_from_any} fn_any_from_any
+   * @return {list-1}
+   */
+  static t_list_from_list_flatten = {
+    vx_type: vx_core.t_type
+  }
+  static e_list_from_list_flatten = {
+    vx_type: vx_collection.t_list_from_list_flatten
+  }
+
+  // (func list<-list-flatten)
+  static f_list_from_list_flatten(generic, listsrc, fn_any_from_any) {
+    const generic_list_1 = generic["list-1"]
+    let output = vx_core.f_empty(generic_list_1)
+    output = vx_core.f_let(
+      {"any-1": generic_list_1},
+      [],
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
+        const listany = vx_core.f_list_from_list_1({"list-1": vx_core.t_anylist}, listsrc, fn_any_from_any)
+        return vx_core.f_new({"any-1": generic_list_1}, listany)
+      })
+    )
+    return output
+  }
+
+  /**
+   * @function list_from_list_join
+   * Returns a list by joining the valid values in each value list
+   * @param  {typemap} generic
+   * @param  {generic_list_2} values
+   * @return {list-1}
+   */
+  static t_list_from_list_join = {
+    vx_type: vx_core.t_type
+  }
+  static e_list_from_list_join = {
+    vx_type: vx_collection.t_list_from_list_join
+  }
+
+  // (func list<-list-join)
+  static f_list_from_list_join(generic, values) {
+    const generic_list_1 = generic["list-1"]
+    let output = vx_core.f_empty(generic_list_1)
+    output = vx_collection.f_list_from_list_join_1(
+      {"any-1": vx_core.t_any, "list-1": generic_list_1},
+      values,
+      vx_core.f_new_from_type(vx_core.t_any_from_any, (value) => value)
+    )
+    return output
+  }
+
+  /**
+   * @function list_from_list_join
+   * Returns a flattened list of processed items from another list
+   * @param  {typemap} generic
+   * @param  {generic_list_2} values
+   * @param  {any_from_any} fn_any_from_any
+   * @return {list-1}
+   */
+  static t_list_from_list_join_1 = {
+    vx_type: vx_core.t_type
+  }
+  static e_list_from_list_join_1 = {
+    vx_type: vx_collection.t_list_from_list_join_1
+  }
+
+  // (func list<-list-join)
+  static f_list_from_list_join_1(generic, values, fn_any_from_any) {
+    const generic_list_1 = generic["list-1"]
+    let output = vx_core.f_empty(generic_list_1)
+    const fn = fn_any_from_any['vx_value']
+    if (fn) {
+      const listoflist = values.map(fn)
+      output = listoflist.flat()
+      output['vx_type'] = generic_list_1
+    }
+    return output
+  }
+
+  /**
    * @function list_from_list_start
    * Returns a sub list from start to list end.
    * @param  {typemap} generic
@@ -973,6 +1057,9 @@ export default class vx_collection {
       "list<-list-end": vx_collection.e_list_from_list_end,
       "list<-list-filter": vx_collection.e_list_from_list_filter,
       "list<-list-filtertypes": vx_collection.e_list_from_list_filtertypes,
+      "list<-list-flatten": vx_collection.e_list_from_list_flatten,
+      "list<-list-join": vx_collection.e_list_from_list_join,
+      "list<-list-join_1": vx_collection.e_list_from_list_join_1,
       "list<-list-start": vx_collection.e_list_from_list_start,
       "list<-list-start-end": vx_collection.e_list_from_list_start_end,
       "map<-map-end": vx_collection.e_map_from_map_end,
@@ -1002,6 +1089,9 @@ export default class vx_collection {
       "list<-list-end": vx_collection.t_list_from_list_end,
       "list<-list-filter": vx_collection.t_list_from_list_filter,
       "list<-list-filtertypes": vx_collection.t_list_from_list_filtertypes,
+      "list<-list-flatten": vx_collection.t_list_from_list_flatten,
+      "list<-list-join": vx_collection.t_list_from_list_join,
+      "list<-list-join_1": vx_collection.t_list_from_list_join_1,
       "list<-list-start": vx_collection.t_list_from_list_start,
       "list<-list-start-end": vx_collection.t_list_from_list_start_end,
       "map<-map-end": vx_collection.t_map_from_map_end,
@@ -1380,6 +1470,60 @@ export default class vx_collection {
       properties    : [],
       proplast      : {},
       fn            : vx_collection.f_list_from_list_filtertypes
+    }
+
+    // (func list<-list-flatten)
+    vx_collection.t_list_from_list_flatten['vx_value'] = {
+      name          : "list<-list-flatten",
+      pkgname       : "vx/collection",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_collection.f_list_from_list_flatten
+    }
+
+    // (func list<-list-join)
+    vx_collection.t_list_from_list_join['vx_value'] = {
+      name          : "list<-list-join",
+      pkgname       : "vx/collection",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_collection.f_list_from_list_join
+    }
+
+    // (func list<-list-join)
+    vx_collection.t_list_from_list_join_1['vx_value'] = {
+      name          : "list<-list-join",
+      pkgname       : "vx/collection",
+      extends       : ":func",
+      idx           : 1,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_collection.f_list_from_list_join_1
     }
 
     // (func list<-list-start)

@@ -30,25 +30,25 @@ export default class vx_data_xml {
    * Constant: delimxml
    * {delim}
    */
-  static c_delimxml = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/xml', name: 'delimxml'}}
+  static c_delimxml = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/xml', name: 'delimxml', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimxmlcdata
    * {delim}
    */
-  static c_delimxmlcdata = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/xml', name: 'delimxmlcdata'}}
+  static c_delimxmlcdata = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/xml', name: 'delimxmlcdata', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimxmlcomment
    * {delim}
    */
-  static c_delimxmlcomment = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/xml', name: 'delimxmlcomment'}}
+  static c_delimxmlcomment = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/xml', name: 'delimxmlcomment', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimxmlequal
    * {delim}
    */
-  static c_delimxmlequal = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/xml', name: 'delimxmlequal'}}
+  static c_delimxmlequal = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/xml', name: 'delimxmlequal', type: vx_data_textblock.t_delim}}
 
   /**
    * @function string_decodexml_from_string

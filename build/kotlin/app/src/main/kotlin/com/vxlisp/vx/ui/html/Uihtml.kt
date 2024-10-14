@@ -17,19 +17,7 @@ object vx_ui_html_uihtml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-app-html", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -63,19 +51,7 @@ object vx_ui_html_uihtml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-else-html", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -109,19 +85,7 @@ object vx_ui_html_uihtml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-image-html", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -155,19 +119,7 @@ object vx_ui_html_uihtml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-label-html", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -201,19 +153,7 @@ object vx_ui_html_uihtml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layoutenginehtml", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layoutengine", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layoutengine
       )
       return output
     }
@@ -275,19 +215,7 @@ object vx_ui_html_uihtml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style-hidden", // name
-        vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_web_html.t_style
       )
       return output
     }
@@ -322,19 +250,7 @@ object vx_ui_html_uihtml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style-selected", // name
-        vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_web_html.t_style
       )
       return output
     }

@@ -6,7 +6,6 @@ import vx_web_html from "../src/vx/web/html.js"
 import vx_web_htmldoc from "../src/vx/web/htmldoc.js"
 import vx_translation_en from "../src/vx/translation/en.js"
 import vx_core_test from "./vx/core_test.js"
-import vx_data_db_test from "./vx/data/db_test.js"
 import vx_data_table_test from "./vx/data/table_test.js"
 import vx_data_tree_test from "./vx/data/tree_test.js"
 import vx_event_test from "./vx/event_test.js"
@@ -49,7 +48,6 @@ export default class app_test {
     const testpackagelist = vx_core.f_new_from_type(
       vx_test.t_testpackagelist,
       vx_core_test.test_package(context),
-      vx_data_db_test.test_package(context),
       vx_data_table_test.test_package(context),
       vx_data_tree_test.test_package(context),
       vx_event_test.test_package(context),

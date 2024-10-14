@@ -31,28 +31,28 @@ export default class vx_event {
    * Change Event
    * {event}
    */
-  static c_event_change = {vx_type: vx_event.t_event, vx_constdef: {pkgname: 'vx/event', name: 'event-change'}}
+  static c_event_change = {vx_type: vx_event.t_event, vx_constdef: {pkgname: 'vx/event', name: 'event-change', type: vx_event.t_event}}
 
   /**
    * Constant: event-click
    * Click Event
    * {event}
    */
-  static c_event_click = {vx_type: vx_event.t_event, vx_constdef: {pkgname: 'vx/event', name: 'event-click'}}
+  static c_event_click = {vx_type: vx_event.t_event, vx_constdef: {pkgname: 'vx/event', name: 'event-click', type: vx_event.t_event}}
 
   /**
    * Constant: event-move
    * Move Event
    * {event}
    */
-  static c_event_move = {vx_type: vx_event.t_event, vx_constdef: {pkgname: 'vx/event', name: 'event-move'}}
+  static c_event_move = {vx_type: vx_event.t_event, vx_constdef: {pkgname: 'vx/event', name: 'event-move', type: vx_event.t_event}}
 
   /**
    * Constant: event-select
    * Move Event
    * {event}
    */
-  static c_event_select = {vx_type: vx_event.t_event, vx_constdef: {pkgname: 'vx/event', name: 'event-select'}}
+  static c_event_select = {vx_type: vx_event.t_event, vx_constdef: {pkgname: 'vx/event', name: 'event-select', type: vx_event.t_event}}
 
   /**
    * @function any_from_from_event

@@ -184,7 +184,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_cell::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_cell::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -335,7 +337,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_celllist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_celllist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -538,7 +542,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_cellmap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_cellmap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -755,7 +761,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_field::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_field::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -906,7 +914,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_fieldlist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_fieldlist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -1057,7 +1067,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_fieldmap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_fieldmap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -1278,7 +1290,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_filter::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_filter::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -1499,7 +1513,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_row::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_row::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -1650,7 +1666,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_rowlist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_rowlist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -1853,7 +1871,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_rowmap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_rowmap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -2074,7 +2094,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_sort::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_sort::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -2439,7 +2461,9 @@ namespace vx_data_table {
       return output;
     }
 
-    vx_core::Type_constdef Class_table::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_table::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}

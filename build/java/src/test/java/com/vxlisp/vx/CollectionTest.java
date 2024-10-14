@@ -655,6 +655,217 @@ public final class CollectionTest {
     return output;
   }
 
+  public static Test.Type_testcase f_list_from_list_flatten(final Core.Type_context context) {
+    Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "list<-list-flatten",
+      ":describelist",
+      Core.vx_new(
+        Test.t_testdescribelist,
+        f_list_from_list_flatten_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_list_from_list_flatten_testdescribe_1(final Core.Type_context context) {
+    Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (list<-list-flatten : stringlist\n  (intlist 1 2)\n  (fn : stringlist\n   [index : int]\n   (switch : stringlist\n    index\n    (case 1\n     (stringlist \"a\" \"b\"))\n    (case 2\n     (stringlist \"c\"))))))",
+      ":testresult", Test.f_test(
+        context,
+        Core.f_new(
+          Core.t_stringlist,
+          Core.vx_new(
+            Core.t_anylist,
+            Core.vx_new_string("a"),
+            Core.vx_new_string("b"),
+            Core.vx_new_string("c")
+          )
+        ),
+        Collection.f_list_from_list_flatten(
+          Core.t_stringlist,
+          Core.f_new(
+            Core.t_intlist,
+            Core.vx_new(
+              Core.t_anylist,
+              Core.vx_new_int(1),
+              Core.vx_new_int(2)
+            )
+          ),
+          Core.t_any_from_any.vx_fn_new((index_any) -> {
+            Core.Type_int index = Core.f_any_from_any(Core.t_int, index_any);
+            Core.Type_any output_1 = Core.f_switch(
+              Core.t_stringlist,
+              index,
+              Core.vx_new(
+                Core.t_thenelselist,
+                Core.f_case_1(
+                  Core.vx_new_int(1),
+                  Core.t_any_from_func.vx_fn_new(() -> {
+                    Core.Type_any output_2 = Core.f_new(
+                      Core.t_stringlist,
+                      Core.vx_new(
+                        Core.t_anylist,
+                        Core.vx_new_string("a"),
+                        Core.vx_new_string("b")
+                      )
+                    );
+                    return output_2;
+                  })
+                ),
+                Core.f_case_1(
+                  Core.vx_new_int(2),
+                  Core.t_any_from_func.vx_fn_new(() -> {
+                    Core.Type_any output_3 = Core.f_new(
+                      Core.t_stringlist,
+                      Core.vx_new(
+                        Core.t_anylist,
+                        Core.vx_new_string("c")
+                      )
+                    );
+                    return output_3;
+                  })
+                )
+              )
+            );
+            return output_1;
+          })
+        )
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_list_from_list_join(final Core.Type_context context) {
+    Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "list<-list-join",
+      ":describelist",
+      Core.vx_new(
+        Test.t_testdescribelist,
+        f_list_from_list_join_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_list_from_list_join_testdescribe_1(final Core.Type_context context) {
+    Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list<-list-join : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))))",
+      ":testresult", Test.f_test(
+        context,
+        Core.f_new(
+          Core.t_stringlist,
+          Core.vx_new(
+            Core.t_anylist,
+            Core.vx_new_string("a"),
+            Core.vx_new_string("b"),
+            Core.vx_new_string("c"),
+            Core.vx_new_string("d")
+          )
+        ),
+        Collection.f_list_from_list_join(
+          Core.t_stringlist,
+          Core.f_new(
+            Core.t_stringlistlist,
+            Core.vx_new(
+              Core.t_anylist,
+              Core.f_new(
+                Core.t_stringlist,
+                Core.vx_new(
+                  Core.t_anylist,
+                  Core.vx_new_string("a"),
+                  Core.vx_new_string("b")
+                )
+              ),
+              Core.f_new(
+                Core.t_stringlist,
+                Core.vx_new(
+                  Core.t_anylist,
+                  Core.vx_new_string("c"),
+                  Core.vx_new_string("d")
+                )
+              )
+            )
+          )
+        )
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_list_from_list_join_1(final Core.Type_context context) {
+    Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "list<-list-join_1",
+      ":describelist",
+      Core.vx_new(
+        Test.t_testdescribelist,
+        f_list_from_list_join_1_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_list_from_list_join_1_testdescribe_1(final Core.Type_context context) {
+    Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list<-list-join : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))\n  (fn : stringlist\n   [values : stringlist]\n   values)))",
+      ":testresult", Test.f_test(
+        context,
+        Core.f_new(
+          Core.t_stringlist,
+          Core.vx_new(
+            Core.t_anylist,
+            Core.vx_new_string("a"),
+            Core.vx_new_string("b"),
+            Core.vx_new_string("c"),
+            Core.vx_new_string("d")
+          )
+        ),
+        Collection.f_list_from_list_join_1(
+          Core.t_stringlist,
+          Core.f_new(
+            Core.t_stringlistlist,
+            Core.vx_new(
+              Core.t_anylist,
+              Core.f_new(
+                Core.t_stringlist,
+                Core.vx_new(
+                  Core.t_anylist,
+                  Core.vx_new_string("a"),
+                  Core.vx_new_string("b")
+                )
+              ),
+              Core.f_new(
+                Core.t_stringlist,
+                Core.vx_new(
+                  Core.t_anylist,
+                  Core.vx_new_string("c"),
+                  Core.vx_new_string("d")
+                )
+              )
+            )
+          ),
+          Core.t_any_from_any.vx_fn_new((values_any) -> {
+            Core.Type_stringlist values = Core.f_any_from_any(Core.t_stringlist, values_any);
+            Core.Type_any output_1 = values;
+            return output_1;
+          })
+        )
+      )
+    );
+    return output;
+  }
+
   public static Test.Type_testcase f_list_from_list_start(final Core.Type_context context) {
     Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
@@ -1040,6 +1251,9 @@ public final class CollectionTest {
       CollectionTest.f_list_from_list_end(context),
       CollectionTest.f_list_from_list_filter(context),
       CollectionTest.f_list_from_list_filtertypes(context),
+      CollectionTest.f_list_from_list_flatten(context),
+      CollectionTest.f_list_from_list_join(context),
+      CollectionTest.f_list_from_list_join_1(context),
       CollectionTest.f_list_from_list_start(context),
       CollectionTest.f_list_from_list_start_end(context),
       CollectionTest.f_map_from_map_end(context),
@@ -1060,11 +1274,11 @@ public final class CollectionTest {
       Test.t_testcoveragesummary,
       ":testpkg", "vx/collection", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 27, ":total", 27), 
-      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
-      ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
+      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 30, ":total", 30), 
+      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 82, ":tests", 23, ":total", 28), 
+      ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 30), 
+      ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 30), 
+      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 82, ":tests", 23, ":total", 28), 
       ":typenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     );
     return output;
@@ -1098,6 +1312,9 @@ public final class CollectionTest {
         ":list<-list-end", 1,
         ":list<-list-filter", 1,
         ":list<-list-filtertypes", 1,
+        ":list<-list-flatten", 1,
+        ":list<-list-join", 1,
+        ":list<-list-join_1", 1,
         ":list<-list-start", 1,
         ":list<-list-start-end", 1,
         ":map<-map-end", 1,

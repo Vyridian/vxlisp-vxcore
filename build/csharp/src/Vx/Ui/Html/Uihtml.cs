@@ -13,19 +13,7 @@ public static class Uihtml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-app-html", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -60,19 +48,7 @@ public static class Uihtml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-else-html", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -107,19 +83,7 @@ public static class Uihtml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-image-html", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -154,19 +118,7 @@ public static class Uihtml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-label-html", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -201,19 +153,7 @@ public static class Uihtml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layoutenginehtml", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layoutengine", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layoutengine
       );
       return output;
     }
@@ -275,19 +215,7 @@ public static class Uihtml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style-hidden", // name
-        Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Web.Html.t_style
       );
       return output;
     }
@@ -322,19 +250,7 @@ public static class Uihtml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style-selected", // name
-        Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Web.Html.t_style
       );
       return output;
     }

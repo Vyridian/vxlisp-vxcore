@@ -52,13 +52,16 @@ namespace vx_translation_all {
       }
     }
 
-    vx_core::Type_any Class_context_all::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_context_all::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_all::Func_context_all output = vx_translation_all::e_context_all;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_context_all::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_context_all::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_all::Func_context_all output = vx_translation_all::e_context_all;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -82,7 +85,9 @@ namespace vx_translation_all {
       return output;
     }
 
-    vx_core::Type_constdef Class_context_all::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_context_all::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_context_all::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -95,10 +100,21 @@ namespace vx_translation_all {
       return output;
     }
 
-    vx_core::Type_any Class_context_all::vx_empty() const {return vx_translation_all::e_context_all;}
-    vx_core::Type_any Class_context_all::vx_type() const {return vx_translation_all::t_context_all;}
-    vx_core::Type_msgblock Class_context_all::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_context_all::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_context_all::vx_empty() const {
+      return vx_translation_all::e_context_all;
+    }
+
+    vx_core::Type_any Class_context_all::vx_type() const {
+      return vx_translation_all::t_context_all;
+    }
+
+    vx_core::Type_msgblock Class_context_all::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_context_all::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_context_all::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -154,13 +170,16 @@ namespace vx_translation_all {
       }
     }
 
-    vx_core::Type_any Class_translationmap_all::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_translationmap_all::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_all::Func_translationmap_all output = vx_translation_all::e_translationmap_all;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_translationmap_all::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_translationmap_all::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_all::Func_translationmap_all output = vx_translation_all::e_translationmap_all;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -184,7 +203,9 @@ namespace vx_translation_all {
       return output;
     }
 
-    vx_core::Type_constdef Class_translationmap_all::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_translationmap_all::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_translationmap_all::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -197,10 +218,21 @@ namespace vx_translation_all {
       return output;
     }
 
-    vx_core::Type_any Class_translationmap_all::vx_empty() const {return vx_translation_all::e_translationmap_all;}
-    vx_core::Type_any Class_translationmap_all::vx_type() const {return vx_translation_all::t_translationmap_all;}
-    vx_core::Type_msgblock Class_translationmap_all::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_translationmap_all::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_translationmap_all::vx_empty() const {
+      return vx_translation_all::e_translationmap_all;
+    }
+
+    vx_core::Type_any Class_translationmap_all::vx_type() const {
+      return vx_translation_all::t_translationmap_all;
+    }
+
+    vx_core::Type_msgblock Class_translationmap_all::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_translationmap_all::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_translationmap_all::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;

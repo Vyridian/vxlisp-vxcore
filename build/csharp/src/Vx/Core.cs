@@ -459,6 +459,13 @@ public static class Core {
     return output;
   }
 
+  // vx_constdef<-any(any)
+  public static Vx.Core.Type_constdef vx_constdef_from_any(
+    Vx.Core.Type_any value) {
+    Vx.Core.Type_constdef output = value.vx_constdef();
+    return output;
+  }
+
   // vx_contains(list-1, any)
   public static Vx.Core.Type_boolean vx_contains_1<T>(
     T values,
@@ -783,26 +790,6 @@ public static class Core {
     };
     List<Vx.Core.Type_any> listresult = Vx.Core.arraylist_from_linkedhashmap_fn(map_value, fn_key_value);
     output = Core.f_any_from_any(generic_list_1, generic_list_1.vx_new(listresult));
-    return output;
-  }
-
-  public static X vx_list_join_from_list_1<X, Y>(
-    X generic_list_1,
-    Y values,
-    Vx.Core.Func_any_from_any fn_any_from_any)
-    where X : Vx.Core.Type_list
-    where Y : Vx.Core.Type_list {
-    X output = Vx.Core.f_empty(generic_list_1);
-    List<Vx.Core.Type_any> list_value = values.vx_list();
-    List<Vx.Core.Type_any> list_result = new List<Vx.Core.Type_any>();
-    foreach (Vx.Core.Type_any val in list_value) {
-      Vx.Core.Type_any listoflist = fn_any_from_any.vx_any_from_any(generic_list_1, val);
-      if (listoflist is Core.Type_list vallist) {
-        List<Vx.Core.Type_any> listval = vallist.vx_list();
-        list_result.AddRange(listval);
-      }
-    }
-    output = Vx.Core.f_any_from_any(generic_list_1, generic_list_1.vx_new(list_result));
     return output;
   }
 
@@ -13342,19 +13329,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "false", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_boolean
       );
       return output;
     }
@@ -13381,19 +13356,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "global", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "project", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_project
       );
       return output;
     }
@@ -13418,19 +13381,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "infinity", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_int
       );
       return output;
     }
@@ -13456,19 +13407,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "mempool-active", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "mempool", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_mempool
       );
       return output;
     }
@@ -13493,19 +13432,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "msg-error", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_int
       );
       return output;
     }
@@ -13531,19 +13458,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "msg-info", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_int
       );
       return output;
     }
@@ -13569,19 +13484,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "msg-severe", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_int
       );
       return output;
     }
@@ -13607,19 +13510,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "msg-warning", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_int
       );
       return output;
     }
@@ -13645,19 +13536,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "neginfinity", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_int
       );
       return output;
     }
@@ -13683,19 +13562,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "newline", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_string
       );
       return output;
     }
@@ -13721,19 +13588,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "notanumber", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_int
       );
       return output;
     }
@@ -13759,19 +13614,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "nothing", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_string
       );
       return output;
     }
@@ -13797,19 +13640,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "path-test-resources", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_string
       );
       return output;
     }
@@ -13835,19 +13666,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "quote", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_string
       );
       return output;
     }
@@ -13872,19 +13691,7 @@ public static class Core {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/core", // pkgname
         "true", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_boolean
       );
       return output;
     }
@@ -20905,6 +20712,238 @@ public static class Core {
   }
 
   /**
+   * @function constdef_from_any
+   * Returns a constdef, or empty, from any if the value is a constant.
+   * @param  {any} value
+   * @return {constdef}
+   * (func constdef<-any)
+   */
+  public interface Func_constdef_from_any : Vx.Core.Func_any_from_any {
+    public Vx.Core.Type_constdef vx_constdef_from_any(Vx.Core.Type_any value);
+  }
+
+  public class Class_constdef_from_any : Vx.Core.Class_base, Func_constdef_from_any {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Core.Class_constdef_from_any output = new Vx.Core.Class_constdef_from_any();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Core.Class_constdef_from_any output = new Vx.Core.Class_constdef_from_any();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/core", // pkgname
+        "constdef<-any", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "constdef", // name
+          ":struct", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.e_typelist, // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Core.e_constdef_from_any;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Core.t_constdef_from_any;
+      return output;
+    }
+
+    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
+      return Vx.Core.e_any_from_any;
+    }
+
+    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
+      T output = Vx.Core.f_empty(generic_any_1);
+      Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
+      Vx.Core.Type_any outputval = Vx.Core.f_constdef_from_any(inputval);
+      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      output = Vx.Core.f_constdef_from_any(value);
+      return output;
+    }
+
+    public Vx.Core.Type_constdef vx_constdef_from_any(Vx.Core.Type_any value) {
+      Vx.Core.Type_constdef output = Vx.Core.f_constdef_from_any(value);
+      return output;
+    }
+
+  }
+
+  public static Vx.Core.Func_constdef_from_any e_constdef_from_any = new Vx.Core.Class_constdef_from_any();
+  public static Vx.Core.Func_constdef_from_any t_constdef_from_any = new Vx.Core.Class_constdef_from_any();
+
+  public static Vx.Core.Type_constdef f_constdef_from_any(Vx.Core.Type_any value) {
+    Vx.Core.Type_constdef output = Vx.Core.e_constdef;
+    output = Vx.Core.vx_constdef_from_any(value);
+    return output;
+  }
+
+  /**
+   * @function constname_from_any
+   * Returns the full name of a constant or blank if not a constant.
+   * @param  {any} value
+   * @return {string}
+   * (func constname<-any)
+   */
+  public interface Func_constname_from_any : Vx.Core.Func_any_from_any {
+    public Vx.Core.Type_string vx_constname_from_any(Vx.Core.Type_any value);
+  }
+
+  public class Class_constname_from_any : Vx.Core.Class_base, Func_constname_from_any {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Core.Class_constname_from_any output = new Vx.Core.Class_constname_from_any();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Core.Class_constname_from_any output = new Vx.Core.Class_constname_from_any();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/core", // pkgname
+        "constname<-any", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "string", // name
+          ":string", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.e_typelist, // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Core.e_constname_from_any;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Core.t_constname_from_any;
+      return output;
+    }
+
+    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
+      return Vx.Core.e_any_from_any;
+    }
+
+    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
+      T output = Vx.Core.f_empty(generic_any_1);
+      Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
+      Vx.Core.Type_any outputval = Vx.Core.f_constname_from_any(inputval);
+      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      output = Vx.Core.f_constname_from_any(value);
+      return output;
+    }
+
+    public Vx.Core.Type_string vx_constname_from_any(Vx.Core.Type_any value) {
+      Vx.Core.Type_string output = Vx.Core.f_constname_from_any(value);
+      return output;
+    }
+
+  }
+
+  public static Vx.Core.Func_constname_from_any e_constname_from_any = new Vx.Core.Class_constname_from_any();
+  public static Vx.Core.Func_constname_from_any t_constname_from_any = new Vx.Core.Class_constname_from_any();
+
+  public static Vx.Core.Type_string f_constname_from_any(Vx.Core.Type_any value) {
+    Vx.Core.Type_string output = Vx.Core.e_string;
+    output = Vx.Core.f_let(
+      Vx.Core.t_string,
+      Vx.Core.t_any_from_func.vx_fn_new(() => {
+        Vx.Core.Type_constdef cnstdef = Vx.Core.f_constdef_from_any(
+          value
+        );
+        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+          Vx.Core.t_string,
+          Vx.Core.vx_new(
+            Vx.Core.t_thenelselist,
+            Vx.Core.f_then(
+              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
+                Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(
+                  cnstdef
+                );
+                return output_2;
+              }),
+              Vx.Core.t_any_from_func.vx_fn_new(() => {
+                Vx.Core.Type_any output_3 = Vx.Core.vx_new_string("");
+                return output_3;
+              })
+            ),
+            Vx.Core.f_else(
+              Vx.Core.t_any_from_func.vx_fn_new(() => {
+                Vx.Core.Type_any output_4 = Vx.Core.f_new(
+                  Vx.Core.t_string,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    cnstdef.pkgname(),
+                    Vx.Core.vx_new_string("/"),
+                    cnstdef.name()
+                  )
+                );
+                return output_4;
+              })
+            )
+          )
+        );
+        return output_1;
+      })
+    );
+    return output;
+  }
+
+  /**
    * @function contains
    * Returns true if the given list contains the given value.
    * @param  {string} text
@@ -24133,198 +24172,6 @@ public static class Core {
   public static Task<T> f_let_async<T>(T generic_any_1, Vx.Core.Func_any_from_func_async fn_any_async) where T : Vx.Core.Type_any {
     Task<T> output = Vx.Core.vx_async_new_from_value(Vx.Core.f_empty(generic_any_1));
     output = fn_any_async.vx_any_from_func_async(generic_any_1);
-    return output;
-  }
-
-  /**
-   * @function list_join_from_list
-   * Returns a list by joining the valid values in each value list
-   * @param  {list-2} values
-   * @return {list-1}
-   * (func list-join<-list)
-   */
-  public interface Func_list_join_from_list : Vx.Core.Func_any_from_any {
-    public X vx_list_join_from_list<X, Y>(X generic_list_1, Y values) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list;
-  }
-
-  public class Class_list_join_from_list : Vx.Core.Class_base, Func_list_join_from_list {
-
-    public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Core.Class_list_join_from_list output = new Vx.Core.Class_list_join_from_list();
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_copy(params object[] vals) {
-      Vx.Core.Class_list_join_from_list output = new Vx.Core.Class_list_join_from_list();
-      return output;
-    }
-
-    public override Vx.Core.Type_typedef vx_typedef() {
-      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
-      return output;
-    }
-
-    public Vx.Core.Type_funcdef vx_funcdef() {
-      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
-        "vx/core", // pkgname
-        "list-join<-list", // name
-        0, // idx
-        false, // async
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        ) // typedef
-      );
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_empty() {
-      Vx.Core.Type_any output = Vx.Core.e_list_join_from_list;
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_type() {
-      Vx.Core.Type_any output = Vx.Core.t_list_join_from_list;
-      return output;
-    }
-
-    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
-      return Vx.Core.e_any_from_any;
-    }
-
-    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      T output = Vx.Core.f_empty(generic_any_1);
-      Vx.Core.Type_list inputval = (Vx.Core.Type_list)value;
-      Vx.Core.Type_any outputval = Vx.Core.f_list_join_from_list(Vx.Core.t_list, inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
-      return output;
-    }
-
-    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
-      Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      output = Vx.Core.f_list_join_from_list(generic_list_1, values);
-      return output;
-    }
-
-    public X vx_list_join_from_list<X, Y>(X generic_list_1, Y values) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
-      X output = Vx.Core.f_list_join_from_list(generic_list_1, values);
-      return output;
-    }
-
-  }
-
-  public static Vx.Core.Func_list_join_from_list e_list_join_from_list = new Vx.Core.Class_list_join_from_list();
-  public static Vx.Core.Func_list_join_from_list t_list_join_from_list = new Vx.Core.Class_list_join_from_list();
-
-  public static X f_list_join_from_list<X, Y>(X generic_list_1, Y values) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
-    X output = Vx.Core.f_empty(generic_list_1);
-    output = Vx.Core.f_list_join_from_list_1(
-      generic_list_1,
-      values,
-      Vx.Core.t_any_from_any.vx_fn_new((value_any) => {
-        Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, value_any);
-        Vx.Core.Type_any output_1 = value;
-        return output_1;
-      })
-    );
-    return output;
-  }
-
-  /**
-   * @function list_join_from_list 1
-   * Returns a flattened list of processed items from another list
-   * @param  {list-2} values
-   * @param  {any<-any} fn-any<-any
-   * @return {list-1}
-   * (func list-join<-list)
-   */
-  public interface Func_list_join_from_list_1 : Vx.Core.Type_func, Vx.Core.Type_replfunc {
-    public X vx_list_join_from_list_1<X, Y>(X generic_list_1, Y values, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list;
-  }
-
-  public class Class_list_join_from_list_1 : Vx.Core.Class_base, Func_list_join_from_list_1 {
-
-    public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Core.Class_list_join_from_list_1 output = new Vx.Core.Class_list_join_from_list_1();
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_copy(params object[] vals) {
-      Vx.Core.Class_list_join_from_list_1 output = new Vx.Core.Class_list_join_from_list_1();
-      return output;
-    }
-
-    public override Vx.Core.Type_typedef vx_typedef() {
-      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
-      return output;
-    }
-
-    public Vx.Core.Type_funcdef vx_funcdef() {
-      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
-        "vx/core", // pkgname
-        "list-join<-list", // name
-        1, // idx
-        false, // async
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        ) // typedef
-      );
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_empty() {
-      Vx.Core.Type_any output = Vx.Core.e_list_join_from_list_1;
-      return output;
-    }
-
-    public override Vx.Core.Type_any vx_type() {
-      Vx.Core.Type_any output = Vx.Core.t_list_join_from_list_1;
-      return output;
-    }
-
-    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
-      Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_any_from_any fn_any_from_any = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      output = Vx.Core.f_list_join_from_list_1(generic_list_1, values, fn_any_from_any);
-      return output;
-    }
-
-    public X vx_list_join_from_list_1<X, Y>(X generic_list_1, Y values, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
-      X output = Vx.Core.f_list_join_from_list_1(generic_list_1, values, fn_any_from_any);
-      return output;
-    }
-
-  }
-
-  public static Vx.Core.Func_list_join_from_list_1 e_list_join_from_list_1 = new Vx.Core.Class_list_join_from_list_1();
-  public static Vx.Core.Func_list_join_from_list_1 t_list_join_from_list_1 = new Vx.Core.Class_list_join_from_list_1();
-
-  public static X f_list_join_from_list_1<X, Y>(X generic_list_1, Y values, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
-    X output = Vx.Core.f_empty(generic_list_1);
-    output = Vx.Core.vx_list_join_from_list_1(generic_list_1, values, fn_any_from_any);
     return output;
   }
 
@@ -30328,6 +30175,8 @@ public static class Core {
     mapfunc.put("case", Vx.Core.t_case);
     mapfunc.put("case_1", Vx.Core.t_case_1);
     mapfunc.put("compare", Vx.Core.t_compare);
+    mapfunc.put("constdef<-any", Vx.Core.t_constdef_from_any);
+    mapfunc.put("constname<-any", Vx.Core.t_constname_from_any);
     mapfunc.put("contains", Vx.Core.t_contains);
     mapfunc.put("contains_1", Vx.Core.t_contains_1);
     mapfunc.put("context-main", Vx.Core.t_context_main);
@@ -30361,8 +30210,6 @@ public static class Core {
     mapfunc.put("length_2", Vx.Core.t_length_2);
     mapfunc.put("let", Vx.Core.t_let);
     mapfunc.put("let-async", Vx.Core.t_let_async);
-    mapfunc.put("list-join<-list", Vx.Core.t_list_join_from_list);
-    mapfunc.put("list-join<-list_1", Vx.Core.t_list_join_from_list_1);
     mapfunc.put("list<-list", Vx.Core.t_list_from_list);
     mapfunc.put("list<-list_1", Vx.Core.t_list_from_list_1);
     mapfunc.put("list<-list-async", Vx.Core.t_list_from_list_async);

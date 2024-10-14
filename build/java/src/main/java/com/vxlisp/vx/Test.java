@@ -2957,19 +2957,7 @@ public final class Test {
       Core.Type_constdef output = Core.constdef_new(
         "vx/test", // pkgname
         "stylesheet-test", // name
-        Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylesheet", // name
-          ":struct", // extends
-          Core.vx_new(Core.t_typelist, Html.t_node, Html.t_headchild), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Html.t_stylesheet
       );
       return output;
     }
@@ -7846,7 +7834,7 @@ public final class Test {
 
   public static Html.Type_trlist f_trlist_from_testcaselist(final Test.Type_testcaselist testcaselist) {
     Html.Type_trlist output = Html.e_trlist;
-    output = Core.f_list_join_from_list_1(
+    output = Collection.f_list_from_list_join_1(
       Html.t_trlist,
       testcaselist,
       Test.t_trlist_from_testcase

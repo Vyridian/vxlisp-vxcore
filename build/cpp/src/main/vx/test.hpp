@@ -2,6 +2,7 @@
 #define VX_TEST_HPP
 #include <vector>
 #include "../vx/core.hpp"
+#include "../vx/collection.hpp"
 #include "../vx/data/file.hpp"
 #include "../vx/web/html.hpp"
 

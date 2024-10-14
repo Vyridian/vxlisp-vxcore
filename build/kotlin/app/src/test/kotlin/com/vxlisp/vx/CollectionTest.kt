@@ -653,6 +653,217 @@ object vx_collectionTest {
     return output
   }
 
+  fun f_list_from_list_flatten(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "list<-list-flatten",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_list_from_list_flatten_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun f_list_from_list_flatten_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (list<-list-flatten : stringlist\n  (intlist 1 2)\n  (fn : stringlist\n   [index : int]\n   (switch : stringlist\n    index\n    (case 1\n     (stringlist \"a\" \"b\"))\n    (case 2\n     (stringlist \"c\"))))))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_stringlist,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string("a"),
+            vx_core.vx_new_string("b"),
+            vx_core.vx_new_string("c")
+          )
+        ),
+        vx_collection.f_list_from_list_flatten(
+          vx_core.t_stringlist,
+          vx_core.f_new(
+            vx_core.t_intlist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              vx_core.vx_new_int(1),
+              vx_core.vx_new_int(2)
+            )
+          ),
+          vx_core.t_any_from_any.vx_fn_new({index_any : vx_core.Type_any ->
+            var index : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, index_any)
+            var output_1 : vx_core.Type_any = vx_core.f_switch(
+              vx_core.t_stringlist,
+              index,
+              vx_core.vx_new(
+                vx_core.t_thenelselist,
+                vx_core.f_case_1(
+                  vx_core.vx_new_int(1),
+                  vx_core.t_any_from_func.vx_fn_new({ ->
+                    var output_2 : vx_core.Type_any = vx_core.f_new(
+                      vx_core.t_stringlist,
+                      vx_core.vx_new(
+                        vx_core.t_anylist,
+                        vx_core.vx_new_string("a"),
+                        vx_core.vx_new_string("b")
+                      )
+                    )
+                    output_2
+                  })
+                ),
+                vx_core.f_case_1(
+                  vx_core.vx_new_int(2),
+                  vx_core.t_any_from_func.vx_fn_new({ ->
+                    var output_3 : vx_core.Type_any = vx_core.f_new(
+                      vx_core.t_stringlist,
+                      vx_core.vx_new(
+                        vx_core.t_anylist,
+                        vx_core.vx_new_string("c")
+                      )
+                    )
+                    output_3
+                  })
+                )
+              )
+            )
+            output_1
+          })
+        )
+      )
+    )
+    return output
+  }
+
+  fun f_list_from_list_join(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "list<-list-join",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_list_from_list_join_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun f_list_from_list_join_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list<-list-join : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_stringlist,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string("a"),
+            vx_core.vx_new_string("b"),
+            vx_core.vx_new_string("c"),
+            vx_core.vx_new_string("d")
+          )
+        ),
+        vx_collection.f_list_from_list_join(
+          vx_core.t_stringlist,
+          vx_core.f_new(
+            vx_core.t_stringlistlist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              vx_core.f_new(
+                vx_core.t_stringlist,
+                vx_core.vx_new(
+                  vx_core.t_anylist,
+                  vx_core.vx_new_string("a"),
+                  vx_core.vx_new_string("b")
+                )
+              ),
+              vx_core.f_new(
+                vx_core.t_stringlist,
+                vx_core.vx_new(
+                  vx_core.t_anylist,
+                  vx_core.vx_new_string("c"),
+                  vx_core.vx_new_string("d")
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+    return output
+  }
+
+  fun f_list_from_list_join_1(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/collection",
+      ":casename", "list<-list-join_1",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_list_from_list_join_1_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun f_list_from_list_join_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list<-list-join : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))\n  (fn : stringlist\n   [values : stringlist]\n   values)))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_stringlist,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string("a"),
+            vx_core.vx_new_string("b"),
+            vx_core.vx_new_string("c"),
+            vx_core.vx_new_string("d")
+          )
+        ),
+        vx_collection.f_list_from_list_join_1(
+          vx_core.t_stringlist,
+          vx_core.f_new(
+            vx_core.t_stringlistlist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              vx_core.f_new(
+                vx_core.t_stringlist,
+                vx_core.vx_new(
+                  vx_core.t_anylist,
+                  vx_core.vx_new_string("a"),
+                  vx_core.vx_new_string("b")
+                )
+              ),
+              vx_core.f_new(
+                vx_core.t_stringlist,
+                vx_core.vx_new(
+                  vx_core.t_anylist,
+                  vx_core.vx_new_string("c"),
+                  vx_core.vx_new_string("d")
+                )
+              )
+            )
+          ),
+          vx_core.t_any_from_any.vx_fn_new({values_any : vx_core.Type_any ->
+            var values : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, values_any)
+            var output_1 : vx_core.Type_any = values
+            output_1
+          })
+        )
+      )
+    )
+    return output
+  }
+
   fun f_list_from_list_start(context : vx_core.Type_context) : vx_test.Type_testcase {
     var output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
@@ -1038,6 +1249,9 @@ object vx_collectionTest {
       vx_collectionTest.f_list_from_list_end(context),
       vx_collectionTest.f_list_from_list_filter(context),
       vx_collectionTest.f_list_from_list_filtertypes(context),
+      vx_collectionTest.f_list_from_list_flatten(context),
+      vx_collectionTest.f_list_from_list_join(context),
+      vx_collectionTest.f_list_from_list_join_1(context),
       vx_collectionTest.f_list_from_list_start(context),
       vx_collectionTest.f_list_from_list_start_end(context),
       vx_collectionTest.f_map_from_map_end(context),
@@ -1058,11 +1272,11 @@ object vx_collectionTest {
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/collection", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 27, ":total", 27), 
-      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
-      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 27), 
-      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 76, ":tests", 20, ":total", 26), 
+      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 30, ":total", 30), 
+      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 82, ":tests", 23, ":total", 28), 
+      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 30), 
+      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 30), 
+      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 82, ":tests", 23, ":total", 28), 
       ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
     )
     return output
@@ -1096,6 +1310,9 @@ object vx_collectionTest {
         ":list<-list-end", 1,
         ":list<-list-filter", 1,
         ":list<-list-filtertypes", 1,
+        ":list<-list-flatten", 1,
+        ":list<-list-join", 1,
+        ":list<-list-join_1", 1,
         ":list<-list-start", 1,
         ":list<-list-start-end", 1,
         ":map<-map-end", 1,

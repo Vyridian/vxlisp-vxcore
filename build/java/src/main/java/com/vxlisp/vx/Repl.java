@@ -1006,19 +1006,7 @@ public final class Repl {
       Core.Type_constdef output = Core.constdef_new(
         "vx/repl", // pkgname
         "delimvxlisp", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1066,19 +1054,7 @@ public final class Repl {
       Core.Type_constdef output = Core.constdef_new(
         "vx/repl", // pkgname
         "delimvxlispbracket", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1129,19 +1105,7 @@ public final class Repl {
       Core.Type_constdef output = Core.constdef_new(
         "vx/repl", // pkgname
         "delimvxlispparen", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }

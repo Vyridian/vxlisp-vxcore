@@ -223,19 +223,7 @@ public static class Sample {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/sample", // pkgname
         "myconst", // name
-        Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Core.t_int
       );
       return output;
     }

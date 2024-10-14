@@ -2131,6 +2131,77 @@ object vx_coreTest {
     return output
   }
 
+  fun f_constdef_from_any(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "constdef<-any",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_constdef_from_any_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun f_constdef_from_any_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (constdef\n  :pkgname \"vx/core\"\n  :name \"false\"\n  :type boolean)\n (constdef<-any false))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_constdef,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string(":pkgname"),
+            vx_core.vx_new_string("vx/core"),
+            vx_core.vx_new_string(":name"),
+            vx_core.vx_new_string("false"),
+            vx_core.vx_new_string(":type"),
+            vx_core.t_boolean
+          )
+        ),
+        vx_core.f_constdef_from_any(
+          vx_core.vx_new_boolean(false)
+        )
+      )
+    )
+    return output
+  }
+
+  fun f_constname_from_any(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "constname<-any",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_constname_from_any_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun f_constname_from_any_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n \"vx/core/false\"\n (constname<-any false))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.vx_new_string("vx/core/false"),
+        vx_core.f_constname_from_any(
+          vx_core.vx_new_boolean(false)
+        )
+      )
+    )
+    return output
+  }
+
   fun f_contains(context : vx_core.Type_context) : vx_test.Type_testcase {
     var output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
@@ -3167,133 +3238,6 @@ object vx_coreTest {
               v1,
               v2
             )
-            output_1
-          })
-        )
-      )
-    )
-    return output
-  }
-
-  fun f_list_join_from_list(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
-      vx_test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/core",
-      ":casename", "list-join<-list",
-      ":describelist",
-      vx_core.vx_new(
-        vx_test.t_testdescribelist,
-        f_list_join_from_list_testdescribe_1(context)
-      )
-    )
-    return output
-  }
-
-  fun f_list_join_from_list_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
-      vx_test.t_testdescribe,
-      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list-join<-list : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))))",
-      ":testresult", vx_test.f_test(
-        context,
-        vx_core.f_new(
-          vx_core.t_stringlist,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string("a"),
-            vx_core.vx_new_string("b"),
-            vx_core.vx_new_string("c"),
-            vx_core.vx_new_string("d")
-          )
-        ),
-        vx_core.f_list_join_from_list(
-          vx_core.t_stringlist,
-          vx_core.f_new(
-            vx_core.t_stringlistlist,
-            vx_core.vx_new(
-              vx_core.t_anylist,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                vx_core.vx_new(
-                  vx_core.t_anylist,
-                  vx_core.vx_new_string("a"),
-                  vx_core.vx_new_string("b")
-                )
-              ),
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                vx_core.vx_new(
-                  vx_core.t_anylist,
-                  vx_core.vx_new_string("c"),
-                  vx_core.vx_new_string("d")
-                )
-              )
-            )
-          )
-        )
-      )
-    )
-    return output
-  }
-
-  fun f_list_join_from_list_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
-      vx_test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/core",
-      ":casename", "list-join<-list_1",
-      ":describelist",
-      vx_core.vx_new(
-        vx_test.t_testdescribelist,
-        f_list_join_from_list_1_testdescribe_1(context)
-      )
-    )
-    return output
-  }
-
-  fun f_list_join_from_list_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
-      vx_test.t_testdescribe,
-      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list-join<-list : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))\n  (fn : stringlist\n   [values : stringlist]\n   values)))",
-      ":testresult", vx_test.f_test(
-        context,
-        vx_core.f_new(
-          vx_core.t_stringlist,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string("a"),
-            vx_core.vx_new_string("b"),
-            vx_core.vx_new_string("c"),
-            vx_core.vx_new_string("d")
-          )
-        ),
-        vx_core.f_list_join_from_list_1(
-          vx_core.t_stringlist,
-          vx_core.f_new(
-            vx_core.t_stringlistlist,
-            vx_core.vx_new(
-              vx_core.t_anylist,
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                vx_core.vx_new(
-                  vx_core.t_anylist,
-                  vx_core.vx_new_string("a"),
-                  vx_core.vx_new_string("b")
-                )
-              ),
-              vx_core.f_new(
-                vx_core.t_stringlist,
-                vx_core.vx_new(
-                  vx_core.t_anylist,
-                  vx_core.vx_new_string("c"),
-                  vx_core.vx_new_string("d")
-                )
-              )
-            )
-          ),
-          vx_core.t_any_from_any.vx_fn_new({values_any : vx_core.Type_any ->
-            var values : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, values_any)
-            var output_1 : vx_core.Type_any = values
             output_1
           })
         )
@@ -4671,6 +4615,8 @@ object vx_coreTest {
       vx_coreTest.f_any_from_map_start_reduce(context),
       vx_coreTest.f_boolean_write_from_map_name_value(context),
       vx_coreTest.f_compare(context),
+      vx_coreTest.f_constdef_from_any(context),
+      vx_coreTest.f_constname_from_any(context),
       vx_coreTest.f_contains(context),
       vx_coreTest.f_contains_1(context),
       vx_coreTest.f_copy(context),
@@ -4689,8 +4635,6 @@ object vx_coreTest {
       vx_coreTest.f_length(context),
       vx_coreTest.f_length_1(context),
       vx_coreTest.f_let(context),
-      vx_coreTest.f_list_join_from_list(context),
-      vx_coreTest.f_list_join_from_list_1(context),
       vx_coreTest.f_list_from_list(context),
       vx_coreTest.f_list_from_list_intany(context),
       vx_coreTest.f_list_from_map(context),
@@ -4726,10 +4670,10 @@ object vx_coreTest {
       ":testpkg", "vx/core", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
       ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
-      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 135), 
+      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 136), 
       ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
       ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
-      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 226), 
+      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 227), 
       ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
     )
     return output
@@ -4909,6 +4853,8 @@ object vx_coreTest {
         ":case", 0,
         ":case_1", 0,
         ":compare", 2,
+        ":constdef<-any", 1,
+        ":constname<-any", 1,
         ":contains", 2,
         ":contains_1", 3,
         ":context-main", 0,
@@ -4942,8 +4888,6 @@ object vx_coreTest {
         ":length_2", 0,
         ":let", 1,
         ":let-async", 0,
-        ":list-join<-list", 1,
-        ":list-join<-list_1", 1,
         ":list<-list", 1,
         ":list<-list_1", 0,
         ":list<-list-async", 0,

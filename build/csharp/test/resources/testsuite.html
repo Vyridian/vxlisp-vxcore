@@ -130,10 +130,10 @@
             <summary>
               <p class="passflag">Pass</p>
               <p class="pkgname">vx/core</p>
-              <p class="coveragenums">37% 84/226</p>
+              <p class="coveragenums">37% 84/227</p>
               <p class="coveragenums">9% 7/76</p>
               <p class="coveragenums">13% 2/15</p>
-              <p class="coveragenums">55% 75/135</p>
+              <p class="coveragenums">55% 75/136</p>
               <p class="coveragenums">91% 236/258</p>
               <p class="coveragenums">0% 1/167</p>
               <p class="coveragenums">0% 1/167</p>
@@ -1585,6 +1585,53 @@
                       <p class="passflag">Pass</p>
                     </td>
                     <td>
+                      <p class="preformatted">constdef&lt;-any</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (constdef
+  :pkgname "vx/core"
+  :name "false"
+  :type boolean)
+ (constdef&lt;-any false))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(constdef
+ :pkgname "vx/core"
+ :name "false"
+ :type vx/core/boolean)</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(constdef
+ :pkgname "vx/core"
+ :name "false"
+ :type vx/core/boolean)</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">constname&lt;-any</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ "vx/core/false"
+ (constname&lt;-any false))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"vx/core/false"</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"vx/core/false"</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
                       <p class="preformatted">contains</p>
                     </td>
                     <td>
@@ -2324,69 +2371,6 @@
                     </td>
                     <td>
                       <p class="preformatted">7</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="passflag">Pass</p>
-                    </td>
-                    <td>
-                      <p class="preformatted">list-join&lt;-list</p>
-                    </td>
-                    <td>
-                      <p class="preformatted">(test
- (stringlist "a" "b" "c" "d")
- (list-join&lt;-list : stringlist
-  (stringlistlist
-   (stringlist "a" "b")
-   (stringlist "c" "d"))))</p>
-                    </td>
-                    <td>
-                      <p class="preformatted">(stringlist
- "a"
- "b"
- "c"
- "d")</p>
-                    </td>
-                    <td>
-                      <p class="preformatted">(stringlist
- "a"
- "b"
- "c"
- "d")</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="passflag">Pass</p>
-                    </td>
-                    <td>
-                      <p class="preformatted">list-join&lt;-list_1</p>
-                    </td>
-                    <td>
-                      <p class="preformatted">(test
- (stringlist "a" "b" "c" "d")
- (list-join&lt;-list : stringlist
-  (stringlistlist
-   (stringlist "a" "b")
-   (stringlist "c" "d"))
-  (fn : stringlist
-   [values : stringlist]
-   values)))</p>
-                    </td>
-                    <td>
-                      <p class="preformatted">(stringlist
- "a"
- "b"
- "c"
- "d")</p>
-                    </td>
-                    <td>
-                      <p class="preformatted">(stringlist
- "a"
- "b"
- "c"
- "d")</p>
                     </td>
                   </tr>
                   <tr>
@@ -3262,45 +3246,6 @@
                     </td>
                   </tr>
                 </tbody>
-              </table>
-            </div>
-          </details>
-        </div>
-        <div>
-          <details>
-            <summary>
-              <p class="passflag">Pass</p>
-              <p class="pkgname">vx/data/db</p>
-              <p class="coveragenums">0% 0/12</p>
-              <p class="coveragenums">0% 0/12</p>
-              <p class="coveragenums">100% 0/0</p>
-              <p class="coveragenums">100% 0/0</p>
-              <p class="coveragenums">100% 12/12</p>
-              <p class="coveragenums">100% 0/0</p>
-              <p class="coveragenums">100% 0/0</p>
-            </summary>
-            <div>
-              <table>
-                <thead>
-                  <tr>
-                    <td>
-                      <p>Pass?</p>
-                    </td>
-                    <td>
-                      <p>Name</p>
-                    </td>
-                    <td>
-                      <p>Test</p>
-                    </td>
-                    <td>
-                      <p>Expected</p>
-                    </td>
-                    <td>
-                      <p>Actual</p>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody></tbody>
               </table>
             </div>
           </details>
@@ -4655,13 +4600,13 @@ ab
             <summary>
               <p class="passflag">Pass</p>
               <p class="pkgname">vx/collection</p>
-              <p class="coveragenums">76% 20/26</p>
+              <p class="coveragenums">82% 23/28</p>
               <p class="coveragenums">100% 0/0</p>
               <p class="coveragenums">100% 0/0</p>
-              <p class="coveragenums">76% 20/26</p>
-              <p class="coveragenums">100% 27/27</p>
-              <p class="coveragenums">0% 0/27</p>
-              <p class="coveragenums">0% 0/27</p>
+              <p class="coveragenums">82% 23/28</p>
+              <p class="coveragenums">100% 30/30</p>
+              <p class="coveragenums">0% 0/30</p>
+              <p class="coveragenums">0% 0/30</p>
             </summary>
             <div>
               <table>
@@ -5033,6 +4978,103 @@ ab
  1
  "b"
  "c")</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">list&lt;-list-flatten</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (stringlist "a" "b" "c")
+ (list&lt;-list-flatten : stringlist
+  (intlist 1 2)
+  (fn : stringlist
+   [index : int]
+   (switch : stringlist
+    index
+    (case 1
+     (stringlist "a" "b"))
+    (case 2
+     (stringlist "c"))))))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c")</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c")</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">list&lt;-list-join</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (stringlist "a" "b" "c" "d")
+ (list&lt;-list-join : stringlist
+  (stringlistlist
+   (stringlist "a" "b")
+   (stringlist "c" "d"))))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c"
+ "d")</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c"
+ "d")</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">list&lt;-list-join_1</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (stringlist "a" "b" "c" "d")
+ (list&lt;-list-join : stringlist
+  (stringlistlist
+   (stringlist "a" "b")
+   (stringlist "c" "d"))
+  (fn : stringlist
+   [values : stringlist]
+   values)))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c"
+ "d")</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(stringlist
+ "a"
+ "b"
+ "c"
+ "d")</p>
                     </td>
                   </tr>
                   <tr>

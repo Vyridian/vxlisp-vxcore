@@ -767,19 +767,7 @@ public final class Event {
       Core.Type_constdef output = Core.constdef_new(
         "vx/event", // pkgname
         "event-change", // name
-        Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Event.t_event
       );
       return output;
     }
@@ -818,19 +806,7 @@ public final class Event {
       Core.Type_constdef output = Core.constdef_new(
         "vx/event", // pkgname
         "event-click", // name
-        Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Event.t_event
       );
       return output;
     }
@@ -869,19 +845,7 @@ public final class Event {
       Core.Type_constdef output = Core.constdef_new(
         "vx/event", // pkgname
         "event-move", // name
-        Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Event.t_event
       );
       return output;
     }
@@ -920,19 +884,7 @@ public final class Event {
       Core.Type_constdef output = Core.constdef_new(
         "vx/event", // pkgname
         "event-select", // name
-        Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Event.t_event
       );
       return output;
     }

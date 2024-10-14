@@ -244,19 +244,7 @@ public final class Sample {
       Core.Type_constdef output = Core.constdef_new(
         "vx/sample", // pkgname
         "myconst", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_int
       );
       return output;
     }

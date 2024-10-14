@@ -1266,19 +1266,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketangle", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1320,19 +1308,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketcurly", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1374,19 +1350,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketsquare", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1428,19 +1392,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimclose", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1478,19 +1430,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimclosing", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1528,19 +1468,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcomma", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1580,19 +1508,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcomment", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1634,19 +1550,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcommentblock", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1688,19 +1592,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimline", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1740,19 +1632,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest1", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delimlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Textblock.t_delim), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delimlist
       );
       return output;
     }
@@ -1785,19 +1665,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest2", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delimlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Textblock.t_delim), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delimlist
       );
       return output;
     }
@@ -1831,19 +1699,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest3", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delimlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Textblock.t_delim), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delimlist
       );
       return output;
     }
@@ -1877,19 +1733,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimnonwhitespace", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1931,19 +1775,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimparen", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -1985,19 +1817,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimquote", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -2039,19 +1859,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimquoteblock", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -2093,19 +1901,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimspace", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -2147,19 +1943,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest1", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -2197,19 +1981,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest2", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -2247,19 +2019,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest3", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -2297,19 +2057,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtext", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }
@@ -2347,19 +2095,7 @@ public final class Textblock {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimwhitespace", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }

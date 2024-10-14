@@ -2724,19 +2724,7 @@ public static class Test {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/test", // pkgname
         "stylesheet-test", // name
-        Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylesheet", // name
-          ":struct", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_headchild), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Web.Html.t_stylesheet
       );
       return output;
     }
@@ -7292,7 +7280,7 @@ public static class Test {
 
   public static Vx.Web.Html.Type_trlist f_trlist_from_testcaselist(Vx.Test.Type_testcaselist testcaselist) {
     Vx.Web.Html.Type_trlist output = Vx.Web.Html.e_trlist;
-    output = Vx.Core.f_list_join_from_list_1(
+    output = Vx.Collection.f_list_from_list_join_1(
       Vx.Web.Html.t_trlist,
       testcaselist,
       Vx.Test.t_trlist_from_testcase

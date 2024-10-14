@@ -715,19 +715,7 @@ object vx_data_xml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxml", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -787,19 +775,7 @@ object vx_data_xml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlcdata", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -840,19 +816,7 @@ object vx_data_xml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlcomment", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -893,19 +857,7 @@ object vx_data_xml {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlequal", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }

@@ -644,6 +644,14 @@ namespace vx_core {
   typedef Abstract_compare* Func_compare;
   extern Func_compare e_compare;
   extern Func_compare t_compare;
+  class Abstract_constdef_from_any;
+  typedef Abstract_constdef_from_any* Func_constdef_from_any;
+  extern Func_constdef_from_any e_constdef_from_any;
+  extern Func_constdef_from_any t_constdef_from_any;
+  class Abstract_constname_from_any;
+  typedef Abstract_constname_from_any* Func_constname_from_any;
+  extern Func_constname_from_any e_constname_from_any;
+  extern Func_constname_from_any t_constname_from_any;
   class Abstract_contains;
   typedef Abstract_contains* Func_contains;
   extern Func_contains e_contains;
@@ -776,14 +784,6 @@ namespace vx_core {
   typedef Abstract_let_async* Func_let_async;
   extern Func_let_async e_let_async;
   extern Func_let_async t_let_async;
-  class Abstract_list_join_from_list;
-  typedef Abstract_list_join_from_list* Func_list_join_from_list;
-  extern Func_list_join_from_list e_list_join_from_list;
-  extern Func_list_join_from_list t_list_join_from_list;
-  class Abstract_list_join_from_list_1;
-  typedef Abstract_list_join_from_list_1* Func_list_join_from_list_1;
-  extern Func_list_join_from_list_1 e_list_join_from_list_1;
-  extern Func_list_join_from_list_1 t_list_join_from_list_1;
   class Abstract_list_from_list;
   typedef Abstract_list_from_list* Func_list_from_list;
   extern Func_list_from_list e_list_from_list;
@@ -1169,10 +1169,15 @@ namespace vx_core {
     vx_core::Type_any val1,
     vx_core::Type_any val2);
 
+  // vx_constdef<-any(any)
+  vx_core::Type_constdef vx_constdef(
+    vx_core::Type_any value);
+
   // vx_constdefnew(string, string)
   vx_core::Type_constdef vx_constdef_new(
     std::string pkgname,
-    std::string name);
+    std::string name,
+    vx_core::Type_any typ);
 
   // vx_eqeq(any, any)
   bool vx_eqeq(
@@ -3795,6 +3800,12 @@ namespace vx_core {
 
   // (func compare)
   vx_core::Type_int f_compare(vx_core::Type_any val1, vx_core::Type_any val2);
+
+  // (func constdef<-any)
+  vx_core::Type_constdef f_constdef_from_any(vx_core::Type_any value);
+
+  // (func constname<-any)
+  vx_core::Type_string f_constname_from_any(vx_core::Type_any value);
 
   // (func contains)
   vx_core::Type_boolean f_contains_1(vx_core::Type_list values, vx_core::Type_any find);
@@ -6949,6 +6960,60 @@ namespace vx_core {
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 
+  // (func constdef<-any)
+  class Abstract_constdef_from_any : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_constdef_from_any() {};
+    virtual ~Abstract_constdef_from_any() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_constdef_from_any : public virtual Abstract_constdef_from_any {
+  public:
+    Class_constdef_from_any();
+    virtual ~Class_constdef_from_any() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func constname<-any)
+  class Abstract_constname_from_any : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_constname_from_any() {};
+    virtual ~Abstract_constname_from_any() = 0;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_constname_from_any : public virtual Abstract_constname_from_any {
+  public:
+    Class_constname_from_any();
+    virtual ~Class_constname_from_any() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
+    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
+    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
   // (func contains)
   class Abstract_contains_1 : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
   public:
@@ -7458,56 +7523,6 @@ namespace vx_core {
   public:
     Class_last_from_list();
     virtual ~Class_last_from_list() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func list-join<-list)
-  class Abstract_list_join_from_list_1 : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_list_join_from_list_1() {};
-    virtual ~Abstract_list_join_from_list_1() = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_list_join_from_list_1 : public virtual Abstract_list_join_from_list_1 {
-  public:
-    Class_list_join_from_list_1();
-    virtual ~Class_list_join_from_list_1() override;
-    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
-    virtual vx_core::Type_funcdef vx_funcdef() const override;
-    virtual vx_core::Type_typedef vx_typedef() const override;
-    virtual vx_core::Type_constdef vx_constdef() const override;
-    virtual vx_core::Type_msgblock vx_msgblock() const override;
-    virtual vx_core::vx_Type_listany vx_dispose() override;
-    virtual vx_core::Type_any vx_empty() const override;
-    virtual vx_core::Type_any vx_type() const override;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
-  };
-
-  // (func list-join<-list)
-  class Abstract_list_join_from_list : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
-  public:
-    Abstract_list_join_from_list() {};
-    virtual ~Abstract_list_join_from_list() = 0;
-    virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override = 0;
-    virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override = 0;
-    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
-  };
-  class Class_list_join_from_list : public virtual Abstract_list_join_from_list {
-  public:
-    Class_list_join_from_list();
-    virtual ~Class_list_join_from_list() override;
     virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
     virtual vx_core::Type_funcdef vx_funcdef() const override;
@@ -9330,39 +9345,6 @@ namespace vx_core {
         vx_core::vx_ref_plus(len);
         vx_core::Type_any output_1 = vx_core::f_any_from_list(generic_any_1, values, len);
         vx_core::vx_release_one_except(len, output_1);
-        return output_1;
-      })
-    );
-    vx_core::vx_release_one_except(values, output);
-    return output;
-  }
-
-  // (func list-join<-list)
-  template <class X, class Y> X* f_list_join_from_list_1(X* generic_list_1, Y* values, vx_core::Func_any_from_any fn_any_from_any) {
-    X* output = vx_core::vx_empty(generic_list_1);
-    vx_core::vx_reserve({values, fn_any_from_any});
-    vx_core::Type_any list = vx_core::vx_list_join_from_list_fn(
-      generic_list_1,
-      values,
-      fn_any_from_any
-    );
-    output = vx_core::vx_any_from_any(
-      generic_list_1,
-      list
-    );
-    vx_core::vx_release_one_except({values, fn_any_from_any}, output);
-    return output;
-  }
-
-  // (func list-join<-list)
-  template <class X, class Y> X* f_list_join_from_list(X* generic_list_1, Y* values) {
-    X* output = vx_core::vx_empty(generic_list_1);
-    vx_core::vx_reserve(values);
-    output = vx_core::f_list_join_from_list_1(
-      generic_list_1,
-      values,
-      vx_core::t_any_from_any->vx_fn_new({}, [](vx_core::Type_any value) {
-        vx_core::Type_any output_1 = value;
         return output_1;
       })
     );

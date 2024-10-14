@@ -595,19 +595,7 @@ public final class Csv {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/csv", // pkgname
         "delimcsv", // name
-        Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Textblock.t_delim
       );
       return output;
     }

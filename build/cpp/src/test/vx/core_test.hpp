@@ -49,6 +49,8 @@ namespace vx_core_test {
   vx_test::Type_testcase f_any_from_map_start_reduce(vx_core::Type_context context);
   vx_test::Type_testcase f_boolean_write_from_map_name_value(vx_core::Type_context context);
   vx_test::Type_testcase f_compare(vx_core::Type_context context);
+  vx_test::Type_testcase f_constdef_from_any(vx_core::Type_context context);
+  vx_test::Type_testcase f_constname_from_any(vx_core::Type_context context);
   vx_test::Type_testcase f_contains(vx_core::Type_context context);
   vx_test::Type_testcase f_contains(vx_core::Type_context context);
   vx_test::Type_testcase f_copy(vx_core::Type_context context);
@@ -67,8 +69,6 @@ namespace vx_core_test {
   vx_test::Type_testcase f_length(vx_core::Type_context context);
   vx_test::Type_testcase f_length(vx_core::Type_context context);
   vx_test::Type_testcase f_let(vx_core::Type_context context);
-  vx_test::Type_testcase f_list_join_from_list(vx_core::Type_context context);
-  vx_test::Type_testcase f_list_join_from_list(vx_core::Type_context context);
   vx_test::Type_testcase f_list_from_list(vx_core::Type_context context);
   vx_test::Type_testcase f_list_from_list_intany(vx_core::Type_context context);
   vx_test::Type_testcase f_list_from_map(vx_core::Type_context context);

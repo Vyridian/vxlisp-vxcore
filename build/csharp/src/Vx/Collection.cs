@@ -155,6 +155,28 @@ public static class Collection {
     return output;
   }
 
+  public static X vx_list_from_list_join_1<X, Y>(
+    X generic_list_1,
+    Y values,
+    Vx.Core.Func_any_from_any fn_any_from_any)
+    where X : Vx.Core.Type_list
+    where Y : Vx.Core.Type_list {
+    X output = Vx.Core.f_empty(generic_list_1);
+    List<Vx.Core.Type_any> list_value = values.vx_list();
+    List<Vx.Core.Type_any> list_result = new List<Vx.Core.Type_any>();
+    foreach (Vx.Core.Type_any val in list_value) {
+      Vx.Core.Type_any listoflist = fn_any_from_any.vx_any_from_any(
+        generic_list_1, val);
+      if (listoflist is Core.Type_list vallist) {
+        List<Vx.Core.Type_any> listval = vallist.vx_list();
+        list_result.AddRange(listval);
+      }
+    }
+    output = Vx.Core.f_any_from_any(
+      generic_list_1, generic_list_1.vx_new(list_result));
+    return output;
+  }
+
   public static T vx_list_from_list_start_end<T>(
     T generic_list_1,
     Vx.Core.Type_list values,
@@ -184,7 +206,7 @@ public static class Collection {
     }
     return output;
   }
-  
+
   public static T vx_map_from_map_keys<T>(
     T generic_map_1,
     Vx.Core.Type_map valuemap,
@@ -2212,6 +2234,299 @@ public static class Collection {
   }
 
   /**
+   * @function list_from_list_flatten
+   * Return a list of items from another list. fn-any<-any may return individual items or lists of items. Any sublists are flattened into the single list.
+   * @param  {list-2} listsrc
+   * @param  {any<-any} fn-any<-any
+   * @return {list-1}
+   * (func list<-list-flatten)
+   */
+  public interface Func_list_from_list_flatten : Vx.Core.Type_func, Vx.Core.Type_replfunc {
+    public X vx_list_from_list_flatten<X, Y>(X generic_list_1, Y listsrc, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list;
+  }
+
+  public class Class_list_from_list_flatten : Vx.Core.Class_base, Func_list_from_list_flatten {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Collection.Class_list_from_list_flatten output = new Vx.Collection.Class_list_from_list_flatten();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Collection.Class_list_from_list_flatten output = new Vx.Collection.Class_list_from_list_flatten();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/collection", // pkgname
+        "list<-list-flatten", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "list-1", // name
+          ":list", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Collection.e_list_from_list_flatten;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Collection.t_list_from_list_flatten;
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_list listsrc = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Func_any_from_any fn_any_from_any = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      output = Vx.Collection.f_list_from_list_flatten(generic_list_1, listsrc, fn_any_from_any);
+      return output;
+    }
+
+    public X vx_list_from_list_flatten<X, Y>(X generic_list_1, Y listsrc, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
+      X output = Vx.Collection.f_list_from_list_flatten(generic_list_1, listsrc, fn_any_from_any);
+      return output;
+    }
+
+  }
+
+  public static Vx.Collection.Func_list_from_list_flatten e_list_from_list_flatten = new Vx.Collection.Class_list_from_list_flatten();
+  public static Vx.Collection.Func_list_from_list_flatten t_list_from_list_flatten = new Vx.Collection.Class_list_from_list_flatten();
+
+  public static X f_list_from_list_flatten<X, Y>(X generic_list_1, Y listsrc, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
+    X output = Vx.Core.f_empty(generic_list_1);
+    output = Vx.Core.f_let(
+      generic_list_1,
+      Vx.Core.t_any_from_func.vx_fn_new(() => {
+        Vx.Core.Type_anylist listany = Vx.Core.f_list_from_list_1(
+          Vx.Core.t_anylist,
+          listsrc,
+          fn_any_from_any
+        );
+        Vx.Core.Type_any output_1 = Vx.Core.f_new(
+          generic_list_1,
+          listany
+        );
+        return output_1;
+      })
+    );
+    return output;
+  }
+
+  /**
+   * @function list_from_list_join
+   * Returns a list by joining the valid values in each value list
+   * @param  {list-2} values
+   * @return {list-1}
+   * (func list<-list-join)
+   */
+  public interface Func_list_from_list_join : Vx.Core.Func_any_from_any {
+    public X vx_list_from_list_join<X, Y>(X generic_list_1, Y values) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list;
+  }
+
+  public class Class_list_from_list_join : Vx.Core.Class_base, Func_list_from_list_join {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Collection.Class_list_from_list_join output = new Vx.Collection.Class_list_from_list_join();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Collection.Class_list_from_list_join output = new Vx.Collection.Class_list_from_list_join();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/collection", // pkgname
+        "list<-list-join", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "list-1", // name
+          ":list", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Collection.e_list_from_list_join;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Collection.t_list_from_list_join;
+      return output;
+    }
+
+    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
+      return Vx.Core.e_any_from_any;
+    }
+
+    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
+      T output = Vx.Core.f_empty(generic_any_1);
+      Vx.Core.Type_list inputval = (Vx.Core.Type_list)value;
+      Vx.Core.Type_any outputval = Vx.Collection.f_list_from_list_join(Vx.Core.t_list, inputval);
+      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      output = Vx.Collection.f_list_from_list_join(generic_list_1, values);
+      return output;
+    }
+
+    public X vx_list_from_list_join<X, Y>(X generic_list_1, Y values) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
+      X output = Vx.Collection.f_list_from_list_join(generic_list_1, values);
+      return output;
+    }
+
+  }
+
+  public static Vx.Collection.Func_list_from_list_join e_list_from_list_join = new Vx.Collection.Class_list_from_list_join();
+  public static Vx.Collection.Func_list_from_list_join t_list_from_list_join = new Vx.Collection.Class_list_from_list_join();
+
+  public static X f_list_from_list_join<X, Y>(X generic_list_1, Y values) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
+    X output = Vx.Core.f_empty(generic_list_1);
+    output = Vx.Collection.f_list_from_list_join_1(
+      generic_list_1,
+      values,
+      Vx.Core.t_any_from_any.vx_fn_new((value_any) => {
+        Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, value_any);
+        Vx.Core.Type_any output_1 = value;
+        return output_1;
+      })
+    );
+    return output;
+  }
+
+  /**
+   * @function list_from_list_join 1
+   * Returns a flattened list of processed items from another list
+   * @param  {list-2} values
+   * @param  {any<-any} fn-any<-any
+   * @return {list-1}
+   * (func list<-list-join)
+   */
+  public interface Func_list_from_list_join_1 : Vx.Core.Type_func, Vx.Core.Type_replfunc {
+    public X vx_list_from_list_join_1<X, Y>(X generic_list_1, Y values, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list;
+  }
+
+  public class Class_list_from_list_join_1 : Vx.Core.Class_base, Func_list_from_list_join_1 {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Collection.Class_list_from_list_join_1 output = new Vx.Collection.Class_list_from_list_join_1();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Collection.Class_list_from_list_join_1 output = new Vx.Collection.Class_list_from_list_join_1();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/collection", // pkgname
+        "list<-list-join", // name
+        1, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "list-1", // name
+          ":list", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Collection.e_list_from_list_join_1;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Collection.t_list_from_list_join_1;
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Func_any_from_any fn_any_from_any = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      output = Vx.Collection.f_list_from_list_join_1(generic_list_1, values, fn_any_from_any);
+      return output;
+    }
+
+    public X vx_list_from_list_join_1<X, Y>(X generic_list_1, Y values, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
+      X output = Vx.Collection.f_list_from_list_join_1(generic_list_1, values, fn_any_from_any);
+      return output;
+    }
+
+  }
+
+  public static Vx.Collection.Func_list_from_list_join_1 e_list_from_list_join_1 = new Vx.Collection.Class_list_from_list_join_1();
+  public static Vx.Collection.Func_list_from_list_join_1 t_list_from_list_join_1 = new Vx.Collection.Class_list_from_list_join_1();
+
+  public static X f_list_from_list_join_1<X, Y>(X generic_list_1, Y values, Vx.Core.Func_any_from_any fn_any_from_any) where X : Vx.Core.Type_list where Y : Vx.Core.Type_list {
+    X output = Vx.Core.f_empty(generic_list_1);
+    output = Vx.Collection.vx_list_from_list_join_1(generic_list_1, values, fn_any_from_any);
+    return output;
+  }
+
+  /**
    * @function list_from_list_start
    * Returns a sub list from start to list end.
    * @param  {list-1} values
@@ -2910,6 +3225,9 @@ public static class Collection {
     mapfunc.put("list<-list-end", Vx.Collection.t_list_from_list_end);
     mapfunc.put("list<-list-filter", Vx.Collection.t_list_from_list_filter);
     mapfunc.put("list<-list-filtertypes", Vx.Collection.t_list_from_list_filtertypes);
+    mapfunc.put("list<-list-flatten", Vx.Collection.t_list_from_list_flatten);
+    mapfunc.put("list<-list-join", Vx.Collection.t_list_from_list_join);
+    mapfunc.put("list<-list-join_1", Vx.Collection.t_list_from_list_join_1);
     mapfunc.put("list<-list-start", Vx.Collection.t_list_from_list_start);
     mapfunc.put("list<-list-start-end", Vx.Collection.t_list_from_list_start_end);
     mapfunc.put("map<-map-end", Vx.Collection.t_map_from_map_end);

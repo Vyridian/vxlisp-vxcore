@@ -1292,19 +1292,7 @@ public final class Tree {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-down", // name
-        Core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Tree.t_brancharrow
       );
       return output;
     }
@@ -1328,19 +1316,7 @@ public final class Tree {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-up", // name
-        Core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Tree.t_brancharrow
       );
       return output;
     }
@@ -1364,19 +1340,7 @@ public final class Tree {
       Core.Type_constdef output = Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-updown", // name
-        Core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Tree.t_brancharrow
       );
       return output;
     }

@@ -215,6 +215,16 @@ public final class Core {
     return output;
   }
 
+  // vx_constdef<-any(any)
+  public static Core.Type_constdef vx_constdef_from_any(
+    final Core.Type_any value) {
+    Core.Type_constdef output = value.vx_constdef();
+    if (output == null) {
+      output = Core.e_constdef;
+    }
+    return output;
+  }
+
   // vx_copy(generic_any_1, args...)
   public static <T extends Core.Type_any> T vx_copy(
     final T copyval,
@@ -14208,19 +14218,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "false", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_boolean
       );
       return output;
     }
@@ -14247,19 +14245,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "global", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "project", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_project
       );
       return output;
     }
@@ -14284,19 +14270,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "infinity", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_int
       );
       return output;
     }
@@ -14322,19 +14296,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "mempool-active", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "mempool", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_mempool
       );
       return output;
     }
@@ -14359,19 +14321,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "msg-error", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_int
       );
       return output;
     }
@@ -14397,19 +14347,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "msg-info", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_int
       );
       return output;
     }
@@ -14435,19 +14373,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "msg-severe", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_int
       );
       return output;
     }
@@ -14473,19 +14399,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "msg-warning", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_int
       );
       return output;
     }
@@ -14511,19 +14425,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "neginfinity", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_int
       );
       return output;
     }
@@ -14549,19 +14451,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "newline", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_string
       );
       return output;
     }
@@ -14587,19 +14477,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "notanumber", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_int
       );
       return output;
     }
@@ -14625,19 +14503,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "nothing", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_string
       );
       return output;
     }
@@ -14663,19 +14529,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "path-test-resources", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_string
       );
       return output;
     }
@@ -14701,19 +14555,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "quote", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_string
       );
       return output;
     }
@@ -14738,19 +14580,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
       Core.Type_constdef output = Core.constdef_new(
         "vx/core", // pkgname
         "true", // name
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Core.t_boolean
       );
       return output;
     }
@@ -22493,6 +22323,258 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   /**
+   * @function constdef_from_any
+   * Returns a constdef, or empty, from any if the value is a constant.
+   * @param  {any} value
+   * @return {constdef}
+   * (func constdef<-any)
+   */
+  public interface Func_constdef_from_any extends Core.Func_any_from_any {
+    public Core.Type_constdef vx_constdef_from_any(final Core.Type_any value);
+  }
+
+  public static class Class_constdef_from_any extends Core.Class_base implements Func_constdef_from_any {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Core.Class_constdef_from_any output = new Core.Class_constdef_from_any();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Core.Class_constdef_from_any output = new Core.Class_constdef_from_any();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/core", // pkgname
+        "constdef<-any", // name
+        0, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "constdef", // name
+          ":struct", // extends
+          Core.e_typelist, // traits
+          Core.e_typelist, // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Core.e_constdef_from_any;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Core.t_constdef_from_any;
+      return output;
+    }
+
+    @Override
+    public Core.Func_any_from_any vx_fn_new(Core.Class_any_from_any.IFn fn) {
+      return Core.e_any_from_any;
+    }
+
+    @Override
+    public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
+      T output = Core.f_empty(generic_any_1);
+      Core.Type_any inputval = (Core.Type_any)value;
+      Core.Type_any outputval = Core.f_constdef_from_any(inputval);
+      output = Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      output = Core.f_constdef_from_any(value);
+      return output;
+    }
+
+    @Override
+    public Core.Type_constdef vx_constdef_from_any(final Core.Type_any value) {
+      Core.Type_constdef output = Core.f_constdef_from_any(value);
+      return output;
+    }
+
+  }
+
+  public static final Core.Func_constdef_from_any e_constdef_from_any = new Core.Class_constdef_from_any();
+  public static final Core.Func_constdef_from_any t_constdef_from_any = new Core.Class_constdef_from_any();
+
+  public static Core.Type_constdef f_constdef_from_any(final Core.Type_any value) {
+    Core.Type_constdef output = Core.e_constdef;
+    output = Core.vx_constdef_from_any(value);
+    return output;
+  }
+
+  /**
+   * @function constname_from_any
+   * Returns the full name of a constant or blank if not a constant.
+   * @param  {any} value
+   * @return {string}
+   * (func constname<-any)
+   */
+  public interface Func_constname_from_any extends Core.Func_any_from_any {
+    public Core.Type_string vx_constname_from_any(final Core.Type_any value);
+  }
+
+  public static class Class_constname_from_any extends Core.Class_base implements Func_constname_from_any {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Core.Class_constname_from_any output = new Core.Class_constname_from_any();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Core.Class_constname_from_any output = new Core.Class_constname_from_any();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/core", // pkgname
+        "constname<-any", // name
+        0, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "string", // name
+          ":string", // extends
+          Core.e_typelist, // traits
+          Core.e_typelist, // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Core.e_constname_from_any;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Core.t_constname_from_any;
+      return output;
+    }
+
+    @Override
+    public Core.Func_any_from_any vx_fn_new(Core.Class_any_from_any.IFn fn) {
+      return Core.e_any_from_any;
+    }
+
+    @Override
+    public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
+      T output = Core.f_empty(generic_any_1);
+      Core.Type_any inputval = (Core.Type_any)value;
+      Core.Type_any outputval = Core.f_constname_from_any(inputval);
+      output = Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      output = Core.f_constname_from_any(value);
+      return output;
+    }
+
+    @Override
+    public Core.Type_string vx_constname_from_any(final Core.Type_any value) {
+      Core.Type_string output = Core.f_constname_from_any(value);
+      return output;
+    }
+
+  }
+
+  public static final Core.Func_constname_from_any e_constname_from_any = new Core.Class_constname_from_any();
+  public static final Core.Func_constname_from_any t_constname_from_any = new Core.Class_constname_from_any();
+
+  public static Core.Type_string f_constname_from_any(final Core.Type_any value) {
+    Core.Type_string output = Core.e_string;
+    output = Core.f_let(
+      Core.t_string,
+      Core.t_any_from_func.vx_fn_new(() -> {
+        Core.Type_constdef cnstdef = Core.f_constdef_from_any(
+          value
+        );
+        Core.Type_any output_1 = Core.f_if_2(
+          Core.t_string,
+          Core.vx_new(
+            Core.t_thenelselist,
+            Core.f_then(
+              Core.t_boolean_from_func.vx_fn_new(() -> {
+                Core.Type_any output_2 = Core.f_is_empty_1(
+                  cnstdef
+                );
+                return output_2;
+              }),
+              Core.t_any_from_func.vx_fn_new(() -> {
+                Core.Type_any output_3 = Core.vx_new_string("");
+                return output_3;
+              })
+            ),
+            Core.f_else(
+              Core.t_any_from_func.vx_fn_new(() -> {
+                Core.Type_any output_4 = Core.f_new(
+                  Core.t_string,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    cnstdef.pkgname(),
+                    Core.vx_new_string("/"),
+                    cnstdef.name()
+                  )
+                );
+                return output_4;
+              })
+            )
+          )
+        );
+        return output_1;
+      })
+    );
+    return output;
+  }
+
+  /**
    * @function contains
    * Returns true if the given list contains the given value.
    * @param  {string} text
@@ -26041,231 +26123,6 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   public static <T extends Core.Type_any> CompletableFuture<T> f_let_async(final T generic_any_1, final Core.Func_any_from_func_async fn_any_async) {
     CompletableFuture<T> output = Core.vx_async_new_from_value(Core.f_empty(generic_any_1));
     output = fn_any_async.vx_any_from_func_async(generic_any_1);
-    return output;
-  }
-
-  /**
-   * @function list_join_from_list
-   * Returns a list by joining the valid values in each value list
-   * @param  {list-2} values
-   * @return {list-1}
-   * (func list-join<-list)
-   */
-  public interface Func_list_join_from_list extends Core.Func_any_from_any {
-    public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_join_from_list(final X generic_list_1, final Y values);
-  }
-
-  public static class Class_list_join_from_list extends Core.Class_base implements Func_list_join_from_list {
-
-    @Override
-    public Core.Type_any vx_new(final Object... vals) {
-      Core.Class_list_join_from_list output = new Core.Class_list_join_from_list();
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_copy(final Object... vals) {
-      Core.Class_list_join_from_list output = new Core.Class_list_join_from_list();
-      return output;
-    }
-
-    @Override
-    public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
-      return output;
-    }
-
-    @Override
-    public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
-        "vx/core", // pkgname
-        "list-join<-list", // name
-        0, // idx
-        false, // async
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        ) // typedef
-      );
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_empty() {
-      Core.Type_any output = Core.e_list_join_from_list;
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_type() {
-      Core.Type_any output = Core.t_list_join_from_list;
-      return output;
-    }
-
-    @Override
-    public Core.Func_any_from_any vx_fn_new(Core.Class_any_from_any.IFn fn) {
-      return Core.e_any_from_any;
-    }
-
-    @Override
-    public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
-      T output = Core.f_empty(generic_any_1);
-      Core.Type_list inputval = (Core.Type_list)value;
-      Core.Type_any outputval = Core.f_list_join_from_list(Core.t_list, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
-      Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      output = Core.f_list_join_from_list(generic_list_1, values);
-      return output;
-    }
-
-    @Override
-    public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_join_from_list(final X generic_list_1, final Y values) {
-      X output = Core.f_list_join_from_list(generic_list_1, values);
-      return output;
-    }
-
-  }
-
-  public static final Core.Func_list_join_from_list e_list_join_from_list = new Core.Class_list_join_from_list();
-  public static final Core.Func_list_join_from_list t_list_join_from_list = new Core.Class_list_join_from_list();
-
-  public static <X extends Core.Type_list, Y extends Core.Type_list> X f_list_join_from_list(final X generic_list_1, final Y values) {
-    X output = Core.f_empty(generic_list_1);
-    output = Core.f_list_join_from_list_1(
-      generic_list_1,
-      values,
-      Core.t_any_from_any.vx_fn_new((value_any) -> {
-        Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
-        Core.Type_any output_1 = value;
-        return output_1;
-      })
-    );
-    return output;
-  }
-
-  /**
-   * @function list_join_from_list 1
-   * Returns a flattened list of processed items from another list
-   * @param  {list-2} values
-   * @param  {any<-any} fn-any<-any
-   * @return {list-1}
-   * (func list-join<-list)
-   */
-  public interface Func_list_join_from_list_1 extends Core.Type_func, Core.Type_replfunc {
-    public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_join_from_list_1(final X generic_list_1, final Y values, final Core.Func_any_from_any fn_any_from_any);
-  }
-
-  public static class Class_list_join_from_list_1 extends Core.Class_base implements Func_list_join_from_list_1 {
-
-    @Override
-    public Core.Type_any vx_new(final Object... vals) {
-      Core.Class_list_join_from_list_1 output = new Core.Class_list_join_from_list_1();
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_copy(final Object... vals) {
-      Core.Class_list_join_from_list_1 output = new Core.Class_list_join_from_list_1();
-      return output;
-    }
-
-    @Override
-    public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
-      return output;
-    }
-
-    @Override
-    public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
-        "vx/core", // pkgname
-        "list-join<-list", // name
-        1, // idx
-        false, // async
-        Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        ) // typedef
-      );
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_empty() {
-      Core.Type_any output = Core.e_list_join_from_list_1;
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_type() {
-      Core.Type_any output = Core.t_list_join_from_list_1;
-      return output;
-    }
-
-    @Override
-    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
-      Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
-      output = Core.f_list_join_from_list_1(generic_list_1, values, fn_any_from_any);
-      return output;
-    }
-
-    @Override
-    public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_join_from_list_1(final X generic_list_1, final Y values, final Core.Func_any_from_any fn_any_from_any) {
-      X output = Core.f_list_join_from_list_1(generic_list_1, values, fn_any_from_any);
-      return output;
-    }
-
-  }
-
-  public static final Core.Func_list_join_from_list_1 e_list_join_from_list_1 = new Core.Class_list_join_from_list_1();
-  public static final Core.Func_list_join_from_list_1 t_list_join_from_list_1 = new Core.Class_list_join_from_list_1();
-
-  public static <X extends Core.Type_list, Y extends Core.Type_list> X f_list_join_from_list_1(final X generic_list_1, final Y values, final Core.Func_any_from_any fn_any_from_any) {
-    X output = Core.f_empty(generic_list_1);
-    List<Core.Type_any> list_value = values.vx_list();
-    List<Core.Type_any> list_result = new ArrayList<>();
-    for (Core.Type_any val : list_value) {
-      Core.Type_any listoflist = fn_any_from_any.vx_any_from_any(
-        generic_list_1, val
-      );
-      if (listoflist instanceof Core.Type_list) {
-        Core.Type_list vallist = (Core.Type_list)listoflist;
-        List<Core.Type_any> listval = vallist.vx_list();
-        list_result.addAll(listval);
-      }
-    }
-    output = Core.f_any_from_any(
-      generic_list_1,
-      generic_list_1.vx_new(list_result)
-    );
     return output;
   }
 
@@ -32877,6 +32734,8 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
     mapfunc.put("case", Core.t_case);
     mapfunc.put("case_1", Core.t_case_1);
     mapfunc.put("compare", Core.t_compare);
+    mapfunc.put("constdef<-any", Core.t_constdef_from_any);
+    mapfunc.put("constname<-any", Core.t_constname_from_any);
     mapfunc.put("contains", Core.t_contains);
     mapfunc.put("contains_1", Core.t_contains_1);
     mapfunc.put("context-main", Core.t_context_main);
@@ -32910,8 +32769,6 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
     mapfunc.put("length_2", Core.t_length_2);
     mapfunc.put("let", Core.t_let);
     mapfunc.put("let-async", Core.t_let_async);
-    mapfunc.put("list-join<-list", Core.t_list_join_from_list);
-    mapfunc.put("list-join<-list_1", Core.t_list_join_from_list_1);
     mapfunc.put("list<-list", Core.t_list_from_list);
     mapfunc.put("list<-list_1", Core.t_list_from_list_1);
     mapfunc.put("list<-list-async", Core.t_list_from_list_async);

@@ -66,6 +66,44 @@ export default class vx_core {
     return output
   }
 
+  // vx_constdef_new(pkgname, name, type)
+  static vx_constdef_new(
+    pkgname,
+    name,
+    type) {
+    let output = {
+      vx_type: vx_core.t_constdef,
+      vx_value: {
+        pkgname: pkgname,
+        name: name,
+        type: type
+      }
+    }
+    return output
+  }
+
+  // vx_constdef<-any(any)
+  static vx_constdef_from_any(
+    value) {
+    let output = vx_core.e_constdef
+    switch (value) {
+    case vx_core.c_false:
+      output = vx_core.vx_constdef_new(
+        "vx/core", "false", vx_core.t_boolean)
+      break
+    case vx_core.c_true:
+      output = vx_core.vx_constdef_new(
+        "vx/core", "true", vx_core.t_boolean)
+      break
+    default:
+      output = value['vx_constdef']
+      if (output == null) {
+        output = vx_core.e_constdef
+      }
+    }
+    return output
+  }
+
   static vx_empty(
     type) {
     const typedef = vx_core.f_typedef_from_type(type)
@@ -1739,7 +1777,7 @@ export default class vx_core {
    * Global variable for project data.
    * {project}
    */
-  static c_global = {vx_type: vx_core.t_project, vx_constdef: {pkgname: 'vx/core', name: 'global'}}
+  static c_global = {vx_type: vx_core.t_project, vx_constdef: {pkgname: 'vx/core', name: 'global', type: vx_core.t_project}}
 
   /**
    * Constant: infinity
@@ -1753,7 +1791,7 @@ export default class vx_core {
    * Active Value Memory Pool
    * {mempool}
    */
-  static c_mempool_active = {vx_type: vx_core.t_mempool, vx_constdef: {pkgname: 'vx/core', name: 'mempool-active'}}
+  static c_mempool_active = {vx_type: vx_core.t_mempool, vx_constdef: {pkgname: 'vx/core', name: 'mempool-active', type: vx_core.t_mempool}}
 
   /**
    * Constant: msg-error
@@ -3519,6 +3557,67 @@ export default class vx_core {
   }
 
   /**
+   * @function constdef_from_any
+   * Returns a constdef, or empty, from any if the value is a constant.
+   * @param  {any} value
+   * @return {constdef}
+   */
+  static t_constdef_from_any = {
+    vx_type: vx_core.t_type
+  }
+  static e_constdef_from_any = {
+    vx_type: vx_core.t_constdef_from_any
+  }
+
+  // (func constdef<-any)
+  static f_constdef_from_any(value) {
+    let output = vx_core.e_constdef
+    output = vx_core.vx_constdef_from_any(value)
+    return output
+  }
+
+  /**
+   * @function constname_from_any
+   * Returns the full name of a constant or blank if not a constant.
+   * @param  {any} value
+   * @return {string}
+   */
+  static t_constname_from_any = {
+    vx_type: vx_core.t_type
+  }
+  static e_constname_from_any = {
+    vx_type: vx_core.t_constname_from_any
+  }
+
+  // (func constname<-any)
+  static f_constname_from_any(value) {
+    let output = vx_core.e_string
+    output = vx_core.f_let(
+      {"any-1": vx_core.t_string},
+      [],
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
+        const cnstdef = vx_core.f_constdef_from_any(value)
+        return vx_core.f_if_2(
+          {"any-1": vx_core.t_string},
+          vx_core.f_then(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_empty_1(cnstdef)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return ""})
+          ),
+          vx_core.f_else(
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_new(
+              {"any-1": vx_core.t_string},
+              vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_constdef}, cnstdef, ":pkgname"),
+              "/",
+              vx_core.f_any_from_struct({"any-1": vx_core.t_string, "struct-2": vx_core.t_constdef}, cnstdef, ":name")
+            )})
+          )
+        )
+      })
+    )
+    return output
+  }
+
+  /**
    * @function contains
    * Returns true if the given list contains the given value.
    * @param  {string} text
@@ -4308,60 +4407,6 @@ export default class vx_core {
     const fn = fn_any_async['vx_value']
     if (fn) {
       output = await fn()
-    }
-    return output
-  }
-
-  /**
-   * @function list_join_from_list
-   * Returns a list by joining the valid values in each value list
-   * @param  {typemap} generic
-   * @param  {generic_list_2} values
-   * @return {list-1}
-   */
-  static t_list_join_from_list = {
-    vx_type: vx_core.t_type
-  }
-  static e_list_join_from_list = {
-    vx_type: vx_core.t_list_join_from_list
-  }
-
-  // (func list-join<-list)
-  static f_list_join_from_list(generic, values) {
-    const generic_list_1 = generic["list-1"]
-    let output = vx_core.f_empty(generic_list_1)
-    output = vx_core.f_list_join_from_list_1(
-      {"any-1": vx_core.t_any, "list-1": generic_list_1},
-      values,
-      vx_core.f_new_from_type(vx_core.t_any_from_any, (value) => value)
-    )
-    return output
-  }
-
-  /**
-   * @function list_join_from_list
-   * Returns a flattened list of processed items from another list
-   * @param  {typemap} generic
-   * @param  {generic_list_2} values
-   * @param  {any_from_any} fn_any_from_any
-   * @return {list-1}
-   */
-  static t_list_join_from_list_1 = {
-    vx_type: vx_core.t_type
-  }
-  static e_list_join_from_list_1 = {
-    vx_type: vx_core.t_list_join_from_list_1
-  }
-
-  // (func list-join<-list)
-  static f_list_join_from_list_1(generic, values, fn_any_from_any) {
-    const generic_list_1 = generic["list-1"]
-    let output = vx_core.f_empty(generic_list_1)
-    const fn = fn_any_from_any['vx_value']
-    if (fn) {
-      const listoflist = values.map(fn)
-      output = listoflist.flat()
-      output['vx_type'] = generic_list_1
     }
     return output
   }
@@ -6064,6 +6109,8 @@ export default class vx_core {
       "case": vx_core.e_case,
       "case_1": vx_core.e_case_1,
       "compare": vx_core.e_compare,
+      "constdef<-any": vx_core.e_constdef_from_any,
+      "constname<-any": vx_core.e_constname_from_any,
       "contains": vx_core.e_contains,
       "contains_1": vx_core.e_contains_1,
       "context-main": vx_core.e_context_main,
@@ -6097,8 +6144,6 @@ export default class vx_core {
       "length_2": vx_core.e_length_2,
       "let": vx_core.e_let,
       "let-async": vx_core.e_let_async,
-      "list-join<-list": vx_core.e_list_join_from_list,
-      "list-join<-list_1": vx_core.e_list_join_from_list_1,
       "list<-list": vx_core.e_list_from_list,
       "list<-list_1": vx_core.e_list_from_list_1,
       "list<-list-async": vx_core.e_list_from_list_async,
@@ -6233,6 +6278,8 @@ export default class vx_core {
       "case": vx_core.t_case,
       "case_1": vx_core.t_case_1,
       "compare": vx_core.t_compare,
+      "constdef<-any": vx_core.t_constdef_from_any,
+      "constname<-any": vx_core.t_constname_from_any,
       "contains": vx_core.t_contains,
       "contains_1": vx_core.t_contains_1,
       "context-main": vx_core.t_context_main,
@@ -6266,8 +6313,6 @@ export default class vx_core {
       "length_2": vx_core.t_length_2,
       "let": vx_core.t_let,
       "let-async": vx_core.t_let_async,
-      "list-join<-list": vx_core.t_list_join_from_list,
-      "list-join<-list_1": vx_core.t_list_join_from_list_1,
       "list<-list": vx_core.t_list_from_list,
       "list<-list_1": vx_core.t_list_from_list_1,
       "list<-list-async": vx_core.t_list_from_list_async,
@@ -9554,6 +9599,42 @@ export default class vx_core {
       fn            : vx_core.f_compare
     }
 
+    // (func constdef<-any)
+    vx_core.t_constdef_from_any['vx_value'] = {
+      name          : "constdef<-any",
+      pkgname       : "vx/core",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_core.f_constdef_from_any
+    }
+
+    // (func constname<-any)
+    vx_core.t_constname_from_any['vx_value'] = {
+      name          : "constname<-any",
+      pkgname       : "vx/core",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_core.f_constname_from_any
+    }
+
     // (func contains)
     vx_core.t_contains['vx_value'] = {
       name          : "contains",
@@ -10146,42 +10227,6 @@ export default class vx_core {
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_let_async
-    }
-
-    // (func list-join<-list)
-    vx_core.t_list_join_from_list['vx_value'] = {
-      name          : "list-join<-list",
-      pkgname       : "vx/core",
-      extends       : ":func",
-      idx           : 0,
-      allowfuncs    : [],
-      disallowfuncs : [],
-      allowtypes    : [],
-      disallowtypes : [],
-      allowvalues   : [],
-      disallowvalues: [],
-      traits        : [vx_core.t_func],
-      properties    : [],
-      proplast      : {},
-      fn            : vx_core.f_list_join_from_list
-    }
-
-    // (func list-join<-list)
-    vx_core.t_list_join_from_list_1['vx_value'] = {
-      name          : "list-join<-list",
-      pkgname       : "vx/core",
-      extends       : ":func",
-      idx           : 1,
-      allowfuncs    : [],
-      disallowfuncs : [],
-      allowtypes    : [],
-      disallowtypes : [],
-      allowvalues   : [],
-      disallowvalues: [],
-      traits        : [vx_core.t_func],
-      properties    : [],
-      proplast      : {},
-      fn            : vx_core.f_list_join_from_list_1
     }
 
     // (func list<-list)

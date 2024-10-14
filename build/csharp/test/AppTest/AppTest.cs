@@ -32,12 +32,6 @@ public class AppTest(Xunit.Abstractions.ITestOutputHelper output) {
   }
 
   [Fact]
-  public void test_vx_data_db() {
-    Vx.Test.Type_testpackage testpackage = TestVx.Data.DbTest.test_package(context);
-    TestLib.run_testpackage_async(testpackage);
-  }
-
-  [Fact]
   public void test_vx_data_table() {
     Vx.Test.Type_testpackage testpackage = TestVx.Data.TableTest.test_package(context);
     TestLib.run_testpackage_async(testpackage);
@@ -180,7 +174,6 @@ public class AppTest(Xunit.Abstractions.ITestOutputHelper output) {
     Vx.Test.Type_testpackagelist testpackagelist = Vx.Core.vx_new(
       Vx.Test.t_testpackagelist,
       TestVx.CoreTest.test_package(context),
-      TestVx.Data.DbTest.test_package(context),
       TestVx.Data.TableTest.test_package(context),
       TestVx.Data.TreeTest.test_package(context),
       TestVx.EventTest.test_package(context),

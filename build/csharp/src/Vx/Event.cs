@@ -701,19 +701,7 @@ public static class Event {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/event", // pkgname
         "event-change", // name
-        Vx.Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Event.t_event
       );
       return output;
     }
@@ -752,19 +740,7 @@ public static class Event {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/event", // pkgname
         "event-click", // name
-        Vx.Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Event.t_event
       );
       return output;
     }
@@ -803,19 +779,7 @@ public static class Event {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/event", // pkgname
         "event-move", // name
-        Vx.Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Event.t_event
       );
       return output;
     }
@@ -854,19 +818,7 @@ public static class Event {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/event", // pkgname
         "event-select", // name
-        Vx.Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Event.t_event
       );
       return output;
     }

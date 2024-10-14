@@ -41,13 +41,16 @@ namespace vx_translation_es {
       }
     }
 
-    vx_core::Type_any Class_translation_es::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_translation_es::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_es::Func_translation_es output = vx_translation_es::e_translation_es;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_translation_es::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_translation_es::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_es::Func_translation_es output = vx_translation_es::e_translation_es;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -71,7 +74,9 @@ namespace vx_translation_es {
       return output;
     }
 
-    vx_core::Type_constdef Class_translation_es::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_translation_es::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_translation_es::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -84,10 +89,21 @@ namespace vx_translation_es {
       return output;
     }
 
-    vx_core::Type_any Class_translation_es::vx_empty() const {return vx_translation_es::e_translation_es;}
-    vx_core::Type_any Class_translation_es::vx_type() const {return vx_translation_es::t_translation_es;}
-    vx_core::Type_msgblock Class_translation_es::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_translation_es::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_translation_es::vx_empty() const {
+      return vx_translation_es::e_translation_es;
+    }
+
+    vx_core::Type_any Class_translation_es::vx_type() const {
+      return vx_translation_es::t_translation_es;
+    }
+
+    vx_core::Type_msgblock Class_translation_es::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_translation_es::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_translation_es::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -133,13 +149,16 @@ namespace vx_translation_es {
       }
     }
 
-    vx_core::Type_any Class_words::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_words::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_es::Func_words output = vx_translation_es::e_words;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_words::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_words::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_es::Func_words output = vx_translation_es::e_words;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -163,7 +182,9 @@ namespace vx_translation_es {
       return output;
     }
 
-    vx_core::Type_constdef Class_words::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_words::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_words::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -176,10 +197,21 @@ namespace vx_translation_es {
       return output;
     }
 
-    vx_core::Type_any Class_words::vx_empty() const {return vx_translation_es::e_words;}
-    vx_core::Type_any Class_words::vx_type() const {return vx_translation_es::t_words;}
-    vx_core::Type_msgblock Class_words::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_words::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_words::vx_empty() const {
+      return vx_translation_es::e_words;
+    }
+
+    vx_core::Type_any Class_words::vx_type() const {
+      return vx_translation_es::t_words;
+    }
+
+    vx_core::Type_msgblock Class_words::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_words::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_words::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;

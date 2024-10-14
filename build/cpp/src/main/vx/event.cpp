@@ -332,7 +332,9 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_constdef Class_event::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_event::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -483,7 +485,9 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_constdef Class_eventlist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_eventlist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -686,7 +690,9 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_constdef Class_eventmap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_eventmap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -695,7 +701,10 @@ namespace vx_event {
   // class Class_event_change {
     // vx_const_new()
     void vx_event::Class_event_change::vx_const_new(vx_event::Const_event_change output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/event", "event-change");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/event",
+        "event-change",
+        vx_event::t_event);
       long irefcount = vx_core::refcount;
       vx_event::Type_event val = vx_core::f_new(
         vx_event::t_event,
@@ -728,7 +737,10 @@ namespace vx_event {
   // class Class_event_click {
     // vx_const_new()
     void vx_event::Class_event_click::vx_const_new(vx_event::Const_event_click output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/event", "event-click");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/event",
+        "event-click",
+        vx_event::t_event);
       long irefcount = vx_core::refcount;
       vx_event::Type_event val = vx_core::f_new(
         vx_event::t_event,
@@ -761,7 +773,10 @@ namespace vx_event {
   // class Class_event_move {
     // vx_const_new()
     void vx_event::Class_event_move::vx_const_new(vx_event::Const_event_move output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/event", "event-move");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/event",
+        "event-move",
+        vx_event::t_event);
       long irefcount = vx_core::refcount;
       vx_event::Type_event val = vx_core::f_new(
         vx_event::t_event,
@@ -794,7 +809,10 @@ namespace vx_event {
   // class Class_event_select {
     // vx_const_new()
     void vx_event::Class_event_select::vx_const_new(vx_event::Const_event_select output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/event", "event-select");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/event",
+        "event-select",
+        vx_event::t_event);
       long irefcount = vx_core::refcount;
       vx_event::Type_event val = vx_core::f_new(
         vx_event::t_event,
@@ -843,13 +861,16 @@ namespace vx_event {
       }
     }
 
-    vx_core::Type_any Class_any_from_from_event::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_any_from_from_event::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_event::Func_any_from_from_event output = vx_event::e_any_from_from_event;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_any_from_from_event::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_any_from_from_event::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_event::Func_any_from_from_event output = vx_event::e_any_from_from_event;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -873,7 +894,9 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_constdef Class_any_from_from_event::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_any_from_from_event::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_any_from_from_event::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -886,10 +909,21 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_any Class_any_from_from_event::vx_empty() const {return vx_event::e_any_from_from_event;}
-    vx_core::Type_any Class_any_from_from_event::vx_type() const {return vx_event::t_any_from_from_event;}
-    vx_core::Type_msgblock Class_any_from_from_event::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_any_from_from_event::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_any_from_from_event::vx_empty() const {
+      return vx_event::e_any_from_from_event;
+    }
+
+    vx_core::Type_any Class_any_from_from_event::vx_type() const {
+      return vx_event::t_any_from_from_event;
+    }
+
+    vx_core::Type_msgblock Class_any_from_from_event::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_any_from_from_event::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_any_from_from_event::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -944,13 +978,16 @@ namespace vx_event {
       }
     }
 
-    vx_core::Type_any Class_event_from_event::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_event_from_event::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_event::Func_event_from_event output = vx_event::e_event_from_event;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_event_from_event::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_event_from_event::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_event::Func_event_from_event output = vx_event::e_event_from_event;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -974,7 +1011,9 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_constdef Class_event_from_event::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_event_from_event::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_event_from_event::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -987,10 +1026,21 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_any Class_event_from_event::vx_empty() const {return vx_event::e_event_from_event;}
-    vx_core::Type_any Class_event_from_event::vx_type() const {return vx_event::t_event_from_event;}
-    vx_core::Type_msgblock Class_event_from_event::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_event_from_event::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_event_from_event::vx_empty() const {
+      return vx_event::e_event_from_event;
+    }
+
+    vx_core::Type_any Class_event_from_event::vx_type() const {
+      return vx_event::t_event_from_event;
+    }
+
+    vx_core::Type_msgblock Class_event_from_event::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_event_from_event::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_context Class_event_from_event::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context::IFn fn) const {
       return vx_core::e_any_from_any_context;
@@ -1049,13 +1099,16 @@ namespace vx_event {
       }
     }
 
-    vx_core::Type_any Class_event_from_event_async::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_event_from_event_async::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_event::Func_event_from_event_async output = vx_event::e_event_from_event_async;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_event_from_event_async::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_event_from_event_async::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_event::Func_event_from_event_async output = vx_event::e_event_from_event_async;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1079,7 +1132,9 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_constdef Class_event_from_event_async::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_event_from_event_async::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_event_from_event_async::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1092,10 +1147,21 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_any Class_event_from_event_async::vx_empty() const {return vx_event::e_event_from_event_async;}
-    vx_core::Type_any Class_event_from_event_async::vx_type() const {return vx_event::t_event_from_event_async;}
-    vx_core::Type_msgblock Class_event_from_event_async::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_event_from_event_async::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_event_from_event_async::vx_empty() const {
+      return vx_event::e_event_from_event_async;
+    }
+
+    vx_core::Type_any Class_event_from_event_async::vx_type() const {
+      return vx_event::t_event_from_event_async;
+    }
+
+    vx_core::Type_msgblock Class_event_from_event_async::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_event_from_event_async::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_context_async Class_event_from_event_async::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context_async::IFn fn) const {
       return vx_core::e_any_from_any_context_async;
@@ -1158,13 +1224,16 @@ namespace vx_event {
       }
     }
 
-    vx_core::Type_any Class_eventmap_from_eventlist::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_eventmap_from_eventlist::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_event::Func_eventmap_from_eventlist output = vx_event::e_eventmap_from_eventlist;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_eventmap_from_eventlist::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_eventmap_from_eventlist::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_event::Func_eventmap_from_eventlist output = vx_event::e_eventmap_from_eventlist;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1188,7 +1257,9 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_constdef Class_eventmap_from_eventlist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_eventmap_from_eventlist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_eventmap_from_eventlist::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1201,10 +1272,21 @@ namespace vx_event {
       return output;
     }
 
-    vx_core::Type_any Class_eventmap_from_eventlist::vx_empty() const {return vx_event::e_eventmap_from_eventlist;}
-    vx_core::Type_any Class_eventmap_from_eventlist::vx_type() const {return vx_event::t_eventmap_from_eventlist;}
-    vx_core::Type_msgblock Class_eventmap_from_eventlist::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_eventmap_from_eventlist::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_eventmap_from_eventlist::vx_empty() const {
+      return vx_event::e_eventmap_from_eventlist;
+    }
+
+    vx_core::Type_any Class_eventmap_from_eventlist::vx_type() const {
+      return vx_event::t_eventmap_from_eventlist;
+    }
+
+    vx_core::Type_msgblock Class_eventmap_from_eventlist::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_eventmap_from_eventlist::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_eventmap_from_eventlist::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;

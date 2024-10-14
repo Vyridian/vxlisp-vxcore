@@ -15,47 +15,47 @@ export default class vx_ui_html_uihtml {
    * Html App Renderer
    * {layout}
    */
-  static c_layout_app_html = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layout-app-html'}}
+  static c_layout_app_html = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layout-app-html', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-else-html
    * Html Default Renderer
    * {layout}
    */
-  static c_layout_else_html = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layout-else-html'}}
+  static c_layout_else_html = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layout-else-html', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-image-html
    * Html Image Renderer
    * {layout}
    */
-  static c_layout_image_html = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layout-image-html'}}
+  static c_layout_image_html = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layout-image-html', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-label-html
    * Html Label Renderer
    * {layout}
    */
-  static c_layout_label_html = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layout-label-html'}}
+  static c_layout_label_html = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layout-label-html', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layoutenginehtml
    * Html layout engine used to render html from ui and stylesheet
    * {layoutengine}
    */
-  static c_layoutenginehtml = {vx_type: vx_ui_ui.t_layoutengine, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layoutenginehtml'}}
+  static c_layoutenginehtml = {vx_type: vx_ui_ui.t_layoutengine, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'layoutenginehtml', type: vx_ui_ui.t_layoutengine}}
 
   /**
    * Constant: style-hidden
    * {style}
    */
-  static c_style_hidden = {vx_type: vx_web_html.t_style, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'style-hidden'}}
+  static c_style_hidden = {vx_type: vx_web_html.t_style, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'style-hidden', type: vx_web_html.t_style}}
 
   /**
    * Constant: style-selected
    * {style}
    */
-  static c_style_selected = {vx_type: vx_web_html.t_style, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'style-selected'}}
+  static c_style_selected = {vx_type: vx_web_html.t_style, vx_constdef: {pkgname: 'vx/ui/html/uihtml', name: 'style-selected', type: vx_web_html.t_style}}
 
   /**
    * @function boolean_layoutremove_html

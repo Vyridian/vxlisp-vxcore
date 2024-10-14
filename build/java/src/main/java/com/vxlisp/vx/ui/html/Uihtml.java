@@ -21,19 +21,7 @@ public final class Uihtml {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-app-html", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -68,19 +56,7 @@ public final class Uihtml {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-else-html", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -115,19 +91,7 @@ public final class Uihtml {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-image-html", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -162,19 +126,7 @@ public final class Uihtml {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-label-html", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -209,19 +161,7 @@ public final class Uihtml {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layoutenginehtml", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layoutengine", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layoutengine
       );
       return output;
     }
@@ -283,19 +223,7 @@ public final class Uihtml {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style-hidden", // name
-        Core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Html.t_style
       );
       return output;
     }
@@ -330,19 +258,7 @@ public final class Uihtml {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style-selected", // name
-        Core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Html.t_style
       );
       return output;
     }

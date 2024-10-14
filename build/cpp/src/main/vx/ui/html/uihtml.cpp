@@ -14,7 +14,10 @@ namespace vx_ui_html_uihtml {
   // class Class_layout_app_html {
     // vx_const_new()
     void vx_ui_html_uihtml::Class_layout_app_html::vx_const_new(vx_ui_html_uihtml::Const_layout_app_html output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/ui/html/uihtml", "layout-app-html");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/html/uihtml",
+        "layout-app-html",
+        vx_ui_ui::t_layout);
       long irefcount = vx_core::refcount;
       vx_ui_ui::Type_layout val = vx_core::f_copy(
         vx_ui_ui::t_layout,
@@ -40,7 +43,10 @@ namespace vx_ui_html_uihtml {
   // class Class_layout_else_html {
     // vx_const_new()
     void vx_ui_html_uihtml::Class_layout_else_html::vx_const_new(vx_ui_html_uihtml::Const_layout_else_html output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/ui/html/uihtml", "layout-else-html");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/html/uihtml",
+        "layout-else-html",
+        vx_ui_ui::t_layout);
       long irefcount = vx_core::refcount;
       vx_ui_ui::Type_layout val = vx_core::f_copy(
         vx_ui_ui::t_layout,
@@ -66,7 +72,10 @@ namespace vx_ui_html_uihtml {
   // class Class_layout_image_html {
     // vx_const_new()
     void vx_ui_html_uihtml::Class_layout_image_html::vx_const_new(vx_ui_html_uihtml::Const_layout_image_html output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/ui/html/uihtml", "layout-image-html");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/html/uihtml",
+        "layout-image-html",
+        vx_ui_ui::t_layout);
       long irefcount = vx_core::refcount;
       vx_ui_ui::Type_layout val = vx_core::f_copy(
         vx_ui_ui::t_layout,
@@ -92,7 +101,10 @@ namespace vx_ui_html_uihtml {
   // class Class_layout_label_html {
     // vx_const_new()
     void vx_ui_html_uihtml::Class_layout_label_html::vx_const_new(vx_ui_html_uihtml::Const_layout_label_html output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/ui/html/uihtml", "layout-label-html");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/html/uihtml",
+        "layout-label-html",
+        vx_ui_ui::t_layout);
       long irefcount = vx_core::refcount;
       vx_ui_ui::Type_layout val = vx_core::f_copy(
         vx_ui_ui::t_layout,
@@ -118,7 +130,10 @@ namespace vx_ui_html_uihtml {
   // class Class_layoutenginehtml {
     // vx_const_new()
     void vx_ui_html_uihtml::Class_layoutenginehtml::vx_const_new(vx_ui_html_uihtml::Const_layoutenginehtml output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/ui/html/uihtml", "layoutenginehtml");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/html/uihtml",
+        "layoutenginehtml",
+        vx_ui_ui::t_layoutengine);
       long irefcount = vx_core::refcount;
       vx_ui_ui::Type_layoutengine val = vx_core::f_new(
         vx_ui_ui::t_layoutengine,
@@ -176,7 +191,10 @@ namespace vx_ui_html_uihtml {
   // class Class_style_hidden {
     // vx_const_new()
     void vx_ui_html_uihtml::Class_style_hidden::vx_const_new(vx_ui_html_uihtml::Const_style_hidden output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/ui/html/uihtml", "style-hidden");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/html/uihtml",
+        "style-hidden",
+        vx_web_html::t_style);
       long irefcount = vx_core::refcount;
       vx_web_html::Type_style val = vx_core::f_new(
         vx_web_html::t_style,
@@ -203,7 +221,10 @@ namespace vx_ui_html_uihtml {
   // class Class_style_selected {
     // vx_const_new()
     void vx_ui_html_uihtml::Class_style_selected::vx_const_new(vx_ui_html_uihtml::Const_style_selected output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/ui/html/uihtml", "style-selected");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/html/uihtml",
+        "style-selected",
+        vx_web_html::t_style);
       long irefcount = vx_core::refcount;
       vx_web_html::Type_style val = vx_core::f_new(
         vx_web_html::t_style,
@@ -265,13 +286,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_layoutremove_html::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_layoutremove_html::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_layoutremove_html output = vx_ui_html_uihtml::e_boolean_layoutremove_html;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_layoutremove_html::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_layoutremove_html::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_layoutremove_html output = vx_ui_html_uihtml::e_boolean_layoutremove_html;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -295,7 +319,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_layoutremove_html::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_layoutremove_html::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_layoutremove_html::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -308,10 +334,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_layoutremove_html::vx_empty() const {return vx_ui_html_uihtml::e_boolean_layoutremove_html;}
-    vx_core::Type_any Class_boolean_layoutremove_html::vx_type() const {return vx_ui_html_uihtml::t_boolean_layoutremove_html;}
-    vx_core::Type_msgblock Class_boolean_layoutremove_html::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_layoutremove_html::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_layoutremove_html::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_layoutremove_html;
+    }
+
+    vx_core::Type_any Class_boolean_layoutremove_html::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_layoutremove_html;
+    }
+
+    vx_core::Type_msgblock Class_boolean_layoutremove_html::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_layoutremove_html::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_boolean_layoutremove_html::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -365,13 +402,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_layoutselected_html::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_layoutselected_html::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_layoutselected_html output = vx_ui_html_uihtml::e_boolean_layoutselected_html;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_layoutselected_html::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_layoutselected_html::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_layoutselected_html output = vx_ui_html_uihtml::e_boolean_layoutselected_html;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -395,7 +435,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_layoutselected_html::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_layoutselected_html::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_layoutselected_html::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -408,10 +450,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_layoutselected_html::vx_empty() const {return vx_ui_html_uihtml::e_boolean_layoutselected_html;}
-    vx_core::Type_any Class_boolean_layoutselected_html::vx_type() const {return vx_ui_html_uihtml::t_boolean_layoutselected_html;}
-    vx_core::Type_msgblock Class_boolean_layoutselected_html::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_layoutselected_html::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_layoutselected_html::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_layoutselected_html;
+    }
+
+    vx_core::Type_any Class_boolean_layoutselected_html::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_layoutselected_html;
+    }
+
+    vx_core::Type_msgblock Class_boolean_layoutselected_html::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_layoutselected_html::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_boolean_layoutselected_html::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -465,13 +518,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_layoutvisible_html::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_layoutvisible_html::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_layoutvisible_html output = vx_ui_html_uihtml::e_boolean_layoutvisible_html;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_layoutvisible_html::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_layoutvisible_html::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_layoutvisible_html output = vx_ui_html_uihtml::e_boolean_layoutvisible_html;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -495,7 +551,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_layoutvisible_html::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_layoutvisible_html::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_layoutvisible_html::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -508,10 +566,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_layoutvisible_html::vx_empty() const {return vx_ui_html_uihtml::e_boolean_layoutvisible_html;}
-    vx_core::Type_any Class_boolean_layoutvisible_html::vx_type() const {return vx_ui_html_uihtml::t_boolean_layoutvisible_html;}
-    vx_core::Type_msgblock Class_boolean_layoutvisible_html::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_layoutvisible_html::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_layoutvisible_html::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_layoutvisible_html;
+    }
+
+    vx_core::Type_any Class_boolean_layoutvisible_html::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_layoutvisible_html;
+    }
+
+    vx_core::Type_msgblock Class_boolean_layoutvisible_html::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_layoutvisible_html::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_boolean_layoutvisible_html::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -580,13 +649,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_print_html::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_print_html::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_print_html output = vx_ui_html_uihtml::e_boolean_print_html;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_print_html::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_print_html::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_print_html output = vx_ui_html_uihtml::e_boolean_print_html;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -610,7 +682,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_print_html::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_print_html::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_print_html::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -623,10 +697,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_print_html::vx_empty() const {return vx_ui_html_uihtml::e_boolean_print_html;}
-    vx_core::Type_any Class_boolean_print_html::vx_type() const {return vx_ui_html_uihtml::t_boolean_print_html;}
-    vx_core::Type_msgblock Class_boolean_print_html::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_print_html::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_print_html::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_print_html;
+    }
+
+    vx_core::Type_any Class_boolean_print_html::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_print_html;
+    }
+
+    vx_core::Type_msgblock Class_boolean_print_html::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_print_html::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_context Class_boolean_print_html::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context::IFn fn) const {
       return vx_core::e_any_from_any_context;
@@ -692,13 +777,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_writeclass_from_ui::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writeclass_from_ui::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writeclass_from_ui output = vx_ui_html_uihtml::e_boolean_writeclass_from_ui;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writeclass_from_ui::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writeclass_from_ui::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writeclass_from_ui output = vx_ui_html_uihtml::e_boolean_writeclass_from_ui;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -722,7 +810,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_writeclass_from_ui::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_writeclass_from_ui::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_writeclass_from_ui::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -735,10 +825,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writeclass_from_ui::vx_empty() const {return vx_ui_html_uihtml::e_boolean_writeclass_from_ui;}
-    vx_core::Type_any Class_boolean_writeclass_from_ui::vx_type() const {return vx_ui_html_uihtml::t_boolean_writeclass_from_ui;}
-    vx_core::Type_msgblock Class_boolean_writeclass_from_ui::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_writeclass_from_ui::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_writeclass_from_ui::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_writeclass_from_ui;
+    }
+
+    vx_core::Type_any Class_boolean_writeclass_from_ui::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_writeclass_from_ui;
+    }
+
+    vx_core::Type_msgblock Class_boolean_writeclass_from_ui::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_writeclass_from_ui::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_boolean_writeclass_from_ui::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -805,13 +906,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_writeeventsall_from_ui::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writeeventsall_from_ui::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writeeventsall_from_ui output = vx_ui_html_uihtml::e_boolean_writeeventsall_from_ui;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writeeventsall_from_ui::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writeeventsall_from_ui::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writeeventsall_from_ui output = vx_ui_html_uihtml::e_boolean_writeeventsall_from_ui;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -835,7 +939,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_writeeventsall_from_ui::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_writeeventsall_from_ui::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_writeeventsall_from_ui::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -848,10 +954,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writeeventsall_from_ui::vx_empty() const {return vx_ui_html_uihtml::e_boolean_writeeventsall_from_ui;}
-    vx_core::Type_any Class_boolean_writeeventsall_from_ui::vx_type() const {return vx_ui_html_uihtml::t_boolean_writeeventsall_from_ui;}
-    vx_core::Type_msgblock Class_boolean_writeeventsall_from_ui::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_writeeventsall_from_ui::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_writeeventsall_from_ui::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_writeeventsall_from_ui;
+    }
+
+    vx_core::Type_any Class_boolean_writeeventsall_from_ui::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_writeeventsall_from_ui;
+    }
+
+    vx_core::Type_msgblock Class_boolean_writeeventsall_from_ui::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_writeeventsall_from_ui::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_boolean_writeeventsall_from_ui::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -924,13 +1041,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_writeeventsall_from_uimap::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writeeventsall_from_uimap::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writeeventsall_from_uimap output = vx_ui_html_uihtml::e_boolean_writeeventsall_from_uimap;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writeeventsall_from_uimap::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writeeventsall_from_uimap::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writeeventsall_from_uimap output = vx_ui_html_uihtml::e_boolean_writeeventsall_from_uimap;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -954,7 +1074,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_writeeventsall_from_uimap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_writeeventsall_from_uimap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_writeeventsall_from_uimap::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -967,10 +1089,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writeeventsall_from_uimap::vx_empty() const {return vx_ui_html_uihtml::e_boolean_writeeventsall_from_uimap;}
-    vx_core::Type_any Class_boolean_writeeventsall_from_uimap::vx_type() const {return vx_ui_html_uihtml::t_boolean_writeeventsall_from_uimap;}
-    vx_core::Type_msgblock Class_boolean_writeeventsall_from_uimap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_writeeventsall_from_uimap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_writeeventsall_from_uimap::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_writeeventsall_from_uimap;
+    }
+
+    vx_core::Type_any Class_boolean_writeeventsall_from_uimap::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_writeeventsall_from_uimap;
+    }
+
+    vx_core::Type_msgblock Class_boolean_writeeventsall_from_uimap::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_writeeventsall_from_uimap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_boolean_writeeventsall_from_uimap::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1024,13 +1157,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_writeselected_from_ui::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writeselected_from_ui::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writeselected_from_ui output = vx_ui_html_uihtml::e_boolean_writeselected_from_ui;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writeselected_from_ui::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writeselected_from_ui::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writeselected_from_ui output = vx_ui_html_uihtml::e_boolean_writeselected_from_ui;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1054,7 +1190,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_writeselected_from_ui::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_writeselected_from_ui::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_writeselected_from_ui::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1067,10 +1205,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writeselected_from_ui::vx_empty() const {return vx_ui_html_uihtml::e_boolean_writeselected_from_ui;}
-    vx_core::Type_any Class_boolean_writeselected_from_ui::vx_type() const {return vx_ui_html_uihtml::t_boolean_writeselected_from_ui;}
-    vx_core::Type_msgblock Class_boolean_writeselected_from_ui::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_writeselected_from_ui::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_writeselected_from_ui::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_writeselected_from_ui;
+    }
+
+    vx_core::Type_any Class_boolean_writeselected_from_ui::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_writeselected_from_ui;
+    }
+
+    vx_core::Type_msgblock Class_boolean_writeselected_from_ui::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_writeselected_from_ui::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_boolean_writeselected_from_ui::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1124,13 +1273,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_boolean_writevisible_from_ui::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writevisible_from_ui::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writevisible_from_ui output = vx_ui_html_uihtml::e_boolean_writevisible_from_ui;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writevisible_from_ui::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_boolean_writevisible_from_ui::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_boolean_writevisible_from_ui output = vx_ui_html_uihtml::e_boolean_writevisible_from_ui;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1154,7 +1306,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_boolean_writevisible_from_ui::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_boolean_writevisible_from_ui::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_boolean_writevisible_from_ui::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1167,10 +1321,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_boolean_writevisible_from_ui::vx_empty() const {return vx_ui_html_uihtml::e_boolean_writevisible_from_ui;}
-    vx_core::Type_any Class_boolean_writevisible_from_ui::vx_type() const {return vx_ui_html_uihtml::t_boolean_writevisible_from_ui;}
-    vx_core::Type_msgblock Class_boolean_writevisible_from_ui::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_boolean_writevisible_from_ui::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_boolean_writevisible_from_ui::vx_empty() const {
+      return vx_ui_html_uihtml::e_boolean_writevisible_from_ui;
+    }
+
+    vx_core::Type_any Class_boolean_writevisible_from_ui::vx_type() const {
+      return vx_ui_html_uihtml::t_boolean_writevisible_from_ui;
+    }
+
+    vx_core::Type_msgblock Class_boolean_writevisible_from_ui::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_boolean_writevisible_from_ui::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_boolean_writevisible_from_ui::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1220,13 +1385,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_context_write::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_context_write::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_context_write output = vx_ui_html_uihtml::e_context_write;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_context_write::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_context_write::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_context_write output = vx_ui_html_uihtml::e_context_write;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1250,7 +1418,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_context_write::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_context_write::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_context_write::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1263,10 +1433,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_context_write::vx_empty() const {return vx_ui_html_uihtml::e_context_write;}
-    vx_core::Type_any Class_context_write::vx_type() const {return vx_ui_html_uihtml::t_context_write;}
-    vx_core::Type_msgblock Class_context_write::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_context_write::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_context_write::vx_empty() const {
+      return vx_ui_html_uihtml::e_context_write;
+    }
+
+    vx_core::Type_any Class_context_write::vx_type() const {
+      return vx_ui_html_uihtml::t_context_write;
+    }
+
+    vx_core::Type_msgblock Class_context_write::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_context_write::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_context_write::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -1337,13 +1518,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_divchild_from_ui::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_divchild_from_ui::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_divchild_from_ui output = vx_ui_html_uihtml::e_divchild_from_ui;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_divchild_from_ui::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_divchild_from_ui::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_divchild_from_ui output = vx_ui_html_uihtml::e_divchild_from_ui;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1367,7 +1551,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_divchild_from_ui::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_divchild_from_ui::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_divchild_from_ui::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1380,10 +1566,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_divchild_from_ui::vx_empty() const {return vx_ui_html_uihtml::e_divchild_from_ui;}
-    vx_core::Type_any Class_divchild_from_ui::vx_type() const {return vx_ui_html_uihtml::t_divchild_from_ui;}
-    vx_core::Type_msgblock Class_divchild_from_ui::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_divchild_from_ui::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_divchild_from_ui::vx_empty() const {
+      return vx_ui_html_uihtml::e_divchild_from_ui;
+    }
+
+    vx_core::Type_any Class_divchild_from_ui::vx_type() const {
+      return vx_ui_html_uihtml::t_divchild_from_ui;
+    }
+
+    vx_core::Type_msgblock Class_divchild_from_ui::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_divchild_from_ui::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_divchild_from_ui::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1462,13 +1659,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap_1::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_divchildlist_from_uimap_1::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_divchildlist_from_uimap_1 output = vx_ui_html_uihtml::e_divchildlist_from_uimap_1;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap_1::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_divchildlist_from_uimap_1::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_divchildlist_from_uimap_1 output = vx_ui_html_uihtml::e_divchildlist_from_uimap_1;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1492,7 +1692,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_divchildlist_from_uimap_1::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_divchildlist_from_uimap_1::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_divchildlist_from_uimap_1::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1505,10 +1707,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap_1::vx_empty() const {return vx_ui_html_uihtml::e_divchildlist_from_uimap_1;}
-    vx_core::Type_any Class_divchildlist_from_uimap_1::vx_type() const {return vx_ui_html_uihtml::t_divchildlist_from_uimap_1;}
-    vx_core::Type_msgblock Class_divchildlist_from_uimap_1::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_divchildlist_from_uimap_1::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_divchildlist_from_uimap_1::vx_empty() const {
+      return vx_ui_html_uihtml::e_divchildlist_from_uimap_1;
+    }
+
+    vx_core::Type_any Class_divchildlist_from_uimap_1::vx_type() const {
+      return vx_ui_html_uihtml::t_divchildlist_from_uimap_1;
+    }
+
+    vx_core::Type_msgblock Class_divchildlist_from_uimap_1::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_divchildlist_from_uimap_1::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_divchildlist_from_uimap_1::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1587,13 +1800,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_divchildlist_from_uimap::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_divchildlist_from_uimap output = vx_ui_html_uihtml::e_divchildlist_from_uimap;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_divchildlist_from_uimap::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_divchildlist_from_uimap output = vx_ui_html_uihtml::e_divchildlist_from_uimap;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1617,7 +1833,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_divchildlist_from_uimap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_divchildlist_from_uimap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_divchildlist_from_uimap::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1630,10 +1848,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap::vx_empty() const {return vx_ui_html_uihtml::e_divchildlist_from_uimap;}
-    vx_core::Type_any Class_divchildlist_from_uimap::vx_type() const {return vx_ui_html_uihtml::t_divchildlist_from_uimap;}
-    vx_core::Type_msgblock Class_divchildlist_from_uimap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_divchildlist_from_uimap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_divchildlist_from_uimap::vx_empty() const {
+      return vx_ui_html_uihtml::e_divchildlist_from_uimap;
+    }
+
+    vx_core::Type_any Class_divchildlist_from_uimap::vx_type() const {
+      return vx_ui_html_uihtml::t_divchildlist_from_uimap;
+    }
+
+    vx_core::Type_msgblock Class_divchildlist_from_uimap::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_divchildlist_from_uimap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_divchildlist_from_uimap::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1708,13 +1937,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_divchildlist_from_uimap_origmap_parent output = vx_ui_html_uihtml::e_divchildlist_from_uimap_origmap_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_divchildlist_from_uimap_origmap_parent output = vx_ui_html_uihtml::e_divchildlist_from_uimap_origmap_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1738,7 +1970,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_divchildlist_from_uimap_origmap_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_divchildlist_from_uimap_origmap_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_divchildlist_from_uimap_origmap_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1751,10 +1985,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_empty() const {return vx_ui_html_uihtml::e_divchildlist_from_uimap_origmap_parent;}
-    vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_type() const {return vx_ui_html_uihtml::t_divchildlist_from_uimap_origmap_parent;}
-    vx_core::Type_msgblock Class_divchildlist_from_uimap_origmap_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_divchildlist_from_uimap_origmap_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_divchildlist_from_uimap_origmap_parent;
+    }
+
+    vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_divchildlist_from_uimap_origmap_parent;
+    }
+
+    vx_core::Type_msgblock Class_divchildlist_from_uimap_origmap_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_divchildlist_from_uimap_origmap_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_divchildlist_from_uimap_origmap_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -1822,13 +2067,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_app_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_app_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_app_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_app_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1852,7 +2100,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_node_app_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_node_app_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_node_app_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1865,10 +2115,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_node_app_from_ui_orig_parent;}
-    vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_node_app_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_node_app_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_node_app_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_node_app_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_node_app_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_node_app_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_node_app_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_node_app_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -1946,13 +2207,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_default_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_default_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_default_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_default_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1976,7 +2240,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_node_default_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_node_default_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_node_default_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1989,10 +2255,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_node_default_from_ui_orig_parent;}
-    vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_node_default_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_node_default_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_node_default_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_node_default_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_node_default_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_node_default_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_node_default_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_node_default_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -2070,13 +2347,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_image_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_image_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_image_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_image_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2100,7 +2380,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_node_image_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_node_image_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_node_image_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2113,10 +2395,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_node_image_from_ui_orig_parent;}
-    vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_node_image_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_node_image_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_node_image_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_node_image_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_node_image_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_node_image_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_node_image_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_node_image_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -2221,13 +2514,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_label_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_label_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_label_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_label_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2251,7 +2547,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_node_label_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_node_label_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_node_label_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2264,10 +2562,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_node_label_from_ui_orig_parent;}
-    vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_node_label_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_node_label_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_node_label_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_node_label_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_node_label_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_node_label_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_node_label_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_node_label_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -2327,13 +2636,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_layout_from_node_ui_parent output = vx_ui_html_uihtml::e_node_layout_from_node_ui_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_layout_from_node_ui_parent output = vx_ui_html_uihtml::e_node_layout_from_node_ui_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2357,7 +2669,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_node_layout_from_node_ui_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_node_layout_from_node_ui_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_node_layout_from_node_ui_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2370,10 +2684,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_empty() const {return vx_ui_html_uihtml::e_node_layout_from_node_ui_parent;}
-    vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_type() const {return vx_ui_html_uihtml::t_node_layout_from_node_ui_parent;}
-    vx_core::Type_msgblock Class_node_layout_from_node_ui_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_node_layout_from_node_ui_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_node_layout_from_node_ui_parent;
+    }
+
+    vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_node_layout_from_node_ui_parent;
+    }
+
+    vx_core::Type_msgblock Class_node_layout_from_node_ui_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_node_layout_from_node_ui_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_node_layout_from_node_ui_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -2454,13 +2779,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_node_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_node_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_node_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_node_from_ui_orig_parent output = vx_ui_html_uihtml::e_node_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2484,7 +2812,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_node_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_node_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_node_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2497,10 +2827,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_node_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_node_from_ui_orig_parent;}
-    vx_core::Type_any Class_node_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_node_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_node_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_node_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_node_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_node_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_node_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_node_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_node_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_node_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_node_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -2553,13 +2894,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_string_class_from_ui::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_class_from_ui::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_string_class_from_ui output = vx_ui_html_uihtml::e_string_class_from_ui;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_string_class_from_ui::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_class_from_ui::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_string_class_from_ui output = vx_ui_html_uihtml::e_string_class_from_ui;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2583,7 +2927,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_string_class_from_ui::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_string_class_from_ui::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_string_class_from_ui::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2596,10 +2942,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_string_class_from_ui::vx_empty() const {return vx_ui_html_uihtml::e_string_class_from_ui;}
-    vx_core::Type_any Class_string_class_from_ui::vx_type() const {return vx_ui_html_uihtml::t_string_class_from_ui;}
-    vx_core::Type_msgblock Class_string_class_from_ui::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_string_class_from_ui::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_string_class_from_ui::vx_empty() const {
+      return vx_ui_html_uihtml::e_string_class_from_ui;
+    }
+
+    vx_core::Type_any Class_string_class_from_ui::vx_type() const {
+      return vx_ui_html_uihtml::t_string_class_from_ui;
+    }
+
+    vx_core::Type_msgblock Class_string_class_from_ui::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_string_class_from_ui::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_string_class_from_ui::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -2711,13 +3068,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_string_style_from_font::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_style_from_font::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_string_style_from_font output = vx_ui_html_uihtml::e_string_style_from_font;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_string_style_from_font::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_style_from_font::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_string_style_from_font output = vx_ui_html_uihtml::e_string_style_from_font;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2741,7 +3101,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_string_style_from_font::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_string_style_from_font::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_string_style_from_font::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2754,10 +3116,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_string_style_from_font::vx_empty() const {return vx_ui_html_uihtml::e_string_style_from_font;}
-    vx_core::Type_any Class_string_style_from_font::vx_type() const {return vx_ui_html_uihtml::t_string_style_from_font;}
-    vx_core::Type_msgblock Class_string_style_from_font::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_string_style_from_font::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_string_style_from_font::vx_empty() const {
+      return vx_ui_html_uihtml::e_string_style_from_font;
+    }
+
+    vx_core::Type_any Class_string_style_from_font::vx_type() const {
+      return vx_ui_html_uihtml::t_string_style_from_font;
+    }
+
+    vx_core::Type_msgblock Class_string_style_from_font::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_string_style_from_font::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_string_style_from_font::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -2857,13 +3230,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_string_style_from_image::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_style_from_image::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_string_style_from_image output = vx_ui_html_uihtml::e_string_style_from_image;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_string_style_from_image::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_style_from_image::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_string_style_from_image output = vx_ui_html_uihtml::e_string_style_from_image;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2887,7 +3263,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_string_style_from_image::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_string_style_from_image::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_string_style_from_image::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2900,10 +3278,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_string_style_from_image::vx_empty() const {return vx_ui_html_uihtml::e_string_style_from_image;}
-    vx_core::Type_any Class_string_style_from_image::vx_type() const {return vx_ui_html_uihtml::t_string_style_from_image;}
-    vx_core::Type_msgblock Class_string_style_from_image::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_string_style_from_image::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_string_style_from_image::vx_empty() const {
+      return vx_ui_html_uihtml::e_string_style_from_image;
+    }
+
+    vx_core::Type_any Class_string_style_from_image::vx_type() const {
+      return vx_ui_html_uihtml::t_string_style_from_image;
+    }
+
+    vx_core::Type_msgblock Class_string_style_from_image::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_string_style_from_image::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_string_style_from_image::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -3015,13 +3404,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_string_stylename_from_name_styletype::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_stylename_from_name_styletype::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_string_stylename_from_name_styletype output = vx_ui_html_uihtml::e_string_stylename_from_name_styletype;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_string_stylename_from_name_styletype::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_stylename_from_name_styletype::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_string_stylename_from_name_styletype output = vx_ui_html_uihtml::e_string_stylename_from_name_styletype;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -3045,7 +3437,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_string_stylename_from_name_styletype::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_string_stylename_from_name_styletype::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_string_stylename_from_name_styletype::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -3058,10 +3452,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_string_stylename_from_name_styletype::vx_empty() const {return vx_ui_html_uihtml::e_string_stylename_from_name_styletype;}
-    vx_core::Type_any Class_string_stylename_from_name_styletype::vx_type() const {return vx_ui_html_uihtml::t_string_stylename_from_name_styletype;}
-    vx_core::Type_msgblock Class_string_stylename_from_name_styletype::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_string_stylename_from_name_styletype::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_string_stylename_from_name_styletype::vx_empty() const {
+      return vx_ui_html_uihtml::e_string_stylename_from_name_styletype;
+    }
+
+    vx_core::Type_any Class_string_stylename_from_name_styletype::vx_type() const {
+      return vx_ui_html_uihtml::t_string_stylename_from_name_styletype;
+    }
+
+    vx_core::Type_msgblock Class_string_stylename_from_name_styletype::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_string_stylename_from_name_styletype::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_string_stylename_from_name_styletype::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -3182,13 +3587,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_style_from_fontface::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_style_from_fontface::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_style_from_fontface output = vx_ui_html_uihtml::e_style_from_fontface;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_style_from_fontface::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_style_from_fontface::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_style_from_fontface output = vx_ui_html_uihtml::e_style_from_fontface;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -3212,7 +3620,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_style_from_fontface::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_style_from_fontface::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_style_from_fontface::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -3225,10 +3635,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_style_from_fontface::vx_empty() const {return vx_ui_html_uihtml::e_style_from_fontface;}
-    vx_core::Type_any Class_style_from_fontface::vx_type() const {return vx_ui_html_uihtml::t_style_from_fontface;}
-    vx_core::Type_msgblock Class_style_from_fontface::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_style_from_fontface::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_style_from_fontface::vx_empty() const {
+      return vx_ui_html_uihtml::e_style_from_fontface;
+    }
+
+    vx_core::Type_any Class_style_from_fontface::vx_type() const {
+      return vx_ui_html_uihtml::t_style_from_fontface;
+    }
+
+    vx_core::Type_msgblock Class_style_from_fontface::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_style_from_fontface::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_style_from_fontface::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -4332,13 +4753,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_style_from_style::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_style_from_style::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_style_from_style output = vx_ui_html_uihtml::e_style_from_style;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_style_from_style::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_style_from_style::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_style_from_style output = vx_ui_html_uihtml::e_style_from_style;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -4362,7 +4786,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_style_from_style::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_style_from_style::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_style_from_style::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -4375,10 +4801,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_style_from_style::vx_empty() const {return vx_ui_html_uihtml::e_style_from_style;}
-    vx_core::Type_any Class_style_from_style::vx_type() const {return vx_ui_html_uihtml::t_style_from_style;}
-    vx_core::Type_msgblock Class_style_from_style::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_style_from_style::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_style_from_style::vx_empty() const {
+      return vx_ui_html_uihtml::e_style_from_style;
+    }
+
+    vx_core::Type_any Class_style_from_style::vx_type() const {
+      return vx_ui_html_uihtml::t_style_from_style;
+    }
+
+    vx_core::Type_msgblock Class_style_from_style::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_style_from_style::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_style_from_style::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -4491,13 +4928,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_stylelist_extra_from_ui::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_extra_from_ui::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_extra_from_ui output = vx_ui_html_uihtml::e_stylelist_extra_from_ui;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_extra_from_ui::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_extra_from_ui::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_extra_from_ui output = vx_ui_html_uihtml::e_stylelist_extra_from_ui;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -4521,7 +4961,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_stylelist_extra_from_ui::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_stylelist_extra_from_ui::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_stylelist_extra_from_ui::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -4534,10 +4976,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_extra_from_ui::vx_empty() const {return vx_ui_html_uihtml::e_stylelist_extra_from_ui;}
-    vx_core::Type_any Class_stylelist_extra_from_ui::vx_type() const {return vx_ui_html_uihtml::t_stylelist_extra_from_ui;}
-    vx_core::Type_msgblock Class_stylelist_extra_from_ui::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_stylelist_extra_from_ui::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_stylelist_extra_from_ui::vx_empty() const {
+      return vx_ui_html_uihtml::e_stylelist_extra_from_ui;
+    }
+
+    vx_core::Type_any Class_stylelist_extra_from_ui::vx_type() const {
+      return vx_ui_html_uihtml::t_stylelist_extra_from_ui;
+    }
+
+    vx_core::Type_msgblock Class_stylelist_extra_from_ui::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_stylelist_extra_from_ui::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_stylelist_extra_from_ui::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -4712,13 +5165,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_stylelist_reset::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_reset::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_reset output = vx_ui_html_uihtml::e_stylelist_reset;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_reset::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_reset::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_reset output = vx_ui_html_uihtml::e_stylelist_reset;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -4742,7 +5198,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_stylelist_reset::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_stylelist_reset::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_stylelist_reset::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -4755,10 +5213,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_reset::vx_empty() const {return vx_ui_html_uihtml::e_stylelist_reset;}
-    vx_core::Type_any Class_stylelist_reset::vx_type() const {return vx_ui_html_uihtml::t_stylelist_reset;}
-    vx_core::Type_msgblock Class_stylelist_reset::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_stylelist_reset::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_stylelist_reset::vx_empty() const {
+      return vx_ui_html_uihtml::e_stylelist_reset;
+    }
+
+    vx_core::Type_any Class_stylelist_reset::vx_type() const {
+      return vx_ui_html_uihtml::t_stylelist_reset;
+    }
+
+    vx_core::Type_msgblock Class_stylelist_reset::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_stylelist_reset::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_stylelist_reset::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -4809,13 +5278,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_stylelist_from_fontfacemap::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_from_fontfacemap::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_from_fontfacemap output = vx_ui_html_uihtml::e_stylelist_from_fontfacemap;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_from_fontfacemap::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_from_fontfacemap::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_from_fontfacemap output = vx_ui_html_uihtml::e_stylelist_from_fontfacemap;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -4839,7 +5311,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_stylelist_from_fontfacemap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_stylelist_from_fontfacemap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_stylelist_from_fontfacemap::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -4852,10 +5326,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_from_fontfacemap::vx_empty() const {return vx_ui_html_uihtml::e_stylelist_from_fontfacemap;}
-    vx_core::Type_any Class_stylelist_from_fontfacemap::vx_type() const {return vx_ui_html_uihtml::t_stylelist_from_fontfacemap;}
-    vx_core::Type_msgblock Class_stylelist_from_fontfacemap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_stylelist_from_fontfacemap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_stylelist_from_fontfacemap::vx_empty() const {
+      return vx_ui_html_uihtml::e_stylelist_from_fontfacemap;
+    }
+
+    vx_core::Type_any Class_stylelist_from_fontfacemap::vx_type() const {
+      return vx_ui_html_uihtml::t_stylelist_from_fontfacemap;
+    }
+
+    vx_core::Type_msgblock Class_stylelist_from_fontfacemap::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_stylelist_from_fontfacemap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_stylelist_from_fontfacemap::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -4917,13 +5402,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_stylelist_from_stylelist::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_from_stylelist::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_from_stylelist output = vx_ui_html_uihtml::e_stylelist_from_stylelist;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_from_stylelist::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_from_stylelist::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_from_stylelist output = vx_ui_html_uihtml::e_stylelist_from_stylelist;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -4947,7 +5435,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_stylelist_from_stylelist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_stylelist_from_stylelist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_stylelist_from_stylelist::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -4960,10 +5450,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_from_stylelist::vx_empty() const {return vx_ui_html_uihtml::e_stylelist_from_stylelist;}
-    vx_core::Type_any Class_stylelist_from_stylelist::vx_type() const {return vx_ui_html_uihtml::t_stylelist_from_stylelist;}
-    vx_core::Type_msgblock Class_stylelist_from_stylelist::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_stylelist_from_stylelist::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_stylelist_from_stylelist::vx_empty() const {
+      return vx_ui_html_uihtml::e_stylelist_from_stylelist;
+    }
+
+    vx_core::Type_any Class_stylelist_from_stylelist::vx_type() const {
+      return vx_ui_html_uihtml::t_stylelist_from_stylelist;
+    }
+
+    vx_core::Type_msgblock Class_stylelist_from_stylelist::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_stylelist_from_stylelist::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_stylelist_from_stylelist::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -5027,13 +5528,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_stylelist_from_stylemap::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_from_stylemap::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_from_stylemap output = vx_ui_html_uihtml::e_stylelist_from_stylemap;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_from_stylemap::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylelist_from_stylemap::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylelist_from_stylemap output = vx_ui_html_uihtml::e_stylelist_from_stylemap;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -5057,7 +5561,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_stylelist_from_stylemap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_stylelist_from_stylemap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_stylelist_from_stylemap::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -5070,10 +5576,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_stylelist_from_stylemap::vx_empty() const {return vx_ui_html_uihtml::e_stylelist_from_stylemap;}
-    vx_core::Type_any Class_stylelist_from_stylemap::vx_type() const {return vx_ui_html_uihtml::t_stylelist_from_stylemap;}
-    vx_core::Type_msgblock Class_stylelist_from_stylemap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_stylelist_from_stylemap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_stylelist_from_stylemap::vx_empty() const {
+      return vx_ui_html_uihtml::e_stylelist_from_stylemap;
+    }
+
+    vx_core::Type_any Class_stylelist_from_stylemap::vx_type() const {
+      return vx_ui_html_uihtml::t_stylelist_from_stylemap;
+    }
+
+    vx_core::Type_msgblock Class_stylelist_from_stylemap::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_stylelist_from_stylemap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_stylelist_from_stylemap::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -5137,13 +5654,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_stylemap_from_stylemap::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylemap_from_stylemap::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylemap_from_stylemap output = vx_ui_html_uihtml::e_stylemap_from_stylemap;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_stylemap_from_stylemap::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylemap_from_stylemap::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylemap_from_stylemap output = vx_ui_html_uihtml::e_stylemap_from_stylemap;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -5167,7 +5687,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_stylemap_from_stylemap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_stylemap_from_stylemap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_stylemap_from_stylemap::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -5180,10 +5702,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_stylemap_from_stylemap::vx_empty() const {return vx_ui_html_uihtml::e_stylemap_from_stylemap;}
-    vx_core::Type_any Class_stylemap_from_stylemap::vx_type() const {return vx_ui_html_uihtml::t_stylemap_from_stylemap;}
-    vx_core::Type_msgblock Class_stylemap_from_stylemap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_stylemap_from_stylemap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_stylemap_from_stylemap::vx_empty() const {
+      return vx_ui_html_uihtml::e_stylemap_from_stylemap;
+    }
+
+    vx_core::Type_any Class_stylemap_from_stylemap::vx_type() const {
+      return vx_ui_html_uihtml::t_stylemap_from_stylemap;
+    }
+
+    vx_core::Type_msgblock Class_stylemap_from_stylemap::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_stylemap_from_stylemap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_stylemap_from_stylemap::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -5258,13 +5791,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_stylesheet_layout_html::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylesheet_layout_html::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylesheet_layout_html output = vx_ui_html_uihtml::e_stylesheet_layout_html;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_stylesheet_layout_html::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylesheet_layout_html::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylesheet_layout_html output = vx_ui_html_uihtml::e_stylesheet_layout_html;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -5288,7 +5824,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_stylesheet_layout_html::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_stylesheet_layout_html::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_stylesheet_layout_html::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -5301,10 +5839,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_stylesheet_layout_html::vx_empty() const {return vx_ui_html_uihtml::e_stylesheet_layout_html;}
-    vx_core::Type_any Class_stylesheet_layout_html::vx_type() const {return vx_ui_html_uihtml::t_stylesheet_layout_html;}
-    vx_core::Type_msgblock Class_stylesheet_layout_html::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_stylesheet_layout_html::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_stylesheet_layout_html::vx_empty() const {
+      return vx_ui_html_uihtml::e_stylesheet_layout_html;
+    }
+
+    vx_core::Type_any Class_stylesheet_layout_html::vx_type() const {
+      return vx_ui_html_uihtml::t_stylesheet_layout_html;
+    }
+
+    vx_core::Type_msgblock Class_stylesheet_layout_html::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_stylesheet_layout_html::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_async Class_stylesheet_layout_html::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const {
       return vx_core::e_any_from_any_async;
@@ -5389,13 +5938,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_stylesheet_from_stylesheet::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylesheet_from_stylesheet::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylesheet_from_stylesheet output = vx_ui_html_uihtml::e_stylesheet_from_stylesheet;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_stylesheet_from_stylesheet::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_stylesheet_from_stylesheet::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_stylesheet_from_stylesheet output = vx_ui_html_uihtml::e_stylesheet_from_stylesheet;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -5419,7 +5971,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_stylesheet_from_stylesheet::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_stylesheet_from_stylesheet::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_stylesheet_from_stylesheet::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -5432,10 +5986,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_stylesheet_from_stylesheet::vx_empty() const {return vx_ui_html_uihtml::e_stylesheet_from_stylesheet;}
-    vx_core::Type_any Class_stylesheet_from_stylesheet::vx_type() const {return vx_ui_html_uihtml::t_stylesheet_from_stylesheet;}
-    vx_core::Type_msgblock Class_stylesheet_from_stylesheet::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_stylesheet_from_stylesheet::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_stylesheet_from_stylesheet::vx_empty() const {
+      return vx_ui_html_uihtml::e_stylesheet_from_stylesheet;
+    }
+
+    vx_core::Type_any Class_stylesheet_from_stylesheet::vx_type() const {
+      return vx_ui_html_uihtml::t_stylesheet_from_stylesheet;
+    }
+
+    vx_core::Type_msgblock Class_stylesheet_from_stylesheet::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_stylesheet_from_stylesheet::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_stylesheet_from_stylesheet::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -5503,13 +6068,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_ui_layout_app_from_ui_orig_parent output = vx_ui_html_uihtml::e_ui_layout_app_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_ui_layout_app_from_ui_orig_parent output = vx_ui_html_uihtml::e_ui_layout_app_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -5533,7 +6101,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_ui_layout_app_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_ui_layout_app_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_ui_layout_app_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -5546,10 +6116,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_ui_layout_app_from_ui_orig_parent;}
-    vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_ui_layout_app_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_ui_layout_app_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_ui_layout_app_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_ui_layout_app_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_ui_layout_app_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_ui_layout_app_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_ui_layout_app_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_ui_layout_app_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -5609,13 +6190,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_ui_layout_default_from_ui_orig_parent output = vx_ui_html_uihtml::e_ui_layout_default_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_ui_layout_default_from_ui_orig_parent output = vx_ui_html_uihtml::e_ui_layout_default_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -5639,7 +6223,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_ui_layout_default_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_ui_layout_default_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_ui_layout_default_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -5652,10 +6238,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_ui_layout_default_from_ui_orig_parent;}
-    vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_ui_layout_default_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_ui_layout_default_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_ui_layout_default_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_ui_layout_default_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_ui_layout_default_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_ui_layout_default_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_ui_layout_default_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_ui_layout_default_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -5713,13 +6310,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_ui_layout_image_from_ui_orig_parent output = vx_ui_html_uihtml::e_ui_layout_image_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_ui_layout_image_from_ui_orig_parent output = vx_ui_html_uihtml::e_ui_layout_image_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -5743,7 +6343,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_ui_layout_image_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_ui_layout_image_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_ui_layout_image_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -5756,10 +6358,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_ui_layout_image_from_ui_orig_parent;}
-    vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_ui_layout_image_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_ui_layout_image_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_ui_layout_image_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_ui_layout_image_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_ui_layout_image_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_ui_layout_image_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_ui_layout_image_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_ui_layout_image_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -5819,13 +6432,16 @@ namespace vx_ui_html_uihtml {
       }
     }
 
-    vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_ui_layout_label_from_ui_orig_parent output = vx_ui_html_uihtml::e_ui_layout_label_from_ui_orig_parent;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_ui_html_uihtml::Func_ui_layout_label_from_ui_orig_parent output = vx_ui_html_uihtml::e_ui_layout_label_from_ui_orig_parent;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -5849,7 +6465,9 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_constdef Class_ui_layout_label_from_ui_orig_parent::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_ui_layout_label_from_ui_orig_parent::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_ui_layout_label_from_ui_orig_parent::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -5862,10 +6480,21 @@ namespace vx_ui_html_uihtml {
       return output;
     }
 
-    vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_empty() const {return vx_ui_html_uihtml::e_ui_layout_label_from_ui_orig_parent;}
-    vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_type() const {return vx_ui_html_uihtml::t_ui_layout_label_from_ui_orig_parent;}
-    vx_core::Type_msgblock Class_ui_layout_label_from_ui_orig_parent::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_ui_layout_label_from_ui_orig_parent::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_empty() const {
+      return vx_ui_html_uihtml::e_ui_layout_label_from_ui_orig_parent;
+    }
+
+    vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_type() const {
+      return vx_ui_html_uihtml::t_ui_layout_label_from_ui_orig_parent;
+    }
+
+    vx_core::Type_msgblock Class_ui_layout_label_from_ui_orig_parent::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_ui_layout_label_from_ui_orig_parent::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_ui_layout_label_from_ui_orig_parent::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;

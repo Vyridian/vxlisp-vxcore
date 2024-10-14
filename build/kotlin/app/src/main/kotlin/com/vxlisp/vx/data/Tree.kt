@@ -1213,19 +1213,7 @@ object vx_data_tree {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-down", // name
-        vx_core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_tree.t_brancharrow
       )
       return output
     }
@@ -1249,19 +1237,7 @@ object vx_data_tree {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-up", // name
-        vx_core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_tree.t_brancharrow
       )
       return output
     }
@@ -1285,19 +1261,7 @@ object vx_data_tree {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-updown", // name
-        vx_core.typedef_new(
-          "vx/data/tree", // pkgname
-          "brancharrow", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_tree.t_brancharrow
       )
       return output
     }

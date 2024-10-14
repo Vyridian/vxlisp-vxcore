@@ -697,19 +697,7 @@ public static class Xml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxml", // name
-        Vx.Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Data.Textblock.t_delim
       );
       return output;
     }
@@ -769,19 +757,7 @@ public static class Xml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlcdata", // name
-        Vx.Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Data.Textblock.t_delim
       );
       return output;
     }
@@ -822,19 +798,7 @@ public static class Xml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlcomment", // name
-        Vx.Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Data.Textblock.t_delim
       );
       return output;
     }
@@ -875,19 +839,7 @@ public static class Xml {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlequal", // name
-        Vx.Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Data.Textblock.t_delim
       );
       return output;
     }

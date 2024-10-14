@@ -335,7 +335,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -486,7 +488,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xmllist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xmllist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -689,7 +693,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xmlpropmap::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xmlpropmap::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -698,7 +704,10 @@ namespace vx_data_xml {
   // class Class_delimxml {
     // vx_const_new()
     void vx_data_xml::Class_delimxml::vx_const_new(vx_data_xml::Const_delimxml output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/data/xml", "delimxml");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/data/xml",
+        "delimxml",
+        vx_data_textblock::t_delim);
       long irefcount = vx_core::refcount;
       vx_data_textblock::Type_delim val = vx_core::f_new(
         vx_data_textblock::t_delim,
@@ -750,7 +759,10 @@ namespace vx_data_xml {
   // class Class_delimxmlcdata {
     // vx_const_new()
     void vx_data_xml::Class_delimxmlcdata::vx_const_new(vx_data_xml::Const_delimxmlcdata output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/data/xml", "delimxmlcdata");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/data/xml",
+        "delimxmlcdata",
+        vx_data_textblock::t_delim);
       long irefcount = vx_core::refcount;
       vx_data_textblock::Type_delim val = vx_core::f_new(
         vx_data_textblock::t_delim,
@@ -785,7 +797,10 @@ namespace vx_data_xml {
   // class Class_delimxmlcomment {
     // vx_const_new()
     void vx_data_xml::Class_delimxmlcomment::vx_const_new(vx_data_xml::Const_delimxmlcomment output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/data/xml", "delimxmlcomment");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/data/xml",
+        "delimxmlcomment",
+        vx_data_textblock::t_delim);
       long irefcount = vx_core::refcount;
       vx_data_textblock::Type_delim val = vx_core::f_new(
         vx_data_textblock::t_delim,
@@ -820,7 +835,10 @@ namespace vx_data_xml {
   // class Class_delimxmlequal {
     // vx_const_new()
     void vx_data_xml::Class_delimxmlequal::vx_const_new(vx_data_xml::Const_delimxmlequal output) {
-      output->vx_p_constdef = vx_core::vx_constdef_new("vx/data/xml", "delimxmlequal");
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/data/xml",
+        "delimxmlequal",
+        vx_data_textblock::t_delim);
       long irefcount = vx_core::refcount;
       vx_data_textblock::Type_delim val = vx_core::f_new(
         vx_data_textblock::t_delim,
@@ -898,13 +916,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_string_decodexml_from_string::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_decodexml_from_string::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_string_decodexml_from_string output = vx_data_xml::e_string_decodexml_from_string;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_string_decodexml_from_string::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_decodexml_from_string::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_string_decodexml_from_string output = vx_data_xml::e_string_decodexml_from_string;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -928,7 +949,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_string_decodexml_from_string::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_string_decodexml_from_string::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_string_decodexml_from_string::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -941,10 +964,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_string_decodexml_from_string::vx_empty() const {return vx_data_xml::e_string_decodexml_from_string;}
-    vx_core::Type_any Class_string_decodexml_from_string::vx_type() const {return vx_data_xml::t_string_decodexml_from_string;}
-    vx_core::Type_msgblock Class_string_decodexml_from_string::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_string_decodexml_from_string::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_string_decodexml_from_string::vx_empty() const {
+      return vx_data_xml::e_string_decodexml_from_string;
+    }
+
+    vx_core::Type_any Class_string_decodexml_from_string::vx_type() const {
+      return vx_data_xml::t_string_decodexml_from_string;
+    }
+
+    vx_core::Type_msgblock Class_string_decodexml_from_string::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_string_decodexml_from_string::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_string_decodexml_from_string::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1017,13 +1051,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_string_first_from_xml::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_first_from_xml::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_string_first_from_xml output = vx_data_xml::e_string_first_from_xml;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_string_first_from_xml::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_string_first_from_xml::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_string_first_from_xml output = vx_data_xml::e_string_first_from_xml;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1047,7 +1084,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_string_first_from_xml::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_string_first_from_xml::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_string_first_from_xml::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1060,10 +1099,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_string_first_from_xml::vx_empty() const {return vx_data_xml::e_string_first_from_xml;}
-    vx_core::Type_any Class_string_first_from_xml::vx_type() const {return vx_data_xml::t_string_first_from_xml;}
-    vx_core::Type_msgblock Class_string_first_from_xml::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_string_first_from_xml::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_string_first_from_xml::vx_empty() const {
+      return vx_data_xml::e_string_first_from_xml;
+    }
+
+    vx_core::Type_any Class_string_first_from_xml::vx_type() const {
+      return vx_data_xml::t_string_first_from_xml;
+    }
+
+    vx_core::Type_msgblock Class_string_first_from_xml::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_string_first_from_xml::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_string_first_from_xml::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1120,13 +1170,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_textblock_xml_from_string::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_textblock_xml_from_string::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_textblock_xml_from_string output = vx_data_xml::e_textblock_xml_from_string;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_textblock_xml_from_string::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_textblock_xml_from_string::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_textblock_xml_from_string output = vx_data_xml::e_textblock_xml_from_string;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1150,7 +1203,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_textblock_xml_from_string::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_textblock_xml_from_string::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_textblock_xml_from_string::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1163,10 +1218,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_textblock_xml_from_string::vx_empty() const {return vx_data_xml::e_textblock_xml_from_string;}
-    vx_core::Type_any Class_textblock_xml_from_string::vx_type() const {return vx_data_xml::t_textblock_xml_from_string;}
-    vx_core::Type_msgblock Class_textblock_xml_from_string::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_textblock_xml_from_string::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_textblock_xml_from_string::vx_empty() const {
+      return vx_data_xml::e_textblock_xml_from_string;
+    }
+
+    vx_core::Type_any Class_textblock_xml_from_string::vx_type() const {
+      return vx_data_xml::t_textblock_xml_from_string;
+    }
+
+    vx_core::Type_msgblock Class_textblock_xml_from_string::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_textblock_xml_from_string::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_textblock_xml_from_string::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1270,13 +1336,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_angle_from_xml_textblock output = vx_data_xml::e_xml_angle_from_xml_textblock;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_angle_from_xml_textblock output = vx_data_xml::e_xml_angle_from_xml_textblock;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1300,7 +1369,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_angle_from_xml_textblock::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_angle_from_xml_textblock::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_angle_from_xml_textblock::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1313,10 +1384,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_empty() const {return vx_data_xml::e_xml_angle_from_xml_textblock;}
-    vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_type() const {return vx_data_xml::t_xml_angle_from_xml_textblock;}
-    vx_core::Type_msgblock Class_xml_angle_from_xml_textblock::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_angle_from_xml_textblock::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_empty() const {
+      return vx_data_xml::e_xml_angle_from_xml_textblock;
+    }
+
+    vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_type() const {
+      return vx_data_xml::t_xml_angle_from_xml_textblock;
+    }
+
+    vx_core::Type_msgblock Class_xml_angle_from_xml_textblock::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_angle_from_xml_textblock::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_xml_angle_from_xml_textblock::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -1473,13 +1555,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_close_from_xml_textblock::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_close_from_xml_textblock::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_close_from_xml_textblock output = vx_data_xml::e_xml_close_from_xml_textblock;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_close_from_xml_textblock::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_close_from_xml_textblock::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_close_from_xml_textblock output = vx_data_xml::e_xml_close_from_xml_textblock;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1503,7 +1588,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_close_from_xml_textblock::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_close_from_xml_textblock::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_close_from_xml_textblock::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1516,10 +1603,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_close_from_xml_textblock::vx_empty() const {return vx_data_xml::e_xml_close_from_xml_textblock;}
-    vx_core::Type_any Class_xml_close_from_xml_textblock::vx_type() const {return vx_data_xml::t_xml_close_from_xml_textblock;}
-    vx_core::Type_msgblock Class_xml_close_from_xml_textblock::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_close_from_xml_textblock::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_close_from_xml_textblock::vx_empty() const {
+      return vx_data_xml::e_xml_close_from_xml_textblock;
+    }
+
+    vx_core::Type_any Class_xml_close_from_xml_textblock::vx_type() const {
+      return vx_data_xml::t_xml_close_from_xml_textblock;
+    }
+
+    vx_core::Type_msgblock Class_xml_close_from_xml_textblock::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_close_from_xml_textblock::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_xml_close_from_xml_textblock::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -1632,13 +1730,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_parse_from_xml_textblock output = vx_data_xml::e_xml_parse_from_xml_textblock;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_parse_from_xml_textblock output = vx_data_xml::e_xml_parse_from_xml_textblock;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1662,7 +1763,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_parse_from_xml_textblock::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_parse_from_xml_textblock::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_parse_from_xml_textblock::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1675,10 +1778,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_empty() const {return vx_data_xml::e_xml_parse_from_xml_textblock;}
-    vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_type() const {return vx_data_xml::t_xml_parse_from_xml_textblock;}
-    vx_core::Type_msgblock Class_xml_parse_from_xml_textblock::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_parse_from_xml_textblock::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_empty() const {
+      return vx_data_xml::e_xml_parse_from_xml_textblock;
+    }
+
+    vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_type() const {
+      return vx_data_xml::t_xml_parse_from_xml_textblock;
+    }
+
+    vx_core::Type_msgblock Class_xml_parse_from_xml_textblock::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_parse_from_xml_textblock::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_xml_parse_from_xml_textblock::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -1732,13 +1846,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_parse_from_xml_textblocklist output = vx_data_xml::e_xml_parse_from_xml_textblocklist;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_parse_from_xml_textblocklist output = vx_data_xml::e_xml_parse_from_xml_textblocklist;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1762,7 +1879,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_parse_from_xml_textblocklist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_parse_from_xml_textblocklist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_parse_from_xml_textblocklist::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1775,10 +1894,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_empty() const {return vx_data_xml::e_xml_parse_from_xml_textblocklist;}
-    vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_type() const {return vx_data_xml::t_xml_parse_from_xml_textblocklist;}
-    vx_core::Type_msgblock Class_xml_parse_from_xml_textblocklist::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_parse_from_xml_textblocklist::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_empty() const {
+      return vx_data_xml::e_xml_parse_from_xml_textblocklist;
+    }
+
+    vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_type() const {
+      return vx_data_xml::t_xml_parse_from_xml_textblocklist;
+    }
+
+    vx_core::Type_msgblock Class_xml_parse_from_xml_textblocklist::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_parse_from_xml_textblocklist::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_xml_parse_from_xml_textblocklist::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -1842,13 +1972,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_properties_from_xml_textblocklist output = vx_data_xml::e_xml_properties_from_xml_textblocklist;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_properties_from_xml_textblocklist output = vx_data_xml::e_xml_properties_from_xml_textblocklist;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1872,7 +2005,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_properties_from_xml_textblocklist::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_properties_from_xml_textblocklist::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_properties_from_xml_textblocklist::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1885,10 +2020,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_empty() const {return vx_data_xml::e_xml_properties_from_xml_textblocklist;}
-    vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_type() const {return vx_data_xml::t_xml_properties_from_xml_textblocklist;}
-    vx_core::Type_msgblock Class_xml_properties_from_xml_textblocklist::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_properties_from_xml_textblocklist::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_empty() const {
+      return vx_data_xml::e_xml_properties_from_xml_textblocklist;
+    }
+
+    vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_type() const {
+      return vx_data_xml::t_xml_properties_from_xml_textblocklist;
+    }
+
+    vx_core::Type_msgblock Class_xml_properties_from_xml_textblocklist::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_properties_from_xml_textblocklist::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_xml_properties_from_xml_textblocklist::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -2059,13 +2205,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_property_from_xml_textblock::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_property_from_xml_textblock::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_property_from_xml_textblock output = vx_data_xml::e_xml_property_from_xml_textblock;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_property_from_xml_textblock::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_property_from_xml_textblock::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_property_from_xml_textblock output = vx_data_xml::e_xml_property_from_xml_textblock;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2089,7 +2238,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_property_from_xml_textblock::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_property_from_xml_textblock::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_property_from_xml_textblock::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2102,10 +2253,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_property_from_xml_textblock::vx_empty() const {return vx_data_xml::e_xml_property_from_xml_textblock;}
-    vx_core::Type_any Class_xml_property_from_xml_textblock::vx_type() const {return vx_data_xml::t_xml_property_from_xml_textblock;}
-    vx_core::Type_msgblock Class_xml_property_from_xml_textblock::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_property_from_xml_textblock::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_property_from_xml_textblock::vx_empty() const {
+      return vx_data_xml::e_xml_property_from_xml_textblock;
+    }
+
+    vx_core::Type_any Class_xml_property_from_xml_textblock::vx_type() const {
+      return vx_data_xml::t_xml_property_from_xml_textblock;
+    }
+
+    vx_core::Type_msgblock Class_xml_property_from_xml_textblock::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_property_from_xml_textblock::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_xml_property_from_xml_textblock::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -2157,13 +2319,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_read_from_file::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_read_from_file::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_read_from_file output = vx_data_xml::e_xml_read_from_file;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_read_from_file::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_read_from_file::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_read_from_file output = vx_data_xml::e_xml_read_from_file;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2187,7 +2352,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_read_from_file::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_read_from_file::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_read_from_file::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2200,10 +2367,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_read_from_file::vx_empty() const {return vx_data_xml::e_xml_read_from_file;}
-    vx_core::Type_any Class_xml_read_from_file::vx_type() const {return vx_data_xml::t_xml_read_from_file;}
-    vx_core::Type_msgblock Class_xml_read_from_file::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_read_from_file::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_read_from_file::vx_empty() const {
+      return vx_data_xml::e_xml_read_from_file;
+    }
+
+    vx_core::Type_any Class_xml_read_from_file::vx_type() const {
+      return vx_data_xml::t_xml_read_from_file;
+    }
+
+    vx_core::Type_msgblock Class_xml_read_from_file::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_read_from_file::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_context Class_xml_read_from_file::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_context::IFn fn) const {
       return vx_core::e_any_from_any_context;
@@ -2309,13 +2487,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_text_from_xml_textblock::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_text_from_xml_textblock::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_text_from_xml_textblock output = vx_data_xml::e_xml_text_from_xml_textblock;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_text_from_xml_textblock::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_text_from_xml_textblock::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_text_from_xml_textblock output = vx_data_xml::e_xml_text_from_xml_textblock;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2339,7 +2520,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_text_from_xml_textblock::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_text_from_xml_textblock::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_text_from_xml_textblock::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2352,10 +2535,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_text_from_xml_textblock::vx_empty() const {return vx_data_xml::e_xml_text_from_xml_textblock;}
-    vx_core::Type_any Class_xml_text_from_xml_textblock::vx_type() const {return vx_data_xml::t_xml_text_from_xml_textblock;}
-    vx_core::Type_msgblock Class_xml_text_from_xml_textblock::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_text_from_xml_textblock::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_text_from_xml_textblock::vx_empty() const {
+      return vx_data_xml::e_xml_text_from_xml_textblock;
+    }
+
+    vx_core::Type_any Class_xml_text_from_xml_textblock::vx_type() const {
+      return vx_data_xml::t_xml_text_from_xml_textblock;
+    }
+
+    vx_core::Type_msgblock Class_xml_text_from_xml_textblock::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_text_from_xml_textblock::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_xml_text_from_xml_textblock::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -2407,13 +2601,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_from_file::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_from_file::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_from_file output = vx_data_xml::e_xml_from_file;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_from_file::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_from_file::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_from_file output = vx_data_xml::e_xml_from_file;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2437,7 +2634,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_from_file::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_from_file::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_from_file::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2450,10 +2649,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_from_file::vx_empty() const {return vx_data_xml::e_xml_from_file;}
-    vx_core::Type_any Class_xml_from_file::vx_type() const {return vx_data_xml::t_xml_from_file;}
-    vx_core::Type_msgblock Class_xml_from_file::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_from_file::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_from_file::vx_empty() const {
+      return vx_data_xml::e_xml_from_file;
+    }
+
+    vx_core::Type_any Class_xml_from_file::vx_type() const {
+      return vx_data_xml::t_xml_from_file;
+    }
+
+    vx_core::Type_msgblock Class_xml_from_file::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_from_file::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_xml_from_file::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -2516,13 +2726,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_from_string::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_from_string::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_from_string output = vx_data_xml::e_xml_from_string;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_from_string::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_from_string::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_from_string output = vx_data_xml::e_xml_from_string;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2546,7 +2759,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_from_string::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_from_string::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_from_string::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2559,10 +2774,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_from_string::vx_empty() const {return vx_data_xml::e_xml_from_string;}
-    vx_core::Type_any Class_xml_from_string::vx_type() const {return vx_data_xml::t_xml_from_string;}
-    vx_core::Type_msgblock Class_xml_from_string::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_from_string::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_from_string::vx_empty() const {
+      return vx_data_xml::e_xml_from_string;
+    }
+
+    vx_core::Type_any Class_xml_from_string::vx_type() const {
+      return vx_data_xml::t_xml_from_string;
+    }
+
+    vx_core::Type_msgblock Class_xml_from_string::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_from_string::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_xml_from_string::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -2621,13 +2847,16 @@ namespace vx_data_xml {
       }
     }
 
-    vx_core::Type_any Class_xml_from_textblock::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_from_textblock::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_from_textblock output = vx_data_xml::e_xml_from_textblock;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_from_textblock::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_from_textblock::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_data_xml::Func_xml_from_textblock output = vx_data_xml::e_xml_from_textblock;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -2651,7 +2880,9 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_from_textblock::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_from_textblock::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_from_textblock::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -2664,10 +2895,21 @@ namespace vx_data_xml {
       return output;
     }
 
-    vx_core::Type_any Class_xml_from_textblock::vx_empty() const {return vx_data_xml::e_xml_from_textblock;}
-    vx_core::Type_any Class_xml_from_textblock::vx_type() const {return vx_data_xml::t_xml_from_textblock;}
-    vx_core::Type_msgblock Class_xml_from_textblock::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_from_textblock::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_from_textblock::vx_empty() const {
+      return vx_data_xml::e_xml_from_textblock;
+    }
+
+    vx_core::Type_any Class_xml_from_textblock::vx_type() const {
+      return vx_data_xml::t_xml_from_textblock;
+    }
+
+    vx_core::Type_msgblock Class_xml_from_textblock::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_from_textblock::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_xml_from_textblock::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;

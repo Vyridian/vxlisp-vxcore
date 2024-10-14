@@ -45,19 +45,19 @@ export default class vx_data_tree {
    * Constant: brancharrow-down
    * {brancharrow}
    */
-  static c_brancharrow_down = {vx_type: vx_data_tree.t_brancharrow, vx_constdef: {pkgname: 'vx/data/tree', name: 'brancharrow-down'}}
+  static c_brancharrow_down = {vx_type: vx_data_tree.t_brancharrow, vx_constdef: {pkgname: 'vx/data/tree', name: 'brancharrow-down', type: vx_data_tree.t_brancharrow}}
 
   /**
    * Constant: brancharrow-up
    * {brancharrow}
    */
-  static c_brancharrow_up = {vx_type: vx_data_tree.t_brancharrow, vx_constdef: {pkgname: 'vx/data/tree', name: 'brancharrow-up'}}
+  static c_brancharrow_up = {vx_type: vx_data_tree.t_brancharrow, vx_constdef: {pkgname: 'vx/data/tree', name: 'brancharrow-up', type: vx_data_tree.t_brancharrow}}
 
   /**
    * Constant: brancharrow-updown
    * {brancharrow}
    */
-  static c_brancharrow_updown = {vx_type: vx_data_tree.t_brancharrow, vx_constdef: {pkgname: 'vx/data/tree', name: 'brancharrow-updown'}}
+  static c_brancharrow_updown = {vx_type: vx_data_tree.t_brancharrow, vx_constdef: {pkgname: 'vx/data/tree', name: 'brancharrow-updown', type: vx_data_tree.t_brancharrow}}
 
 
 

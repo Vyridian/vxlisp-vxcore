@@ -715,19 +715,7 @@ object vx_event {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/event", // pkgname
         "event-change", // name
-        vx_core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_event.t_event
       )
       return output
     }
@@ -765,19 +753,7 @@ object vx_event {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/event", // pkgname
         "event-click", // name
-        vx_core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_event.t_event
       )
       return output
     }
@@ -815,19 +791,7 @@ object vx_event {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/event", // pkgname
         "event-move", // name
-        vx_core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_event.t_event
       )
       return output
     }
@@ -865,19 +829,7 @@ object vx_event {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/event", // pkgname
         "event-select", // name
-        vx_core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_event.t_event
       )
       return output
     }

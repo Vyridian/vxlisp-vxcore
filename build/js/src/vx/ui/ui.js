@@ -217,288 +217,288 @@ export default class vx_ui_ui {
    * Logical Center Align in parent
    * {align}
    */
-  static c_align_center = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'align-center'}}
+  static c_align_center = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'align-center', type: vx_ui_ui.t_align}}
 
   /**
    * Constant: align-left
    * Logical Left Align in parent
    * {align}
    */
-  static c_align_left = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'align-left'}}
+  static c_align_left = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'align-left', type: vx_ui_ui.t_align}}
 
   /**
    * Constant: align-right
    * Logical Right Align in parent
    * {align}
    */
-  static c_align_right = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'align-right'}}
+  static c_align_right = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'align-right', type: vx_ui_ui.t_align}}
 
   /**
    * Constant: flip-x
    * Logical Flip Horizontally
    * {align}
    */
-  static c_flip_x = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'flip-x'}}
+  static c_flip_x = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'flip-x', type: vx_ui_ui.t_align}}
 
   /**
    * Constant: flip-xy
    * Logical Flip Vertically and Horizontally
    * {align}
    */
-  static c_flip_xy = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'flip-xy'}}
+  static c_flip_xy = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'flip-xy', type: vx_ui_ui.t_align}}
 
   /**
    * Constant: flip-y
    * Logical Flip Vertically
    * {align}
    */
-  static c_flip_y = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'flip-y'}}
+  static c_flip_y = {vx_type: vx_ui_ui.t_align, vx_constdef: {pkgname: 'vx/ui/ui', name: 'flip-y', type: vx_ui_ui.t_align}}
 
   /**
    * Constant: layout-app
    * {layout}
    */
-  static c_layout_app = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-app'}}
+  static c_layout_app = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-app', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-background
    * {layout}
    */
-  static c_layout_background = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-background'}}
+  static c_layout_background = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-background', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-button
    * {layout}
    */
-  static c_layout_button = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-button'}}
+  static c_layout_button = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-button', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-combobox
    * {layout}
    */
-  static c_layout_combobox = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-combobox'}}
+  static c_layout_combobox = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-combobox', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-else
    * {layout}
    */
-  static c_layout_else = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-else'}}
+  static c_layout_else = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-else', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-flow-columns
    * {layout}
    */
-  static c_layout_flow_columns = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-flow-columns'}}
+  static c_layout_flow_columns = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-flow-columns', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-flow-item
    * {layout}
    */
-  static c_layout_flow_item = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-flow-item'}}
+  static c_layout_flow_item = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-flow-item', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-flow-rows
    * {layout}
    */
-  static c_layout_flow_rows = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-flow-rows'}}
+  static c_layout_flow_rows = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-flow-rows', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-image
    * {layout}
    */
-  static c_layout_image = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-image'}}
+  static c_layout_image = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-image', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-label
    * {layout}
    */
-  static c_layout_label = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-label'}}
+  static c_layout_label = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-label', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-main
    * {layout}
    */
-  static c_layout_main = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-main'}}
+  static c_layout_main = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-main', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-maxpanel
    * {layout}
    */
-  static c_layout_maxpanel = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-maxpanel'}}
+  static c_layout_maxpanel = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-maxpanel', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-menubar
    * {layout}
    */
-  static c_layout_menubar = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-menubar'}}
+  static c_layout_menubar = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-menubar', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-menudrawer
    * {layout}
    */
-  static c_layout_menudrawer = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-menudrawer'}}
+  static c_layout_menudrawer = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-menudrawer', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-msgbox
    * {layout}
    */
-  static c_layout_msgbox = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-msgbox'}}
+  static c_layout_msgbox = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-msgbox', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-navbar
    * {layout}
    */
-  static c_layout_navbar = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-navbar'}}
+  static c_layout_navbar = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-navbar', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-navdrawer
    * {layout}
    */
-  static c_layout_navdrawer = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-navdrawer'}}
+  static c_layout_navdrawer = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-navdrawer', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-panel
    * {layout}
    */
-  static c_layout_panel = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-panel'}}
+  static c_layout_panel = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-panel', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-parallax
    * {layout}
    */
-  static c_layout_parallax = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-parallax'}}
+  static c_layout_parallax = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-parallax', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-statusbar
    * {layout}
    */
-  static c_layout_statusbar = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-statusbar'}}
+  static c_layout_statusbar = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-statusbar', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-statusdrawer
    * {layout}
    */
-  static c_layout_statusdrawer = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-statusdrawer'}}
+  static c_layout_statusdrawer = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-statusdrawer', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-text
    * {layout}
    */
-  static c_layout_text = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-text'}}
+  static c_layout_text = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-text', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-textentry
    * {layout}
    */
-  static c_layout_textentry = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-textentry'}}
+  static c_layout_textentry = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-textentry', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: layout-titlebar
    * {layout}
    */
-  static c_layout_titlebar = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-titlebar'}}
+  static c_layout_titlebar = {vx_type: vx_ui_ui.t_layout, vx_constdef: {pkgname: 'vx/ui/ui', name: 'layout-titlebar', type: vx_ui_ui.t_layout}}
 
   /**
    * Constant: pin-bottom
    * {pin}
    */
-  static c_pin_bottom = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-bottom'}}
+  static c_pin_bottom = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-bottom', type: vx_ui_ui.t_pin}}
 
   /**
    * Constant: pin-center
    * {pin}
    */
-  static c_pin_center = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-center'}}
+  static c_pin_center = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-center', type: vx_ui_ui.t_pin}}
 
   /**
    * Constant: pin-center-h
    * {pin}
    */
-  static c_pin_center_h = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-center-h'}}
+  static c_pin_center_h = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-center-h', type: vx_ui_ui.t_pin}}
 
   /**
    * Constant: pin-center-v
    * {pin}
    */
-  static c_pin_center_v = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-center-v'}}
+  static c_pin_center_v = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-center-v', type: vx_ui_ui.t_pin}}
 
   /**
    * Constant: pin-expand
    * {pin}
    */
-  static c_pin_expand = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-expand'}}
+  static c_pin_expand = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-expand', type: vx_ui_ui.t_pin}}
 
   /**
    * Constant: pin-left
    * {pin}
    */
-  static c_pin_left = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-left'}}
+  static c_pin_left = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-left', type: vx_ui_ui.t_pin}}
 
   /**
    * Constant: pin-right
    * {pin}
    */
-  static c_pin_right = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-right'}}
+  static c_pin_right = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-right', type: vx_ui_ui.t_pin}}
 
   /**
    * Constant: pin-top
    * {pin}
    */
-  static c_pin_top = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-top'}}
+  static c_pin_top = {vx_type: vx_ui_ui.t_pin, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pin-top', type: vx_ui_ui.t_pin}}
 
   /**
    * Constant: point-center
    * {point}
    */
-  static c_point_center = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-center'}}
+  static c_point_center = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-center', type: vx_ui_ui.t_point}}
 
   /**
    * Constant: point-lefttop
    * {point}
    */
-  static c_point_lefttop = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-lefttop'}}
+  static c_point_lefttop = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-lefttop', type: vx_ui_ui.t_point}}
 
   /**
    * Constant: point-rightbottom
    * {point}
    */
-  static c_point_rightbottom = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-rightbottom'}}
+  static c_point_rightbottom = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-rightbottom', type: vx_ui_ui.t_point}}
 
   /**
    * Constant: pointtype-absolute
    * {pointtype}
    */
-  static c_pointtype_absolute = {vx_type: vx_ui_ui.t_pointtype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pointtype-absolute'}}
+  static c_pointtype_absolute = {vx_type: vx_ui_ui.t_pointtype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pointtype-absolute', type: vx_ui_ui.t_pointtype}}
 
   /**
    * Constant: pointtype-percent
    * {pointtype}
    */
-  static c_pointtype_percent = {vx_type: vx_ui_ui.t_pointtype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pointtype-percent'}}
+  static c_pointtype_percent = {vx_type: vx_ui_ui.t_pointtype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pointtype-percent', type: vx_ui_ui.t_pointtype}}
 
   /**
    * Constant: pointtype-relative
    * {pointtype}
    */
-  static c_pointtype_relative = {vx_type: vx_ui_ui.t_pointtype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pointtype-relative'}}
+  static c_pointtype_relative = {vx_type: vx_ui_ui.t_pointtype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'pointtype-relative', type: vx_ui_ui.t_pointtype}}
 
   /**
    * Constant: styletype-custom
    * {styletype}
    */
-  static c_styletype_custom = {vx_type: vx_ui_ui.t_styletype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'styletype-custom'}}
+  static c_styletype_custom = {vx_type: vx_ui_ui.t_styletype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'styletype-custom', type: vx_ui_ui.t_styletype}}
 
   /**
    * Constant: styletype-shared
    * {styletype}
    */
-  static c_styletype_shared = {vx_type: vx_ui_ui.t_styletype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'styletype-shared'}}
+  static c_styletype_shared = {vx_type: vx_ui_ui.t_styletype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'styletype-shared', type: vx_ui_ui.t_styletype}}
 
   /**
    * Constant: styletype-system
    * {styletype}
    */
-  static c_styletype_system = {vx_type: vx_ui_ui.t_styletype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'styletype-system'}}
+  static c_styletype_system = {vx_type: vx_ui_ui.t_styletype, vx_constdef: {pkgname: 'vx/ui/ui', name: 'styletype-system', type: vx_ui_ui.t_styletype}}
 
   /**
    * @function boolean_layout_from_ui_parent_selected

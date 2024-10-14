@@ -49,13 +49,16 @@ namespace vx_translation_en {
       }
     }
 
-    vx_core::Type_any Class_context_en::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_context_en::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_context_en output = vx_translation_en::e_context_en;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_context_en::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_context_en::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_context_en output = vx_translation_en::e_context_en;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -79,7 +82,9 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_constdef Class_context_en::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_context_en::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_context_en::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -92,10 +97,21 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_any Class_context_en::vx_empty() const {return vx_translation_en::e_context_en;}
-    vx_core::Type_any Class_context_en::vx_type() const {return vx_translation_en::t_context_en;}
-    vx_core::Type_msgblock Class_context_en::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_context_en::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_context_en::vx_empty() const {
+      return vx_translation_en::e_context_en;
+    }
+
+    vx_core::Type_any Class_context_en::vx_type() const {
+      return vx_translation_en::t_context_en;
+    }
+
+    vx_core::Type_msgblock Class_context_en::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_context_en::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_context_en::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -169,13 +185,16 @@ namespace vx_translation_en {
       }
     }
 
-    vx_core::Type_any Class_context_test::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_context_test::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_context_test output = vx_translation_en::e_context_test;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_context_test::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_context_test::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_context_test output = vx_translation_en::e_context_test;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -199,7 +218,9 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_constdef Class_context_test::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_context_test::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_context_test::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -212,10 +233,21 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_any Class_context_test::vx_empty() const {return vx_translation_en::e_context_test;}
-    vx_core::Type_any Class_context_test::vx_type() const {return vx_translation_en::t_context_test;}
-    vx_core::Type_msgblock Class_context_test::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_context_test::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_context_test::vx_empty() const {
+      return vx_translation_en::e_context_test;
+    }
+
+    vx_core::Type_any Class_context_test::vx_type() const {
+      return vx_translation_en::t_context_test;
+    }
+
+    vx_core::Type_msgblock Class_context_test::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_context_test::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_context_test::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -280,13 +312,16 @@ namespace vx_translation_en {
       }
     }
 
-    vx_core::Type_any Class_securitydata_test::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_securitydata_test::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_securitydata_test output = vx_translation_en::e_securitydata_test;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_securitydata_test::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_securitydata_test::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_securitydata_test output = vx_translation_en::e_securitydata_test;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -310,7 +345,9 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_constdef Class_securitydata_test::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_securitydata_test::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_securitydata_test::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -323,10 +360,21 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_any Class_securitydata_test::vx_empty() const {return vx_translation_en::e_securitydata_test;}
-    vx_core::Type_any Class_securitydata_test::vx_type() const {return vx_translation_en::t_securitydata_test;}
-    vx_core::Type_msgblock Class_securitydata_test::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_securitydata_test::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_securitydata_test::vx_empty() const {
+      return vx_translation_en::e_securitydata_test;
+    }
+
+    vx_core::Type_any Class_securitydata_test::vx_type() const {
+      return vx_translation_en::t_securitydata_test;
+    }
+
+    vx_core::Type_msgblock Class_securitydata_test::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_securitydata_test::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_securitydata_test::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -372,13 +420,16 @@ namespace vx_translation_en {
       }
     }
 
-    vx_core::Type_any Class_translation_en::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_translation_en::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_translation_en output = vx_translation_en::e_translation_en;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_translation_en::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_translation_en::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_translation_en output = vx_translation_en::e_translation_en;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -402,7 +453,9 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_constdef Class_translation_en::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_translation_en::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_translation_en::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -415,10 +468,21 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_any Class_translation_en::vx_empty() const {return vx_translation_en::e_translation_en;}
-    vx_core::Type_any Class_translation_en::vx_type() const {return vx_translation_en::t_translation_en;}
-    vx_core::Type_msgblock Class_translation_en::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_translation_en::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_translation_en::vx_empty() const {
+      return vx_translation_en::e_translation_en;
+    }
+
+    vx_core::Type_any Class_translation_en::vx_type() const {
+      return vx_translation_en::t_translation_en;
+    }
+
+    vx_core::Type_msgblock Class_translation_en::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_translation_en::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_translation_en::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
@@ -470,13 +534,16 @@ namespace vx_translation_en {
       }
     }
 
-    vx_core::Type_any Class_words::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_words::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_words output = vx_translation_en::e_words;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_words::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_words::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_translation_en::Func_words output = vx_translation_en::e_words;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -500,7 +567,9 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_constdef Class_words::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_words::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_words::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -513,10 +582,21 @@ namespace vx_translation_en {
       return output;
     }
 
-    vx_core::Type_any Class_words::vx_empty() const {return vx_translation_en::e_words;}
-    vx_core::Type_any Class_words::vx_type() const {return vx_translation_en::t_words;}
-    vx_core::Type_msgblock Class_words::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_words::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_words::vx_empty() const {
+      return vx_translation_en::e_words;
+    }
+
+    vx_core::Type_any Class_words::vx_type() const {
+      return vx_translation_en::t_words;
+    }
+
+    vx_core::Type_msgblock Class_words::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_words::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Type_any Class_words::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;

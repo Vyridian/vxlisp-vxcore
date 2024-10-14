@@ -2,6 +2,7 @@
 
 import vx_test from "../../src/vx/test.js"
 import vx_core from "../../src/vx/core.js"
+import vx_collection from "../../src/vx/collection.js"
 import vx_data_file from "../../src/vx/data/file.js"
 import vx_web_html from "../../src/vx/web/html.js"
 

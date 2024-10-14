@@ -1196,19 +1196,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketangle", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1249,19 +1237,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketcurly", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1302,19 +1278,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketsquare", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1355,19 +1319,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimclose", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1404,19 +1356,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimclosing", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1453,19 +1393,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcomma", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1504,19 +1432,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcomment", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1557,19 +1473,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcommentblock", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1610,19 +1514,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimline", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1661,19 +1553,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest1", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delimlist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_data_textblock.t_delim), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delimlist
       )
       return output
     }
@@ -1705,19 +1585,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest2", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delimlist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_data_textblock.t_delim), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delimlist
       )
       return output
     }
@@ -1750,19 +1618,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest3", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delimlist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_data_textblock.t_delim), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delimlist
       )
       return output
     }
@@ -1795,19 +1651,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimnonwhitespace", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1848,19 +1692,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimparen", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1901,19 +1733,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimquote", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -1954,19 +1774,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimquoteblock", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -2007,19 +1815,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimspace", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -2060,19 +1856,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest1", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -2109,19 +1893,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest2", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -2158,19 +1930,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest3", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -2207,19 +1967,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtext", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }
@@ -2256,19 +2004,7 @@ object vx_data_textblock {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimwhitespace", // name
-        vx_core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_data_textblock.t_delim
       )
       return output
     }

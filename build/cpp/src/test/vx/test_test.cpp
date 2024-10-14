@@ -1,5 +1,6 @@
 #include "../../main/vx/test.hpp"
 #include "../../main/vx/core.hpp"
+#include "../../main/vx/collection.hpp"
 #include "../../main/vx/data/file.hpp"
 #include "../../main/vx/web/html.hpp"
 #include "test_test.hpp"

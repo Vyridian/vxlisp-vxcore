@@ -19,6 +19,9 @@ namespace vx_collection_test {
   vx_test::Type_testcase f_list_from_list_end(vx_core::Type_context context);
   vx_test::Type_testcase f_list_from_list_filter(vx_core::Type_context context);
   vx_test::Type_testcase f_list_from_list_filtertypes(vx_core::Type_context context);
+  vx_test::Type_testcase f_list_from_list_flatten(vx_core::Type_context context);
+  vx_test::Type_testcase f_list_from_list_join(vx_core::Type_context context);
+  vx_test::Type_testcase f_list_from_list_join(vx_core::Type_context context);
   vx_test::Type_testcase f_list_from_list_start(vx_core::Type_context context);
   vx_test::Type_testcase f_list_from_list_start_end(vx_core::Type_context context);
   vx_test::Type_testcase f_map_from_map_end(vx_core::Type_context context);

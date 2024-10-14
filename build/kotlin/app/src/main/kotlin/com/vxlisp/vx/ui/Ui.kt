@@ -6771,19 +6771,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-center", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_align
       )
       return output
     }
@@ -6807,19 +6795,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-left", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_align
       )
       return output
     }
@@ -6843,19 +6819,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-right", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_align
       )
       return output
     }
@@ -6879,19 +6843,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-x", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_align
       )
       return output
     }
@@ -6915,19 +6867,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-xy", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_align
       )
       return output
     }
@@ -6951,19 +6891,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-y", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_align
       )
       return output
     }
@@ -6987,19 +6915,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-app", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7033,19 +6949,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-background", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7079,19 +6983,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-button", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7125,19 +7017,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-combobox", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7171,19 +7051,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-else", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7217,19 +7085,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-columns", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7263,19 +7119,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-item", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7309,19 +7153,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-rows", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7355,19 +7187,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-image", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7401,19 +7221,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-label", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7447,19 +7255,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-main", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7493,19 +7289,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-maxpanel", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7539,19 +7323,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menubar", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7585,19 +7357,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menudrawer", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7631,19 +7391,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-msgbox", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7677,19 +7425,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navbar", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7723,19 +7459,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navdrawer", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7769,19 +7493,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-panel", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7815,19 +7527,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-parallax", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7861,19 +7561,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusbar", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7907,19 +7595,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusdrawer", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7953,19 +7629,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-text", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -7999,19 +7663,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-textentry", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -8045,19 +7697,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-titlebar", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_layout
       )
       return output
     }
@@ -8091,19 +7731,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-bottom", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pin
       )
       return output
     }
@@ -8127,19 +7755,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pin
       )
       return output
     }
@@ -8163,19 +7779,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-h", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pin
       )
       return output
     }
@@ -8199,19 +7803,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-v", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pin
       )
       return output
     }
@@ -8235,19 +7827,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-expand", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pin
       )
       return output
     }
@@ -8271,19 +7851,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-left", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pin
       )
       return output
     }
@@ -8307,19 +7875,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-right", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pin
       )
       return output
     }
@@ -8343,19 +7899,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-top", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pin
       )
       return output
     }
@@ -8379,19 +7923,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-center", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_point
       )
       return output
     }
@@ -8415,19 +7947,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-lefttop", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_point
       )
       return output
     }
@@ -8451,19 +7971,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rightbottom", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_point
       )
       return output
     }
@@ -8487,19 +7995,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-absolute", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pointtype
       )
       return output
     }
@@ -8523,19 +8019,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-percent", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pointtype
       )
       return output
     }
@@ -8559,19 +8043,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-relative", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_pointtype
       )
       return output
     }
@@ -8595,19 +8067,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-custom", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_styletype
       )
       return output
     }
@@ -8631,19 +8091,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-shared", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_styletype
       )
       return output
     }
@@ -8667,19 +8115,7 @@ object vx_ui_ui {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-system", // name
-        vx_core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_ui_ui.t_styletype
       )
       return output
     }

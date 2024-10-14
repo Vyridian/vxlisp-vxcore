@@ -2131,6 +2131,77 @@ public class CoreTest {
     return output;
   }
 
+  public static Vx.Test.Type_testcase f_constdef_from_any(Vx.Core.Type_context context) {
+    Vx.Test.Type_testcase output = Vx.Core.vx_new(
+      Vx.Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "constdef<-any",
+      ":describelist",
+      Vx.Core.vx_new(
+        Vx.Test.t_testdescribelist,
+        f_constdef_from_any_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testdescribe f_constdef_from_any_testdescribe_1(Vx.Core.Type_context context) {
+    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
+      Vx.Test.t_testdescribe,
+      ":describename", "(test\n (constdef\n  :pkgname \"vx/core\"\n  :name \"false\"\n  :type boolean)\n (constdef<-any false))",
+      ":testresult", Vx.Test.f_test(
+        context,
+        Vx.Core.f_new(
+          Vx.Core.t_constdef,
+          Vx.Core.vx_new(
+            Vx.Core.t_anylist,
+            Vx.Core.vx_new_string(":pkgname"),
+            Vx.Core.vx_new_string("vx/core"),
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("false"),
+            Vx.Core.vx_new_string(":type"),
+            Vx.Core.t_boolean
+          )
+        ),
+        Vx.Core.f_constdef_from_any(
+          Vx.Core.vx_new_boolean(false)
+        )
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testcase f_constname_from_any(Vx.Core.Type_context context) {
+    Vx.Test.Type_testcase output = Vx.Core.vx_new(
+      Vx.Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "constname<-any",
+      ":describelist",
+      Vx.Core.vx_new(
+        Vx.Test.t_testdescribelist,
+        f_constname_from_any_testdescribe_1(context)
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testdescribe f_constname_from_any_testdescribe_1(Vx.Core.Type_context context) {
+    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
+      Vx.Test.t_testdescribe,
+      ":describename", "(test\n \"vx/core/false\"\n (constname<-any false))",
+      ":testresult", Vx.Test.f_test(
+        context,
+        Vx.Core.vx_new_string("vx/core/false"),
+        Vx.Core.f_constname_from_any(
+          Vx.Core.vx_new_boolean(false)
+        )
+      )
+    );
+    return output;
+  }
+
   public static Vx.Test.Type_testcase f_contains(Vx.Core.Type_context context) {
     Vx.Test.Type_testcase output = Vx.Core.vx_new(
       Vx.Test.t_testcase,
@@ -3167,133 +3238,6 @@ public class CoreTest {
               v1,
               v2
             );
-            return output_1;
-          })
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Vx.Test.Type_testcase f_list_join_from_list(Vx.Core.Type_context context) {
-    Vx.Test.Type_testcase output = Vx.Core.vx_new(
-      Vx.Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/core",
-      ":casename", "list-join<-list",
-      ":describelist",
-      Vx.Core.vx_new(
-        Vx.Test.t_testdescribelist,
-        f_list_join_from_list_testdescribe_1(context)
-      )
-    );
-    return output;
-  }
-
-  public static Vx.Test.Type_testdescribe f_list_join_from_list_testdescribe_1(Vx.Core.Type_context context) {
-    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
-      Vx.Test.t_testdescribe,
-      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list-join<-list : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))))",
-      ":testresult", Vx.Test.f_test(
-        context,
-        Vx.Core.f_new(
-          Vx.Core.t_stringlist,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string("a"),
-            Vx.Core.vx_new_string("b"),
-            Vx.Core.vx_new_string("c"),
-            Vx.Core.vx_new_string("d")
-          )
-        ),
-        Vx.Core.f_list_join_from_list(
-          Vx.Core.t_stringlist,
-          Vx.Core.f_new(
-            Vx.Core.t_stringlistlist,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Core.f_new(
-                Vx.Core.t_stringlist,
-                Vx.Core.vx_new(
-                  Vx.Core.t_anylist,
-                  Vx.Core.vx_new_string("a"),
-                  Vx.Core.vx_new_string("b")
-                )
-              ),
-              Vx.Core.f_new(
-                Vx.Core.t_stringlist,
-                Vx.Core.vx_new(
-                  Vx.Core.t_anylist,
-                  Vx.Core.vx_new_string("c"),
-                  Vx.Core.vx_new_string("d")
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Vx.Test.Type_testcase f_list_join_from_list_1(Vx.Core.Type_context context) {
-    Vx.Test.Type_testcase output = Vx.Core.vx_new(
-      Vx.Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/core",
-      ":casename", "list-join<-list_1",
-      ":describelist",
-      Vx.Core.vx_new(
-        Vx.Test.t_testdescribelist,
-        f_list_join_from_list_1_testdescribe_1(context)
-      )
-    );
-    return output;
-  }
-
-  public static Vx.Test.Type_testdescribe f_list_join_from_list_1_testdescribe_1(Vx.Core.Type_context context) {
-    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
-      Vx.Test.t_testdescribe,
-      ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list-join<-list : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))\n  (fn : stringlist\n   [values : stringlist]\n   values)))",
-      ":testresult", Vx.Test.f_test(
-        context,
-        Vx.Core.f_new(
-          Vx.Core.t_stringlist,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string("a"),
-            Vx.Core.vx_new_string("b"),
-            Vx.Core.vx_new_string("c"),
-            Vx.Core.vx_new_string("d")
-          )
-        ),
-        Vx.Core.f_list_join_from_list_1(
-          Vx.Core.t_stringlist,
-          Vx.Core.f_new(
-            Vx.Core.t_stringlistlist,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Core.f_new(
-                Vx.Core.t_stringlist,
-                Vx.Core.vx_new(
-                  Vx.Core.t_anylist,
-                  Vx.Core.vx_new_string("a"),
-                  Vx.Core.vx_new_string("b")
-                )
-              ),
-              Vx.Core.f_new(
-                Vx.Core.t_stringlist,
-                Vx.Core.vx_new(
-                  Vx.Core.t_anylist,
-                  Vx.Core.vx_new_string("c"),
-                  Vx.Core.vx_new_string("d")
-                )
-              )
-            )
-          ),
-          Vx.Core.t_any_from_any.vx_fn_new((values_any) => {
-            Vx.Core.Type_stringlist values = Vx.Core.f_any_from_any(Vx.Core.t_stringlist, values_any);
-            Vx.Core.Type_any output_1 = values;
             return output_1;
           })
         )
@@ -4671,6 +4615,8 @@ public class CoreTest {
       CoreTest.f_any_from_map_start_reduce(context),
       CoreTest.f_boolean_write_from_map_name_value(context),
       CoreTest.f_compare(context),
+      CoreTest.f_constdef_from_any(context),
+      CoreTest.f_constname_from_any(context),
       CoreTest.f_contains(context),
       CoreTest.f_contains_1(context),
       CoreTest.f_copy(context),
@@ -4689,8 +4635,6 @@ public class CoreTest {
       CoreTest.f_length(context),
       CoreTest.f_length_1(context),
       CoreTest.f_let(context),
-      CoreTest.f_list_join_from_list(context),
-      CoreTest.f_list_join_from_list_1(context),
       CoreTest.f_list_from_list(context),
       CoreTest.f_list_from_list_intany(context),
       CoreTest.f_list_from_map(context),
@@ -4726,10 +4670,10 @@ public class CoreTest {
       ":testpkg", "vx/core", 
       ":constnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
       ":docnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
-      ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 135), 
+      ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 136), 
       ":bigospacenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
       ":bigotimenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
-      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 226), 
+      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 227), 
       ":typenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
     );
     return output;
@@ -4909,6 +4853,8 @@ public class CoreTest {
         ":case", 0,
         ":case_1", 0,
         ":compare", 2,
+        ":constdef<-any", 1,
+        ":constname<-any", 1,
         ":contains", 2,
         ":contains_1", 3,
         ":context-main", 0,
@@ -4942,8 +4888,6 @@ public class CoreTest {
         ":length_2", 0,
         ":let", 1,
         ":let-async", 0,
-        ":list-join<-list", 1,
-        ":list-join<-list_1", 1,
         ":list<-list", 1,
         ":list<-list_1", 0,
         ":list<-list-async", 0,

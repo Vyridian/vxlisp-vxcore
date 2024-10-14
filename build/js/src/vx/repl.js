@@ -41,21 +41,21 @@ export default class vx_repl {
    * vxlisp File Delimiters
    * {delim}
    */
-  static c_delimvxlisp = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/repl', name: 'delimvxlisp'}}
+  static c_delimvxlisp = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/repl', name: 'delimvxlisp', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimvxlispbracket
    * vxlisp Square Bracket Delimiters
    * {delim}
    */
-  static c_delimvxlispbracket = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/repl', name: 'delimvxlispbracket'}}
+  static c_delimvxlispbracket = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/repl', name: 'delimvxlispbracket', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimvxlispparen
    * vxlisp Paren Delimiters
    * {delim}
    */
-  static c_delimvxlispparen = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/repl', name: 'delimvxlispparen'}}
+  static c_delimvxlispparen = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/repl', name: 'delimvxlispparen', type: vx_data_textblock.t_delim}}
 
   /**
    * @function any_repl_from_functype_args

@@ -24,10 +24,10 @@ export default class vx_core_test {
       "testpkg",   "vx/core", 
       "constnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
       "docnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
-      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 135), 
+      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 136), 
       "bigospacenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
       "bigotimenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 226), 
+      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 227), 
       "typenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
     )
     return output
@@ -210,6 +210,8 @@ export default class vx_core_test {
           "case", 0,
           "case_1", 0,
           "compare", 2,
+          "constdef<-any", 1,
+          "constname<-any", 1,
           "contains", 2,
           "contains_1", 3,
           "context-main", 0,
@@ -243,8 +245,6 @@ export default class vx_core_test {
           "length_2", 0,
           "let", 1,
           "let-async", 0,
-          "list-join<-list", 1,
-          "list-join<-list_1", 1,
           "list<-list", 1,
           "list<-list_1", 0,
           "list<-list-async", 0,
@@ -1747,6 +1747,66 @@ export default class vx_core_test {
     return output
   }
 
+  static f_constdef_from_any(context) {
+    const output = vx_core.f_new_from_type(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "constdef<-any",
+      ":describelist",
+        vx_core.f_new_from_type(
+          vx_test.t_testdescribelist,
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n (constdef\n  :pkgname \"vx/core\"\n  :name \"false\"\n  :type boolean)\n (constdef<-any false))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              vx_core.f_new(
+                {"any-1": vx_core.t_constdef},
+                ":pkgname",
+                "vx/core",
+                ":name",
+                "false",
+                ":type",
+                vx_core.t_boolean
+              ),
+              vx_core.f_constdef_from_any(
+                false
+              )
+            )
+          )
+        )
+    )
+    return output
+  }
+
+  static f_constname_from_any(context) {
+    const output = vx_core.f_new_from_type(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "constname<-any",
+      ":describelist",
+        vx_core.f_new_from_type(
+          vx_test.t_testdescribelist,
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n \"vx/core/false\"\n (constname<-any false))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              "vx/core/false",
+              vx_core.f_constname_from_any(
+                false
+              )
+            )
+          )
+        )
+    )
+    return output
+  }
+
   static f_contains(context) {
     const output = vx_core.f_new_from_type(
       vx_test.t_testcase,
@@ -2469,69 +2529,6 @@ export default class vx_core_test {
                   const v2 = vx_core.f_plus(v1, 3)
                   return vx_core.f_plus(v1, v2)
                 })
-              )
-            )
-          )
-        )
-    )
-    return output
-  }
-
-  static f_list_join_from_list(context) {
-    const output = vx_core.f_new_from_type(
-      vx_test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/core",
-      ":casename", "list-join<-list",
-      ":describelist",
-        vx_core.f_new_from_type(
-          vx_test.t_testdescribelist,
-          vx_core.f_new_from_type(
-            vx_test.t_testdescribe,
-            ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list-join<-list : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))))",
-            ":testresult",
-            vx_test.f_test(
-              context,
-              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c", "d"),
-              vx_core.f_list_join_from_list(
-                {"any-1": vx_core.t_string, "any-2": vx_core.t_stringlist, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_stringlistlist},
-                vx_core.f_new(
-                  {"any-1": vx_core.t_stringlistlist},
-                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b"),
-                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "c", "d")
-                )
-              )
-            )
-          )
-        )
-    )
-    return output
-  }
-
-  static f_list_join_from_list_1(context) {
-    const output = vx_core.f_new_from_type(
-      vx_test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/core",
-      ":casename", "list-join<-list",
-      ":describelist",
-        vx_core.f_new_from_type(
-          vx_test.t_testdescribelist,
-          vx_core.f_new_from_type(
-            vx_test.t_testdescribe,
-            ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list-join<-list : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))\n  (fn : stringlist\n   [values : stringlist]\n   values)))",
-            ":testresult",
-            vx_test.f_test(
-              context,
-              vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b", "c", "d"),
-              vx_core.f_list_join_from_list_1(
-                {"any-1": vx_core.t_string, "any-2": vx_core.t_stringlist, "list-1": vx_core.t_stringlist, "list-2": vx_core.t_stringlistlist},
-                vx_core.f_new(
-                  {"any-1": vx_core.t_stringlistlist},
-                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "a", "b"),
-                  vx_core.f_new({"any-1": vx_core.t_stringlist}, "c", "d")
-                ),
-                vx_core.f_new_from_type(vx_core.t_any_from_any, (values) => values)
               )
             )
           )
@@ -3405,6 +3402,8 @@ export default class vx_core_test {
       vx_core_test.f_any_from_map_start_reduce(context),
       vx_core_test.f_boolean_write_from_map_name_value(context),
       vx_core_test.f_compare(context),
+      vx_core_test.f_constdef_from_any(context),
+      vx_core_test.f_constname_from_any(context),
       vx_core_test.f_contains(context),
       vx_core_test.f_contains_1(context),
       vx_core_test.f_copy(context),
@@ -3423,8 +3422,6 @@ export default class vx_core_test {
       vx_core_test.f_length(context),
       vx_core_test.f_length_1(context),
       vx_core_test.f_let(context),
-      vx_core_test.f_list_join_from_list(context),
-      vx_core_test.f_list_join_from_list_1(context),
       vx_core_test.f_list_from_list(context),
       vx_core_test.f_list_from_list_intany(context),
       vx_core_test.f_list_from_map(context),

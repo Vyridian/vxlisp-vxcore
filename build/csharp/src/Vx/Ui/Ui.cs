@@ -6644,19 +6644,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-center", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_align
       );
       return output;
     }
@@ -6681,19 +6669,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-left", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_align
       );
       return output;
     }
@@ -6718,19 +6694,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-right", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_align
       );
       return output;
     }
@@ -6755,19 +6719,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-x", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_align
       );
       return output;
     }
@@ -6792,19 +6744,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-xy", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_align
       );
       return output;
     }
@@ -6829,19 +6769,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-y", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_align
       );
       return output;
     }
@@ -6865,19 +6793,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-app", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -6911,19 +6827,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-background", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -6957,19 +6861,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-button", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7003,19 +6895,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-combobox", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7049,19 +6929,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-else", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7095,19 +6963,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-columns", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7141,19 +6997,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-item", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7187,19 +7031,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-rows", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7233,19 +7065,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-image", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7279,19 +7099,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-label", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7325,19 +7133,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-main", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7371,19 +7167,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-maxpanel", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7417,19 +7201,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menubar", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7463,19 +7235,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menudrawer", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7509,19 +7269,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-msgbox", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7555,19 +7303,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navbar", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7601,19 +7337,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navdrawer", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7647,19 +7371,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-panel", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7693,19 +7405,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-parallax", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7739,19 +7439,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusbar", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7785,19 +7473,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusdrawer", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7831,19 +7507,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-text", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7877,19 +7541,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-textentry", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7923,19 +7575,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-titlebar", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_layout
       );
       return output;
     }
@@ -7969,19 +7609,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-bottom", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pin
       );
       return output;
     }
@@ -8005,19 +7633,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pin
       );
       return output;
     }
@@ -8041,19 +7657,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-h", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pin
       );
       return output;
     }
@@ -8077,19 +7681,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-v", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pin
       );
       return output;
     }
@@ -8113,19 +7705,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-expand", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pin
       );
       return output;
     }
@@ -8149,19 +7729,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-left", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pin
       );
       return output;
     }
@@ -8185,19 +7753,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-right", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pin
       );
       return output;
     }
@@ -8221,19 +7777,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-top", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pin
       );
       return output;
     }
@@ -8257,19 +7801,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-center", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_point
       );
       return output;
     }
@@ -8293,19 +7825,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-lefttop", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_point
       );
       return output;
     }
@@ -8329,19 +7849,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rightbottom", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_point
       );
       return output;
     }
@@ -8365,19 +7873,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-absolute", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pointtype
       );
       return output;
     }
@@ -8401,19 +7897,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-percent", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pointtype
       );
       return output;
     }
@@ -8437,19 +7921,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-relative", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_pointtype
       );
       return output;
     }
@@ -8473,19 +7945,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-custom", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_styletype
       );
       return output;
     }
@@ -8509,19 +7969,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-shared", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_styletype
       );
       return output;
     }
@@ -8545,19 +7993,7 @@ public static class Ui {
       Vx.Core.Type_constdef output = Vx.Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-system", // name
-        Vx.Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
-        )
+        Vx.Ui.Ui.t_styletype
       );
       return output;
     }

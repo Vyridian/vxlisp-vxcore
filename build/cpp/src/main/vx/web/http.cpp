@@ -189,7 +189,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_response::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_response::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
 
   //}
@@ -243,13 +245,16 @@ namespace vx_web_http {
       }
     }
 
-    vx_core::Type_any Class_csv_from_httpget::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_csv_from_httpget::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_csv_from_httpget output = vx_web_http::e_csv_from_httpget;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_csv_from_httpget::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_csv_from_httpget::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_csv_from_httpget output = vx_web_http::e_csv_from_httpget;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -273,7 +278,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_csv_from_httpget::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_csv_from_httpget::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_csv_from_httpget::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -286,10 +293,21 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_any Class_csv_from_httpget::vx_empty() const {return vx_web_http::e_csv_from_httpget;}
-    vx_core::Type_any Class_csv_from_httpget::vx_type() const {return vx_web_http::t_csv_from_httpget;}
-    vx_core::Type_msgblock Class_csv_from_httpget::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_csv_from_httpget::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_csv_from_httpget::vx_empty() const {
+      return vx_web_http::e_csv_from_httpget;
+    }
+
+    vx_core::Type_any Class_csv_from_httpget::vx_type() const {
+      return vx_web_http::t_csv_from_httpget;
+    }
+
+    vx_core::Type_msgblock Class_csv_from_httpget::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_csv_from_httpget::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_async Class_csv_from_httpget::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const {
       return vx_core::e_any_from_any_async;
@@ -361,13 +379,16 @@ namespace vx_web_http {
       }
     }
 
-    vx_core::Type_any Class_json_from_httpget::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_json_from_httpget::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_json_from_httpget output = vx_web_http::e_json_from_httpget;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_json_from_httpget::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_json_from_httpget::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_json_from_httpget output = vx_web_http::e_json_from_httpget;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -391,7 +412,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_json_from_httpget::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_json_from_httpget::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_json_from_httpget::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -404,10 +427,21 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_any Class_json_from_httpget::vx_empty() const {return vx_web_http::e_json_from_httpget;}
-    vx_core::Type_any Class_json_from_httpget::vx_type() const {return vx_web_http::t_json_from_httpget;}
-    vx_core::Type_msgblock Class_json_from_httpget::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_json_from_httpget::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_json_from_httpget::vx_empty() const {
+      return vx_web_http::e_json_from_httpget;
+    }
+
+    vx_core::Type_any Class_json_from_httpget::vx_type() const {
+      return vx_web_http::t_json_from_httpget;
+    }
+
+    vx_core::Type_msgblock Class_json_from_httpget::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_json_from_httpget::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_async Class_json_from_httpget::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const {
       return vx_core::e_any_from_any_async;
@@ -465,13 +499,16 @@ namespace vx_web_http {
       }
     }
 
-    vx_core::Type_any Class_response_from_httpget::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_response_from_httpget::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_response_from_httpget output = vx_web_http::e_response_from_httpget;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_response_from_httpget::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_response_from_httpget::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_response_from_httpget output = vx_web_http::e_response_from_httpget;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -495,7 +532,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_response_from_httpget::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_response_from_httpget::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_response_from_httpget::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -508,10 +547,21 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_any Class_response_from_httpget::vx_empty() const {return vx_web_http::e_response_from_httpget;}
-    vx_core::Type_any Class_response_from_httpget::vx_type() const {return vx_web_http::t_response_from_httpget;}
-    vx_core::Type_msgblock Class_response_from_httpget::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_response_from_httpget::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_response_from_httpget::vx_empty() const {
+      return vx_web_http::e_response_from_httpget;
+    }
+
+    vx_core::Type_any Class_response_from_httpget::vx_type() const {
+      return vx_web_http::t_response_from_httpget;
+    }
+
+    vx_core::Type_msgblock Class_response_from_httpget::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_response_from_httpget::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::vx_Type_async Class_response_from_httpget::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::vx_Type_async output = vx_core::vx_async_new_from_value(vx_core::e_any);
@@ -573,13 +623,16 @@ namespace vx_web_http {
       }
     }
 
-    vx_core::Type_any Class_text_from_httpget::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_text_from_httpget::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_text_from_httpget output = vx_web_http::e_text_from_httpget;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_text_from_httpget::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_text_from_httpget::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_text_from_httpget output = vx_web_http::e_text_from_httpget;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -603,7 +656,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_text_from_httpget::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_text_from_httpget::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_text_from_httpget::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -616,10 +671,21 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_any Class_text_from_httpget::vx_empty() const {return vx_web_http::e_text_from_httpget;}
-    vx_core::Type_any Class_text_from_httpget::vx_type() const {return vx_web_http::t_text_from_httpget;}
-    vx_core::Type_msgblock Class_text_from_httpget::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_text_from_httpget::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_text_from_httpget::vx_empty() const {
+      return vx_web_http::e_text_from_httpget;
+    }
+
+    vx_core::Type_any Class_text_from_httpget::vx_type() const {
+      return vx_web_http::t_text_from_httpget;
+    }
+
+    vx_core::Type_msgblock Class_text_from_httpget::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_text_from_httpget::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_async Class_text_from_httpget::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const {
       return vx_core::e_any_from_any_async;
@@ -671,13 +737,16 @@ namespace vx_web_http {
       }
     }
 
-    vx_core::Type_any Class_text_from_response::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_text_from_response::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_text_from_response output = vx_web_http::e_text_from_response;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_text_from_response::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_text_from_response::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_text_from_response output = vx_web_http::e_text_from_response;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -701,7 +770,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_text_from_response::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_text_from_response::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_text_from_response::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -714,10 +785,21 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_any Class_text_from_response::vx_empty() const {return vx_web_http::e_text_from_response;}
-    vx_core::Type_any Class_text_from_response::vx_type() const {return vx_web_http::t_text_from_response;}
-    vx_core::Type_msgblock Class_text_from_response::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_text_from_response::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_text_from_response::vx_empty() const {
+      return vx_web_http::e_text_from_response;
+    }
+
+    vx_core::Type_any Class_text_from_response::vx_type() const {
+      return vx_web_http::t_text_from_response;
+    }
+
+    vx_core::Type_msgblock Class_text_from_response::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_text_from_response::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_text_from_response::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -791,13 +873,16 @@ namespace vx_web_http {
       }
     }
 
-    vx_core::Type_any Class_textblock_from_httpget::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_textblock_from_httpget::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_textblock_from_httpget output = vx_web_http::e_textblock_from_httpget;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_textblock_from_httpget::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_textblock_from_httpget::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_textblock_from_httpget output = vx_web_http::e_textblock_from_httpget;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -821,7 +906,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_textblock_from_httpget::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_textblock_from_httpget::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_textblock_from_httpget::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -834,10 +921,21 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_any Class_textblock_from_httpget::vx_empty() const {return vx_web_http::e_textblock_from_httpget;}
-    vx_core::Type_any Class_textblock_from_httpget::vx_type() const {return vx_web_http::t_textblock_from_httpget;}
-    vx_core::Type_msgblock Class_textblock_from_httpget::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_textblock_from_httpget::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_textblock_from_httpget::vx_empty() const {
+      return vx_web_http::e_textblock_from_httpget;
+    }
+
+    vx_core::Type_any Class_textblock_from_httpget::vx_type() const {
+      return vx_web_http::t_textblock_from_httpget;
+    }
+
+    vx_core::Type_msgblock Class_textblock_from_httpget::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_textblock_from_httpget::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::vx_Type_async Class_textblock_from_httpget::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::vx_Type_async output = vx_core::vx_async_new_from_value(vx_core::e_any);
@@ -886,13 +984,16 @@ namespace vx_web_http {
       }
     }
 
-    vx_core::Type_any Class_textblock_from_response::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_textblock_from_response::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_textblock_from_response output = vx_web_http::e_textblock_from_response;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_textblock_from_response::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_textblock_from_response::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_textblock_from_response output = vx_web_http::e_textblock_from_response;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -916,7 +1017,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_textblock_from_response::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_textblock_from_response::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_textblock_from_response::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -929,10 +1032,21 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_any Class_textblock_from_response::vx_empty() const {return vx_web_http::e_textblock_from_response;}
-    vx_core::Type_any Class_textblock_from_response::vx_type() const {return vx_web_http::t_textblock_from_response;}
-    vx_core::Type_msgblock Class_textblock_from_response::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_textblock_from_response::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_textblock_from_response::vx_empty() const {
+      return vx_web_http::e_textblock_from_response;
+    }
+
+    vx_core::Type_any Class_textblock_from_response::vx_type() const {
+      return vx_web_http::t_textblock_from_response;
+    }
+
+    vx_core::Type_msgblock Class_textblock_from_response::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_textblock_from_response::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any Class_textblock_from_response::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const {
       return vx_core::e_any_from_any;
@@ -1005,13 +1119,16 @@ namespace vx_web_http {
       }
     }
 
-    vx_core::Type_any Class_xml_from_httpget::vx_new(vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_from_httpget::vx_new(
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_xml_from_httpget output = vx_web_http::e_xml_from_httpget;
       vx_core::vx_release(vals);
       return output;
     }
 
-    vx_core::Type_any Class_xml_from_httpget::vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const {
+    vx_core::Type_any Class_xml_from_httpget::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
       vx_web_http::Func_xml_from_httpget output = vx_web_http::e_xml_from_httpget;
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
@@ -1035,7 +1152,9 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_constdef Class_xml_from_httpget::vx_constdef() const {return this->vx_p_constdef;}
+    vx_core::Type_constdef Class_xml_from_httpget::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
 
     vx_core::Type_funcdef Class_xml_from_httpget::vx_funcdef() const {
       vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
@@ -1048,10 +1167,21 @@ namespace vx_web_http {
       return output;
     }
 
-    vx_core::Type_any Class_xml_from_httpget::vx_empty() const {return vx_web_http::e_xml_from_httpget;}
-    vx_core::Type_any Class_xml_from_httpget::vx_type() const {return vx_web_http::t_xml_from_httpget;}
-    vx_core::Type_msgblock Class_xml_from_httpget::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany Class_xml_from_httpget::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_any Class_xml_from_httpget::vx_empty() const {
+      return vx_web_http::e_xml_from_httpget;
+    }
+
+    vx_core::Type_any Class_xml_from_httpget::vx_type() const {
+      return vx_web_http::t_xml_from_httpget;
+    }
+
+    vx_core::Type_msgblock Class_xml_from_httpget::vx_msgblock() const {
+      return this->vx_p_msgblock;
+    }
+
+    vx_core::vx_Type_listany Class_xml_from_httpget::vx_dispose() {
+      return vx_core::emptylistany;
+    }
 
     vx_core::Func_any_from_any_async Class_xml_from_httpget::vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any_async::IFn fn) const {
       return vx_core::e_any_from_any_async;

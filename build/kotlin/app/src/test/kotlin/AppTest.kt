@@ -37,13 +37,6 @@ object AppTest {
   }
 
   @Test
-  @DisplayName("vx/data/db")
-  fun test_vx_data_db() : Unit {
-    val testpackage : vx_test.Type_testpackage = vx_data_dbTest.test_package(context)
-    TestLib.run_testpackage_async(testpackage)
-  }
-
-  @Test
   @DisplayName("vx/data/table")
   fun test_vx_data_table() : Unit {
     val testpackage : vx_test.Type_testpackage = vx_data_tableTest.test_package(context)
@@ -210,7 +203,6 @@ object AppTest {
     val testpackagelist : vx_test.Type_testpackagelist = vx_core.vx_new(
       vx_test.t_testpackagelist,
       vx_coreTest.test_package(context),
-      vx_data_dbTest.test_package(context),
       vx_data_tableTest.test_package(context),
       vx_data_treeTest.test_package(context),
       vx_eventTest.test_package(context),

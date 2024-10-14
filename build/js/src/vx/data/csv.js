@@ -32,7 +32,7 @@ export default class vx_data_csv {
    * Csv File Delimiters
    * {delim}
    */
-  static c_delimcsv = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/csv', name: 'delimcsv'}}
+  static c_delimcsv = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/csv', name: 'delimcsv', type: vx_data_textblock.t_delim}}
 
   /**
    * @function csv_read_from_file

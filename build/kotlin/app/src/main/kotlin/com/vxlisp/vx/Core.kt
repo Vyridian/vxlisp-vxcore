@@ -423,6 +423,13 @@ object vx_core {
     return output
   }
 
+  // vx_constdef<-any(any)
+  fun vx_constdef_from_any(
+    value : vx_core.Type_any) : vx_core.Type_constdef {
+    val output : vx_core.Type_constdef = value.vx_constdef()
+    return output
+  }
+
   // vx_contains(list-1, any)
   fun <T : vx_core.Type_list> vx_contains_1(
     values : T,
@@ -953,29 +960,6 @@ object vx_core {
     val output : X = vx_core.f_any_from_any(
       generic_list_1,
       anylist
-    )
-    return output
-  }
-
-  fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_join_from_list_1(
-    generic_list_1 : X,
-    values : Y,
-    fn_any_from_any : vx_core.Func_any_from_any) : X {
-    val list_value : List<vx_core.Type_any> = values.vx_list()
-    val list_result : MutableList<vx_core.Type_any> = ArrayList<vx_core.Type_any>()
-    for (value : vx_core.Type_any in list_value) {
-      val listoflist : vx_core.Type_any = fn_any_from_any.vx_any_from_any(
-        generic_list_1, value
-      )
-      if (listoflist is vx_core.Type_list) {
-        val vallist : vx_core.Type_list = listoflist as vx_core.Type_list
-        val listval : List<vx_core.Type_any> = vallist.vx_list()
-        list_result.addAll(listval)
-      }
-    }
-    val output : X = vx_core.f_any_from_any(
-      generic_list_1,
-      generic_list_1.vx_new(list_result)
     )
     return output
   }
@@ -13572,19 +13556,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "false", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_boolean
       )
       return output
     }
@@ -13610,19 +13582,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "global", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "project", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_project
       )
       return output
     }
@@ -13646,19 +13606,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "infinity", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_int
       )
       return output
     }
@@ -13683,19 +13631,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "mempool-active", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "mempool", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_mempool
       )
       return output
     }
@@ -13719,19 +13655,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "msg-error", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_int
       )
       return output
     }
@@ -13756,19 +13680,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "msg-info", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_int
       )
       return output
     }
@@ -13793,19 +13705,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "msg-severe", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_int
       )
       return output
     }
@@ -13830,19 +13730,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "msg-warning", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_int
       )
       return output
     }
@@ -13867,19 +13755,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "neginfinity", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_int
       )
       return output
     }
@@ -13904,19 +13780,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "newline", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_string
       )
       return output
     }
@@ -13941,19 +13805,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "notanumber", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_int
       )
       return output
     }
@@ -13978,19 +13830,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "nothing", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_string
       )
       return output
     }
@@ -14015,19 +13855,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "path-test-resources", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_string
       )
       return output
     }
@@ -14052,19 +13880,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "quote", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_string
       )
       return output
     }
@@ -14089,19 +13905,7 @@ object vx_core {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/core", // pkgname
         "true", // name
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_core.t_boolean
       )
       return output
     }
@@ -20753,6 +20557,228 @@ object vx_core {
   }
 
 
+  interface Func_constdef_from_any : vx_core.Func_any_from_any {
+    fun vx_constdef_from_any(value : vx_core.Type_any) : vx_core.Type_constdef
+  }
+
+  class Class_constdef_from_any : vx_core.Class_base, Func_constdef_from_any {
+    constructor() {}
+
+    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_core.Class_constdef_from_any = vx_core.Class_constdef_from_any()
+      return output
+    }
+
+    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_core.Class_constdef_from_any = vx_core.Class_constdef_from_any()
+      return output
+    }
+
+    override fun vx_typedef() : vx_core.Type_typedef {
+      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      return output
+    }
+
+    override fun vx_funcdef() : vx_core.Type_funcdef {
+      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+        "vx/core", // pkgname
+        "constdef<-any", // name
+        0, // idx
+        false, // async
+        vx_core.typedef_new(
+          "vx/core", // pkgname
+          "constdef", // name
+          ":struct", // extends
+          vx_core.e_typelist, // traits
+          vx_core.e_typelist, // allowtypes
+          vx_core.e_typelist, // disallowtypes
+          vx_core.e_funclist, // allowfuncs
+          vx_core.e_funclist, // disallowfuncs
+          vx_core.e_anylist, // allowvalues
+          vx_core.e_anylist, // disallowvalues
+          vx_core.e_argmap // properties
+        ) // typedef
+      )
+      return output
+    }
+
+    override fun vx_empty() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_constdef_from_any
+      return output
+    }
+
+    override fun vx_type() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.t_constdef_from_any
+      return output
+    }
+
+    override fun vx_fn_new(fn : vx_core.Class_any_from_any.IFn) : vx_core.Func_any_from_any {
+      return vx_core.e_any_from_any
+    }
+
+    override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
+      var output : T = vx_core.f_empty(generic_any_1)
+      var inputval : vx_core.Type_any = value as vx_core.Type_any
+      var outputval : vx_core.Type_any = vx_core.f_constdef_from_any(inputval)
+      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      return output
+    }
+
+    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_any
+      var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      output = vx_core.f_constdef_from_any(value)
+      return output
+    }
+
+    override fun vx_constdef_from_any(value : vx_core.Type_any) : vx_core.Type_constdef {
+      var output : vx_core.Type_constdef = vx_core.f_constdef_from_any(value)
+      return output
+    }
+
+  }
+
+  val e_constdef_from_any : vx_core.Func_constdef_from_any = vx_core.Class_constdef_from_any()
+  val t_constdef_from_any : vx_core.Func_constdef_from_any = vx_core.Class_constdef_from_any()
+
+  fun f_constdef_from_any(value : vx_core.Type_any) : vx_core.Type_constdef {
+    var output : vx_core.Type_constdef = vx_core.e_constdef
+    output = vx_core.vx_constdef_from_any(value)
+    return output
+  }
+
+
+  interface Func_constname_from_any : vx_core.Func_any_from_any {
+    fun vx_constname_from_any(value : vx_core.Type_any) : vx_core.Type_string
+  }
+
+  class Class_constname_from_any : vx_core.Class_base, Func_constname_from_any {
+    constructor() {}
+
+    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_core.Class_constname_from_any = vx_core.Class_constname_from_any()
+      return output
+    }
+
+    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_core.Class_constname_from_any = vx_core.Class_constname_from_any()
+      return output
+    }
+
+    override fun vx_typedef() : vx_core.Type_typedef {
+      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      return output
+    }
+
+    override fun vx_funcdef() : vx_core.Type_funcdef {
+      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+        "vx/core", // pkgname
+        "constname<-any", // name
+        0, // idx
+        false, // async
+        vx_core.typedef_new(
+          "vx/core", // pkgname
+          "string", // name
+          ":string", // extends
+          vx_core.e_typelist, // traits
+          vx_core.e_typelist, // allowtypes
+          vx_core.e_typelist, // disallowtypes
+          vx_core.e_funclist, // allowfuncs
+          vx_core.e_funclist, // disallowfuncs
+          vx_core.e_anylist, // allowvalues
+          vx_core.e_anylist, // disallowvalues
+          vx_core.e_argmap // properties
+        ) // typedef
+      )
+      return output
+    }
+
+    override fun vx_empty() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_constname_from_any
+      return output
+    }
+
+    override fun vx_type() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.t_constname_from_any
+      return output
+    }
+
+    override fun vx_fn_new(fn : vx_core.Class_any_from_any.IFn) : vx_core.Func_any_from_any {
+      return vx_core.e_any_from_any
+    }
+
+    override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
+      var output : T = vx_core.f_empty(generic_any_1)
+      var inputval : vx_core.Type_any = value as vx_core.Type_any
+      var outputval : vx_core.Type_any = vx_core.f_constname_from_any(inputval)
+      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      return output
+    }
+
+    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_any
+      var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      output = vx_core.f_constname_from_any(value)
+      return output
+    }
+
+    override fun vx_constname_from_any(value : vx_core.Type_any) : vx_core.Type_string {
+      var output : vx_core.Type_string = vx_core.f_constname_from_any(value)
+      return output
+    }
+
+  }
+
+  val e_constname_from_any : vx_core.Func_constname_from_any = vx_core.Class_constname_from_any()
+  val t_constname_from_any : vx_core.Func_constname_from_any = vx_core.Class_constname_from_any()
+
+  fun f_constname_from_any(value : vx_core.Type_any) : vx_core.Type_string {
+    var output : vx_core.Type_string = vx_core.e_string
+    output = vx_core.f_let(
+      vx_core.t_string,
+      vx_core.t_any_from_func.vx_fn_new({ ->
+        var cnstdef : vx_core.Type_constdef = vx_core.f_constdef_from_any(
+          value
+        )
+        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+          vx_core.t_string,
+          vx_core.vx_new(
+            vx_core.t_thenelselist,
+            vx_core.f_then(
+              vx_core.t_boolean_from_func.vx_fn_new({ ->
+                var output_2 : vx_core.Type_any = vx_core.f_is_empty_1(
+                  cnstdef
+                )
+                output_2
+              }),
+              vx_core.t_any_from_func.vx_fn_new({ ->
+                var output_3 : vx_core.Type_any = vx_core.vx_new_string("")
+                output_3
+              })
+            ),
+            vx_core.f_else(
+              vx_core.t_any_from_func.vx_fn_new({ ->
+                var output_4 : vx_core.Type_any = vx_core.f_new(
+                  vx_core.t_string,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    cnstdef.pkgname(),
+                    vx_core.vx_new_string("/"),
+                    cnstdef.name()
+                  )
+                )
+                output_4
+              })
+            )
+          )
+        )
+        output_1
+      })
+    )
+    return output
+  }
+
+
   interface Func_contains : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_contains(text : vx_core.Type_string, find : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -23809,187 +23835,6 @@ object vx_core {
   fun <T : vx_core.Type_any> f_let_async(generic_any_1 : T, fn_any_async : vx_core.Func_any_from_func_async) : CompletableFuture<T> {
     var output : CompletableFuture<T> = vx_core.vx_async_new_from_value(vx_core.f_empty(generic_any_1))
     output = fn_any_async.vx_any_from_func_async(generic_any_1)
-    return output
-  }
-
-
-  interface Func_list_join_from_list : vx_core.Func_any_from_any {
-    fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_join_from_list(generic_list_1 : X, values : Y) : X
-  }
-
-  class Class_list_join_from_list : vx_core.Class_base, Func_list_join_from_list {
-    constructor() {}
-
-    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      val output : vx_core.Class_list_join_from_list = vx_core.Class_list_join_from_list()
-      return output
-    }
-
-    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
-      val output : vx_core.Class_list_join_from_list = vx_core.Class_list_join_from_list()
-      return output
-    }
-
-    override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
-      return output
-    }
-
-    override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
-        "vx/core", // pkgname
-        "list-join<-list", // name
-        0, // idx
-        false, // async
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        ) // typedef
-      )
-      return output
-    }
-
-    override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_core.e_list_join_from_list
-      return output
-    }
-
-    override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_core.t_list_join_from_list
-      return output
-    }
-
-    override fun vx_fn_new(fn : vx_core.Class_any_from_any.IFn) : vx_core.Func_any_from_any {
-      return vx_core.e_any_from_any
-    }
-
-    override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
-      var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_list = value as vx_core.Type_list
-      var outputval : vx_core.Type_any = vx_core.f_list_join_from_list(vx_core.t_list, inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
-      return output
-    }
-
-    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_core.e_any
-      var generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      var values : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      output = vx_core.f_list_join_from_list(generic_list_1, values)
-      return output
-    }
-
-    override fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_join_from_list(generic_list_1 : X, values : Y) : X {
-      var output : X = vx_core.f_list_join_from_list(generic_list_1, values)
-      return output
-    }
-
-  }
-
-  val e_list_join_from_list : vx_core.Func_list_join_from_list = vx_core.Class_list_join_from_list()
-  val t_list_join_from_list : vx_core.Func_list_join_from_list = vx_core.Class_list_join_from_list()
-
-  fun <X : vx_core.Type_list, Y : vx_core.Type_list> f_list_join_from_list(generic_list_1 : X, values : Y) : X {
-    var output : X = vx_core.f_empty(generic_list_1)
-    output = vx_core.f_list_join_from_list_1(
-      generic_list_1,
-      values,
-      vx_core.t_any_from_any.vx_fn_new({value_any : vx_core.Type_any ->
-        var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, value_any)
-        var output_1 : vx_core.Type_any = value
-        output_1
-      })
-    )
-    return output
-  }
-
-
-  interface Func_list_join_from_list_1 : vx_core.Type_func, vx_core.Type_replfunc {
-    fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_join_from_list_1(generic_list_1 : X, values : Y, fn_any_from_any : vx_core.Func_any_from_any) : X
-  }
-
-  class Class_list_join_from_list_1 : vx_core.Class_base, Func_list_join_from_list_1 {
-    constructor() {}
-
-    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      val output : vx_core.Class_list_join_from_list_1 = vx_core.Class_list_join_from_list_1()
-      return output
-    }
-
-    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
-      val output : vx_core.Class_list_join_from_list_1 = vx_core.Class_list_join_from_list_1()
-      return output
-    }
-
-    override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
-      return output
-    }
-
-    override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
-        "vx/core", // pkgname
-        "list-join<-list", // name
-        1, // idx
-        false, // async
-        vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        ) // typedef
-      )
-      return output
-    }
-
-    override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_core.e_list_join_from_list_1
-      return output
-    }
-
-    override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_core.t_list_join_from_list_1
-      return output
-    }
-
-    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_core.e_any
-      var generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      var values : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      var fn_any_from_any : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      output = vx_core.f_list_join_from_list_1(generic_list_1, values, fn_any_from_any)
-      return output
-    }
-
-    override fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_join_from_list_1(generic_list_1 : X, values : Y, fn_any_from_any : vx_core.Func_any_from_any) : X {
-      var output : X = vx_core.f_list_join_from_list_1(generic_list_1, values, fn_any_from_any)
-      return output
-    }
-
-  }
-
-  val e_list_join_from_list_1 : vx_core.Func_list_join_from_list_1 = vx_core.Class_list_join_from_list_1()
-  val t_list_join_from_list_1 : vx_core.Func_list_join_from_list_1 = vx_core.Class_list_join_from_list_1()
-
-  fun <X : vx_core.Type_list, Y : vx_core.Type_list> f_list_join_from_list_1(generic_list_1 : X, values : Y, fn_any_from_any : vx_core.Func_any_from_any) : X {
-    var output : X = vx_core.f_empty(generic_list_1)
-    output = vx_core.vx_list_join_from_list_1(generic_list_1, values, fn_any_from_any)
     return output
   }
 
@@ -29677,6 +29522,8 @@ object vx_core {
     mapfunc.put("case", vx_core.t_case)
     mapfunc.put("case_1", vx_core.t_case_1)
     mapfunc.put("compare", vx_core.t_compare)
+    mapfunc.put("constdef<-any", vx_core.t_constdef_from_any)
+    mapfunc.put("constname<-any", vx_core.t_constname_from_any)
     mapfunc.put("contains", vx_core.t_contains)
     mapfunc.put("contains_1", vx_core.t_contains_1)
     mapfunc.put("context-main", vx_core.t_context_main)
@@ -29710,8 +29557,6 @@ object vx_core {
     mapfunc.put("length_2", vx_core.t_length_2)
     mapfunc.put("let", vx_core.t_let)
     mapfunc.put("let-async", vx_core.t_let_async)
-    mapfunc.put("list-join<-list", vx_core.t_list_join_from_list)
-    mapfunc.put("list-join<-list_1", vx_core.t_list_join_from_list_1)
     mapfunc.put("list<-list", vx_core.t_list_from_list)
     mapfunc.put("list<-list_1", vx_core.t_list_from_list_1)
     mapfunc.put("list<-list-async", vx_core.t_list_from_list_async)

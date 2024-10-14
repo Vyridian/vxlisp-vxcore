@@ -2789,19 +2789,7 @@ object vx_test {
       var output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/test", // pkgname
         "stylesheet-test", // name
-        vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylesheet", // name
-          ":struct", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_headchild), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
-        )
+        vx_web_html.t_stylesheet
       )
       return output
     }
@@ -7172,7 +7160,7 @@ object vx_test {
 
   fun f_trlist_from_testcaselist(testcaselist : vx_test.Type_testcaselist) : vx_web_html.Type_trlist {
     var output : vx_web_html.Type_trlist = vx_web_html.e_trlist
-    output = vx_core.f_list_join_from_list_1(
+    output = vx_collection.f_list_from_list_join_1(
       vx_web_html.t_trlist,
       testcaselist,
       vx_test.t_trlist_from_testcase

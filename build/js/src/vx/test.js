@@ -1,6 +1,7 @@
 'strict mode'
 
 import vx_core from "../vx/core.js"
+import vx_collection from "../vx/collection.js"
 import vx_data_file from "../vx/data/file.js"
 import vx_web_html from "../vx/web/html.js"
 
@@ -89,7 +90,7 @@ export default class vx_test {
    * The default Test Stylesheet
    * {stylesheet}
    */
-  static c_stylesheet_test = {vx_type: vx_web_html.t_stylesheet, vx_constdef: {pkgname: 'vx/test', name: 'stylesheet-test'}}
+  static c_stylesheet_test = {vx_type: vx_web_html.t_stylesheet, vx_constdef: {pkgname: 'vx/test', name: 'stylesheet-test', type: vx_web_html.t_stylesheet}}
 
   /**
    * @function context_test
@@ -1257,7 +1258,7 @@ export default class vx_test {
   // (func trlist<-testcaselist)
   static f_trlist_from_testcaselist(testcaselist) {
     let output = vx_web_html.e_trlist
-    output = vx_core.f_list_join_from_list_1(
+    output = vx_collection.f_list_from_list_join_1(
       {"any-1": vx_web_html.t_tr, "any-2": vx_test.t_testcase, "list-1": vx_web_html.t_trlist, "list-2": vx_test.t_testcaselist},
       testcaselist,
       vx_core.f_new_from_type(vx_core.t_any_from_any, vx_test.t_trlist_from_testcase)

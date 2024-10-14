@@ -4,7 +4,6 @@
 import com.vxlisp.vx.Core;
 import com.vxlisp.vx.translation.En;
 import com.vxlisp.vx.CoreTest;
-import com.vxlisp.vx.data.DbTest;
 import com.vxlisp.vx.data.TableTest;
 import com.vxlisp.vx.data.TreeTest;
 import com.vxlisp.vx.EventTest;
@@ -53,13 +52,6 @@ public final class AppTest {
   @DisplayName("vx/core")
   void test_vx_core() {
     com.vxlisp.vx.Test.Type_testpackage testpackage = CoreTest.test_package(context);
-    TestLib.run_testpackage_async(testpackage);
-  }
-
-  @Test
-  @DisplayName("vx/data/db")
-  void test_vx_data_db() {
-    com.vxlisp.vx.Test.Type_testpackage testpackage = DbTest.test_package(context);
     TestLib.run_testpackage_async(testpackage);
   }
 
@@ -230,7 +222,6 @@ public final class AppTest {
     com.vxlisp.vx.Test.Type_testpackagelist testpackagelist = Core.vx_new(
       com.vxlisp.vx.Test.t_testpackagelist,
       CoreTest.test_package(context),
-      DbTest.test_package(context),
       TableTest.test_package(context),
       TreeTest.test_package(context),
       EventTest.test_package(context),

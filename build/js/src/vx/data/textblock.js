@@ -40,154 +40,154 @@ export default class vx_data_textblock {
    * Angle Bracket Delimiter
    * {delim}
    */
-  static c_delimbracketangle = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimbracketangle'}}
+  static c_delimbracketangle = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimbracketangle', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimbracketcurly
    * Curly Bracket Delimiter
    * {delim}
    */
-  static c_delimbracketcurly = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimbracketcurly'}}
+  static c_delimbracketcurly = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimbracketcurly', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimbracketsquare
    * Square Bracket Delimiter
    * {delim}
    */
-  static c_delimbracketsquare = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimbracketsquare'}}
+  static c_delimbracketsquare = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimbracketsquare', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimclose
    * A placeholder delimiter used to mark the close of whatever is the current delimiter.
    * {delim}
    */
-  static c_delimclose = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimclose'}}
+  static c_delimclose = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimclose', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimclosing
    * A placeholder delimiter used to mark the closing of whatever is the current delimiter.
    * {delim}
    */
-  static c_delimclosing = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimclosing'}}
+  static c_delimclosing = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimclosing', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimcomma
    * Comma Delimiter
    * {delim}
    */
-  static c_delimcomma = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimcomma'}}
+  static c_delimcomma = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimcomma', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimcomment
    * Comment Delimiter
    * {delim}
    */
-  static c_delimcomment = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimcomment'}}
+  static c_delimcomment = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimcomment', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimcommentblock
    * Block Comment Delimiter
    * {delim}
    */
-  static c_delimcommentblock = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimcommentblock'}}
+  static c_delimcommentblock = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimcommentblock', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimline
    * New Line Delimiter
    * {delim}
    */
-  static c_delimline = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimline'}}
+  static c_delimline = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimline', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimlisttest1
    * A delimiter used for test suite
    * {delimlist}
    */
-  static c_delimlisttest1 = Object.assign([], {vx_type: vx_data_textblock.t_delimlist, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimlisttest1'}})
+  static c_delimlisttest1 = Object.assign([], {vx_type: vx_data_textblock.t_delimlist, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimlisttest1', type: vx_data_textblock.t_delimlist}})
 
   /**
    * Constant: delimlisttest2
    * A delimiter used for test suite
    * {delimlist}
    */
-  static c_delimlisttest2 = Object.assign([], {vx_type: vx_data_textblock.t_delimlist, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimlisttest2'}})
+  static c_delimlisttest2 = Object.assign([], {vx_type: vx_data_textblock.t_delimlist, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimlisttest2', type: vx_data_textblock.t_delimlist}})
 
   /**
    * Constant: delimlisttest3
    * A delimiter used for test suite
    * {delimlist}
    */
-  static c_delimlisttest3 = Object.assign([], {vx_type: vx_data_textblock.t_delimlist, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimlisttest3'}})
+  static c_delimlisttest3 = Object.assign([], {vx_type: vx_data_textblock.t_delimlist, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimlisttest3', type: vx_data_textblock.t_delimlist}})
 
   /**
    * Constant: delimnonwhitespace
    * Placeholder for delimited non-whitespace
    * {delim}
    */
-  static c_delimnonwhitespace = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimnonwhitespace'}}
+  static c_delimnonwhitespace = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimnonwhitespace', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimparen
    * Parenthesis Delimiter
    * {delim}
    */
-  static c_delimparen = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimparen'}}
+  static c_delimparen = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimparen', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimquote
    * Quote Delimiter
    * {delim}
    */
-  static c_delimquote = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimquote'}}
+  static c_delimquote = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimquote', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimquoteblock
    * Block Quote Delimiter
    * {delim}
    */
-  static c_delimquoteblock = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimquoteblock'}}
+  static c_delimquoteblock = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimquoteblock', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimspace
    * Space Delimiter
    * {delim}
    */
-  static c_delimspace = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimspace'}}
+  static c_delimspace = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimspace', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimtest1
    * A delimiter used for test suite
    * {delim}
    */
-  static c_delimtest1 = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimtest1'}}
+  static c_delimtest1 = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimtest1', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimtest2
    * A delimiter used for test suite
    * {delim}
    */
-  static c_delimtest2 = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimtest2'}}
+  static c_delimtest2 = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimtest2', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimtest3
    * A delimiter used for test suite
    * {delim}
    */
-  static c_delimtest3 = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimtest3'}}
+  static c_delimtest3 = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimtest3', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimtext
    * Placeholder for delimited text
    * {delim}
    */
-  static c_delimtext = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimtext'}}
+  static c_delimtext = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimtext', type: vx_data_textblock.t_delim}}
 
   /**
    * Constant: delimwhitespace
    * Placeholder for delimited whitespace
    * {delim}
    */
-  static c_delimwhitespace = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimwhitespace'}}
+  static c_delimwhitespace = {vx_type: vx_data_textblock.t_delim, vx_constdef: {pkgname: 'vx/data/textblock', name: 'delimwhitespace', type: vx_data_textblock.t_delim}}
 
   /**
    * @function children_from_textblock

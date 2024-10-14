@@ -7197,19 +7197,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-center", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_align
       );
       return output;
     }
@@ -7234,19 +7222,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-left", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_align
       );
       return output;
     }
@@ -7271,19 +7247,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-right", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_align
       );
       return output;
     }
@@ -7308,19 +7272,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-x", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_align
       );
       return output;
     }
@@ -7345,19 +7297,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-xy", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_align
       );
       return output;
     }
@@ -7382,19 +7322,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-y", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "align", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_align
       );
       return output;
     }
@@ -7418,19 +7346,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-app", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7464,19 +7380,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-background", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7510,19 +7414,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-button", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7556,19 +7448,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-combobox", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7602,19 +7482,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-else", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7648,19 +7516,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-columns", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7694,19 +7550,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-item", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7740,19 +7584,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-rows", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7786,19 +7618,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-image", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7832,19 +7652,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-label", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7878,19 +7686,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-main", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7924,19 +7720,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-maxpanel", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -7970,19 +7754,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menubar", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8016,19 +7788,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menudrawer", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8062,19 +7822,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-msgbox", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8108,19 +7856,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navbar", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8154,19 +7890,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navdrawer", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8200,19 +7924,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-panel", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8246,19 +7958,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-parallax", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8292,19 +7992,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusbar", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8338,19 +8026,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusdrawer", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8384,19 +8060,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-text", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8430,19 +8094,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-textentry", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8476,19 +8128,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-titlebar", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "layout", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_layout
       );
       return output;
     }
@@ -8522,19 +8162,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-bottom", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pin
       );
       return output;
     }
@@ -8558,19 +8186,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pin
       );
       return output;
     }
@@ -8594,19 +8210,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-h", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pin
       );
       return output;
     }
@@ -8630,19 +8234,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-v", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pin
       );
       return output;
     }
@@ -8666,19 +8258,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-expand", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pin
       );
       return output;
     }
@@ -8702,19 +8282,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-left", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pin
       );
       return output;
     }
@@ -8738,19 +8306,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-right", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pin
       );
       return output;
     }
@@ -8774,19 +8330,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-top", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pin", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pin
       );
       return output;
     }
@@ -8810,19 +8354,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-center", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_point
       );
       return output;
     }
@@ -8846,19 +8378,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-lefttop", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_point
       );
       return output;
     }
@@ -8882,19 +8402,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rightbottom", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "point", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_point
       );
       return output;
     }
@@ -8918,19 +8426,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-absolute", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pointtype
       );
       return output;
     }
@@ -8954,19 +8450,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-percent", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pointtype
       );
       return output;
     }
@@ -8990,19 +8474,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-relative", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "pointtype", // name
-          ":int", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_pointtype
       );
       return output;
     }
@@ -9026,19 +8498,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-custom", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_styletype
       );
       return output;
     }
@@ -9062,19 +8522,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-shared", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_styletype
       );
       return output;
     }
@@ -9098,19 +8546,7 @@ public final class Ui {
       Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-system", // name
-        Core.typedef_new(
-          "vx/ui/ui", // pkgname
-          "styletype", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
-        )
+        Ui.t_styletype
       );
       return output;
     }

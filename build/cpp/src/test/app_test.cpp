@@ -5,7 +5,6 @@
 #include "test_lib.hpp"
 #include "../main/vx/translation/en.hpp"
 #include "vx/core_test.hpp"
-#include "vx/data/db_test.hpp"
 #include "vx/data/table_test.hpp"
 #include "vx/data/tree_test.hpp"
 #include "vx/event_test.hpp"
@@ -37,7 +36,6 @@
 vx_test::Type_testpackagelist testsuite(vx_core::Type_context context) {
   vx_test::Type_testpackagelist output = vx_core::vx_new(vx_test::t_testpackagelist, {
     vx_core_test::test_package(context),
-    vx_data_db_test::test_package(context),
     vx_data_table_test::test_package(context),
     vx_data_tree_test::test_package(context),
     vx_event_test::test_package(context),
