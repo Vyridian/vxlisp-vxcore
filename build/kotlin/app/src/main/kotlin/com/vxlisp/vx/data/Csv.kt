@@ -5,6 +5,10 @@ import com.vxlisp.vx.*
 object vx_data_csv {
 
 
+  /**
+   * type: csv
+   * (type csv)
+   */
   interface Type_csv : vx_core.Type_struct {
     fun headers() : vx_core.Type_stringlist
     fun rows() : vx_data_csv.Type_csvrows
@@ -213,6 +217,10 @@ object vx_data_csv {
   val e_csv : vx_data_csv.Type_csv = vx_data_csv.Class_csv()
   val t_csv : vx_data_csv.Type_csv = vx_data_csv.Class_csv()
 
+  /**
+   * type: csvrowmap
+   * (type csvrowmap)
+   */
   interface Type_csvrowmap : vx_core.Type_map {
     fun vx_mapstringlist() : Map<String, vx_core.Type_stringlist>
     fun vx_stringlist(key : vx_core.Type_string) : vx_core.Type_stringlist
@@ -409,6 +417,10 @@ object vx_data_csv {
   val e_csvrowmap : vx_data_csv.Type_csvrowmap = vx_data_csv.Class_csvrowmap()
   val t_csvrowmap : vx_data_csv.Type_csvrowmap = vx_data_csv.Class_csvrowmap()
 
+  /**
+   * type: csvrows
+   * (type csvrows)
+   */
   interface Type_csvrows : vx_core.Type_list {
     fun vx_liststringlist() : List<vx_core.Type_stringlist>
     fun vx_stringlist(index : vx_core.Type_int) : vx_core.Type_stringlist

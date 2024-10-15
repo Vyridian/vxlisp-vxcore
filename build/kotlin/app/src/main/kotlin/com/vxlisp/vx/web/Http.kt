@@ -7,6 +7,10 @@ import com.vxlisp.vx.data.*
 object vx_web_http {
 
 
+  /**
+   * type: response
+   * (type response)
+   */
   interface Type_response : vx_core.Type_struct {
     fun ok() : vx_core.Type_boolean
     fun status() : vx_core.Type_int

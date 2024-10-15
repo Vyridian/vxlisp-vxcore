@@ -1462,6 +1462,11 @@ object vx_core {
     return output
   }
 
+  /**
+   * type: any
+   * Any Value for Variant Type
+   * (type any)
+   */
   interface Type_any {
     fun vx_new(vararg vals : Any) : vx_core.Type_any
     fun vx_copy(vararg vals : Any) : vx_core.Type_any
@@ -1540,6 +1545,11 @@ object vx_core {
   val e_any : vx_core.Type_any = vx_core.Class_any()
   val t_any : vx_core.Type_any = vx_core.Class_any()
 
+  /**
+   * type: any-async<-func
+   * A sync or async function that returns one value.
+   * (type any-async<-func)
+   */
   interface Type_any_async_from_func : vx_core.Type_any {
   }
 
@@ -1601,6 +1611,11 @@ object vx_core {
   val e_any_async_from_func : vx_core.Type_any_async_from_func = vx_core.Class_any_async_from_func()
   val t_any_async_from_func : vx_core.Type_any_async_from_func = vx_core.Class_any_async_from_func()
 
+  /**
+   * type: any<-anylist
+   * List of any<-any
+   * (type any<-anylist)
+   */
   interface Type_any_from_anylist : vx_core.Type_list {
     fun vx_listany_from_any() : List<vx_core.Func_any_from_any>
     fun vx_any_from_any(index : vx_core.Type_int) : vx_core.Func_any_from_any
@@ -1731,6 +1746,11 @@ object vx_core {
   val e_any_from_anylist : vx_core.Type_any_from_anylist = vx_core.Class_any_from_anylist()
   val t_any_from_anylist : vx_core.Type_any_from_anylist = vx_core.Class_any_from_anylist()
 
+  /**
+   * type: anylist
+   * A list of any
+   * (type anylist)
+   */
   interface Type_anylist : vx_core.Type_list {
   }
 
@@ -1849,6 +1869,11 @@ object vx_core {
   val e_anylist : vx_core.Type_anylist = vx_core.Class_anylist()
   val t_anylist : vx_core.Type_anylist = vx_core.Class_anylist()
 
+  /**
+   * type: anymap
+   * A map of any
+   * (type anymap)
+   */
   interface Type_anymap : vx_core.Type_map {
   }
 
@@ -2032,6 +2057,11 @@ object vx_core {
   val e_anymap : vx_core.Type_anymap = vx_core.Class_anymap()
   val t_anymap : vx_core.Type_anymap = vx_core.Class_anymap()
 
+  /**
+   * type: anytype
+   * Any Type that allows any Type as a Value
+   * (type anytype)
+   */
   interface Type_anytype : vx_core.Type_any {
   }
 
@@ -2093,6 +2123,11 @@ object vx_core {
   val e_anytype : vx_core.Type_anytype = vx_core.Class_anytype()
   val t_anytype : vx_core.Type_anytype = vx_core.Class_anytype()
 
+  /**
+   * type: arg
+   * A function argument
+   * (type arg)
+   */
   interface Type_arg : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun argtype() : vx_core.Type_any
@@ -2385,6 +2420,11 @@ object vx_core {
   val e_arg : vx_core.Type_arg = vx_core.Class_arg()
   val t_arg : vx_core.Type_arg = vx_core.Class_arg()
 
+  /**
+   * type: arglist
+   * A list of arg
+   * (type arglist)
+   */
   interface Type_arglist : vx_core.Type_list {
     fun vx_listarg() : List<vx_core.Type_arg>
     fun vx_arg(index : vx_core.Type_int) : vx_core.Type_arg
@@ -2518,6 +2558,11 @@ object vx_core {
   val e_arglist : vx_core.Type_arglist = vx_core.Class_arglist()
   val t_arglist : vx_core.Type_arglist = vx_core.Class_arglist()
 
+  /**
+   * type: argmap
+   * A map of arg
+   * (type argmap)
+   */
   interface Type_argmap : vx_core.Type_map {
     fun vx_maparg() : Map<String, vx_core.Type_arg>
     fun vx_arg(key : vx_core.Type_string) : vx_core.Type_arg
@@ -2714,6 +2759,11 @@ object vx_core {
   val e_argmap : vx_core.Type_argmap = vx_core.Class_argmap()
   val t_argmap : vx_core.Type_argmap = vx_core.Class_argmap()
 
+  /**
+   * type: boolean
+   * Standard Boolean Type
+   * (type boolean)
+   */
   interface Type_boolean : vx_core.Type_any {
     fun vx_boolean() : Boolean
   }
@@ -2801,6 +2851,10 @@ object vx_core {
 
   val t_boolean : vx_core.Type_boolean = vx_core.Class_boolean()
 
+  /**
+   * type: booleanlist
+   * (type booleanlist)
+   */
   interface Type_booleanlist : vx_core.Type_list {
     fun vx_listboolean() : List<vx_core.Type_boolean>
     fun vx_boolean(index : vx_core.Type_int) : vx_core.Type_boolean
@@ -2934,6 +2988,10 @@ object vx_core {
   val e_booleanlist : vx_core.Type_booleanlist = vx_core.Class_booleanlist()
   val t_booleanlist : vx_core.Type_booleanlist = vx_core.Class_booleanlist()
 
+  /**
+   * type: collection
+   * (type collection)
+   */
   interface Type_collection : vx_core.Type_any {
   }
 
@@ -2995,6 +3053,10 @@ object vx_core {
   val e_collection : vx_core.Type_collection = vx_core.Class_collection()
   val t_collection : vx_core.Type_collection = vx_core.Class_collection()
 
+  /**
+   * type: compilelanguages
+   * (type compilelanguages)
+   */
   interface Type_compilelanguages : vx_core.Type_any {
   }
 
@@ -3056,6 +3118,11 @@ object vx_core {
   val e_compilelanguages : vx_core.Type_compilelanguages = vx_core.Class_compilelanguages()
   val t_compilelanguages : vx_core.Type_compilelanguages = vx_core.Class_compilelanguages()
 
+  /**
+   * type: connect
+   * General connect trait
+   * (type connect)
+   */
   interface Type_connect : vx_core.Type_any {
   }
 
@@ -3117,6 +3184,11 @@ object vx_core {
   val e_connect : vx_core.Type_connect = vx_core.Class_connect()
   val t_connect : vx_core.Type_connect = vx_core.Class_connect()
 
+  /**
+   * type: connectlist
+   * List of connect
+   * (type connectlist)
+   */
   interface Type_connectlist : vx_core.Type_list {
     fun vx_listconnect() : List<vx_core.Type_connect>
     fun vx_connect(index : vx_core.Type_int) : vx_core.Type_connect
@@ -3250,6 +3322,11 @@ object vx_core {
   val e_connectlist : vx_core.Type_connectlist = vx_core.Class_connectlist()
   val t_connectlist : vx_core.Type_connectlist = vx_core.Class_connectlist()
 
+  /**
+   * type: connectmap
+   * Map of connect
+   * (type connectmap)
+   */
   interface Type_connectmap : vx_core.Type_map {
     fun vx_mapconnect() : Map<String, vx_core.Type_connect>
     fun vx_connect(key : vx_core.Type_string) : vx_core.Type_connect
@@ -3446,6 +3523,11 @@ object vx_core {
   val e_connectmap : vx_core.Type_connectmap = vx_core.Class_connectmap()
   val t_connectmap : vx_core.Type_connectmap = vx_core.Class_connectmap()
 
+  /**
+   * type: const
+   * Original Constant Class.
+   * (type const)
+   */
   interface Type_const : vx_core.Type_any {
   }
 
@@ -3507,6 +3589,11 @@ object vx_core {
   val e_const : vx_core.Type_const = vx_core.Class_const()
   val t_const : vx_core.Type_const = vx_core.Class_const()
 
+  /**
+   * type: constdef
+   * Const Definition Class for inspecting properties.
+   * (type constdef)
+   */
   interface Type_constdef : vx_core.Type_struct {
     fun pkgname() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -3760,6 +3847,11 @@ object vx_core {
   val e_constdef : vx_core.Type_constdef = vx_core.Class_constdef()
   val t_constdef : vx_core.Type_constdef = vx_core.Class_constdef()
 
+  /**
+   * type: constlist
+   * List of Const.
+   * (type constlist)
+   */
   interface Type_constlist : vx_core.Type_list {
   }
 
@@ -3878,6 +3970,11 @@ object vx_core {
   val e_constlist : vx_core.Type_constlist = vx_core.Class_constlist()
   val t_constlist : vx_core.Type_constlist = vx_core.Class_constlist()
 
+  /**
+   * type: constmap
+   * Map of Const.
+   * (type constmap)
+   */
   interface Type_constmap : vx_core.Type_map {
   }
 
@@ -4061,6 +4158,11 @@ object vx_core {
   val e_constmap : vx_core.Type_constmap = vx_core.Class_constmap()
   val t_constmap : vx_core.Type_constmap = vx_core.Class_constmap()
 
+  /**
+   * type: context
+   * Context
+   * (type context)
+   */
   interface Type_context : vx_core.Type_struct {
     fun code() : vx_core.Type_string
     fun session() : vx_core.Type_session
@@ -4350,6 +4452,11 @@ object vx_core {
   val e_context : vx_core.Type_context = vx_core.Class_context()
   val t_context : vx_core.Type_context = vx_core.Class_context()
 
+  /**
+   * type: date
+   * A simple UTC date.
+   * (type date)
+   */
   interface Type_date : vx_core.Type_any {
   }
 
@@ -4411,6 +4518,11 @@ object vx_core {
   val e_date : vx_core.Type_date = vx_core.Class_date()
   val t_date : vx_core.Type_date = vx_core.Class_date()
 
+  /**
+   * type: decimal
+   * A clean version of float like Java BigDecimal.
+   * (type decimal)
+   */
   interface Type_decimal : vx_core.Type_number {
     fun vx_float() : Float
     fun vx_string() : String
@@ -4503,6 +4615,11 @@ object vx_core {
   val e_decimal : vx_core.Type_decimal = vx_core.Class_decimal()
   val t_decimal : vx_core.Type_decimal = vx_core.Class_decimal()
 
+  /**
+   * type: error
+   * Error Type
+   * (type error)
+   */
   interface Type_error : vx_core.Type_any {
   }
 
@@ -4564,6 +4681,11 @@ object vx_core {
   val e_error : vx_core.Type_error = vx_core.Class_error()
   val t_error : vx_core.Type_error = vx_core.Class_error()
 
+  /**
+   * type: float
+   * Standard Floating Point Number
+   * (type float)
+   */
   interface Type_float : vx_core.Type_number {
     fun vx_float() : Float
   }
@@ -4670,6 +4792,11 @@ object vx_core {
   val e_float : vx_core.Type_float = vx_core.Class_float()
   val t_float : vx_core.Type_float = vx_core.Class_float()
 
+  /**
+   * type: func
+   * Original Function Class.
+   * (type func)
+   */
   interface Type_func : vx_core.Type_any {
     fun vx_funcdef() : vx_core.Type_funcdef
   }
@@ -4737,6 +4864,11 @@ object vx_core {
   val e_func : vx_core.Type_func = vx_core.Class_func()
   val t_func : vx_core.Type_func = vx_core.Class_func()
 
+  /**
+   * type: funcdef
+   * Func Definition Class for inspecting properties.
+   * (type funcdef)
+   */
   interface Type_funcdef : vx_core.Type_struct {
     fun pkgname() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -5074,6 +5206,11 @@ object vx_core {
   val e_funcdef : vx_core.Type_funcdef = vx_core.Class_funcdef()
   val t_funcdef : vx_core.Type_funcdef = vx_core.Class_funcdef()
 
+  /**
+   * type: funclist
+   * List of Func.
+   * (type funclist)
+   */
   interface Type_funclist : vx_core.Type_list {
     fun vx_listfunc() : List<vx_core.Type_func>
     fun vx_func(index : vx_core.Type_int) : vx_core.Type_func
@@ -5207,6 +5344,11 @@ object vx_core {
   val e_funclist : vx_core.Type_funclist = vx_core.Class_funclist()
   val t_funclist : vx_core.Type_funclist = vx_core.Class_funclist()
 
+  /**
+   * type: funcmap
+   * Map of Func.
+   * (type funcmap)
+   */
   interface Type_funcmap : vx_core.Type_map {
     fun vx_mapfunc() : Map<String, vx_core.Type_func>
     fun vx_func(key : vx_core.Type_string) : vx_core.Type_func
@@ -5403,6 +5545,11 @@ object vx_core {
   val e_funcmap : vx_core.Type_funcmap = vx_core.Class_funcmap()
   val t_funcmap : vx_core.Type_funcmap = vx_core.Class_funcmap()
 
+  /**
+   * type: int
+   * A simple integer.
+   * (type int)
+   */
   interface Type_int : vx_core.Type_number {
     fun vx_int() : Int
   }
@@ -5493,6 +5640,11 @@ object vx_core {
   val e_int : vx_core.Type_int = vx_core.Class_int()
   val t_int : vx_core.Type_int = vx_core.Class_int()
 
+  /**
+   * type: intlist
+   * A list of int.
+   * (type intlist)
+   */
   interface Type_intlist : vx_core.Type_list {
     fun vx_listint() : List<vx_core.Type_int>
     fun vx_int(index : vx_core.Type_int) : vx_core.Type_int
@@ -5626,6 +5778,11 @@ object vx_core {
   val e_intlist : vx_core.Type_intlist = vx_core.Class_intlist()
   val t_intlist : vx_core.Type_intlist = vx_core.Class_intlist()
 
+  /**
+   * type: intmap
+   * A map of int.
+   * (type intmap)
+   */
   interface Type_intmap : vx_core.Type_map {
     fun vx_mapint() : Map<String, vx_core.Type_int>
     fun vx_int(key : vx_core.Type_string) : vx_core.Type_int
@@ -5822,6 +5979,11 @@ object vx_core {
   val e_intmap : vx_core.Type_intmap = vx_core.Class_intmap()
   val t_intmap : vx_core.Type_intmap = vx_core.Class_intmap()
 
+  /**
+   * type: list
+   * A simple untyped list.
+   * (type list)
+   */
   interface Type_list : vx_core.Type_any {
     fun vx_list() : List<vx_core.Type_any>
     fun vx_any(index : vx_core.Type_int) : vx_core.Type_any
@@ -5942,6 +6104,11 @@ object vx_core {
   val e_list : vx_core.Type_list = vx_core.Class_list()
   val t_list : vx_core.Type_list = vx_core.Class_list()
 
+  /**
+   * type: listtype
+   * A generic type that extends :list.
+   * (type listtype)
+   */
   interface Type_listtype : vx_core.Type_any {
   }
 
@@ -6003,6 +6170,11 @@ object vx_core {
   val e_listtype : vx_core.Type_listtype = vx_core.Class_listtype()
   val t_listtype : vx_core.Type_listtype = vx_core.Class_listtype()
 
+  /**
+   * type: locale
+   * Localization data.
+   * (type locale)
+   */
   interface Type_locale : vx_core.Type_struct {
   }
 
@@ -6075,6 +6247,11 @@ object vx_core {
   val e_locale : vx_core.Type_locale = vx_core.Class_locale()
   val t_locale : vx_core.Type_locale = vx_core.Class_locale()
 
+  /**
+   * type: map
+   * A simple untyped map.
+   * (type map)
+   */
   interface Type_map : vx_core.Type_any {
     fun vx_new_from_map(mapval : Map<String, vx_core.Type_any>) : vx_core.Type_map
     fun vx_any(key : vx_core.Type_string) : vx_core.Type_any
@@ -6262,6 +6439,11 @@ object vx_core {
   val e_map : vx_core.Type_map = vx_core.Class_map()
   val t_map : vx_core.Type_map = vx_core.Class_map()
 
+  /**
+   * type: maptype
+   * A generic type that extends :map.
+   * (type maptype)
+   */
   interface Type_maptype : vx_core.Type_any {
   }
 
@@ -6323,6 +6505,11 @@ object vx_core {
   val e_maptype : vx_core.Type_maptype = vx_core.Class_maptype()
   val t_maptype : vx_core.Type_maptype = vx_core.Class_maptype()
 
+  /**
+   * type: mempool
+   * Memory Pool
+   * (type mempool)
+   */
   interface Type_mempool : vx_core.Type_struct {
     fun valuepool() : vx_core.Type_value
   }
@@ -6492,6 +6679,11 @@ object vx_core {
   val e_mempool : vx_core.Type_mempool = vx_core.Class_mempool()
   val t_mempool : vx_core.Type_mempool = vx_core.Class_mempool()
 
+  /**
+   * type: msg
+   * Message Type for error handling
+   * (type msg)
+   */
   interface Type_msg : vx_core.Type_struct {
     fun code() : vx_core.Type_string
     fun detail() : vx_core.Type_any
@@ -6714,6 +6906,11 @@ object vx_core {
   val e_msg : vx_core.Type_msg = vx_core.Class_msg()
   val t_msg : vx_core.Type_msg = vx_core.Class_msg()
 
+  /**
+   * type: msgblock
+   * Block of Messages
+   * (type msgblock)
+   */
   interface Type_msgblock : vx_core.Type_struct {
     fun msgs() : vx_core.Type_msglist
     fun msgblocks() : vx_core.Type_msgblocklist
@@ -6905,6 +7102,11 @@ object vx_core {
   val e_msgblock : vx_core.Type_msgblock = vx_core.Class_msgblock()
   val t_msgblock : vx_core.Type_msgblock = vx_core.Class_msgblock()
 
+  /**
+   * type: msgblocklist
+   * List of Message Blocks
+   * (type msgblocklist)
+   */
   interface Type_msgblocklist : vx_core.Type_list {
     fun vx_listmsgblock() : List<vx_core.Type_msgblock>
     fun vx_msgblock(index : vx_core.Type_int) : vx_core.Type_msgblock
@@ -7032,6 +7234,11 @@ object vx_core {
   val e_msgblocklist : vx_core.Type_msgblocklist = vx_core.Class_msgblocklist()
   val t_msgblocklist : vx_core.Type_msgblocklist = vx_core.Class_msgblocklist()
 
+  /**
+   * type: msglist
+   * List of Messages
+   * (type msglist)
+   */
   interface Type_msglist : vx_core.Type_list {
     fun vx_listmsg() : List<vx_core.Type_msg>
     fun vx_msg(index : vx_core.Type_int) : vx_core.Type_msg
@@ -7159,6 +7366,11 @@ object vx_core {
   val e_msglist : vx_core.Type_msglist = vx_core.Class_msglist()
   val t_msglist : vx_core.Type_msglist = vx_core.Class_msglist()
 
+  /**
+   * type: none
+   * No Type. No type is returned at all. e.g. Void
+   * (type none)
+   */
   interface Type_none : vx_core.Type_any {
   }
 
@@ -7220,6 +7432,11 @@ object vx_core {
   val e_none : vx_core.Type_none = vx_core.Class_none()
   val t_none : vx_core.Type_none = vx_core.Class_none()
 
+  /**
+   * type: notype
+   * No Type that allows no Types as a Value
+   * (type notype)
+   */
   interface Type_notype : vx_core.Type_any {
   }
 
@@ -7281,6 +7498,11 @@ object vx_core {
   val e_notype : vx_core.Type_notype = vx_core.Class_notype()
   val t_notype : vx_core.Type_notype = vx_core.Class_notype()
 
+  /**
+   * type: number
+   * A generic number that could be int, float, or decimal.
+   * (type number)
+   */
   interface Type_number : vx_core.Type_any {
   }
 
@@ -7342,6 +7564,11 @@ object vx_core {
   val e_number : vx_core.Type_number = vx_core.Class_number()
   val t_number : vx_core.Type_number = vx_core.Class_number()
 
+  /**
+   * type: numberlist
+   * A list of number.
+   * (type numberlist)
+   */
   interface Type_numberlist : vx_core.Type_list {
     fun vx_listnumber() : List<vx_core.Type_number>
     fun vx_number(index : vx_core.Type_int) : vx_core.Type_number
@@ -7475,6 +7702,11 @@ object vx_core {
   val e_numberlist : vx_core.Type_numberlist = vx_core.Class_numberlist()
   val t_numberlist : vx_core.Type_numberlist = vx_core.Class_numberlist()
 
+  /**
+   * type: numbermap
+   * A map of number.
+   * (type numbermap)
+   */
   interface Type_numbermap : vx_core.Type_map {
     fun vx_mapnumber() : Map<String, vx_core.Type_number>
     fun vx_number(key : vx_core.Type_string) : vx_core.Type_number
@@ -7671,6 +7903,11 @@ object vx_core {
   val e_numbermap : vx_core.Type_numbermap = vx_core.Class_numbermap()
   val t_numbermap : vx_core.Type_numbermap = vx_core.Class_numbermap()
 
+  /**
+   * type: package
+   * A package that store types, consts and funcs.
+   * (type package)
+   */
   interface Type_package : vx_core.Type_struct {
     fun pkgname() : vx_core.Type_string
     fun constmap() : vx_core.Type_constmap
@@ -7999,6 +8236,10 @@ object vx_core {
   val e_package : vx_core.Type_package = vx_core.Class_package()
   val t_package : vx_core.Type_package = vx_core.Class_package()
 
+  /**
+   * type: packagemap
+   * (type packagemap)
+   */
   interface Type_packagemap : vx_core.Type_map {
     fun vx_mappackage() : Map<String, vx_core.Type_package>
     fun vx_package(key : vx_core.Type_string) : vx_core.Type_package
@@ -8195,6 +8436,11 @@ object vx_core {
   val e_packagemap : vx_core.Type_packagemap = vx_core.Class_packagemap()
   val t_packagemap : vx_core.Type_packagemap = vx_core.Class_packagemap()
 
+  /**
+   * type: permission
+   * Permission
+   * (type permission)
+   */
   interface Type_permission : vx_core.Type_struct {
     fun id() : vx_core.Type_string
   }
@@ -8367,6 +8613,11 @@ object vx_core {
   val e_permission : vx_core.Type_permission = vx_core.Class_permission()
   val t_permission : vx_core.Type_permission = vx_core.Class_permission()
 
+  /**
+   * type: permissionlist
+   * List of Permission
+   * (type permissionlist)
+   */
   interface Type_permissionlist : vx_core.Type_list {
     fun vx_listpermission() : List<vx_core.Type_permission>
     fun vx_permission(index : vx_core.Type_int) : vx_core.Type_permission
@@ -8500,6 +8751,11 @@ object vx_core {
   val e_permissionlist : vx_core.Type_permissionlist = vx_core.Class_permissionlist()
   val t_permissionlist : vx_core.Type_permissionlist = vx_core.Class_permissionlist()
 
+  /**
+   * type: permissionmap
+   * Map of Permission
+   * (type permissionmap)
+   */
   interface Type_permissionmap : vx_core.Type_map {
     fun vx_mappermission() : Map<String, vx_core.Type_permission>
     fun vx_permission(key : vx_core.Type_string) : vx_core.Type_permission
@@ -8696,6 +8952,11 @@ object vx_core {
   val e_permissionmap : vx_core.Type_permissionmap = vx_core.Class_permissionmap()
   val t_permissionmap : vx_core.Type_permissionmap = vx_core.Class_permissionmap()
 
+  /**
+   * type: project
+   * A project.
+   * (type project)
+   */
   interface Type_project : vx_core.Type_struct {
     fun packagemap() : vx_core.Type_packagemap
   }
@@ -8865,6 +9126,11 @@ object vx_core {
   val e_project : vx_core.Type_project = vx_core.Class_project()
   val t_project : vx_core.Type_project = vx_core.Class_project()
 
+  /**
+   * type: security
+   * Security rules
+   * (type security)
+   */
   interface Type_security : vx_core.Type_struct {
     fun allowfuncs() : vx_core.Type_funclist
     fun permissions() : vx_core.Type_permissionlist
@@ -9112,6 +9378,11 @@ object vx_core {
   val e_security : vx_core.Type_security = vx_core.Class_security()
   val t_security : vx_core.Type_security = vx_core.Class_security()
 
+  /**
+   * type: session
+   * Session
+   * (type session)
+   */
   interface Type_session : vx_core.Type_struct {
     fun user() : vx_core.Type_user
     fun connectlist() : vx_core.Type_connectlist
@@ -9476,6 +9747,11 @@ object vx_core {
   val e_session : vx_core.Type_session = vx_core.Class_session()
   val t_session : vx_core.Type_session = vx_core.Class_session()
 
+  /**
+   * type: setting
+   * Settings
+   * (type setting)
+   */
   interface Type_setting : vx_core.Type_struct {
     fun pathmap() : vx_core.Type_stringmap
   }
@@ -9645,6 +9921,11 @@ object vx_core {
   val e_setting : vx_core.Type_setting = vx_core.Class_setting()
   val t_setting : vx_core.Type_setting = vx_core.Class_setting()
 
+  /**
+   * type: state
+   * State. Note that this type is has mutable values.
+   * (type state)
+   */
   interface Type_state : vx_core.Type_struct {
     fun statelistenermap() : vx_core.Type_statelistenermap
   }
@@ -9814,6 +10095,11 @@ object vx_core {
   val e_state : vx_core.Type_state = vx_core.Class_state()
   val t_state : vx_core.Type_state = vx_core.Class_state()
 
+  /**
+   * type: statelistener
+   * A listener to trigger functions on state change.
+   * (type statelistener)
+   */
   interface Type_statelistener : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun value() : vx_core.Type_any
@@ -10064,6 +10350,11 @@ object vx_core {
   val e_statelistener : vx_core.Type_statelistener = vx_core.Class_statelistener()
   val t_statelistener : vx_core.Type_statelistener = vx_core.Class_statelistener()
 
+  /**
+   * type: statelistenermap
+   * Mutable map of statelisteners
+   * (type statelistenermap)
+   */
   interface Type_statelistenermap : vx_core.Type_map {
     fun vx_mapstatelistener() : Map<String, vx_core.Type_statelistener>
     fun vx_statelistener(key : vx_core.Type_string) : vx_core.Type_statelistener
@@ -10260,6 +10551,11 @@ object vx_core {
   val e_statelistenermap : vx_core.Type_statelistenermap = vx_core.Class_statelistenermap()
   val t_statelistenermap : vx_core.Type_statelistenermap = vx_core.Class_statelistenermap()
 
+  /**
+   * type: string
+   * A simple string.
+   * (type string)
+   */
   interface Type_string : vx_core.Type_any {
     fun vx_string() : String
   }
@@ -10382,6 +10678,11 @@ object vx_core {
   val e_string : vx_core.Type_string = vx_core.Class_string()
   val t_string : vx_core.Type_string = vx_core.Class_string()
 
+  /**
+   * type: stringlist
+   * A list of string.
+   * (type stringlist)
+   */
   interface Type_stringlist : vx_core.Type_list {
     fun vx_liststring() : List<vx_core.Type_string>
     fun vx_string(index : vx_core.Type_int) : vx_core.Type_string
@@ -10515,6 +10816,11 @@ object vx_core {
   val e_stringlist : vx_core.Type_stringlist = vx_core.Class_stringlist()
   val t_stringlist : vx_core.Type_stringlist = vx_core.Class_stringlist()
 
+  /**
+   * type: stringlistlist
+   * A list of stringlist.
+   * (type stringlistlist)
+   */
   interface Type_stringlistlist : vx_core.Type_list {
     fun vx_liststringlist() : List<vx_core.Type_stringlist>
     fun vx_stringlist(index : vx_core.Type_int) : vx_core.Type_stringlist
@@ -10648,6 +10954,11 @@ object vx_core {
   val e_stringlistlist : vx_core.Type_stringlistlist = vx_core.Class_stringlistlist()
   val t_stringlistlist : vx_core.Type_stringlistlist = vx_core.Class_stringlistlist()
 
+  /**
+   * type: stringmap
+   * A map of string.
+   * (type stringmap)
+   */
   interface Type_stringmap : vx_core.Type_map {
     fun vx_mapstring() : Map<String, vx_core.Type_string>
     fun vx_string(key : vx_core.Type_string) : vx_core.Type_string
@@ -10844,6 +11155,11 @@ object vx_core {
   val e_stringmap : vx_core.Type_stringmap = vx_core.Class_stringmap()
   val t_stringmap : vx_core.Type_stringmap = vx_core.Class_stringmap()
 
+  /**
+   * type: stringmutablemap
+   * A mutable map of string. Note: Mutables are dangerous.
+   * (type stringmutablemap)
+   */
   interface Type_stringmutablemap : vx_core.Type_map {
     fun vx_mapstring() : Map<String, vx_core.Type_string>
     fun vx_string(key : vx_core.Type_string) : vx_core.Type_string
@@ -11040,6 +11356,11 @@ object vx_core {
   val e_stringmutablemap : vx_core.Type_stringmutablemap = vx_core.Class_stringmutablemap()
   val t_stringmutablemap : vx_core.Type_stringmutablemap = vx_core.Class_stringmutablemap()
 
+  /**
+   * type: struct
+   * Struct is the type of all structures/objects with properties.
+   * (type struct)
+   */
   interface Type_struct : vx_core.Type_any {
     fun vx_any(key : vx_core.Type_string) : vx_core.Type_any
     fun vx_map() : Map<String, vx_core.Type_any>
@@ -11114,6 +11435,11 @@ object vx_core {
   val e_struct : vx_core.Type_struct = vx_core.Class_struct()
   val t_struct : vx_core.Type_struct = vx_core.Class_struct()
 
+  /**
+   * type: thenelse
+   * An object used in if and switch functions.
+   * (type thenelse)
+   */
   interface Type_thenelse : vx_core.Type_struct {
     fun code() : vx_core.Type_string
     fun value() : vx_core.Type_any
@@ -11442,6 +11768,11 @@ object vx_core {
   val e_thenelse : vx_core.Type_thenelse = vx_core.Class_thenelse()
   val t_thenelse : vx_core.Type_thenelse = vx_core.Class_thenelse()
 
+  /**
+   * type: thenelselist
+   * A list of thenelse.
+   * (type thenelselist)
+   */
   interface Type_thenelselist : vx_core.Type_list {
     fun vx_listthenelse() : List<vx_core.Type_thenelse>
     fun vx_thenelse(index : vx_core.Type_int) : vx_core.Type_thenelse
@@ -11575,6 +11906,11 @@ object vx_core {
   val e_thenelselist : vx_core.Type_thenelselist = vx_core.Class_thenelselist()
   val t_thenelselist : vx_core.Type_thenelselist = vx_core.Class_thenelselist()
 
+  /**
+   * type: translation
+   * i18 language translation.
+   * (type translation)
+   */
   interface Type_translation : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun wordmap() : vx_core.Type_stringmap
@@ -11786,6 +12122,11 @@ object vx_core {
   val e_translation : vx_core.Type_translation = vx_core.Class_translation()
   val t_translation : vx_core.Type_translation = vx_core.Class_translation()
 
+  /**
+   * type: translationlist
+   * i18 language translation list.
+   * (type translationlist)
+   */
   interface Type_translationlist : vx_core.Type_list {
     fun vx_listtranslation() : List<vx_core.Type_translation>
     fun vx_translation(index : vx_core.Type_int) : vx_core.Type_translation
@@ -11919,6 +12260,11 @@ object vx_core {
   val e_translationlist : vx_core.Type_translationlist = vx_core.Class_translationlist()
   val t_translationlist : vx_core.Type_translationlist = vx_core.Class_translationlist()
 
+  /**
+   * type: translationmap
+   * i18 language translation map.
+   * (type translationmap)
+   */
   interface Type_translationmap : vx_core.Type_map {
     fun vx_maptranslation() : Map<String, vx_core.Type_translation>
     fun vx_translation(key : vx_core.Type_string) : vx_core.Type_translation
@@ -12115,6 +12461,11 @@ object vx_core {
   val e_translationmap : vx_core.Type_translationmap = vx_core.Class_translationmap()
   val t_translationmap : vx_core.Type_translationmap = vx_core.Class_translationmap()
 
+  /**
+   * type: type
+   * Original Type Class
+   * (type type)
+   */
   interface Type_type : vx_core.Type_any {
   }
 
@@ -12176,6 +12527,11 @@ object vx_core {
   val e_type : vx_core.Type_type = vx_core.Class_type()
   val t_type : vx_core.Type_type = vx_core.Class_type()
 
+  /**
+   * type: typedef
+   * Type Definition Class for inspecting Type properties.
+   * (type typedef)
+   */
   interface Type_typedef : vx_core.Type_struct {
     fun pkgname() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -12783,6 +13139,11 @@ object vx_core {
   val e_typedef : vx_core.Type_typedef = vx_core.Class_typedef()
   val t_typedef : vx_core.Type_typedef = vx_core.Class_typedef()
 
+  /**
+   * type: typelist
+   * List of Types
+   * (type typelist)
+   */
   interface Type_typelist : vx_core.Type_list {
   }
 
@@ -12901,6 +13262,11 @@ object vx_core {
   val e_typelist : vx_core.Type_typelist = vx_core.Class_typelist()
   val t_typelist : vx_core.Type_typelist = vx_core.Class_typelist()
 
+  /**
+   * type: typemap
+   * Map of Any Type Class
+   * (type typemap)
+   */
   interface Type_typemap : vx_core.Type_map {
   }
 
@@ -13084,6 +13450,11 @@ object vx_core {
   val e_typemap : vx_core.Type_typemap = vx_core.Class_typemap()
   val t_typemap : vx_core.Type_typemap = vx_core.Class_typemap()
 
+  /**
+   * type: user
+   * User Type
+   * (type user)
+   */
   interface Type_user : vx_core.Type_struct {
     fun security() : vx_core.Type_security
     fun username() : vx_core.Type_string
@@ -13337,6 +13708,10 @@ object vx_core {
   val e_user : vx_core.Type_user = vx_core.Class_user()
   val t_user : vx_core.Type_user = vx_core.Class_user()
 
+  /**
+   * type: value
+   * (type value)
+   */
   interface Type_value : vx_core.Type_struct {
     fun next() : vx_core.Type_any
     fun refs() : vx_core.Type_int

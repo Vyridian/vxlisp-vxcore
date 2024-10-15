@@ -3,6 +3,10 @@ package com.vxlisp.vx
 object vx_state {
 
 
+  /**
+   * type: valuemap
+   * (type valuemap)
+   */
   interface Type_valuemap : vx_core.Type_map {
   }
 

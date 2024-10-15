@@ -7,6 +7,11 @@ import com.vxlisp.vx.web.*
 object vx_test {
 
 
+  /**
+   * type: testcase
+   * Structure to describe a test case
+   * (type testcase)
+   */
   interface Type_testcase : vx_core.Type_struct {
     fun passfail() : vx_core.Type_boolean
     fun testpkg() : vx_core.Type_string
@@ -302,6 +307,11 @@ object vx_test {
   val e_testcase : vx_test.Type_testcase = vx_test.Class_testcase()
   val t_testcase : vx_test.Type_testcase = vx_test.Class_testcase()
 
+  /**
+   * type: testcaselist
+   * List of test cases
+   * (type testcaselist)
+   */
   interface Type_testcaselist : vx_core.Type_list {
     fun vx_listtestcase() : List<vx_test.Type_testcase>
     fun vx_testcase(index : vx_core.Type_int) : vx_test.Type_testcase
@@ -435,6 +445,11 @@ object vx_test {
   val e_testcaselist : vx_test.Type_testcaselist = vx_test.Class_testcaselist()
   val t_testcaselist : vx_test.Type_testcaselist = vx_test.Class_testcaselist()
 
+  /**
+   * type: testcoveragedetail
+   * Structure to describe a test coverage detail
+   * (type testcoveragedetail)
+   */
   interface Type_testcoveragedetail : vx_core.Type_struct {
     fun constmap() : vx_core.Type_intmap
     fun funcmap() : vx_core.Type_intmap
@@ -724,6 +739,11 @@ object vx_test {
   val e_testcoveragedetail : vx_test.Type_testcoveragedetail = vx_test.Class_testcoveragedetail()
   val t_testcoveragedetail : vx_test.Type_testcoveragedetail = vx_test.Class_testcoveragedetail()
 
+  /**
+   * type: testcoveragenums
+   * Structure to describe a test coverage summary
+   * (type testcoveragenums)
+   */
   interface Type_testcoveragenums : vx_core.Type_struct {
     fun pct() : vx_core.Type_int
     fun testpkg() : vx_core.Type_string
@@ -1022,6 +1042,11 @@ object vx_test {
   val e_testcoveragenums : vx_test.Type_testcoveragenums = vx_test.Class_testcoveragenums()
   val t_testcoveragenums : vx_test.Type_testcoveragenums = vx_test.Class_testcoveragenums()
 
+  /**
+   * type: testcoveragesummary
+   * Structure to describe a test coverage summary
+   * (type testcoveragesummary)
+   */
   interface Type_testcoveragesummary : vx_core.Type_struct {
     fun bigospacenums() : vx_test.Type_testcoveragenums
     fun bigotimenums() : vx_test.Type_testcoveragenums
@@ -1467,6 +1492,11 @@ object vx_test {
   val e_testcoveragesummary : vx_test.Type_testcoveragesummary = vx_test.Class_testcoveragesummary()
   val t_testcoveragesummary : vx_test.Type_testcoveragesummary = vx_test.Class_testcoveragesummary()
 
+  /**
+   * type: testdescribe
+   * Structure to describe test results
+   * (type testdescribe)
+   */
   interface Type_testdescribe : vx_core.Type_struct {
     fun describename() : vx_core.Type_string
     fun testpkg() : vx_core.Type_string
@@ -1720,6 +1750,11 @@ object vx_test {
   val e_testdescribe : vx_test.Type_testdescribe = vx_test.Class_testdescribe()
   val t_testdescribe : vx_test.Type_testdescribe = vx_test.Class_testdescribe()
 
+  /**
+   * type: testdescribelist
+   * List of testdescribe
+   * (type testdescribelist)
+   */
   interface Type_testdescribelist : vx_core.Type_list {
     fun vx_listtestdescribe() : List<vx_test.Type_testdescribe>
     fun vx_testdescribe(index : vx_core.Type_int) : vx_test.Type_testdescribe
@@ -1853,6 +1888,11 @@ object vx_test {
   val e_testdescribelist : vx_test.Type_testdescribelist = vx_test.Class_testdescribelist()
   val t_testdescribelist : vx_test.Type_testdescribelist = vx_test.Class_testdescribelist()
 
+  /**
+   * type: testpackage
+   * Structure to hold all tests for a package
+   * (type testpackage)
+   */
   interface Type_testpackage : vx_core.Type_struct {
     fun caselist() : vx_test.Type_testcaselist
     fun coveragedetail() : vx_test.Type_testcoveragedetail
@@ -2184,6 +2224,11 @@ object vx_test {
   val e_testpackage : vx_test.Type_testpackage = vx_test.Class_testpackage()
   val t_testpackage : vx_test.Type_testpackage = vx_test.Class_testpackage()
 
+  /**
+   * type: testpackagelist
+   * List of testpackage
+   * (type testpackagelist)
+   */
   interface Type_testpackagelist : vx_core.Type_list {
     fun vx_listtestpackage() : List<vx_test.Type_testpackage>
     fun vx_testpackage(index : vx_core.Type_int) : vx_test.Type_testpackage
@@ -2317,6 +2362,11 @@ object vx_test {
   val e_testpackagelist : vx_test.Type_testpackagelist = vx_test.Class_testpackagelist()
   val t_testpackagelist : vx_test.Type_testpackagelist = vx_test.Class_testpackagelist()
 
+  /**
+   * type: testresult
+   * Structure to hold test results
+   * (type testresult)
+   */
   interface Type_testresult : vx_core.Type_struct {
     fun code() : vx_core.Type_string
     fun passfail() : vx_core.Type_boolean
@@ -2648,6 +2698,11 @@ object vx_test {
   val e_testresult : vx_test.Type_testresult = vx_test.Class_testresult()
   val t_testresult : vx_test.Type_testresult = vx_test.Class_testresult()
 
+  /**
+   * type: testresultlist
+   * List of test results
+   * (type testresultlist)
+   */
   interface Type_testresultlist : vx_core.Type_list {
     fun vx_listtestresult() : List<vx_test.Type_testresult>
     fun vx_testresult(index : vx_core.Type_int) : vx_test.Type_testresult

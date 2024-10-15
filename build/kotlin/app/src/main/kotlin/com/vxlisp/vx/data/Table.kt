@@ -5,6 +5,10 @@ import com.vxlisp.vx.*
 object vx_data_table {
 
 
+  /**
+   * type: cell
+   * (type cell)
+   */
   interface Type_cell : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun value() : vx_core.Type_any
@@ -216,6 +220,10 @@ object vx_data_table {
   val e_cell : vx_data_table.Type_cell = vx_data_table.Class_cell()
   val t_cell : vx_data_table.Type_cell = vx_data_table.Class_cell()
 
+  /**
+   * type: celllist
+   * (type celllist)
+   */
   interface Type_celllist : vx_core.Type_list {
     fun vx_listcell() : List<vx_data_table.Type_cell>
     fun vx_cell(index : vx_core.Type_int) : vx_data_table.Type_cell
@@ -349,6 +357,10 @@ object vx_data_table {
   val e_celllist : vx_data_table.Type_celllist = vx_data_table.Class_celllist()
   val t_celllist : vx_data_table.Type_celllist = vx_data_table.Class_celllist()
 
+  /**
+   * type: cellmap
+   * (type cellmap)
+   */
   interface Type_cellmap : vx_core.Type_map {
     fun vx_mapcell() : Map<String, vx_data_table.Type_cell>
     fun vx_cell(key : vx_core.Type_string) : vx_data_table.Type_cell
@@ -545,6 +557,10 @@ object vx_data_table {
   val e_cellmap : vx_data_table.Type_cellmap = vx_data_table.Class_cellmap()
   val t_cellmap : vx_data_table.Type_cellmap = vx_data_table.Class_cellmap()
 
+  /**
+   * type: field
+   * (type field)
+   */
   interface Type_field : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -798,6 +814,10 @@ object vx_data_table {
   val e_field : vx_data_table.Type_field = vx_data_table.Class_field()
   val t_field : vx_data_table.Type_field = vx_data_table.Class_field()
 
+  /**
+   * type: fieldlist
+   * (type fieldlist)
+   */
   interface Type_fieldlist : vx_core.Type_list {
     fun vx_listfield() : List<vx_data_table.Type_field>
     fun vx_field(index : vx_core.Type_int) : vx_data_table.Type_field
@@ -931,6 +951,10 @@ object vx_data_table {
   val e_fieldlist : vx_data_table.Type_fieldlist = vx_data_table.Class_fieldlist()
   val t_fieldlist : vx_data_table.Type_fieldlist = vx_data_table.Class_fieldlist()
 
+  /**
+   * type: fieldmap
+   * (type fieldmap)
+   */
   interface Type_fieldmap : vx_core.Type_list {
     fun vx_listfield() : List<vx_data_table.Type_field>
     fun vx_field(index : vx_core.Type_int) : vx_data_table.Type_field
@@ -1064,6 +1088,10 @@ object vx_data_table {
   val e_fieldmap : vx_data_table.Type_fieldmap = vx_data_table.Class_fieldmap()
   val t_fieldmap : vx_data_table.Type_fieldmap = vx_data_table.Class_fieldmap()
 
+  /**
+   * type: filter
+   * (type filter)
+   */
   interface Type_filter : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -1317,6 +1345,10 @@ object vx_data_table {
   val e_filter : vx_data_table.Type_filter = vx_data_table.Class_filter()
   val t_filter : vx_data_table.Type_filter = vx_data_table.Class_filter()
 
+  /**
+   * type: row
+   * (type row)
+   */
   interface Type_row : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun cellmap() : vx_data_table.Type_cellmap
@@ -1567,6 +1599,10 @@ object vx_data_table {
   val e_row : vx_data_table.Type_row = vx_data_table.Class_row()
   val t_row : vx_data_table.Type_row = vx_data_table.Class_row()
 
+  /**
+   * type: rowlist
+   * (type rowlist)
+   */
   interface Type_rowlist : vx_core.Type_list {
     fun vx_listrow() : List<vx_data_table.Type_row>
     fun vx_row(index : vx_core.Type_int) : vx_data_table.Type_row
@@ -1700,6 +1736,10 @@ object vx_data_table {
   val e_rowlist : vx_data_table.Type_rowlist = vx_data_table.Class_rowlist()
   val t_rowlist : vx_data_table.Type_rowlist = vx_data_table.Class_rowlist()
 
+  /**
+   * type: rowmap
+   * (type rowmap)
+   */
   interface Type_rowmap : vx_core.Type_map {
     fun vx_maprow() : Map<String, vx_data_table.Type_row>
     fun vx_row(key : vx_core.Type_string) : vx_data_table.Type_row
@@ -1896,6 +1936,10 @@ object vx_data_table {
   val e_rowmap : vx_data_table.Type_rowmap = vx_data_table.Class_rowmap()
   val t_rowmap : vx_data_table.Type_rowmap = vx_data_table.Class_rowmap()
 
+  /**
+   * type: sort
+   * (type sort)
+   */
   interface Type_sort : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -2149,6 +2193,10 @@ object vx_data_table {
   val e_sort : vx_data_table.Type_sort = vx_data_table.Class_sort()
   val t_sort : vx_data_table.Type_sort = vx_data_table.Class_sort()
 
+  /**
+   * type: table
+   * (type table)
+   */
   interface Type_table : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun name() : vx_core.Type_string

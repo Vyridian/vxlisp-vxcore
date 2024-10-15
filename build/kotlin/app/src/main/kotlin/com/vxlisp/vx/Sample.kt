@@ -3,6 +3,10 @@ package com.vxlisp.vx
 object vx_sample {
 
 
+  /**
+   * type: mytype
+   * (type mytype)
+   */
   interface Type_mytype : vx_core.Type_struct {
     fun mynum() : vx_core.Type_int
     fun mystr() : vx_core.Type_string

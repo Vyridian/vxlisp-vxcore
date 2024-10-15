@@ -5,6 +5,10 @@ import com.vxlisp.vx.*
 object vx_data_xml {
 
 
+  /**
+   * type: xml
+   * (type xml)
+   */
   interface Type_xml : vx_core.Type_struct {
     fun tag() : vx_core.Type_string
     fun text() : vx_core.Type_string
@@ -378,6 +382,10 @@ object vx_data_xml {
   val e_xml : vx_data_xml.Type_xml = vx_data_xml.Class_xml()
   val t_xml : vx_data_xml.Type_xml = vx_data_xml.Class_xml()
 
+  /**
+   * type: xmllist
+   * (type xmllist)
+   */
   interface Type_xmllist : vx_core.Type_list {
     fun vx_listxml() : List<vx_data_xml.Type_xml>
     fun vx_xml(index : vx_core.Type_int) : vx_data_xml.Type_xml
@@ -511,6 +519,10 @@ object vx_data_xml {
   val e_xmllist : vx_data_xml.Type_xmllist = vx_data_xml.Class_xmllist()
   val t_xmllist : vx_data_xml.Type_xmllist = vx_data_xml.Class_xmllist()
 
+  /**
+   * type: xmlpropmap
+   * (type xmlpropmap)
+   */
   interface Type_xmlpropmap : vx_core.Type_map {
     fun vx_mapstring() : Map<String, vx_core.Type_string>
     fun vx_string(key : vx_core.Type_string) : vx_core.Type_string

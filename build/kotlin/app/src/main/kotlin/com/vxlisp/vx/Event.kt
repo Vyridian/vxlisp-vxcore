@@ -5,6 +5,11 @@ import java.util.concurrent.CompletableFuture
 object vx_event {
 
 
+  /**
+   * type: event
+   * Generic Event
+   * (type event)
+   */
   interface Type_event : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun from() : vx_core.Type_string
@@ -378,6 +383,11 @@ object vx_event {
   val e_event : vx_event.Type_event = vx_event.Class_event()
   val t_event : vx_event.Type_event = vx_event.Class_event()
 
+  /**
+   * type: eventlist
+   * Map of event
+   * (type eventlist)
+   */
   interface Type_eventlist : vx_core.Type_list {
     fun vx_listevent() : List<vx_event.Type_event>
     fun vx_event(index : vx_core.Type_int) : vx_event.Type_event
@@ -511,6 +521,11 @@ object vx_event {
   val e_eventlist : vx_event.Type_eventlist = vx_event.Class_eventlist()
   val t_eventlist : vx_event.Type_eventlist = vx_event.Class_eventlist()
 
+  /**
+   * type: eventmap
+   * Map of event
+   * (type eventmap)
+   */
   interface Type_eventmap : vx_core.Type_map {
     fun vx_mapevent() : Map<String, vx_event.Type_event>
     fun vx_event(key : vx_core.Type_string) : vx_event.Type_event

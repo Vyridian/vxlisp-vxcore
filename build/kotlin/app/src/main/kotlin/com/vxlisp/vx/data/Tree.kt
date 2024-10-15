@@ -5,6 +5,10 @@ import com.vxlisp.vx.*
 object vx_data_tree {
 
 
+  /**
+   * type: branch
+   * (type branch)
+   */
   interface Type_branch : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun brancharrow() : vx_data_tree.Type_brancharrow
@@ -372,6 +376,10 @@ object vx_data_tree {
   val e_branch : vx_data_tree.Type_branch = vx_data_tree.Class_branch()
   val t_branch : vx_data_tree.Type_branch = vx_data_tree.Class_branch()
 
+  /**
+   * type: brancharrow
+   * (type brancharrow)
+   */
   interface Type_brancharrow : vx_core.Type_any {
   }
 
@@ -433,6 +441,10 @@ object vx_data_tree {
   val e_brancharrow : vx_data_tree.Type_brancharrow = vx_data_tree.Class_brancharrow()
   val t_brancharrow : vx_data_tree.Type_brancharrow = vx_data_tree.Class_brancharrow()
 
+  /**
+   * type: branchlist
+   * (type branchlist)
+   */
   interface Type_branchlist : vx_core.Type_list {
     fun vx_listbranch() : List<vx_data_tree.Type_branch>
     fun vx_branch(index : vx_core.Type_int) : vx_data_tree.Type_branch
@@ -566,6 +578,10 @@ object vx_data_tree {
   val e_branchlist : vx_data_tree.Type_branchlist = vx_data_tree.Class_branchlist()
   val t_branchlist : vx_data_tree.Type_branchlist = vx_data_tree.Class_branchlist()
 
+  /**
+   * type: leaf
+   * (type leaf)
+   */
   interface Type_leaf : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -819,6 +835,10 @@ object vx_data_tree {
   val e_leaf : vx_data_tree.Type_leaf = vx_data_tree.Class_leaf()
   val t_leaf : vx_data_tree.Type_leaf = vx_data_tree.Class_leaf()
 
+  /**
+   * type: leaflist
+   * (type leaflist)
+   */
   interface Type_leaflist : vx_core.Type_list {
     fun vx_listleaf() : List<vx_data_tree.Type_leaf>
     fun vx_leaf(index : vx_core.Type_int) : vx_data_tree.Type_leaf
@@ -952,6 +972,10 @@ object vx_data_tree {
   val e_leaflist : vx_data_tree.Type_leaflist = vx_data_tree.Class_leaflist()
   val t_leaflist : vx_data_tree.Type_leaflist = vx_data_tree.Class_leaflist()
 
+  /**
+   * type: tree
+   * (type tree)
+   */
   interface Type_tree : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun name() : vx_core.Type_string

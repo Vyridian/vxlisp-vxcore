@@ -6,6 +6,11 @@ import com.vxlisp.vx.data.*
 object vx_ui_ui {
 
 
+  /**
+   * type: align
+   * Universal Alignment
+   * (type align)
+   */
   interface Type_align : vx_core.Type_struct {
   }
 
@@ -78,6 +83,11 @@ object vx_ui_ui {
   val e_align : vx_ui_ui.Type_align = vx_ui_ui.Class_align()
   val t_align : vx_ui_ui.Type_align = vx_ui_ui.Class_align()
 
+  /**
+   * type: bounds
+   * Universal Bounds
+   * (type bounds)
+   */
   interface Type_bounds : vx_core.Type_struct {
     fun left() : vx_core.Type_int
     fun right() : vx_core.Type_int
@@ -376,6 +386,11 @@ object vx_ui_ui {
   val e_bounds : vx_ui_ui.Type_bounds = vx_ui_ui.Class_bounds()
   val t_bounds : vx_ui_ui.Type_bounds = vx_ui_ui.Class_bounds()
 
+  /**
+   * type: cursor
+   * Univeral Cursor Type
+   * (type cursor)
+   */
   interface Type_cursor : vx_core.Type_struct {
   }
 
@@ -448,6 +463,10 @@ object vx_ui_ui {
   val e_cursor : vx_ui_ui.Type_cursor = vx_ui_ui.Class_cursor()
   val t_cursor : vx_ui_ui.Type_cursor = vx_ui_ui.Class_cursor()
 
+  /**
+   * type: cursor-pointer
+   * (type cursor-pointer)
+   */
   interface Type_cursor_pointer : vx_core.Type_any {
   }
 
@@ -509,6 +528,11 @@ object vx_ui_ui {
   val e_cursor_pointer : vx_ui_ui.Type_cursor_pointer = vx_ui_ui.Class_cursor_pointer()
   val t_cursor_pointer : vx_ui_ui.Type_cursor_pointer = vx_ui_ui.Class_cursor_pointer()
 
+  /**
+   * type: flip
+   * Universal ui flip horizontal or vertical or both.
+   * (type flip)
+   */
   interface Type_flip : vx_core.Type_struct {
   }
 
@@ -581,6 +605,11 @@ object vx_ui_ui {
   val e_flip : vx_ui_ui.Type_flip = vx_ui_ui.Class_flip()
   val t_flip : vx_ui_ui.Type_flip = vx_ui_ui.Class_flip()
 
+  /**
+   * type: font
+   * Univeral Font Type
+   * (type font)
+   */
   interface Type_font : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun fontface() : vx_ui_ui.Type_fontface
@@ -873,6 +902,11 @@ object vx_ui_ui {
   val e_font : vx_ui_ui.Type_font = vx_ui_ui.Class_font()
   val t_font : vx_ui_ui.Type_font = vx_ui_ui.Class_font()
 
+  /**
+   * type: fontface
+   * Univeral Font Face Type
+   * (type fontface)
+   */
   interface Type_fontface : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun weight() : vx_core.Type_string
@@ -1168,6 +1202,11 @@ object vx_ui_ui {
   val e_fontface : vx_ui_ui.Type_fontface = vx_ui_ui.Class_fontface()
   val t_fontface : vx_ui_ui.Type_fontface = vx_ui_ui.Class_fontface()
 
+  /**
+   * type: fontfacelist
+   * List of fontface
+   * (type fontfacelist)
+   */
   interface Type_fontfacelist : vx_core.Type_list {
     fun vx_listfontface() : List<vx_ui_ui.Type_fontface>
     fun vx_fontface(index : vx_core.Type_int) : vx_ui_ui.Type_fontface
@@ -1301,6 +1340,11 @@ object vx_ui_ui {
   val e_fontfacelist : vx_ui_ui.Type_fontfacelist = vx_ui_ui.Class_fontfacelist()
   val t_fontfacelist : vx_ui_ui.Type_fontfacelist = vx_ui_ui.Class_fontfacelist()
 
+  /**
+   * type: fontfacemap
+   * Map of fontface
+   * (type fontfacemap)
+   */
   interface Type_fontfacemap : vx_core.Type_map {
     fun vx_mapfontface() : Map<String, vx_ui_ui.Type_fontface>
     fun vx_fontface(key : vx_core.Type_string) : vx_ui_ui.Type_fontface
@@ -1497,6 +1541,11 @@ object vx_ui_ui {
   val e_fontfacemap : vx_ui_ui.Type_fontfacemap = vx_ui_ui.Class_fontfacemap()
   val t_fontfacemap : vx_ui_ui.Type_fontfacemap = vx_ui_ui.Class_fontfacemap()
 
+  /**
+   * type: fontmap
+   * Map of font
+   * (type fontmap)
+   */
   interface Type_fontmap : vx_core.Type_map {
     fun vx_mapfont() : Map<String, vx_ui_ui.Type_font>
     fun vx_font(key : vx_core.Type_string) : vx_ui_ui.Type_font
@@ -1693,6 +1742,11 @@ object vx_ui_ui {
   val e_fontmap : vx_ui_ui.Type_fontmap = vx_ui_ui.Class_fontmap()
   val t_fontmap : vx_ui_ui.Type_fontmap = vx_ui_ui.Class_fontmap()
 
+  /**
+   * type: fontstyle
+   * Univeral Font Style Type
+   * (type fontstyle)
+   */
   interface Type_fontstyle : vx_core.Type_struct {
     fun name() : vx_core.Type_string
   }
@@ -1865,6 +1919,11 @@ object vx_ui_ui {
   val e_fontstyle : vx_ui_ui.Type_fontstyle = vx_ui_ui.Class_fontstyle()
   val t_fontstyle : vx_ui_ui.Type_fontstyle = vx_ui_ui.Class_fontstyle()
 
+  /**
+   * type: fontstylemap
+   * Map of fontstyle
+   * (type fontstylemap)
+   */
   interface Type_fontstylemap : vx_core.Type_map {
     fun vx_mapfontstyle() : Map<String, vx_ui_ui.Type_fontstyle>
     fun vx_fontstyle(key : vx_core.Type_string) : vx_ui_ui.Type_fontstyle
@@ -2061,6 +2120,11 @@ object vx_ui_ui {
   val e_fontstylemap : vx_ui_ui.Type_fontstylemap = vx_ui_ui.Class_fontstylemap()
   val t_fontstylemap : vx_ui_ui.Type_fontstylemap = vx_ui_ui.Class_fontstylemap()
 
+  /**
+   * type: image
+   * Univeral Image Type
+   * (type image)
+   */
   interface Type_image : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun label() : vx_core.Type_string
@@ -2314,6 +2378,11 @@ object vx_ui_ui {
   val e_image : vx_ui_ui.Type_image = vx_ui_ui.Class_image()
   val t_image : vx_ui_ui.Type_image = vx_ui_ui.Class_image()
 
+  /**
+   * type: layout
+   * Universal Layout
+   * (type layout)
+   */
   interface Type_layout : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun fn_layout() : vx_ui_ui.Func_ui_layout_from_ui_orig_parent
@@ -2525,6 +2594,11 @@ object vx_ui_ui {
   val e_layout : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
   val t_layout : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
+  /**
+   * type: layoutengine
+   * Pluggable layoutengine
+   * (type layoutengine)
+   */
   interface Type_layoutengine : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun boolean_print() : vx_ui_ui.Func_boolean_print
@@ -2970,6 +3044,11 @@ object vx_ui_ui {
   val e_layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.Class_layoutengine()
   val t_layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.Class_layoutengine()
 
+  /**
+   * type: layoutlist
+   * Map of layout
+   * (type layoutlist)
+   */
   interface Type_layoutlist : vx_core.Type_list {
     fun vx_listlayout() : List<vx_ui_ui.Type_layout>
     fun vx_layout(index : vx_core.Type_int) : vx_ui_ui.Type_layout
@@ -3103,6 +3182,11 @@ object vx_ui_ui {
   val e_layoutlist : vx_ui_ui.Type_layoutlist = vx_ui_ui.Class_layoutlist()
   val t_layoutlist : vx_ui_ui.Type_layoutlist = vx_ui_ui.Class_layoutlist()
 
+  /**
+   * type: layoutmap
+   * Map of layout
+   * (type layoutmap)
+   */
   interface Type_layoutmap : vx_core.Type_map {
     fun vx_maplayout() : Map<String, vx_ui_ui.Type_layout>
     fun vx_layout(key : vx_core.Type_string) : vx_ui_ui.Type_layout
@@ -3299,6 +3383,11 @@ object vx_ui_ui {
   val e_layoutmap : vx_ui_ui.Type_layoutmap = vx_ui_ui.Class_layoutmap()
   val t_layoutmap : vx_ui_ui.Type_layoutmap = vx_ui_ui.Class_layoutmap()
 
+  /**
+   * type: pin
+   * Pin an element
+   * (type pin)
+   */
   interface Type_pin : vx_core.Type_struct {
     fun name() : vx_core.Type_string
   }
@@ -3471,6 +3560,11 @@ object vx_ui_ui {
   val e_pin : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
   val t_pin : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
 
+  /**
+   * type: point
+   * Universal Point
+   * (type point)
+   */
   interface Type_point : vx_core.Type_struct {
     fun x() : vx_core.Type_int
     fun y() : vx_core.Type_int
@@ -3850,6 +3944,11 @@ object vx_ui_ui {
   val e_point : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
   val t_point : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
 
+  /**
+   * type: pointtype
+   * Universal Point Scale
+   * (type pointtype)
+   */
   interface Type_pointtype : vx_core.Type_any {
   }
 
@@ -3911,6 +4010,11 @@ object vx_ui_ui {
   val e_pointtype : vx_ui_ui.Type_pointtype = vx_ui_ui.Class_pointtype()
   val t_pointtype : vx_ui_ui.Type_pointtype = vx_ui_ui.Class_pointtype()
 
+  /**
+   * type: style
+   * Universal Style
+   * (type style)
+   */
   interface Type_style : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun align() : vx_ui_ui.Type_align
@@ -4923,6 +5027,11 @@ object vx_ui_ui {
   val e_style : vx_ui_ui.Type_style = vx_ui_ui.Class_style()
   val t_style : vx_ui_ui.Type_style = vx_ui_ui.Class_style()
 
+  /**
+   * type: stylelist
+   * Universal Stylelist
+   * (type stylelist)
+   */
   interface Type_stylelist : vx_core.Type_list {
     fun vx_liststyle() : List<vx_ui_ui.Type_style>
     fun vx_style(index : vx_core.Type_int) : vx_ui_ui.Type_style
@@ -5056,6 +5165,11 @@ object vx_ui_ui {
   val e_stylelist : vx_ui_ui.Type_stylelist = vx_ui_ui.Class_stylelist()
   val t_stylelist : vx_ui_ui.Type_stylelist = vx_ui_ui.Class_stylelist()
 
+  /**
+   * type: stylemap
+   * Universal Stylemap
+   * (type stylemap)
+   */
   interface Type_stylemap : vx_core.Type_map {
     fun vx_mapstyle() : Map<String, vx_ui_ui.Type_style>
     fun vx_style(key : vx_core.Type_string) : vx_ui_ui.Type_style
@@ -5252,6 +5366,11 @@ object vx_ui_ui {
   val e_stylemap : vx_ui_ui.Type_stylemap = vx_ui_ui.Class_stylemap()
   val t_stylemap : vx_ui_ui.Type_stylemap = vx_ui_ui.Class_stylemap()
 
+  /**
+   * type: stylesheet
+   * Universal Stylesheet
+   * (type stylesheet)
+   */
   interface Type_stylesheet : vx_core.Type_struct {
     fun fontfacemap() : vx_ui_ui.Type_fontfacemap
     fun stylemap() : vx_ui_ui.Type_stylemap
@@ -5460,6 +5579,11 @@ object vx_ui_ui {
   val e_stylesheet : vx_ui_ui.Type_stylesheet = vx_ui_ui.Class_stylesheet()
   val t_stylesheet : vx_ui_ui.Type_stylesheet = vx_ui_ui.Class_stylesheet()
 
+  /**
+   * type: styletype
+   * Universal Style Type
+   * (type styletype)
+   */
   interface Type_styletype : vx_core.Type_struct {
   }
 
@@ -5532,6 +5656,11 @@ object vx_ui_ui {
   val e_styletype : vx_ui_ui.Type_styletype = vx_ui_ui.Class_styletype()
   val t_styletype : vx_ui_ui.Type_styletype = vx_ui_ui.Class_styletype()
 
+  /**
+   * type: ui
+   * Universal UI Element
+   * (type ui)
+   */
   interface Type_ui : vx_core.Type_struct {
     fun uid() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -6148,6 +6277,11 @@ object vx_ui_ui {
   val e_ui : vx_ui_ui.Type_ui = vx_ui_ui.Class_ui()
   val t_ui : vx_ui_ui.Type_ui = vx_ui_ui.Class_ui()
 
+  /**
+   * type: uiengine
+   * Template for uiengine
+   * (type uiengine)
+   */
   interface Type_uiengine : vx_core.Type_struct {
     fun parentmap() : vx_ui_ui.Type_uimap
     fun layoutengine() : vx_ui_ui.Type_layoutengine
@@ -6434,6 +6568,11 @@ object vx_ui_ui {
   val e_uiengine : vx_ui_ui.Type_uiengine = vx_ui_ui.Class_uiengine()
   val t_uiengine : vx_ui_ui.Type_uiengine = vx_ui_ui.Class_uiengine()
 
+  /**
+   * type: uilist
+   * List of ui
+   * (type uilist)
+   */
   interface Type_uilist : vx_core.Type_list {
     fun vx_listui() : List<vx_ui_ui.Type_ui>
     fun vx_ui(index : vx_core.Type_int) : vx_ui_ui.Type_ui
@@ -6567,6 +6706,11 @@ object vx_ui_ui {
   val e_uilist : vx_ui_ui.Type_uilist = vx_ui_ui.Class_uilist()
   val t_uilist : vx_ui_ui.Type_uilist = vx_ui_ui.Class_uilist()
 
+  /**
+   * type: uimap
+   * Map of ui
+   * (type uimap)
+   */
   interface Type_uimap : vx_core.Type_map {
     fun vx_mapui() : Map<String, vx_ui_ui.Type_ui>
     fun vx_ui(key : vx_core.Type_string) : vx_ui_ui.Type_ui

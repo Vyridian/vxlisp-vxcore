@@ -84,6 +84,11 @@ object vx_data_file {
     return vx_string_read_from_file(file)
   }
 
+  /**
+   * type: file
+   * File structure
+   * (type file)
+   */
   interface Type_file : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun format() : vx_data_file.Type_fileformat
@@ -418,6 +423,10 @@ object vx_data_file {
   val e_file : vx_data_file.Type_file = vx_data_file.Class_file()
   val t_file : vx_data_file.Type_file = vx_data_file.Class_file()
 
+  /**
+   * type: fileformat
+   * (type fileformat)
+   */
   interface Type_fileformat : vx_core.Type_any {
   }
 
@@ -479,6 +488,11 @@ object vx_data_file {
   val e_fileformat : vx_data_file.Type_fileformat = vx_data_file.Class_fileformat()
   val t_fileformat : vx_data_file.Type_fileformat = vx_data_file.Class_fileformat()
 
+  /**
+   * type: filelist
+   * List of file
+   * (type filelist)
+   */
   interface Type_filelist : vx_core.Type_list {
     fun vx_listfile() : List<vx_data_file.Type_file>
     fun vx_file(index : vx_core.Type_int) : vx_data_file.Type_file

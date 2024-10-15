@@ -5,6 +5,11 @@ import com.vxlisp.vx.data.*
 object vx_repl {
 
 
+  /**
+   * type: liblist
+   * List of library names
+   * (type liblist)
+   */
   interface Type_liblist : vx_core.Type_list {
     fun vx_liststring() : List<vx_core.Type_string>
     fun vx_string(index : vx_core.Type_int) : vx_core.Type_string
@@ -138,6 +143,11 @@ object vx_repl {
   val e_liblist : vx_repl.Type_liblist = vx_repl.Class_liblist()
   val t_liblist : vx_repl.Type_liblist = vx_repl.Class_liblist()
 
+  /**
+   * type: repl
+   * Repl structure
+   * (type repl)
+   */
   interface Type_repl : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun type() : vx_core.Type_any
@@ -511,6 +521,11 @@ object vx_repl {
   val e_repl : vx_repl.Type_repl = vx_repl.Class_repl()
   val t_repl : vx_repl.Type_repl = vx_repl.Class_repl()
 
+  /**
+   * type: replarglist
+   * Builder for a repllist
+   * (type replarglist)
+   */
   interface Type_replarglist : vx_core.Type_struct {
     fun key() : vx_core.Type_string
     fun current() : vx_repl.Type_repl
@@ -761,6 +776,11 @@ object vx_repl {
   val e_replarglist : vx_repl.Type_replarglist = vx_repl.Class_replarglist()
   val t_replarglist : vx_repl.Type_replarglist = vx_repl.Class_replarglist()
 
+  /**
+   * type: repllist
+   * List of repl
+   * (type repllist)
+   */
   interface Type_repllist : vx_core.Type_list {
     fun vx_listrepl() : List<vx_repl.Type_repl>
     fun vx_repl(index : vx_core.Type_int) : vx_repl.Type_repl

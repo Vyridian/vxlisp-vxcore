@@ -15,6 +15,11 @@ object vx_web_html {
     return output
   }
 
+  /**
+   * type: body
+   * Body Tag
+   * (type body)
+   */
   interface Type_body : vx_core.Type_struct {
     fun nodes() : vx_web_html.Type_divchildlist
   }
@@ -198,6 +203,11 @@ object vx_web_html {
   val e_body : vx_web_html.Type_body = vx_web_html.Class_body()
   val t_body : vx_web_html.Type_body = vx_web_html.Class_body()
 
+  /**
+   * type: details
+   * Details Tag
+   * (type details)
+   */
   interface Type_details : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_divchild {
     fun summary() : vx_web_html.Type_divchildlist
     fun nodes() : vx_web_html.Type_divchildlist
@@ -599,6 +609,11 @@ object vx_web_html {
   val e_details : vx_web_html.Type_details = vx_web_html.Class_details()
   val t_details : vx_web_html.Type_details = vx_web_html.Class_details()
 
+  /**
+   * type: div
+   * Div Tag
+   * (type div)
+   */
   interface Type_div : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_divchild {
     fun nodes() : vx_web_html.Type_divchildlist
   }
@@ -975,6 +990,11 @@ object vx_web_html {
   val e_div : vx_web_html.Type_div = vx_web_html.Class_div()
   val t_div : vx_web_html.Type_div = vx_web_html.Class_div()
 
+  /**
+   * type: divchild
+   * Div Child Trait
+   * (type divchild)
+   */
   interface Type_divchild : vx_core.Type_struct {
   }
 
@@ -1047,6 +1067,11 @@ object vx_web_html {
   val e_divchild : vx_web_html.Type_divchild = vx_web_html.Class_divchild()
   val t_divchild : vx_web_html.Type_divchild = vx_web_html.Class_divchild()
 
+  /**
+   * type: divchildlist
+   * List of divchild
+   * (type divchildlist)
+   */
   interface Type_divchildlist : vx_core.Type_list {
     fun vx_listdivchild() : List<vx_web_html.Type_divchild>
     fun vx_divchild(index : vx_core.Type_int) : vx_web_html.Type_divchild
@@ -1180,6 +1205,11 @@ object vx_web_html {
   val e_divchildlist : vx_web_html.Type_divchildlist = vx_web_html.Class_divchildlist()
   val t_divchildlist : vx_web_html.Type_divchildlist = vx_web_html.Class_divchildlist()
 
+  /**
+   * type: divlist
+   * List of div
+   * (type divlist)
+   */
   interface Type_divlist : vx_core.Type_list {
     fun vx_listdiv() : List<vx_web_html.Type_div>
     fun vx_div(index : vx_core.Type_int) : vx_web_html.Type_div
@@ -1313,6 +1343,11 @@ object vx_web_html {
   val e_divlist : vx_web_html.Type_divlist = vx_web_html.Class_divlist()
   val t_divlist : vx_web_html.Type_divlist = vx_web_html.Class_divlist()
 
+  /**
+   * type: footer
+   * Body Tag
+   * (type footer)
+   */
   interface Type_footer : vx_core.Type_struct {
     fun nodes() : vx_web_html.Type_divchildlist
   }
@@ -1496,6 +1531,11 @@ object vx_web_html {
   val e_footer : vx_web_html.Type_footer = vx_web_html.Class_footer()
   val t_footer : vx_web_html.Type_footer = vx_web_html.Class_footer()
 
+  /**
+   * type: h1
+   * Header 1 Tag
+   * (type h1)
+   */
   interface Type_h1 : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_divchild {
     fun text() : vx_core.Type_string
   }
@@ -1871,6 +1911,11 @@ object vx_web_html {
   val e_h1 : vx_web_html.Type_h1 = vx_web_html.Class_h1()
   val t_h1 : vx_web_html.Type_h1 = vx_web_html.Class_h1()
 
+  /**
+   * type: h2
+   * Header 2 Tag
+   * (type h2)
+   */
   interface Type_h2 : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_divchild {
     fun text() : vx_core.Type_string
   }
@@ -2246,6 +2291,11 @@ object vx_web_html {
   val e_h2 : vx_web_html.Type_h2 = vx_web_html.Class_h2()
   val t_h2 : vx_web_html.Type_h2 = vx_web_html.Class_h2()
 
+  /**
+   * type: h3
+   * Header 3 Tag
+   * (type h3)
+   */
   interface Type_h3 : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_divchild {
     fun text() : vx_core.Type_string
   }
@@ -2621,6 +2671,11 @@ object vx_web_html {
   val e_h3 : vx_web_html.Type_h3 = vx_web_html.Class_h3()
   val t_h3 : vx_web_html.Type_h3 = vx_web_html.Class_h3()
 
+  /**
+   * type: head
+   * Head Tag
+   * (type head)
+   */
   interface Type_head : vx_core.Type_struct {
     fun nodes() : vx_web_html.Type_headchildlist
   }
@@ -2804,6 +2859,11 @@ object vx_web_html {
   val e_head : vx_web_html.Type_head = vx_web_html.Class_head()
   val t_head : vx_web_html.Type_head = vx_web_html.Class_head()
 
+  /**
+   * type: headchild
+   * Head Child Trait
+   * (type headchild)
+   */
   interface Type_headchild : vx_core.Type_struct {
   }
 
@@ -2876,6 +2936,11 @@ object vx_web_html {
   val e_headchild : vx_web_html.Type_headchild = vx_web_html.Class_headchild()
   val t_headchild : vx_web_html.Type_headchild = vx_web_html.Class_headchild()
 
+  /**
+   * type: headchildlist
+   * List of headchild
+   * (type headchildlist)
+   */
   interface Type_headchildlist : vx_core.Type_list {
     fun vx_listheadchild() : List<vx_web_html.Type_headchild>
     fun vx_headchild(index : vx_core.Type_int) : vx_web_html.Type_headchild
@@ -3009,6 +3074,11 @@ object vx_web_html {
   val e_headchildlist : vx_web_html.Type_headchildlist = vx_web_html.Class_headchildlist()
   val t_headchildlist : vx_web_html.Type_headchildlist = vx_web_html.Class_headchildlist()
 
+  /**
+   * type: html
+   * Html Tag
+   * (type html)
+   */
   interface Type_html : vx_core.Type_struct {
     fun lang() : vx_core.Type_string
     fun head() : vx_web_html.Type_head
@@ -3298,6 +3368,11 @@ object vx_web_html {
   val e_html : vx_web_html.Type_html = vx_web_html.Class_html()
   val t_html : vx_web_html.Type_html = vx_web_html.Class_html()
 
+  /**
+   * type: img
+   * Image Tag
+   * (type img)
+   */
   interface Type_img : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_divchild {
     fun src() : vx_core.Type_string
   }
@@ -3673,6 +3748,11 @@ object vx_web_html {
   val e_img : vx_web_html.Type_img = vx_web_html.Class_img()
   val t_img : vx_web_html.Type_img = vx_web_html.Class_img()
 
+  /**
+   * type: meta
+   * Meta Tag
+   * (type meta)
+   */
   interface Type_meta : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_headchild {
     fun charset() : vx_core.Type_string
     fun name() : vx_core.Type_string
@@ -4122,6 +4202,11 @@ object vx_web_html {
   val e_meta : vx_web_html.Type_meta = vx_web_html.Class_meta()
   val t_meta : vx_web_html.Type_meta = vx_web_html.Class_meta()
 
+  /**
+   * type: node
+   * Common Html Node Trait
+   * (type node)
+   */
   interface Type_node : vx_core.Type_struct {
     fun id() : vx_core.Type_string
     fun eventmap() : vx_event.Type_eventmap
@@ -4450,6 +4535,11 @@ object vx_web_html {
   val e_node : vx_web_html.Type_node = vx_web_html.Class_node()
   val t_node : vx_web_html.Type_node = vx_web_html.Class_node()
 
+  /**
+   * type: nodelist
+   * List of node
+   * (type nodelist)
+   */
   interface Type_nodelist : vx_core.Type_list {
     fun vx_listnode() : List<vx_web_html.Type_node>
     fun vx_node(index : vx_core.Type_int) : vx_web_html.Type_node
@@ -4583,6 +4673,11 @@ object vx_web_html {
   val e_nodelist : vx_web_html.Type_nodelist = vx_web_html.Class_nodelist()
   val t_nodelist : vx_web_html.Type_nodelist = vx_web_html.Class_nodelist()
 
+  /**
+   * type: p
+   * Paragraph Tag
+   * (type p)
+   */
   interface Type_p : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_divchild {
     fun text() : vx_core.Type_string
   }
@@ -4958,6 +5053,11 @@ object vx_web_html {
   val e_p : vx_web_html.Type_p = vx_web_html.Class_p()
   val t_p : vx_web_html.Type_p = vx_web_html.Class_p()
 
+  /**
+   * type: propmap
+   * Map of props
+   * (type propmap)
+   */
   interface Type_propmap : vx_core.Type_map {
     fun vx_mapstring() : Map<String, vx_core.Type_string>
     fun vx_string(key : vx_core.Type_string) : vx_core.Type_string
@@ -5154,6 +5254,11 @@ object vx_web_html {
   val e_propmap : vx_web_html.Type_propmap = vx_web_html.Class_propmap()
   val t_propmap : vx_web_html.Type_propmap = vx_web_html.Class_propmap()
 
+  /**
+   * type: style
+   * Programmable Cascading Style
+   * (type style)
+   */
   interface Type_style : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun props() : vx_web_html.Type_propmap
@@ -5404,6 +5509,11 @@ object vx_web_html {
   val e_style : vx_web_html.Type_style = vx_web_html.Class_style()
   val t_style : vx_web_html.Type_style = vx_web_html.Class_style()
 
+  /**
+   * type: stylelist
+   * List of style
+   * (type stylelist)
+   */
   interface Type_stylelist : vx_core.Type_list {
     fun vx_liststyle() : List<vx_web_html.Type_style>
     fun vx_style(index : vx_core.Type_int) : vx_web_html.Type_style
@@ -5537,6 +5647,11 @@ object vx_web_html {
   val e_stylelist : vx_web_html.Type_stylelist = vx_web_html.Class_stylelist()
   val t_stylelist : vx_web_html.Type_stylelist = vx_web_html.Class_stylelist()
 
+  /**
+   * type: stylemap
+   * Map of style
+   * (type stylemap)
+   */
   interface Type_stylemap : vx_core.Type_map {
     fun vx_mapstyle() : Map<String, vx_web_html.Type_style>
     fun vx_style(key : vx_core.Type_string) : vx_web_html.Type_style
@@ -5733,6 +5848,11 @@ object vx_web_html {
   val e_stylemap : vx_web_html.Type_stylemap = vx_web_html.Class_stylemap()
   val t_stylemap : vx_web_html.Type_stylemap = vx_web_html.Class_stylemap()
 
+  /**
+   * type: stylesheet
+   * Programmable Cascading Style Sheet CSS type
+   * (type stylesheet)
+   */
   interface Type_stylesheet : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_headchild {
     fun name() : vx_core.Type_string
     fun styles() : vx_web_html.Type_stylelist
@@ -6176,6 +6296,11 @@ object vx_web_html {
   val e_stylesheet : vx_web_html.Type_stylesheet = vx_web_html.Class_stylesheet()
   val t_stylesheet : vx_web_html.Type_stylesheet = vx_web_html.Class_stylesheet()
 
+  /**
+   * type: table
+   * <table> Tag
+   * (type table)
+   */
   interface Type_table : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_divchild {
     fun tbody() : vx_web_html.Type_tbody
     fun thead() : vx_web_html.Type_thead
@@ -6577,6 +6702,11 @@ object vx_web_html {
   val e_table : vx_web_html.Type_table = vx_web_html.Class_table()
   val t_table : vx_web_html.Type_table = vx_web_html.Class_table()
 
+  /**
+   * type: tbody
+   * <tbody> Tag
+   * (type tbody)
+   */
   interface Type_tbody : vx_core.Type_struct, vx_web_html.Type_node {
     fun nodes() : vx_web_html.Type_trlist
   }
@@ -6953,6 +7083,11 @@ object vx_web_html {
   val e_tbody : vx_web_html.Type_tbody = vx_web_html.Class_tbody()
   val t_tbody : vx_web_html.Type_tbody = vx_web_html.Class_tbody()
 
+  /**
+   * type: td
+   * <tr> Tag
+   * (type td)
+   */
   interface Type_td : vx_core.Type_struct, vx_web_html.Type_node {
     fun nodes() : vx_web_html.Type_divchildlist
   }
@@ -7329,6 +7464,11 @@ object vx_web_html {
   val e_td : vx_web_html.Type_td = vx_web_html.Class_td()
   val t_td : vx_web_html.Type_td = vx_web_html.Class_td()
 
+  /**
+   * type: tdlist
+   * List of td
+   * (type tdlist)
+   */
   interface Type_tdlist : vx_core.Type_list {
     fun vx_listtd() : List<vx_web_html.Type_td>
     fun vx_td(index : vx_core.Type_int) : vx_web_html.Type_td
@@ -7462,6 +7602,11 @@ object vx_web_html {
   val e_tdlist : vx_web_html.Type_tdlist = vx_web_html.Class_tdlist()
   val t_tdlist : vx_web_html.Type_tdlist = vx_web_html.Class_tdlist()
 
+  /**
+   * type: thead
+   * <thead> Tag
+   * (type thead)
+   */
   interface Type_thead : vx_core.Type_struct, vx_web_html.Type_node {
     fun nodes() : vx_web_html.Type_trlist
   }
@@ -7838,6 +7983,11 @@ object vx_web_html {
   val e_thead : vx_web_html.Type_thead = vx_web_html.Class_thead()
   val t_thead : vx_web_html.Type_thead = vx_web_html.Class_thead()
 
+  /**
+   * type: title
+   * Title Tag
+   * (type title)
+   */
   interface Type_title : vx_core.Type_struct, vx_web_html.Type_node, vx_web_html.Type_headchild {
     fun text() : vx_core.Type_string
   }
@@ -8203,6 +8353,11 @@ object vx_web_html {
   val e_title : vx_web_html.Type_title = vx_web_html.Class_title()
   val t_title : vx_web_html.Type_title = vx_web_html.Class_title()
 
+  /**
+   * type: tr
+   * <tr> Tag
+   * (type tr)
+   */
   interface Type_tr : vx_core.Type_struct, vx_web_html.Type_node {
     fun nodes() : vx_web_html.Type_tdlist
   }
@@ -8579,6 +8734,11 @@ object vx_web_html {
   val e_tr : vx_web_html.Type_tr = vx_web_html.Class_tr()
   val t_tr : vx_web_html.Type_tr = vx_web_html.Class_tr()
 
+  /**
+   * type: trlist
+   * List of tr
+   * (type trlist)
+   */
   interface Type_trlist : vx_core.Type_list {
     fun vx_listtr() : List<vx_web_html.Type_tr>
     fun vx_tr(index : vx_core.Type_int) : vx_web_html.Type_tr

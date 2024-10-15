@@ -5,6 +5,11 @@ import com.vxlisp.vx.*
 object vx_data_textblock {
 
 
+  /**
+   * type: delim
+   * A delimiter type supporting start and end delimiters and positions.
+   * (type delim)
+   */
   interface Type_delim : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun starttext() : vx_core.Type_string
@@ -342,6 +347,11 @@ object vx_data_textblock {
   val e_delim : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
   val t_delim : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
+  /**
+   * type: delimlist
+   * A list of delim.
+   * (type delimlist)
+   */
   interface Type_delimlist : vx_core.Type_list {
     fun vx_listdelim() : List<vx_data_textblock.Type_delim>
     fun vx_delim(index : vx_core.Type_int) : vx_data_textblock.Type_delim
@@ -475,6 +485,11 @@ object vx_data_textblock {
   val e_delimlist : vx_data_textblock.Type_delimlist = vx_data_textblock.Class_delimlist()
   val t_delimlist : vx_data_textblock.Type_delimlist = vx_data_textblock.Class_delimlist()
 
+  /**
+   * type: textblock
+   * A textblock is a tree of text used for parsing by delimter.
+   * (type textblock)
+   */
   interface Type_textblock : vx_core.Type_struct {
     fun name() : vx_core.Type_string
     fun text() : vx_core.Type_string
@@ -1055,6 +1070,11 @@ object vx_data_textblock {
   val e_textblock : vx_data_textblock.Type_textblock = vx_data_textblock.Class_textblock()
   val t_textblock : vx_data_textblock.Type_textblock = vx_data_textblock.Class_textblock()
 
+  /**
+   * type: textblocklist
+   * A list of textblock.
+   * (type textblocklist)
+   */
   interface Type_textblocklist : vx_core.Type_list {
     fun vx_listtextblock() : List<vx_data_textblock.Type_textblock>
     fun vx_textblock(index : vx_core.Type_int) : vx_data_textblock.Type_textblock
