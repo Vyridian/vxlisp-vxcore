@@ -244,7 +244,14 @@ object vx_collection {
     }
     return output
   }
-
+  /**
+   * @function minus
+   * Returns a list from listmain after removing listremove.
+   * @param  {list-1} listmain
+   * @param  {list-1} listremove
+   * @return {list-1}
+   * (func -)
+   */
   interface Func_minus : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list> vx_minus(generic_list_1 : X, listmain : X, listremove : X) : X
   }
@@ -353,7 +360,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function minus 1
+   * Returns a map from mapmain after removing keys from mapremove.
+   * @param  {map-1} mapmain
+   * @param  {map-1} mapremove
+   * @return {map-1}
+   * (func -)
+   */
   interface Func_minus_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map> vx_minus_1(generic_map_1 : N, mapmain : N, mapremove : N) : N
   }
@@ -455,7 +469,15 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function any_from_for_until_loop
+   * Returns a value using an until loop. Maximum 10000 times.
+   * @param  {any-1} start
+   * @param  {boolean<-any} fn-until
+   * @param  {any<-any} fn-loop
+   * @return {any-1}
+   * (func any<-for-until-loop)
+   */
   interface Func_any_from_for_until_loop : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_from_for_until_loop(generic_any_1 : T, start : T, fn_until : vx_core.Func_boolean_from_any, fn_loop : vx_core.Func_any_from_any) : T
   }
@@ -543,7 +565,24 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function any_from_for_until_loop_max
+   * Returns a value using a until loop.
+   * output : any-1 := start
+   * count : int := 0
+   * (while continue
+   *   continue : boolean := (count <= max)
+   *   (if continue
+   *     count += 1
+   *     output = (fn-loop output)
+   *     continue = (fn-until output)))
+   * @param  {any-1} start
+   * @param  {boolean<-any} fn-until
+   * @param  {any<-any} fn-loop
+   * @param  {int} max
+   * @return {any-1}
+   * (func any<-for-until-loop-max)
+   */
   interface Func_any_from_for_until_loop_max : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_from_for_until_loop_max(generic_any_1 : T, start : T, fn_until : vx_core.Func_boolean_from_any, fn_loop : vx_core.Func_any_from_any, max : vx_core.Type_int) : T
   }
@@ -626,7 +665,15 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function any_from_for_while_loop
+   * Returns a value using a while loop. Maximum 1000 times.
+   * @param  {any-1} start
+   * @param  {boolean<-any} fn-while
+   * @param  {any<-any} fn-loop
+   * @return {any-1}
+   * (func any<-for-while-loop)
+   */
   interface Func_any_from_for_while_loop : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_from_for_while_loop(generic_any_1 : T, start : T, fn_while : vx_core.Func_boolean_from_any, fn_loop : vx_core.Func_any_from_any) : T
   }
@@ -714,7 +761,25 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function any_from_for_while_loop_max
+   * Returns a value using a while loop.
+   * output : any-1 := start
+   * count : int := 0
+   * (while continue
+   *  continue : boolean := (count <= max)
+   *  (if continue
+   *   continue = (fn-while output)
+   *   (if continue
+   *    count += 1
+   *    output = (fn-loop output))))
+   * @param  {any-1} start
+   * @param  {boolean<-any} fn-while
+   * @param  {any<-any} fn-loop
+   * @param  {int} max
+   * @return {any-1}
+   * (func any<-for-while-loop-max)
+   */
   interface Func_any_from_for_while_loop_max : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_from_for_while_loop_max(generic_any_1 : T, start : T, fn_while : vx_core.Func_boolean_from_any, fn_loop : vx_core.Func_any_from_any, max : vx_core.Type_int) : T
   }
@@ -797,7 +862,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function any_from_map_pos
+   * Returns then numbered child from a map.
+   * @param  {map-1} map
+   * @param  {int} pos
+   * @return {any-1}
+   * (func any<-map-pos)
+   */
   interface Func_any_from_map_pos : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map, T : vx_core.Type_any> vx_any_from_map_pos(generic_any_1 : T, map : N, pos : vx_core.Type_int) : T
   }
@@ -896,7 +968,13 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function anymap_from_struct
+   * Returns anymap from all the properties in a struct.
+   * @param  {struct-1} structure
+   * @return {anymap}
+   * (func anymap<-struct)
+   */
   interface Func_anymap_from_struct : vx_core.Func_any_from_any {
     fun vx_anymap_from_struct(structure : vx_core.Type_struct) : vx_core.Type_anymap
   }
@@ -987,7 +1065,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function boolean_write_from_map_removekey
+   * Returns true if it alters a mutable map false if it fails.
+   * @param  {map-1} valuemap
+   * @param  {string} key
+   * @return {boolean}
+   * (func boolean-write<-map-removekey)
+   */
   interface Func_boolean_write_from_map_removekey : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_write_from_map_removekey(valuemap : vx_core.Type_map, key : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -1073,7 +1158,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function boolean_write_from_map_removekeys
+   * Returns true if it alters a mutable map false if it fails.
+   * @param  {map-1} valuemap
+   * @param  {stringlist} keys
+   * @return {boolean}
+   * (func boolean-write<-map-removekeys)
+   */
   interface Func_boolean_write_from_map_removekeys : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_write_from_map_removekeys(valuemap : vx_core.Type_map, keys : vx_core.Type_stringlist) : vx_core.Type_boolean
   }
@@ -1173,7 +1265,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function int_from_map_key
+   * Returns the position of key in any map.
+   * @param  {map-1} map
+   * @param  {string} key
+   * @return {int}
+   * (func int<-map-key)
+   */
   interface Func_int_from_map_key : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_int_from_map_key(map : vx_core.Type_map, key : vx_core.Type_string) : vx_core.Type_int
   }
@@ -1265,7 +1364,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function int_from_stringlist_find
+   * Returns the position (first position is 1) of find text in a stringlist.
+   * @param  {stringlist} stringlist
+   * @param  {string} find
+   * @return {int}
+   * (func int<-stringlist-find)
+   */
   interface Func_int_from_stringlist_find : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_int_from_stringlist_find(stringlist : vx_core.Type_stringlist, find : vx_core.Type_string) : vx_core.Type_int
   }
@@ -1381,7 +1487,13 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function is_list
+   * Returns true if the given value is a list.
+   * @param  {any} value Any value
+   * @return {boolean}
+   * (func is-list)
+   */
   interface Func_is_list : vx_core.Func_any_from_any {
     fun vx_is_list(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -1477,7 +1589,13 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function is_map
+   * Returns true if the given value is a map.
+   * @param  {any} value Any value
+   * @return {boolean}
+   * (func is-map)
+   */
   interface Func_is_map : vx_core.Func_any_from_any {
     fun vx_is_map(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -1573,7 +1691,26 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_for_end_loop
+   * Returns a list of any-1 by iterating i from for to next where each item is (loop i).
+   * This is similar to a for next loop in other languages.
+   * output : list-1 := (empty list-1)
+   * (if start <= end
+   *  (for i=start to end
+   *   value : any-1 := (fn-loop i)
+   *   output += value)
+   *  (else
+   *   (for i=start to end; i--
+   *    value : any-1 := (fn-loop i)
+   *    output += value)
+   *  ))
+   * @param  {int} start
+   * @param  {int} end
+   * @param  {any<-int} fn-loop
+   * @return {list-1}
+   * (func list<-for-end-loop)
+   */
   interface Func_list_from_for_end_loop : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list> vx_list_from_for_end_loop(generic_list_1 : X, start : vx_core.Type_int, end : vx_core.Type_int, fn_loop : vx_core.Func_any_from_int) : X
   }
@@ -1655,7 +1792,15 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_for_while_loop
+   * Returns a list of any-1 using a while loop. Max: 1000
+   * @param  {any-1} start
+   * @param  {boolean<-any} fn-while
+   * @param  {any<-any} fn-loop
+   * @return {list-1}
+   * (func list<-for-while-loop)
+   */
   interface Func_list_from_for_while_loop : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, X : vx_core.Type_list> vx_list_from_for_while_loop(generic_list_1 : X, start : T, fn_while : vx_core.Func_boolean_from_any, fn_loop : vx_core.Func_any_from_any) : X
   }
@@ -1743,7 +1888,22 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_for_while_loop_max
+   * Returns a list of any-1 using a while loop.
+   * 1. output : list-1 := (empty list-1)
+   * 2. value : any-1 := start.
+   * 3. value : any-1 := (fn-loop value).
+   * 4. check : boolean := (fn-while value).
+   * 5. if (= check true) output := (copy output value), Go to 3 (Maximum max times).
+   * 6. else end.
+   * @param  {any-1} start
+   * @param  {boolean<-any} fn-while
+   * @param  {any<-any} fn-loop
+   * @param  {int} max
+   * @return {list-1}
+   * (func list<-for-while-loop-max)
+   */
   interface Func_list_from_for_while_loop_max : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, X : vx_core.Type_list> vx_list_from_for_while_loop_max(generic_list_1 : X, start : T, fn_while : vx_core.Func_boolean_from_any, fn_loop : vx_core.Func_any_from_any, max : vx_core.Type_int) : X
   }
@@ -1826,7 +1986,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_list_end
+   * Returns a sub list from positions 1 to end inclusive.
+   * @param  {list-1} values
+   * @param  {int} end
+   * @return {list-1}
+   * (func list<-list-end)
+   */
   interface Func_list_from_list_end : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list> vx_list_from_list_end(generic_list_1 : X, values : X, end : vx_core.Type_int) : X
   }
@@ -1912,7 +2079,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_list_filter
+   * Filter List to only include non-empty values
+   * @param  {list-2} vallist
+   * @param  {any<-any} fn-filter
+   * @return {list-1}
+   * (func list<-list-filter)
+   */
   interface Func_list_from_list_filter : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list_filter(generic_list_1 : X, vallist : Y, fn_filter : vx_core.Func_any_from_any) : X
   }
@@ -1993,7 +2167,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_list_filtertypes
+   * Filter List to only include matching types
+   * @param  {list-2} vallist
+   * @param  {typelist} filtertypes
+   * @return {list-1}
+   * (func list<-list-filtertypes)
+   */
   interface Func_list_from_list_filtertypes : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list_filtertypes(generic_list_1 : X, vallist : Y, filtertypes : vx_core.Type_typelist) : X
   }
@@ -2089,7 +2270,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_list_flatten
+   * Return a list of items from another list. fn-any<-any may return individual items or lists of items. Any sublists are flattened into the single list.
+   * @param  {list-2} listsrc
+   * @param  {any<-any} fn-any<-any
+   * @return {list-1}
+   * (func list<-list-flatten)
+   */
   interface Func_list_from_list_flatten : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list_flatten(generic_list_1 : X, listsrc : Y, fn_any_from_any : vx_core.Func_any_from_any) : X
   }
@@ -2184,7 +2372,13 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_list_join
+   * Returns a list by joining the valid values in each value list
+   * @param  {list-2} values
+   * @return {list-1}
+   * (func list<-list-join)
+   */
   interface Func_list_from_list_join : vx_core.Func_any_from_any {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list_join(generic_list_1 : X, values : Y) : X
   }
@@ -2284,7 +2478,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_list_join 1
+   * Returns a flattened list of processed items from another list
+   * @param  {list-2} values
+   * @param  {any<-any} fn-any<-any
+   * @return {list-1}
+   * (func list<-list-join)
+   */
   interface Func_list_from_list_join_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list_join_1(generic_list_1 : X, values : Y, fn_any_from_any : vx_core.Func_any_from_any) : X
   }
@@ -2365,7 +2566,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_list_start
+   * Returns a sub list from start to list end.
+   * @param  {list-1} values
+   * @param  {int} start
+   * @return {list-1}
+   * (func list<-list-start)
+   */
   interface Func_list_from_list_start : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list> vx_list_from_list_start(generic_list_1 : X, values : X, start : vx_core.Type_int) : X
   }
@@ -2453,7 +2661,15 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function list_from_list_start_end
+   * Returns a sublist from another list
+   * @param  {list-1} values
+   * @param  {int} start
+   * @param  {int} end
+   * @return {list-1}
+   * (func list<-list-start-end)
+   */
   interface Func_list_from_list_start_end : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list> vx_list_from_list_start_end(generic_list_1 : X, values : X, start : vx_core.Type_int, end : vx_core.Type_int) : X
   }
@@ -2535,7 +2751,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function map_from_map_end
+   * Returns a submap from key positions 1 to end inclusive.
+   * @param  {map-1} valuemap
+   * @param  {int} end
+   * @return {map-1}
+   * (func map<-map-end)
+   */
   interface Func_map_from_map_end : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map> vx_map_from_map_end(generic_map_1 : N, valuemap : N, end : vx_core.Type_int) : N
   }
@@ -2621,7 +2844,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function map_from_map_keys
+   * Returns a submap from another map using a keylist
+   * @param  {map-1} valuemap
+   * @param  {stringlist} keys
+   * @return {map-1}
+   * (func map<-map-keys)
+   */
   interface Func_map_from_map_keys : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map> vx_map_from_map_keys(generic_map_1 : N, valuemap : N, keys : vx_core.Type_stringlist) : N
   }
@@ -2702,7 +2932,14 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function map_from_map_start
+   * Returns a sub map from start to map end.
+   * @param  {map-1} valuemap
+   * @param  {int} start
+   * @return {map-1}
+   * (func map<-map-start)
+   */
   interface Func_map_from_map_start : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map> vx_map_from_map_start(generic_map_1 : N, valuemap : N, start : vx_core.Type_int) : N
   }
@@ -2790,7 +3027,15 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function map_from_map_start_end
+   * Returns a submap from another map using the index of the keylist
+   * @param  {map-1} valuemap
+   * @param  {int} start
+   * @param  {int} end
+   * @return {map-1}
+   * (func map<-map-start-end)
+   */
   interface Func_map_from_map_start_end : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map> vx_map_from_map_start_end(generic_map_1 : N, valuemap : N, start : vx_core.Type_int, end : vx_core.Type_int) : N
   }
@@ -2891,7 +3136,13 @@ object vx_collection {
     return output
   }
 
-
+  /**
+   * @function map_from_struct
+   * Returns a typed map from all the properties in a struct.
+   * @param  {struct-2} structure
+   * @return {map-1}
+   * (func map<-struct)
+   */
   interface Func_map_from_struct : vx_core.Func_any_from_any {
     fun <N : vx_core.Type_map, R : vx_core.Type_struct> vx_map_from_struct(generic_map_1 : N, structure : R) : N
   }

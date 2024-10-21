@@ -18264,7 +18264,7 @@ namespace vx_core {
   //}
   /**
    * @function if 2
-   * Logical If function
+   * Logical lazy If function with (then) (else) clauses
    * @param  {thenelselist} thenelselist
    * @return {any-1}
    * (func if)

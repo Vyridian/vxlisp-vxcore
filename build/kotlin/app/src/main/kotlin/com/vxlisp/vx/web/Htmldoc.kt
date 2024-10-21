@@ -6,7 +6,14 @@ import com.vxlisp.vx.ui.*
 
 object vx_web_htmldoc {
 
-
+  /**
+   * @function boolean_print_from_id_stylesheettext
+   * Print the contents of the given id.
+   * @param  {string} id
+   * @param  {string} stylesheettext
+   * @return {boolean}
+   * (func boolean-print<-id-stylesheettext)
+   */
   interface Func_boolean_print_from_id_stylesheettext : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_print_from_id_stylesheettext(id : vx_core.Type_string, stylesheettext : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -85,7 +92,13 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function boolean_remove_from_id
+   * Removes an html node with given id.
+   * @param  {string} id
+   * @return {boolean}
+   * (func boolean-remove<-id)
+   */
   interface Func_boolean_remove_from_id : vx_core.Func_any_from_any {
     fun vx_boolean_remove_from_id(id : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -175,7 +188,14 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function boolean_replace_from_id_htmltext
+   * Replaces an html node with given id and text.
+   * @param  {string} id
+   * @param  {string} htmltext
+   * @return {boolean}
+   * (func boolean-replace<-id-htmltext)
+   */
   interface Func_boolean_replace_from_id_htmltext : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_replace_from_id_htmltext(id : vx_core.Type_string, htmltext : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -254,7 +274,15 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function boolean_replace_from_id_parent_htmltext
+   * Replaces an html node with given id, parentid, and text.
+   * @param  {string} id
+   * @param  {string} parent
+   * @param  {string} htmltext
+   * @return {boolean}
+   * (func boolean-replace<-id-parent-htmltext)
+   */
   interface Func_boolean_replace_from_id_parent_htmltext : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_replace_from_id_parent_htmltext(id : vx_core.Type_string, parent : vx_core.Type_string, htmltext : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -334,7 +362,15 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function boolean_write_stylesheet_from_string
+   * Writes a css stylesheet.
+   * @param  {string} text
+   * @return {boolean}
+   * (func boolean-write-stylesheet<-string)
+   */
   interface Func_boolean_write_stylesheet_from_string : vx_core.Func_any_from_any_async {
     fun vx_boolean_write_stylesheet_from_string(text : vx_core.Type_string) : CompletableFuture<vx_core.Type_boolean>
   }
@@ -424,7 +460,15 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function boolean_write_from_id_attribute_value
+   * Writes to an html node with given id and attribute name and value.
+   * @param  {string} id
+   * @param  {string} attribute
+   * @param  {string} value
+   * @return {boolean}
+   * (func boolean-write<-id-attribute-value)
+   */
   interface Func_boolean_write_from_id_attribute_value : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_write_from_id_attribute_value(id : vx_core.Type_string, attribute : vx_core.Type_string, value : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -504,7 +548,14 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function boolean_write_from_id_htmltext
+   * Writes to an html node with given id and text.
+   * @param  {string} id
+   * @param  {string} htmltext
+   * @return {boolean}
+   * (func boolean-write<-id-htmltext)
+   */
   interface Func_boolean_write_from_id_htmltext : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_write_from_id_htmltext(id : vx_core.Type_string, htmltext : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -583,7 +634,14 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function boolean_write_from_id_visible
+   * Writes to an html node changing its visibility.
+   * @param  {string} id
+   * @param  {boolean} visible
+   * @return {boolean}
+   * (func boolean-write<-id-visible)
+   */
   interface Func_boolean_write_from_id_visible : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_write_from_id_visible(id : vx_core.Type_string, visible : vx_core.Type_boolean) : vx_core.Type_boolean
   }
@@ -662,7 +720,15 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function boolean_write_from_stylesheet
+   * Writes a css stylesheet.
+   * @param  {stylesheet} stylesheet
+   * @return {boolean}
+   * (func boolean-write<-stylesheet)
+   */
   interface Func_boolean_write_from_stylesheet : vx_core.Func_any_from_any_async {
     fun vx_boolean_write_from_stylesheet(stylesheet : vx_web_html.Type_stylesheet) : CompletableFuture<vx_core.Type_boolean>
   }
@@ -768,7 +834,13 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function boolean_writeevents_from_ui
+   * Writes the eventmap from ui into dom.
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-writeevents<-ui)
+   */
   interface Func_boolean_writeevents_from_ui : vx_core.Func_any_from_any {
     fun vx_boolean_writeevents_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -858,7 +930,12 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function context_read
+   * Reads context from document.data.context
+   * @return {context}
+   * (func context-read)
+   */
   interface Func_context_read : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_context_read() : vx_core.Type_context
   }
@@ -935,7 +1012,12 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function context_write
+   * Writes context to document.data.context
+   * @return {context}
+   * (func context-write)
+   */
   interface Func_context_write : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_context_write(context : vx_core.Type_context) : vx_core.Type_context
   }
@@ -1013,7 +1095,13 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function string_from_id
+   * Reads the value of an html node by id.
+   * @param  {string} id
+   * @return {string}
+   * (func string<-id)
+   */
   interface Func_string_from_id : vx_core.Func_any_from_any {
     fun vx_string_from_id(id : vx_core.Type_string) : vx_core.Type_string
   }
@@ -1103,7 +1191,13 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function string_from_stylesheet
+   * Returns string from a given stylesheet
+   * @param  {stylesheet} stylesheet
+   * @return {string}
+   * (func string<-stylesheet)
+   */
   interface Func_string_from_stylesheet : vx_core.Func_any_from_any {
     fun vx_string_from_stylesheet(stylesheet : vx_web_html.Type_stylesheet) : vx_core.Type_string
   }
@@ -1207,7 +1301,13 @@ object vx_web_htmldoc {
     return output
   }
 
-
+  /**
+   * @function ui_readstate_from_uid
+   * Returns ui component from element.
+   * @param  {string} uid
+   * @return {any}
+   * (func ui-readstate<-uid)
+   */
   interface Func_ui_readstate_from_uid : vx_core.Func_any_from_any {
     fun vx_ui_readstate_from_uid(uid : vx_core.Type_string) : vx_core.Type_any
   }

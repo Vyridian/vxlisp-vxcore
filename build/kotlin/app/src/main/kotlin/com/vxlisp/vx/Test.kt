@@ -2836,6 +2836,11 @@ object vx_test {
   val e_testresultlist : vx_test.Type_testresultlist = vx_test.Class_testresultlist()
   val t_testresultlist : vx_test.Type_testresultlist = vx_test.Class_testresultlist()
 
+  /**
+   * Constant: stylesheet-test
+   * The default Test Stylesheet
+   * {stylesheet}
+   */
   class Const_stylesheet_test {
     constructor() {}
     companion object {
@@ -3250,7 +3255,13 @@ object vx_test {
 
   val c_stylesheet_test : vx_web_html.Type_stylesheet = vx_web_html.Class_stylesheet()
 
-
+  /**
+   * @function context_test
+   * Returns the default context for test case execution. Arguments come from the command line.
+   * @param  {anylist} args
+   * @return {context}
+   * (func context-test)
+   */
   interface Func_context_test : vx_core.Func_any_from_any {
     fun vx_context_test(args : vx_core.Type_anylist) : vx_core.Type_context
   }
@@ -3362,7 +3373,12 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function div_from_testcaselist
+   * @param  {testcaselist} testcaselist
+   * @return {div}
+   * (func div<-testcaselist)
+   */
   interface Func_div_from_testcaselist : vx_core.Func_any_from_any {
     fun vx_div_from_testcaselist(testcaselist : vx_test.Type_testcaselist) : vx_web_html.Type_div
   }
@@ -3557,7 +3573,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function div_from_testpackage
+   * Retuns a div from a test package
+   * @param  {testpackage} testpackage
+   * @return {div}
+   * (func div<-testpackage)
+   */
   interface Func_div_from_testpackage : vx_core.Func_any_from_any {
     fun vx_div_from_testpackage(testpackage : vx_test.Type_testpackage) : vx_web_html.Type_div
   }
@@ -3737,7 +3759,12 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function div_from_testpackagelist
+   * @param  {testpackagelist} testpackagelist
+   * @return {div}
+   * (func div<-testpackagelist)
+   */
   interface Func_div_from_testpackagelist : vx_core.Func_any_from_any {
     fun vx_div_from_testpackagelist(testpackagelist : vx_test.Type_testpackagelist) : vx_web_html.Type_div
   }
@@ -3962,7 +3989,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function divchildlist_from_testpackagelist
+   * Returns a divlist from a testpackagelist.
+   * @param  {testpackagelist} testpackagelist
+   * @return {divchildlist}
+   * (func divchildlist<-testpackagelist)
+   */
   interface Func_divchildlist_from_testpackagelist : vx_core.Func_any_from_any {
     fun vx_divchildlist_from_testpackagelist(testpackagelist : vx_test.Type_testpackagelist) : vx_web_html.Type_divchildlist
   }
@@ -4057,7 +4090,12 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function file_test
+   * Default file location for testsuite.vxlisp
+   * @return {file}
+   * (func file-test)
+   */
   interface Func_file_test : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_file_test() : vx_data_file.Type_file
   }
@@ -4144,7 +4182,12 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function file_testhtml
+   * Default file location for testsuite.html
+   * @return {file}
+   * (func file-testhtml)
+   */
   interface Func_file_testhtml : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_file_testhtml() : vx_data_file.Type_file
   }
@@ -4231,7 +4274,12 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function file_testnode
+   * Default file location for testsuitenode.vxlisp
+   * @return {file}
+   * (func file-testnode)
+   */
   interface Func_file_testnode : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_file_testnode() : vx_data_file.Type_file
   }
@@ -4318,7 +4366,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function html_from_divtest
+   * Returns html from test div
+   * @param  {div} divtest
+   * @return {html}
+   * (func html<-divtest)
+   */
   interface Func_html_from_divtest : vx_core.Func_any_from_any {
     fun vx_html_from_divtest(divtest : vx_web_html.Type_div) : vx_web_html.Type_html
   }
@@ -4471,7 +4525,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function p_from_passfail
+   * Returns a <p> tag from a passfail boolean value
+   * @param  {boolean} passfail
+   * @return {p}
+   * (func p<-passfail)
+   */
   interface Func_p_from_passfail : vx_core.Func_any_from_any {
     fun vx_p_from_passfail(passfail : vx_core.Type_boolean) : vx_web_html.Type_p
   }
@@ -4593,7 +4653,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function p_from_testcoveragenums
+   * Returns <p>tests / total (pct%)</p> from testcoveragenums
+   * @param  {testcoveragenums} nums
+   * @return {p}
+   * (func p<-testcoveragenums)
+   */
   interface Func_p_from_testcoveragenums : vx_core.Func_any_from_any {
     fun vx_p_from_testcoveragenums(nums : vx_test.Type_testcoveragenums) : vx_web_html.Type_p
   }
@@ -4706,7 +4772,15 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function resolve_testcase
+   * Resolves a testcase
+   * @param  {testcase} testcase
+   * @return {testcase}
+   * (func resolve-testcase)
+   */
   interface Func_resolve_testcase : vx_core.Func_any_from_any_async {
     fun vx_resolve_testcase(testcase : vx_test.Type_testcase) : CompletableFuture<vx_test.Type_testcase>
   }
@@ -4838,7 +4912,15 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function resolve_testcaselist
+   * Resolves a testcaselist
+   * @param  {testcaselist} testcaselist
+   * @return {testcaselist}
+   * (func resolve-testcaselist)
+   */
   interface Func_resolve_testcaselist : vx_core.Func_any_from_any_async {
     fun vx_resolve_testcaselist(testcaselist : vx_test.Type_testcaselist) : CompletableFuture<vx_test.Type_testcaselist>
   }
@@ -4933,7 +5015,15 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function resolve_testdescribe
+   * Resolves a testdescribe
+   * @param  {testdescribe} testdescribe
+   * @return {testdescribe}
+   * (func resolve-testdescribe)
+   */
   interface Func_resolve_testdescribe : vx_core.Func_any_from_any_async {
     fun vx_resolve_testdescribe(testdescribe : vx_test.Type_testdescribe) : CompletableFuture<vx_test.Type_testdescribe>
   }
@@ -5044,7 +5134,15 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function resolve_testdescribelist
+   * Resolves a testdescribelist
+   * @param  {testdescribelist} testdescribelist
+   * @return {testdescribelist}
+   * (func resolve-testdescribelist)
+   */
   interface Func_resolve_testdescribelist : vx_core.Func_any_from_any_async {
     fun vx_resolve_testdescribelist(testdescribelist : vx_test.Type_testdescribelist) : CompletableFuture<vx_test.Type_testdescribelist>
   }
@@ -5139,7 +5237,15 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function resolve_testpackage
+   * Resolves a testpackage
+   * @param  {testpackage} testpackage
+   * @return {testpackage}
+   * (func resolve-testpackage)
+   */
   interface Func_resolve_testpackage : vx_core.Func_any_from_any_async {
     fun vx_resolve_testpackage(testpackage : vx_test.Type_testpackage) : CompletableFuture<vx_test.Type_testpackage>
   }
@@ -5264,7 +5370,15 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function resolve_testpackagelist
+   * Resolves a testpackagelist
+   * @param  {testpackagelist} testpackagelist
+   * @return {testpackagelist}
+   * (func resolve-testpackagelist)
+   */
   interface Func_resolve_testpackagelist : vx_core.Func_any_from_any_async {
     fun vx_resolve_testpackagelist(testpackagelist : vx_test.Type_testpackagelist) : CompletableFuture<vx_test.Type_testpackagelist>
   }
@@ -5359,7 +5473,15 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function resolve_testresult
+   * Resolves a testresult
+   * @param  {testresult} testresult
+   * @return {testresult}
+   * (func resolve-testresult)
+   */
   interface Func_resolve_testresult : vx_core.Func_any_from_any_async {
     fun vx_resolve_testresult(testresult : vx_test.Type_testresult) : CompletableFuture<vx_test.Type_testresult>
   }
@@ -5507,7 +5629,12 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function security_test
+   * Returns the default security for test case execution. Arguments come from the command line.
+   * @return {security}
+   * (func security-test)
+   */
   interface Func_security_test : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_security_test() : vx_core.Type_security
   }
@@ -5601,7 +5728,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test
+   * Test expected equal actual
+   * @param  {any-1} expected
+   * @param  {any-2} actual
+   * @return {testresult}
+   * (func test)
+   */
   interface Func_test : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_test(context : vx_core.Type_context, expected : vx_core.Type_any, actual : vx_core.Type_any) : vx_test.Type_testresult
   }
@@ -5703,7 +5837,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test 1
+   * Async Test expected equal actual
+   * @param  {any} expected
+   * @param  {any<-func-async} fn-actual
+   * @return {testresult}
+   * (func test)
+   */
   interface Func_test_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_test_1(context : vx_core.Type_context, expected : vx_core.Type_any, fn_actual : vx_core.Func_any_from_func_async) : vx_test.Type_testresult
   }
@@ -5800,7 +5941,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_false
+   * Test expected to be false
+   * @param  {any} actual
+   * @return {testresult}
+   * (func test-false)
+   */
   interface Func_test_false : vx_core.Func_any_from_any_context {
     fun vx_test_false(context : vx_core.Type_context, actual : vx_core.Type_any) : vx_test.Type_testresult
   }
@@ -5913,7 +6060,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_false 1
+   * Async Test expected to be false
+   * @param  {any<-func-async} fn-actual
+   * @return {testresult}
+   * (func test-false)
+   */
   interface Func_test_false_1 : vx_core.Func_any_from_any_context {
     fun vx_test_false_1(context : vx_core.Type_context, fn_actual : vx_core.Func_any_from_func_async) : vx_test.Type_testresult
   }
@@ -6021,7 +6174,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_gt
+   * Test expected greater than actual
+   * @param  {any} expected
+   * @param  {any} actual
+   * @return {testresult}
+   * (func test-gt)
+   */
   interface Func_test_gt : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_test_gt(context : vx_core.Type_context, expected : vx_core.Type_any, actual : vx_core.Type_any) : vx_test.Type_testresult
   }
@@ -6123,7 +6283,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_gt 1
+   * Async Test expected greater than actual
+   * @param  {any} expected
+   * @param  {any<-func-async} fn-actual
+   * @return {testresult}
+   * (func test-gt)
+   */
   interface Func_test_gt_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_test_gt_1(context : vx_core.Type_context, expected : vx_core.Type_any, fn_actual : vx_core.Func_any_from_func_async) : vx_test.Type_testresult
   }
@@ -6220,7 +6387,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_ne
+   * Test expected not equal actual
+   * @param  {any} expected
+   * @param  {any} actual
+   * @return {testresult}
+   * (func test-ne)
+   */
   interface Func_test_ne : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_test_ne(context : vx_core.Type_context, expected : vx_core.Type_any, actual : vx_core.Type_any) : vx_test.Type_testresult
   }
@@ -6322,7 +6496,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_ne 1
+   * Async Test expected not equal actual
+   * @param  {any} expected
+   * @param  {any<-func-async} fn-actual
+   * @return {testresult}
+   * (func test-ne)
+   */
   interface Func_test_ne_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_test_ne_1(context : vx_core.Type_context, expected : vx_core.Type_any, fn_actual : vx_core.Func_any_from_func_async) : vx_test.Type_testresult
   }
@@ -6419,7 +6600,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_string
+   * Test that the string version of expected equal actual
+   * @param  {any} expected
+   * @param  {any} actual
+   * @return {testresult}
+   * (func test-string)
+   */
   interface Func_test_string : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_test_string(context : vx_core.Type_context, expected : vx_core.Type_any, actual : vx_core.Type_any) : vx_test.Type_testresult
   }
@@ -6523,7 +6711,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_string 1
+   * Async Test that the string version of expected equal actual
+   * @param  {any} expected
+   * @param  {any<-func-async} fn-actual
+   * @return {testresult}
+   * (func test-string)
+   */
   interface Func_test_string_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_test_string_1(context : vx_core.Type_context, expected : vx_core.Type_any, fn_actual : vx_core.Func_any_from_func_async) : vx_test.Type_testresult
   }
@@ -6620,7 +6815,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_true
+   * Test expected to be true
+   * @param  {any} actual
+   * @return {testresult}
+   * (func test-true)
+   */
   interface Func_test_true : vx_core.Func_any_from_any_context {
     fun vx_test_true(context : vx_core.Type_context, actual : vx_core.Type_any) : vx_test.Type_testresult
   }
@@ -6733,7 +6934,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function test_true 1
+   * Async Test expected to be true
+   * @param  {any<-func-async} fn-actual
+   * @return {testresult}
+   * (func test-true)
+   */
   interface Func_test_true_1 : vx_core.Func_any_from_any_context {
     fun vx_test_true_1(context : vx_core.Type_context, fn_actual : vx_core.Func_any_from_func_async) : vx_test.Type_testresult
   }
@@ -6841,7 +7048,14 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function tr_from_testdescribe_casename
+   * Returns tr from a testdescribe
+   * @param  {testdescribe} testdescribe
+   * @param  {string} casename
+   * @return {tr}
+   * (func tr<-testdescribe-casename)
+   */
   interface Func_tr_from_testdescribe_casename : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_tr_from_testdescribe_casename(testdescribe : vx_test.Type_testdescribe, casename : vx_core.Type_string) : vx_web_html.Type_tr
   }
@@ -7018,7 +7232,12 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function trlist_from_testcase
+   * @param  {testcase} testcase
+   * @return {trlist}
+   * (func trlist<-testcase)
+   */
   interface Func_trlist_from_testcase : vx_core.Func_any_from_any {
     fun vx_trlist_from_testcase(testcase : vx_test.Type_testcase) : vx_web_html.Type_trlist
   }
@@ -7128,7 +7347,13 @@ object vx_test {
     return output
   }
 
-
+  /**
+   * @function trlist_from_testcaselist
+   * Returns a trlist from a testcaselist.
+   * @param  {testcaselist} testcaselist
+   * @return {trlist}
+   * (func trlist<-testcaselist)
+   */
   interface Func_trlist_from_testcaselist : vx_core.Func_any_from_any {
     fun vx_trlist_from_testcaselist(testcaselist : vx_test.Type_testcaselist) : vx_web_html.Type_trlist
   }

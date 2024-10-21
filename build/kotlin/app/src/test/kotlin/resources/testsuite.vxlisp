@@ -919,6 +919,54 @@
     (testcase
      :passfail true
      :testpkg "vx/core"
+     :casename "any<-struct"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         `(test
+ "sname"
+ (any<-struct : string
+  (translation
+   :name "sname")
+  :name))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected "sname"
+          :actual "sname"))
+       (testdescribe
+        :describename
+         `(test
+ "sname"
+ (any<-struct : string
+  (translation
+   :name "sname")
+  "name"))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected "sname"
+          :actual "sname"))
+       (testdescribe
+        :describename
+         `(test
+ "sname"
+ (any<-struct : string
+  (translation
+   :name "sname")
+  ":name"))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected "sname"
+          :actual "sname"))))
+    (testcase
+     :passfail true
+     :testpkg "vx/core"
      :casename "boolean-write<-map-name-value"
      :describelist
       (testdescribelist
@@ -2274,7 +2322,7 @@
       :any<-reduce-async 0
       :any<-reduce-next 0
       :any<-reduce-next-async 0
-      :any<-struct 0
+      :any<-struct 3
       :async 0
       :boolean-permission<-func 0
       :boolean-write<-map-name-value 2
@@ -2484,13 +2532,13 @@
     :funcnums
      (testcoveragenums
       :pct 55
-      :tests 75
+      :tests 76
       :total 136)
     :testpkg "vx/core"
     :totalnums
      (testcoveragenums
       :pct 37
-      :tests 84
+      :tests 85
       :total 227)
     :typenums
      (testcoveragenums

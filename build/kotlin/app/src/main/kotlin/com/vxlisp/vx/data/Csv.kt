@@ -554,6 +554,11 @@ object vx_data_csv {
   val e_csvrows : vx_data_csv.Type_csvrows = vx_data_csv.Class_csvrows()
   val t_csvrows : vx_data_csv.Type_csvrows = vx_data_csv.Class_csvrows()
 
+  /**
+   * Constant: delimcsv
+   * Csv File Delimiters
+   * {delim}
+   */
   class Const_delimcsv {
     constructor() {}
     companion object {
@@ -600,7 +605,13 @@ object vx_data_csv {
 
   val c_delimcsv : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
+  /**
+   * @function csv_read_from_file
+   * Returns a parsed csv from a file.
+   * @param  {file} file
+   * @return {csv}
+   * (func csv-read<-file)
+   */
   interface Func_csv_read_from_file : vx_core.Func_any_from_any_context {
     fun vx_csv_read_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_data_csv.Type_csv
   }
@@ -704,7 +715,13 @@ object vx_data_csv {
     return output
   }
 
-
+  /**
+   * @function csv_from_file
+   * Returns a parsed csv from a file.
+   * @param  {file} file
+   * @return {csv}
+   * (func csv<-file)
+   */
   interface Func_csv_from_file : vx_core.Func_any_from_any {
     fun vx_csv_from_file(file : vx_data_file.Type_file) : vx_data_csv.Type_csv
   }
@@ -804,7 +821,13 @@ object vx_data_csv {
     return output
   }
 
-
+  /**
+   * @function csv_from_string
+   * Returns a parsed csv from a string.
+   * @param  {string} text
+   * @return {csv}
+   * (func csv<-string)
+   */
   interface Func_csv_from_string : vx_core.Func_any_from_any {
     fun vx_csv_from_string(text : vx_core.Type_string) : vx_data_csv.Type_csv
   }
@@ -900,7 +923,13 @@ object vx_data_csv {
     return output
   }
 
-
+  /**
+   * @function csv_from_textblock
+   * Returns a parsed csv from a textblock.
+   * @param  {textblock} textblock
+   * @return {csv}
+   * (func csv<-textblock)
+   */
   interface Func_csv_from_textblock : vx_core.Func_any_from_any {
     fun vx_csv_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_data_csv.Type_csv
   }
@@ -1019,7 +1048,12 @@ object vx_data_csv {
     return output
   }
 
-
+  /**
+   * @function csvrows_from_textblock
+   * @param  {textblock} textblock
+   * @return {csvrows}
+   * (func csvrows<-textblock)
+   */
   interface Func_csvrows_from_textblock : vx_core.Func_any_from_any {
     fun vx_csvrows_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_data_csv.Type_csvrows
   }
@@ -1132,7 +1166,13 @@ object vx_data_csv {
     return output
   }
 
-
+  /**
+   * @function stringmap_from_csv
+   * Returns a stringmap using the first 2 values in each row.
+   * @param  {csv} csv
+   * @return {stringmap}
+   * (func stringmap<-csv)
+   */
   interface Func_stringmap_from_csv : vx_core.Func_any_from_any {
     fun vx_stringmap_from_csv(csv : vx_data_csv.Type_csv) : vx_core.Type_stringmap
   }
@@ -1256,7 +1296,13 @@ object vx_data_csv {
     return output
   }
 
-
+  /**
+   * @function textblock_csv_from_string
+   * Returns a parsed csv-textblock from a string.
+   * @param  {string} text
+   * @return {textblock}
+   * (func textblock-csv<-string)
+   */
   interface Func_textblock_csv_from_string : vx_core.Func_any_from_any {
     fun vx_textblock_csv_from_string(text : vx_core.Type_string) : vx_data_textblock.Type_textblock
   }

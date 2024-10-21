@@ -189,7 +189,14 @@ object vx_state {
 
   val e_valuemap : vx_state.Type_valuemap = vx_state.Class_valuemap()
   val t_valuemap : vx_state.Type_valuemap = vx_state.Class_valuemap()
-
+  /**
+   * @function any_readstate_from_mapname_name
+   * Returns the named state value
+   * @param  {string} mapname
+   * @param  {string} name
+   * @return {any-1}
+   * (func any-readstate<-mapname-name)
+   */
   interface Func_any_readstate_from_mapname_name : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_readstate_from_mapname_name(generic_any_1 : T, context : vx_core.Type_context, mapname : vx_core.Type_string, name : vx_core.Type_string) : T
   }
@@ -285,7 +292,13 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function any_readstate_from_name
+   * Returns the named state value
+   * @param  {string} name
+   * @return {any-1}
+   * (func any-readstate<-name)
+   */
   interface Func_any_readstate_from_name : vx_core.Func_any_from_any_context {
     fun <T : vx_core.Type_any> vx_any_readstate_from_name(generic_any_1 : T, context : vx_core.Type_context, name : vx_core.Type_string) : T
   }
@@ -384,7 +397,13 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function boolean_removestate_from_name
+   * Returns true if named statelistener was removed.
+   * @param  {string} name
+   * @return {boolean}
+   * (func boolean-removestate<-name)
+   */
   interface Func_boolean_removestate_from_name : vx_core.Func_any_from_any_context {
     fun vx_boolean_removestate_from_name(context : vx_core.Type_context, name : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -491,7 +510,15 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function boolean_writestate_from_mapname_name_value
+   * Returns the named state value and changes it to the new value
+   * @param  {string} mapname
+   * @param  {string} name
+   * @param  {any} value
+   * @return {boolean}
+   * (func boolean-writestate<-mapname-name-value)
+   */
   interface Func_boolean_writestate_from_mapname_name_value : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_writestate_from_mapname_name_value(context : vx_core.Type_context, mapname : vx_core.Type_string, name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -638,7 +665,14 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function boolean_writestate_from_name_value
+   * Returns the named state value and changes it to the new value
+   * @param  {string} name
+   * @param  {any} value
+   * @return {boolean}
+   * (func boolean-writestate<-name-value)
+   */
   interface Func_boolean_writestate_from_name_value : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_writestate_from_name_value(context : vx_core.Type_context, name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -742,7 +776,13 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function boolean_writestate_from_statelistener
+   * Writes statelistener into state
+   * @param  {statelistener} statelistener
+   * @return {boolean}
+   * (func boolean-writestate<-statelistener)
+   */
   interface Func_boolean_writestate_from_statelistener : vx_core.Func_any_from_any_context {
     fun vx_boolean_writestate_from_statelistener(context : vx_core.Type_context, statelistener : vx_core.Type_statelistener) : vx_core.Type_boolean
   }
@@ -848,7 +888,13 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function change
+   * Changes the current state
+   * @param  {valuemap} valuemap
+   * @return {boolean}
+   * (func change)
+   */
   interface Func_change : vx_core.Func_any_from_any {
     fun vx_change(valuemap : vx_state.Type_valuemap) : vx_core.Type_boolean
   }
@@ -938,7 +984,12 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function register
+   * @param  {statelistener} listener
+   * @return {boolean}
+   * (func register)
+   */
   interface Func_register : vx_core.Func_any_from_any {
     fun vx_register(listener : vx_core.Type_statelistener) : vx_core.Type_boolean
   }
@@ -1028,7 +1079,12 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function state_from_context
+   * Returns the full current state
+   * @return {state}
+   * (func state<-context)
+   */
   interface Func_state_from_context : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_state_from_context(context : vx_core.Type_context) : vx_core.Type_state
   }
@@ -1107,7 +1163,13 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function statelistener_readstate_from_name
+   * Returns the named statelistener
+   * @param  {string} name
+   * @return {statelistener}
+   * (func statelistener-readstate<-name)
+   */
   interface Func_statelistener_readstate_from_name : vx_core.Func_any_from_any_context {
     fun vx_statelistener_readstate_from_name(context : vx_core.Type_context, name : vx_core.Type_string) : vx_core.Type_statelistener
   }
@@ -1212,7 +1274,12 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function statelistenermap_readstate
+   * Returns the current state valuemap
+   * @return {statelistenermap}
+   * (func statelistenermap-readstate)
+   */
   interface Func_statelistenermap_readstate : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_statelistenermap_readstate(context : vx_core.Type_context) : vx_core.Type_statelistenermap
   }
@@ -1300,7 +1367,13 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function value_readstate_from_name
+   * Returns the named state value
+   * @param  {string} name
+   * @return {any}
+   * (func value-readstate<-name)
+   */
   interface Func_value_readstate_from_name : vx_core.Func_any_from_any_context {
     fun vx_value_readstate_from_name(context : vx_core.Type_context, name : vx_core.Type_string) : vx_core.Type_any
   }
@@ -1402,7 +1475,13 @@ object vx_state {
     return output
   }
 
-
+  /**
+   * @function valuemap_readstate_from_mapname
+   * Returns the current state valuemap
+   * @param  {string} mapname
+   * @return {valuemap}
+   * (func valuemap-readstate<-mapname)
+   */
   interface Func_valuemap_readstate_from_mapname : vx_core.Func_any_from_any_context {
     fun vx_valuemap_readstate_from_mapname(context : vx_core.Type_context, mapname : vx_core.Type_string) : vx_state.Type_valuemap
   }

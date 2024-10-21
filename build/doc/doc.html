@@ -5059,6 +5059,24 @@
   :kotlin
    &quot;val value : vx_core.Type_any = vstruct.vx_any(key)
     output = vx_core.f_any_from_any(generic_any_1, value);&quot;)
+ :test (test
+        &quot;sname&quot;
+        (any&lt;-struct : string
+         (translation
+          :name &quot;sname&quot;)
+         :name))
+       (test
+        &quot;sname&quot;
+        (any&lt;-struct : string
+         (translation
+          :name &quot;sname&quot;)
+         &quot;name&quot;))
+       (test
+        &quot;sname&quot;
+        (any&lt;-struct : string
+         (translation
+          :name &quot;sname&quot;)
+         &quot;:name&quot;))
  :doc &quot;Returns value from a struct&quot;)
 
 (func async : any-1 :async
@@ -5477,6 +5495,13 @@
  (string (:pkgname funcdef) &quot;/&quot; (:name funcdef))
  :doc &quot;Get the name of a given funcdef&quot;)
 
+/*
+(func if : any-1
+ [clause  : boolean
+  fn-then : any&lt;-func]
+ :doc &quot;Logical lazy If function. Returns empty value if false.&quot;)
+*/
+
 (func if : any-1
  [clause : boolean
   then   : any-1]
@@ -5510,6 +5535,14 @@
          (= 1 2)
          &quot;a&quot;))
  :doc  &quot;Logical If function&quot;)
+
+/*
+(func if : any-1
+ [clause  : boolean
+  fn-then : any&lt;-func
+  fn-else : any&lt;-func]
+ :doc &quot;Logical lazy If function&quot;)
+*/
 
 (func if : any-1
  [clause  : boolean
@@ -5593,12 +5626,12 @@
       }
     }&quot;
   :kotlin :auto)
- :doc  &quot;Logical If function&quot;
  :test (test-true
         (if
          (then (= 2 3) false)
          (then (!= 3 3) false)
-         (else (! false)))))
+         (else (! false))))
+ :doc &quot;Logical lazy If function with (then) (else) clauses&quot;)
 
 (func int&lt;-func : int
  []
@@ -17311,6 +17344,24 @@ improves readability.</div>
                 <span class="lbl">Usage/Test Cases:</span>
               </summary>
               <ul>
+                <li><div class="test">(test
+ &quot;sname&quot;
+ (any&lt;-struct : string
+  (translation
+   :name &quot;sname&quot;)
+  :name))</div></li>
+                <li><div class="test">(test
+ &quot;sname&quot;
+ (any&lt;-struct : string
+  (translation
+   :name &quot;sname&quot;)
+  &quot;name&quot;))</div></li>
+                <li><div class="test">(test
+ &quot;sname&quot;
+ (any&lt;-struct : string
+  (translation
+   :name &quot;sname&quot;)
+  &quot;:name&quot;))</div></li>
               </ul>
             </details>
             <details open="true">
@@ -17346,6 +17397,24 @@ improves readability.</div>
   :kotlin
    &quot;val value : vx_core.Type_any = vstruct.vx_any(key)
     output = vx_core.f_any_from_any(generic_any_1, value);&quot;)
+ :test (test
+        &quot;sname&quot;
+        (any&lt;-struct : string
+         (translation
+          :name &quot;sname&quot;)
+         :name))
+       (test
+        &quot;sname&quot;
+        (any&lt;-struct : string
+         (translation
+          :name &quot;sname&quot;)
+         &quot;name&quot;))
+       (test
+        &quot;sname&quot;
+        (any&lt;-struct : string
+         (translation
+          :name &quot;sname&quot;)
+         &quot;:name&quot;))
  :doc &quot;Returns value from a struct&quot;)</div>
                 </li>
               </ul>
@@ -19565,7 +19634,7 @@ improves readability.</div>
             <div class="lbl">Description:</div>
             <ul>
               <li>
-                <div class="txt">Logical If function</div>
+                <div class="txt">Logical lazy If function with (then) (else) clauses</div>
               </li>
             </ul>
             <div class="lbl">Function Name:</div>
@@ -19653,12 +19722,12 @@ improves readability.</div>
       }
     }&quot;
   :kotlin :auto)
- :doc  &quot;Logical If function&quot;
  :test (test-true
         (if
          (then (= 2 3) false)
          (then (!= 3 3) false)
-         (else (! false)))))</div>
+         (else (! false))))
+ :doc &quot;Logical lazy If function with (then) (else) clauses&quot;)</div>
                 </li>
               </ul>
             </details>

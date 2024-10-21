@@ -28,11 +28,15 @@ public final class Core {
 
   public static Map<String, Core.Type_any> emptymapany = Core.immutablemap(new LinkedHashMap<String, Core.Type_any>());
 
-  public static <T> List<T> immutablelist(List<T> listany) {
+  public static <T> List<T> immutablelist(
+    final List<T> listany
+  ) {
     return Collections.unmodifiableList(listany);
   }
 
-  public static <T> Map<String, T> immutablemap(Map<String, T> mapany) {
+  public static <T> Map<String, T> immutablemap(
+    final Map<String, T> mapany
+  ) {
     return Collections.unmodifiableMap(mapany);
   }
 
@@ -80,9 +84,9 @@ public final class Core {
   }
 
   public static Core.Type_constdef constdef_new(
-    String pkgname,
-    String name,
-    Core.Type_any typ
+    final String pkgname,
+    final String name,
+    final Core.Type_any typ
   ) {
     Core.Class_constdef output = new Core.Class_constdef();
     output.vx_p_pkgname = Core.vx_new_string(pkgname);
@@ -92,11 +96,11 @@ public final class Core {
   }
 
   public static Core.Type_funcdef funcdef_new(
-    String pkgname,
-    String name,
-    int idx,
-    boolean async,
-    Core.Type_any typ
+    final String pkgname,
+    final String name,
+    final int idx,
+    final boolean async,
+    final Core.Type_any typ
   ) {
     Core.Class_funcdef output = new Core.Class_funcdef();
     output.vx_p_pkgname = Core.vx_new_string(pkgname);
@@ -123,13 +127,18 @@ public final class Core {
   }
 
   @SafeVarargs
-  public static <T> List<T> arraylist_from_array(final T... items) {
+  public static <T> List<T> arraylist_from_array(
+    final T... items
+  ) {
     List<T> output = new ArrayList<T>(Arrays.asList(items));
     output = Core.immutablelist(output);
     return output;
   }
 
-  public static <T extends Core.Type_any, U extends Core.Type_any> List<T> arraylist_from_arraylist(final T generic_any_1, final List<U> listval) {
+  public static <T extends Core.Type_any, U extends Core.Type_any> List<T> arraylist_from_arraylist(
+    final T generic_any_1,
+    final List<U> listval
+  ) {
     List<T> output = new ArrayList<>();
     for (Core.Type_any value : listval) {
       T t_val = Core.f_any_from_any(generic_any_1, value);
@@ -139,7 +148,10 @@ public final class Core {
     return output;
   }
 
-  public static <T, U> List<T> arraylist_from_arraylist_fn(final List<U> listval, final Function<U, T> fn_any_from_any) {
+  public static <T, U> List<T> arraylist_from_arraylist_fn(
+    final List<U> listval,
+    final Function<U, T> fn_any_from_any
+  ) {
     List<T> output = new ArrayList<>();
     for (U value_u : listval) {
       T t_val = fn_any_from_any.apply(value_u);
@@ -149,7 +161,10 @@ public final class Core {
     return output;
   }
 
-  public static <T extends Core.Type_any, U extends Core.Type_any> List<T> arraylist_from_linkedhashmap(final T generic_any_1, final Map<String, U> mapval) {
+  public static <T extends Core.Type_any, U extends Core.Type_any> List<T> arraylist_from_linkedhashmap(
+    final T generic_any_1,
+    final Map<String, U> mapval
+  ) {
     List<T> output = new ArrayList<T>();
     Set<String> keys = mapval.keySet();
     for (String key : keys) {
@@ -161,7 +176,10 @@ public final class Core {
     return output;
   }
 
-  public static <T, U> List<T> arraylist_from_linkedhashmap_fn(final Map<String, U> mapval, final BiFunction<String, U, T> fn_any_from_key_value) {
+  public static <T, U> List<T> arraylist_from_linkedhashmap_fn(
+    final Map<String, U> mapval,
+    final BiFunction<String, U, T> fn_any_from_key_value
+  ) {
     List<T> output = new ArrayList<T>();
     Set<String> keys = mapval.keySet();
     for (String key : keys) {
@@ -173,7 +191,9 @@ public final class Core {
   }
 
   @SafeVarargs
-  public static <T> LinkedHashMap<String, T> hashmap_from_keyvalues(final KeyValue<T>... keyvalues) {
+  public static <T> LinkedHashMap<String, T> hashmap_from_keyvalues(
+    final KeyValue<T>... keyvalues
+  ) {
     LinkedHashMap<String, T> output = new LinkedHashMap<String, T>();
     for (KeyValue<T> keyvalue : keyvalues) {
       String key = keyvalue.key;
@@ -183,14 +203,19 @@ public final class Core {
     return output;
   }
 
-  public static <T> KeyValue<T> keyvalue_from_key_value(final String key, final T value) {
+  public static <T> KeyValue<T> keyvalue_from_key_value(
+    final String key,
+    final T value
+  ) {
     KeyValue<T> output = new KeyValue<T>();
     output.key = key;
     output.value = value;
     return output;
   }
 
-  public static <T extends Core.Type_any> LinkedHashMap<String, T> map_from_map(final LinkedHashMap<String, Core.Type_any> mapval) {
+  public static <T extends Core.Type_any> LinkedHashMap<String, T> map_from_map(
+    final LinkedHashMap<String, Core.Type_any> mapval
+  ) {
     LinkedHashMap<String, T> output = new LinkedHashMap<String, T>();
     Set<String> keys = mapval.keySet();
     for (String key : keys) {
@@ -209,7 +234,8 @@ public final class Core {
   // vx_new(generic_any_1, args...)
   public static <T extends Core.Type_any> T vx_new(
     final T generic_any_1,
-    final Object... values) {
+    final Object... values
+  ) {
     Core.Type_any value = generic_any_1.vx_new(values);
     T output = Core.f_any_from_any(generic_any_1, value);
     return output;
@@ -217,7 +243,8 @@ public final class Core {
 
   // vx_constdef<-any(any)
   public static Core.Type_constdef vx_constdef_from_any(
-    final Core.Type_any value) {
+    final Core.Type_any value
+  ) {
     Core.Type_constdef output = value.vx_constdef();
     if (output == null) {
       output = Core.e_constdef;
@@ -228,7 +255,8 @@ public final class Core {
   // vx_copy(generic_any_1, args...)
   public static <T extends Core.Type_any> T vx_copy(
     final T copyval,
-    final Object... values) {
+    final Object... values
+  ) {
     Core.Type_any value = copyval.vx_copy(values);
     T output = Core.f_any_from_any(copyval, value);
     return output;
@@ -236,26 +264,33 @@ public final class Core {
 
   // vx_empty(generic_any_1)
   @SuppressWarnings("unchecked")
-  public static <T extends Core.Type_any> T vx_empty(final T type) {
-    T output = (T)(type.vx_empty());
+  public static <T extends Core.Type_any> T vx_empty(
+    final T typ
+  ) {
+    T output = (T)(typ.vx_empty());
     return output;
   }
 
   // vx_type(generic_any_1)
   @SuppressWarnings("unchecked")
-  public static <T extends Core.Type_any> T vx_type(final T type) {
-    T output = (T)(type.vx_type());
+  public static <T extends Core.Type_any> T vx_type(
+    final T typ
+  ) {
+    T output = (T)(typ.vx_type());
     return output;
   }
 
-  public static <T> CompletableFuture<T> vx_async_new_from_value(final T val) {
-    CompletableFuture<T> output = CompletableFuture.completedFuture(val);
+  public static <T> CompletableFuture<T> vx_async_new_from_value(
+    final T value
+  ) {
+    CompletableFuture<T> output = CompletableFuture.completedFuture(value);
     return output;
   }
 
   public static <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_async_from_async(
     final T generic_any_1,
-    final CompletableFuture<U> future) {
+    final CompletableFuture<U> future
+  ) {
     CompletableFuture<T> output = future.thenApply(val -> {
       return Core.f_any_from_any(generic_any_1, val);
     });
@@ -264,14 +299,15 @@ public final class Core {
 
   public static <T, U> CompletableFuture<T> vx_async_from_async_fn(
     final CompletableFuture<U> future,
-    final Function<? super U,
-    ? extends T> fn) {
+    final Function<? super U, ? extends T> fn
+  ) {
     CompletableFuture<T> output = future.thenApply(fn);
     return output;
   }
 
   public static <T> CompletableFuture<List<T>> vx_async_arraylist_from_arraylist_async(
-    final List<CompletableFuture<T>> list_future) {
+    final List<CompletableFuture<T>> list_future
+  ) {
     CompletableFuture<Void> allFutures = CompletableFuture.allOf(
       list_future.toArray(new CompletableFuture[list_future.size()])
     );
@@ -307,7 +343,11 @@ public final class Core {
   }
 
   // vx_any_from_func(generic_any_1, func, args...)
-  public static <T extends Core.Type_any> T vx_any_from_func(final T generic_any_1, final Core.Type_replfunc func, final Core.Type_any... args) {
+  public static <T extends Core.Type_any> T vx_any_from_func(
+    final T generic_any_1,
+    final Core.Type_replfunc func,
+    final Core.Type_any... args
+  ) {
     Core.Type_anylist anylist = Core.vx_new_anylist(args);
     Core.Type_any val = func.vx_repl(anylist);
     T output = Core.f_any_from_any(generic_any_1, val);
@@ -315,7 +355,11 @@ public final class Core {
   }
 
   // vx_any_from_list_start_reduce(any-1, list-2, any-1, any<-reduce)
-  public static <T extends Core.Type_any, N extends Core.Type_list> T vx_any_from_list_start_reduce(T generic_any_1, N list, T valstart, Core.Func_any_from_reduce fn_reduce) {
+  public static <T extends Core.Type_any, N extends Core.Type_list> T vx_any_from_list_start_reduce(
+    final T generic_any_1, N list,
+    final T valstart,
+    final Core.Func_any_from_reduce fn_reduce
+  ) {
     T output = valstart;
     List<Core.Type_any> listval = list.vx_list();
     for (Core.Type_any item : listval) {
@@ -325,7 +369,11 @@ public final class Core {
   }
 
   // vx_any_from_map(generic_any_1, map, string)
-  public static <T extends Core.Type_any> T vx_any_from_map(T generic_any_1, Core.Type_map valuemap, Core.Type_string key) {
+  public static <T extends Core.Type_any> T vx_any_from_map(
+    final T generic_any_1,
+    final Core.Type_map valuemap,
+    final Core.Type_string key
+  ) {
     T output = Core.f_empty(generic_any_1);
     String skey = key.vx_string();
     if (skey.startsWith(":")) {
@@ -337,7 +385,12 @@ public final class Core {
   }
 
   // vx_any_from_map_start_reduce(any-1, map-2, any-1, any<-any-key-value)
-  public static <T extends Core.Type_any, N extends Core.Type_map> T vx_any_from_map_start_reduce(T generic_any_1, N map, T start, Core.Func_any_from_any_key_value fn_reduce) {
+  public static <T extends Core.Type_any, N extends Core.Type_map> T vx_any_from_map_start_reduce(
+    final T generic_any_1,
+    final N map,
+    final T start,
+    final Core.Func_any_from_any_key_value fn_reduce
+  ) {
     T output = start;
     Map<String, Core.Type_any> mapval = map.vx_map();
     Set<String> keys = mapval.keySet();
@@ -350,27 +403,43 @@ public final class Core {
   }
 
   // vx_boolean_from_string_ends(string, string)
-  public static boolean vx_boolean_from_string_ends(String text, String ends) {
+  public static boolean vx_boolean_from_string_ends(
+    final String text,
+    final String ends
+  ) {
     return text.endsWith(ends);
   }
 
   // vx_boolean_from_string_find(string, string)
-  public static boolean vx_boolean_from_string_find(String text, String find) {
+  public static boolean vx_boolean_from_string_find(
+    final String text,
+    final String find
+  ) {
     return text.contains(find);
   }
 
   // vx_boolean_from_string_starts(string, string)
-  public static boolean vx_boolean_from_string_starts(String text, String starts) {
+  public static boolean vx_boolean_from_string_starts(
+    final String text,
+    final String starts
+  ) {
     return text.startsWith(starts);
   }
 
   // vx_boolean_write_from_map_name_value(map, string, any)
-  public static Core.Type_boolean vx_boolean_write_from_map_name_value(final Core.Type_map valuemap, final Core.Type_string name, final Core.Type_any value) {
+  public static Core.Type_boolean vx_boolean_write_from_map_name_value(
+    final Core.Type_map valuemap,
+    final Core.Type_string name,
+    final Core.Type_any value
+  ) {
     return valuemap.vx_set(name, value);
   }
 
   // vx_eqeq(any, any)
-  public static boolean vx_eqeq(Core.Type_any val1, Core.Type_any val2) {
+  public static boolean vx_eqeq(
+    final Core.Type_any val1,
+    final Core.Type_any val2
+  ) {
     boolean output = false;
     if (val1 == val2) {
       output = true;
@@ -410,7 +479,9 @@ public final class Core {
   }
 
   // vx_float_from_number(number)
-  public static float vx_float_from_number(Core.Type_number num) {
+  public static float vx_float_from_number(
+    final Core.Type_number num
+  ) {
     float output = 0;
     Core.Type_any type = num.vx_type();
     if (type == Core.t_float) {
@@ -427,7 +498,9 @@ public final class Core {
   }
 
   // vx_float_from_string(string)
-  public static float vx_float_from_string(String text) {
+  public static float vx_float_from_string(
+    final String text
+  ) {
     float output = 0;
     try {
       output = Float.parseFloat(text);
@@ -437,7 +510,12 @@ public final class Core {
   }
 
   // vx_global_package_set(string, map<any>, map<any>, map<func>)
-  public static void vx_global_package_set(String pkgname, Map<String, Core.Type_any> maptype, Map<String, Core.Type_any> mapconst, Map<String, Core.Type_func> mapfunc) {
+  public static void vx_global_package_set(
+    final String pkgname,
+    final Map<String, Core.Type_any> maptype,
+    final Map<String, Core.Type_any> mapconst,
+    final Map<String, Core.Type_func> mapfunc
+  ) {
     Core.Class_typemap typemap = new Core.Class_typemap();
     typemap.vx_p_map = Core.immutablemap(maptype);
     Core.Class_constmap constmap = new Core.Class_constmap();
@@ -459,36 +537,46 @@ public final class Core {
     packagemap.vx_p_map = Core.immutablemap(mappackage);
   }
 
-  public static <T extends Core.Type_any> T vx_if_2(final T generic_any_1, final Core.Type_thenelselist thenelselist) {
+  public static <T extends Core.Type_any> T vx_if_2(
+    final T generic_any_1,
+    final Core.Type_thenelselist thenelselist
+  ) {
     T output = Core.f_empty(generic_any_1);
-    Core.Func_any_from_func fn_any = Core.vx_any_first_from_list_fn(Core.t_any_from_func, thenelselist, (any) -> {
-      Core.Func_any_from_func fnany = null;
-      if (any instanceof Core.Type_thenelse) {
-        Core.Type_thenelse thenelse = (Core.Type_thenelse)any;
-        Core.Type_string code = thenelse.code();
-        switch (code.vx_string()) {
-        case ":then":
-          Core.Func_boolean_from_func fn_cond = thenelse.fn_cond();
-          Core.Type_boolean cond = fn_cond.vx_boolean_from_func();
-          if (cond.vx_boolean() == true) {
+    Core.Func_any_from_func fn_any = Core.vx_any_first_from_list_fn(
+      Core.t_any_from_func,
+      thenelselist,
+      (any) -> {
+        Core.Func_any_from_func fnany = null;
+        if (any instanceof Core.Type_thenelse) {
+          Core.Type_thenelse thenelse = (Core.Type_thenelse)any;
+          Core.Type_string code = thenelse.code();
+          switch (code.vx_string()) {
+          case ":then":
+            Core.Func_boolean_from_func fn_cond = thenelse.fn_cond();
+            Core.Type_boolean cond = fn_cond.vx_boolean_from_func();
+            if (cond.vx_boolean() == true) {
+              fnany = thenelse.fn_any();
+            }
+            break;
+          case ":else":
             fnany = thenelse.fn_any();
+            break;
           }
-          break;
-        case ":else":
-          fnany = thenelse.fn_any();
-          break;
         }
+        return fnany;
       }
-      return fnany;
-    });
+    );
     if (fn_any != null) {
-      output = fn_any.vx_any_from_func(generic_any_1);
+      output = fn_any.vx_any_from_func(
+        generic_any_1);
     }
     return output;
   }
 
   // vx_int_from_string(string)
-  public static int vx_int_from_string(String text) {
+  public static int vx_int_from_string(
+    final String text
+  ) {
     int output = 0;
     try {
       output = Integer.parseInt(text);
@@ -498,7 +586,9 @@ public final class Core {
   }
 
   // vx_is_float(string)
-  public static boolean vx_is_float(String text) {
+  public static boolean vx_is_float(
+    final String text
+  ) {
     boolean output = false;
     try {
       Float.parseFloat(text);
@@ -509,7 +599,9 @@ public final class Core {
   }
 
   // vx_is_float(any)
-  public static boolean vx_is_float(Core.Type_any value) {
+  public static boolean vx_is_float(
+    final Core.Type_any value
+  ) {
     boolean output = false;
     if (value instanceof Core.Type_number) {
       output = true;
@@ -521,7 +613,9 @@ public final class Core {
   }
 
   // vx_is_int(string)
-  public static boolean vx_is_int(String text) {
+  public static boolean vx_is_int(
+    final String text
+  ) {
     boolean output = false;
     switch (text) {
     case "notanumber":
@@ -541,7 +635,9 @@ public final class Core {
   }
 
   // vx_is_int(any)
-  public static boolean vx_is_int(Core.Type_any value) {
+  public static boolean vx_is_int(
+    final Core.Type_any value
+  ) {
     boolean result = false;
     if (value == Core.c_infinity) {
       result = true;
@@ -574,10 +670,11 @@ public final class Core {
     return result;
   }
 
-public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFuture<X> vx_list_from_list_async(
+  public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFuture<X> vx_list_from_list_async(
     final X generic_list_1,
     final Y values,
-    final Core.Func_any_from_any_async fn_any_from_any_async) {
+    final Core.Func_any_from_any_async fn_any_from_any_async
+  ) {
     List<Core.Type_any> list_value = values.vx_list();
     List<CompletableFuture<Core.Type_any>> list_async_result = Core.arraylist_from_arraylist_fn(list_value, (val) -> {
       return fn_any_from_any_async.vx_any_from_any_async(generic_list_1, val);
@@ -591,7 +688,10 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   // vx_list_from_list_intany(generic_list_1, list-2, any<-int-any)
-  public static <T extends Core.Type_list, U extends Core.Type_list> T vx_list_from_list_intany(T generic_list_1, U valuelist, Core.Func_any_from_int_any fn_any_from_int_any) {
+  public static <T extends Core.Type_list, U extends Core.Type_list> T vx_list_from_list_intany(
+    final T generic_list_1, U valuelist,
+    final Core.Func_any_from_int_any fn_any_from_int_any
+  ) {
     T output = Core.f_empty(generic_list_1);
     List<Core.Type_any> listany = valuelist.vx_list();
     if (listany.size() > 0) {
@@ -608,7 +708,9 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   // vx_log(object...)
-  public static void vx_log(Object... values) {
+  public static void vx_log(
+    final Object... values
+  ) {
     for (Object value : values) {
       String text = "";
       if (value == null) {
@@ -628,7 +730,10 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   // vx_map_from_list_fn(generic_map, list, fn_any_from_key_value)
-  public static <T> Map<String, T> vx_map_from_list_fn(final List<T> listval, final Function<T, Core.Type_string> fn_any_from_any) {
+  public static <T> Map<String, T> vx_map_from_list_fn(
+    final List<T> listval,
+    final Function<T, Core.Type_string> fn_any_from_any
+  ) {
     Map<String, T> output = new LinkedHashMap<>();
     for (T val : listval) {
       Core.Type_string valkey = fn_any_from_any.apply(val);
@@ -640,9 +745,10 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
 
   // vx_map_from_map_fn(generic_map, map, fn_any_from_key_value)
   public static <T extends Core.Type_map> T vx_map_from_map_fn(
-    T generic_map_1,
-    Core.Type_map valuemap,
-    Core.Func_any_from_key_value fn_any_from_key_value) {
+    final T generic_map_1,
+    final Core.Type_map valuemap,
+    final Core.Func_any_from_key_value fn_any_from_key_value
+  ) {
     T output = Core.f_empty(generic_map_1);
     Map<String, Core.Type_any> mapvalue = valuemap.vx_map();
     if (mapvalue.size() > 0) {
@@ -675,7 +781,8 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
 
   // vx_msg_from_error
   public static Type_msg vx_msg_from_error(
-    final String text) {
+    final String text
+  ) {
     Class_msg output = new Class_msg();
     output.vx_p_text = Core.vx_new_string(text);
     output.vx_p_severity = Core.c_msg_severe;
@@ -686,7 +793,8 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   public static Type_msg vx_msg_from_error(
     final String path,
     final String code,
-    final Core.Type_any detail) {
+    final Core.Type_any detail
+  ) {
     Class_msg output = new Class_msg();
     output.vx_p_path = Core.vx_new_string(path);
     output.vx_p_code = Core.vx_new_string(code);
@@ -698,7 +806,8 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   // vx_msg_from_exception
   public static Type_msg vx_msg_from_exception(
     final String path,
-    final Exception err) {
+    final Exception err
+  ) {
     Class_msg output = new Class_msg();
     output.vx_p_path = Core.vx_new_string(path);
     output.vx_p_code = Core.vx_new_string("exception");
@@ -711,7 +820,8 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   // vx_msgblock_from_copy_arrayval(msgblock, any...)
   public static Core.Type_msgblock vx_msgblock_from_copy_arrayval(
     final Core.Type_any copy,
-    final Object... vals) {
+    final Object... vals
+  ) {
     Core.Type_msgblock output = Core.e_msgblock;
     Core.Type_msgblock copymsgblock = copy.vx_msgblock();
     if (copymsgblock != Core.e_msgblock) {
@@ -721,7 +831,10 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   // vx_msgblock_from_copy_listval(msgblock, List<any>)
-  public static Core.Type_msgblock vx_msgblock_from_copy_listval(final Core.Type_msgblock msgblock, Core.Type_any... vals) {
+  public static Core.Type_msgblock vx_msgblock_from_copy_listval(
+    final Core.Type_msgblock msgblock,
+    final Core.Type_any... vals
+  ) {
     Core.Type_msgblock output = Core.e_msgblock;
     List<Core.Type_msgblock> listmsgblock = new ArrayList<>();
     if (msgblock == null) {
@@ -755,20 +868,23 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   public static Type_anylist vx_new_anylist(
-    Core.Type_any... anys) {
+    final Core.Type_any... anys
+  ) {
     List<Core.Type_any> listany = new ArrayList<>(Arrays.asList(anys));
     return vx_new_anylist(listany);
   }
 
   public static Type_anylist vx_new_anylist(
-    List<Type_any> listany) {
+    final List<Type_any> listany
+  ) {
     Class_anylist output = new Class_anylist();
     output.vx_p_list = immutablelist(listany);
     return output;
   }
 
   public static Type_boolean vx_new_boolean(
-    final boolean isval) {
+    final boolean isval
+  ) {
     Type_boolean output = Core.c_false;
     if (isval) {
       output = Core.c_true;
@@ -777,7 +893,8 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   public static Core.Type_decimal vx_new_decimal(
-    final String text) {
+    final String text
+  ) {
     Core.Type_decimal output;
     if ((text.equals("0") || text.equals("0.0")) && Core.e_decimal != null) {
       output = Core.e_decimal;
@@ -790,14 +907,16 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   public static Type_float vx_new_float(
-    final float fval) {
+    final float fval
+  ) {
     Class_float output = new Core.Class_float();
     output.vxfloat = fval;
     return output;
   }
 
   public static Type_int vx_new_int(
-    final int ival) {
+    final int ival
+  ) {
     Type_int output;
     if ((ival == 0) && Core.e_int != null) {
       output = Core.e_int;
@@ -812,8 +931,9 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
 
   // vx_new_list(T, List<any>)
   public static <T extends Core.Type_list> T vx_new_list(
-    T generic_list_1,
-    List<Core.Type_any> listval) {
+    final T generic_list_1,
+    final List<Core.Type_any> listval
+  ) {
     Core.Type_any anylist = generic_list_1.vx_new(listval);
     T output = Core.f_any_from_any(generic_list_1, anylist);
     return output;
@@ -821,15 +941,17 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
 
   // vx_new_map(T, Map<string, any>)
   public static <T extends Core.Type_map> T vx_new_map(
-    T generic_map_1,
-    Map<String, Core.Type_any> mapval) {
+    final T generic_map_1,
+    final Map<String, Core.Type_any> mapval
+  ) {
     Core.Type_any anymap = generic_map_1.vx_new_from_map(mapval);
     T output = Core.f_any_from_any(generic_map_1, anymap);
     return output;
   }
 
   public static Type_string vx_new_string(
-    final String text) {
+    final String text
+  ) {
     Type_string output;
     if (text.equals("") && Core.e_string != null) {
       output = Core.e_string;
@@ -842,14 +964,16 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   public static String vx_string_from_any(
-    Core.Type_any value) {
+    final Core.Type_any value
+  ) {
     return vx_string_from_any_indent(value, 0, false);
   }
 
   public static String vx_string_from_any_indent(
-    Core.Type_any value,
-    int indent,
-    boolean linefeed) {
+    final Core.Type_any value,
+    final int indent,
+    final boolean linefeed
+  ) {
     String indenttext = " ".repeat(indent);
     String output = "";
     if (indent > 50) {
@@ -1019,9 +1143,9 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   public static Core.Type_string vx_string_from_any_indent(
-    Core.Type_any value,
-    Core.Type_int indent,
-    Core.Type_boolean linefeed
+    final Core.Type_any value,
+    final Core.Type_int indent,
+    final Core.Type_boolean linefeed
   ) {
     String soutput = Core.vx_string_from_any_indent(
       value, indent.vx_int(), linefeed.vx_boolean()
@@ -1032,9 +1156,9 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
 
   // vx_string_from_string_find_replace(string, string, string)
   public static String vx_string_from_string_find_replace(
-    String text,
-    String find,
-    String replace
+    final String text,
+    final String find,
+    final String replace
   ) {
     String output = text.replaceAll(find, replace);
     return output;
@@ -1042,9 +1166,9 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
 
   // vx_string_from_string_find_replace(string, string, string)
   public static Core.Type_string vx_string_from_string_find_replace(
-    Core.Type_string text,
-    Core.Type_string find,
-    Core.Type_string replace
+    final Core.Type_string text,
+    final Core.Type_string find,
+    final Core.Type_string replace
   ) {
     String stext = Core.vx_string_from_string_find_replace(
       text.vx_string(), find.vx_string(), replace.vx_string()
@@ -1054,39 +1178,40 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   public static String vx_string_from_string_start_end(
-    String text,
-    int start,
-    int end
+    final String text,
+    final int start,
+    final int end
   ) {
     String output = "";
     int maxlen = text.length();
-    if (end < 0) {
-     end += maxlen;
+    int iend = end;
+    if (iend < 0) {
+      iend += maxlen;
     }
     if (start < 1) {
-    } else if (start > end) {
+    } else if (start > iend) {
     } else if (start > maxlen) {
     } else {
-      if (end > maxlen) {
-        end = maxlen;
+      if (iend > maxlen) {
+        iend = maxlen;
       }
-      output = text.substring(start - 1, end);
+      output = text.substring(start - 1, iend);
     }
     return output;
   }
 
   public static Core.Type_typedef typedef_new(
-    String pkgname,
-    String name,
-    String extend,
-    Core.Type_typelist traits,
-    Core.Type_typelist allowtypes,
-    Core.Type_typelist disallowtypes,
-    Core.Type_funclist allowfuncs,
-    Core.Type_funclist disallowfuncs,
-    Core.Type_anylist allowvalues,
-    Core.Type_anylist disallowvalues,
-    Core.Type_argmap properties
+    final String pkgname,
+    final String name,
+    final String extend,
+    final Core.Type_typelist traits,
+    final Core.Type_typelist allowtypes,
+    final Core.Type_typelist disallowtypes,
+    final Core.Type_funclist allowfuncs,
+    final Core.Type_funclist disallowfuncs,
+    final Core.Type_anylist allowvalues,
+    final Core.Type_anylist disallowvalues,
+    final Core.Type_argmap properties
   ) {
     Core.Class_typedef output = new Core.Class_typedef();
     output.vx_p_pkgname = Core.vx_new_string(pkgname);
@@ -1104,7 +1229,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
   }
 
   public static Core.Type_anylist vx_anylist_from_arraystring(
-    String... arraystring
+    final String... arraystring
   ) {
     List<Object> listany = new ArrayList<>();
     for (String svalue : arraystring) {
@@ -24246,7 +24371,7 @@ public static <X extends Core.Type_list, Y extends Core.Type_list> CompletableFu
 
   /**
    * @function if 2
-   * Logical If function
+   * Logical lazy If function with (then) (else) clauses
    * @param  {thenelselist} thenelselist
    * @return {any-1}
    * (func if)

@@ -1229,6 +1229,10 @@ object vx_data_tree {
   val e_tree : vx_data_tree.Type_tree = vx_data_tree.Class_tree()
   val t_tree : vx_data_tree.Type_tree = vx_data_tree.Class_tree()
 
+  /**
+   * Constant: brancharrow-down
+   * {brancharrow}
+   */
   class Const_brancharrow_down {
     constructor() {}
     companion object {
@@ -1253,6 +1257,10 @@ object vx_data_tree {
   val c_brancharrow_down : vx_data_tree.Type_brancharrow = vx_data_tree.Class_brancharrow()
 
 
+  /**
+   * Constant: brancharrow-up
+   * {brancharrow}
+   */
   class Const_brancharrow_up {
     constructor() {}
     companion object {
@@ -1277,6 +1285,10 @@ object vx_data_tree {
   val c_brancharrow_up : vx_data_tree.Type_brancharrow = vx_data_tree.Class_brancharrow()
 
 
+  /**
+   * Constant: brancharrow-updown
+   * {brancharrow}
+   */
   class Const_brancharrow_updown {
     constructor() {}
     companion object {

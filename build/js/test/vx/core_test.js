@@ -24,10 +24,10 @@ export default class vx_core_test {
       "testpkg",   "vx/core", 
       "constnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
       "docnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
-      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 136), 
+      "funcnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 76, ":total", 136), 
       "bigospacenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
       "bigotimenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 227), 
+      "totalnums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 85, ":total", 227), 
       "typenums", vx_core.f_new_from_type(vx_test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
     )
     return output
@@ -200,7 +200,7 @@ export default class vx_core_test {
           "any<-reduce-async", 0,
           "any<-reduce-next", 0,
           "any<-reduce-next-async", 0,
-          "any<-struct", 0,
+          "any<-struct", 3,
           "async", 0,
           "boolean-permission<-func", 0,
           "boolean-write<-map-name-value", 2,
@@ -1655,6 +1655,62 @@ export default class vx_core_test {
                 "",
                 vx_core.f_new_from_type(vx_core.t_any_from_any_key_value, (current, key, value) => 
                   vx_core.f_copy(current, value, key))
+              )
+            )
+          )
+        )
+    )
+    return output
+  }
+
+  static f_any_from_struct(context) {
+    const output = vx_core.f_new_from_type(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "any<-struct",
+      ":describelist",
+        vx_core.f_new_from_type(
+          vx_test.t_testdescribelist,
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  :name))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              "sname",
+              vx_core.f_any_from_struct(
+                {"any-1": vx_core.t_string, "struct-2": vx_core.t_translation},
+                vx_core.f_new({"any-1": vx_core.t_translation}, ":name", "sname"),
+                ":name"
+              )
+            )
+          ),
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \"name\"))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              "sname",
+              vx_core.f_any_from_struct(
+                {"any-1": vx_core.t_string, "struct-2": vx_core.t_translation},
+                vx_core.f_new({"any-1": vx_core.t_translation}, ":name", "sname"),
+                "name"
+              )
+            )
+          ),
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \":name\"))",
+            ":testresult",
+            vx_test.f_test(
+              context,
+              "sname",
+              vx_core.f_any_from_struct(
+                {"any-1": vx_core.t_string, "struct-2": vx_core.t_translation},
+                vx_core.f_new({"any-1": vx_core.t_translation}, ":name", "sname"),
+                ":name"
               )
             )
           )
@@ -3400,6 +3456,7 @@ export default class vx_core_test {
       vx_core_test.f_any_from_list_start_reduce(context),
       vx_core_test.f_any_from_map(context),
       vx_core_test.f_any_from_map_start_reduce(context),
+      vx_core_test.f_any_from_struct(context),
       vx_core_test.f_boolean_write_from_map_name_value(context),
       vx_core_test.f_compare(context),
       vx_core_test.f_constdef_from_any(context),

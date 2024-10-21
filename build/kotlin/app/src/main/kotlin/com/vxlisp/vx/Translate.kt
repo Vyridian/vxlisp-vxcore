@@ -4,7 +4,14 @@ import com.vxlisp.vx.data.*
 
 object vx_translate {
 
-
+  /**
+   * @function session_from_session_name
+   * Returns an updated session with a translationmap and a translation name.
+   * @param  {session} session
+   * @param  {string} name
+   * @return {session}
+   * (func session<-session-name)
+   */
   interface Func_session_from_session_name : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_session_from_session_name(session : vx_core.Type_session, name : vx_core.Type_string) : vx_core.Type_session
   }
@@ -94,7 +101,14 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function session_from_session_translation
+   * Returns an updated session with a translation.
+   * @param  {session} session
+   * @param  {translation} translation
+   * @return {session}
+   * (func session<-session-translation)
+   */
   interface Func_session_from_session_translation : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_session_from_session_translation(session : vx_core.Type_session, translation : vx_core.Type_translation) : vx_core.Type_session
   }
@@ -181,7 +195,15 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function session_from_session_translationmap_name
+   * Returns an updated session with a translationmap and a translation name.
+   * @param  {session} session
+   * @param  {translationmap} translationmap
+   * @param  {string} name
+   * @return {session}
+   * (func session<-session-translationmap-name)
+   */
   interface Func_session_from_session_translationmap_name : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_session_from_session_translationmap_name(session : vx_core.Type_session, translationmap : vx_core.Type_translationmap, name : vx_core.Type_string) : vx_core.Type_session
   }
@@ -275,7 +297,13 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function translate
+   * Returns a translated string from current context.
+   * @param  {string} text
+   * @return {string}
+   * (func translate)
+   */
   interface Func_translate : vx_core.Func_any_from_any_context {
     fun vx_translate(context : vx_core.Type_context, text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -372,7 +400,13 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function translate 1
+   * Returns a translated string from a msg.
+   * @param  {msg} msg
+   * @return {string}
+   * (func translate)
+   */
   interface Func_translate_1 : vx_core.Func_any_from_any_context {
     fun vx_translate_1(context : vx_core.Type_context, msg : vx_core.Type_msg) : vx_core.Type_string
   }
@@ -485,7 +519,14 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function translate_from_translation_string
+   * Returns a translated string from a translation or the original text if not found.
+   * @param  {translation} translation
+   * @param  {string} text
+   * @return {string}
+   * (func translate<-translation-string)
+   */
   interface Func_translate_from_translation_string : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_translate_from_translation_string(translation : vx_core.Type_translation, text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -591,7 +632,15 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function translate_from_translationmap_name_string
+   * Returns a translated string from a translation map given a translation name and text.
+   * @param  {translationmap} translationmap
+   * @param  {string} name
+   * @param  {string} text
+   * @return {string}
+   * (func translate<-translationmap-name-string)
+   */
   interface Func_translate_from_translationmap_name_string : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_translate_from_translationmap_name_string(translationmap : vx_core.Type_translationmap, name : vx_core.Type_string, text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -686,7 +735,13 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function translation_load_session
+   * Returns a translation from the translation folder.
+   * @param  {translation} translation
+   * @return {translation}
+   * (func translation-load-session)
+   */
   interface Func_translation_load_session : vx_core.Func_any_from_any_context {
     fun vx_translation_load_session(context : vx_core.Type_context, translation : vx_core.Type_translation) : vx_core.Type_translation
   }
@@ -777,7 +832,12 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function translation_from_context
+   * Returns a translated string from current context.
+   * @return {translation}
+   * (func translation<-context)
+   */
   interface Func_translation_from_context : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_translation_from_context(context : vx_core.Type_context) : vx_core.Type_translation
   }
@@ -858,7 +918,14 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function translation_from_session_name
+   * Returns a translation from a session by name.
+   * @param  {session} session
+   * @param  {string} name
+   * @return {translation}
+   * (func translation<-session-name)
+   */
   interface Func_translation_from_session_name : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_translation_from_session_name(session : vx_core.Type_session, name : vx_core.Type_string) : vx_core.Type_translation
   }
@@ -949,7 +1016,13 @@ object vx_translate {
     return output
   }
 
-
+  /**
+   * @function translationmap_from_translations
+   * Returns a translationmap from one or more translations.
+   * @param  {translationlist} translations
+   * @return {translationmap}
+   * (func translationmap<-translations)
+   */
   interface Func_translationmap_from_translations : vx_core.Func_any_from_any {
     fun vx_translationmap_from_translations(translations : vx_core.Type_translationlist) : vx_core.Type_translationmap
   }

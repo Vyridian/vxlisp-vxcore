@@ -3978,7 +3978,7 @@ export default class vx_core {
 
   /**
    * @function if
-   * Logical If function
+   * Logical lazy If function with (then) (else) clauses
    * @param  {typemap} generic
    * @param  {thenelselist} ... thenelselist
    * @return {any-1}

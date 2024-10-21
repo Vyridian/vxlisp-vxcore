@@ -221,6 +221,11 @@ object vx_sample {
   val e_mytype : vx_sample.Type_mytype = vx_sample.Class_mytype()
   val t_mytype : vx_sample.Type_mytype = vx_sample.Class_mytype()
 
+  /**
+   * Constant: myconst
+   * My Constant
+   * {int}
+   */
   class Const_myconst {
     constructor() {}
     companion object {
@@ -245,7 +250,11 @@ object vx_sample {
 
   val c_myconst : vx_core.Type_int = vx_core.Class_int()
 
-
+  /**
+   * @function main
+   * @return {none}
+   * (func main)
+   */
   interface Func_main : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_main() : vx_core.Type_none
   }
@@ -325,7 +334,13 @@ object vx_sample {
     return output
   }
 
-
+  /**
+   * @function myfunc
+   * My Function
+   * @param  {int} myarg My Arg
+   * @return {int}
+   * (func myfunc)
+   */
   interface Func_myfunc : vx_core.Func_any_from_any {
     fun vx_myfunc(myarg : vx_core.Type_int) : vx_core.Type_int
   }

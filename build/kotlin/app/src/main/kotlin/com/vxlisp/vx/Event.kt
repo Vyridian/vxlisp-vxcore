@@ -722,6 +722,11 @@ object vx_event {
   val e_eventmap : vx_event.Type_eventmap = vx_event.Class_eventmap()
   val t_eventmap : vx_event.Type_eventmap = vx_event.Class_eventmap()
 
+  /**
+   * Constant: event-change
+   * Change Event
+   * {event}
+   */
   class Const_event_change {
     constructor() {}
     companion object {
@@ -760,6 +765,11 @@ object vx_event {
   val c_event_change : vx_event.Type_event = vx_event.Class_event()
 
 
+  /**
+   * Constant: event-click
+   * Click Event
+   * {event}
+   */
   class Const_event_click {
     constructor() {}
     companion object {
@@ -798,6 +808,11 @@ object vx_event {
   val c_event_click : vx_event.Type_event = vx_event.Class_event()
 
 
+  /**
+   * Constant: event-move
+   * Move Event
+   * {event}
+   */
   class Const_event_move {
     constructor() {}
     companion object {
@@ -836,6 +851,11 @@ object vx_event {
   val c_event_move : vx_event.Type_event = vx_event.Class_event()
 
 
+  /**
+   * Constant: event-select
+   * Move Event
+   * {event}
+   */
   class Const_event_select {
     constructor() {}
     companion object {
@@ -873,7 +893,12 @@ object vx_event {
 
   val c_event_select : vx_event.Type_event = vx_event.Class_event()
 
-
+  /**
+   * @function any_from_from_event
+   * @param  {event} evt
+   * @return {any-1}
+   * (func any-from<-event)
+   */
   interface Func_any_from_from_event : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any> vx_any_from_from_event(generic_any_1 : T, evt : vx_event.Type_event) : T
   }
@@ -975,7 +1000,13 @@ object vx_event {
     return output
   }
 
-
+  /**
+   * @function event_from_event
+   * Template for triggering ui events
+   * @param  {event} evt
+   * @return {event}
+   * (func event<-event)
+   */
   interface Func_event_from_event : vx_core.Func_any_from_any_context {
     fun vx_event_from_event(context : vx_core.Type_context, evt : vx_event.Type_event) : vx_event.Type_event
   }
@@ -1067,7 +1098,15 @@ object vx_event {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function event_from_event_async
+   * Template for triggering ui asynchronous events
+   * @param  {event} evt
+   * @return {event}
+   * (func event<-event-async)
+   */
   interface Func_event_from_event_async : vx_core.Func_any_from_any_context_async {
     fun vx_event_from_event_async(context : vx_core.Type_context, evt : vx_event.Type_event) : CompletableFuture<vx_event.Type_event>
   }
@@ -1158,7 +1197,13 @@ object vx_event {
     return output
   }
 
-
+  /**
+   * @function eventmap_from_eventlist
+   * Returns an eventmap from an eventlist
+   * @param  {eventlist} eventlist
+   * @return {eventmap}
+   * (func eventmap<-eventlist)
+   */
   interface Func_eventmap_from_eventlist : vx_core.Func_any_from_any {
     fun vx_eventmap_from_eventlist(eventlist : vx_event.Type_eventlist) : vx_event.Type_eventmap
   }

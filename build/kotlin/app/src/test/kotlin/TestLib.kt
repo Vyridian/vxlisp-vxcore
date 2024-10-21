@@ -198,16 +198,16 @@ object TestLib {
     var expected : String = vx_core.f_string_from_any(valexpected).vx_string()
     var actual : String = vx_core.f_string_from_any(valactual).vx_string()
     var msg : String = testpkg + "/" + testname + " " + message
-  		if (!passfail) {
-  				println(msg)
-  				println(expected)
-  				println(actual)
+    if (!passfail) {
+      println(msg)
+      println(expected)
+      println(actual)
       vx_core.f_log(testresult)
-		  }
+    }
     if ((code==":ne")) {
-	  			assertNotEquals(expected, actual, msg)
+      assertNotEquals(expected, actual, msg)
     } else {
-  				assertEquals(expected, actual, msg)
+      assertEquals(expected, actual, msg)
     }
     val output : Boolean = true
     return output

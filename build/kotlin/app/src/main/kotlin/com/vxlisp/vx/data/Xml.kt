@@ -719,6 +719,10 @@ object vx_data_xml {
   val e_xmlpropmap : vx_data_xml.Type_xmlpropmap = vx_data_xml.Class_xmlpropmap()
   val t_xmlpropmap : vx_data_xml.Type_xmlpropmap = vx_data_xml.Class_xmlpropmap()
 
+  /**
+   * Constant: delimxml
+   * {delim}
+   */
   class Const_delimxml {
     constructor() {}
     companion object {
@@ -779,6 +783,10 @@ object vx_data_xml {
   val c_delimxml : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
 
+  /**
+   * Constant: delimxmlcdata
+   * {delim}
+   */
   class Const_delimxmlcdata {
     constructor() {}
     companion object {
@@ -820,6 +828,10 @@ object vx_data_xml {
   val c_delimxmlcdata : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
 
+  /**
+   * Constant: delimxmlcomment
+   * {delim}
+   */
   class Const_delimxmlcomment {
     constructor() {}
     companion object {
@@ -861,6 +873,10 @@ object vx_data_xml {
   val c_delimxmlcomment : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
 
+  /**
+   * Constant: delimxmlequal
+   * {delim}
+   */
   class Const_delimxmlequal {
     constructor() {}
     companion object {
@@ -899,7 +915,13 @@ object vx_data_xml {
 
   val c_delimxmlequal : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
+  /**
+   * @function string_decodexml_from_string
+   * Returns string decoded from xml encoding
+   * @param  {string} text
+   * @return {string}
+   * (func string-decodexml<-string)
+   */
   interface Func_string_decodexml_from_string : vx_core.Func_any_from_any {
     fun vx_string_decodexml_from_string(text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -1016,7 +1038,13 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function string_first_from_xml
+   * Returns string from first child's text.
+   * @param  {xml} xml
+   * @return {string}
+   * (func string-first<-xml)
+   */
   interface Func_string_first_from_xml : vx_core.Func_any_from_any {
     fun vx_string_first_from_xml(xml : vx_data_xml.Type_xml) : vx_core.Type_string
   }
@@ -1129,7 +1157,13 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function textblock_xml_from_string
+   * Returns a parsed textblock from a string.
+   * @param  {string} text
+   * @return {textblock}
+   * (func textblock-xml<-string)
+   */
   interface Func_textblock_xml_from_string : vx_core.Func_any_from_any {
     fun vx_textblock_xml_from_string(text : vx_core.Type_string) : vx_data_textblock.Type_textblock
   }
@@ -1223,7 +1257,14 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_angle_from_xml_textblock
+   * Returns a modified xml from a single textblock.
+   * @param  {xml} xmlarg
+   * @param  {textblock} tb
+   * @return {xml}
+   * (func xml-angle<-xml-textblock)
+   */
   interface Func_xml_angle_from_xml_textblock : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_xml_angle_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tb : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml
   }
@@ -1358,7 +1399,14 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_close_from_xml_textblock
+   * Returns a modified xml from a closing tag.
+   * @param  {xml} xmlarg
+   * @param  {textblock} tb
+   * @return {xml}
+   * (func xml-close<-xml-textblock)
+   */
   interface Func_xml_close_from_xml_textblock : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_xml_close_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tb : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml
   }
@@ -1556,7 +1604,14 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_parse_from_xml_textblock
+   * Returns a modified xml from a single textblock.
+   * @param  {xml} xmlarg
+   * @param  {textblock} tb
+   * @return {xml}
+   * (func xml-parse<-xml-textblock)
+   */
   interface Func_xml_parse_from_xml_textblock : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_xml_parse_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tb : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml
   }
@@ -1692,7 +1747,14 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_parse_from_xml_textblocklist
+   * Returns a modified xml from a textblocklist.
+   * @param  {xml} xmlarg
+   * @param  {textblocklist} textblocklist
+   * @return {xml}
+   * (func xml-parse<-xml-textblocklist)
+   */
   interface Func_xml_parse_from_xml_textblocklist : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_xml_parse_from_xml_textblocklist(xmlarg : vx_data_xml.Type_xml, textblocklist : vx_data_textblock.Type_textblocklist) : vx_data_xml.Type_xml
   }
@@ -1782,7 +1844,14 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_properties_from_xml_textblocklist
+   * Returns a modified xml from a textblocklist.
+   * @param  {xml} xmlarg
+   * @param  {textblocklist} textblocklist
+   * @return {xml}
+   * (func xml-properties<-xml-textblocklist)
+   */
   interface Func_xml_properties_from_xml_textblocklist : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_xml_properties_from_xml_textblocklist(xmlarg : vx_data_xml.Type_xml, textblocklist : vx_data_textblock.Type_textblocklist) : vx_data_xml.Type_xml
   }
@@ -1882,7 +1951,14 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_property_from_xml_textblock
+   * Returns a modified xml from a single property.
+   * @param  {xml} xmlarg
+   * @param  {textblock} tbarg
+   * @return {xml}
+   * (func xml-property<-xml-textblock)
+   */
   interface Func_xml_property_from_xml_textblock : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_xml_property_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tbarg : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml
   }
@@ -2097,7 +2173,13 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_read_from_file
+   * Returns a parsed xml from a file.
+   * @param  {file} file
+   * @return {xml}
+   * (func xml-read<-file)
+   */
   interface Func_xml_read_from_file : vx_core.Func_any_from_any_context {
     fun vx_xml_read_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_data_xml.Type_xml
   }
@@ -2201,7 +2283,14 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_text_from_xml_textblock
+   * Returns a modified xml from text.
+   * @param  {xml} xmlarg
+   * @param  {textblock} tb
+   * @return {xml}
+   * (func xml-text<-xml-textblock)
+   */
   interface Func_xml_text_from_xml_textblock : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_xml_text_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tb : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml
   }
@@ -2333,7 +2422,13 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_from_file
+   * Returns a parsed xml from a file.
+   * @param  {file} file
+   * @return {xml}
+   * (func xml<-file)
+   */
   interface Func_xml_from_file : vx_core.Func_any_from_any {
     fun vx_xml_from_file(file : vx_data_file.Type_file) : vx_data_xml.Type_xml
   }
@@ -2433,7 +2528,13 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_from_string
+   * Returns a parsed xml from a string.
+   * @param  {string} text
+   * @return {xml}
+   * (func xml<-string)
+   */
   interface Func_xml_from_string : vx_core.Func_any_from_any {
     fun vx_xml_from_string(text : vx_core.Type_string) : vx_data_xml.Type_xml
   }
@@ -2535,7 +2636,13 @@ object vx_data_xml {
     return output
   }
 
-
+  /**
+   * @function xml_from_textblock
+   * Returns a parsed xml from a textblock.
+   * @param  {textblock} textblock
+   * @return {xml}
+   * (func xml<-textblock)
+   */
   interface Func_xml_from_textblock : vx_core.Func_any_from_any {
     fun vx_xml_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml
   }

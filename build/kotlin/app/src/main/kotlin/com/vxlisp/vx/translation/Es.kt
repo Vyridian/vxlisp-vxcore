@@ -4,7 +4,12 @@ import com.vxlisp.vx.*
 
 object vx_translation_es {
 
-
+  /**
+   * @function translation_es
+   * Returns translation data
+   * @return {translation}
+   * (func translation-es)
+   */
   interface Func_translation_es : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_translation_es() : vx_core.Type_translation
   }
@@ -91,7 +96,12 @@ object vx_translation_es {
     return output
   }
 
-
+  /**
+   * @function words
+   * Word Translation
+   * @return {stringmap}
+   * (func words)
+   */
   interface Func_words : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_words() : vx_core.Type_stringmap
   }

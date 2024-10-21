@@ -8871,7 +8871,13 @@ object vx_web_html {
 
   val e_trlist : vx_web_html.Type_trlist = vx_web_html.Class_trlist()
   val t_trlist : vx_web_html.Type_trlist = vx_web_html.Class_trlist()
-
+  /**
+   * @function htmlstring_from_string
+   * Convert text to HTML string
+   * @param  {string} text
+   * @return {string}
+   * (func htmlstring<-string)
+   */
   interface Func_htmlstring_from_string : vx_core.Func_any_from_any {
     fun vx_htmlstring_from_string(text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -8962,7 +8968,12 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_indent
+   * @param  {int} indent
+   * @return {string}
+   * (func string-indent)
+   */
   interface Func_string_indent : vx_core.Func_any_from_any {
     fun vx_string_indent(indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9056,7 +9067,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_body_indent
+   * Returns string from body
+   * @param  {body} body
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-body-indent)
+   */
   interface Func_string_from_body_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_body_indent(body : vx_web_html.Type_body, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9148,7 +9166,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_details_indent
+   * Returns string from details
+   * @param  {details} details
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-details-indent)
+   */
   interface Func_string_from_details_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_details_indent(details : vx_web_html.Type_details, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9268,7 +9293,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_div_indent
+   * Returns string from div
+   * @param  {div} div
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-div-indent)
+   */
   interface Func_string_from_div_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_div_indent(div : vx_web_html.Type_div, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9379,7 +9411,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_footer_indent
+   * Returns string from footer
+   * @param  {footer} footer
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-footer-indent)
+   */
   interface Func_string_from_footer_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_footer_indent(footer : vx_web_html.Type_footer, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9471,7 +9510,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_h1_indent
+   * Returns string from h1
+   * @param  {h1} h1
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-h1-indent)
+   */
   interface Func_string_from_h1_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_h1_indent(h1 : vx_web_html.Type_h1, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9576,7 +9622,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_h2_indent
+   * Returns string from h2
+   * @param  {h2} h2
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-h2-indent)
+   */
   interface Func_string_from_h2_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_h2_indent(h2 : vx_web_html.Type_h2, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9681,7 +9734,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_h3_indent
+   * Returns string from h3
+   * @param  {h3} h3
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-h3-indent)
+   */
   interface Func_string_from_h3_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_h3_indent(h3 : vx_web_html.Type_h3, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9786,7 +9846,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_head_indent
+   * Returns string from head
+   * @param  {head} head
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-head-indent)
+   */
   interface Func_string_from_head_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_head_indent(head : vx_web_html.Type_head, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -9878,7 +9945,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_html
+   * Returns string from html
+   * @param  {html} html
+   * @return {string}
+   * (func string<-html)
+   */
   interface Func_string_from_html : vx_core.Func_any_from_any {
     fun vx_string_from_html(html : vx_web_html.Type_html) : vx_core.Type_string
   }
@@ -10009,7 +10082,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_img_indent
+   * Returns string from img
+   * @param  {img} img
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-img-indent)
+   */
   interface Func_string_from_img_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_img_indent(img : vx_web_html.Type_img, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -10125,7 +10205,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_indent
+   * Returns a string to do indentation for a given indent count.
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-indent)
+   */
   interface Func_string_from_indent : vx_core.Func_any_from_any {
     fun vx_string_from_indent(indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -10233,7 +10319,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_meta_indent
+   * Returns string from head
+   * @param  {meta} meta
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-meta-indent)
+   */
   interface Func_string_from_meta_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_meta_indent(meta : vx_web_html.Type_meta, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -10402,7 +10495,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_node
+   * Returns a string from any node
+   * @param  {any-1} node
+   * @return {string}
+   * (func string<-node)
+   */
   interface Func_string_from_node : vx_core.Func_any_from_any {
     fun vx_string_from_node(node : vx_core.Type_any) : vx_core.Type_string
   }
@@ -10496,7 +10595,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_node_indent
+   * Returns a string from any node
+   * @param  {any-1} node
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-node-indent)
+   */
   interface Func_string_from_node_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_node_indent(node : vx_core.Type_any, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -10818,7 +10924,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_nodelist_indent
+   * Returns a string from any node
+   * @param  {list-1} nodelist
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-nodelist-indent)
+   */
   interface Func_string_from_nodelist_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_nodelist_indent(nodelist : vx_core.Type_list, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -10919,7 +11032,16 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_nodelist_tag_prop_indent
+   * Returns string from generic nodelist
+   * @param  {list-1} nodes
+   * @param  {string} tag
+   * @param  {string} prop
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-nodelist-tag-prop-indent)
+   */
   interface Func_string_from_nodelist_tag_prop_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_nodelist_tag_prop_indent(nodes : vx_core.Type_list, tag : vx_core.Type_string, prop : vx_core.Type_string, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -11067,7 +11189,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_p_indent
+   * Returns string from p
+   * @param  {p} p
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-p-indent)
+   */
   interface Func_string_from_p_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_p_indent(p : vx_web_html.Type_p, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -11183,7 +11312,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_propname_val
+   * Returns ' key=\"value\"' if value is not blank.
+   * @param  {string} key
+   * @param  {string} value
+   * @return {string}
+   * (func string<-propname-val)
+   */
   interface Func_string_from_propname_val : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_propname_val(key : vx_core.Type_string, value : vx_core.Type_string) : vx_core.Type_string
   }
@@ -11280,7 +11416,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_propstyle
+   * Returns ' class=\"style.name\"' if style is not empty.
+   * @param  {style} style
+   * @return {string}
+   * (func string<-propstyle)
+   */
   interface Func_string_from_propstyle : vx_core.Func_any_from_any {
     fun vx_string_from_propstyle(style : vx_web_html.Type_style) : vx_core.Type_string
   }
@@ -11400,7 +11542,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_propstyle_stylelist
+   * Returns ' class=\"style.name\"' if style is not empty.
+   * @param  {style} style
+   * @param  {stylelist} stylelist
+   * @return {string}
+   * (func string<-propstyle-stylelist)
+   */
   interface Func_string_from_propstyle_stylelist : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_propstyle_stylelist(style : vx_web_html.Type_style, stylelist : vx_web_html.Type_stylelist) : vx_core.Type_string
   }
@@ -11513,7 +11662,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_propstylelist
+   * Returns ' class=\"style1.name style2.name\"' if stylelist is not empty.
+   * @param  {stylelist} stylelist
+   * @return {string}
+   * (func string<-propstylelist)
+   */
   interface Func_string_from_propstylelist : vx_core.Func_any_from_any {
     fun vx_string_from_propstylelist(stylelist : vx_web_html.Type_stylelist) : vx_core.Type_string
   }
@@ -11646,7 +11801,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_propstyleunique
+   * Returns ' style=\"{style.propmap}\"' if style is not empty.
+   * @param  {style} style
+   * @return {string}
+   * (func string<-propstyleunique)
+   */
   interface Func_string_from_propstyleunique : vx_core.Func_any_from_any {
     fun vx_string_from_propstyleunique(style : vx_web_html.Type_style) : vx_core.Type_string
   }
@@ -11791,7 +11952,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_style_indent
+   * Returns indent'name {key: val;}' for each style.
+   * @param  {style} style
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-style-indent)
+   */
   interface Func_string_from_style_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_style_indent(style : vx_web_html.Type_style, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -11907,7 +12075,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_stylelist
+   * Returns classnames separated by spaces for each style.
+   * @param  {stylelist} stylelist
+   * @return {string}
+   * (func string<-stylelist)
+   */
   interface Func_string_from_stylelist : vx_core.Func_any_from_any {
     fun vx_string_from_stylelist(stylelist : vx_web_html.Type_stylelist) : vx_core.Type_string
   }
@@ -12019,7 +12193,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_stylelist_indent
+   * Return a string from a stylelist
+   * @param  {stylelist} stylelist
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-stylelist-indent)
+   */
   interface Func_string_from_stylelist_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_stylelist_indent(stylelist : vx_web_html.Type_stylelist, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12120,7 +12301,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_stylepropmap_indent
+   * Returns indent'key: value;' for each prop.
+   * @param  {propmap} propmap
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-stylepropmap-indent)
+   */
   interface Func_string_from_stylepropmap_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_stylepropmap_indent(propmap : vx_web_html.Type_propmap, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12232,7 +12420,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_stylesheet_indent
+   * Returns string representation of given stylesheet.
+   * @param  {stylesheet} stylesheet
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-stylesheet-indent)
+   */
   interface Func_string_from_stylesheet_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_stylesheet_indent(stylesheet : vx_web_html.Type_stylesheet, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12345,7 +12540,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_table_indent
+   * Returns string from table
+   * @param  {table} table
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-table-indent)
+   */
   interface Func_string_from_table_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_table_indent(table : vx_web_html.Type_table, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12465,7 +12667,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_tbody_indent
+   * Returns string from tbody
+   * @param  {tbody} tbody
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-tbody-indent)
+   */
   interface Func_string_from_tbody_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_tbody_indent(tbody : vx_web_html.Type_tbody, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12557,7 +12766,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_td_indent
+   * Returns string from td
+   * @param  {td} td
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-td-indent)
+   */
   interface Func_string_from_td_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_td_indent(td : vx_web_html.Type_td, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12649,7 +12865,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_thead_indent
+   * Returns string from thead
+   * @param  {thead} thead
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-thead-indent)
+   */
   interface Func_string_from_thead_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_thead_indent(thead : vx_web_html.Type_thead, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12741,7 +12964,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_title_indent
+   * Returns string from h2
+   * @param  {title} title
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-title-indent)
+   */
   interface Func_string_from_title_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_title_indent(title : vx_web_html.Type_title, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12840,7 +13070,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_tr_indent
+   * Returns string from tr
+   * @param  {tr} tr
+   * @param  {int} indent
+   * @return {string}
+   * (func string<-tr-indent)
+   */
   interface Func_string_from_tr_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_tr_indent(tr : vx_web_html.Type_tr, indent : vx_core.Type_int) : vx_core.Type_string
   }
@@ -12932,7 +13169,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function string_from_uri
+   * Decode a URI string
+   * @param  {string} uri
+   * @return {string}
+   * (func string<-uri)
+   */
   interface Func_string_from_uri : vx_core.Func_any_from_any {
     fun vx_string_from_uri(uri : vx_core.Type_string) : vx_core.Type_string
   }
@@ -13022,7 +13265,14 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function style_from_stylesheet_name
+   * Return style from stylesheet.stylemap
+   * @param  {stylesheet} stylesheet
+   * @param  {string} name
+   * @return {style}
+   * (func style<-stylesheet-name)
+   */
   interface Func_style_from_stylesheet_name : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_style_from_stylesheet_name(stylesheet : vx_web_html.Type_stylesheet, name : vx_core.Type_string) : vx_web_html.Type_style
   }
@@ -13108,7 +13358,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function stylemap_from_stylelist
+   * Returns a stylemap from a given stylelist
+   * @param  {stylelist} stylelist
+   * @return {stylemap}
+   * (func stylemap<-stylelist)
+   */
   interface Func_stylemap_from_stylelist : vx_core.Func_any_from_any {
     fun vx_stylemap_from_stylelist(stylelist : vx_web_html.Type_stylelist) : vx_web_html.Type_stylemap
   }
@@ -13207,7 +13463,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function stylemap_from_stylesheet
+   * Return stylemap from stylesheet
+   * @param  {stylesheet} stylesheet
+   * @return {stylemap}
+   * (func stylemap<-stylesheet)
+   */
   interface Func_stylemap_from_stylesheet : vx_core.Func_any_from_any {
     fun vx_stylemap_from_stylesheet(stylesheet : vx_web_html.Type_stylesheet) : vx_web_html.Type_stylemap
   }
@@ -13298,7 +13560,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function styles_from_stylesheet
+   * Return style from stylesheet.stylemap
+   * @param  {stylesheet} stylesheet
+   * @return {stylelist}
+   * (func styles<-stylesheet)
+   */
   interface Func_styles_from_stylesheet : vx_core.Func_any_from_any {
     fun vx_styles_from_stylesheet(stylesheet : vx_web_html.Type_stylesheet) : vx_web_html.Type_stylelist
   }
@@ -13389,7 +13657,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function stylesheet_loadmap
+   * Decode a URI string
+   * @param  {stylesheet} stylesheet
+   * @return {stylesheet}
+   * (func stylesheet-loadmap)
+   */
   interface Func_stylesheet_loadmap : vx_core.Func_any_from_any {
     fun vx_stylesheet_loadmap(stylesheet : vx_web_html.Type_stylesheet) : vx_web_html.Type_stylesheet
   }
@@ -13489,7 +13763,13 @@ object vx_web_html {
     return output
   }
 
-
+  /**
+   * @function uri_from_string
+   * Encode a URI string
+   * @param  {string} text
+   * @return {string}
+   * (func uri<-string)
+   */
   interface Func_uri_from_string : vx_core.Func_any_from_any {
     fun vx_uri_from_string(text : vx_core.Type_string) : vx_core.Type_string
   }

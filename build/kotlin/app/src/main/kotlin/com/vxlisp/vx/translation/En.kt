@@ -5,7 +5,13 @@ import com.vxlisp.vx.data.*
 
 object vx_translation_en {
 
-
+  /**
+   * @function context_en
+   * Returns the default context for app main execution. Arguments come from the command line.
+   * @param  {anylist} args
+   * @return {context}
+   * (func context-en)
+   */
   interface Func_context_en : vx_core.Func_any_from_any {
     fun vx_context_en(args : vx_core.Type_anylist) : vx_core.Type_context
   }
@@ -110,7 +116,13 @@ object vx_translation_en {
     return output
   }
 
-
+  /**
+   * @function context_test
+   * Returns the default context for test case execution. Arguments come from the command line.
+   * @param  {anylist} args
+   * @return {context}
+   * (func context-test)
+   */
   interface Func_context_test : vx_core.Func_any_from_any {
     fun vx_context_test(args : vx_core.Type_anylist) : vx_core.Type_context
   }
@@ -224,7 +236,12 @@ object vx_translation_en {
     return output
   }
 
-
+  /**
+   * @function securitydata_test
+   * Returns the default security for test case execution. Arguments come from the command line.
+   * @return {security}
+   * (func securitydata-test)
+   */
   interface Func_securitydata_test : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_securitydata_test() : vx_core.Type_security
   }
@@ -318,7 +335,12 @@ object vx_translation_en {
     return output
   }
 
-
+  /**
+   * @function translation_en
+   * Returns translation data
+   * @return {translation}
+   * (func translation-en)
+   */
   interface Func_translation_en : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_translation_en() : vx_core.Type_translation
   }
@@ -405,7 +427,12 @@ object vx_translation_en {
     return output
   }
 
-
+  /**
+   * @function words
+   * Word Translation
+   * @return {stringmap}
+   * (func words)
+   */
   interface Func_words : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_words() : vx_core.Type_stringmap
   }

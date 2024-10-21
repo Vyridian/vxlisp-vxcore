@@ -1861,6 +1861,90 @@ namespace vx_core_test {
     return output;
   }
 
+  vx_test::Type_testcase f_any_from_struct(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: f_any_from_struct");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::vx_new_string("sname"),
+      vx_core::f_any_from_struct(
+        vx_core::t_string,
+        vx_core::f_new(
+          vx_core::t_translation,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::vx_new_string(":name"),
+            vx_core::vx_new_string("sname")
+          })
+        ),
+        vx_core::vx_new_string(":name")
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  :name))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    // testdescribe_2
+    vx_test::Type_testresult testresult_2 = vx_test::f_test(
+      context,
+      vx_core::vx_new_string("sname"),
+      vx_core::f_any_from_struct(
+        vx_core::t_string,
+        vx_core::f_new(
+          vx_core::t_translation,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::vx_new_string(":name"),
+            vx_core::vx_new_string("sname")
+          })
+        ),
+        vx_core::vx_new_string("name")
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_2 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \"name\"))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_2
+    });
+    // testdescribe_3
+    vx_test::Type_testresult testresult_3 = vx_test::f_test(
+      context,
+      vx_core::vx_new_string("sname"),
+      vx_core::f_any_from_struct(
+        vx_core::t_string,
+        vx_core::f_new(
+          vx_core::t_translation,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::vx_new_string(":name"),
+            vx_core::vx_new_string("sname")
+          })
+        ),
+        vx_core::vx_new_string(":name")
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_3 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \":name\"))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_3
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1,
+      testdescribe_2,
+      testdescribe_3
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("any<-struct"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : f_any_from_struct");
+    return output;
+  }
+
   vx_test::Type_testcase f_boolean_write_from_map_name_value(vx_core::Type_context context) {
     vx_core::vx_log("Test Start: f_boolean_write_from_map_name_value");
     // testdescribe_1
@@ -4321,6 +4405,7 @@ namespace vx_core_test {
     listtestcase.push_back(vx_core_test::f_any_from_list_start_reduce(context));
     listtestcase.push_back(vx_core_test::f_any_from_map(context));
     listtestcase.push_back(vx_core_test::f_any_from_map_start_reduce(context));
+    listtestcase.push_back(vx_core_test::f_any_from_struct(context));
     listtestcase.push_back(vx_core_test::f_boolean_write_from_map_name_value(context));
     listtestcase.push_back(vx_core_test::f_compare(context));
     listtestcase.push_back(vx_core_test::f_constdef_from_any(context));
@@ -4386,7 +4471,7 @@ namespace vx_core_test {
       }),
       vx_core::vx_new_string(":funcnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(55), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(75), 
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(76), 
         vx_core::vx_new_string(":total"), vx_core::vx_new_int(136)
       }),
       vx_core::vx_new_string(":bigospacenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
@@ -4401,7 +4486,7 @@ namespace vx_core_test {
       }),
       vx_core::vx_new_string(":totalnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(37), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(84), 
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(85), 
         vx_core::vx_new_string(":total"), vx_core::vx_new_int(227)
       }),
       vx_core::vx_new_string(":typenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
@@ -4573,7 +4658,7 @@ namespace vx_core_test {
         vx_core::vx_new_string(":any<-reduce-async"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":any<-reduce-next"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":any<-reduce-next-async"), vx_core::vx_new_int(0),
-        vx_core::vx_new_string(":any<-struct"), vx_core::vx_new_int(0),
+        vx_core::vx_new_string(":any<-struct"), vx_core::vx_new_int(3),
         vx_core::vx_new_string(":async"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":boolean-permission<-func"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":boolean-write<-map-name-value"), vx_core::vx_new_int(2),

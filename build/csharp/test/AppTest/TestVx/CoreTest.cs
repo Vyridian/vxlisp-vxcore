@@ -1985,6 +1985,83 @@ public class CoreTest {
     return output;
   }
 
+  public static Vx.Test.Type_testcase f_any_from_struct(Vx.Core.Type_context context) {
+    Vx.Test.Type_testcase output = Vx.Core.vx_new(
+      Vx.Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "any<-struct",
+      ":describelist",
+      Vx.Core.vx_new(
+        Vx.Test.t_testdescribelist,
+        f_any_from_struct_testdescribe_1(context),
+        f_any_from_struct_testdescribe_2(context),
+        f_any_from_struct_testdescribe_3(context)
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testdescribe f_any_from_struct_testdescribe_1(Vx.Core.Type_context context) {
+    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
+      Vx.Test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  :name))",
+      ":testresult", Vx.Test.f_test(
+        context,
+        Vx.Core.vx_new_string("sname"),
+        Vx.Core.f_new(
+          Vx.Core.t_translation,
+          Vx.Core.vx_new(
+            Vx.Core.t_anylist,
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testdescribe f_any_from_struct_testdescribe_2(Vx.Core.Type_context context) {
+    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
+      Vx.Test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \"name\"))",
+      ":testresult", Vx.Test.f_test(
+        context,
+        Vx.Core.vx_new_string("sname"),
+        Vx.Core.f_new(
+          Vx.Core.t_translation,
+          Vx.Core.vx_new(
+            Vx.Core.t_anylist,
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testdescribe f_any_from_struct_testdescribe_3(Vx.Core.Type_context context) {
+    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
+      Vx.Test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \":name\"))",
+      ":testresult", Vx.Test.f_test(
+        context,
+        Vx.Core.vx_new_string("sname"),
+        Vx.Core.f_new(
+          Vx.Core.t_translation,
+          Vx.Core.vx_new(
+            Vx.Core.t_anylist,
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    );
+    return output;
+  }
+
   public static Vx.Test.Type_testcase f_boolean_write_from_map_name_value(Vx.Core.Type_context context) {
     Vx.Test.Type_testcase output = Vx.Core.vx_new(
       Vx.Test.t_testcase,
@@ -4613,6 +4690,7 @@ public class CoreTest {
       CoreTest.f_any_from_list_start_reduce(context),
       CoreTest.f_any_from_map(context),
       CoreTest.f_any_from_map_start_reduce(context),
+      CoreTest.f_any_from_struct(context),
       CoreTest.f_boolean_write_from_map_name_value(context),
       CoreTest.f_compare(context),
       CoreTest.f_constdef_from_any(context),
@@ -4670,10 +4748,10 @@ public class CoreTest {
       ":testpkg", "vx/core", 
       ":constnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
       ":docnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
-      ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 136), 
+      ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 55, ":tests", 76, ":total", 136), 
       ":bigospacenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
       ":bigotimenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
-      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 227), 
+      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 37, ":tests", 85, ":total", 227), 
       ":typenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
     );
     return output;
@@ -4843,7 +4921,7 @@ public class CoreTest {
         ":any<-reduce-async", 0,
         ":any<-reduce-next", 0,
         ":any<-reduce-next-async", 0,
-        ":any<-struct", 0,
+        ":any<-struct", 3,
         ":async", 0,
         ":boolean-permission<-func", 0,
         ":boolean-write<-map-name-value", 2,

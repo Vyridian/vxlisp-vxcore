@@ -182,7 +182,13 @@ object vx_type {
     val output = vx_core.vx_new(vx_core.t_stringlist, *arraystring)
     return output
   }
-
+  /**
+   * @function allowtypenames_from_type
+   * Get the name of a given type
+   * @param  {any} type
+   * @return {stringlist}
+   * (func allowtypenames<-type)
+   */
   interface Func_allowtypenames_from_type : vx_core.Func_any_from_any {
     fun vx_allowtypenames_from_type(type : vx_core.Type_any) : vx_core.Type_stringlist
   }
@@ -277,7 +283,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function allowtypes_from_type
+   * Returns the allowed types from a given type
+   * @param  {any} type
+   * @return {typelist}
+   * (func allowtypes<-type)
+   */
   interface Func_allowtypes_from_type : vx_core.Func_any_from_any {
     fun vx_allowtypes_from_type(type : vx_core.Type_any) : vx_core.Type_typelist
   }
@@ -370,7 +382,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function any_from_int
+   * Generic function returns any from an int.
+   * @param  {int} value
+   * @return {any-1}
+   * (func any<-int)
+   */
   interface Func_any_from_int : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any> vx_any_from_int(generic_any_1 : T, value : vx_core.Type_int) : T
   }
@@ -461,7 +479,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function boolean_from_string_ends
+   * Returns true if string starts with find.
+   * @param  {string} text
+   * @param  {string} ends
+   * @return {boolean}
+   * (func boolean<-string-ends)
+   */
   interface Func_boolean_from_string_ends : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_from_string_ends(text : vx_core.Type_string, ends : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -541,7 +566,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function boolean_from_string_starts
+   * Returns true if string starts with find.
+   * @param  {string} text
+   * @param  {string} starts
+   * @return {boolean}
+   * (func boolean<-string-starts)
+   */
   interface Func_boolean_from_string_starts : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_from_string_starts(text : vx_core.Type_string, starts : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -621,7 +653,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function int_from_string_find
+   * Returns integer position of find string in text string.
+   * @param  {string} text
+   * @param  {string} find
+   * @return {int}
+   * (func int<-string-find)
+   */
   interface Func_int_from_string_find : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_int_from_string_find(text : vx_core.Type_string, find : vx_core.Type_string) : vx_core.Type_int
   }
@@ -701,7 +740,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function int_from_string_findkeyword
+   * Returns integer position of find string in text string. Note: the find terms :whitespace and :nonwhitespace have special meaning.
+   * @param  {string} text
+   * @param  {string} find
+   * @return {int}
+   * (func int<-string-findkeyword)
+   */
   interface Func_int_from_string_findkeyword : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_int_from_string_findkeyword(text : vx_core.Type_string, find : vx_core.Type_string) : vx_core.Type_int
   }
@@ -781,7 +827,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function int_from_string_findlast
+   * Returns integer position of find string in text string.
+   * @param  {string} text
+   * @param  {string} findlast
+   * @return {int}
+   * (func int<-string-findlast)
+   */
   interface Func_int_from_string_findlast : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_int_from_string_findlast(text : vx_core.Type_string, findlast : vx_core.Type_string) : vx_core.Type_int
   }
@@ -861,7 +914,12 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function is_boolean
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-boolean)
+   */
   interface Func_is_boolean : vx_core.Func_any_from_any {
     fun vx_is_boolean(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -957,7 +1015,12 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function is_decimal
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-decimal)
+   */
   interface Func_is_decimal : vx_core.Func_any_from_any {
     fun vx_is_decimal(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -1053,7 +1116,12 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function is_none
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-none)
+   */
   interface Func_is_none : vx_core.Func_any_from_any {
     fun vx_is_none(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -1147,7 +1215,12 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function is_string
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-string)
+   */
   interface Func_is_string : vx_core.Func_any_from_any {
     fun vx_is_string(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -1243,7 +1316,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function is_type
+   * @param  {any} value
+   * @param  {any} type
+   * @return {boolean}
+   * (func is-type)
+   */
   interface Func_is_type : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_is_type(value : vx_core.Type_any, type : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -1351,7 +1430,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function is_type_from_any_typelist
+   * Returns true if value is any type in typelist.
+   * @param  {any} value
+   * @param  {typelist} typelist
+   * @return {boolean}
+   * (func is-type<-any-typelist)
+   */
   interface Func_is_type_from_any_typelist : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_is_type_from_any_typelist(value : vx_core.Type_any, typelist : vx_core.Type_typelist) : vx_core.Type_boolean
   }
@@ -1447,7 +1533,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_lowercase
+   * Returns lowercase version of string
+   * @param  {string} text
+   * @return {string}
+   * (func string-lowercase)
+   */
   interface Func_string_lowercase : vx_core.Func_any_from_any {
     fun vx_string_lowercase(text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -1538,7 +1630,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_outdent
+   * Returns a string replacing leading whitespace on all lines based on first line.
+   * @param  {string} text
+   * @return {string}
+   * (func string-outdent)
+   */
   interface Func_string_outdent : vx_core.Func_any_from_any {
     fun vx_string_outdent(text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -1696,7 +1794,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_trim
+   * Trims whitespace from the front and back of text
+   * @param  {string} text
+   * @return {string}
+   * (func string-trim)
+   */
   interface Func_string_trim : vx_core.Func_any_from_any {
     fun vx_string_trim(text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -1787,7 +1891,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_uppercase
+   * Returns uppercase version of string
+   * @param  {string} text
+   * @return {string}
+   * (func string-uppercase)
+   */
   interface Func_string_uppercase : vx_core.Func_any_from_any {
     fun vx_string_uppercase(text : vx_core.Type_string) : vx_core.Type_string
   }
@@ -1878,7 +1988,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_from_int
+   * Function Type converting int to string
+   * @param  {int} value
+   * @return {string}
+   * (func string<-int)
+   */
   interface Func_string_from_int : vx_core.Func_any_from_any {
     fun vx_string_from_int(value : vx_core.Type_int) : vx_core.Type_string
   }
@@ -2008,7 +2124,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_from_string_end
+   * Returns a substring between 0 end position.
+   * @param  {string} text
+   * @param  {int} endpos
+   * @return {string}
+   * (func string<-string-end)
+   */
   interface Func_string_from_string_end : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_string_end(text : vx_core.Type_string, endpos : vx_core.Type_int) : vx_core.Type_string
   }
@@ -2092,7 +2215,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_from_string_start
+   * Returns a substring between start string end.
+   * @param  {string} text
+   * @param  {int} startpos
+   * @return {string}
+   * (func string<-string-start)
+   */
   interface Func_string_from_string_start : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_string_start(text : vx_core.Type_string, startpos : vx_core.Type_int) : vx_core.Type_string
   }
@@ -2178,7 +2308,15 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_from_string_start_end
+   * Returns a substring between start and end positions.
+   * @param  {string} text
+   * @param  {int} start
+   * @param  {int} end
+   * @return {string}
+   * (func string<-string-start-end)
+   */
   interface Func_string_from_string_start_end : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_string_start_end(text : vx_core.Type_string, start : vx_core.Type_int, end : vx_core.Type_int) : vx_core.Type_string
   }
@@ -2259,7 +2397,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function string_from_stringlist_join
+   * Returns a string by joining a stringlist by the delimiter
+   * @param  {stringlist} vals
+   * @param  {string} delim
+   * @return {string}
+   * (func string<-stringlist-join)
+   */
   interface Func_string_from_stringlist_join : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_stringlist_join(vals : vx_core.Type_stringlist, delim : vx_core.Type_string) : vx_core.Type_string
   }
@@ -2339,7 +2484,14 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function stringlist_from_string_split
+   * Returns a stringlist by splitting a string by the delimiter
+   * @param  {string} text
+   * @param  {string} delim
+   * @return {stringlist}
+   * (func stringlist<-string-split)
+   */
   interface Func_stringlist_from_string_split : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_stringlist_from_string_split(text : vx_core.Type_string, delim : vx_core.Type_string) : vx_core.Type_stringlist
   }
@@ -2419,7 +2571,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function traitnames_from_any
+   * Get the trait names of a given type
+   * @param  {any} value
+   * @return {stringlist}
+   * (func traitnames<-any)
+   */
   interface Func_traitnames_from_any : vx_core.Func_any_from_any {
     fun vx_traitnames_from_any(value : vx_core.Type_any) : vx_core.Type_stringlist
   }
@@ -2514,7 +2672,13 @@ object vx_type {
     return output
   }
 
-
+  /**
+   * @function traits_from_any
+   * Get the traits of a given value
+   * @param  {any} value
+   * @return {typelist}
+   * (func traits<-any)
+   */
   interface Func_traits_from_any : vx_core.Func_any_from_any {
     fun vx_traits_from_any(value : vx_core.Type_any) : vx_core.Type_typelist
   }

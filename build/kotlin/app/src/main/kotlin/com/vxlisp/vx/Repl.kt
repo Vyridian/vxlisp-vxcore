@@ -914,6 +914,11 @@ object vx_repl {
   val e_repllist : vx_repl.Type_repllist = vx_repl.Class_repllist()
   val t_repllist : vx_repl.Type_repllist = vx_repl.Class_repllist()
 
+  /**
+   * Constant: delimvxlisp
+   * vxlisp File Delimiters
+   * {delim}
+   */
   class Const_delimvxlisp {
     constructor() {}
     companion object {
@@ -961,6 +966,11 @@ object vx_repl {
   val c_delimvxlisp : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
 
+  /**
+   * Constant: delimvxlispbracket
+   * vxlisp Square Bracket Delimiters
+   * {delim}
+   */
   class Const_delimvxlispbracket {
     constructor() {}
     companion object {
@@ -1011,6 +1021,11 @@ object vx_repl {
   val c_delimvxlispbracket : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
 
+  /**
+   * Constant: delimvxlispparen
+   * vxlisp Paren Delimiters
+   * {delim}
+   */
   class Const_delimvxlispparen {
     constructor() {}
     companion object {
@@ -1061,7 +1076,14 @@ object vx_repl {
 
   val c_delimvxlispparen : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
+  /**
+   * @function any_repl_from_functype_args
+   * Returns any from a repl func and args.
+   * @param  {any} type
+   * @param  {anylist} args
+   * @return {any}
+   * (func any-repl<-functype-args)
+   */
   interface Func_any_repl_from_functype_args : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_any_repl_from_functype_args(type : vx_core.Type_any, args : vx_core.Type_anylist) : vx_core.Type_any
   }
@@ -1144,7 +1166,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function any_from_liblist_string
+   * Run an arbitrary program in the REPL.
+   * @param  {liblist} liblist
+   * @param  {string} text Program to run
+   * @return {any}
+   * (func any<-liblist-string)
+   */
   interface Func_any_from_liblist_string : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_any_from_liblist_string(context : vx_core.Type_context, liblist : vx_repl.Type_liblist, text : vx_core.Type_string) : vx_core.Type_any
   }
@@ -1238,7 +1267,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function any_from_macro
+   * A function that joins any number of values into a string and then parses and evaluates it.
+   * @param  {anylist} anylist
+   * @return {any-1}
+   * (func any<-macro)
+   */
   interface Func_any_from_macro : vx_core.Func_any_from_any_context {
     fun <T : vx_core.Type_any> vx_any_from_macro(generic_any_1 : T, context : vx_core.Type_context, anylist : vx_core.Type_anylist) : T
   }
@@ -1348,7 +1383,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function any_from_repl
+   * Run an arbitrary program in the REPL.
+   * @param  {repl} repl
+   * @return {any}
+   * (func any<-repl)
+   */
   interface Func_any_from_repl : vx_core.Func_any_from_any_context {
     fun vx_any_from_repl(context : vx_core.Type_context, repl : vx_repl.Type_repl) : vx_core.Type_any
   }
@@ -1494,7 +1535,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function any_from_script
+   * Run an arbitrary script.
+   * @param  {string} script
+   * @return {any}
+   * (func any<-script)
+   */
   interface Func_any_from_script : vx_core.Func_any_from_any_context {
     fun vx_any_from_script(context : vx_core.Type_context, script : vx_core.Type_string) : vx_core.Type_any
   }
@@ -1601,7 +1648,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function anylist_from_repllist
+   * Run an arbitrary program in the REPL.
+   * @param  {repllist} repllist
+   * @return {anylist}
+   * (func anylist<-repllist)
+   */
   interface Func_anylist_from_repllist : vx_core.Func_any_from_any_context {
     fun vx_anylist_from_repllist(context : vx_core.Type_context, repllist : vx_repl.Type_repllist) : vx_core.Type_anylist
   }
@@ -1704,7 +1757,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function argmap_from_textblock_argmap
+   * Returns an argmap with parsed args from textblock added.
+   * @param  {textblock} textblock
+   * @param  {argmap} argmap
+   * @return {argmap}
+   * (func argmap<-textblock-argmap)
+   */
   interface Func_argmap_from_textblock_argmap : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_argmap_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_core.Type_argmap
   }
@@ -1792,7 +1852,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function const_from_string
+   * Returns a constant from a fully qualified name.
+   * @param  {string} text
+   * @return {any}
+   * (func const<-string)
+   */
   interface Func_const_from_string : vx_core.Func_any_from_any {
     fun vx_const_from_string(text : vx_core.Type_string) : vx_core.Type_any
   }
@@ -1939,7 +2005,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_bracket_from_textblock_argmap
+   * Returns a repl from a squarebracket parsed textblock
+   * @param  {textblock} textblock
+   * @param  {argmap} argmap
+   * @return {repl}
+   * (func repl-bracket<-textblock-argmap)
+   */
   interface Func_repl_bracket_from_textblock_argmap : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_repl_bracket_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_repl
   }
@@ -2021,7 +2094,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_empty_from_textblock_argmap
+   * Returns a repl from an empty delim textblock
+   * @param  {textblock} textblock
+   * @param  {argmap} argmap
+   * @return {repl}
+   * (func repl-empty<-textblock-argmap)
+   */
   interface Func_repl_empty_from_textblock_argmap : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_repl_empty_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_repl
   }
@@ -2155,7 +2235,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_paren_from_textblock_argmap
+   * Returns a repl from a parsed textblock
+   * @param  {textblock} textblock
+   * @param  {argmap} argmap
+   * @return {repl}
+   * (func repl-paren<-textblock-argmap)
+   */
   interface Func_repl_paren_from_textblock_argmap : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_repl_paren_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_repl
   }
@@ -2341,7 +2428,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_from_liblist_string
+   * Returns a repl from the given text.
+   * @param  {liblist} liblist
+   * @param  {string} text Program to run
+   * @return {repl}
+   * (func repl<-liblist-string)
+   */
   interface Func_repl_from_liblist_string : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_repl_from_liblist_string(liblist : vx_repl.Type_liblist, text : vx_core.Type_string) : vx_repl.Type_repl
   }
@@ -2420,7 +2514,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_from_macro
+   * A function that joins any number of values into a string and then parses it.
+   * @param  {anylist} anylist
+   * @return {repl}
+   * (func repl<-macro)
+   */
   interface Func_repl_from_macro : vx_core.Func_any_from_any_context {
     fun vx_repl_from_macro(context : vx_core.Type_context, anylist : vx_core.Type_anylist) : vx_repl.Type_repl
   }
@@ -2569,7 +2669,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_from_script
+   * Returns a parsed repl from a string
+   * @param  {string} script
+   * @return {repl}
+   * (func repl<-script)
+   */
   interface Func_repl_from_script : vx_core.Func_any_from_any {
     fun vx_repl_from_script(script : vx_core.Type_string) : vx_repl.Type_repl
   }
@@ -2671,7 +2777,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_from_string_argmap
+   * Returns a function, type, const or primitive from given string.
+   * @param  {string} text
+   * @param  {argmap} argmap
+   * @return {repl}
+   * (func repl<-string-argmap)
+   */
   interface Func_repl_from_string_argmap : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_repl_from_string_argmap(text : vx_core.Type_string, argmap : vx_core.Type_argmap) : vx_repl.Type_repl
   }
@@ -2962,7 +3075,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_from_textblock
+   * Returns a repl from a parsed textblock
+   * @param  {textblock} textblock
+   * @return {repl}
+   * (func repl<-textblock)
+   */
   interface Func_repl_from_textblock : vx_core.Func_any_from_any {
     fun vx_repl_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_repl.Type_repl
   }
@@ -3058,7 +3177,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repl_from_textblock_argmap
+   * Returns a repl from a parsed textblock
+   * @param  {textblock} textblock
+   * @param  {argmap} argmap
+   * @return {repl}
+   * (func repl<-textblock-argmap)
+   */
   interface Func_repl_from_textblock_argmap : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_repl_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_repl
   }
@@ -3182,7 +3308,15 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function replarglist_from_replarglist_textblock_argmap
+   * Returns a modified replarglist from by applying a textblock
+   * @param  {replarglist} replargs
+   * @param  {textblock} tb
+   * @param  {argmap} argmap
+   * @return {replarglist}
+   * (func replarglist<-replarglist-textblock-argmap)
+   */
   interface Func_replarglist_from_replarglist_textblock_argmap : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_replarglist_from_replarglist_textblock_argmap(replargs : vx_repl.Type_replarglist, tb : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_replarglist
   }
@@ -3491,7 +3625,14 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function repllist_from_textblocklist_argmap
+   * Returns a repllist from a parsed textblocklist
+   * @param  {textblocklist} textblocklist
+   * @param  {argmap} argmap
+   * @return {repllist}
+   * (func repllist<-textblocklist-argmap)
+   */
   interface Func_repllist_from_textblocklist_argmap : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_repllist_from_textblocklist_argmap(textblocklist : vx_data_textblock.Type_textblocklist, argmap : vx_core.Type_argmap) : vx_repl.Type_repllist
   }
@@ -3581,7 +3722,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function textblock_from_script
+   * Returns a parsed textblock from a string
+   * @param  {string} script
+   * @return {textblock}
+   * (func textblock<-script)
+   */
   interface Func_textblock_from_script : vx_core.Func_any_from_any {
     fun vx_textblock_from_script(script : vx_core.Type_string) : vx_data_textblock.Type_textblock
   }
@@ -3675,7 +3822,13 @@ object vx_repl {
     return output
   }
 
-
+  /**
+   * @function typefunc_from_string
+   * Returns a type, or func from a fully qualified name.
+   * @param  {string} text
+   * @return {any}
+   * (func typefunc<-string)
+   */
   interface Func_typefunc_from_string : vx_core.Func_any_from_any {
     fun vx_typefunc_from_string(text : vx_core.Type_string) : vx_core.Type_any
   }

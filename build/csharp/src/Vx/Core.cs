@@ -1220,16 +1220,23 @@ public static class Core {
     return output;
   }
 
-  public static string vx_string_repeat(string text, int repeat) {
-    System.Text.StringBuilder sb = new System.Text.StringBuilder(text.Length * repeat);
+  public static string vx_string_repeat(
+    string text,
+    int repeat) {
+    System.Text.StringBuilder sb = new System.Text.StringBuilder(
+      text.Length * repeat);
     sb.Insert(0, text, repeat);
     string output = sb.ToString();
     return output;
   }
 
-  public static Vx.Core.Type_string vx_string_repeat(Vx.Core.Type_string text, Vx.Core.Type_int repeat) {
-    string stext = Vx.Core.vx_string_repeat(text.vx_string(), repeat.vx_int());
-    Vx.Core.Type_string output = Vx.Core.vx_new_string(stext);
+  public static Vx.Core.Type_string vx_string_repeat(
+    Vx.Core.Type_string text,
+    Vx.Core.Type_int repeat) {
+    string stext = Vx.Core.vx_string_repeat(
+      text.vx_string(), repeat.vx_int());
+    Vx.Core.Type_string output = Vx.Core.vx_new_string(
+      stext);
     return output;
   }
 
@@ -22458,7 +22465,7 @@ public static class Core {
 
   /**
    * @function if 2
-   * Logical If function
+   * Logical lazy If function with (then) (else) clauses
    * @param  {thenelselist} thenelselist
    * @return {any-1}
    * (func if)

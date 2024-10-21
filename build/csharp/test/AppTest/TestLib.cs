@@ -221,16 +221,16 @@ public static class TestLib {
     string expected = Vx.Core.f_string_from_any(valexpected).vx_string();
     string actual = Vx.Core.f_string_from_any(valactual).vx_string();
     string msg = testpkg + "/" + testname + " " + message;
-  		if (!passfail) {
-  				System.Console.WriteLine(msg);
-  				System.Console.WriteLine(expected);
-  				System.Console.WriteLine(actual);
+    if (!passfail) {
+      System.Console.WriteLine(msg);
+      System.Console.WriteLine(expected);
+      System.Console.WriteLine(actual);
       Vx.Core.f_log(testresult);
-		  }
+    }
     if ((code==":ne")) {
-	  			Assert.NotEqual(expected, actual);
+      Assert.NotEqual(expected, actual);
     } else {
-  				Assert.Equal(expected, actual);
+      Assert.Equal(expected, actual);
     }
     bool output = true;
     return output;

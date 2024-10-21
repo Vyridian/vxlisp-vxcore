@@ -1987,6 +1987,83 @@ public final class CoreTest {
     return output;
   }
 
+  public static Test.Type_testcase f_any_from_struct(final Core.Type_context context) {
+    Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "any<-struct",
+      ":describelist",
+      Core.vx_new(
+        Test.t_testdescribelist,
+        f_any_from_struct_testdescribe_1(context),
+        f_any_from_struct_testdescribe_2(context),
+        f_any_from_struct_testdescribe_3(context)
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_any_from_struct_testdescribe_1(final Core.Type_context context) {
+    Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  :name))",
+      ":testresult", Test.f_test(
+        context,
+        Core.vx_new_string("sname"),
+        Core.f_new(
+          Core.t_translation,
+          Core.vx_new(
+            Core.t_anylist,
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_any_from_struct_testdescribe_2(final Core.Type_context context) {
+    Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \"name\"))",
+      ":testresult", Test.f_test(
+        context,
+        Core.vx_new_string("sname"),
+        Core.f_new(
+          Core.t_translation,
+          Core.vx_new(
+            Core.t_anylist,
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_any_from_struct_testdescribe_3(final Core.Type_context context) {
+    Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \":name\"))",
+      ":testresult", Test.f_test(
+        context,
+        Core.vx_new_string("sname"),
+        Core.f_new(
+          Core.t_translation,
+          Core.vx_new(
+            Core.t_anylist,
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    );
+    return output;
+  }
+
   public static Test.Type_testcase f_boolean_write_from_map_name_value(final Core.Type_context context) {
     Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
@@ -4615,6 +4692,7 @@ public final class CoreTest {
       CoreTest.f_any_from_list_start_reduce(context),
       CoreTest.f_any_from_map(context),
       CoreTest.f_any_from_map_start_reduce(context),
+      CoreTest.f_any_from_struct(context),
       CoreTest.f_boolean_write_from_map_name_value(context),
       CoreTest.f_compare(context),
       CoreTest.f_constdef_from_any(context),
@@ -4672,10 +4750,10 @@ public final class CoreTest {
       ":testpkg", "vx/core", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
       ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
-      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 136), 
+      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 55, ":tests", 76, ":total", 136), 
       ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
       ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
-      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 227), 
+      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 37, ":tests", 85, ":total", 227), 
       ":typenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
     );
     return output;
@@ -4845,7 +4923,7 @@ public final class CoreTest {
         ":any<-reduce-async", 0,
         ":any<-reduce-next", 0,
         ":any<-reduce-next-async", 0,
-        ":any<-struct", 0,
+        ":any<-struct", 3,
         ":async", 0,
         ":boolean-permission<-func", 0,
         ":boolean-write<-map-name-value", 2,

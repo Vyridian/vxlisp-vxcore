@@ -130,10 +130,10 @@
             <summary>
               <p class="passflag">Pass</p>
               <p class="pkgname">vx/core</p>
-              <p class="coveragenums">37% 84/227</p>
+              <p class="coveragenums">37% 85/227</p>
               <p class="coveragenums">9% 7/76</p>
               <p class="coveragenums">13% 2/15</p>
-              <p class="coveragenums">55% 75/136</p>
+              <p class="coveragenums">55% 76/136</p>
               <p class="coveragenums">91% 236/258</p>
               <p class="coveragenums">0% 1/167</p>
               <p class="coveragenums">0% 1/167</p>
@@ -1482,6 +1482,72 @@
                     </td>
                     <td>
                       <p class="preformatted">"xayb"</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">any&lt;-struct</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ "sname"
+ (any&lt;-struct : string
+  (translation
+   :name "sname")
+  :name))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"sname"</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"sname"</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">any&lt;-struct</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ "sname"
+ (any&lt;-struct : string
+  (translation
+   :name "sname")
+  "name"))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"sname"</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"sname"</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">any&lt;-struct</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ "sname"
+ (any&lt;-struct : string
+  (translation
+   :name "sname")
+  ":name"))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"sname"</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">"sname"</p>
                     </td>
                   </tr>
                   <tr>

@@ -4,7 +4,13 @@ import com.vxlisp.vx.*
 
 object vx_translation_all {
 
-
+  /**
+   * @function context_all
+   * Returns the default context for app main execution. Arguments come from the command line.
+   * @param  {anylist} args
+   * @return {context}
+   * (func context-all)
+   */
   interface Func_context_all : vx_core.Func_any_from_any {
     fun vx_context_all(args : vx_core.Type_anylist) : vx_core.Type_context
   }
@@ -111,7 +117,12 @@ object vx_translation_all {
     return output
   }
 
-
+  /**
+   * @function translationmap_all
+   * Returns a translationmap with all translations.
+   * @return {translationmap}
+   * (func translationmap-all)
+   */
   interface Func_translationmap_all : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_translationmap_all() : vx_core.Type_translationmap
   }

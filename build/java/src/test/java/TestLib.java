@@ -198,16 +198,16 @@ public final class TestLib {
     String expected = Core.f_string_from_any(valexpected).vx_string();
     String actual = Core.f_string_from_any(valactual).vx_string();
     String msg = testpkg + "/" + testname + " " + message;
-  		if (!passfail) {
-  				System.out.println(msg);
-  				System.out.println(expected);
-  				System.out.println(actual);
+    if (!passfail) {
+      System.out.println(msg);
+      System.out.println(expected);
+      System.out.println(actual);
       Core.f_log(testresult);
-		  }
+    }
     if ((code.equals(":ne"))) {
-	  			assertNotEquals(expected, actual, msg);
+      assertNotEquals(expected, actual, msg);
     } else {
-  				assertEquals(expected, actual, msg);
+      assertEquals(expected, actual, msg);
     }
     final boolean output = true;
     return output;

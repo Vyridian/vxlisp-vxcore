@@ -13923,6 +13923,10 @@ object vx_core {
   val e_value : vx_core.Type_value = vx_core.Class_value()
   val t_value : vx_core.Type_value = vx_core.Class_value()
 
+  /**
+   * Constant: false
+   * {boolean}
+   */
   class Const_false {
     constructor() {}
     companion object {
@@ -13949,6 +13953,11 @@ object vx_core {
 
   val e_boolean : vx_core.Type_boolean = vx_core.c_false
 
+  /**
+   * Constant: global
+   * Global variable for project data.
+   * {project}
+   */
   class Const_global {
     constructor() {}
     companion object {
@@ -13973,6 +13982,11 @@ object vx_core {
   val c_global : vx_core.Type_project = vx_core.Class_project()
 
 
+  /**
+   * Constant: infinity
+   * Infinity. Returned during unusual calculations.
+   * {int}
+   */
   class Const_infinity {
     constructor() {}
     companion object {
@@ -13998,6 +14012,11 @@ object vx_core {
   val c_infinity : vx_core.Type_int = vx_core.Class_int()
 
 
+  /**
+   * Constant: mempool-active
+   * Active Value Memory Pool
+   * {mempool}
+   */
   class Const_mempool_active {
     constructor() {}
     companion object {
@@ -14022,6 +14041,11 @@ object vx_core {
   val c_mempool_active : vx_core.Type_mempool = vx_core.Class_mempool()
 
 
+  /**
+   * Constant: msg-error
+   * Message is an Error
+   * {int}
+   */
   class Const_msg_error {
     constructor() {}
     companion object {
@@ -14047,6 +14071,11 @@ object vx_core {
   val c_msg_error : vx_core.Type_int = vx_core.Class_int()
 
 
+  /**
+   * Constant: msg-info
+   * Message is just information
+   * {int}
+   */
   class Const_msg_info {
     constructor() {}
     companion object {
@@ -14072,6 +14101,11 @@ object vx_core {
   val c_msg_info : vx_core.Type_int = vx_core.Class_int()
 
 
+  /**
+   * Constant: msg-severe
+   * Message is a Severe Error
+   * {int}
+   */
   class Const_msg_severe {
     constructor() {}
     companion object {
@@ -14097,6 +14131,11 @@ object vx_core {
   val c_msg_severe : vx_core.Type_int = vx_core.Class_int()
 
 
+  /**
+   * Constant: msg-warning
+   * Message is a Warning
+   * {int}
+   */
   class Const_msg_warning {
     constructor() {}
     companion object {
@@ -14122,6 +14161,11 @@ object vx_core {
   val c_msg_warning : vx_core.Type_int = vx_core.Class_int()
 
 
+  /**
+   * Constant: neginfinity
+   * Negative Infinity. Returned during unusual calculations.
+   * {int}
+   */
   class Const_neginfinity {
     constructor() {}
     companion object {
@@ -14147,6 +14191,11 @@ object vx_core {
   val c_neginfinity : vx_core.Type_int = vx_core.Class_int()
 
 
+  /**
+   * Constant: newline
+   * New line constant
+   * {string}
+   */
   class Const_newline {
     constructor() {}
     companion object {
@@ -14172,6 +14221,11 @@ object vx_core {
   val c_newline : vx_core.Type_string = vx_core.Class_string()
 
 
+  /**
+   * Constant: notanumber
+   * Not a number. Returned during invalid calculations.
+   * {int}
+   */
   class Const_notanumber {
     constructor() {}
     companion object {
@@ -14197,6 +14251,11 @@ object vx_core {
   val c_notanumber : vx_core.Type_int = vx_core.Class_int()
 
 
+  /**
+   * Constant: nothing
+   * Nothing Value. Opposite of every other value. e.g. Nil, Null
+   * {string}
+   */
   class Const_nothing {
     constructor() {}
     companion object {
@@ -14222,6 +14281,11 @@ object vx_core {
   val c_nothing : vx_core.Type_string = vx_core.Class_string()
 
 
+  /**
+   * Constant: path-test-resources
+   * The test path from project file
+   * {string}
+   */
   class Const_path_test_resources {
     constructor() {}
     companion object {
@@ -14247,6 +14311,11 @@ object vx_core {
   val c_path_test_resources : vx_core.Type_string = vx_core.Class_string()
 
 
+  /**
+   * Constant: quote
+   * Quotation mark constant
+   * {string}
+   */
   class Const_quote {
     constructor() {}
     companion object {
@@ -14272,6 +14341,10 @@ object vx_core {
   val c_quote : vx_core.Type_string = vx_core.Class_string()
 
 
+  /**
+   * Constant: true
+   * {boolean}
+   */
   class Const_true {
     constructor() {}
     companion object {
@@ -14296,7 +14369,13 @@ object vx_core {
 
   val c_true : vx_core.Type_boolean = vx_core.Class_boolean()
 
-
+  /**
+   * @function not
+   * Boolean not
+   * @param  {boolean} value Thing to not
+   * @return {boolean}
+   * (func !)
+   */
   interface Func_not : vx_core.Func_any_from_any {
     fun vx_not(value : vx_core.Type_boolean) : vx_core.Type_boolean
   }
@@ -14387,7 +14466,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function notempty
+   * Returns true if text is not empty.
+   * @param  {string} text
+   * @return {boolean}
+   * (func !-empty)
+   */
   interface Func_notempty : vx_core.Func_any_from_any {
     fun vx_notempty(text : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -14482,7 +14567,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function notempty 1
+   * Returns true if value is not empty.
+   * @param  {any} value
+   * @return {boolean}
+   * (func !-empty)
+   */
   interface Func_notempty_1 : vx_core.Func_any_from_any {
     fun vx_notempty_1(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -14577,7 +14668,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function ne
+   * Returns true if the first arg is not equal to any of the other arg.
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {boolean}
+   * (func !=)
+   */
   interface Func_ne : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_ne(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -14662,7 +14760,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function neqeq
+   * Returns true if the first arg is not strictly equal to any of the other arg.
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {boolean}
+   * (func !==)
+   */
   interface Func_neqeq : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_neqeq(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -14747,7 +14852,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function multiply
+   * Math int multiply
+   * @param  {int} num1
+   * @param  {int} num2
+   * @return {int}
+   * (func *)
+   */
   interface Func_multiply : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_multiply(num1 : vx_core.Type_int, num2 : vx_core.Type_int) : vx_core.Type_int
   }
@@ -14828,7 +14940,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function multiply 1
+   * Math multipy
+   * @param  {number} num1
+   * @param  {number} num2
+   * @return {number}
+   * (func *)
+   */
   interface Func_multiply_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_multiply_1(num1 : vx_core.Type_number, num2 : vx_core.Type_number) : vx_core.Type_number
   }
@@ -14909,7 +15028,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function multiply 2
+   * Math multiply
+   * @param  {intlist} nums
+   * @return {int}
+   * (func *)
+   */
   interface Func_multiply_2 : vx_core.Func_any_from_any {
     fun vx_multiply_2(nums : vx_core.Type_intlist) : vx_core.Type_int
   }
@@ -15013,7 +15138,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function multiply 3
+   * Math multiply
+   * @param  {numberlist} nums
+   * @return {number}
+   * (func *)
+   */
   interface Func_multiply_3 : vx_core.Func_any_from_any {
     fun vx_multiply_3(nums : vx_core.Type_numberlist) : vx_core.Type_number
   }
@@ -15117,7 +15248,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function plus
+   * Math int plus
+   * @param  {int} num1
+   * @param  {int} num2
+   * @return {int}
+   * (func +)
+   */
   interface Func_plus : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_plus(num1 : vx_core.Type_int, num2 : vx_core.Type_int) : vx_core.Type_int
   }
@@ -15198,7 +15336,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function plus 1
+   * Math number plus
+   * @param  {number} num1
+   * @param  {number} num2
+   * @return {number}
+   * (func +)
+   */
   interface Func_plus_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_plus_1(num1 : vx_core.Type_number, num2 : vx_core.Type_number) : vx_core.Type_number
   }
@@ -15279,7 +15424,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function plus 2
+   * Math int plus
+   * @param  {intlist} nums
+   * @return {int}
+   * (func +)
+   */
   interface Func_plus_2 : vx_core.Func_any_from_any {
     fun vx_plus_2(nums : vx_core.Type_intlist) : vx_core.Type_int
   }
@@ -15383,7 +15534,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function plus 3
+   * Math number plus
+   * @param  {numberlist} nums
+   * @return {number}
+   * (func +)
+   */
   interface Func_plus_3 : vx_core.Func_any_from_any {
     fun vx_plus_3(nums : vx_core.Type_numberlist) : vx_core.Type_number
   }
@@ -15487,7 +15644,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function plus1
+   * Math int plus 1
+   * @param  {int} num
+   * @return {int}
+   * (func +1)
+   */
   interface Func_plus1 : vx_core.Func_any_from_any {
     fun vx_plus1(num : vx_core.Type_int) : vx_core.Type_int
   }
@@ -15581,7 +15744,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function minus
+   * Math int minus
+   * @param  {int} num1
+   * @param  {int} num2
+   * @return {int}
+   * (func -)
+   */
   interface Func_minus : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_minus(num1 : vx_core.Type_int, num2 : vx_core.Type_int) : vx_core.Type_int
   }
@@ -15662,7 +15832,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function minus 1
+   * Math number minus
+   * @param  {number} num1
+   * @param  {number} num2
+   * @return {number}
+   * (func -)
+   */
   interface Func_minus_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_minus_1(num1 : vx_core.Type_number, num2 : vx_core.Type_number) : vx_core.Type_number
   }
@@ -15743,7 +15920,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function minus 2
+   * Math integer minus
+   * @param  {intlist} nums
+   * @return {int}
+   * (func -)
+   */
   interface Func_minus_2 : vx_core.Func_any_from_any {
     fun vx_minus_2(nums : vx_core.Type_intlist) : vx_core.Type_int
   }
@@ -15847,7 +16030,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function minus 3
+   * Math number minus
+   * @param  {numberlist} nums
+   * @return {number}
+   * (func -)
+   */
   interface Func_minus_3 : vx_core.Func_any_from_any {
     fun vx_minus_3(nums : vx_core.Type_numberlist) : vx_core.Type_number
   }
@@ -15951,7 +16140,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function minus1
+   * Math int minus 1
+   * @param  {int} num
+   * @return {int}
+   * (func -1)
+   */
   interface Func_minus1 : vx_core.Func_any_from_any {
     fun vx_minus1(num : vx_core.Type_int) : vx_core.Type_int
   }
@@ -16045,7 +16240,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function dotmethod
+   * Not Recommened: Support for Object Oriented dot notation. e.g. (this.foo 'a') = this.foo('a')
+   * @param  {any} target
+   * @param  {string} method
+   * @param  {anylist} parameters
+   * @return {any}
+   * (func .)
+   */
   interface Func_dotmethod : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_dotmethod(target : vx_core.Type_any, method : vx_core.Type_string, parameters : vx_core.Type_anylist) : vx_core.Type_any
   }
@@ -16125,7 +16328,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function divide
+   * Math divide
+   * @param  {number} num1
+   * @param  {number} num2
+   * @return {number}
+   * (func /)
+   */
   interface Func_divide : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_divide(num1 : vx_core.Type_number, num2 : vx_core.Type_number) : vx_core.Type_number
   }
@@ -16213,7 +16423,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function lt
+   * Returns true if the first arg is less than all of the other args
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {boolean}
+   * (func <)
+   */
   interface Func_lt : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_lt(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -16315,7 +16532,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function lt 1
+   * Returns true if the first arg is less than all of the other args
+   * @param  {anylist} values
+   * @return {boolean}
+   * (func <)
+   */
   interface Func_lt_1 : vx_core.Func_any_from_any {
     fun vx_lt_1(values : vx_core.Type_anylist) : vx_core.Type_boolean
   }
@@ -16423,7 +16646,16 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function chainfirst
+   * This is a special function that applies a value as the first argument for the first function.
+   * The result is then used as the first argument on the next function, etc. Sometimes this
+   * improves readability.
+   * @param  {any-1} value
+   * @param  {any<-anylist} fnlist
+   * @return {any-1}
+   * (func <-)
+   */
   interface Func_chainfirst : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_chainfirst(generic_any_1 : T, value : T, fnlist : vx_core.Type_any_from_anylist) : T
   }
@@ -16503,7 +16735,16 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function chainlast
+   * This is a special function that applies a value as the last argument for the first function.
+   * The result is then used as the last argument on the next function, etc. Sometimes this
+   * improves readability.
+   * @param  {any-1} value
+   * @param  {any<-anylist} fnlist
+   * @return {any-1}
+   * (func <<-)
+   */
   interface Func_chainlast : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_chainlast(generic_any_1 : T, value : T, fnlist : vx_core.Type_any_from_anylist) : T
   }
@@ -16583,7 +16824,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function le
+   * Returns true if the first arg is less or equal than all of the other args
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {boolean}
+   * (func <=)
+   */
   interface Func_le : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_le(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -16668,7 +16916,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function le 1
+   * Returns true if the first arg is less or equal than all of the other args
+   * @param  {anylist} args
+   * @return {boolean}
+   * (func <=)
+   */
   interface Func_le_1 : vx_core.Func_any_from_any {
     fun vx_le_1(args : vx_core.Type_anylist) : vx_core.Type_boolean
   }
@@ -16763,7 +17017,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function eq
+   * Boolean equal/equivalent
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {boolean}
+   * (func =)
+   */
   interface Func_eq : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_eq(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -16853,7 +17114,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function eq 1
+   * Boolean equal/equivalent
+   * @param  {anylist} values
+   * @return {boolean}
+   * (func =)
+   */
   interface Func_eq_1 : vx_core.Func_any_from_any {
     fun vx_eq_1(values : vx_core.Type_anylist) : vx_core.Type_boolean
   }
@@ -16961,7 +17228,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function eqeq
+   * Strict equality check. Note that all non-empty, non-constants will not be equal.
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {boolean}
+   * (func ==)
+   */
   interface Func_eqeq : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_eqeq(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -17042,7 +17316,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function gt
+   * Returns true if the first arg is greater than all of the other args
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {boolean}
+   * (func >)
+   */
   interface Func_gt : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_gt(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -17144,7 +17425,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function gt 1
+   * Returns true if the first arg is greater than all of the other args
+   * @param  {anylist} values
+   * @return {boolean}
+   * (func >)
+   */
   interface Func_gt_1 : vx_core.Func_any_from_any {
     fun vx_gt_1(values : vx_core.Type_anylist) : vx_core.Type_boolean
   }
@@ -17252,7 +17539,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function ge
+   * Returns true if val1 is greater or equal to val2
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {boolean}
+   * (func >=)
+   */
   interface Func_ge : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_ge(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -17337,7 +17631,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function ge 1
+   * Returns true if the first arg is greater or equal than all of the other args
+   * @param  {anylist} args
+   * @return {boolean}
+   * (func >=)
+   */
   interface Func_ge_1 : vx_core.Func_any_from_any {
     fun vx_ge_1(args : vx_core.Type_anylist) : vx_core.Type_boolean
   }
@@ -17432,7 +17732,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function allowfuncs_from_security
+   * Returns allowfuncs from a given security.
+   * @param  {security} security
+   * @return {funclist}
+   * (func allowfuncs<-security)
+   */
   interface Func_allowfuncs_from_security : vx_core.Func_any_from_any {
     fun vx_allowfuncs_from_security(security : vx_core.Type_security) : vx_core.Type_funclist
   }
@@ -17523,7 +17829,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function allowtypenames_from_typedef
+   * Return allow name list from type
+   * @param  {typedef} vtypedef
+   * @return {stringlist}
+   * (func allowtypenames<-typedef)
+   */
   interface Func_allowtypenames_from_typedef : vx_core.Func_any_from_any {
     fun vx_allowtypenames_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_stringlist
   }
@@ -17618,7 +17930,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function allowtypes_from_typedef
+   * Return allow type list from type
+   * @param  {typedef} vtypedef
+   * @return {typelist}
+   * (func allowtypes<-typedef)
+   */
   interface Func_allowtypes_from_typedef : vx_core.Func_any_from_any {
     fun vx_allowtypes_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_typelist
   }
@@ -17709,7 +18027,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function and
+   * Returns true if all values are true
+   * @param  {boolean} val1
+   * @param  {boolean} val2
+   * @return {boolean}
+   * (func and)
+   */
   interface Func_and : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_and(val1 : vx_core.Type_boolean, val2 : vx_core.Type_boolean) : vx_core.Type_boolean
   }
@@ -17793,7 +18118,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function and 1
+   * Returns true if all values are true
+   * @param  {booleanlist} values
+   * @return {boolean}
+   * (func and)
+   */
   interface Func_and_1 : vx_core.Func_any_from_any {
     fun vx_and_1(values : vx_core.Type_booleanlist) : vx_core.Type_boolean
   }
@@ -17933,7 +18264,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_any
+   * Function Type taking any value any-2 and returning generic any-1
+   * @param  {any-2} value
+   * @return {any-1}
+   * (func any<-any)
+   */
   interface Func_any_from_any : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T
     fun vx_fn_new(fn : Class_any_from_any.IFn) : vx_core.Func_any_from_any
@@ -18032,7 +18369,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function any_from_any_async
+   * Function Type taking any value any-2 and returning generic any-1
+   * @param  {any-2} value
+   * @return {any-1}
+   * (func any<-any-async)
+   */
   interface Func_any_from_any_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T>
     fun vx_fn_new(fn : Class_any_from_any_async.IFn) : vx_core.Func_any_from_any_async
@@ -18132,7 +18477,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_any_context
+   * Function Type taking any value any-2 and returning generic any-1 using context
+   * @param  {any-2} value
+   * @return {any-1}
+   * (func any<-any-context)
+   */
   interface Func_any_from_any_context : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T
     fun vx_fn_new(fn : Class_any_from_any_context.IFn) : vx_core.Func_any_from_any_context
@@ -18232,7 +18583,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function any_from_any_context_async
+   * Generic Function taking any value any-2 and returning generic any-1
+   * @param  {any-2} value
+   * @return {any-1}
+   * (func any<-any-context-async)
+   */
   interface Func_any_from_any_context_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context_async(generic_any_1 : T, context : vx_core.Type_context, value : U) : CompletableFuture<T>
     fun vx_fn_new(fn : Class_any_from_any_context_async.IFn) : vx_core.Func_any_from_any_context_async
@@ -18333,7 +18692,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_any_key_value
+   * Generic Function returning Generic any-1 from a any-1, a key, and a value.
+   * @param  {any-1} current
+   * @param  {string} key
+   * @param  {any-2} value
+   * @return {any-1}
+   * (func any<-any-key-value)
+   */
   interface Func_any_from_any_key_value : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_key_value(generic_any_1 : T, current : T, key : vx_core.Type_string, value : U) : T
     fun vx_fn_new(fn : Class_any_from_any_key_value.IFn) : vx_core.Func_any_from_any_key_value
@@ -18432,7 +18799,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_func
+   * Generic Function returning Generic any-1 with any parameters
+   * @return {any-1}
+   * (func any<-func)
+   */
   interface Func_any_from_func : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_from_func(generic_any_1 : T) : T
     fun vx_fn_new(fn : Class_any_from_func.IFn) : vx_core.Func_any_from_func
@@ -18528,7 +18900,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function any_from_func_async
+   * Generic Function returning Generic any-1 with any parameters
+   * @return {any-1}
+   * (func any<-func-async)
+   */
   interface Func_any_from_func_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <T : vx_core.Type_any> vx_any_from_func_async(generic_any_1 : T) : CompletableFuture<T>
     fun vx_fn_new(fn : Class_any_from_func_async.IFn) : vx_core.Func_any_from_func_async
@@ -18627,7 +19006,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_int
+   * Generic Function returning Generic any-1 from an int
+   * @param  {int} value
+   * @return {any-1}
+   * (func any<-int)
+   */
   interface Func_any_from_int : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_from_int(generic_any_1 : T, value : vx_core.Type_int) : T
     fun vx_fn_new(fn : Class_any_from_int.IFn) : vx_core.Func_any_from_int
@@ -18724,7 +19109,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_int_any
+   * Generic Function returning Generic any-1 from an int and a value
+   * @param  {int} num
+   * @param  {any-2} value
+   * @return {any-1}
+   * (func any<-int-any)
+   */
   interface Func_any_from_int_any : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_int_any(generic_any_1 : T, num : vx_core.Type_int, value : U) : T
     fun vx_fn_new(fn : Class_any_from_int_any.IFn) : vx_core.Func_any_from_int_any
@@ -18822,7 +19214,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_key_value
+   * Generic Function returning Generic any-1 from a key and a value
+   * @param  {string} key
+   * @param  {any-2} value
+   * @return {any-1}
+   * (func any<-key-value)
+   */
   interface Func_any_from_key_value : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_key_value(generic_any_1 : T, key : vx_core.Type_string, value : U) : T
     fun vx_fn_new(fn : Class_any_from_key_value.IFn) : vx_core.Func_any_from_key_value
@@ -18920,7 +19319,16 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function any_from_key_value_async
+   * Generic Function returning Asynchronous Generic any-1 from a key and a value
+   * @param  {string} key
+   * @param  {any-2} value
+   * @return {any-1}
+   * (func any<-key-value-async)
+   */
   interface Func_any_from_key_value_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_key_value_async(generic_any_1 : T, key : vx_core.Type_string, value : U) : CompletableFuture<T>
     fun vx_fn_new(fn : Class_any_from_key_value_async.IFn) : vx_core.Func_any_from_key_value_async
@@ -19021,7 +19429,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_list
+   * Returns nth value from a list or none if out of bounds
+   * @param  {list-1} values
+   * @param  {int} index
+   * @return {any-1}
+   * (func any<-list)
+   */
   interface Func_any_from_list : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, X : vx_core.Type_list> vx_any_from_list(generic_any_1 : T, values : X, index : vx_core.Type_int) : T
   }
@@ -19108,7 +19523,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_list_start_reduce
+   * Returns a val from a list reduce operation
+   * @param  {list-2} list
+   * @param  {any-1} valstart
+   * @param  {any<-reduce} fn-reduce
+   * @return {any-1}
+   * (func any<-list-start-reduce)
+   */
   interface Func_any_from_list_start_reduce : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, Y : vx_core.Type_list> vx_any_from_list_start_reduce(generic_any_1 : T, list : Y, valstart : T, fn_reduce : vx_core.Func_any_from_reduce) : T
   }
@@ -19190,7 +19613,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_list_start_reduce_next
+   * Returns a val from a list reduce operation
+   * @param  {list-2} list
+   * @param  {any-1} valstart
+   * @param  {any<-reduce-next} fn-reduce-next
+   * @return {any-1}
+   * (func any<-list-start-reduce-next)
+   */
   interface Func_any_from_list_start_reduce_next : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, Y : vx_core.Type_list> vx_any_from_list_start_reduce_next(generic_any_1 : T, list : Y, valstart : T, fn_reduce_next : vx_core.Func_any_from_reduce_next) : T
   }
@@ -19272,7 +19703,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_map
+   * Returns value from a map or empty if not found
+   * @param  {map-1} valuemap
+   * @param  {string} key
+   * @return {any-1}
+   * (func any<-map)
+   */
   interface Func_any_from_map : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map, T : vx_core.Type_any> vx_any_from_map(generic_any_1 : T, valuemap : N, key : vx_core.Type_string) : T
   }
@@ -19353,7 +19791,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_map_start_reduce
+   * Returns a value by reducing each element of a map.
+   * @param  {map-1} map
+   * @param  {any-1} start
+   * @param  {any<-any-key-value} fn-reduce
+   * @return {any-1}
+   * (func any<-map-start-reduce)
+   */
   interface Func_any_from_map_start_reduce : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map, T : vx_core.Type_any> vx_any_from_map_start_reduce(generic_any_1 : T, map : N, start : T, fn_reduce : vx_core.Func_any_from_any_key_value) : T
   }
@@ -19435,7 +19881,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_none
+   * Function Type returning Generic any-1 with no parameters
+   * @return {any-1}
+   * (func any<-none)
+   */
   interface Func_any_from_none : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_any_from_none(generic_any_1 : T) : T
     fun vx_fn_new(fn : Class_any_from_none.IFn) : vx_core.Func_any_from_none
@@ -19531,7 +19982,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function any_from_none_async
+   * Function Type returning Generic any-1 with no parameters
+   * @return {any-1}
+   * (func any<-none-async)
+   */
   interface Func_any_from_none_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <T : vx_core.Type_any> vx_any_from_none_async(generic_any_1 : T) : CompletableFuture<T>
     fun vx_fn_new(fn : Class_any_from_none_async.IFn) : vx_core.Func_any_from_none_async
@@ -19630,7 +20088,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_reduce
+   * @param  {any-1} result
+   * @param  {any-2} item
+   * @return {any-1}
+   * (func any<-reduce)
+   */
   interface Func_any_from_reduce : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_reduce(generic_any_1 : T, result : T, item : U) : T
     fun vx_fn_new(fn : Class_any_from_reduce.IFn) : vx_core.Func_any_from_reduce
@@ -19728,7 +20192,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function any_from_reduce_async
+   * @param  {any-1} result
+   * @param  {any-2} item
+   * @return {any-1}
+   * (func any<-reduce-async)
+   */
   interface Func_any_from_reduce_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_reduce_async(generic_any_1 : T, result : T, item : U) : CompletableFuture<T>
     fun vx_fn_new(fn : Class_any_from_reduce_async.IFn) : vx_core.Func_any_from_reduce_async
@@ -19829,7 +20301,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_reduce_next
+   * @param  {any-1} result
+   * @param  {any-2} current
+   * @param  {any-2} next
+   * @return {any-1}
+   * (func any<-reduce-next)
+   */
   interface Func_any_from_reduce_next : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_reduce_next(generic_any_1 : T, result : T, current : U, next : U) : T
     fun vx_fn_new(fn : Class_any_from_reduce_next.IFn) : vx_core.Func_any_from_reduce_next
@@ -19928,7 +20407,16 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function any_from_reduce_next_async
+   * @param  {any-1} result
+   * @param  {any-2} current
+   * @param  {any-2} next
+   * @return {any-1}
+   * (func any<-reduce-next-async)
+   */
   interface Func_any_from_reduce_next_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_reduce_next_async(generic_any_1 : T, result : T, current : U, next : U) : CompletableFuture<T>
     fun vx_fn_new(fn : Class_any_from_reduce_next_async.IFn) : vx_core.Func_any_from_reduce_next_async
@@ -20030,7 +20518,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function any_from_struct
+   * Returns value from a struct
+   * @param  {struct-2} vstruct
+   * @param  {string} key
+   * @return {any-1}
+   * (func any<-struct)
+   */
   interface Func_any_from_struct : vx_core.Type_func, vx_core.Type_replfunc {
     fun <R : vx_core.Type_struct, T : vx_core.Type_any> vx_any_from_struct(generic_any_1 : T, vstruct : R, key : vx_core.Type_string) : T
   }
@@ -20112,7 +20607,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function async
+   * Returns an asynchonous version value. This exists mostly for type-casting.
+   * @param  {any-1} value
+   * @return {any-1}
+   * (func async)
+   */
   interface Func_async : vx_core.Func_any_from_any_async {
     fun <T : vx_core.Type_any> vx_async(generic_any_1 : T, value : T) : CompletableFuture<T>
   }
@@ -20203,7 +20706,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function boolean_permission_from_func
+   * Returns true if the given func has permission.
+   * @param  {func} func
+   * @return {boolean}
+   * (func boolean-permission<-func)
+   */
   interface Func_boolean_permission_from_func : vx_core.Func_any_from_any_context {
     fun vx_boolean_permission_from_func(context : vx_core.Type_context, func : vx_core.Type_func) : vx_core.Type_boolean
   }
@@ -20302,7 +20811,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function boolean_write_from_map_name_value
+   * Returns true if it alters a mutable map false if it fails.
+   * @param  {map-1} valuemap
+   * @param  {string} name
+   * @param  {any-1} value
+   * @return {boolean}
+   * (func boolean-write<-map-name-value)
+   */
   interface Func_boolean_write_from_map_name_value : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_write_from_map_name_value(valuemap : vx_core.Type_map, name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -20383,7 +20900,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function boolean_from_any
+   * Function Type taking generic any-1 and returning boolean
+   * @param  {any-1} value
+   * @return {boolean}
+   * (func boolean<-any)
+   */
   interface Func_boolean_from_any : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_from_any(value : vx_core.Type_any) : vx_core.Type_boolean
     fun vx_fn_new(fn : Class_boolean_from_any.IFn) : vx_core.Func_boolean_from_any
@@ -20479,7 +21002,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function boolean_from_func
+   * Function Type returning boolean with any parameters
+   * @return {boolean}
+   * (func boolean<-func)
+   */
   interface Func_boolean_from_func : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_from_func() : vx_core.Type_boolean
     fun vx_fn_new(fn : Class_any_from_func.IFn) : vx_core.Func_boolean_from_func
@@ -20574,7 +21102,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function boolean_from_none
+   * Function Type returning boolean with no parameters
+   * @return {boolean}
+   * (func boolean<-none)
+   */
   interface Func_boolean_from_none : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_boolean_from_none() : vx_core.Type_boolean
     fun vx_fn_new(fn : Class_any_from_func.IFn) : vx_core.Func_boolean_from_none
@@ -20669,7 +21202,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function case
+   * @param  {list-1} values
+   * @param  {any<-func} fn-any
+   * @return {thenelse}
+   * (func case)
+   */
   interface Func_case : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_case(values : vx_core.Type_list, fn_any : vx_core.Func_any_from_func) : vx_core.Type_thenelse
   }
@@ -20760,7 +21299,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function case 1
+   * @param  {any-1} value
+   * @param  {any<-func} fn-any
+   * @return {thenelse}
+   * (func case)
+   */
   interface Func_case_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_case_1(value : vx_core.Type_any, fn_any : vx_core.Func_any_from_func) : vx_core.Type_thenelse
   }
@@ -20851,7 +21396,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function compare
+   * Returns 0 if vals are equal, 1 if val1 > val2, -1 if val1 < val2
+   * @param  {any} val1
+   * @param  {any} val2
+   * @return {int}
+   * (func compare)
+   */
   interface Func_compare : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_compare(val1 : vx_core.Type_any, val2 : vx_core.Type_any) : vx_core.Type_int
   }
@@ -20931,7 +21483,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function constdef_from_any
+   * Returns a constdef, or empty, from any if the value is a constant.
+   * @param  {any} value
+   * @return {constdef}
+   * (func constdef<-any)
+   */
   interface Func_constdef_from_any : vx_core.Func_any_from_any {
     fun vx_constdef_from_any(value : vx_core.Type_any) : vx_core.Type_constdef
   }
@@ -21022,7 +21580,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function constname_from_any
+   * Returns the full name of a constant or blank if not a constant.
+   * @param  {any} value
+   * @return {string}
+   * (func constname<-any)
+   */
   interface Func_constname_from_any : vx_core.Func_any_from_any {
     fun vx_constname_from_any(value : vx_core.Type_any) : vx_core.Type_string
   }
@@ -21153,7 +21717,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function contains
+   * Returns true if the given list contains the given value.
+   * @param  {string} text
+   * @param  {string} find
+   * @return {boolean}
+   * (func contains)
+   */
   interface Func_contains : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_contains(text : vx_core.Type_string, find : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -21236,7 +21807,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function contains 1
+   * Returns true if the given list contains the given value.
+   * @param  {list-2} values Any list
+   * @param  {any} find Any value
+   * @return {boolean}
+   * (func contains)
+   */
   interface Func_contains_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_contains_1(values : vx_core.Type_list, find : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -21316,7 +21894,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function context_main
+   * Returns the default context for app main execution. Arguments come from the command line.
+   * @param  {anylist} args
+   * @return {context}
+   * (func context-main)
+   */
   interface Func_context_main : vx_core.Func_any_from_any {
     fun vx_context_main(args : vx_core.Type_anylist) : vx_core.Type_context
   }
@@ -21409,7 +21993,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function copy
+   * Returns a copy of a given value with the given values added or updated.
+   * @param  {any-1} value
+   * @param  {anylist} values
+   * @return {any-1}
+   * (func copy)
+   */
   interface Func_copy : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_copy(value : T, values : vx_core.Type_anylist) : T
   }
@@ -21492,7 +22083,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function else
+   * @param  {any<-func} fn-any
+   * @return {thenelse}
+   * (func else)
+   */
   interface Func_else : vx_core.Func_any_from_any {
     fun vx_else(fn_any : vx_core.Func_any_from_func) : vx_core.Type_thenelse
   }
@@ -21592,7 +22188,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function empty
+   * Returns the empty value for a given type. Can be called using (empty type) or simply (type)
+   * @param  {any-1} type
+   * @return {any-1}
+   * (func empty)
+   */
   interface Func_empty : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any> vx_empty(type : T) : T
   }
@@ -21682,7 +22284,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function extends_from_any
+   * @param  {any-1} value
+   * @return {string}
+   * (func extends<-any)
+   */
   interface Func_extends_from_any : vx_core.Func_any_from_any {
     fun vx_extends_from_any(value : vx_core.Type_any) : vx_core.Type_string
   }
@@ -21777,7 +22384,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function extends_from_typedef
+   * Get the basetype of a given type
+   * @param  {typedef} vtypedef
+   * @return {string}
+   * (func extends<-typedef)
+   */
   interface Func_extends_from_typedef : vx_core.Func_any_from_any {
     fun vx_extends_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_string
   }
@@ -21868,7 +22481,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function first_from_list
+   * Returns first value
+   * @param  {list-1} values
+   * @return {any-1}
+   * (func first<-list)
+   */
   interface Func_first_from_list : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any, X : vx_core.Type_list> vx_first_from_list(generic_any_1 : T, values : X) : T
   }
@@ -21964,7 +22583,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function first_from_list_any_from_any
+   * Returns first value that is not nothing
+   * @param  {list-1} values
+   * @param  {any<-any} fn-any<-any
+   * @return {any-1}
+   * (func first<-list-any<-any)
+   */
   interface Func_first_from_list_any_from_any : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, X : vx_core.Type_list> vx_first_from_list_any_from_any(generic_any_1 : T, values : X, fn_any_from_any : vx_core.Func_any_from_any) : T
   }
@@ -22051,7 +22677,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function float_from_string
+   * Returns float from a given string.
+   * @param  {string} text
+   * @return {float}
+   * (func float<-string)
+   */
   interface Func_float_from_string : vx_core.Func_any_from_any {
     fun vx_float_from_string(text : vx_core.Type_string) : vx_core.Type_float
   }
@@ -22143,7 +22775,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function fn
+   * Shell for lambda function calls
+   * @param  {arglist} parameters
+   * @param  {any<-func} fn-any
+   * @return {any-1}
+   * (func fn)
+   */
   interface Func_fn : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_fn(generic_any_1 : T, parameters : vx_core.Type_arglist, fn_any : vx_core.Func_any_from_func) : T
   }
@@ -22223,7 +22862,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function funcdef_from_func
+   * Returns the definition of a function
+   * @param  {func} value
+   * @return {funcdef}
+   * (func funcdef<-func)
+   */
   interface Func_funcdef_from_func : vx_core.Func_any_from_any {
     fun vx_funcdef_from_func(value : vx_core.Type_func) : vx_core.Type_funcdef
   }
@@ -22314,7 +22959,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function funcname_from_funcdef
+   * Get the name of a given funcdef
+   * @param  {funcdef} funcdef
+   * @return {string}
+   * (func funcname<-funcdef)
+   */
   interface Func_funcname_from_funcdef : vx_core.Func_any_from_any {
     fun vx_funcname_from_funcdef(funcdef : vx_core.Type_funcdef) : vx_core.Type_string
   }
@@ -22413,7 +23064,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function if
+   * Logical If function
+   * @param  {boolean} clause
+   * @param  {any-1} then
+   * @return {any-1}
+   * (func if)
+   */
   interface Func_if : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_if(generic_any_1 : T, clause : vx_core.Type_boolean, then : T) : T
   }
@@ -22496,7 +23154,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function if 1
+   * Logical If function
+   * @param  {boolean} clause
+   * @param  {any-1} thenval
+   * @param  {any-1} elseval
+   * @return {any-1}
+   * (func if)
+   */
   interface Func_if_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_if_1(generic_any_1 : T, clause : vx_core.Type_boolean, thenval : T, elseval : T) : T
   }
@@ -22582,7 +23248,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function if 2
+   * Logical lazy If function with (then) (else) clauses
+   * @param  {thenelselist} thenelselist
+   * @return {any-1}
+   * (func if)
+   */
   interface Func_if_2 : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any> vx_if_2(generic_any_1 : T, thenelselist : vx_core.Type_thenelselist) : T
   }
@@ -22674,7 +23346,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function int_from_func
+   * Function Type returning int with any parameters
+   * @return {int}
+   * (func int<-func)
+   */
   interface Func_int_from_func : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_int_from_func() : vx_core.Type_int
     fun vx_fn_new(fn : Class_any_from_func.IFn) : vx_core.Func_int_from_func
@@ -22760,7 +23437,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function int_from_string
+   * Function Type converting string to int
+   * @param  {string} value
+   * @return {int}
+   * (func int<-string)
+   */
   interface Func_int_from_string : vx_core.Func_any_from_any {
     fun vx_int_from_string(value : vx_core.Type_string) : vx_core.Type_int
   }
@@ -22892,7 +23575,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function is_empty
+   * Returns true if text is empty.
+   * @param  {string} text
+   * @return {boolean}
+   * (func is-empty)
+   */
   interface Func_is_empty : vx_core.Func_any_from_any {
     fun vx_is_empty(text : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -22985,7 +23674,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function is_empty 1
+   * Returns true if an value is empty
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-empty)
+   */
   interface Func_is_empty_1 : vx_core.Func_any_from_any {
     fun vx_is_empty_1(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -23080,7 +23775,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function is_endswith
+   * Returns true if text ends with find.
+   * @param  {string} text
+   * @param  {string} find
+   * @return {boolean}
+   * (func is-endswith)
+   */
   interface Func_is_endswith : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_is_endswith(text : vx_core.Type_string, find : vx_core.Type_string) : vx_core.Type_boolean
   }
@@ -23164,7 +23866,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function is_float
+   * Returns true if the value is a float.
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-float)
+   */
   interface Func_is_float : vx_core.Func_any_from_any {
     fun vx_is_float(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -23256,7 +23964,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function is_func
+   * Returns true if value is a function.
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-func)
+   */
   interface Func_is_func : vx_core.Func_any_from_any {
     fun vx_is_func(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -23349,7 +24063,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function is_int
+   * Returns true if the value is an integer.
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-int)
+   */
   interface Func_is_int : vx_core.Func_any_from_any {
     fun vx_is_int(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -23441,7 +24161,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function is_number
+   * Return true if value is a number
+   * @param  {any} value
+   * @return {boolean}
+   * (func is-number)
+   */
   interface Func_is_number : vx_core.Func_any_from_any {
     fun vx_is_number(value : vx_core.Type_any) : vx_core.Type_boolean
   }
@@ -23562,7 +24288,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function is_pass_from_permission
+   * Returns true if permission passes.
+   * @param  {permission} permission
+   * @return {boolean}
+   * (func is-pass<-permission)
+   */
   interface Func_is_pass_from_permission : vx_core.Func_any_from_any_context {
     fun vx_is_pass_from_permission(context : vx_core.Type_context, permission : vx_core.Type_permission) : vx_core.Type_boolean
   }
@@ -23668,7 +24400,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function last_from_list
+   * Returns last value
+   * @param  {list-1} values
+   * @return {any-1}
+   * (func last<-list)
+   */
   interface Func_last_from_list : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any, X : vx_core.Type_list> vx_last_from_list(generic_any_1 : T, values : X) : T
   }
@@ -23773,7 +24511,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function length
+   * Returns length of a string.
+   * @param  {string} text
+   * @return {int}
+   * (func length)
+   */
   interface Func_length : vx_core.Func_any_from_any {
     fun vx_length(text : vx_core.Type_string) : vx_core.Type_int
   }
@@ -23865,7 +24609,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function length 1
+   * Returns the currently used size/length of a list
+   * @param  {list-1} values
+   * @return {int}
+   * (func length)
+   */
   interface Func_length_1 : vx_core.Func_any_from_any {
     fun vx_length_1(values : vx_core.Type_list) : vx_core.Type_int
   }
@@ -23957,7 +24707,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function length 2
+   * Returns the length of the given map.
+   * @param  {map-1} valuemap
+   * @return {int}
+   * (func length)
+   */
   interface Func_length_2 : vx_core.Func_any_from_any {
     fun vx_length_2(valuemap : vx_core.Type_map) : vx_core.Type_int
   }
@@ -24052,7 +24808,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function let
+   * @param  {arglist} args
+   * @param  {any<-func} fn-any
+   * @return {any-1}
+   * (func let)
+   */
   interface Func_let : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_let(generic_any_1 : T, fn_any : vx_core.Func_any_from_func) : T
   }
@@ -24132,7 +24894,16 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function let_async
+   * Same as normal let but returns async values.
+   * @param  {arglist} args
+   * @param  {any<-func-async} fn-any-async
+   * @return {any-1}
+   * (func let-async)
+   */
   interface Func_let_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <T : vx_core.Type_any> vx_let_async(generic_any_1 : T, fn_any_async : vx_core.Func_any_from_func_async) : CompletableFuture<T>
   }
@@ -24213,7 +24984,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function list_from_list
+   * Return a list with allowed values from another list
+   * @param  {list-2} values
+   * @return {list-1}
+   * (func list<-list)
+   */
   interface Func_list_from_list : vx_core.Func_any_from_any {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list(generic_list_1 : X, values : Y) : X
   }
@@ -24313,7 +25090,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function list_from_list 1
+   * Returns a list of processed items from another list
+   * @param  {list-2} values
+   * @param  {any<-any} fn-any<-any
+   * @return {list-1}
+   * (func list<-list)
+   */
   interface Func_list_from_list_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list_1(generic_list_1 : X, values : Y, fn_any_from_any : vx_core.Func_any_from_any) : X
   }
@@ -24394,7 +25178,16 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function list_from_list_async
+   * Returns an asynchronous list of the processed asynchronous items from another list
+   * @param  {list-2} values
+   * @param  {any<-any-async} fn-any<-any-async
+   * @return {list-1}
+   * (func list<-list-async)
+   */
   interface Func_list_from_list_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list_async(generic_list_1 : X, values : Y, fn_any_from_any_async : vx_core.Func_any_from_any_async) : CompletableFuture<X>
   }
@@ -24476,7 +25269,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function list_from_list_intany
+   * Returns a list of processed items from another list
+   * @param  {list-2} values
+   * @param  {any<-int-any} fn-any<-int-any
+   * @return {list-1}
+   * (func list<-list-intany)
+   */
   interface Func_list_from_list_intany : vx_core.Type_func, vx_core.Type_replfunc {
     fun <X : vx_core.Type_list, Y : vx_core.Type_list> vx_list_from_list_intany(generic_list_1 : X, values : Y, fn_any_from_int_any : vx_core.Func_any_from_int_any) : X
   }
@@ -24557,7 +25357,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function list_from_map
+   * Returns a list of allowed values from a map.
+   * @param  {map-2} valuemap
+   * @return {list-1}
+   * (func list<-map)
+   */
   interface Func_list_from_map : vx_core.Func_any_from_any {
     fun <O : vx_core.Type_map, X : vx_core.Type_list> vx_list_from_map(generic_list_1 : X, valuemap : O) : X
   }
@@ -24658,7 +25464,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function list_from_map 1
+   * Returns a list from a map by applying a function to each key value.
+   * @param  {map-2} valuemap
+   * @param  {any<-key-value} fn-any<-key-value
+   * @return {list-1}
+   * (func list<-map)
+   */
   interface Func_list_from_map_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun <O : vx_core.Type_map, X : vx_core.Type_list> vx_list_from_map_1(generic_list_1 : X, valuemap : O, fn_any_from_key_value : vx_core.Func_any_from_key_value) : X
   }
@@ -24739,7 +25552,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function list_from_map_async
+   * @param  {map-2} valuemap
+   * @param  {any<-key-value-async} fn-any<-key-value-async
+   * @return {list-1}
+   * (func list<-map-async)
+   */
   interface Func_list_from_map_async : vx_core.Type_func, vx_core.Type_replfunc_async {
     fun <O : vx_core.Type_map, X : vx_core.Type_list> vx_list_from_map_async(generic_list_1 : X, valuemap : O, fn_any_from_key_value_async : vx_core.Func_any_from_key_value_async) : CompletableFuture<X>
   }
@@ -24820,7 +25641,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function list_from_type
+   * Create an empty list from a type. Used internally for default lists
+   * @param  {any} type
+   * @return {any}
+   * (func list<-type)
+   */
   interface Func_list_from_type : vx_core.Func_any_from_any {
     fun vx_list_from_type(type : vx_core.Type_any) : vx_core.Type_any
   }
@@ -24910,7 +25737,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function log
+   * Writes a value to the console.
+   * @param  {any} value
+   * @return {any}
+   * (func log)
+   */
   interface Func_log : vx_core.Func_any_from_any {
     fun vx_log(value : vx_core.Type_any) : vx_core.Type_any
   }
@@ -25002,7 +25835,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function log 1
+   * Writes a string and a value to the console.
+   * @param  {string} text
+   * @param  {any-1} value
+   * @return {any-1}
+   * (func log)
+   */
   interface Func_log_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_log_1(generic_any_1 : T, text : vx_core.Type_string, value : T) : T
   }
@@ -25085,7 +25925,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function main
+   * The default function for app main execution. Arguments come from the command line.
+   * @param  {anylist} args
+   * @return {string}
+   * (func main)
+   */
   interface Func_main : vx_core.Func_any_from_any {
     fun vx_main(args : vx_core.Type_anylist) : vx_core.Type_string
   }
@@ -25179,7 +26025,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function map_from_list
+   * Returns a map from a list by applying a function to generate a key for each value.
+   * @param  {list-2} vallist
+   * @param  {any<-any} fn-any<-any
+   * @return {map-1}
+   * (func map<-list)
+   */
   interface Func_map_from_list : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map, Y : vx_core.Type_list> vx_map_from_list(generic_map_1 : N, vallist : Y, fn_any_from_any : vx_core.Func_any_from_any) : N
   }
@@ -25260,7 +26113,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function map_from_map
+   * Return a map with allowed values from another map
+   * @param  {map-2} valuemap
+   * @return {map-1}
+   * (func map<-map)
+   */
   interface Func_map_from_map : vx_core.Func_any_from_any {
     fun <N : vx_core.Type_map, O : vx_core.Type_map> vx_map_from_map(generic_map_1 : N, valuemap : O) : N
   }
@@ -25361,7 +26220,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function map_from_map 1
+   * Returns a map from a map by applying a function to each key value.
+   * @param  {map-2} valuemap
+   * @param  {any<-key-value} fn-any<-key-value
+   * @return {map-1}
+   * (func map<-map)
+   */
   interface Func_map_from_map_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun <N : vx_core.Type_map, O : vx_core.Type_map> vx_map_from_map_1(generic_map_1 : N, valuemap : O, fn_any_from_key_value : vx_core.Func_any_from_key_value) : N
   }
@@ -25445,7 +26311,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function msg_from_error
+   * Returns a msg from error string
+   * @param  {string} error
+   * @return {msg}
+   * (func msg<-error)
+   */
   interface Func_msg_from_error : vx_core.Func_any_from_any {
     fun vx_msg_from_error(error : vx_core.Type_string) : vx_core.Type_msg
   }
@@ -25545,7 +26417,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function msg_from_error 1
+   * Returns a msg from error code and detail
+   * @param  {string} code
+   * @param  {any} detail
+   * @return {msg}
+   * (func msg<-error)
+   */
   interface Func_msg_from_error_1 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_msg_from_error_1(code : vx_core.Type_string, detail : vx_core.Type_any) : vx_core.Type_msg
   }
@@ -25636,7 +26515,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function msg_from_error 2
+   * Returns a msg from error path code and detail
+   * @param  {string} path
+   * @param  {string} code
+   * @param  {any} detail
+   * @return {msg}
+   * (func msg<-error)
+   */
   interface Func_msg_from_error_2 : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_msg_from_error_2(path : vx_core.Type_string, code : vx_core.Type_string, detail : vx_core.Type_any) : vx_core.Type_msg
   }
@@ -25730,7 +26617,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function msg_from_warning
+   * Returns a msg from a warning string
+   * @param  {string} warning
+   * @return {msg}
+   * (func msg<-warning)
+   */
   interface Func_msg_from_warning : vx_core.Func_any_from_any {
     fun vx_msg_from_warning(warning : vx_core.Type_string) : vx_core.Type_msg
   }
@@ -25830,7 +26723,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function msgblock_from_msgblock_msg
+   * Return a new Msgblock with the added msg
+   * @param  {msgblock} origblock
+   * @param  {msg} addmsg
+   * @return {msgblock}
+   * (func msgblock<-msgblock-msg)
+   */
   interface Func_msgblock_from_msgblock_msg : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_msgblock_from_msgblock_msg(origblock : vx_core.Type_msgblock, addmsg : vx_core.Type_msg) : vx_core.Type_msgblock
   }
@@ -25916,7 +26816,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function msgblock_from_msgblock_msgblock
+   * Return a new Msgblock with the added block
+   * @param  {msgblock} origblock
+   * @param  {msgblock} addblock
+   * @return {msgblock}
+   * (func msgblock<-msgblock-msgblock)
+   */
   interface Func_msgblock_from_msgblock_msgblock : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_msgblock_from_msgblock_msgblock(origblock : vx_core.Type_msgblock, addblock : vx_core.Type_msgblock) : vx_core.Type_msgblock
   }
@@ -26003,7 +26910,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function name_from_typedef
+   * Returns the name from a typedef.
+   * @param  {typedef} vtypedef
+   * @return {string}
+   * (func name<-typedef)
+   */
   interface Func_name_from_typedef : vx_core.Func_any_from_any {
     fun vx_name_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_string
   }
@@ -26094,7 +27007,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function native
+   * Native Function Call
+   * @param  {anylist} clauses
+   * @return {any-1}
+   * (func native)
+   */
   interface Func_native : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any> vx_native(generic_any_1 : T, clauses : vx_core.Type_anylist) : T
   }
@@ -26185,7 +27104,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function native_from_any
+   * Returns native value of value object
+   * @param  {any-1} value
+   * @return {any}
+   * (func native<-any)
+   */
   interface Func_native_from_any : vx_core.Func_any_from_any {
     fun vx_native_from_any(value : vx_core.Type_any) : vx_core.Type_any
   }
@@ -26275,7 +27200,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function new
+   * Create a new Value of Type A
+   * @param  {anylist} values
+   * @return {any-1}
+   * (func new)
+   */
   interface Func_new : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any> vx_new(generic_any_1 : T, values : vx_core.Type_anylist) : T
   }
@@ -26371,7 +27302,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function new_from_type
+   * Create a new Value of Type A
+   * @param  {any-1} type
+   * @param  {anylist} values
+   * @return {any-1}
+   * (func new<-type)
+   */
   interface Func_new_from_type : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any> vx_new_from_type(type : T, values : vx_core.Type_anylist) : T
   }
@@ -26454,7 +27392,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function number_from_func
+   * Function Type returning number with any parameters
+   * @return {number}
+   * (func number<-func)
+   */
   interface Func_number_from_func : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_number_from_func() : vx_core.Type_number
   }
@@ -26531,7 +27474,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function or
+   * Returns true if any value is true
+   * @param  {boolean} val1
+   * @param  {boolean} val2
+   * @return {boolean}
+   * (func or)
+   */
   interface Func_or : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_or(val1 : vx_core.Type_boolean, val2 : vx_core.Type_boolean) : vx_core.Type_boolean
   }
@@ -26615,7 +27565,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function or 1
+   * Returns true if any value is true
+   * @param  {booleanlist} values
+   * @return {boolean}
+   * (func or)
+   */
   interface Func_or_1 : vx_core.Func_any_from_any {
     fun vx_or_1(values : vx_core.Type_booleanlist) : vx_core.Type_boolean
   }
@@ -26723,7 +27679,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function package_global_from_name
+   * Returns a package from global with the given name.
+   * @param  {string} name
+   * @return {package}
+   * (func package-global<-name)
+   */
   interface Func_package_global_from_name : vx_core.Func_any_from_any {
     fun vx_package_global_from_name(name : vx_core.Type_string) : vx_core.Type_package
   }
@@ -26818,7 +27780,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function packagename_from_typedef
+   * Returns the package name from a typedef.
+   * @param  {typedef} vtypedef
+   * @return {string}
+   * (func packagename<-typedef)
+   */
   interface Func_packagename_from_typedef : vx_core.Func_any_from_any {
     fun vx_packagename_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_string
   }
@@ -26909,7 +27877,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function path_from_context_path
+   * Returns a path from a context
+   * @param  {string} path
+   * @return {string}
+   * (func path<-context-path)
+   */
   interface Func_path_from_context_path : vx_core.Func_any_from_any_context {
     fun vx_path_from_context_path(context : vx_core.Type_context, path : vx_core.Type_string) : vx_core.Type_string
   }
@@ -27006,7 +27980,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function path_from_setting_path
+   * Returns a path from a setting
+   * @param  {setting} session
+   * @param  {string} path
+   * @return {string}
+   * (func path<-setting-path)
+   */
   interface Func_path_from_setting_path : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_path_from_setting_path(session : vx_core.Type_setting, path : vx_core.Type_string) : vx_core.Type_string
   }
@@ -27085,7 +28066,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function permission_from_id_context
+   * Return a permission from context by id
+   * @param  {string} id
+   * @return {permission}
+   * (func permission<-id-context)
+   */
   interface Func_permission_from_id_context : vx_core.Func_any_from_any_context {
     fun vx_permission_from_id_context(context : vx_core.Type_context, id : vx_core.Type_string) : vx_core.Type_permission
   }
@@ -27192,7 +28179,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function properties_from_typedef
+   * Return property map from typedef
+   * @param  {typedef} vtypedef
+   * @return {argmap}
+   * (func properties<-typedef)
+   */
   interface Func_properties_from_typedef : vx_core.Func_any_from_any {
     fun vx_properties_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_argmap
   }
@@ -27283,7 +28276,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function proplast_from_typedef
+   * Return last property from typedef
+   * @param  {typedef} vtypedef
+   * @return {arg}
+   * (func proplast<-typedef)
+   */
   interface Func_proplast_from_typedef : vx_core.Func_any_from_any {
     fun vx_proplast_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_arg
   }
@@ -27374,7 +28373,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function resolve
+   * @param  {any-1} value
+   * @return {any-1}
+   * (func resolve)
+   */
   interface Func_resolve : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any> vx_resolve(generic_any_1 : T, value : T) : T
   }
@@ -27466,7 +28470,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function resolve 1
+   * @param  {any<-func} fn-any
+   * @return {any-1}
+   * (func resolve)
+   */
   interface Func_resolve_1 : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any> vx_resolve_1(generic_any_1 : T, fn_any : vx_core.Func_any_from_func) : T
   }
@@ -27562,7 +28571,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function resolve_async
+   * @param  {any<-func-async} fn-any
+   * @return {any-1}
+   * (func resolve-async)
+   */
   interface Func_resolve_async : vx_core.Func_any_from_any_async {
     fun <T : vx_core.Type_any> vx_resolve_async(generic_any_1 : T, fn_any : vx_core.Func_any_from_func_async) : CompletableFuture<T>
   }
@@ -27657,7 +28673,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function resolve_first
+   * Returns the first value that is not nothing
+   * @param  {list-1} clauses
+   * @return {any-1}
+   * (func resolve-first)
+   */
   interface Func_resolve_first : vx_core.Func_any_from_any {
     fun <T : vx_core.Type_any, X : vx_core.Type_list> vx_resolve_first(generic_any_1 : T, clauses : X) : T
   }
@@ -27753,7 +28775,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function resolve_list
+   * @param  {list-1} clauses
+   * @return {list-1}
+   * (func resolve-list)
+   */
   interface Func_resolve_list : vx_core.Func_any_from_any {
     fun <X : vx_core.Type_list> vx_resolve_list(generic_list_1 : X, clauses : X) : X
   }
@@ -27849,7 +28876,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function security_from_context
+   * Return security from the given context.
+   * @return {security}
+   * (func security<-context)
+   */
   interface Func_security_from_context : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_security_from_context(context : vx_core.Type_context) : vx_core.Type_security
   }
@@ -27932,7 +28964,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function security_from_user
+   * Return security from the given user.
+   * @param  {user} user
+   * @return {security}
+   * (func security<-user)
+   */
   interface Func_security_from_user : vx_core.Func_any_from_any {
     fun vx_security_from_user(user : vx_core.Type_user) : vx_core.Type_security
   }
@@ -28023,7 +29061,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function session_from_context
+   * Returns session from a context
+   * @return {session}
+   * (func session<-context)
+   */
   interface Func_session_from_context : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_session_from_context(context : vx_core.Type_context) : vx_core.Type_session
   }
@@ -28102,7 +29145,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function setting_from_context
+   * Returns setting from a context
+   * @return {setting}
+   * (func setting<-context)
+   */
   interface Func_setting_from_context : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_setting_from_context(context : vx_core.Type_context) : vx_core.Type_setting
   }
@@ -28181,7 +29229,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function string_repeat
+   * @param  {string} text
+   * @param  {int} repeat
+   * @return {string}
+   * (func string-repeat)
+   */
   interface Func_string_repeat : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_repeat(text : vx_core.Type_string, repeat : vx_core.Type_int) : vx_core.Type_string
   }
@@ -28261,7 +29315,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function string_from_any
+   * Return a string representation of a value
+   * @param  {any} value
+   * @return {string}
+   * (func string<-any)
+   */
   interface Func_string_from_any : vx_core.Func_any_from_any {
     fun vx_string_from_any(value : vx_core.Type_any) : vx_core.Type_string
   }
@@ -28356,7 +29416,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function string_from_any_indent
+   * Return a string representation of a value
+   * @param  {any} value
+   * @param  {int} indent
+   * @param  {boolean} linefeed
+   * @return {string}
+   * (func string<-any-indent)
+   */
   interface Func_string_from_any_indent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_any_indent(value : vx_core.Type_any, indent : vx_core.Type_int, linefeed : vx_core.Type_boolean) : vx_core.Type_string
   }
@@ -28437,7 +29505,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function string_from_func
+   * Function Type returning string with any parameters
+   * @return {string}
+   * (func string<-func)
+   */
   interface Func_string_from_func : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_func() : vx_core.Type_string
     fun vx_fn_new(fn : Class_any_from_func.IFn) : vx_core.Func_string_from_func
@@ -28523,7 +29596,15 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function string_from_string_find_replace
+   * Returns a string with all instances of find replaced by replace.
+   * @param  {string} text
+   * @param  {string} find
+   * @param  {string} replace
+   * @return {string}
+   * (func string<-string-find-replace)
+   */
   interface Func_string_from_string_find_replace : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_from_string_find_replace(text : vx_core.Type_string, find : vx_core.Type_string, replace : vx_core.Type_string) : vx_core.Type_string
   }
@@ -28604,7 +29685,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function stringlist_from_map
+   * Returns a stringlist of keys from any map in entry order.
+   * @param  {map-1} map
+   * @return {stringlist}
+   * (func stringlist<-map)
+   */
   interface Func_stringlist_from_map : vx_core.Func_any_from_any {
     fun vx_stringlist_from_map(map : vx_core.Type_map) : vx_core.Type_stringlist
   }
@@ -28704,7 +29791,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function switch
+   * Returns a value based on a logical switch
+   * @param  {any-2} value
+   * @param  {thenelselist} thenelselist
+   * @return {any-1}
+   * (func switch)
+   */
   interface Func_switch : vx_core.Type_func, vx_core.Type_replfunc {
     fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_switch(generic_any_1 : T, value : U, thenelselist : vx_core.Type_thenelselist) : T
   }
@@ -28785,7 +29879,14 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function then
+   * Returns a thenelse struct from a given condition function and value function
+   * @param  {boolean<-func} fn-cond
+   * @param  {any<-func} fn-any
+   * @return {thenelse}
+   * (func then)
+   */
   interface Func_then : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_then(fn_cond : vx_core.Func_boolean_from_func, fn_any : vx_core.Func_any_from_func) : vx_core.Type_thenelse
   }
@@ -28876,7 +29977,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function traits_from_typedef
+   * Get the traits of a given typedef
+   * @param  {typedef} vtypedef
+   * @return {typelist}
+   * (func traits<-typedef)
+   */
   interface Func_traits_from_typedef : vx_core.Func_any_from_any {
     fun vx_traits_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_typelist
   }
@@ -28967,7 +30074,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function type_from_any
+   * Gets the Type of a given Value
+   * @param  {any-1} value
+   * @return {any}
+   * (func type<-any)
+   */
   interface Func_type_from_any : vx_core.Func_any_from_any {
     fun vx_type_from_any(value : vx_core.Type_any) : vx_core.Type_any
   }
@@ -29058,7 +30171,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function typedef_from_any
+   * Gets the typedef of a given value
+   * @param  {any} value
+   * @return {typedef}
+   * (func typedef<-any)
+   */
   interface Func_typedef_from_any : vx_core.Func_any_from_any {
     fun vx_typedef_from_any(value : vx_core.Type_any) : vx_core.Type_typedef
   }
@@ -29153,7 +30272,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function typedef_from_type
+   * Gets the typedef of a given type
+   * @param  {any} value
+   * @return {typedef}
+   * (func typedef<-type)
+   */
   interface Func_typedef_from_type : vx_core.Func_any_from_any {
     fun vx_typedef_from_type(value : vx_core.Type_any) : vx_core.Type_typedef
   }
@@ -29244,7 +30369,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function typename_from_any
+   * Gets the typename of a given value
+   * @param  {any-2} value
+   * @return {string}
+   * (func typename<-any)
+   */
   interface Func_typename_from_any : vx_core.Func_any_from_any {
     fun vx_typename_from_any(value : vx_core.Type_any) : vx_core.Type_string
   }
@@ -29339,7 +30470,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function typename_from_type
+   * Get the name of a given type
+   * @param  {any} type
+   * @return {string}
+   * (func typename<-type)
+   */
   interface Func_typename_from_type : vx_core.Func_any_from_any {
     fun vx_typename_from_type(type : vx_core.Type_any) : vx_core.Type_string
   }
@@ -29434,7 +30571,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function typename_from_typedef
+   * Get the name of a given type
+   * @param  {typedef} vtypedef
+   * @return {string}
+   * (func typename<-typedef)
+   */
   interface Func_typename_from_typedef : vx_core.Func_any_from_any {
     fun vx_typename_from_typedef(vtypedef : vx_core.Type_typedef) : vx_core.Type_string
   }
@@ -29533,7 +30676,13 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function typenames_from_typelist
+   * Get the names from a type list
+   * @param  {typelist} typelist
+   * @return {stringlist}
+   * (func typenames<-typelist)
+   */
   interface Func_typenames_from_typelist : vx_core.Func_any_from_any {
     fun vx_typenames_from_typelist(typelist : vx_core.Type_typelist) : vx_core.Type_stringlist
   }
@@ -29634,7 +30783,12 @@ object vx_core {
     return output
   }
 
-
+  /**
+   * @function user_from_context
+   * Returns the current user from context.
+   * @return {user}
+   * (func user<-context)
+   */
   interface Func_user_from_context : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_user_from_context(context : vx_core.Type_context) : vx_core.Type_user
   }

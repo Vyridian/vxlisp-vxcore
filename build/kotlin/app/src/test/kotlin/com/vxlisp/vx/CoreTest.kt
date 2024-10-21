@@ -1985,6 +1985,83 @@ object vx_coreTest {
     return output
   }
 
+  fun f_any_from_struct(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "any<-struct",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_any_from_struct_testdescribe_1(context),
+        f_any_from_struct_testdescribe_2(context),
+        f_any_from_struct_testdescribe_3(context)
+      )
+    )
+    return output
+  }
+
+  fun f_any_from_struct_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  :name))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.vx_new_string("sname"),
+        vx_core.f_new(
+          vx_core.t_translation,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string(":name"),
+            vx_core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    )
+    return output
+  }
+
+  fun f_any_from_struct_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \"name\"))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.vx_new_string("sname"),
+        vx_core.f_new(
+          vx_core.t_translation,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string(":name"),
+            vx_core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    )
+    return output
+  }
+
+  fun f_any_from_struct_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \":name\"))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.vx_new_string("sname"),
+        vx_core.f_new(
+          vx_core.t_translation,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string(":name"),
+            vx_core.vx_new_string("sname")
+          )
+        ).name()
+      )
+    )
+    return output
+  }
+
   fun f_boolean_write_from_map_name_value(context : vx_core.Type_context) : vx_test.Type_testcase {
     var output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
@@ -4613,6 +4690,7 @@ object vx_coreTest {
       vx_coreTest.f_any_from_list_start_reduce(context),
       vx_coreTest.f_any_from_map(context),
       vx_coreTest.f_any_from_map_start_reduce(context),
+      vx_coreTest.f_any_from_struct(context),
       vx_coreTest.f_boolean_write_from_map_name_value(context),
       vx_coreTest.f_compare(context),
       vx_coreTest.f_constdef_from_any(context),
@@ -4670,10 +4748,10 @@ object vx_coreTest {
       ":testpkg", "vx/core", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
       ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
-      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 75, ":total", 136), 
+      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 76, ":total", 136), 
       ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
       ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
-      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 84, ":total", 227), 
+      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 85, ":total", 227), 
       ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
     )
     return output
@@ -4843,7 +4921,7 @@ object vx_coreTest {
         ":any<-reduce-async", 0,
         ":any<-reduce-next", 0,
         ":any<-reduce-next-async", 0,
-        ":any<-struct", 0,
+        ":any<-struct", 3,
         ":async", 0,
         ":boolean-permission<-func", 0,
         ":boolean-write<-map-name-value", 2,

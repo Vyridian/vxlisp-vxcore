@@ -9,6 +9,11 @@ import com.vxlisp.vx.ui.*
 object vx_ui_html_uihtml {
 
 
+  /**
+   * Constant: layout-app-html
+   * Html App Renderer
+   * {layout}
+   */
   class Const_layout_app_html {
     constructor() {}
     companion object {
@@ -43,6 +48,11 @@ object vx_ui_html_uihtml {
   val c_layout_app_html : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
 
+  /**
+   * Constant: layout-else-html
+   * Html Default Renderer
+   * {layout}
+   */
   class Const_layout_else_html {
     constructor() {}
     companion object {
@@ -77,6 +87,11 @@ object vx_ui_html_uihtml {
   val c_layout_else_html : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
 
+  /**
+   * Constant: layout-image-html
+   * Html Image Renderer
+   * {layout}
+   */
   class Const_layout_image_html {
     constructor() {}
     companion object {
@@ -111,6 +126,11 @@ object vx_ui_html_uihtml {
   val c_layout_image_html : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
 
+  /**
+   * Constant: layout-label-html
+   * Html Label Renderer
+   * {layout}
+   */
   class Const_layout_label_html {
     constructor() {}
     companion object {
@@ -145,6 +165,11 @@ object vx_ui_html_uihtml {
   val c_layout_label_html : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
 
+  /**
+   * Constant: layoutenginehtml
+   * Html layout engine used to render html from ui and stylesheet
+   * {layoutengine}
+   */
   class Const_layoutenginehtml {
     constructor() {}
     companion object {
@@ -207,6 +232,10 @@ object vx_ui_html_uihtml {
   val c_layoutenginehtml : vx_ui_ui.Type_layoutengine = vx_ui_ui.Class_layoutengine()
 
 
+  /**
+   * Constant: style-hidden
+   * {style}
+   */
   class Const_style_hidden {
     constructor() {}
     companion object {
@@ -242,6 +271,10 @@ object vx_ui_html_uihtml {
   val c_style_hidden : vx_web_html.Type_style = vx_web_html.Class_style()
 
 
+  /**
+   * Constant: style-selected
+   * {style}
+   */
   class Const_style_selected {
     constructor() {}
     companion object {
@@ -276,7 +309,13 @@ object vx_ui_html_uihtml {
 
   val c_style_selected : vx_web_html.Type_style = vx_web_html.Class_style()
 
-
+  /**
+   * @function boolean_layoutremove_html
+   * Removes html node with a given ui.
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-layoutremove-html)
+   */
   interface Func_boolean_layoutremove_html : vx_core.Func_any_from_any {
     fun vx_boolean_layoutremove_html(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -376,7 +415,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function boolean_layoutselected_html
+   * Removes html node with a given ui.
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-layoutselected-html)
+   */
   interface Func_boolean_layoutselected_html : vx_core.Func_any_from_any {
     fun vx_boolean_layoutselected_html(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -469,7 +514,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function boolean_layoutvisible_html
+   * Removes html node with a given ui.
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-layoutvisible-html)
+   */
   interface Func_boolean_layoutvisible_html : vx_core.Func_any_from_any {
     fun vx_boolean_layoutvisible_html(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -562,7 +613,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function boolean_print_html
+   * Create a print ready version of ui
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-print-html)
+   */
   interface Func_boolean_print_html : vx_core.Func_any_from_any_context {
     fun vx_boolean_print_html(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -674,7 +731,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function boolean_writeclass_from_ui
+   * Writes to an html node adding or removing the given hidden class.
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-writeclass<-ui)
+   */
   interface Func_boolean_writeclass_from_ui : vx_core.Func_any_from_any {
     fun vx_boolean_writeclass_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -779,7 +842,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function boolean_writeeventsall_from_ui
+   * Write the events for ui and subui to the dom.
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-writeeventsall<-ui)
+   */
   interface Func_boolean_writeeventsall_from_ui : vx_core.Func_any_from_any {
     fun vx_boolean_writeeventsall_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -886,7 +955,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function boolean_writeeventsall_from_uimap
+   * Write the events for each ui and subui to the dom.
+   * @param  {uimap} uimap
+   * @return {boolean}
+   * (func boolean-writeeventsall<-uimap)
+   */
   interface Func_boolean_writeeventsall_from_uimap : vx_core.Func_any_from_any {
     fun vx_boolean_writeeventsall_from_uimap(uimap : vx_ui_ui.Type_uimap) : vx_core.Type_boolean
   }
@@ -997,7 +1072,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function boolean_writeselected_from_ui
+   * Writes to an html node adding or removing the selected class.
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-writeselected<-ui)
+   */
   interface Func_boolean_writeselected_from_ui : vx_core.Func_any_from_any {
     fun vx_boolean_writeselected_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -1090,7 +1171,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function boolean_writevisible_from_ui
+   * Writes to an html node adding or removing the hidden class.
+   * @param  {ui} ui
+   * @return {boolean}
+   * (func boolean-writevisible<-ui)
+   */
   interface Func_boolean_writevisible_from_ui : vx_core.Func_any_from_any {
     fun vx_boolean_writevisible_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean
   }
@@ -1183,7 +1270,11 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function context_write
+   * @return {context}
+   * (func context-write)
+   */
   interface Func_context_write : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_context_write(context : vx_core.Type_context) : vx_core.Type_context
   }
@@ -1264,7 +1355,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function divchild_from_ui
+   * Returns a divchild from a ui
+   * @param  {ui} ui
+   * @return {divchild}
+   * (func divchild<-ui)
+   */
   interface Func_divchild_from_ui : vx_core.Func_any_from_any {
     fun vx_divchild_from_ui(ui : vx_ui_ui.Type_ui) : vx_web_html.Type_divchild
   }
@@ -1382,7 +1479,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function divchildlist_from_uimap
+   * Returns a divchildlist of divs from a uimap
+   * @param  {uimap} uimap
+   * @return {divchildlist}
+   * (func divchildlist<-uimap)
+   */
   interface Func_divchildlist_from_uimap : vx_core.Func_any_from_any {
     fun vx_divchildlist_from_uimap(uimap : vx_ui_ui.Type_uimap) : vx_web_html.Type_divchildlist
   }
@@ -1496,7 +1599,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function divchildlist_from_uimap 1
+   * Returns a divchildlist of divs from a uimap
+   * @param  {uimap} uimap
+   * @return {divchildlist}
+   * (func divchildlist<-uimap)
+   */
   interface Func_divchildlist_from_uimap_1 : vx_core.Func_any_from_any {
     fun vx_divchildlist_from_uimap_1(uimap : vx_ui_ui.Type_uimap) : vx_web_html.Type_divchildlist
   }
@@ -1610,7 +1719,15 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function divchildlist_from_uimap_origmap_parent
+   * Returns a divchildlist of divs from a uimap
+   * @param  {uimap} uimap
+   * @param  {uimap} origmap
+   * @param  {ui} parent
+   * @return {divchildlist}
+   * (func divchildlist<-uimap-origmap-parent)
+   */
   interface Func_divchildlist_from_uimap_origmap_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_divchildlist_from_uimap_origmap_parent(uimap : vx_ui_ui.Type_uimap, origmap : vx_ui_ui.Type_uimap, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_divchildlist
   }
@@ -1715,7 +1832,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function node_app_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {node}
+   * (func node-app<-ui-orig-parent)
+   */
   interface Func_node_app_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_node_app_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node
   }
@@ -1819,7 +1943,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function node_default_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {node}
+   * (func node-default<-ui-orig-parent)
+   */
   interface Func_node_default_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_node_default_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node
   }
@@ -1934,7 +2065,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function node_image_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {node}
+   * (func node-image<-ui-orig-parent)
+   */
   interface Func_node_image_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_node_image_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node
   }
@@ -2050,7 +2188,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function node_label_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {node}
+   * (func node-label<-ui-orig-parent)
+   */
   interface Func_node_label_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_node_label_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node
   }
@@ -2194,7 +2339,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function node_layout_from_node_ui_parent
+   * @param  {node} node
+   * @param  {ui} ui
+   * @param  {ui} parent
+   * @return {node}
+   * (func node-layout<-node-ui-parent)
+   */
   interface Func_node_layout_from_node_ui_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_node_layout_from_node_ui_parent(node : vx_web_html.Type_node, ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node
   }
@@ -2292,7 +2444,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function node_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {node}
+   * (func node<-ui-orig-parent)
+   */
   interface Func_node_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_node_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node
   }
@@ -2419,7 +2578,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function string_class_from_ui
+   * Returns a class string given a ui.
+   * @param  {ui} ui
+   * @return {string}
+   * (func string-class<-ui)
+   */
   interface Func_string_class_from_ui : vx_core.Func_any_from_any {
     fun vx_string_class_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_string
   }
@@ -2521,7 +2686,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function string_style_from_font
+   * Returns a font css string from a logical font.
+   * @param  {font} font
+   * @return {string}
+   * (func string-style<-font)
+   */
   interface Func_string_style_from_font : vx_core.Func_any_from_any {
     fun vx_string_style_from_font(font : vx_ui_ui.Type_font) : vx_core.Type_string
   }
@@ -2677,7 +2848,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function string_style_from_image
+   * Returns an image css string from a logical image.
+   * @param  {image} image
+   * @return {string}
+   * (func string-style<-image)
+   */
   interface Func_string_style_from_image : vx_core.Func_any_from_any {
     fun vx_string_style_from_image(image : vx_ui_ui.Type_image) : vx_core.Type_string
   }
@@ -2820,7 +2997,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function string_stylename_from_name_styletype
+   * @param  {string} name
+   * @param  {styletype} styletype
+   * @return {string}
+   * (func string-stylename<-name-styletype)
+   */
   interface Func_string_stylename_from_name_styletype : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_string_stylename_from_name_styletype(name : vx_core.Type_string, styletype : vx_ui_ui.Type_styletype) : vx_core.Type_string
   }
@@ -2964,7 +3147,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function style_from_fontface
+   * Returns an html style from a font
+   * @param  {fontface} fontface
+   * @return {style}
+   * (func style<-fontface)
+   */
   interface Func_style_from_fontface : vx_core.Func_any_from_any {
     fun vx_style_from_fontface(fontface : vx_ui_ui.Type_fontface) : vx_web_html.Type_style
   }
@@ -3132,7 +3321,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function style_from_style
+   * Returns a htmlstyle from a uistyle
+   * @param  {style} uistyle
+   * @return {style}
+   * (func style<-style)
+   */
   interface Func_style_from_style : vx_core.Func_any_from_any {
     fun vx_style_from_style(uistyle : vx_ui_ui.Type_style) : vx_web_html.Type_style
   }
@@ -4316,7 +4511,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function stylelist_extra_from_ui
+   * Returns a stylelist from a ui including style-hidden and style-selected
+   * @param  {ui} ui
+   * @return {stylelist}
+   * (func stylelist-extra<-ui)
+   */
   interface Func_stylelist_extra_from_ui : vx_core.Func_any_from_any {
     fun vx_stylelist_extra_from_ui(ui : vx_ui_ui.Type_ui) : vx_web_html.Type_stylelist
   }
@@ -4463,7 +4664,12 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function stylelist_reset
+   * Returns the initial reset styles for ui framework
+   * @return {stylelist}
+   * (func stylelist-reset)
+   */
   interface Func_stylelist_reset : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_stylelist_reset() : vx_web_html.Type_stylelist
   }
@@ -4678,7 +4884,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function stylelist_from_fontfacemap
+   * Returns stylelist from a fontfacemap
+   * @param  {fontfacemap} fontfacemap
+   * @return {stylelist}
+   * (func stylelist<-fontfacemap)
+   */
   interface Func_stylelist_from_fontfacemap : vx_core.Func_any_from_any {
     fun vx_stylelist_from_fontfacemap(fontfacemap : vx_ui_ui.Type_fontfacemap) : vx_web_html.Type_stylelist
   }
@@ -4780,7 +4992,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function stylelist_from_stylelist
+   * Returns a htmlstylelist from a uistylemap
+   * @param  {stylelist} uistylelist
+   * @return {stylelist}
+   * (func stylelist<-stylelist)
+   */
   interface Func_stylelist_from_stylelist : vx_core.Func_any_from_any {
     fun vx_stylelist_from_stylelist(uistylelist : vx_ui_ui.Type_stylelist) : vx_web_html.Type_stylelist
   }
@@ -4875,7 +5093,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function stylelist_from_stylemap
+   * Returns a htmlstylelist from a uistylemap
+   * @param  {stylemap} uistylemap
+   * @return {stylelist}
+   * (func stylelist<-stylemap)
+   */
   interface Func_stylelist_from_stylemap : vx_core.Func_any_from_any {
     fun vx_stylelist_from_stylemap(uistylemap : vx_ui_ui.Type_stylemap) : vx_web_html.Type_stylelist
   }
@@ -4977,7 +5201,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function stylemap_from_stylemap
+   * Returns a htmlstylesheet from a uistylesheet
+   * @param  {stylemap} uistylemap
+   * @return {stylemap}
+   * (func stylemap<-stylemap)
+   */
   interface Func_stylemap_from_stylemap : vx_core.Func_any_from_any {
     fun vx_stylemap_from_stylemap(uistylemap : vx_ui_ui.Type_stylemap) : vx_web_html.Type_stylemap
   }
@@ -5079,7 +5309,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * 
+   * @async
+   * @function stylesheet_layout_html
+   * @param  {stylesheet} stylesheetui
+   * @return {stylesheet}
+   * (func stylesheet-layout-html)
+   */
   interface Func_stylesheet_layout_html : vx_core.Func_any_from_any_async {
     fun vx_stylesheet_layout_html(stylesheetui : vx_ui_ui.Type_stylesheet) : CompletableFuture<vx_ui_ui.Type_stylesheet>
   }
@@ -5185,7 +5422,13 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function stylesheet_from_stylesheet
+   * Returns a htmlstylesheet from a uistylesheet
+   * @param  {stylesheet} uistylesheet
+   * @return {stylesheet}
+   * (func stylesheet<-stylesheet)
+   */
   interface Func_stylesheet_from_stylesheet : vx_core.Func_any_from_any {
     fun vx_stylesheet_from_stylesheet(uistylesheet : vx_ui_ui.Type_stylesheet) : vx_web_html.Type_stylesheet
   }
@@ -5307,7 +5550,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function ui_layout_app_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {ui}
+   * (func ui-layout-app<-ui-orig-parent)
+   */
   interface Func_ui_layout_app_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_ui_layout_app_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui
   }
@@ -5407,7 +5657,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function ui_layout_default_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {ui}
+   * (func ui-layout-default<-ui-orig-parent)
+   */
   interface Func_ui_layout_default_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_ui_layout_default_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui
   }
@@ -5508,7 +5765,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function ui_layout_image_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {ui}
+   * (func ui-layout-image<-ui-orig-parent)
+   */
   interface Func_ui_layout_image_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_ui_layout_image_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui
   }
@@ -5608,7 +5872,14 @@ object vx_ui_html_uihtml {
     return output
   }
 
-
+  /**
+   * @function ui_layout_label_from_ui_orig_parent
+   * @param  {ui} ui
+   * @param  {ui} orig
+   * @param  {ui} parent
+   * @return {ui}
+   * (func ui-layout-label<-ui-orig-parent)
+   */
   interface Func_ui_layout_label_from_ui_orig_parent : vx_core.Type_func, vx_core.Type_replfunc {
     fun vx_ui_layout_label_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui
   }
