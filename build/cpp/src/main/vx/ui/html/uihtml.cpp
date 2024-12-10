@@ -343,7 +343,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutremove_html::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutremove_html::vx_dispose() {
@@ -459,7 +463,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutselected_html::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutselected_html::vx_dispose() {
@@ -575,7 +583,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutvisible_html::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutvisible_html::vx_dispose() {
@@ -706,7 +718,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_print_html::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_print_html::vx_dispose() {
@@ -834,7 +850,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_writeclass_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writeclass_from_ui::vx_dispose() {
@@ -963,7 +983,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_writeeventsall_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writeeventsall_from_ui::vx_dispose() {
@@ -1098,7 +1122,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_writeeventsall_from_uimap::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writeeventsall_from_uimap::vx_dispose() {
@@ -1214,7 +1242,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_writeselected_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writeselected_from_ui::vx_dispose() {
@@ -1330,7 +1362,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_boolean_writevisible_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writevisible_from_ui::vx_dispose() {
@@ -1442,7 +1478,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_context_write::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_context_write::vx_dispose() {
@@ -1575,7 +1615,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_divchild_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_divchild_from_ui::vx_dispose() {
@@ -1716,7 +1760,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_divchildlist_from_uimap_1::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_divchildlist_from_uimap_1::vx_dispose() {
@@ -1857,7 +1905,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_divchildlist_from_uimap::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_divchildlist_from_uimap::vx_dispose() {
@@ -1994,7 +2046,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_divchildlist_from_uimap_origmap_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_divchildlist_from_uimap_origmap_parent::vx_dispose() {
@@ -2124,7 +2180,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_node_app_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_node_app_from_ui_orig_parent::vx_dispose() {
@@ -2264,7 +2324,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_node_default_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_node_default_from_ui_orig_parent::vx_dispose() {
@@ -2404,7 +2468,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_node_image_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_node_image_from_ui_orig_parent::vx_dispose() {
@@ -2571,7 +2639,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_node_label_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_node_label_from_ui_orig_parent::vx_dispose() {
@@ -2693,7 +2765,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_node_layout_from_node_ui_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_node_layout_from_node_ui_parent::vx_dispose() {
@@ -2836,7 +2912,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_node_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_node_from_ui_orig_parent::vx_dispose() {
@@ -2951,7 +3031,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_string_class_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_class_from_ui::vx_dispose() {
@@ -3125,7 +3209,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_string_style_from_font::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_style_from_font::vx_dispose() {
@@ -3287,7 +3375,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_string_style_from_image::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_style_from_image::vx_dispose() {
@@ -3461,7 +3553,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_string_stylename_from_name_styletype::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_stylename_from_name_styletype::vx_dispose() {
@@ -3644,7 +3740,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_style_from_fontface::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_style_from_fontface::vx_dispose() {
@@ -4810,7 +4910,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_style_from_style::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_style_from_style::vx_dispose() {
@@ -4985,7 +5089,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_stylelist_extra_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylelist_extra_from_ui::vx_dispose() {
@@ -5222,7 +5330,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_stylelist_reset::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylelist_reset::vx_dispose() {
@@ -5335,7 +5447,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_stylelist_from_fontfacemap::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylelist_from_fontfacemap::vx_dispose() {
@@ -5459,7 +5575,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_stylelist_from_stylelist::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylelist_from_stylelist::vx_dispose() {
@@ -5585,7 +5705,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_stylelist_from_stylemap::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylelist_from_stylemap::vx_dispose() {
@@ -5711,7 +5835,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_stylemap_from_stylemap::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylemap_from_stylemap::vx_dispose() {
@@ -5848,7 +5976,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_stylesheet_layout_html::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylesheet_layout_html::vx_dispose() {
@@ -5995,7 +6127,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_stylesheet_from_stylesheet::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylesheet_from_stylesheet::vx_dispose() {
@@ -6125,7 +6261,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_ui_layout_app_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout_app_from_ui_orig_parent::vx_dispose() {
@@ -6247,7 +6387,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_ui_layout_default_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout_default_from_ui_orig_parent::vx_dispose() {
@@ -6367,7 +6511,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_ui_layout_image_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout_image_from_ui_orig_parent::vx_dispose() {
@@ -6489,7 +6637,11 @@ namespace vx_ui_html_uihtml {
     }
 
     vx_core::Type_msgblock Class_ui_layout_label_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout_label_from_ui_orig_parent::vx_dispose() {

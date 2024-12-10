@@ -40,7 +40,7 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -126,7 +126,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_divchildlist valnodes) {
               ischanged = true;
@@ -289,19 +289,19 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":summary")) {
+      } else if ((skey == ":summary")) {
         output = this.summary();
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -391,7 +391,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -413,7 +413,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -432,7 +432,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -451,7 +451,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -470,7 +470,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -489,7 +489,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":summary")) {
+          } else if ((key == ":summary")) {
             if (valsub == vx_p_summary) {
             } else if (valsub is Vx.Web.Html.Type_divchildlist valsummary) {
               ischanged = true;
@@ -508,7 +508,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_divchildlist valnodes) {
               ischanged = true;
@@ -665,17 +665,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -776,7 +776,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -798,7 +798,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -817,7 +817,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -836,7 +836,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -855,7 +855,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -874,7 +874,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_divchildlist valnodes) {
               ischanged = true;
@@ -1096,8 +1096,9 @@ public static class Html {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Web.Html.Type_divchild) {
+          Vx.Web.Html.Type_divchild subitem = (Vx.Web.Html.Type_divchild)valsub;
           ischanged = true;
-          listval.Add((Vx.Web.Html.Type_divchild)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -1228,8 +1229,9 @@ public static class Html {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Web.Html.Type_div) {
+          Vx.Web.Html.Type_div subitem = (Vx.Web.Html.Type_div)valsub;
           ischanged = true;
-          listval.Add((Vx.Web.Html.Type_div)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -1315,7 +1317,7 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -1401,7 +1403,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_divchildlist valnodes) {
               ischanged = true;
@@ -1552,17 +1554,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text();
       }
       return output;
@@ -1658,7 +1660,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -1680,7 +1682,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -1699,7 +1701,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -1718,7 +1720,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -1737,7 +1739,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -1756,7 +1758,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is Vx.Core.Type_string valtext) {
               ischanged = true;
@@ -1915,17 +1917,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text();
       }
       return output;
@@ -2021,7 +2023,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -2043,7 +2045,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -2062,7 +2064,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -2081,7 +2083,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -2100,7 +2102,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -2119,7 +2121,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is Vx.Core.Type_string valtext) {
               ischanged = true;
@@ -2278,17 +2280,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text();
       }
       return output;
@@ -2384,7 +2386,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -2406,7 +2408,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -2425,7 +2427,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -2444,7 +2446,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -2463,7 +2465,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -2482,7 +2484,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is Vx.Core.Type_string valtext) {
               ischanged = true;
@@ -2586,7 +2588,7 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -2672,7 +2674,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_headchildlist valnodes) {
               ischanged = true;
@@ -2889,8 +2891,9 @@ public static class Html {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Web.Html.Type_headchild) {
+          Vx.Web.Html.Type_headchild subitem = (Vx.Web.Html.Type_headchild)valsub;
           ischanged = true;
-          listval.Add((Vx.Web.Html.Type_headchild)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -3012,13 +3015,13 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":lang")) {
+      } else if ((skey == ":lang")) {
         output = this.lang();
-      } else if ((skey==":head")) {
+      } else if ((skey == ":head")) {
         output = this.head();
-      } else if ((skey==":body")) {
+      } else if ((skey == ":body")) {
         output = this.body();
-      } else if ((skey==":footer")) {
+      } else if ((skey == ":footer")) {
         output = this.footer();
       }
       return output;
@@ -3099,7 +3102,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":lang")) {
+          } else if ((key == ":lang")) {
             if (valsub == vx_p_lang) {
             } else if (valsub is Vx.Core.Type_string vallang) {
               ischanged = true;
@@ -3121,7 +3124,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":head")) {
+          } else if ((key == ":head")) {
             if (valsub == vx_p_head) {
             } else if (valsub is Vx.Web.Html.Type_head valhead) {
               ischanged = true;
@@ -3140,7 +3143,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":body")) {
+          } else if ((key == ":body")) {
             if (valsub == vx_p_body) {
             } else if (valsub is Vx.Web.Html.Type_body valbody) {
               ischanged = true;
@@ -3159,7 +3162,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":footer")) {
+          } else if ((key == ":footer")) {
             if (valsub == vx_p_footer) {
             } else if (valsub is Vx.Web.Html.Type_footer valfooter) {
               ischanged = true;
@@ -3313,17 +3316,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":src")) {
+      } else if ((skey == ":src")) {
         output = this.src();
       }
       return output;
@@ -3419,7 +3422,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -3441,7 +3444,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -3460,7 +3463,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -3479,7 +3482,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -3498,7 +3501,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -3517,7 +3520,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":src")) {
+          } else if ((key == ":src")) {
             if (valsub == vx_p_src) {
             } else if (valsub is Vx.Core.Type_string valsrc) {
               ischanged = true;
@@ -3700,21 +3703,21 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":charset")) {
+      } else if ((skey == ":charset")) {
         output = this.charset();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":content")) {
+      } else if ((skey == ":content")) {
         output = this.content();
       }
       return output;
@@ -3807,7 +3810,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -3829,7 +3832,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -3848,7 +3851,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -3867,7 +3870,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -3886,7 +3889,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -3905,7 +3908,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":charset")) {
+          } else if ((key == ":charset")) {
             if (valsub == vx_p_charset) {
             } else if (valsub is Vx.Core.Type_string valcharset) {
               ischanged = true;
@@ -3927,7 +3930,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -3949,7 +3952,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":content")) {
+          } else if ((key == ":content")) {
             if (valsub == vx_p_content) {
             } else if (valsub is Vx.Core.Type_string valcontent) {
               ischanged = true;
@@ -4103,15 +4106,15 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
       }
       return output;
@@ -4195,7 +4198,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -4217,7 +4220,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -4236,7 +4239,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -4255,7 +4258,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -4274,7 +4277,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -4419,8 +4422,9 @@ public static class Html {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Web.Html.Type_node) {
+          Vx.Web.Html.Type_node subitem = (Vx.Web.Html.Type_node)valsub;
           ischanged = true;
-          listval.Add((Vx.Web.Html.Type_node)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -4561,17 +4565,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text();
       }
       return output;
@@ -4667,7 +4671,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -4689,7 +4693,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -4708,7 +4712,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -4727,7 +4731,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -4746,7 +4750,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -4765,7 +4769,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is Vx.Core.Type_string valtext) {
               ischanged = true;
@@ -5087,11 +5091,11 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":props")) {
+      } else if ((skey == ":props")) {
         output = this.props();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
       }
       return output;
@@ -5169,7 +5173,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -5191,7 +5195,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":props")) {
+          } else if ((key == ":props")) {
             if (valsub == vx_p_props) {
             } else if (valsub is Vx.Web.Html.Type_propmap valprops) {
               ischanged = true;
@@ -5210,7 +5214,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -5353,8 +5357,9 @@ public static class Html {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Web.Html.Type_style) {
+          Vx.Web.Html.Type_style subitem = (Vx.Web.Html.Type_style)valsub;
           ischanged = true;
-          listval.Add((Vx.Web.Html.Type_style)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -5713,21 +5718,21 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":styles")) {
+      } else if ((skey == ":styles")) {
         output = this.styles();
-      } else if ((skey==":stylemap")) {
+      } else if ((skey == ":stylemap")) {
         output = this.stylemap();
       }
       return output;
@@ -5820,7 +5825,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -5842,7 +5847,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -5861,7 +5866,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -5880,7 +5885,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -5899,7 +5904,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -5918,7 +5923,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -5940,7 +5945,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":styles")) {
+          } else if ((key == ":styles")) {
             if (valsub == vx_p_styles) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstyles) {
               ischanged = true;
@@ -5959,7 +5964,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylemap")) {
+          } else if ((key == ":stylemap")) {
             if (valsub == vx_p_stylemap) {
             } else if (valsub is Vx.Web.Html.Type_stylemap valstylemap) {
               ischanged = true;
@@ -6129,19 +6134,19 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":tbody")) {
+      } else if ((skey == ":tbody")) {
         output = this.tbody();
-      } else if ((skey==":thead")) {
+      } else if ((skey == ":thead")) {
         output = this.thead();
       }
       return output;
@@ -6231,7 +6236,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -6253,7 +6258,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -6272,7 +6277,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -6291,7 +6296,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -6310,7 +6315,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -6329,7 +6334,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":tbody")) {
+          } else if ((key == ":tbody")) {
             if (valsub == vx_p_tbody) {
             } else if (valsub is Vx.Web.Html.Type_tbody valtbody) {
               ischanged = true;
@@ -6348,7 +6353,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":thead")) {
+          } else if ((key == ":thead")) {
             if (valsub == vx_p_thead) {
             } else if (valsub is Vx.Web.Html.Type_thead valthead) {
               ischanged = true;
@@ -6505,17 +6510,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -6616,7 +6621,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -6638,7 +6643,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -6657,7 +6662,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -6676,7 +6681,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -6695,7 +6700,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -6714,7 +6719,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_trlist valnodes) {
               ischanged = true;
@@ -6870,17 +6875,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -6981,7 +6986,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -7003,7 +7008,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -7022,7 +7027,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -7041,7 +7046,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -7060,7 +7065,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -7079,7 +7084,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_divchildlist valnodes) {
               ischanged = true;
@@ -7225,8 +7230,9 @@ public static class Html {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Web.Html.Type_td) {
+          Vx.Web.Html.Type_td subitem = (Vx.Web.Html.Type_td)valsub;
           ischanged = true;
-          listval.Add((Vx.Web.Html.Type_td)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -7367,17 +7373,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -7478,7 +7484,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -7500,7 +7506,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -7519,7 +7525,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -7538,7 +7544,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -7557,7 +7563,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -7576,7 +7582,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_trlist valnodes) {
               ischanged = true;
@@ -7732,17 +7738,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text();
       }
       return output;
@@ -7829,7 +7835,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -7851,7 +7857,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -7870,7 +7876,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -7889,7 +7895,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -7908,7 +7914,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -7927,7 +7933,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is Vx.Core.Type_string valtext) {
               ischanged = true;
@@ -8086,17 +8092,17 @@ public static class Html {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap();
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style();
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique();
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist();
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes();
       }
       return output;
@@ -8197,7 +8203,7 @@ public static class Html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -8219,7 +8225,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is Vx.Event.Type_eventmap valeventmap) {
               ischanged = true;
@@ -8238,7 +8244,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle) {
               ischanged = true;
@@ -8257,7 +8263,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is Vx.Web.Html.Type_style valstyle_unique) {
               ischanged = true;
@@ -8276,7 +8282,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is Vx.Web.Html.Type_stylelist valstylelist) {
               ischanged = true;
@@ -8295,7 +8301,7 @@ public static class Html {
               msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is Vx.Web.Html.Type_tdlist valnodes) {
               ischanged = true;
@@ -8441,8 +8447,9 @@ public static class Html {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Web.Html.Type_tr) {
+          Vx.Web.Html.Type_tr subitem = (Vx.Web.Html.Type_tr)valsub;
           ischanged = true;
-          listval.Add((Vx.Web.Html.Type_tr)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {

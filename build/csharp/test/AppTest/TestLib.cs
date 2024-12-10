@@ -227,7 +227,7 @@ public static class TestLib {
       System.Console.WriteLine(actual);
       Vx.Core.f_log(testresult);
     }
-    if ((code==":ne")) {
+    if ((code == ":ne")) {
       Assert.NotEqual(expected, actual);
     } else {
       Assert.Equal(expected, actual);

@@ -50,9 +50,13 @@ namespace vx_data_csv {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_csv::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_csv::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":headers") {
         output = this->headers();
@@ -81,11 +85,15 @@ namespace vx_data_csv {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_data_csv::Type_csv val = vx_core::vx_any_from_any(vx_data_csv::t_csv, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_stringlist vx_p_headers = val->headers();
-      vx_data_csv::Type_csvrows vx_p_rows = val->rows();
+      vx_data_csv::Type_csv value = vx_core::vx_any_from_any(
+        vx_data_csv::t_csv, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_stringlist vx_p_headers = value->headers();
+      vx_data_csv::Type_csvrows vx_p_rows = value->rows();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -114,7 +122,9 @@ namespace vx_data_csv {
             if (vx_p_headers == valsub) {
             } else if (valsubtype == vx_core::t_stringlist) {
               ischanged = true;
-              vx_p_headers = vx_core::vx_any_from_any(vx_core::t_stringlist, valsub);
+              vx_p_headers = vx_core::vx_any_from_any(
+                vx_core::t_stringlist, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new csv :headers " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -123,7 +133,9 @@ namespace vx_data_csv {
             if (vx_p_rows == valsub) {
             } else if (valsubtype == vx_data_csv::t_csvrows) {
               ischanged = true;
-              vx_p_rows = vx_core::vx_any_from_any(vx_data_csv::t_csvrows, valsub);
+              vx_p_rows = vx_core::vx_any_from_any(
+                vx_data_csv::t_csvrows, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new csv :rows " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -141,28 +153,37 @@ namespace vx_data_csv {
           if (output->vx_p_headers) {
             vx_core::vx_release_one(output->vx_p_headers);
           }
-          output->vx_p_headers = vx_p_headers;
           vx_core::vx_reserve(vx_p_headers);
+          output->vx_p_headers = vx_p_headers;
         }
         if (output->vx_p_rows != vx_p_rows) {
           if (output->vx_p_rows) {
             vx_core::vx_release_one(output->vx_p_rows);
           }
-          output->vx_p_rows = vx_p_rows;
           vx_core::vx_reserve(vx_p_rows);
+          output->vx_p_rows = vx_p_rows;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_csv::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_data_csv::Class_csv::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_csv::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_data_csv::Class_csv::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_csv::vx_empty() const {return vx_data_csv::e_csv;}
     vx_core::Type_any Class_csv::vx_type() const {return vx_data_csv::t_csv;}
 
@@ -295,8 +316,8 @@ namespace vx_data_csv {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       for (auto const& [key, val] : mapval) {
@@ -366,8 +387,8 @@ namespace vx_data_csv {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -375,8 +396,17 @@ namespace vx_data_csv {
       return output;
     }
 
-    vx_core::Type_msgblock Class_csvrowmap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_data_csv::Class_csvrowmap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_csvrowmap::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_data_csv::Class_csvrowmap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_csvrowmap::vx_empty() const {return vx_data_csv::e_csvrowmap;}
     vx_core::Type_any Class_csvrowmap::vx_type() const {return vx_data_csv::t_csvrowmap;}
 
@@ -469,8 +499,8 @@ namespace vx_data_csv {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(listval, output);
@@ -497,12 +527,10 @@ namespace vx_data_csv {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
         } else if (valsubtype == vx_core::t_msg) {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
-        } else if (valsubtype == vx_core::t_stringlist) {
-          ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_core::t_stringlist, valsub));
         } else if (vx_core::vx_boolean_from_type_trait(valsubtype, vx_core::t_stringlist)) {
+          vx_core::Type_stringlist subitem = vx_core::vx_any_from_any(vx_core::t_stringlist, valsub);
           ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_core::t_stringlist, valsub));
+          listval.push_back(subitem);
         } else if (valsubtype == vx_data_csv::t_csvrows) {
           ischanged = true;
           vx_data_csv::Type_csvrows multi = vx_core::vx_any_from_any(vx_data_csv::t_csvrows, valsub);
@@ -519,8 +547,8 @@ namespace vx_data_csv {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -528,8 +556,17 @@ namespace vx_data_csv {
       return output;
     }
 
-    vx_core::Type_msgblock Class_csvrows::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_data_csv::Class_csvrows::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_csvrows::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_data_csv::Class_csvrows::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_csvrows::vx_empty() const {return vx_data_csv::e_csvrows;}
     vx_core::Type_any Class_csvrows::vx_type() const {return vx_data_csv::t_csvrows;}
 
@@ -696,7 +733,11 @@ namespace vx_data_csv {
     }
 
     vx_core::Type_msgblock Class_csv_read_from_file::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_csv_read_from_file::vx_dispose() {
@@ -822,7 +863,11 @@ namespace vx_data_csv {
     }
 
     vx_core::Type_msgblock Class_csv_from_file::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_csv_from_file::vx_dispose() {
@@ -943,7 +988,11 @@ namespace vx_data_csv {
     }
 
     vx_core::Type_msgblock Class_csv_from_string::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_csv_from_string::vx_dispose() {
@@ -1080,7 +1129,11 @@ namespace vx_data_csv {
     }
 
     vx_core::Type_msgblock Class_csv_from_textblock::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_csv_from_textblock::vx_dispose() {
@@ -1212,7 +1265,11 @@ namespace vx_data_csv {
     }
 
     vx_core::Type_msgblock Class_csvrows_from_textblock::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_csvrows_from_textblock::vx_dispose() {
@@ -1358,7 +1415,11 @@ namespace vx_data_csv {
     }
 
     vx_core::Type_msgblock Class_stringmap_from_csv::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stringmap_from_csv::vx_dispose() {
@@ -1477,7 +1538,11 @@ namespace vx_data_csv {
     }
 
     vx_core::Type_msgblock Class_textblock_csv_from_string::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_textblock_csv_from_string::vx_dispose() {

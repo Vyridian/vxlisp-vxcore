@@ -40,9 +40,9 @@ public static class Csv {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":headers")) {
+      } else if ((skey == ":headers")) {
         output = this.headers();
-      } else if ((skey==":rows")) {
+      } else if ((skey == ":rows")) {
         output = this.rows();
       }
       return output;
@@ -117,7 +117,7 @@ public static class Csv {
           }
         } else {
           if (false) {
-          } else if ((key==":headers")) {
+          } else if ((key == ":headers")) {
             if (valsub == vx_p_headers) {
             } else if (valsub is Vx.Core.Type_stringlist valheaders) {
               ischanged = true;
@@ -136,7 +136,7 @@ public static class Csv {
               msg = Vx.Core.vx_msg_from_error("vx/data/csv/csv", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":rows")) {
+          } else if ((key == ":rows")) {
             if (valsub == vx_p_rows) {
             } else if (valsub is Vx.Data.Csv.Type_csvrows valrows) {
               ischanged = true;
@@ -470,8 +470,9 @@ public static class Csv {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_stringlist) {
+          Vx.Core.Type_stringlist subitem = (Vx.Core.Type_stringlist)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_stringlist)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {

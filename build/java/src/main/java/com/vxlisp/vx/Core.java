@@ -111,21 +111,6 @@ public final class Core {
     return output;
   }
 
-  public static Core.Type_any[] arrayany_from_anylist(
-    final Core.Type_anylist list
-  ) {
-    List<Core.Type_any> listany = list.vx_list();
-    Core.Type_msgblock msgblock = list.vx_msgblock();
-    if (msgblock == null) {
-    } else if (msgblock == Core.e_msgblock) {
-    } else {
-     listany = new ArrayList<>(listany);
-     listany.add(msgblock);
-    }
-    Core.Type_any[] output = listany.toArray(new Core.Type_any[0]);
-    return output;
-  }
-
   @SafeVarargs
   public static <T> List<T> arraylist_from_array(
     final T... items
@@ -228,6 +213,14 @@ public final class Core {
         Core.vx_log("map<-map", ex);
       }
     }
+    return output;
+  }
+
+  public static Core.Type_any[] vx_arrayany_from_anylist(
+    final Core.Type_anylist list
+  ) {
+    List<Core.Type_any> listany = list.vx_list();
+    Core.Type_any[] output = listany.toArray(new Core.Type_any[0]);
     return output;
   }
 
@@ -817,15 +810,47 @@ public final class Core {
     return output;
   }
 
+  // vx_msgblock_from_any(any)
+  public static Core.Type_msgblock vx_msgblock_from_any(
+    Core.Type_any value
+  ) {
+    Core.Type_msgblock output = value.vx_msgblock();
+    return output;
+  }
+
   // vx_msgblock_from_copy_arrayval(msgblock, any...)
   public static Core.Type_msgblock vx_msgblock_from_copy_arrayval(
     final Core.Type_any copy,
-    final Object... vals
+    final Object... values
   ) {
     Core.Type_msgblock output = Core.e_msgblock;
-    Core.Type_msgblock copymsgblock = copy.vx_msgblock();
-    if (copymsgblock != Core.e_msgblock) {
-      output = copymsgblock;
+    Core.Type_msgblock msgblock = copy.vx_msgblock();
+    List<Core.Type_msgblock> listmsgblock = new ArrayList<Core.Type_msgblock>();
+    if (msgblock != Core.e_msgblock) {
+      listmsgblock.add(msgblock);
+    }
+    for (Object subobj : values) {
+      if (subobj instanceof Core.Type_any) {
+        Core.Type_any subval = (Core.Type_any)subobj;
+        Core.Type_msgblock submsgblock = subval.vx_msgblock();
+        if (submsgblock != Core.e_msgblock) {
+          listmsgblock.add(submsgblock);
+        }
+      }
+    }
+    switch (listmsgblock.size()) {
+    case 0:
+      break;
+    case 1:
+      output = listmsgblock.get(0);
+      break;
+    default:
+      Core.Class_msgblocklist msgblocks = new Core.Class_msgblocklist();
+      msgblocks.vx_p_list = listmsgblock;
+      Core.Class_msgblock work = new Core.Class_msgblock();
+      work.vx_p_msgblocks = msgblocks;
+      output = work;
+      break;
     }
     return output;
   }
@@ -833,36 +858,36 @@ public final class Core {
   // vx_msgblock_from_copy_listval(msgblock, List<any>)
   public static Core.Type_msgblock vx_msgblock_from_copy_listval(
     final Core.Type_msgblock msgblock,
-    final Core.Type_any... vals
+    final Core.Type_any... values
   ) {
     Core.Type_msgblock output = Core.e_msgblock;
     List<Core.Type_msgblock> listmsgblock = new ArrayList<>();
-    if (msgblock == null) {
-    } else if (msgblock == Core.e_msgblock) {
-    } else {
-      Core.Type_msgblock origmsgblock = msgblock.vx_msgblock();
-      if (origmsgblock != Core.e_msgblock) {
-        List<Core.Type_msgblock> origlistmsgblock = origmsgblock.msgblocks().vx_listmsgblock();
+    if (msgblock != Core.e_msgblock) {
+      Core.Type_msgblocklist msgblocks = msgblock.msgblocks();
+      if (msgblocks != Core.e_msgblocklist) {
+        List<Core.Type_msgblock> origlistmsgblock = msgblocks.vx_listmsgblock();
         listmsgblock.addAll(origlistmsgblock);
       }
     }
-    for (Core.Type_any subval : vals) {
+    for (Core.Type_any subval : values) {
       Core.Type_msgblock submsgblock = subval.vx_msgblock();
       if (submsgblock != Core.e_msgblock) {
         listmsgblock.add(submsgblock);
       }
     }
-    if (listmsgblock.size() > 0) {
-      Core.Class_msgblocklist msgblocks;
-      msgblocks = new Core.Class_msgblocklist();
+    switch (listmsgblock.size()) {
+    case 0:
+      break;
+    case 1:
+      output = listmsgblock.get(0);
+      break;
+    default:
+      Core.Class_msgblocklist msgblocks = new Core.Class_msgblocklist();
       msgblocks.vx_p_list = listmsgblock;
       Core.Class_msgblock outputclass = new Core.Class_msgblock();
       outputclass.vx_p_msgblocks = msgblocks;
       output = outputclass;
-    } else if (msgblock == null) {
-    } else if (msgblock == Core.e_msgblock) {
-    } else {
-      output = msgblock;
+      break;
     }
     return output;
   }
@@ -1117,8 +1142,8 @@ public final class Core {
           output += "\n" + indenttext + " " + key + strval2;
         }
       }
-      if (stypedefname == "msg") {
-      } else if (stypedefname == "msgblock") {
+      if (stypedefname.equals("msg")) {
+      } else if (stypedefname.equals("msgblock")) {
       } else if (valstruct.vx_msgblock() != Core.e_msgblock) {
         String msgtext2 = Core.vx_string_from_any_indent(
           valstruct.vx_msgblock(), indent+1, linefeed
@@ -1609,10 +1634,7 @@ public final class Core {
       List<Core.Type_any> listval = new ArrayList<Core.Type_any>(value.vx_list());
       Core.Type_msg msg;
       for (Object valsub : vals) {
-        if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
-        } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+        if (false) {
         } else if (valsub instanceof Core.Type_anylist) {
           Core.Type_anylist multi = (Core.Type_anylist)valsub;
           ischanged = true;
@@ -2338,8 +2360,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_arg) {
+          Core.Type_arg subitem = (Core.Type_arg)valsub;
           ischanged = true;
-          listval.add((Core.Type_arg)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -2790,8 +2813,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Boolean) {
+          Core.Type_boolean subitem = Core.vx_new(Core.t_boolean, valsub);
           ischanged = true;
-          listval.add(Core.vx_new(Core.t_boolean, valsub));
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -3144,8 +3168,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_connect) {
+          Core.Type_connect subitem = (Core.Type_connect)valsub;
           ischanged = true;
-          listval.add((Core.Type_connect)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -5253,8 +5278,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_func) {
+          Core.Type_func subitem = (Core.Type_func)valsub;
           ischanged = true;
-          listval.add((Core.Type_func)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -5709,8 +5735,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Integer) {
+          Core.Type_int subitem = Core.vx_new(Core.t_int, valsub);
           ischanged = true;
-          listval.add(Core.vx_new(Core.t_int, valsub));
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -7014,7 +7041,7 @@ public final class Core {
 
   /**
    * type: msgblock
-   * Block of Messages
+   * Block of Messages. Note: Identical msgblocks are suppressed.
    * (type msgblock)
    */
   public interface Type_msgblock extends Core.Type_struct {
@@ -7092,24 +7119,22 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          if (valsub != Core.e_msgblock) {
+          if (valsub == Core.e_msgblock) {
+          } else if (valsub == msgblock) {
+          } else {
             vx_p_msgblocks = Core.vx_copy(vx_p_msgblocks, valsub);
-            ischanged = true;
           }
         } else if (valsub instanceof Core.Type_msgblocklist) {
           if (valsub != Core.e_msgblocklist) {
             vx_p_msgblocks = Core.vx_copy(vx_p_msgblocks, valsub);
-            ischanged = true;
           }
         } else if (valsub instanceof Core.Type_msg) {
           if (valsub != Core.e_msg) {
             vx_p_msgs = Core.vx_copy(vx_p_msgs, valsub);
-            ischanged = true;
           }
         } else if (valsub instanceof Core.Type_msglist) {
           if (valsub != Core.e_msglist) {
             vx_p_msgs = Core.vx_copy(vx_p_msgs, valsub);
-            ischanged = true;
           }
         } else if (key.equals("")) {
           if (false) {
@@ -7168,8 +7193,11 @@ public final class Core {
           key = "";
         }
       }
+      boolean ischangemsgs = vx_p_msgs != value.msgs();
+      boolean ischangemsgblocks = vx_p_msgblocks != value.msgblocks();
+      ischanged = ischangemsgs || ischangemsgblocks;
       if (ischanged) {
-        if ((vx_p_msgs.vx_list().size() == 0) && (vx_p_msgblocks.vx_list().size() == 1)) {
+        if ((vx_p_msgs == Core.e_msglist) && (vx_p_msgblocks.vx_list().size() == 1)) {
           output = vx_p_msgblocks.vx_listmsgblock().get(0);
         } else {
           Core.Class_msgblock work = new Core.Class_msgblock();
@@ -7218,7 +7246,7 @@ public final class Core {
 
   /**
    * type: msgblocklist
-   * List of Message Blocks
+   * List of Message Blocks. Note: Identical msgblocks are suppressed.
    * (type msgblocklist)
    */
   public interface Type_msgblocklist extends Core.Type_list {
@@ -7289,8 +7317,11 @@ public final class Core {
           ischanged = true;
           listval.addAll(multi.vx_listmsgblock());
         } else if (valsub instanceof Core.Type_msgblock) {
-          ischanged = true;
-          listval.add((Core.Type_msgblock)valsub);
+          Core.Type_msgblock subitem = (Core.Type_msgblock)valsub;
+          if (!listval.contains(subitem)) {
+            ischanged = true;
+            listval.add(subitem);
+          }
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -7358,7 +7389,7 @@ public final class Core {
 
   /**
    * type: msglist
-   * List of Messages
+   * List of Messages. Note: Identical msgs are suppressed.
    * (type msglist)
    */
   public interface Type_msglist extends Core.Type_list {
@@ -7429,8 +7460,11 @@ public final class Core {
           ischanged = true;
           listval.addAll(multi.vx_listmsg());
         } else if (valsub instanceof Core.Type_msg) {
-          ischanged = true;
-          listval.add((Core.Type_msg)valsub);
+          Core.Type_msg subitem = (Core.Type_msg)valsub;
+          if (!listval.contains(subitem)) {
+            ischanged = true;
+            listval.add(subitem);
+          }
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -7785,8 +7819,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_number) {
+          Core.Type_number subitem = (Core.Type_number)valsub;
           ischanged = true;
-          listval.add((Core.Type_number)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -8880,8 +8915,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_permission) {
+          Core.Type_permission subitem = (Core.Type_permission)valsub;
           ischanged = true;
-          listval.add((Core.Type_permission)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -11028,8 +11064,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof String) {
+          Core.Type_string subitem = Core.vx_new(Core.t_string, valsub);
           ischanged = true;
-          listval.add(Core.vx_new(Core.t_string, valsub));
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -11174,8 +11211,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_stringlist) {
+          Core.Type_stringlist subitem = (Core.Type_stringlist)valsub;
           ischanged = true;
-          listval.add((Core.Type_stringlist)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -12171,8 +12209,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_thenelse) {
+          Core.Type_thenelse subitem = (Core.Type_thenelse)valsub;
           ischanged = true;
-          listval.add((Core.Type_thenelse)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -12541,8 +12580,9 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_translation) {
+          Core.Type_translation subitem = (Core.Type_translation)valsub;
           ischanged = true;
-          listval.add((Core.Type_translation)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -23097,8 +23137,9 @@ public final class Core {
 
   @SuppressWarnings("unchecked")
   public static <T extends Core.Type_any> T f_copy(final T value, final Core.Type_anylist values) {
-    Core.Type_any[] arrayany = Core.arrayany_from_anylist(
-      values);
+    Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     T output = (T)(value.vx_copy(arrayobj));
     return output;
@@ -25035,6 +25076,138 @@ public final class Core {
     if (stext.endsWith(sfind)) {
       output = Core.c_true;
     };
+    return output;
+  }
+
+  /**
+   * @function is_error
+   * Returns true if value has an error.
+   * @param  {any-1} value
+   * @return {boolean}
+   * (func is-error)
+   */
+  public interface Func_is_error extends Core.Func_any_from_any {
+    public Core.Type_boolean vx_is_error(final Core.Type_any value);
+  }
+
+  public static class Class_is_error extends Core.Class_base implements Func_is_error {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Core.Class_is_error output = new Core.Class_is_error();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Core.Class_is_error output = new Core.Class_is_error();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/core", // pkgname
+        "is-error", // name
+        0, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "boolean", // name
+          "", // extends
+          Core.e_typelist, // traits
+          Core.e_typelist, // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Core.e_is_error;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Core.t_is_error;
+      return output;
+    }
+
+    @Override
+    public Core.Func_any_from_any vx_fn_new(Core.Class_any_from_any.IFn fn) {
+      return Core.e_any_from_any;
+    }
+
+    @Override
+    public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
+      T output = Core.f_empty(generic_any_1);
+      Core.Type_any inputval = (Core.Type_any)value;
+      Core.Type_any outputval = Core.f_is_error(inputval);
+      output = Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      output = Core.f_is_error(value);
+      return output;
+    }
+
+    @Override
+    public Core.Type_boolean vx_is_error(final Core.Type_any value) {
+      Core.Type_boolean output = Core.f_is_error(value);
+      return output;
+    }
+
+  }
+
+  public static final Core.Func_is_error e_is_error = new Core.Class_is_error();
+  public static final Core.Func_is_error t_is_error = new Core.Class_is_error();
+
+  public static Core.Type_boolean f_is_error(final Core.Type_any value) {
+    Core.Type_boolean output = Core.e_boolean;
+    output = Core.f_let(
+      Core.t_boolean,
+      Core.t_any_from_func.vx_fn_new(() -> {
+        Core.Type_msgblock msgblock = Core.f_msgblock_from_any(
+          value
+        );
+        Core.Type_any output_1 = Core.f_if_2(
+          Core.t_boolean,
+          Core.vx_new(
+            Core.t_thenelselist,
+            Core.f_then(
+              Core.t_boolean_from_func.vx_fn_new(() -> {
+                Core.Type_any output_2 = Core.f_notempty_1(
+                  msgblock
+                );
+                return output_2;
+              }),
+              Core.t_any_from_func.vx_fn_new(() -> {
+                Core.Type_any output_3 = Core.vx_new_boolean(true);
+                return output_3;
+              })
+            )
+          )
+        );
+        return output_1;
+      })
+    );
     return output;
   }
 
@@ -27280,6 +27453,138 @@ public final class Core {
   }
 
   /**
+   * @function log_error
+   * Write a value if it has an error.
+   * @param  {any-1} value
+   * @return {any-1}
+   * (func log-error)
+   */
+  public interface Func_log_error extends Core.Func_any_from_any {
+    public <T extends Core.Type_any> T vx_log_error(final T generic_any_1, final T value);
+  }
+
+  public static class Class_log_error extends Core.Class_base implements Func_log_error {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Core.Class_log_error output = new Core.Class_log_error();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Core.Class_log_error output = new Core.Class_log_error();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/core", // pkgname
+        "log-error", // name
+        0, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "any-1", // name
+          "", // extends
+          Core.e_typelist, // traits
+          Core.e_typelist, // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Core.e_log_error;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Core.t_log_error;
+      return output;
+    }
+
+    @Override
+    public Core.Func_any_from_any vx_fn_new(Core.Class_any_from_any.IFn fn) {
+      return Core.e_any_from_any;
+    }
+
+    @Override
+    public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
+      T output = Core.f_empty(generic_any_1);
+      Core.Type_any inputval = (Core.Type_any)value;
+      Core.Type_any outputval = Core.f_log_error(Core.t_any, inputval);
+      output = Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      output = Core.f_log_error(generic_any_1, value);
+      return output;
+    }
+
+    @Override
+    public <T extends Core.Type_any> T vx_log_error(final T generic_any_1, final T value) {
+      T output = Core.f_log_error(generic_any_1, value);
+      return output;
+    }
+
+  }
+
+  public static final Core.Func_log_error e_log_error = new Core.Class_log_error();
+  public static final Core.Func_log_error t_log_error = new Core.Class_log_error();
+
+  public static <T extends Core.Type_any> T f_log_error(final T generic_any_1, final T value) {
+    T output = Core.f_empty(generic_any_1);
+    output = Core.f_if_2(
+      generic_any_1,
+      Core.vx_new(
+        Core.t_thenelselist,
+        Core.f_then(
+          Core.t_boolean_from_func.vx_fn_new(() -> {
+            Core.Type_any output_1 = Core.f_is_error(
+              value
+            );
+            return output_1;
+          }),
+          Core.t_any_from_func.vx_fn_new(() -> {
+            Core.Type_any output_2 = Core.f_log(
+              value
+            );
+            return output_2;
+          })
+        ),
+        Core.f_else(
+          Core.t_any_from_func.vx_fn_new(() -> {
+            Core.Type_any output_3 = value;
+            return output_3;
+          })
+        )
+      )
+    );
+    return output;
+  }
+
+  /**
    * @function main
    * The default function for app main execution. Arguments come from the command line.
    * @param  {anylist} args
@@ -28146,6 +28451,112 @@ public final class Core {
   }
 
   /**
+   * @function msgblock_from_any
+   * Returns a msgblock from any
+   * @param  {any} value
+   * @return {msgblock}
+   * (func msgblock<-any)
+   */
+  public interface Func_msgblock_from_any extends Core.Func_any_from_any {
+    public Core.Type_msgblock vx_msgblock_from_any(final Core.Type_any value);
+  }
+
+  public static class Class_msgblock_from_any extends Core.Class_base implements Func_msgblock_from_any {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Core.Class_msgblock_from_any output = new Core.Class_msgblock_from_any();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Core.Class_msgblock_from_any output = new Core.Class_msgblock_from_any();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/core", // pkgname
+        "msgblock<-any", // name
+        0, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "msgblock", // name
+          ":struct", // extends
+          Core.e_typelist, // traits
+          Core.e_typelist, // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Core.e_msgblock_from_any;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Core.t_msgblock_from_any;
+      return output;
+    }
+
+    @Override
+    public Core.Func_any_from_any vx_fn_new(Core.Class_any_from_any.IFn fn) {
+      return Core.e_any_from_any;
+    }
+
+    @Override
+    public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
+      T output = Core.f_empty(generic_any_1);
+      Core.Type_any inputval = (Core.Type_any)value;
+      Core.Type_any outputval = Core.f_msgblock_from_any(inputval);
+      output = Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      output = Core.f_msgblock_from_any(value);
+      return output;
+    }
+
+    @Override
+    public Core.Type_msgblock vx_msgblock_from_any(final Core.Type_any value) {
+      Core.Type_msgblock output = Core.f_msgblock_from_any(value);
+      return output;
+    }
+
+  }
+
+  public static final Core.Func_msgblock_from_any e_msgblock_from_any = new Core.Class_msgblock_from_any();
+  public static final Core.Func_msgblock_from_any t_msgblock_from_any = new Core.Class_msgblock_from_any();
+
+  public static Core.Type_msgblock f_msgblock_from_any(final Core.Type_any value) {
+    Core.Type_msgblock output = Core.e_msgblock;
+    output = Core.vx_msgblock_from_any(value);
+    return output;
+  }
+
+  /**
    * @function msgblock_from_msgblock_msg
    * Return a new Msgblock with the added msg
    * @param  {msgblock} origblock
@@ -28767,7 +29178,9 @@ public final class Core {
   @SuppressWarnings("unchecked")
   public static <T extends Core.Type_any> T f_new(final T generic_any_1, final Core.Type_anylist values) {
     T output = Core.f_empty(generic_any_1);
-    Core.Type_any[] arrayany = Core.arrayany_from_anylist(values);
+    Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     output = (T)(generic_any_1.vx_new(arrayobj));
     return output;
@@ -28863,7 +29276,9 @@ public final class Core {
 
   @SuppressWarnings("unchecked")
   public static <T extends Core.Type_any> T f_new_from_type(final T type, final Core.Type_anylist values) {
-    Core.Type_any[] arrayany = Core.arrayany_from_anylist(values);
+    Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     T output = (T)(type.vx_new(arrayobj));
     return output;
@@ -32883,6 +33298,7 @@ public final class Core {
     mapfunc.put("is-empty", Core.t_is_empty);
     mapfunc.put("is-empty_1", Core.t_is_empty_1);
     mapfunc.put("is-endswith", Core.t_is_endswith);
+    mapfunc.put("is-error", Core.t_is_error);
     mapfunc.put("is-float", Core.t_is_float);
     mapfunc.put("is-func", Core.t_is_func);
     mapfunc.put("is-int", Core.t_is_int);
@@ -32904,6 +33320,7 @@ public final class Core {
     mapfunc.put("list<-type", Core.t_list_from_type);
     mapfunc.put("log", Core.t_log);
     mapfunc.put("log_1", Core.t_log_1);
+    mapfunc.put("log-error", Core.t_log_error);
     mapfunc.put("main", Core.t_main);
     mapfunc.put("map<-list", Core.t_map_from_list);
     mapfunc.put("map<-map", Core.t_map_from_map);
@@ -32912,6 +33329,7 @@ public final class Core {
     mapfunc.put("msg<-error_1", Core.t_msg_from_error_1);
     mapfunc.put("msg<-error_2", Core.t_msg_from_error_2);
     mapfunc.put("msg<-warning", Core.t_msg_from_warning);
+    mapfunc.put("msgblock<-any", Core.t_msgblock_from_any);
     mapfunc.put("msgblock<-msgblock-msg", Core.t_msgblock_from_msgblock_msg);
     mapfunc.put("msgblock<-msgblock-msgblock", Core.t_msgblock_from_msgblock_msgblock);
     mapfunc.put("name<-typedef", Core.t_name_from_typedef);

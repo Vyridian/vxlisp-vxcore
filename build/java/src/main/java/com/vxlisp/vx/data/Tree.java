@@ -539,8 +539,9 @@ public final class Tree {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Tree.Type_branch) {
+          Tree.Type_branch subitem = (Tree.Type_branch)valsub;
           ischanged = true;
-          listval.add((Tree.Type_branch)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -950,8 +951,9 @@ public final class Tree {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Tree.Type_leaf) {
+          Tree.Type_leaf subitem = (Tree.Type_leaf)valsub;
           ischanged = true;
-          listval.add((Tree.Type_leaf)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

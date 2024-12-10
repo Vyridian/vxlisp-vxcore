@@ -40,9 +40,9 @@ public static class Sample {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":mynum")) {
+      } else if ((skey == ":mynum")) {
         output = this.mynum();
-      } else if ((skey==":mystr")) {
+      } else if ((skey == ":mystr")) {
         output = this.mystr();
       }
       return output;
@@ -117,7 +117,7 @@ public static class Sample {
           }
         } else {
           if (false) {
-          } else if ((key==":mynum")) {
+          } else if ((key == ":mynum")) {
             if (valsub == vx_p_mynum) {
             } else if (valsub is Vx.Core.Type_int valmynum) {
               ischanged = true;
@@ -139,7 +139,7 @@ public static class Sample {
               msg = Vx.Core.vx_msg_from_error("vx/sample/mytype", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":mystr")) {
+          } else if ((key == ":mystr")) {
             if (valsub == vx_p_mystr) {
             } else if (valsub is Vx.Core.Type_string valmystr) {
               ischanged = true;

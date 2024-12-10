@@ -43,9 +43,9 @@ object vx_data_table {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":value")) {
+      } else if ((skey == ":value")) {
         output = this.value()
       }
       return output
@@ -123,7 +123,7 @@ object vx_data_table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -147,7 +147,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/cell", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":value")) {
+          } else if ((key == ":value")) {
             if (valsub == vx_p_value) {
             } else if (valsub is vx_core.Type_any) {
               var valvalue : vx_core.Type_any = valsub as vx_core.Type_any
@@ -293,8 +293,9 @@ object vx_data_table {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_data_table.Type_cell) {
+          var subitem : vx_data_table.Type_cell = valsub as vx_data_table.Type_cell
           ischanged = true
-          listval.add(valsub as vx_data_table.Type_cell)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -607,11 +608,11 @@ object vx_data_table {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":fldtype")) {
+      } else if ((skey == ":fldtype")) {
         output = this.fldtype()
       }
       return output
@@ -692,7 +693,7 @@ object vx_data_table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -716,7 +717,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -740,7 +741,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":fldtype")) {
+          } else if ((key == ":fldtype")) {
             if (valsub == vx_p_fldtype) {
             } else if (valsub is vx_core.Type_any) {
               var valfldtype : vx_core.Type_any = valsub as vx_core.Type_any
@@ -887,8 +888,9 @@ object vx_data_table {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_data_table.Type_field) {
+          var subitem : vx_data_table.Type_field = valsub as vx_data_table.Type_field
           ischanged = true
-          listval.add(valsub as vx_data_table.Type_field)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -1024,8 +1026,9 @@ object vx_data_table {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_data_table.Type_field) {
+          var subitem : vx_data_table.Type_field = valsub as vx_data_table.Type_field
           ischanged = true
-          listval.add(valsub as vx_data_table.Type_field)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -1138,11 +1141,11 @@ object vx_data_table {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":idlist")) {
+      } else if ((skey == ":idlist")) {
         output = this.idlist()
       }
       return output
@@ -1223,7 +1226,7 @@ object vx_data_table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1247,7 +1250,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1271,7 +1274,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":idlist")) {
+          } else if ((key == ":idlist")) {
             if (valsub == vx_p_idlist) {
             } else if (valsub is vx_core.Type_stringlist) {
               var validlist : vx_core.Type_stringlist = valsub as vx_core.Type_stringlist
@@ -1395,11 +1398,11 @@ object vx_data_table {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":cellmap")) {
+      } else if ((skey == ":cellmap")) {
         output = this.cellmap()
-      } else if ((skey==":cellsort")) {
+      } else if ((skey == ":cellsort")) {
         output = this.cellsort()
       }
       return output
@@ -1480,7 +1483,7 @@ object vx_data_table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1504,7 +1507,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":cellmap")) {
+          } else if ((key == ":cellmap")) {
             if (valsub == vx_p_cellmap) {
             } else if (valsub is vx_data_table.Type_cellmap) {
               var valcellmap : vx_data_table.Type_cellmap = valsub as vx_data_table.Type_cellmap
@@ -1525,7 +1528,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":cellsort")) {
+          } else if ((key == ":cellsort")) {
             if (valsub == vx_p_cellsort) {
             } else if (valsub is vx_data_table.Type_sort) {
               var valcellsort : vx_data_table.Type_sort = valsub as vx_data_table.Type_sort
@@ -1672,8 +1675,9 @@ object vx_data_table {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_data_table.Type_row) {
+          var subitem : vx_data_table.Type_row = valsub as vx_data_table.Type_row
           ischanged = true
-          listval.add(valsub as vx_data_table.Type_row)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -1986,11 +1990,11 @@ object vx_data_table {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":idlist")) {
+      } else if ((skey == ":idlist")) {
         output = this.idlist()
       }
       return output
@@ -2071,7 +2075,7 @@ object vx_data_table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2095,7 +2099,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2119,7 +2123,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":idlist")) {
+          } else if ((key == ":idlist")) {
             if (valsub == vx_p_idlist) {
             } else if (valsub is vx_core.Type_stringlist) {
               var validlist : vx_core.Type_stringlist = valsub as vx_core.Type_stringlist
@@ -2291,19 +2295,19 @@ object vx_data_table {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":fieldmap")) {
+      } else if ((skey == ":fieldmap")) {
         output = this.fieldmap()
-      } else if ((skey==":fieldsort")) {
+      } else if ((skey == ":fieldsort")) {
         output = this.fieldsort()
-      } else if ((skey==":rowmap")) {
+      } else if ((skey == ":rowmap")) {
         output = this.rowmap()
-      } else if ((skey==":rowfilter")) {
+      } else if ((skey == ":rowfilter")) {
         output = this.rowfilter()
-      } else if ((skey==":rowsort")) {
+      } else if ((skey == ":rowsort")) {
         output = this.rowsort()
       }
       return output
@@ -2396,7 +2400,7 @@ object vx_data_table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2420,7 +2424,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2444,7 +2448,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":fieldmap")) {
+          } else if ((key == ":fieldmap")) {
             if (valsub == vx_p_fieldmap) {
             } else if (valsub is vx_data_table.Type_fieldmap) {
               var valfieldmap : vx_data_table.Type_fieldmap = valsub as vx_data_table.Type_fieldmap
@@ -2465,7 +2469,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":fieldsort")) {
+          } else if ((key == ":fieldsort")) {
             if (valsub == vx_p_fieldsort) {
             } else if (valsub is vx_data_table.Type_sort) {
               var valfieldsort : vx_data_table.Type_sort = valsub as vx_data_table.Type_sort
@@ -2486,7 +2490,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":rowmap")) {
+          } else if ((key == ":rowmap")) {
             if (valsub == vx_p_rowmap) {
             } else if (valsub is vx_data_table.Type_rowmap) {
               var valrowmap : vx_data_table.Type_rowmap = valsub as vx_data_table.Type_rowmap
@@ -2507,7 +2511,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":rowfilter")) {
+          } else if ((key == ":rowfilter")) {
             if (valsub == vx_p_rowfilter) {
             } else if (valsub is vx_data_table.Type_filter) {
               var valrowfilter : vx_data_table.Type_filter = valsub as vx_data_table.Type_filter
@@ -2528,7 +2532,7 @@ object vx_data_table {
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":rowsort")) {
+          } else if ((key == ":rowsort")) {
             if (valsub == vx_p_rowsort) {
             } else if (valsub is vx_data_table.Type_sort) {
               var valrowsort : vx_data_table.Type_sort = valsub as vx_data_table.Type_sort

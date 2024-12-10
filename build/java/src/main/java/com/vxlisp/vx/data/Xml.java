@@ -477,8 +477,9 @@ public final class Xml {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Xml.Type_xml) {
+          Xml.Type_xml subitem = (Xml.Type_xml)valsub;
           ischanged = true;
-          listval.add((Xml.Type_xml)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

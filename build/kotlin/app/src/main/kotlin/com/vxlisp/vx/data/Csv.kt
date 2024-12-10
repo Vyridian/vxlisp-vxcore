@@ -43,9 +43,9 @@ object vx_data_csv {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":headers")) {
+      } else if ((skey == ":headers")) {
         output = this.headers()
-      } else if ((skey==":rows")) {
+      } else if ((skey == ":rows")) {
         output = this.rows()
       }
       return output
@@ -123,7 +123,7 @@ object vx_data_csv {
           }
         } else {
           if (false) {
-          } else if ((key==":headers")) {
+          } else if ((key == ":headers")) {
             if (valsub == vx_p_headers) {
             } else if (valsub is vx_core.Type_stringlist) {
               var valheaders : vx_core.Type_stringlist = valsub as vx_core.Type_stringlist
@@ -144,7 +144,7 @@ object vx_data_csv {
               msg = vx_core.vx_msg_from_error("vx/data/csv/csv", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":rows")) {
+          } else if ((key == ":rows")) {
             if (valsub == vx_p_rows) {
             } else if (valsub is vx_data_csv.Type_csvrows) {
               var valrows : vx_data_csv.Type_csvrows = valsub as vx_data_csv.Type_csvrows
@@ -490,8 +490,9 @@ object vx_data_csv {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_core.Type_stringlist) {
+          var subitem : vx_core.Type_stringlist = valsub as vx_core.Type_stringlist
           ischanged = true
-          listval.add(valsub as vx_core.Type_stringlist)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {

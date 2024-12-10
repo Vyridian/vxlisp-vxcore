@@ -159,15 +159,15 @@ object vx_data_file {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":format")) {
+      } else if ((skey == ":format")) {
         output = this.format()
-      } else if ((skey==":path")) {
+      } else if ((skey == ":path")) {
         output = this.path()
-      } else if ((skey==":permission")) {
+      } else if ((skey == ":permission")) {
         output = this.permission()
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text()
       }
       return output
@@ -254,7 +254,7 @@ object vx_data_file {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -278,7 +278,7 @@ object vx_data_file {
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":format")) {
+          } else if ((key == ":format")) {
             if (valsub == vx_p_format) {
             } else if (valsub is vx_data_file.Type_fileformat) {
               var valformat : vx_data_file.Type_fileformat = valsub as vx_data_file.Type_fileformat
@@ -299,7 +299,7 @@ object vx_data_file {
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":path")) {
+          } else if ((key == ":path")) {
             if (valsub == vx_p_path) {
             } else if (valsub is vx_core.Type_string) {
               var valpath : vx_core.Type_string = valsub as vx_core.Type_string
@@ -323,7 +323,7 @@ object vx_data_file {
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":permission")) {
+          } else if ((key == ":permission")) {
             if (valsub == vx_p_permission) {
             } else if (valsub is vx_core.Type_permission) {
               var valpermission : vx_core.Type_permission = valsub as vx_core.Type_permission
@@ -344,7 +344,7 @@ object vx_data_file {
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is vx_core.Type_string) {
               var valtext : vx_core.Type_string = valsub as vx_core.Type_string
@@ -562,8 +562,9 @@ object vx_data_file {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_data_file.Type_file) {
+          var subitem : vx_data_file.Type_file = valsub as vx_data_file.Type_file
           ischanged = true
-          listval.add(valsub as vx_data_file.Type_file)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {

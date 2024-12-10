@@ -636,7 +636,7 @@ export default class vx_data_xml_test {
           ),
           vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity 2))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
+            ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity msg-error))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
             ":testresult",
             vx_test.f_test(
               context,
@@ -651,7 +651,7 @@ export default class vx_data_xml_test {
                   ":detail",
                   vx_core.f_new({"any-1": vx_core.t_anymap}, ":tag", "/wrong", ":startpos", 0, ":endpos", 0, ":line", 0, ":column", 0),
                   ":severity",
-                  2
+                  vx_core.c_msg_error
                 )
               ),
               vx_data_xml.f_xml_close_from_xml_textblock(

@@ -1091,7 +1091,7 @@ object vx_data_xmlTest {
   fun f_xml_close_from_xml_textblock_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
     var output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity 2))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
+      ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity msg-error))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
       ":testresult", vx_test.f_test(
         context,
         vx_core.f_new(
@@ -1124,7 +1124,7 @@ object vx_data_xmlTest {
                   )
                 ),
                 vx_core.vx_new_string(":severity"),
-                vx_core.vx_new_int(2)
+                vx_core.c_msg_error
               )
             )
           )

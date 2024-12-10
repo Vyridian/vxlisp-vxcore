@@ -1189,8 +1189,9 @@ public final class Html {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Html.Type_divchild) {
+          Html.Type_divchild subitem = (Html.Type_divchild)valsub;
           ischanged = true;
-          listval.add((Html.Type_divchild)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -1335,8 +1336,9 @@ public final class Html {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Html.Type_div) {
+          Html.Type_div subitem = (Html.Type_div)valsub;
           ischanged = true;
-          listval.add((Html.Type_div)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -3145,8 +3147,9 @@ public final class Html {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Html.Type_headchild) {
+          Html.Type_headchild subitem = (Html.Type_headchild)valsub;
           ischanged = true;
-          listval.add((Html.Type_headchild)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -4809,8 +4812,9 @@ public final class Html {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Html.Type_node) {
+          Html.Type_node subitem = (Html.Type_node)valsub;
           ischanged = true;
-          listval.add((Html.Type_node)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -5827,8 +5831,9 @@ public final class Html {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Html.Type_style) {
+          Html.Type_style subitem = (Html.Type_style)valsub;
           ischanged = true;
-          listval.add((Html.Type_style)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -7871,8 +7876,9 @@ public final class Html {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Html.Type_td) {
+          Html.Type_td subitem = (Html.Type_td)valsub;
           ischanged = true;
-          listval.add((Html.Type_td)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -9200,8 +9206,9 @@ public final class Html {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Html.Type_tr) {
+          Html.Type_tr subitem = (Html.Type_tr)valsub;
           ischanged = true;
-          listval.add((Html.Type_tr)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

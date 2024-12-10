@@ -98,7 +98,11 @@ namespace vx_translation_es {
     }
 
     vx_core::Type_msgblock Class_translation_es::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translation_es::vx_dispose() {
@@ -206,7 +210,11 @@ namespace vx_translation_es {
     }
 
     vx_core::Type_msgblock Class_words::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_words::vx_dispose() {

@@ -109,7 +109,11 @@ namespace vx_translation_all {
     }
 
     vx_core::Type_msgblock Class_context_all::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_context_all::vx_dispose() {
@@ -227,7 +231,11 @@ namespace vx_translation_all {
     }
 
     vx_core::Type_msgblock Class_translationmap_all::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translationmap_all::vx_dispose() {

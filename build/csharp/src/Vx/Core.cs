@@ -165,9 +165,11 @@ public static class Core {
     return output;
   }
 
-  public static Vx.Core.Type_any[] arrayany_from_anylist(
+  public static Vx.Core.Type_any[] vx_arrayany_from_anylist(
     Vx.Core.Type_anylist list) {
-    return list.vx_list().ToArray();
+    List<Vx.Core.Type_any> listany = list.vx_list();
+    Core.Type_any[] output = listany.ToArray();
+    return output;
   }
 
   public static List<Vx.Core.Type_any> arraylist_from_array(
@@ -919,14 +921,45 @@ public static class Core {
     return output;
   }
 
+  // vx_msgblock_from_any(any)
+  public static Vx.Core.Type_msgblock vx_msgblock_from_any(
+    Vx.Core.Type_any value) {
+    Vx.Core.Type_msgblock output = value.vx_msgblock();
+    return output;
+  }
+
   // vx_msgblock_from_copy_arrayval(msgblock, any...)
   public static Vx.Core.Type_msgblock vx_msgblock_from_copy_arrayval(
     Vx.Core.Type_any copy,
-    params object[] vals) {
+    params object[] values
+  ) {
     Vx.Core.Type_msgblock output = Vx.Core.e_msgblock;
-    Vx.Core.Type_msgblock copymsgblock = copy.vx_msgblock();
-    if (copymsgblock != Vx.Core.e_msgblock) {
-      output = copymsgblock;
+    List<Vx.Core.Type_msgblock> listmsgblock = new List<Vx.Core.Type_msgblock>();
+    Vx.Core.Type_msgblock msgblock = copy.vx_msgblock();
+    if (msgblock != Vx.Core.e_msgblock) {
+      listmsgblock.Add(msgblock);
+    }
+    foreach (object subobj in values) {
+      if (subobj is Vx.Core.Type_any subval) {
+        Vx.Core.Type_msgblock submsgblock = subval.vx_msgblock();
+        if (submsgblock != Vx.Core.e_msgblock) {
+          listmsgblock.Add(submsgblock);
+        }
+      }
+    }
+    switch (listmsgblock.Count) {
+    case 0:
+      break;
+    case 1:
+      output = listmsgblock[0];
+      break;
+    default:
+      Vx.Core.Class_msgblocklist msgblocks = new Vx.Core.Class_msgblocklist();
+      msgblocks.vx_p_list = listmsgblock;
+      Vx.Core.Class_msgblock outputclass = new Vx.Core.Class_msgblock();
+      outputclass.vx_p_msgblocks = msgblocks;
+      output = outputclass;
+      break;
     }
     return output;
   }
@@ -1124,6 +1157,7 @@ public static class Core {
     } else if (value is Vx.Core.Type_struct valstruct) {
       Vx.Core.Type_typedef typedef = valstruct.vx_typedef();
       Vx.Core.Type_string typedefname = typedef.name();
+      string stypedefname = typedefname.vx_string();
       int indentint2 = indent;
       indentint2 += 2;
       Map<string, Vx.Core.Type_any> mapval2 = valstruct.vx_map();
@@ -1144,7 +1178,9 @@ public static class Core {
           output += "\n" + indenttext + " " + key + strval2;
         }
       }
-      if (valstruct.vx_msgblock() != Vx.Core.e_msgblock) {
+      if (stypedefname == "msg") {
+      } else if (stypedefname == "msgblock") {
+      } else if (valstruct.vx_msgblock() != Vx.Core.e_msgblock) {
         string msgtext2 = Vx.Core.vx_string_from_any_indent(valstruct.vx_msgblock(), indentint2, linefeed);
         output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext2;
       }
@@ -1657,10 +1693,7 @@ public static class Core {
       List<Vx.Core.Type_any> listval = new List<Vx.Core.Type_any>(value.vx_list());
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
-        if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
-        } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+        if (false) {
         } else if (valsub is Vx.Core.Type_anylist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_list());
@@ -2034,13 +2067,13 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":argtype")) {
+      } else if ((skey == ":argtype")) {
         output = this.argtype();
-      } else if ((skey==":fn-any")) {
+      } else if ((skey == ":fn-any")) {
         output = this.fn_any();
-      } else if ((skey==":doc")) {
+      } else if ((skey == ":doc")) {
         output = this.doc();
       }
       return output;
@@ -2121,7 +2154,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -2143,7 +2176,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":argtype")) {
+          } else if ((key == ":argtype")) {
             if (valsub == vx_p_argtype) {
             } else if (valsub is Vx.Core.Type_any valargtype) {
               ischanged = true;
@@ -2162,7 +2195,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":fn-any")) {
+          } else if ((key == ":fn-any")) {
             if (valsub == vx_p_fn_any) {
             } else if (valsub is Vx.Core.Func_any_from_func valfn_any) {
               ischanged = true;
@@ -2181,7 +2214,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":doc")) {
+          } else if ((key == ":doc")) {
             if (valsub == vx_p_doc) {
             } else if (valsub is Vx.Core.Type_string valdoc) {
               ischanged = true;
@@ -2328,8 +2361,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_arg) {
+          Vx.Core.Type_arg subitem = (Vx.Core.Type_arg)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_arg)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -2742,8 +2776,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is bool) {
+          Vx.Core.Type_boolean subitem = Vx.Core.vx_new(Vx.Core.t_boolean, valsub);
           ischanged = true;
-          listval.Add(Vx.Core.vx_new(Vx.Core.t_boolean, valsub));
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -3067,8 +3102,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_connect) {
+          Vx.Core.Type_connect subitem = (Vx.Core.Type_connect)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_connect)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -3437,11 +3473,11 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":pkgname")) {
+      } else if ((skey == ":pkgname")) {
         output = this.pkgname();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":type")) {
+      } else if ((skey == ":type")) {
         output = this.type();
       }
       return output;
@@ -3519,7 +3555,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":pkgname")) {
+          } else if ((key == ":pkgname")) {
             if (valsub == vx_p_pkgname) {
             } else if (valsub is Vx.Core.Type_string valpkgname) {
               ischanged = true;
@@ -3541,7 +3577,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/constdef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -3563,7 +3599,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/constdef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":type")) {
+          } else if ((key == ":type")) {
             if (valsub == vx_p_type) {
             } else if (valsub is Vx.Core.Type_any valtype) {
               ischanged = true;
@@ -3995,13 +4031,13 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":code")) {
+      } else if ((skey == ":code")) {
         output = this.code();
-      } else if ((skey==":session")) {
+      } else if ((skey == ":session")) {
         output = this.session();
-      } else if ((skey==":setting")) {
+      } else if ((skey == ":setting")) {
         output = this.setting();
-      } else if ((skey==":state")) {
+      } else if ((skey == ":state")) {
         output = this.state();
       }
       return output;
@@ -4082,7 +4118,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":code")) {
+          } else if ((key == ":code")) {
             if (valsub == vx_p_code) {
             } else if (valsub is Vx.Core.Type_string valcode) {
               ischanged = true;
@@ -4104,7 +4140,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":session")) {
+          } else if ((key == ":session")) {
             if (valsub == vx_p_session) {
             } else if (valsub is Vx.Core.Type_session valsession) {
               ischanged = true;
@@ -4123,7 +4159,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":setting")) {
+          } else if ((key == ":setting")) {
             if (valsub == vx_p_setting) {
             } else if (valsub is Vx.Core.Type_setting valsetting) {
               ischanged = true;
@@ -4142,7 +4178,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":state")) {
+          } else if ((key == ":state")) {
             if (valsub == vx_p_state) {
             } else if (valsub is Vx.Core.Type_state valstate) {
               ischanged = true;
@@ -4687,15 +4723,15 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":pkgname")) {
+      } else if ((skey == ":pkgname")) {
         output = this.pkgname();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":idx")) {
+      } else if ((skey == ":idx")) {
         output = this.idx();
-      } else if ((skey==":type")) {
+      } else if ((skey == ":type")) {
         output = this.type();
-      } else if ((skey==":async")) {
+      } else if ((skey == ":async")) {
         output = this.async();
       }
       return output;
@@ -4779,7 +4815,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":pkgname")) {
+          } else if ((key == ":pkgname")) {
             if (valsub == vx_p_pkgname) {
             } else if (valsub is Vx.Core.Type_string valpkgname) {
               ischanged = true;
@@ -4801,7 +4837,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -4823,7 +4859,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":idx")) {
+          } else if ((key == ":idx")) {
             if (valsub == vx_p_idx) {
             } else if (valsub is Vx.Core.Type_int validx) {
               ischanged = true;
@@ -4845,7 +4881,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":type")) {
+          } else if ((key == ":type")) {
             if (valsub == vx_p_type) {
             } else if (valsub is Vx.Core.Type_any valtype) {
               ischanged = true;
@@ -4864,7 +4900,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":async")) {
+          } else if ((key == ":async")) {
             if (valsub == vx_p_async) {
             } else if (valsub is Vx.Core.Type_boolean valasync) {
               ischanged = true;
@@ -5012,8 +5048,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_func) {
+          Vx.Core.Type_func subitem = (Vx.Core.Type_func)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_func)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -5429,8 +5466,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is int) {
+          Vx.Core.Type_int subitem = Vx.Core.vx_new(Vx.Core.t_int, valsub);
           ischanged = true;
-          listval.Add(Vx.Core.vx_new(Vx.Core.t_int, valsub));
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -6220,7 +6258,7 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":valuepool")) {
+      } else if ((skey == ":valuepool")) {
         output = this.valuepool();
       }
       return output;
@@ -6292,7 +6330,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":valuepool")) {
+          } else if ((key == ":valuepool")) {
             if (valsub == vx_p_valuepool) {
             } else if (valsub is Vx.Core.Type_value valvaluepool) {
               ischanged = true;
@@ -6438,15 +6476,15 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":code")) {
+      } else if ((skey == ":code")) {
         output = this.code();
-      } else if ((skey==":detail")) {
+      } else if ((skey == ":detail")) {
         output = this.detail();
-      } else if ((skey==":path")) {
+      } else if ((skey == ":path")) {
         output = this.path();
-      } else if ((skey==":severity")) {
+      } else if ((skey == ":severity")) {
         output = this.severity();
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text();
       }
       return output;
@@ -6491,7 +6529,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":code")) {
+          } else if ((key == ":code")) {
             if (valsub == vx_p_code) {
             } else if (valsub is Vx.Core.Type_string valcode) {
               ischanged = true;
@@ -6500,13 +6538,13 @@ public static class Core {
               ischanged = true;
               vx_p_code = Vx.Core.vx_new(Vx.Core.t_string, valsub);
             }
-          } else if ((key==":detail")) {
+          } else if ((key == ":detail")) {
             if (valsub == vx_p_detail) {
             } else if (valsub is Vx.Core.Type_any valdetail) {
               ischanged = true;
               vx_p_detail = valdetail;
             }
-          } else if ((key==":path")) {
+          } else if ((key == ":path")) {
             if (valsub == vx_p_path) {
             } else if (valsub is Vx.Core.Type_string valpath) {
               ischanged = true;
@@ -6515,7 +6553,7 @@ public static class Core {
               ischanged = true;
               vx_p_path = Vx.Core.vx_new(Vx.Core.t_string, valsub);
             }
-          } else if ((key==":severity")) {
+          } else if ((key == ":severity")) {
             if (valsub == vx_p_severity) {
             } else if (valsub is Vx.Core.Type_int valseverity) {
               ischanged = true;
@@ -6524,7 +6562,7 @@ public static class Core {
               ischanged = true;
               vx_p_severity = Vx.Core.vx_new(Vx.Core.t_int, valsub);
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is Vx.Core.Type_string valtext) {
               ischanged = true;
@@ -6583,7 +6621,7 @@ public static class Core {
 
   /**
    * type: msgblock
-   * Block of Messages
+   * Block of Messages. Note: Identical msgblocks are suppressed.
    * (type msgblock)
    */
   public interface Type_msgblock : Vx.Core.Type_struct {
@@ -6619,9 +6657,9 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":msgs")) {
+      } else if ((skey == ":msgs")) {
         output = this.msgs();
-      } else if ((skey==":msgblocks")) {
+      } else if ((skey == ":msgblocks")) {
         output = this.msgblocks();
       }
       return output;
@@ -6655,24 +6693,22 @@ public static class Core {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          if (valsub != Vx.Core.e_msgblock) {
+          if (valsub == Vx.Core.e_msgblock) {
+          } else if (valsub == msgblock) {
+          } else {
             vx_p_msgblocks = Vx.Core.vx_copy(vx_p_msgblocks, valsub);
-            ischanged = true;
           }
         } else if (valsub is Vx.Core.Type_msgblocklist) {
           if (valsub != Vx.Core.e_msgblocklist) {
             vx_p_msgblocks = Vx.Core.vx_copy(vx_p_msgblocks, valsub);
-            ischanged = true;
           }
         } else if (valsub is Vx.Core.Type_msg) {
           if (valsub != Vx.Core.e_msg) {
             vx_p_msgs = Vx.Core.vx_copy(vx_p_msgs, valsub);
-            ischanged = true;
           }
         } else if (valsub is Vx.Core.Type_msglist) {
           if (valsub != Vx.Core.e_msglist) {
             vx_p_msgs = Vx.Core.vx_copy(vx_p_msgs, valsub);
-            ischanged = true;
           }
         } else if (key == "") {
           if (false) {
@@ -6683,7 +6719,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":msgs")) {
+          } else if ((key == ":msgs")) {
             if (valsub == vx_p_msgs) {
             } else if (valsub is Vx.Core.Type_msglist valmsgs) {
               ischanged = true;
@@ -6702,7 +6738,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/msgblock", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":msgblocks")) {
+          } else if ((key == ":msgblocks")) {
             if (valsub == vx_p_msgblocks) {
             } else if (valsub is Vx.Core.Type_msgblocklist valmsgblocks) {
               ischanged = true;
@@ -6725,8 +6761,11 @@ public static class Core {
           key = "";
         }
       }
+      bool ischangemsgs = vx_p_msgs != value.msgs();
+      bool ischangemsgblocks = vx_p_msgblocks != value.msgblocks();
+      ischanged = ischangemsgs || ischangemsgblocks;
       if (ischanged) {
-        if ((vx_p_msgs.vx_list().Count == 0) && (vx_p_msgblocks.vx_list().Count == 1)) {
+        if ((vx_p_msgs == Vx.Core.e_msglist) && (vx_p_msgblocks.vx_list().Count == 1)) {
           output = vx_p_msgblocks.vx_listmsgblock()[0];
         } else {
           Vx.Core.Class_msgblock work = new Vx.Core.Class_msgblock();
@@ -6772,7 +6811,7 @@ public static class Core {
 
   /**
    * type: msgblocklist
-   * List of Message Blocks
+   * List of Message Blocks. Note: Identical msgblocks are suppressed.
    * (type msgblocklist)
    */
   public interface Type_msgblocklist : Vx.Core.Type_list {
@@ -6836,8 +6875,11 @@ public static class Core {
           ischanged = true;
           listval.AddRange(multi.vx_listmsgblock());
         } else if (valsub is Vx.Core.Type_msgblock) {
-          ischanged = true;
-          listval.Add((Vx.Core.Type_msgblock)valsub);
+          Vx.Core.Type_msgblock subitem = (Vx.Core.Type_msgblock)valsub;
+          if (!listval.Contains(subitem)) {
+            ischanged = true;
+            listval.Add(subitem);
+          }
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -6899,7 +6941,7 @@ public static class Core {
 
   /**
    * type: msglist
-   * List of Messages
+   * List of Messages. Note: Identical msgs are suppressed.
    * (type msglist)
    */
   public interface Type_msglist : Vx.Core.Type_list {
@@ -6963,8 +7005,11 @@ public static class Core {
           ischanged = true;
           listval.AddRange(multi.vx_listmsg());
         } else if (valsub is Vx.Core.Type_msg) {
-          ischanged = true;
-          listval.Add((Vx.Core.Type_msg)valsub);
+          Vx.Core.Type_msg subitem = (Vx.Core.Type_msg)valsub;
+          if (!listval.Contains(subitem)) {
+            ischanged = true;
+            listval.Add(subitem);
+          }
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -7290,8 +7335,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_number) {
+          Vx.Core.Type_number subitem = (Vx.Core.Type_number)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_number)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -7619,15 +7665,15 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":pkgname")) {
+      } else if ((skey == ":pkgname")) {
         output = this.pkgname();
-      } else if ((skey==":constmap")) {
+      } else if ((skey == ":constmap")) {
         output = this.constmap();
-      } else if ((skey==":funcmap")) {
+      } else if ((skey == ":funcmap")) {
         output = this.funcmap();
-      } else if ((skey==":typemap")) {
+      } else if ((skey == ":typemap")) {
         output = this.typemap();
-      } else if ((skey==":emptymap")) {
+      } else if ((skey == ":emptymap")) {
         output = this.emptymap();
       }
       return output;
@@ -7711,7 +7757,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":pkgname")) {
+          } else if ((key == ":pkgname")) {
             if (valsub == vx_p_pkgname) {
             } else if (valsub is Vx.Core.Type_string valpkgname) {
               ischanged = true;
@@ -7733,7 +7779,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":constmap")) {
+          } else if ((key == ":constmap")) {
             if (valsub == vx_p_constmap) {
             } else if (valsub is Vx.Core.Type_constmap valconstmap) {
               ischanged = true;
@@ -7752,7 +7798,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":funcmap")) {
+          } else if ((key == ":funcmap")) {
             if (valsub == vx_p_funcmap) {
             } else if (valsub is Vx.Core.Type_funcmap valfuncmap) {
               ischanged = true;
@@ -7771,7 +7817,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":typemap")) {
+          } else if ((key == ":typemap")) {
             if (valsub == vx_p_typemap) {
             } else if (valsub is Vx.Core.Type_typemap valtypemap) {
               ischanged = true;
@@ -7790,7 +7836,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":emptymap")) {
+          } else if ((key == ":emptymap")) {
             if (valsub == vx_p_emptymap) {
             } else if (valsub is Vx.Core.Type_map valemptymap) {
               ischanged = true;
@@ -8083,7 +8129,7 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
       }
       return output;
@@ -8155,7 +8201,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -8299,8 +8345,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_permission) {
+          Vx.Core.Type_permission subitem = (Vx.Core.Type_permission)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_permission)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -8580,7 +8627,7 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":packagemap")) {
+      } else if ((skey == ":packagemap")) {
         output = this.packagemap();
       }
       return output;
@@ -8652,7 +8699,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":packagemap")) {
+          } else if ((key == ":packagemap")) {
             if (valsub == vx_p_packagemap) {
             } else if (valsub is Vx.Core.Type_packagemap valpackagemap) {
               ischanged = true;
@@ -8772,11 +8819,11 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":allowfuncs")) {
+      } else if ((skey == ":allowfuncs")) {
         output = this.allowfuncs();
-      } else if ((skey==":permissions")) {
+      } else if ((skey == ":permissions")) {
         output = this.permissions();
-      } else if ((skey==":permissionmap")) {
+      } else if ((skey == ":permissionmap")) {
         output = this.permissionmap();
       }
       return output;
@@ -8854,7 +8901,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":allowfuncs")) {
+          } else if ((key == ":allowfuncs")) {
             if (valsub == vx_p_allowfuncs) {
             } else if (valsub is Vx.Core.Type_funclist valallowfuncs) {
               ischanged = true;
@@ -8873,7 +8920,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/security", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":permissions")) {
+          } else if ((key == ":permissions")) {
             if (valsub == vx_p_permissions) {
             } else if (valsub is Vx.Core.Type_permissionlist valpermissions) {
               ischanged = true;
@@ -8892,7 +8939,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/security", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":permissionmap")) {
+          } else if ((key == ":permissionmap")) {
             if (valsub == vx_p_permissionmap) {
             } else if (valsub is Vx.Core.Type_permissionmap valpermissionmap) {
               ischanged = true;
@@ -9050,17 +9097,17 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":user")) {
+      } else if ((skey == ":user")) {
         output = this.user();
-      } else if ((skey==":connectlist")) {
+      } else if ((skey == ":connectlist")) {
         output = this.connectlist();
-      } else if ((skey==":connectmap")) {
+      } else if ((skey == ":connectmap")) {
         output = this.connectmap();
-      } else if ((skey==":locale")) {
+      } else if ((skey == ":locale")) {
         output = this.locale();
-      } else if ((skey==":translation")) {
+      } else if ((skey == ":translation")) {
         output = this.translation();
-      } else if ((skey==":translationmap")) {
+      } else if ((skey == ":translationmap")) {
         output = this.translationmap();
       }
       return output;
@@ -9147,7 +9194,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":user")) {
+          } else if ((key == ":user")) {
             if (valsub == vx_p_user) {
             } else if (valsub is Vx.Core.Type_user valuser) {
               ischanged = true;
@@ -9166,7 +9213,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":connectlist")) {
+          } else if ((key == ":connectlist")) {
             if (valsub == vx_p_connectlist) {
             } else if (valsub is Vx.Core.Type_connectlist valconnectlist) {
               ischanged = true;
@@ -9185,7 +9232,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":connectmap")) {
+          } else if ((key == ":connectmap")) {
             if (valsub == vx_p_connectmap) {
             } else if (valsub is Vx.Core.Type_connectmap valconnectmap) {
               ischanged = true;
@@ -9204,7 +9251,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":locale")) {
+          } else if ((key == ":locale")) {
             if (valsub == vx_p_locale) {
             } else if (valsub is Vx.Core.Type_locale vallocale) {
               ischanged = true;
@@ -9223,7 +9270,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":translation")) {
+          } else if ((key == ":translation")) {
             if (valsub == vx_p_translation) {
             } else if (valsub is Vx.Core.Type_translation valtranslation) {
               ischanged = true;
@@ -9242,7 +9289,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":translationmap")) {
+          } else if ((key == ":translationmap")) {
             if (valsub == vx_p_translationmap) {
             } else if (valsub is Vx.Core.Type_translationmap valtranslationmap) {
               ischanged = true;
@@ -9343,7 +9390,7 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":pathmap")) {
+      } else if ((skey == ":pathmap")) {
         output = this.pathmap();
       }
       return output;
@@ -9415,7 +9462,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":pathmap")) {
+          } else if ((key == ":pathmap")) {
             if (valsub == vx_p_pathmap) {
             } else if (valsub is Vx.Core.Type_stringmap valpathmap) {
               ischanged = true;
@@ -9511,7 +9558,7 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":statelistenermap")) {
+      } else if ((skey == ":statelistenermap")) {
         output = this.statelistenermap();
       }
       return output;
@@ -9583,7 +9630,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":statelistenermap")) {
+          } else if ((key == ":statelistenermap")) {
             if (valsub == vx_p_statelistenermap) {
             } else if (valsub is Vx.Core.Type_statelistenermap valstatelistenermap) {
               ischanged = true;
@@ -9703,11 +9750,11 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":value")) {
+      } else if ((skey == ":value")) {
         output = this.value();
-      } else if ((skey==":fn-boolean")) {
+      } else if ((skey == ":fn-boolean")) {
         output = this.fn_boolean();
       }
       return output;
@@ -9785,7 +9832,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -9807,7 +9854,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/statelistener", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":value")) {
+          } else if ((key == ":value")) {
             if (valsub == vx_p_value) {
             } else if (valsub is Vx.Core.Type_any valvalue) {
               ischanged = true;
@@ -9826,7 +9873,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/statelistener", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":fn-boolean")) {
+          } else if ((key == ":fn-boolean")) {
             if (valsub == vx_p_fn_boolean) {
             } else if (valsub is Vx.Core.Func_boolean_from_none valfn_boolean) {
               ischanged = true;
@@ -10281,8 +10328,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is string) {
+          Vx.Core.Type_string subitem = Vx.Core.vx_new(Vx.Core.t_string, valsub);
           ischanged = true;
-          listval.Add(Vx.Core.vx_new(Vx.Core.t_string, valsub));
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -10413,8 +10461,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_stringlist) {
+          Vx.Core.Type_stringlist subitem = (Vx.Core.Type_stringlist)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_stringlist)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -11014,15 +11063,15 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":code")) {
+      } else if ((skey == ":code")) {
         output = this.code();
-      } else if ((skey==":value")) {
+      } else if ((skey == ":value")) {
         output = this.value();
-      } else if ((skey==":values")) {
+      } else if ((skey == ":values")) {
         output = this.values();
-      } else if ((skey==":fn-cond")) {
+      } else if ((skey == ":fn-cond")) {
         output = this.fn_cond();
-      } else if ((skey==":fn-any")) {
+      } else if ((skey == ":fn-any")) {
         output = this.fn_any();
       }
       return output;
@@ -11106,7 +11155,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":code")) {
+          } else if ((key == ":code")) {
             if (valsub == vx_p_code) {
             } else if (valsub is Vx.Core.Type_string valcode) {
               ischanged = true;
@@ -11128,7 +11177,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":value")) {
+          } else if ((key == ":value")) {
             if (valsub == vx_p_value) {
             } else if (valsub is Vx.Core.Type_any valvalue) {
               ischanged = true;
@@ -11147,7 +11196,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":values")) {
+          } else if ((key == ":values")) {
             if (valsub == vx_p_values) {
             } else if (valsub is Vx.Core.Type_list valvalues) {
               ischanged = true;
@@ -11166,7 +11215,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":fn-cond")) {
+          } else if ((key == ":fn-cond")) {
             if (valsub == vx_p_fn_cond) {
             } else if (valsub is Vx.Core.Func_boolean_from_func valfn_cond) {
               ischanged = true;
@@ -11185,7 +11234,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":fn-any")) {
+          } else if ((key == ":fn-any")) {
             if (valsub == vx_p_fn_any) {
             } else if (valsub is Vx.Core.Func_any_from_func valfn_any) {
               ischanged = true;
@@ -11330,8 +11379,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_thenelse) {
+          Vx.Core.Type_thenelse subitem = (Vx.Core.Type_thenelse)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_thenelse)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -11429,9 +11479,9 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":wordmap")) {
+      } else if ((skey == ":wordmap")) {
         output = this.wordmap();
       }
       return output;
@@ -11506,7 +11556,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -11528,7 +11578,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/translation", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":wordmap")) {
+          } else if ((key == ":wordmap")) {
             if (valsub == vx_p_wordmap) {
             } else if (valsub is Vx.Core.Type_stringmap valwordmap) {
               ischanged = true;
@@ -11670,8 +11720,9 @@ public static class Core {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Core.Type_translation) {
+          Vx.Core.Type_translation subitem = (Vx.Core.Type_translation)valsub;
           ischanged = true;
-          listval.Add((Vx.Core.Type_translation)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -12148,29 +12199,29 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":pkgname")) {
+      } else if ((skey == ":pkgname")) {
         output = this.pkgname();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":extends")) {
+      } else if ((skey == ":extends")) {
         output = this.extend();
-      } else if ((skey==":allowfuncs")) {
+      } else if ((skey == ":allowfuncs")) {
         output = this.allowfuncs();
-      } else if ((skey==":allowtypes")) {
+      } else if ((skey == ":allowtypes")) {
         output = this.allowtypes();
-      } else if ((skey==":allowvalues")) {
+      } else if ((skey == ":allowvalues")) {
         output = this.allowvalues();
-      } else if ((skey==":disallowfuncs")) {
+      } else if ((skey == ":disallowfuncs")) {
         output = this.disallowfuncs();
-      } else if ((skey==":disallowtypes")) {
+      } else if ((skey == ":disallowtypes")) {
         output = this.disallowtypes();
-      } else if ((skey==":disallowvalues")) {
+      } else if ((skey == ":disallowvalues")) {
         output = this.disallowvalues();
-      } else if ((skey==":properties")) {
+      } else if ((skey == ":properties")) {
         output = this.properties();
-      } else if ((skey==":proplast")) {
+      } else if ((skey == ":proplast")) {
         output = this.proplast();
-      } else if ((skey==":traits")) {
+      } else if ((skey == ":traits")) {
         output = this.traits();
       }
       return output;
@@ -12275,7 +12326,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":pkgname")) {
+          } else if ((key == ":pkgname")) {
             if (valsub == vx_p_pkgname) {
             } else if (valsub is Vx.Core.Type_string valpkgname) {
               ischanged = true;
@@ -12297,7 +12348,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -12319,7 +12370,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":extends")) {
+          } else if ((key == ":extends")) {
             if (valsub == vx_p_extend) {
             } else if (valsub is Vx.Core.Type_string valextend) {
               ischanged = true;
@@ -12341,7 +12392,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":allowfuncs")) {
+          } else if ((key == ":allowfuncs")) {
             if (valsub == vx_p_allowfuncs) {
             } else if (valsub is Vx.Core.Type_funclist valallowfuncs) {
               ischanged = true;
@@ -12360,7 +12411,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":allowtypes")) {
+          } else if ((key == ":allowtypes")) {
             if (valsub == vx_p_allowtypes) {
             } else if (valsub is Vx.Core.Type_typelist valallowtypes) {
               ischanged = true;
@@ -12379,7 +12430,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":allowvalues")) {
+          } else if ((key == ":allowvalues")) {
             if (valsub == vx_p_allowvalues) {
             } else if (valsub is Vx.Core.Type_anylist valallowvalues) {
               ischanged = true;
@@ -12398,7 +12449,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":disallowfuncs")) {
+          } else if ((key == ":disallowfuncs")) {
             if (valsub == vx_p_disallowfuncs) {
             } else if (valsub is Vx.Core.Type_funclist valdisallowfuncs) {
               ischanged = true;
@@ -12417,7 +12468,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":disallowtypes")) {
+          } else if ((key == ":disallowtypes")) {
             if (valsub == vx_p_disallowtypes) {
             } else if (valsub is Vx.Core.Type_typelist valdisallowtypes) {
               ischanged = true;
@@ -12436,7 +12487,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":disallowvalues")) {
+          } else if ((key == ":disallowvalues")) {
             if (valsub == vx_p_disallowvalues) {
             } else if (valsub is Vx.Core.Type_anylist valdisallowvalues) {
               ischanged = true;
@@ -12455,7 +12506,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":properties")) {
+          } else if ((key == ":properties")) {
             if (valsub == vx_p_properties) {
             } else if (valsub is Vx.Core.Type_argmap valproperties) {
               ischanged = true;
@@ -12474,7 +12525,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":proplast")) {
+          } else if ((key == ":proplast")) {
             if (valsub == vx_p_proplast) {
             } else if (valsub is Vx.Core.Type_arg valproplast) {
               ischanged = true;
@@ -12493,7 +12544,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":traits")) {
+          } else if ((key == ":traits")) {
             if (valsub == vx_p_traits) {
             } else if (valsub is Vx.Core.Type_typelist valtraits) {
               ischanged = true;
@@ -12922,11 +12973,11 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":security")) {
+      } else if ((skey == ":security")) {
         output = this.security();
-      } else if ((skey==":username")) {
+      } else if ((skey == ":username")) {
         output = this.username();
-      } else if ((skey==":token")) {
+      } else if ((skey == ":token")) {
         output = this.token();
       }
       return output;
@@ -13004,7 +13055,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":security")) {
+          } else if ((key == ":security")) {
             if (valsub == vx_p_security) {
             } else if (valsub is Vx.Core.Type_security valsecurity) {
               ischanged = true;
@@ -13023,7 +13074,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/user", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":username")) {
+          } else if ((key == ":username")) {
             if (valsub == vx_p_username) {
             } else if (valsub is Vx.Core.Type_string valusername) {
               ischanged = true;
@@ -13045,7 +13096,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/user", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":token")) {
+          } else if ((key == ":token")) {
             if (valsub == vx_p_token) {
             } else if (valsub is Vx.Core.Type_string valtoken) {
               ischanged = true;
@@ -13157,9 +13208,9 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":next")) {
+      } else if ((skey == ":next")) {
         output = this.next();
-      } else if ((skey==":refs")) {
+      } else if ((skey == ":refs")) {
         output = this.refs();
       }
       return output;
@@ -13234,7 +13285,7 @@ public static class Core {
           }
         } else {
           if (false) {
-          } else if ((key==":next")) {
+          } else if ((key == ":next")) {
             if (valsub == vx_p_next) {
             } else if (valsub is Vx.Core.Type_any valnext) {
               ischanged = true;
@@ -13253,7 +13304,7 @@ public static class Core {
               msg = Vx.Core.vx_msg_from_error("vx/core/value", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":refs")) {
+          } else if ((key == ":refs")) {
             if (valsub == vx_p_refs) {
             } else if (valsub is Vx.Core.Type_int valrefs) {
               ischanged = true;
@@ -21302,7 +21353,9 @@ public static class Core {
   public static Vx.Core.Func_copy t_copy = new Vx.Core.Class_copy();
 
   public static T f_copy<T>(T value, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
-    Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+    Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     T tvalue = (T)value;
     Vx.Core.Type_any anyvalue = tvalue.vx_copy(arrayobj);
@@ -23072,6 +23125,128 @@ public static class Core {
     if (stext.EndsWith(sfind)) {
       output = Vx.Core.c_true;
     };
+    return output;
+  }
+
+  /**
+   * @function is_error
+   * Returns true if value has an error.
+   * @param  {any-1} value
+   * @return {boolean}
+   * (func is-error)
+   */
+  public interface Func_is_error : Vx.Core.Func_any_from_any {
+    public Vx.Core.Type_boolean vx_is_error(Vx.Core.Type_any value);
+  }
+
+  public class Class_is_error : Vx.Core.Class_base, Func_is_error {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Core.Class_is_error output = new Vx.Core.Class_is_error();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Core.Class_is_error output = new Vx.Core.Class_is_error();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/core", // pkgname
+        "is-error", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "boolean", // name
+          "", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.e_typelist, // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Core.e_is_error;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Core.t_is_error;
+      return output;
+    }
+
+    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
+      return Vx.Core.e_any_from_any;
+    }
+
+    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
+      T output = Vx.Core.f_empty(generic_any_1);
+      Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
+      Vx.Core.Type_any outputval = Vx.Core.f_is_error(inputval);
+      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      output = Vx.Core.f_is_error(value);
+      return output;
+    }
+
+    public Vx.Core.Type_boolean vx_is_error(Vx.Core.Type_any value) {
+      Vx.Core.Type_boolean output = Vx.Core.f_is_error(value);
+      return output;
+    }
+
+  }
+
+  public static Vx.Core.Func_is_error e_is_error = new Vx.Core.Class_is_error();
+  public static Vx.Core.Func_is_error t_is_error = new Vx.Core.Class_is_error();
+
+  public static Vx.Core.Type_boolean f_is_error(Vx.Core.Type_any value) {
+    Vx.Core.Type_boolean output = Vx.Core.e_boolean;
+    output = Vx.Core.f_let(
+      Vx.Core.t_boolean,
+      Vx.Core.t_any_from_func.vx_fn_new(() => {
+        Vx.Core.Type_msgblock msgblock = Vx.Core.f_msgblock_from_any(
+          value
+        );
+        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+          Vx.Core.t_boolean,
+          Vx.Core.vx_new(
+            Vx.Core.t_thenelselist,
+            Vx.Core.f_then(
+              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
+                Vx.Core.Type_any output_2 = Vx.Core.f_notempty_1(
+                  msgblock
+                );
+                return output_2;
+              }),
+              Vx.Core.t_any_from_func.vx_fn_new(() => {
+                Vx.Core.Type_any output_3 = Vx.Core.vx_new_boolean(true);
+                return output_3;
+              })
+            )
+          )
+        );
+        return output_1;
+      })
+    );
     return output;
   }
 
@@ -25114,6 +25289,128 @@ public static class Core {
   }
 
   /**
+   * @function log_error
+   * Write a value if it has an error.
+   * @param  {any-1} value
+   * @return {any-1}
+   * (func log-error)
+   */
+  public interface Func_log_error : Vx.Core.Func_any_from_any {
+    public T vx_log_error<T>(T generic_any_1, T value) where T : Vx.Core.Type_any;
+  }
+
+  public class Class_log_error : Vx.Core.Class_base, Func_log_error {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Core.Class_log_error output = new Vx.Core.Class_log_error();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Core.Class_log_error output = new Vx.Core.Class_log_error();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/core", // pkgname
+        "log-error", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "any-1", // name
+          "", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.e_typelist, // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Core.e_log_error;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Core.t_log_error;
+      return output;
+    }
+
+    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
+      return Vx.Core.e_any_from_any;
+    }
+
+    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
+      T output = Vx.Core.f_empty(generic_any_1);
+      Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
+      Vx.Core.Type_any outputval = Vx.Core.f_log_error(Vx.Core.t_any, inputval);
+      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      output = Vx.Core.f_log_error(generic_any_1, value);
+      return output;
+    }
+
+    public T vx_log_error<T>(T generic_any_1, T value) where T : Vx.Core.Type_any {
+      T output = Vx.Core.f_log_error(generic_any_1, value);
+      return output;
+    }
+
+  }
+
+  public static Vx.Core.Func_log_error e_log_error = new Vx.Core.Class_log_error();
+  public static Vx.Core.Func_log_error t_log_error = new Vx.Core.Class_log_error();
+
+  public static T f_log_error<T>(T generic_any_1, T value) where T : Vx.Core.Type_any {
+    T output = Vx.Core.f_empty(generic_any_1);
+    output = Vx.Core.f_if_2(
+      generic_any_1,
+      Vx.Core.vx_new(
+        Vx.Core.t_thenelselist,
+        Vx.Core.f_then(
+          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
+            Vx.Core.Type_any output_1 = Vx.Core.f_is_error(
+              value
+            );
+            return output_1;
+          }),
+          Vx.Core.t_any_from_func.vx_fn_new(() => {
+            Vx.Core.Type_any output_2 = Vx.Core.f_log(
+              value
+            );
+            return output_2;
+          })
+        ),
+        Vx.Core.f_else(
+          Vx.Core.t_any_from_func.vx_fn_new(() => {
+            Vx.Core.Type_any output_3 = value;
+            return output_3;
+          })
+        )
+      )
+    );
+    return output;
+  }
+
+  /**
    * @function main
    * The default function for app main execution. Arguments come from the command line.
    * @param  {anylist} args
@@ -25901,6 +26198,102 @@ public static class Core {
   }
 
   /**
+   * @function msgblock_from_any
+   * Returns a msgblock from any
+   * @param  {any} value
+   * @return {msgblock}
+   * (func msgblock<-any)
+   */
+  public interface Func_msgblock_from_any : Vx.Core.Func_any_from_any {
+    public Vx.Core.Type_msgblock vx_msgblock_from_any(Vx.Core.Type_any value);
+  }
+
+  public class Class_msgblock_from_any : Vx.Core.Class_base, Func_msgblock_from_any {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Core.Class_msgblock_from_any output = new Vx.Core.Class_msgblock_from_any();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Core.Class_msgblock_from_any output = new Vx.Core.Class_msgblock_from_any();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/core", // pkgname
+        "msgblock<-any", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "msgblock", // name
+          ":struct", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.e_typelist, // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Core.e_msgblock_from_any;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Core.t_msgblock_from_any;
+      return output;
+    }
+
+    public Vx.Core.Func_any_from_any vx_fn_new(Vx.Core.Class_any_from_any.IFn fn) {
+      return Vx.Core.e_any_from_any;
+    }
+
+    public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
+      T output = Vx.Core.f_empty(generic_any_1);
+      Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
+      Vx.Core.Type_any outputval = Vx.Core.f_msgblock_from_any(inputval);
+      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      output = Vx.Core.f_msgblock_from_any(value);
+      return output;
+    }
+
+    public Vx.Core.Type_msgblock vx_msgblock_from_any(Vx.Core.Type_any value) {
+      Vx.Core.Type_msgblock output = Vx.Core.f_msgblock_from_any(value);
+      return output;
+    }
+
+  }
+
+  public static Vx.Core.Func_msgblock_from_any e_msgblock_from_any = new Vx.Core.Class_msgblock_from_any();
+  public static Vx.Core.Func_msgblock_from_any t_msgblock_from_any = new Vx.Core.Class_msgblock_from_any();
+
+  public static Vx.Core.Type_msgblock f_msgblock_from_any(Vx.Core.Type_any value) {
+    Vx.Core.Type_msgblock output = Vx.Core.e_msgblock;
+    output = Vx.Core.vx_msgblock_from_any(value);
+    return output;
+  }
+
+  /**
    * @function msgblock_from_msgblock_msg
    * Return a new Msgblock with the added msg
    * @param  {msgblock} origblock
@@ -26465,7 +26858,9 @@ public static class Core {
 
   public static T f_new<T>(T generic_any_1, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
     T output = Vx.Core.f_empty(generic_any_1);
-    Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+    Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     output = (T)(generic_any_1.vx_new(arrayobj));
     return output;
@@ -26552,7 +26947,9 @@ public static class Core {
   public static Vx.Core.Func_new_from_type t_new_from_type = new Vx.Core.Class_new_from_type();
 
   public static T f_new_from_type<T>(T type, Vx.Core.Type_anylist values) where T : Vx.Core.Type_any {
-    Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+    Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     T output = (T)(type.vx_new(arrayobj));
     return output;
@@ -30206,6 +30603,7 @@ public static class Core {
     mapfunc.put("is-empty", Vx.Core.t_is_empty);
     mapfunc.put("is-empty_1", Vx.Core.t_is_empty_1);
     mapfunc.put("is-endswith", Vx.Core.t_is_endswith);
+    mapfunc.put("is-error", Vx.Core.t_is_error);
     mapfunc.put("is-float", Vx.Core.t_is_float);
     mapfunc.put("is-func", Vx.Core.t_is_func);
     mapfunc.put("is-int", Vx.Core.t_is_int);
@@ -30227,6 +30625,7 @@ public static class Core {
     mapfunc.put("list<-type", Vx.Core.t_list_from_type);
     mapfunc.put("log", Vx.Core.t_log);
     mapfunc.put("log_1", Vx.Core.t_log_1);
+    mapfunc.put("log-error", Vx.Core.t_log_error);
     mapfunc.put("main", Vx.Core.t_main);
     mapfunc.put("map<-list", Vx.Core.t_map_from_list);
     mapfunc.put("map<-map", Vx.Core.t_map_from_map);
@@ -30235,6 +30634,7 @@ public static class Core {
     mapfunc.put("msg<-error_1", Vx.Core.t_msg_from_error_1);
     mapfunc.put("msg<-error_2", Vx.Core.t_msg_from_error_2);
     mapfunc.put("msg<-warning", Vx.Core.t_msg_from_warning);
+    mapfunc.put("msgblock<-any", Vx.Core.t_msgblock_from_any);
     mapfunc.put("msgblock<-msgblock-msg", Vx.Core.t_msgblock_from_msgblock_msg);
     mapfunc.put("msgblock<-msgblock-msgblock", Vx.Core.t_msgblock_from_msgblock_msgblock);
     mapfunc.put("name<-typedef", Vx.Core.t_name_from_typedef);

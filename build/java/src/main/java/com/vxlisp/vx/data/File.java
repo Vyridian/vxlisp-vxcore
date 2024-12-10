@@ -534,8 +534,9 @@ public final class File {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof File.Type_file) {
+          File.Type_file subitem = (File.Type_file)valsub;
           ischanged = true;
-          listval.add((File.Type_file)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

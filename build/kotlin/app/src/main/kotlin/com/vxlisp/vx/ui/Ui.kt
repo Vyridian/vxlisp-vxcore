@@ -146,13 +146,13 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":left")) {
+      } else if ((skey == ":left")) {
         output = this.left()
-      } else if ((skey==":right")) {
+      } else if ((skey == ":right")) {
         output = this.right()
-      } else if ((skey==":top")) {
+      } else if ((skey == ":top")) {
         output = this.top()
-      } else if ((skey==":bottom")) {
+      } else if ((skey == ":bottom")) {
         output = this.bottom()
       }
       return output
@@ -236,7 +236,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":left")) {
+          } else if ((key == ":left")) {
             if (valsub == vx_p_left) {
             } else if (valsub is vx_core.Type_int) {
               var valleft : vx_core.Type_int = valsub as vx_core.Type_int
@@ -260,7 +260,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":right")) {
+          } else if ((key == ":right")) {
             if (valsub == vx_p_right) {
             } else if (valsub is vx_core.Type_int) {
               var valright : vx_core.Type_int = valsub as vx_core.Type_int
@@ -284,7 +284,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":top")) {
+          } else if ((key == ":top")) {
             if (valsub == vx_p_top) {
             } else if (valsub is vx_core.Type_int) {
               var valtop : vx_core.Type_int = valsub as vx_core.Type_int
@@ -308,7 +308,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":bottom")) {
+          } else if ((key == ":bottom")) {
             if (valsub == vx_p_bottom) {
             } else if (valsub is vx_core.Type_int) {
               var valbottom : vx_core.Type_int = valsub as vx_core.Type_int
@@ -668,13 +668,13 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":fontface")) {
+      } else if ((skey == ":fontface")) {
         output = this.fontface()
-      } else if ((skey==":fontsize")) {
+      } else if ((skey == ":fontsize")) {
         output = this.fontsize()
-      } else if ((skey==":fontstyle")) {
+      } else if ((skey == ":fontstyle")) {
         output = this.fontstyle()
       }
       return output
@@ -758,7 +758,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -782,7 +782,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":fontface")) {
+          } else if ((key == ":fontface")) {
             if (valsub == vx_p_fontface) {
             } else if (valsub is vx_ui_ui.Type_fontface) {
               var valfontface : vx_ui_ui.Type_fontface = valsub as vx_ui_ui.Type_fontface
@@ -803,7 +803,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":fontsize")) {
+          } else if ((key == ":fontsize")) {
             if (valsub == vx_p_fontsize) {
             } else if (valsub is vx_core.Type_int) {
               var valfontsize : vx_core.Type_int = valsub as vx_core.Type_int
@@ -827,7 +827,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":fontstyle")) {
+          } else if ((key == ":fontstyle")) {
             if (valsub == vx_p_fontstyle) {
             } else if (valsub is vx_ui_ui.Type_fontstyle) {
               var valfontstyle : vx_ui_ui.Type_fontstyle = valsub as vx_ui_ui.Type_fontstyle
@@ -965,13 +965,13 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":weight")) {
+      } else if ((skey == ":weight")) {
         output = this.weight()
-      } else if ((skey==":unicode")) {
+      } else if ((skey == ":unicode")) {
         output = this.unicode()
-      } else if ((skey==":filelist")) {
+      } else if ((skey == ":filelist")) {
         output = this.filelist()
       }
       return output
@@ -1055,7 +1055,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1079,7 +1079,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":weight")) {
+          } else if ((key == ":weight")) {
             if (valsub == vx_p_weight) {
             } else if (valsub is vx_core.Type_string) {
               var valweight : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1103,7 +1103,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":unicode")) {
+          } else if ((key == ":unicode")) {
             if (valsub == vx_p_unicode) {
             } else if (valsub is vx_core.Type_string) {
               var valunicode : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1127,7 +1127,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":filelist")) {
+          } else if ((key == ":filelist")) {
             if (valsub == vx_p_filelist) {
             } else if (valsub is vx_data_file.Type_filelist) {
               var valfilelist : vx_data_file.Type_filelist = valsub as vx_data_file.Type_filelist
@@ -1276,8 +1276,9 @@ object vx_ui_ui {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_ui_ui.Type_fontface) {
+          var subitem : vx_ui_ui.Type_fontface = valsub as vx_ui_ui.Type_fontface
           ischanged = true
-          listval.add(valsub as vx_ui_ui.Type_fontface)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -1769,7 +1770,7 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
       }
       return output
@@ -1844,7 +1845,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2171,11 +2172,11 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":label")) {
+      } else if ((skey == ":label")) {
         output = this.label()
-      } else if ((skey==":file")) {
+      } else if ((skey == ":file")) {
         output = this.file()
       }
       return output
@@ -2256,7 +2257,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2280,7 +2281,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/image", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":label")) {
+          } else if ((key == ":label")) {
             if (valsub == vx_p_label) {
             } else if (valsub is vx_core.Type_string) {
               var vallabel : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2304,7 +2305,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/image", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":file")) {
+          } else if ((key == ":file")) {
             if (valsub == vx_p_file) {
             } else if (valsub is vx_data_file.Type_file) {
               var valfile : vx_data_file.Type_file = valsub as vx_data_file.Type_file
@@ -2417,9 +2418,9 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":fn-layout")) {
+      } else if ((skey == ":fn-layout")) {
         output = this.fn_layout()
       }
       return output
@@ -2497,7 +2498,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2521,7 +2522,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layout", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":fn-layout")) {
+          } else if ((key == ":fn-layout")) {
             if (valsub == vx_p_fn_layout) {
             } else if (valsub is vx_ui_ui.Func_ui_layout_from_ui_orig_parent) {
               var valfn_layout : vx_ui_ui.Func_ui_layout_from_ui_orig_parent = valsub as vx_ui_ui.Func_ui_layout_from_ui_orig_parent
@@ -2705,21 +2706,21 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":boolean-print")) {
+      } else if ((skey == ":boolean-print")) {
         output = this.boolean_print()
-      } else if ((skey==":boolean-layoutremove")) {
+      } else if ((skey == ":boolean-layoutremove")) {
         output = this.boolean_layoutremove()
-      } else if ((skey==":boolean-layoutselected")) {
+      } else if ((skey == ":boolean-layoutselected")) {
         output = this.boolean_layoutselected()
-      } else if ((skey==":boolean-layoutvisible")) {
+      } else if ((skey == ":boolean-layoutvisible")) {
         output = this.boolean_layoutvisible()
-      } else if ((skey==":layoutmap")) {
+      } else if ((skey == ":layoutmap")) {
         output = this.layoutmap()
-      } else if ((skey==":layoutelse")) {
+      } else if ((skey == ":layoutelse")) {
         output = this.layoutelse()
-      } else if ((skey==":stylesheetrender")) {
+      } else if ((skey == ":stylesheetrender")) {
         output = this.stylesheetrender()
       }
       return output
@@ -2815,7 +2816,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2839,7 +2840,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":boolean-print")) {
+          } else if ((key == ":boolean-print")) {
             if (valsub == vx_p_boolean_print) {
             } else if (valsub is vx_ui_ui.Func_boolean_print) {
               var valboolean_print : vx_ui_ui.Func_boolean_print = valsub as vx_ui_ui.Func_boolean_print
@@ -2860,7 +2861,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":boolean-layoutremove")) {
+          } else if ((key == ":boolean-layoutremove")) {
             if (valsub == vx_p_boolean_layoutremove) {
             } else if (valsub is vx_ui_ui.Func_boolean_layoutremove_from_ui) {
               var valboolean_layoutremove : vx_ui_ui.Func_boolean_layoutremove_from_ui = valsub as vx_ui_ui.Func_boolean_layoutremove_from_ui
@@ -2881,7 +2882,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":boolean-layoutselected")) {
+          } else if ((key == ":boolean-layoutselected")) {
             if (valsub == vx_p_boolean_layoutselected) {
             } else if (valsub is vx_ui_ui.Func_boolean_layoutselected_from_ui) {
               var valboolean_layoutselected : vx_ui_ui.Func_boolean_layoutselected_from_ui = valsub as vx_ui_ui.Func_boolean_layoutselected_from_ui
@@ -2902,7 +2903,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":boolean-layoutvisible")) {
+          } else if ((key == ":boolean-layoutvisible")) {
             if (valsub == vx_p_boolean_layoutvisible) {
             } else if (valsub is vx_ui_ui.Func_boolean_layoutvisible_from_ui) {
               var valboolean_layoutvisible : vx_ui_ui.Func_boolean_layoutvisible_from_ui = valsub as vx_ui_ui.Func_boolean_layoutvisible_from_ui
@@ -2923,7 +2924,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":layoutmap")) {
+          } else if ((key == ":layoutmap")) {
             if (valsub == vx_p_layoutmap) {
             } else if (valsub is vx_ui_ui.Type_layoutmap) {
               var vallayoutmap : vx_ui_ui.Type_layoutmap = valsub as vx_ui_ui.Type_layoutmap
@@ -2944,7 +2945,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":layoutelse")) {
+          } else if ((key == ":layoutelse")) {
             if (valsub == vx_p_layoutelse) {
             } else if (valsub is vx_ui_ui.Type_layout) {
               var vallayoutelse : vx_ui_ui.Type_layout = valsub as vx_ui_ui.Type_layout
@@ -2965,7 +2966,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylesheetrender")) {
+          } else if ((key == ":stylesheetrender")) {
             if (valsub == vx_p_stylesheetrender) {
             } else if (valsub is vx_ui_ui.Func_stylesheet_render) {
               var valstylesheetrender : vx_ui_ui.Func_stylesheet_render = valsub as vx_ui_ui.Func_stylesheet_render
@@ -3118,8 +3119,9 @@ object vx_ui_ui {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_ui_ui.Type_layout) {
+          var subitem : vx_ui_ui.Type_layout = valsub as vx_ui_ui.Type_layout
           ischanged = true
-          listval.add(valsub as vx_ui_ui.Type_layout)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -3410,7 +3412,7 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
       }
       return output
@@ -3485,7 +3487,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -3647,17 +3649,17 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":x")) {
+      } else if ((skey == ":x")) {
         output = this.x()
-      } else if ((skey==":y")) {
+      } else if ((skey == ":y")) {
         output = this.y()
-      } else if ((skey==":z")) {
+      } else if ((skey == ":z")) {
         output = this.z()
-      } else if ((skey==":t")) {
+      } else if ((skey == ":t")) {
         output = this.t()
-      } else if ((skey==":i")) {
+      } else if ((skey == ":i")) {
         output = this.i()
-      } else if ((skey==":pointtype")) {
+      } else if ((skey == ":pointtype")) {
         output = this.pointtype()
       }
       return output
@@ -3747,7 +3749,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":x")) {
+          } else if ((key == ":x")) {
             if (valsub == vx_p_x) {
             } else if (valsub is vx_core.Type_int) {
               var valx : vx_core.Type_int = valsub as vx_core.Type_int
@@ -3771,7 +3773,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":y")) {
+          } else if ((key == ":y")) {
             if (valsub == vx_p_y) {
             } else if (valsub is vx_core.Type_int) {
               var valy : vx_core.Type_int = valsub as vx_core.Type_int
@@ -3795,7 +3797,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":z")) {
+          } else if ((key == ":z")) {
             if (valsub == vx_p_z) {
             } else if (valsub is vx_core.Type_int) {
               var valz : vx_core.Type_int = valsub as vx_core.Type_int
@@ -3819,7 +3821,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":t")) {
+          } else if ((key == ":t")) {
             if (valsub == vx_p_t) {
             } else if (valsub is vx_core.Type_int) {
               var valt : vx_core.Type_int = valsub as vx_core.Type_int
@@ -3843,7 +3845,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":i")) {
+          } else if ((key == ":i")) {
             if (valsub == vx_p_i) {
             } else if (valsub is vx_core.Type_int) {
               var vali : vx_core.Type_int = valsub as vx_core.Type_int
@@ -3867,7 +3869,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":pointtype")) {
+          } else if ((key == ":pointtype")) {
             if (valsub == vx_p_pointtype) {
             } else if (valsub is vx_ui_ui.Type_pointtype) {
               var valpointtype : vx_ui_ui.Type_pointtype = valsub as vx_ui_ui.Type_pointtype
@@ -4289,49 +4291,49 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":align")) {
+      } else if ((skey == ":align")) {
         output = this.align()
-      } else if ((skey==":boundsmargin")) {
+      } else if ((skey == ":boundsmargin")) {
         output = this.boundsmargin()
-      } else if ((skey==":boundspadding")) {
+      } else if ((skey == ":boundspadding")) {
         output = this.boundspadding()
-      } else if ((skey==":color-bkg")) {
+      } else if ((skey == ":color-bkg")) {
         output = this.color_bkg()
-      } else if ((skey==":color-bkghover")) {
+      } else if ((skey == ":color-bkghover")) {
         output = this.color_bkghover()
-      } else if ((skey==":color-border")) {
+      } else if ((skey == ":color-border")) {
         output = this.color_border()
-      } else if ((skey==":color-font")) {
+      } else if ((skey == ":color-font")) {
         output = this.color_font()
-      } else if ((skey==":cursor")) {
+      } else if ((skey == ":cursor")) {
         output = this.cursor()
-      } else if ((skey==":flip")) {
+      } else if ((skey == ":flip")) {
         output = this.flip()
-      } else if ((skey==":font")) {
+      } else if ((skey == ":font")) {
         output = this.font()
-      } else if ((skey==":hidden")) {
+      } else if ((skey == ":hidden")) {
         output = this.hidden()
-      } else if ((skey==":image-bkg")) {
+      } else if ((skey == ":image-bkg")) {
         output = this.image_bkg()
-      } else if ((skey==":layout")) {
+      } else if ((skey == ":layout")) {
         output = this.layout()
-      } else if ((skey==":type")) {
+      } else if ((skey == ":type")) {
         output = this.type()
-      } else if ((skey==":pin")) {
+      } else if ((skey == ":pin")) {
         output = this.pin()
-      } else if ((skey==":pointorigin")) {
+      } else if ((skey == ":pointorigin")) {
         output = this.pointorigin()
-      } else if ((skey==":pointpos")) {
+      } else if ((skey == ":pointpos")) {
         output = this.pointpos()
-      } else if ((skey==":pointrotate")) {
+      } else if ((skey == ":pointrotate")) {
         output = this.pointrotate()
-      } else if ((skey==":pointsize")) {
+      } else if ((skey == ":pointsize")) {
         output = this.pointsize()
-      } else if ((skey==":scroll-x")) {
+      } else if ((skey == ":scroll-x")) {
         output = this.scroll_x()
-      } else if ((skey==":scroll-y")) {
+      } else if ((skey == ":scroll-y")) {
         output = this.scroll_y()
       }
       return output
@@ -4469,7 +4471,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4493,7 +4495,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":align")) {
+          } else if ((key == ":align")) {
             if (valsub == vx_p_align) {
             } else if (valsub is vx_ui_ui.Type_align) {
               var valalign : vx_ui_ui.Type_align = valsub as vx_ui_ui.Type_align
@@ -4514,7 +4516,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":boundsmargin")) {
+          } else if ((key == ":boundsmargin")) {
             if (valsub == vx_p_boundsmargin) {
             } else if (valsub is vx_ui_ui.Type_bounds) {
               var valboundsmargin : vx_ui_ui.Type_bounds = valsub as vx_ui_ui.Type_bounds
@@ -4535,7 +4537,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":boundspadding")) {
+          } else if ((key == ":boundspadding")) {
             if (valsub == vx_p_boundspadding) {
             } else if (valsub is vx_ui_ui.Type_bounds) {
               var valboundspadding : vx_ui_ui.Type_bounds = valsub as vx_ui_ui.Type_bounds
@@ -4556,7 +4558,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":color-bkg")) {
+          } else if ((key == ":color-bkg")) {
             if (valsub == vx_p_color_bkg) {
             } else if (valsub is vx_core.Type_string) {
               var valcolor_bkg : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4580,7 +4582,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":color-bkghover")) {
+          } else if ((key == ":color-bkghover")) {
             if (valsub == vx_p_color_bkghover) {
             } else if (valsub is vx_core.Type_string) {
               var valcolor_bkghover : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4604,7 +4606,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":color-border")) {
+          } else if ((key == ":color-border")) {
             if (valsub == vx_p_color_border) {
             } else if (valsub is vx_core.Type_string) {
               var valcolor_border : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4628,7 +4630,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":color-font")) {
+          } else if ((key == ":color-font")) {
             if (valsub == vx_p_color_font) {
             } else if (valsub is vx_core.Type_string) {
               var valcolor_font : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4652,7 +4654,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":cursor")) {
+          } else if ((key == ":cursor")) {
             if (valsub == vx_p_cursor) {
             } else if (valsub is vx_ui_ui.Type_cursor) {
               var valcursor : vx_ui_ui.Type_cursor = valsub as vx_ui_ui.Type_cursor
@@ -4673,7 +4675,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":flip")) {
+          } else if ((key == ":flip")) {
             if (valsub == vx_p_flip) {
             } else if (valsub is vx_ui_ui.Type_flip) {
               var valflip : vx_ui_ui.Type_flip = valsub as vx_ui_ui.Type_flip
@@ -4694,7 +4696,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":font")) {
+          } else if ((key == ":font")) {
             if (valsub == vx_p_font) {
             } else if (valsub is vx_ui_ui.Type_font) {
               var valfont : vx_ui_ui.Type_font = valsub as vx_ui_ui.Type_font
@@ -4715,7 +4717,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":hidden")) {
+          } else if ((key == ":hidden")) {
             if (valsub == vx_p_hidden) {
             } else if (valsub is vx_core.Type_boolean) {
               var valhidden : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -4739,7 +4741,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":image-bkg")) {
+          } else if ((key == ":image-bkg")) {
             if (valsub == vx_p_image_bkg) {
             } else if (valsub is vx_ui_ui.Type_image) {
               var valimage_bkg : vx_ui_ui.Type_image = valsub as vx_ui_ui.Type_image
@@ -4760,7 +4762,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":layout")) {
+          } else if ((key == ":layout")) {
             if (valsub == vx_p_layout) {
             } else if (valsub is vx_ui_ui.Type_layout) {
               var vallayout : vx_ui_ui.Type_layout = valsub as vx_ui_ui.Type_layout
@@ -4781,7 +4783,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":type")) {
+          } else if ((key == ":type")) {
             if (valsub == vx_p_type) {
             } else if (valsub is vx_ui_ui.Type_styletype) {
               var valtype : vx_ui_ui.Type_styletype = valsub as vx_ui_ui.Type_styletype
@@ -4802,7 +4804,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":pin")) {
+          } else if ((key == ":pin")) {
             if (valsub == vx_p_pin) {
             } else if (valsub is vx_ui_ui.Type_pin) {
               var valpin : vx_ui_ui.Type_pin = valsub as vx_ui_ui.Type_pin
@@ -4823,7 +4825,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":pointorigin")) {
+          } else if ((key == ":pointorigin")) {
             if (valsub == vx_p_pointorigin) {
             } else if (valsub is vx_ui_ui.Type_point) {
               var valpointorigin : vx_ui_ui.Type_point = valsub as vx_ui_ui.Type_point
@@ -4844,7 +4846,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":pointpos")) {
+          } else if ((key == ":pointpos")) {
             if (valsub == vx_p_pointpos) {
             } else if (valsub is vx_ui_ui.Type_point) {
               var valpointpos : vx_ui_ui.Type_point = valsub as vx_ui_ui.Type_point
@@ -4865,7 +4867,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":pointrotate")) {
+          } else if ((key == ":pointrotate")) {
             if (valsub == vx_p_pointrotate) {
             } else if (valsub is vx_ui_ui.Type_point) {
               var valpointrotate : vx_ui_ui.Type_point = valsub as vx_ui_ui.Type_point
@@ -4886,7 +4888,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":pointsize")) {
+          } else if ((key == ":pointsize")) {
             if (valsub == vx_p_pointsize) {
             } else if (valsub is vx_ui_ui.Type_point) {
               var valpointsize : vx_ui_ui.Type_point = valsub as vx_ui_ui.Type_point
@@ -4907,7 +4909,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":scroll-x")) {
+          } else if ((key == ":scroll-x")) {
             if (valsub == vx_p_scroll_x) {
             } else if (valsub is vx_core.Type_boolean) {
               var valscroll_x : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -4931,7 +4933,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":scroll-y")) {
+          } else if ((key == ":scroll-y")) {
             if (valsub == vx_p_scroll_y) {
             } else if (valsub is vx_core.Type_boolean) {
               var valscroll_y : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -5101,8 +5103,9 @@ object vx_ui_ui {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_ui_ui.Type_style) {
+          var subitem : vx_ui_ui.Type_style = valsub as vx_ui_ui.Type_style
           ischanged = true
-          listval.add(valsub as vx_ui_ui.Type_style)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -5405,9 +5408,9 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":fontfacemap")) {
+      } else if ((skey == ":fontfacemap")) {
         output = this.fontfacemap()
-      } else if ((skey==":stylemap")) {
+      } else if ((skey == ":stylemap")) {
         output = this.stylemap()
       }
       return output
@@ -5485,7 +5488,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":fontfacemap")) {
+          } else if ((key == ":fontfacemap")) {
             if (valsub == vx_p_fontfacemap) {
             } else if (valsub is vx_ui_ui.Type_fontfacemap) {
               var valfontfacemap : vx_ui_ui.Type_fontfacemap = valsub as vx_ui_ui.Type_fontfacemap
@@ -5506,7 +5509,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylemap")) {
+          } else if ((key == ":stylemap")) {
             if (valsub == vx_p_stylemap) {
             } else if (valsub is vx_ui_ui.Type_stylemap) {
               var valstylemap : vx_ui_ui.Type_stylemap = valsub as vx_ui_ui.Type_stylemap
@@ -5815,29 +5818,29 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":uid")) {
+      } else if ((skey == ":uid")) {
         output = this.uid()
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":layout")) {
+      } else if ((skey == ":layout")) {
         output = this.layout()
-      } else if ((skey==":path")) {
+      } else if ((skey == ":path")) {
         output = this.path()
-      } else if ((skey==":hidden")) {
+      } else if ((skey == ":hidden")) {
         output = this.hidden()
-      } else if ((skey==":selected")) {
+      } else if ((skey == ":selected")) {
         output = this.selected()
-      } else if ((skey==":selectmulti")) {
+      } else if ((skey == ":selectmulti")) {
         output = this.selectmulti()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":data")) {
+      } else if ((skey == ":data")) {
         output = this.data()
-      } else if ((skey==":uimap")) {
+      } else if ((skey == ":uimap")) {
         output = this.uimap()
       }
       return output
@@ -5945,7 +5948,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":uid")) {
+          } else if ((key == ":uid")) {
             if (valsub == vx_p_uid) {
             } else if (valsub is vx_core.Type_string) {
               var valuid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -5969,7 +5972,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -5993,7 +5996,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":layout")) {
+          } else if ((key == ":layout")) {
             if (valsub == vx_p_layout) {
             } else if (valsub is vx_ui_ui.Type_layout) {
               var vallayout : vx_ui_ui.Type_layout = valsub as vx_ui_ui.Type_layout
@@ -6014,7 +6017,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":path")) {
+          } else if ((key == ":path")) {
             if (valsub == vx_p_path) {
             } else if (valsub is vx_core.Type_string) {
               var valpath : vx_core.Type_string = valsub as vx_core.Type_string
@@ -6038,7 +6041,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":hidden")) {
+          } else if ((key == ":hidden")) {
             if (valsub == vx_p_hidden) {
             } else if (valsub is vx_core.Type_boolean) {
               var valhidden : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -6062,7 +6065,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":selected")) {
+          } else if ((key == ":selected")) {
             if (valsub == vx_p_selected) {
             } else if (valsub is vx_core.Type_boolean) {
               var valselected : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -6086,7 +6089,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":selectmulti")) {
+          } else if ((key == ":selectmulti")) {
             if (valsub == vx_p_selectmulti) {
             } else if (valsub is vx_core.Type_boolean) {
               var valselectmulti : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -6110,7 +6113,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_ui_ui.Type_style) {
               var valstyle : vx_ui_ui.Type_style = valsub as vx_ui_ui.Type_style
@@ -6131,7 +6134,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_ui_ui.Type_stylelist) {
               var valstylelist : vx_ui_ui.Type_stylelist = valsub as vx_ui_ui.Type_stylelist
@@ -6152,7 +6155,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -6173,7 +6176,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":data")) {
+          } else if ((key == ":data")) {
             if (valsub == vx_p_data) {
             } else if (valsub is vx_core.Type_any) {
               var valdata : vx_core.Type_any = valsub as vx_core.Type_any
@@ -6194,7 +6197,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":uimap")) {
+          } else if ((key == ":uimap")) {
             if (valsub == vx_p_uimap) {
             } else if (valsub is vx_ui_ui.Type_uimap) {
               var valuimap : vx_ui_ui.Type_uimap = valsub as vx_ui_ui.Type_uimap
@@ -6340,13 +6343,13 @@ object vx_ui_ui {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":parentmap")) {
+      } else if ((skey == ":parentmap")) {
         output = this.parentmap()
-      } else if ((skey==":layoutengine")) {
+      } else if ((skey == ":layoutengine")) {
         output = this.layoutengine()
-      } else if ((skey==":stylesheet")) {
+      } else if ((skey == ":stylesheet")) {
         output = this.stylesheet()
-      } else if ((skey==":ui")) {
+      } else if ((skey == ":ui")) {
         output = this.ui()
       }
       return output
@@ -6430,7 +6433,7 @@ object vx_ui_ui {
           }
         } else {
           if (false) {
-          } else if ((key==":parentmap")) {
+          } else if ((key == ":parentmap")) {
             if (valsub == vx_p_parentmap) {
             } else if (valsub is vx_ui_ui.Type_uimap) {
               var valparentmap : vx_ui_ui.Type_uimap = valsub as vx_ui_ui.Type_uimap
@@ -6451,7 +6454,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":layoutengine")) {
+          } else if ((key == ":layoutengine")) {
             if (valsub == vx_p_layoutengine) {
             } else if (valsub is vx_ui_ui.Type_layoutengine) {
               var vallayoutengine : vx_ui_ui.Type_layoutengine = valsub as vx_ui_ui.Type_layoutengine
@@ -6472,7 +6475,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylesheet")) {
+          } else if ((key == ":stylesheet")) {
             if (valsub == vx_p_stylesheet) {
             } else if (valsub is vx_ui_ui.Type_stylesheet) {
               var valstylesheet : vx_ui_ui.Type_stylesheet = valsub as vx_ui_ui.Type_stylesheet
@@ -6493,7 +6496,7 @@ object vx_ui_ui {
               msg = vx_core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":ui")) {
+          } else if ((key == ":ui")) {
             if (valsub == vx_p_ui) {
             } else if (valsub is vx_ui_ui.Type_ui) {
               var valui : vx_ui_ui.Type_ui = valsub as vx_ui_ui.Type_ui
@@ -6642,8 +6645,9 @@ object vx_ui_ui {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_ui_ui.Type_ui) {
+          var subitem : vx_ui_ui.Type_ui = valsub as vx_ui_ui.Type_ui
           ischanged = true
-          listval.add(valsub as vx_ui_ui.Type_ui)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {

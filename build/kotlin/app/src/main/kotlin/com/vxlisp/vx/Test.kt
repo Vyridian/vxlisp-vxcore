@@ -70,13 +70,13 @@ object vx_test {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":passfail")) {
+      } else if ((skey == ":passfail")) {
         output = this.passfail()
-      } else if ((skey==":testpkg")) {
+      } else if ((skey == ":testpkg")) {
         output = this.testpkg()
-      } else if ((skey==":casename")) {
+      } else if ((skey == ":casename")) {
         output = this.casename()
-      } else if ((skey==":describelist")) {
+      } else if ((skey == ":describelist")) {
         output = this.describelist()
       }
       return output
@@ -160,7 +160,7 @@ object vx_test {
           }
         } else {
           if (false) {
-          } else if ((key==":passfail")) {
+          } else if ((key == ":passfail")) {
             if (valsub == vx_p_passfail) {
             } else if (valsub is vx_core.Type_boolean) {
               var valpassfail : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -184,7 +184,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":testpkg")) {
+          } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
             } else if (valsub is vx_core.Type_string) {
               var valtestpkg : vx_core.Type_string = valsub as vx_core.Type_string
@@ -208,7 +208,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":casename")) {
+          } else if ((key == ":casename")) {
             if (valsub == vx_p_casename) {
             } else if (valsub is vx_core.Type_string) {
               var valcasename : vx_core.Type_string = valsub as vx_core.Type_string
@@ -232,7 +232,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":describelist")) {
+          } else if ((key == ":describelist")) {
             if (valsub == vx_p_describelist) {
             } else if (valsub is vx_test.Type_testdescribelist) {
               var valdescribelist : vx_test.Type_testdescribelist = valsub as vx_test.Type_testdescribelist
@@ -381,8 +381,9 @@ object vx_test {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_test.Type_testcase) {
+          var subitem : vx_test.Type_testcase = valsub as vx_test.Type_testcase
           ischanged = true
-          listval.add(valsub as vx_test.Type_testcase)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -508,13 +509,13 @@ object vx_test {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":constmap")) {
+      } else if ((skey == ":constmap")) {
         output = this.constmap()
-      } else if ((skey==":funcmap")) {
+      } else if ((skey == ":funcmap")) {
         output = this.funcmap()
-      } else if ((skey==":testpkg")) {
+      } else if ((skey == ":testpkg")) {
         output = this.testpkg()
-      } else if ((skey==":typemap")) {
+      } else if ((skey == ":typemap")) {
         output = this.typemap()
       }
       return output
@@ -598,7 +599,7 @@ object vx_test {
           }
         } else {
           if (false) {
-          } else if ((key==":constmap")) {
+          } else if ((key == ":constmap")) {
             if (valsub == vx_p_constmap) {
             } else if (valsub is vx_core.Type_intmap) {
               var valconstmap : vx_core.Type_intmap = valsub as vx_core.Type_intmap
@@ -619,7 +620,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":funcmap")) {
+          } else if ((key == ":funcmap")) {
             if (valsub == vx_p_funcmap) {
             } else if (valsub is vx_core.Type_intmap) {
               var valfuncmap : vx_core.Type_intmap = valsub as vx_core.Type_intmap
@@ -640,7 +641,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":testpkg")) {
+          } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
             } else if (valsub is vx_core.Type_string) {
               var valtestpkg : vx_core.Type_string = valsub as vx_core.Type_string
@@ -664,7 +665,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":typemap")) {
+          } else if ((key == ":typemap")) {
             if (valsub == vx_p_typemap) {
             } else if (valsub is vx_core.Type_intmap) {
               var valtypemap : vx_core.Type_intmap = valsub as vx_core.Type_intmap
@@ -802,13 +803,13 @@ object vx_test {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":pct")) {
+      } else if ((skey == ":pct")) {
         output = this.pct()
-      } else if ((skey==":testpkg")) {
+      } else if ((skey == ":testpkg")) {
         output = this.testpkg()
-      } else if ((skey==":tests")) {
+      } else if ((skey == ":tests")) {
         output = this.tests()
-      } else if ((skey==":total")) {
+      } else if ((skey == ":total")) {
         output = this.total()
       }
       return output
@@ -892,7 +893,7 @@ object vx_test {
           }
         } else {
           if (false) {
-          } else if ((key==":pct")) {
+          } else if ((key == ":pct")) {
             if (valsub == vx_p_pct) {
             } else if (valsub is vx_core.Type_int) {
               var valpct : vx_core.Type_int = valsub as vx_core.Type_int
@@ -916,7 +917,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":testpkg")) {
+          } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
             } else if (valsub is vx_core.Type_string) {
               var valtestpkg : vx_core.Type_string = valsub as vx_core.Type_string
@@ -940,7 +941,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":tests")) {
+          } else if ((key == ":tests")) {
             if (valsub == vx_p_tests) {
             } else if (valsub is vx_core.Type_int) {
               var valtests : vx_core.Type_int = valsub as vx_core.Type_int
@@ -964,7 +965,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":total")) {
+          } else if ((key == ":total")) {
             if (valsub == vx_p_total) {
             } else if (valsub is vx_core.Type_int) {
               var valtotal : vx_core.Type_int = valsub as vx_core.Type_int
@@ -1153,21 +1154,21 @@ object vx_test {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":bigospacenums")) {
+      } else if ((skey == ":bigospacenums")) {
         output = this.bigospacenums()
-      } else if ((skey==":bigotimenums")) {
+      } else if ((skey == ":bigotimenums")) {
         output = this.bigotimenums()
-      } else if ((skey==":constnums")) {
+      } else if ((skey == ":constnums")) {
         output = this.constnums()
-      } else if ((skey==":docnums")) {
+      } else if ((skey == ":docnums")) {
         output = this.docnums()
-      } else if ((skey==":funcnums")) {
+      } else if ((skey == ":funcnums")) {
         output = this.funcnums()
-      } else if ((skey==":testpkg")) {
+      } else if ((skey == ":testpkg")) {
         output = this.testpkg()
-      } else if ((skey==":totalnums")) {
+      } else if ((skey == ":totalnums")) {
         output = this.totalnums()
-      } else if ((skey==":typenums")) {
+      } else if ((skey == ":typenums")) {
         output = this.typenums()
       }
       return output
@@ -1263,7 +1264,7 @@ object vx_test {
           }
         } else {
           if (false) {
-          } else if ((key==":bigospacenums")) {
+          } else if ((key == ":bigospacenums")) {
             if (valsub == vx_p_bigospacenums) {
             } else if (valsub is vx_test.Type_testcoveragenums) {
               var valbigospacenums : vx_test.Type_testcoveragenums = valsub as vx_test.Type_testcoveragenums
@@ -1284,7 +1285,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":bigotimenums")) {
+          } else if ((key == ":bigotimenums")) {
             if (valsub == vx_p_bigotimenums) {
             } else if (valsub is vx_test.Type_testcoveragenums) {
               var valbigotimenums : vx_test.Type_testcoveragenums = valsub as vx_test.Type_testcoveragenums
@@ -1305,7 +1306,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":constnums")) {
+          } else if ((key == ":constnums")) {
             if (valsub == vx_p_constnums) {
             } else if (valsub is vx_test.Type_testcoveragenums) {
               var valconstnums : vx_test.Type_testcoveragenums = valsub as vx_test.Type_testcoveragenums
@@ -1326,7 +1327,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":docnums")) {
+          } else if ((key == ":docnums")) {
             if (valsub == vx_p_docnums) {
             } else if (valsub is vx_test.Type_testcoveragenums) {
               var valdocnums : vx_test.Type_testcoveragenums = valsub as vx_test.Type_testcoveragenums
@@ -1347,7 +1348,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":funcnums")) {
+          } else if ((key == ":funcnums")) {
             if (valsub == vx_p_funcnums) {
             } else if (valsub is vx_test.Type_testcoveragenums) {
               var valfuncnums : vx_test.Type_testcoveragenums = valsub as vx_test.Type_testcoveragenums
@@ -1368,7 +1369,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":testpkg")) {
+          } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
             } else if (valsub is vx_core.Type_string) {
               var valtestpkg : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1392,7 +1393,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":totalnums")) {
+          } else if ((key == ":totalnums")) {
             if (valsub == vx_p_totalnums) {
             } else if (valsub is vx_test.Type_testcoveragenums) {
               var valtotalnums : vx_test.Type_testcoveragenums = valsub as vx_test.Type_testcoveragenums
@@ -1413,7 +1414,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":typenums")) {
+          } else if ((key == ":typenums")) {
             if (valsub == vx_p_typenums) {
             } else if (valsub is vx_test.Type_testcoveragenums) {
               var valtypenums : vx_test.Type_testcoveragenums = valsub as vx_test.Type_testcoveragenums
@@ -1543,11 +1544,11 @@ object vx_test {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":describename")) {
+      } else if ((skey == ":describename")) {
         output = this.describename()
-      } else if ((skey==":testpkg")) {
+      } else if ((skey == ":testpkg")) {
         output = this.testpkg()
-      } else if ((skey==":testresult")) {
+      } else if ((skey == ":testresult")) {
         output = this.testresult()
       }
       return output
@@ -1628,7 +1629,7 @@ object vx_test {
           }
         } else {
           if (false) {
-          } else if ((key==":describename")) {
+          } else if ((key == ":describename")) {
             if (valsub == vx_p_describename) {
             } else if (valsub is vx_core.Type_string) {
               var valdescribename : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1652,7 +1653,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":testpkg")) {
+          } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
             } else if (valsub is vx_core.Type_string) {
               var valtestpkg : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1676,7 +1677,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":testresult")) {
+          } else if ((key == ":testresult")) {
             if (valsub == vx_p_testresult) {
             } else if (valsub is vx_test.Type_testresult) {
               var valtestresult : vx_test.Type_testresult = valsub as vx_test.Type_testresult
@@ -1824,8 +1825,9 @@ object vx_test {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_test.Type_testdescribe) {
+          var subitem : vx_test.Type_testdescribe = valsub as vx_test.Type_testdescribe
           ischanged = true
-          listval.add(valsub as vx_test.Type_testdescribe)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -1963,15 +1965,15 @@ object vx_test {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":caselist")) {
+      } else if ((skey == ":caselist")) {
         output = this.caselist()
-      } else if ((skey==":coveragedetail")) {
+      } else if ((skey == ":coveragedetail")) {
         output = this.coveragedetail()
-      } else if ((skey==":coveragesummary")) {
+      } else if ((skey == ":coveragesummary")) {
         output = this.coveragesummary()
-      } else if ((skey==":passfail")) {
+      } else if ((skey == ":passfail")) {
         output = this.passfail()
-      } else if ((skey==":testpkg")) {
+      } else if ((skey == ":testpkg")) {
         output = this.testpkg()
       }
       return output
@@ -2058,7 +2060,7 @@ object vx_test {
           }
         } else {
           if (false) {
-          } else if ((key==":caselist")) {
+          } else if ((key == ":caselist")) {
             if (valsub == vx_p_caselist) {
             } else if (valsub is vx_test.Type_testcaselist) {
               var valcaselist : vx_test.Type_testcaselist = valsub as vx_test.Type_testcaselist
@@ -2079,7 +2081,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":coveragedetail")) {
+          } else if ((key == ":coveragedetail")) {
             if (valsub == vx_p_coveragedetail) {
             } else if (valsub is vx_test.Type_testcoveragedetail) {
               var valcoveragedetail : vx_test.Type_testcoveragedetail = valsub as vx_test.Type_testcoveragedetail
@@ -2100,7 +2102,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":coveragesummary")) {
+          } else if ((key == ":coveragesummary")) {
             if (valsub == vx_p_coveragesummary) {
             } else if (valsub is vx_test.Type_testcoveragesummary) {
               var valcoveragesummary : vx_test.Type_testcoveragesummary = valsub as vx_test.Type_testcoveragesummary
@@ -2121,7 +2123,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":passfail")) {
+          } else if ((key == ":passfail")) {
             if (valsub == vx_p_passfail) {
             } else if (valsub is vx_core.Type_boolean) {
               var valpassfail : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -2145,7 +2147,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":testpkg")) {
+          } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
             } else if (valsub is vx_core.Type_string) {
               var valtestpkg : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2298,8 +2300,9 @@ object vx_test {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_test.Type_testpackage) {
+          var subitem : vx_test.Type_testpackage = valsub as vx_test.Type_testpackage
           ischanged = true
-          listval.add(valsub as vx_test.Type_testpackage)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -2437,15 +2440,15 @@ object vx_test {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":code")) {
+      } else if ((skey == ":code")) {
         output = this.code()
-      } else if ((skey==":passfail")) {
+      } else if ((skey == ":passfail")) {
         output = this.passfail()
-      } else if ((skey==":expected")) {
+      } else if ((skey == ":expected")) {
         output = this.expected()
-      } else if ((skey==":actual")) {
+      } else if ((skey == ":actual")) {
         output = this.actual()
-      } else if ((skey==":fn-actual")) {
+      } else if ((skey == ":fn-actual")) {
         output = this.fn_actual()
       }
       return output
@@ -2532,7 +2535,7 @@ object vx_test {
           }
         } else {
           if (false) {
-          } else if ((key==":code")) {
+          } else if ((key == ":code")) {
             if (valsub == vx_p_code) {
             } else if (valsub is vx_core.Type_string) {
               var valcode : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2556,7 +2559,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":passfail")) {
+          } else if ((key == ":passfail")) {
             if (valsub == vx_p_passfail) {
             } else if (valsub is vx_core.Type_boolean) {
               var valpassfail : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -2580,7 +2583,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":expected")) {
+          } else if ((key == ":expected")) {
             if (valsub == vx_p_expected) {
             } else if (valsub is vx_core.Type_any) {
               var valexpected : vx_core.Type_any = valsub as vx_core.Type_any
@@ -2601,7 +2604,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":actual")) {
+          } else if ((key == ":actual")) {
             if (valsub == vx_p_actual) {
             } else if (valsub is vx_core.Type_any) {
               var valactual : vx_core.Type_any = valsub as vx_core.Type_any
@@ -2622,7 +2625,7 @@ object vx_test {
               msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":fn-actual")) {
+          } else if ((key == ":fn-actual")) {
             if (valsub == vx_p_fn_actual) {
             } else if (valsub is vx_core.Func_any_from_func_async) {
               var valfn_actual : vx_core.Func_any_from_func_async = valsub as vx_core.Func_any_from_func_async
@@ -2772,8 +2775,9 @@ object vx_test {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_test.Type_testresult) {
+          var subitem : vx_test.Type_testresult = valsub as vx_test.Type_testresult
           ischanged = true
-          listval.add(valsub as vx_test.Type_testresult)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {

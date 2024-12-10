@@ -479,8 +479,9 @@ public final class Event {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Event.Type_event) {
+          Event.Type_event subitem = (Event.Type_event)valsub;
           ischanged = true;
-          listval.add((Event.Type_event)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

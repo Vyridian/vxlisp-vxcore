@@ -1338,8 +1338,9 @@ public final class Ui {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Ui.Type_fontface) {
+          Ui.Type_fontface subitem = (Ui.Type_fontface)valsub;
           ischanged = true;
-          listval.add((Ui.Type_fontface)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -3256,8 +3257,9 @@ public final class Ui {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Ui.Type_layout) {
+          Ui.Type_layout subitem = (Ui.Type_layout)valsub;
           ischanged = true;
-          listval.add((Ui.Type_layout)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -5308,8 +5310,9 @@ public final class Ui {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Ui.Type_style) {
+          Ui.Type_style subitem = (Ui.Type_style)valsub;
           ischanged = true;
-          listval.add((Ui.Type_style)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -6909,8 +6912,9 @@ public final class Ui {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Ui.Type_ui) {
+          Ui.Type_ui subitem = (Ui.Type_ui)valsub;
           ischanged = true;
-          listval.add((Ui.Type_ui)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

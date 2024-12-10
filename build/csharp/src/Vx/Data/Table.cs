@@ -40,9 +40,9 @@ public static class Table {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":value")) {
+      } else if ((skey == ":value")) {
         output = this.value();
       }
       return output;
@@ -117,7 +117,7 @@ public static class Table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -139,7 +139,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/cell", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":value")) {
+          } else if ((key == ":value")) {
             if (valsub == vx_p_value) {
             } else if (valsub is Vx.Core.Type_any valvalue) {
               ischanged = true;
@@ -280,8 +280,9 @@ public static class Table {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Data.Table.Type_cell) {
+          Vx.Data.Table.Type_cell subitem = (Vx.Data.Table.Type_cell)valsub;
           ischanged = true;
-          listval.Add((Vx.Data.Table.Type_cell)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -583,11 +584,11 @@ public static class Table {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":fldtype")) {
+      } else if ((skey == ":fldtype")) {
         output = this.fldtype();
       }
       return output;
@@ -665,7 +666,7 @@ public static class Table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -687,7 +688,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -709,7 +710,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":fldtype")) {
+          } else if ((key == ":fldtype")) {
             if (valsub == vx_p_fldtype) {
             } else if (valsub is Vx.Core.Type_any valfldtype) {
               ischanged = true;
@@ -851,8 +852,9 @@ public static class Table {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Data.Table.Type_field) {
+          Vx.Data.Table.Type_field subitem = (Vx.Data.Table.Type_field)valsub;
           ischanged = true;
-          listval.Add((Vx.Data.Table.Type_field)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -982,8 +984,9 @@ public static class Table {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Data.Table.Type_field) {
+          Vx.Data.Table.Type_field subitem = (Vx.Data.Table.Type_field)valsub;
           ischanged = true;
-          listval.Add((Vx.Data.Table.Type_field)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -1092,11 +1095,11 @@ public static class Table {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":idlist")) {
+      } else if ((skey == ":idlist")) {
         output = this.idlist();
       }
       return output;
@@ -1174,7 +1177,7 @@ public static class Table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -1196,7 +1199,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -1218,7 +1221,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":idlist")) {
+          } else if ((key == ":idlist")) {
             if (valsub == vx_p_idlist) {
             } else if (valsub is Vx.Core.Type_stringlist validlist) {
               ischanged = true;
@@ -1339,11 +1342,11 @@ public static class Table {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":cellmap")) {
+      } else if ((skey == ":cellmap")) {
         output = this.cellmap();
-      } else if ((skey==":cellsort")) {
+      } else if ((skey == ":cellsort")) {
         output = this.cellsort();
       }
       return output;
@@ -1421,7 +1424,7 @@ public static class Table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -1443,7 +1446,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":cellmap")) {
+          } else if ((key == ":cellmap")) {
             if (valsub == vx_p_cellmap) {
             } else if (valsub is Vx.Data.Table.Type_cellmap valcellmap) {
               ischanged = true;
@@ -1462,7 +1465,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":cellsort")) {
+          } else if ((key == ":cellsort")) {
             if (valsub == vx_p_cellsort) {
             } else if (valsub is Vx.Data.Table.Type_sort valcellsort) {
               ischanged = true;
@@ -1604,8 +1607,9 @@ public static class Table {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Data.Table.Type_row) {
+          Vx.Data.Table.Type_row subitem = (Vx.Data.Table.Type_row)valsub;
           ischanged = true;
-          listval.Add((Vx.Data.Table.Type_row)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -1907,11 +1911,11 @@ public static class Table {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":idlist")) {
+      } else if ((skey == ":idlist")) {
         output = this.idlist();
       }
       return output;
@@ -1989,7 +1993,7 @@ public static class Table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -2011,7 +2015,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -2033,7 +2037,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":idlist")) {
+          } else if ((key == ":idlist")) {
             if (valsub == vx_p_idlist) {
             } else if (valsub is Vx.Core.Type_stringlist validlist) {
               ischanged = true;
@@ -2202,19 +2206,19 @@ public static class Table {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id();
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":fieldmap")) {
+      } else if ((skey == ":fieldmap")) {
         output = this.fieldmap();
-      } else if ((skey==":fieldsort")) {
+      } else if ((skey == ":fieldsort")) {
         output = this.fieldsort();
-      } else if ((skey==":rowmap")) {
+      } else if ((skey == ":rowmap")) {
         output = this.rowmap();
-      } else if ((skey==":rowfilter")) {
+      } else if ((skey == ":rowfilter")) {
         output = this.rowfilter();
-      } else if ((skey==":rowsort")) {
+      } else if ((skey == ":rowsort")) {
         output = this.rowsort();
       }
       return output;
@@ -2304,7 +2308,7 @@ public static class Table {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is Vx.Core.Type_string valid) {
               ischanged = true;
@@ -2326,7 +2330,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -2348,7 +2352,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":fieldmap")) {
+          } else if ((key == ":fieldmap")) {
             if (valsub == vx_p_fieldmap) {
             } else if (valsub is Vx.Data.Table.Type_fieldmap valfieldmap) {
               ischanged = true;
@@ -2367,7 +2371,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":fieldsort")) {
+          } else if ((key == ":fieldsort")) {
             if (valsub == vx_p_fieldsort) {
             } else if (valsub is Vx.Data.Table.Type_sort valfieldsort) {
               ischanged = true;
@@ -2386,7 +2390,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":rowmap")) {
+          } else if ((key == ":rowmap")) {
             if (valsub == vx_p_rowmap) {
             } else if (valsub is Vx.Data.Table.Type_rowmap valrowmap) {
               ischanged = true;
@@ -2405,7 +2409,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":rowfilter")) {
+          } else if ((key == ":rowfilter")) {
             if (valsub == vx_p_rowfilter) {
             } else if (valsub is Vx.Data.Table.Type_filter valrowfilter) {
               ischanged = true;
@@ -2424,7 +2428,7 @@ public static class Table {
               msg = Vx.Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":rowsort")) {
+          } else if ((key == ":rowsort")) {
             if (valsub == vx_p_rowsort) {
             } else if (valsub is Vx.Data.Table.Type_sort valrowsort) {
               ischanged = true;

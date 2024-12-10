@@ -6,7 +6,10 @@ export default class vx_core {
 
   // vx_any_from_func(generic_any_1, func, args...)
   static vx_any_from_func(
-    generic_any_1, func, ...args) {
+    generic_any_1,
+    func,
+    ...args
+  ) {
     let output = vx_core.vx_empty(generic_any_1)
     const funcdef = func['vx_value']
     if (funcdef) {
@@ -18,7 +21,11 @@ export default class vx_core {
 
   // vx_any_from_map_start_reduce(any-1, map-2, any-1, any<-any-key-value)
   static vx_any_from_map_start_reduce(
-    generic_any_1, map, start, fn_reduce) {
+    generic_any_1,
+    map,
+    start,
+    fn_reduce
+  ) {
     let output = start
     const fn = fn_reduce['vx_value']
     if (fn) {
@@ -33,25 +40,34 @@ export default class vx_core {
 
   // vx_boolean_from_string_ends(string, string)
   static vx_boolean_from_string_ends(
-    text, ends) {
+    text,
+    ends
+  ) {
     return text.endsWith(ends)
   }
 
   // vx_boolean_from_string_find(string, string)
   static vx_boolean_from_string_find(
-    text, find) {
+    text,
+    find
+  ) {
     return text.includes(find)
   }
 
   // vx_boolean_from_string_starts(string, string)
   static vx_boolean_from_string_starts(
-    text, starts) {
+    text,
+    starts
+  ) {
     return text.startsWith(starts);
   }
 
   // vx_boolean_write_from_map_name_value(map-1, string, any-1)
   static vx_boolean_write_from_map_name_value(
-    valuemap, name, value) {
+    valuemap,
+    name,
+    value
+  ) {
     let output = vx_core.c_true
     const mapany = valuemap['vx_value']
     let key = name
@@ -70,7 +86,8 @@ export default class vx_core {
   static vx_constdef_new(
     pkgname,
     name,
-    type) {
+    type
+  ) {
     let output = {
       vx_type: vx_core.t_constdef,
       vx_value: {
@@ -84,7 +101,8 @@ export default class vx_core {
 
   // vx_constdef<-any(any)
   static vx_constdef_from_any(
-    value) {
+    value
+  ) {
     let output = vx_core.e_constdef
     switch (value) {
     case vx_core.c_false:
@@ -105,7 +123,8 @@ export default class vx_core {
   }
 
   static vx_empty(
-    type) {
+    type
+  ) {
     const typedef = vx_core.f_typedef_from_type(type)
     const pkgname = typedef['vx_value'].pkgname
     const typename = typedef['vx_value'].name
@@ -119,7 +138,10 @@ export default class vx_core {
     return output
   }
 
-  static vx_eq(val1, val2) {
+  static vx_eq(
+    val1,
+    val2
+  ) {
     const native1 = vx_core.f_native_from_any(val1)
     const native2 = vx_core.f_native_from_any(val2)
     let output = true
@@ -160,14 +182,17 @@ export default class vx_core {
     return output
   }
 
-  static vx_float_from_string(text) {
-   let output = 0
-   output = parseFloat(text)
-   return output
+  static vx_float_from_string(
+    text
+  ) {
+    const output = parseFloat(text)
+    return output
   }
 
   // vx_global_package_set(package)
-  static vx_global_package_set(pkg) {
+  static vx_global_package_set(
+    pkg
+  ) {
     const global = vx_core.c_global
     let globalvalue = global['vx_value']
     if (globalvalue == undefined) {
@@ -188,7 +213,9 @@ export default class vx_core {
   }
 
   // vx_is_float(any)
-  static vx_is_float(value) {
+  static vx_is_float(
+    value
+  ) {
     let output = false
     const typename = vx_core.f_typename_from_any(value)
     switch (typename) {
@@ -211,7 +238,9 @@ export default class vx_core {
   }
 
   // vx_is_int(any)
-  static vx_is_int(value) {
+  static vx_is_int(
+    value
+  ) {
     let output = false
     switch (value) {
     case vx_core.c_infinity:
@@ -253,7 +282,10 @@ export default class vx_core {
   }
 
   static vx_list_from_list_intany(
-    generic_list_1, valuelist, fn_any_from_int_any) {
+    generic_list_1,
+    valuelist,
+    fn_any_from_int_any
+  ) {
     let output = vx_core.f_empty(generic_list_1)
     const fn = fn_any_from_int_any['vx_value']
     if (fn) {
@@ -270,7 +302,9 @@ export default class vx_core {
 
   static vx_list_from_map_fn(
     generic_list_1,
-    valuemap,fn_any_from_key_value) {
+    valuemap,
+    fn_any_from_key_value
+  ) {
     let output = vx_core.f_empty(generic_list_1)
     const fn = fn_any_from_key_value['vx_value']
     if (fn) {
@@ -284,7 +318,8 @@ export default class vx_core {
   static vx_map_from_map_fn(
     generic_map_1,
     valuemap,
-    fn_any_from_key_value) {
+    fn_any_from_key_value
+  ) {
     let output = vx_core.f_empty(generic_map_1)
     const fn = fn_any_from_key_value['vx_value']
     if (fn) {
@@ -304,13 +339,66 @@ export default class vx_core {
           values.push(chgvalue)
         }
       }
-      output = vx_core.f_new_from_type(generic_map_1, ...values)
+      output = vx_core.f_new_from_type(
+        generic_map_1, ...values)
     }
     return output
   }
 
+  // vx_msgblock_from_any(any)
+  static vx_msgblock_from_any(
+    value
+  ) {
+    let output = vx_core.e_msgblock
+    if (typeof value == 'object') {
+      const msgblock = value['vx_msgblock']
+      if (msgblock) {
+        output = msgblock
+      }
+    }
+    return output
+  }
+
+  // vx_msgblock_from_copy_listval(any, listany)
+  static vx_msgblock_from_copy_listval(
+    copy,
+    values
+  ) {
+    let output = vx_core.e_msgblock
+    let msgblock = vx_core.vx_msgblock_from_any(copy)
+    const listmsgblock = []
+    if (msgblock != vx_core.e_msgblock) {
+      listmsgblock.push(msgblock)
+    }
+    for (const subobj of values) {
+      const submsgblock = vx_core.vx_msgblock_from_any(subobj)
+      if (submsgblock != vx_core.e_msgblock) {
+        listmsgblock.push(submsgblock)
+      }
+    }
+    switch (listmsgblock.length) {
+    case 0:
+      break
+    case 1:
+      output = listmsgblock[0]
+      break
+    default:
+      const msgblocks = listmsgblock
+      msgblocks['vx_type'] = vx_core.t_msgblocklist
+      const work = {}
+      work['vx_type'] = vx_core.t_msgblock
+      work['vx_value'] = {msgblocks: msgblocks}
+      output = work
+      break
+    }
+    return output
+  }
+
+  // vx_new(any, listany)
   static vx_new(
-    type, values) {
+    type,
+    values
+  ) {
     let output
     if (values.length == 1) {
       // check if anylist passed as the only value
@@ -323,7 +411,7 @@ export default class vx_core {
     }
     const typedef = vx_core.f_typedef_from_any(type)
     const copy = type
-    let msgblock = vx_core.e_msgblock
+    let msgblock = vx_core.vx_msgblock_from_copy_listval(copy, values)
     let isfirst = true
     switch (typedef) {
     case vx_core.t_boolean:
@@ -564,6 +652,87 @@ export default class vx_core {
         }
       }
       break
+    case vx_core.t_decimal:
+      let vxdecimal = "0.0"
+      if (type == vx_core.t_decimal) {
+      } else if ((typeof copy) == 'number') {
+        vxdecimal = "" + copy
+      } else if ((typeof copy) == 'string') {
+        vxdecimal = "" + copy
+      } else if ((typeof copy) == 'string') {
+        vxdecimal = "" + copy
+      } else {
+        const copytype = vx_core.f_type_from_any(copy)
+        switch (copytype) {
+        case vx_core.t_int:
+        case vx_core.t_float:
+          vxdecimal = "" + copy['vx_value']
+          break
+        case vx_core.t_decimal:
+          vxdecimal = copy['vx_value']
+          break
+        case vx_core.t_string:
+          vxdecimal = copy['vx_value']
+          break
+        }
+      }
+      values.map(value => {
+        switch (typeof value) {
+        case 'number':
+          if (isfirst) {
+            isfirst = false
+            vxdecimal = "" + value
+          } else {
+            vxdecimal = "" + value
+          }
+          break
+        case 'string':
+          value = parseFloat(value)
+          if (isfirst) {
+            isfirst = false
+            vxdecimal = "" + value
+          } else {
+            vxdecimal = "" + value
+          }
+          break
+        default:
+         const valuetype = vx_core.f_type_from_any(value)
+         switch (valuetype) {
+          case vx_core.t_int:
+          case vx_core.t_float:
+            vxdecimal = "" + value['vx_value']
+            break
+          case vx_core.t_string:
+            vxdecimal = "" + parseFloat(value['vx_value'])
+            break
+          case vx_core.t_msgblock:
+            msgblock = value
+            break
+          case vx_core.t_msg:
+            msgblock = vx_core.f_msgblock_from_msgblock_msg(msgblock, value)
+            break
+          default:
+            const typename = vx_core.f_typename_from_typedef(typedef)
+            const msg = vx_core.f_msg_from_error_2(
+              'vx/core/new',
+              'invalidvalue',
+              vx_core.vx_new_map(vx_core.t_anymap, {
+                type: type,
+                value: vx_core.vx_string_from_any(value)
+              })
+            )
+            msgblock = vx_core.f_msgblock_from_msgblock_msg(msgblock, msg)
+            break
+          }
+          break
+        }
+      })
+      output = {
+        vx_type: typedef,
+        vx_value: vxdecimal,
+        vx_msgblock: msgblock
+      }
+      break
     case vx_core.t_string:
       output = ''
       if (type == vx_core.t_string) {
@@ -615,7 +784,9 @@ export default class vx_core {
                 value: vx_core.vx_string_from_any(value)
               })
             )
-            msgblock = vx_core.f_msgblock_from_msgblock_msg(msgblock, msg)
+            msgblock = vx_core.f_msgblock_from_msgblock_msg(
+              msgblock, msg
+            )
             break
           }
           break
@@ -722,8 +893,19 @@ export default class vx_core {
             listvals.push(...value)
             isfound = true
           } else if (allowtypes.includes(valuetype)) {
-            listvals.push(value)
-            isfound = true
+            switch (type) {
+            case vx_core.t_msglist:
+            case vx_core.t_msgblocklist:
+              if (!listvals.includes(value)) {
+                listvals.push(value)
+              }
+              isfound = true
+              break
+            default:
+              listvals.push(value)
+              isfound = true
+              break
+            }
           } else {
             switch (valuetype) {
             case vx_core.t_msgblock:
@@ -1058,20 +1240,26 @@ export default class vx_core {
   }
 
   static vx_new_1(
-    generic_any_1, values) {
+    generic_any_1,
+    values
+  ) {
     let output = vx_core.vx_new(generic_any_1, values)
     return output
   }
 
   static vx_new_list(
-    type, listvalue) {
+    type,
+    listvalue
+  ) {
     const output = listvalue.slice()
     output['vx_type'] = type
     return output
   }
 
   static vx_new_map(
-    type, mapvalue) {
+    type,
+    mapvalue
+  ) {
     const output = {
       vx_type: type,
       vx_value: mapvalue
@@ -1080,7 +1268,9 @@ export default class vx_core {
   }
 
   static vx_new_struct(
-    type, mapvalue) {
+    type,
+    mapvalue
+  ) {
     const output = {
       vx_type: type,
       vx_value: mapvalue
@@ -1089,13 +1279,19 @@ export default class vx_core {
   }
 
   static vx_string_from_any(
-    value) {
-    const output = vx_core.vx_string_from_any_indent(value, 0, false)
+    value
+  ) {
+    const output = vx_core.vx_string_from_any_indent(
+      value, 0, false
+    )
     return output
   }
 
   static vx_string_from_any_indent(
-    value, indent, linefeed) {
+    value,
+    indent,
+    linefeed
+  ) {
     let output = ''
     const indenttext = ' '.repeat(indent)
     let text = ''
@@ -1124,9 +1320,6 @@ export default class vx_core {
           text = 'false'
         }
         break
-      case vx_core.t_decimal:
-        text = '' + value
-        break
       case vx_core.t_float:
         text = '' + value
         if (text.endsWith('.0')) {
@@ -1147,6 +1340,16 @@ export default class vx_core {
       case vx_core.t_string:
         text = value.replaceAll("\"", "\\\"")
         text = '\"' + text + '\"'
+        break
+      case vx_core.t_decimal:
+        text = '' + value['vx_value']
+        if (value['vx_msgblock'] != null) {
+          const msgtext = vx_core.vx_string_from_any_indent(
+            value['vx_msgblock'], indent, linefeed
+          )
+          text += '\n ' + indenttext + msgtext
+        }
+        text = '(decimal ' + text + ')'
         break
       default:
         const typedefname = typedef['vx_value']['name']
@@ -1217,12 +1420,20 @@ export default class vx_core {
 
   // vx_string_from_string_find_replace(string, string, string)
   static vx_string_from_string_find_replace(
-    text, find, replace) {
+    text,
+    find,
+    replace
+  ) {
     const output = text.replaceAll(find, replace);
     return output;
   }
 
-  static vx_string_from_string_start_end(text, start, end) {
+  // vx_string_from_string_start_end(string, int, int)
+  static vx_string_from_string_start_end(
+    text,
+    start,
+    end
+  ) {
     let output = ""
     const maxlen = text.length
     if (end < 0) {
@@ -1512,21 +1723,21 @@ export default class vx_core {
 
   /**
    * type: msgblock
-   * Block of Messages
+   * Block of Messages. Note: Identical msgblocks are suppressed.
    */
   static t_msgblock = {}
   static e_msgblock = {vx_type: vx_core.t_msgblock}
 
   /**
    * type: msgblocklist
-   * List of Message Blocks
+   * List of Message Blocks. Note: Identical msgblocks are suppressed.
    */
   static t_msgblocklist = {}
   static e_msgblocklist = vx_core.vx_new_list(vx_core.t_msgblocklist, [])
 
   /**
    * type: msglist
-   * List of Messages
+   * List of Messages. Note: Identical msgs are suppressed.
    */
   static t_msglist = {}
   static e_msglist = vx_core.vx_new_list(vx_core.t_msglist, [])
@@ -4148,6 +4359,39 @@ export default class vx_core {
   }
 
   /**
+   * @function is_error
+   * Returns true if value has an error.
+   * @param  {generic_any_1} value
+   * @return {boolean}
+   */
+  static t_is_error = {
+    vx_type: vx_core.t_type
+  }
+  static e_is_error = {
+    vx_type: vx_core.t_is_error
+  }
+
+  // (func is-error)
+  static f_is_error(value) {
+    let output = vx_core.e_boolean
+    output = vx_core.f_let(
+      {"any-1": vx_core.t_boolean},
+      [],
+      vx_core.f_new_from_type(vx_core.t_any_from_func, () => {
+        const msgblock = vx_core.f_msgblock_from_any(value)
+        return vx_core.f_if_2(
+          {"any-1": vx_core.t_boolean},
+          vx_core.f_then(
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_notempty_1(msgblock)}),
+            vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return true})
+          )
+        )
+      })
+    )
+    return output
+  }
+
+  /**
    * @function is_float
    * Returns true if the value is a float.
    * @param  {any} value
@@ -4658,6 +4902,35 @@ export default class vx_core {
   }
 
   /**
+   * @function log_error
+   * Write a value if it has an error.
+   * @param  {typemap} generic
+   * @param  {generic_any_1} value
+   * @return {any-1}
+   */
+  static t_log_error = {
+    vx_type: vx_core.t_type
+  }
+  static e_log_error = {
+    vx_type: vx_core.t_log_error
+  }
+
+  // (func log-error)
+  static f_log_error(generic, value) {
+    const generic_any_1 = generic["any-1"]
+    let output = vx_core.f_empty(generic_any_1)
+    output = vx_core.f_if_2(
+      {"any-1": generic_any_1},
+      vx_core.f_then(
+        vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_is_error(value)}),
+        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_log(value)})
+      ),
+      vx_core.f_else(vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return value}))
+    )
+    return output
+  }
+
+  /**
    * @function main
    * The default function for app main execution. Arguments come from the command line.
    * @param  {anylist} ... args
@@ -4874,6 +5147,26 @@ export default class vx_core {
       ":text",
       warning
     )
+    return output
+  }
+
+  /**
+   * @function msgblock_from_any
+   * Returns a msgblock from any
+   * @param  {any} value
+   * @return {msgblock}
+   */
+  static t_msgblock_from_any = {
+    vx_type: vx_core.t_type
+  }
+  static e_msgblock_from_any = {
+    vx_type: vx_core.t_msgblock_from_any
+  }
+
+  // (func msgblock<-any)
+  static f_msgblock_from_any(value) {
+    let output = vx_core.e_msgblock
+    output = vx_core.vx_msgblock_from_any(value)
     return output
   }
 
@@ -6133,6 +6426,7 @@ export default class vx_core {
       "is-empty": vx_core.e_is_empty,
       "is-empty_1": vx_core.e_is_empty_1,
       "is-endswith": vx_core.e_is_endswith,
+      "is-error": vx_core.e_is_error,
       "is-float": vx_core.e_is_float,
       "is-func": vx_core.e_is_func,
       "is-int": vx_core.e_is_int,
@@ -6154,6 +6448,7 @@ export default class vx_core {
       "list<-type": vx_core.e_list_from_type,
       "log": vx_core.e_log,
       "log_1": vx_core.e_log_1,
+      "log-error": vx_core.e_log_error,
       "main": vx_core.e_main,
       "map<-list": vx_core.e_map_from_list,
       "map<-map": vx_core.e_map_from_map,
@@ -6162,6 +6457,7 @@ export default class vx_core {
       "msg<-error_1": vx_core.e_msg_from_error_1,
       "msg<-error_2": vx_core.e_msg_from_error_2,
       "msg<-warning": vx_core.e_msg_from_warning,
+      "msgblock<-any": vx_core.e_msgblock_from_any,
       "msgblock<-msgblock-msg": vx_core.e_msgblock_from_msgblock_msg,
       "msgblock<-msgblock-msgblock": vx_core.e_msgblock_from_msgblock_msgblock,
       "name<-typedef": vx_core.e_name_from_typedef,
@@ -6302,6 +6598,7 @@ export default class vx_core {
       "is-empty": vx_core.t_is_empty,
       "is-empty_1": vx_core.t_is_empty_1,
       "is-endswith": vx_core.t_is_endswith,
+      "is-error": vx_core.t_is_error,
       "is-float": vx_core.t_is_float,
       "is-func": vx_core.t_is_func,
       "is-int": vx_core.t_is_int,
@@ -6323,6 +6620,7 @@ export default class vx_core {
       "list<-type": vx_core.t_list_from_type,
       "log": vx_core.t_log,
       "log_1": vx_core.t_log_1,
+      "log-error": vx_core.t_log_error,
       "main": vx_core.t_main,
       "map<-list": vx_core.t_map_from_list,
       "map<-map": vx_core.t_map_from_map,
@@ -6331,6 +6629,7 @@ export default class vx_core {
       "msg<-error_1": vx_core.t_msg_from_error_1,
       "msg<-error_2": vx_core.t_msg_from_error_2,
       "msg<-warning": vx_core.t_msg_from_warning,
+      "msgblock<-any": vx_core.t_msgblock_from_any,
       "msgblock<-msgblock-msg": vx_core.t_msgblock_from_msgblock_msg,
       "msgblock<-msgblock-msgblock": vx_core.t_msgblock_from_msgblock_msgblock,
       "name<-typedef": vx_core.t_name_from_typedef,
@@ -10031,6 +10330,24 @@ export default class vx_core {
       fn            : vx_core.f_is_endswith
     }
 
+    // (func is-error)
+    vx_core.t_is_error['vx_value'] = {
+      name          : "is-error",
+      pkgname       : "vx/core",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_core.f_is_error
+    }
+
     // (func is-float)
     vx_core.t_is_float['vx_value'] = {
       name          : "is-float",
@@ -10409,6 +10726,24 @@ export default class vx_core {
       fn            : vx_core.f_log_1
     }
 
+    // (func log-error)
+    vx_core.t_log_error['vx_value'] = {
+      name          : "log-error",
+      pkgname       : "vx/core",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_core.f_log_error
+    }
+
     // (func main)
     vx_core.t_main['vx_value'] = {
       name          : "main",
@@ -10551,6 +10886,24 @@ export default class vx_core {
       properties    : [],
       proplast      : {},
       fn            : vx_core.f_msg_from_warning
+    }
+
+    // (func msgblock<-any)
+    vx_core.t_msgblock_from_any['vx_value'] = {
+      name          : "msgblock<-any",
+      pkgname       : "vx/core",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_core.f_msgblock_from_any
     }
 
     // (func msgblock<-msgblock-msg)

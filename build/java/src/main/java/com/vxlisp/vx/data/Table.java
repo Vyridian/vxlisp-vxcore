@@ -311,8 +311,9 @@ public final class Table {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Table.Type_cell) {
+          Table.Type_cell subitem = (Table.Type_cell)valsub;
           ischanged = true;
-          listval.add((Table.Type_cell)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -932,8 +933,9 @@ public final class Table {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Table.Type_field) {
+          Table.Type_field subitem = (Table.Type_field)valsub;
           ischanged = true;
-          listval.add((Table.Type_field)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -1077,8 +1079,9 @@ public final class Table {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Table.Type_field) {
+          Table.Type_field subitem = (Table.Type_field)valsub;
           ischanged = true;
-          listval.add((Table.Type_field)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -1751,8 +1754,9 @@ public final class Table {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Table.Type_row) {
+          Table.Type_row subitem = (Table.Type_row)valsub;
           ischanged = true;
-          listval.add((Table.Type_row)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

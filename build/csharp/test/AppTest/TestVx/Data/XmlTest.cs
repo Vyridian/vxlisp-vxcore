@@ -1089,7 +1089,7 @@ public class XmlTest {
   public static Vx.Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_3(Vx.Core.Type_context context) {
     Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
       Vx.Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity 2))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
+      ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity msg-error))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
       ":testresult", Vx.Test.f_test(
         context,
         Vx.Core.f_new(
@@ -1122,7 +1122,7 @@ public class XmlTest {
                   )
                 ),
                 Vx.Core.vx_new_string(":severity"),
-                Vx.Core.vx_new_int(2)
+                Vx.Core.c_msg_error
               )
             )
           )

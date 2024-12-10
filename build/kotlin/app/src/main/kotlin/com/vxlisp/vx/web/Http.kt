@@ -45,9 +45,9 @@ object vx_web_http {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":ok")) {
+      } else if ((skey == ":ok")) {
         output = this.ok()
-      } else if ((skey==":status")) {
+      } else if ((skey == ":status")) {
         output = this.status()
       }
       return output
@@ -125,7 +125,7 @@ object vx_web_http {
           }
         } else {
           if (false) {
-          } else if ((key==":ok")) {
+          } else if ((key == ":ok")) {
             if (valsub == vx_p_ok) {
             } else if (valsub is vx_core.Type_boolean) {
               var valok : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -149,7 +149,7 @@ object vx_web_http {
               msg = vx_core.vx_msg_from_error("vx/web/http/response", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":status")) {
+          } else if ((key == ":status")) {
             if (valsub == vx_p_status) {
             } else if (valsub is vx_core.Type_int) {
               var valstatus : vx_core.Type_int = valsub as vx_core.Type_int

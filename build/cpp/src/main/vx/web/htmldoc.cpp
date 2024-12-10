@@ -95,7 +95,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_print_from_id_stylesheettext::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_print_from_id_stylesheettext::vx_dispose() {
@@ -199,7 +203,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_remove_from_id::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_remove_from_id::vx_dispose() {
@@ -315,7 +323,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_replace_from_id_htmltext::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_replace_from_id_htmltext::vx_dispose() {
@@ -421,7 +433,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_replace_from_id_parent_htmltext::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_replace_from_id_parent_htmltext::vx_dispose() {
@@ -531,7 +547,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_write_stylesheet_from_string::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_write_stylesheet_from_string::vx_dispose() {
@@ -647,7 +667,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_write_from_id_attribute_value::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_write_from_id_attribute_value::vx_dispose() {
@@ -753,7 +777,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_write_from_id_htmltext::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_write_from_id_htmltext::vx_dispose() {
@@ -858,7 +886,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_write_from_id_visible::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_write_from_id_visible::vx_dispose() {
@@ -985,7 +1017,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_write_from_stylesheet::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_write_from_stylesheet::vx_dispose() {
@@ -1099,7 +1135,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_boolean_writeevents_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writeevents_from_ui::vx_dispose() {
@@ -1211,7 +1251,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_context_read::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_context_read::vx_dispose() {
@@ -1310,7 +1354,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_context_write::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_context_write::vx_dispose() {
@@ -1413,7 +1461,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_string_from_id::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_from_id::vx_dispose() {
@@ -1540,7 +1592,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_string_from_stylesheet::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_from_stylesheet::vx_dispose() {
@@ -1655,7 +1711,11 @@ namespace vx_web_htmldoc {
     }
 
     vx_core::Type_msgblock Class_ui_readstate_from_uid::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_readstate_from_uid::vx_dispose() {

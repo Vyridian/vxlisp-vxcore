@@ -286,6 +286,263 @@ namespace vx_core_test {
     return output;
   }
 
+  vx_test::Type_testcase t_msgblock(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: t_msgblock");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_decimal,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::f_new(
+            vx_core::t_msgblock,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::vx_new_string(":msgs"),
+              vx_core::f_new(
+                vx_core::t_msglist,
+                vx_core::vx_new(vx_core::t_anylist, {
+                  vx_core::f_new(
+                    vx_core::t_msg,
+                    vx_core::vx_new(vx_core::t_anylist, {
+                      vx_core::vx_new_string(":text"),
+                      vx_core::vx_new_string("Err")
+                    })
+                  )
+                })
+              )
+            })
+          )
+        })
+      ),
+      vx_core::f_new(
+        vx_core::t_decimal,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::f_new(
+            vx_core::t_msg,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::vx_new_string(":text"),
+              vx_core::vx_new_string("Err")
+            })
+          )
+        })
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (decimal\n  (msgblock\n   :msgs\n    (msglist\n     (msg\n      :text \"Err\"))))\n (decimal\n  (msg\n   :text \"Err\")))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    // testdescribe_2
+    vx_test::Type_testresult testresult_2 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_decimal,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::f_new(
+            vx_core::t_msgblock,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::vx_new_string(":msgs"),
+              vx_core::f_new(
+                vx_core::t_msglist,
+                vx_core::vx_new(vx_core::t_anylist, {
+                  vx_core::f_new(
+                    vx_core::t_msg,
+                    vx_core::vx_new(vx_core::t_anylist, {
+                      vx_core::vx_new_string(":text"),
+                      vx_core::vx_new_string("Err")
+                    })
+                  )
+                })
+              )
+            })
+          )
+        })
+      ),
+      vx_core::f_let(
+        vx_core::t_decimal,
+        vx_core::t_any_from_func->vx_fn_new({}, []() {
+          vx_core::Type_msgblock mymsgblock = vx_core::f_new(
+            vx_core::t_msgblock,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::f_new(
+                vx_core::t_msg,
+                vx_core::vx_new(vx_core::t_anylist, {
+                  vx_core::vx_new_string(":text"),
+                  vx_core::vx_new_string("Err")
+                })
+              )
+            })
+          );
+          vx_core::vx_ref_plus(mymsgblock);
+          vx_core::Type_decimal output_1 = vx_core::f_new(
+            vx_core::t_decimal,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::f_copy(vx_core::t_msgblock, mymsgblock, vx_core::vx_new(vx_core::t_anylist, {
+                mymsgblock}))
+            })
+          );
+          vx_core::vx_release_one_except(mymsgblock, output_1);
+          return output_1;
+        })
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_2 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (decimal\n  (msgblock\n   :msgs\n    (msglist\n     (msg :text \"Err\"))))\n (let : decimal\n  [mymsgblock : msgblock :=\n   (msgblock\n    (msg\n     :text \"Err\"))]\n  (decimal\n   (copy\n    mymsgblock\n    mymsgblock))))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_2
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1,
+      testdescribe_2
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("msgblock"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : t_msgblock");
+    return output;
+  }
+
+  vx_test::Type_testcase t_msgblocklist(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: t_msgblocklist");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_msgblocklist,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::f_new(
+            vx_core::t_msgblock,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::f_new(
+                vx_core::t_msg,
+                vx_core::vx_new(vx_core::t_anylist, {
+                  vx_core::vx_new_string(":text"),
+                  vx_core::vx_new_string("Err")
+                })
+              )
+            })
+          )
+        })
+      ),
+      vx_core::f_let(
+        vx_core::t_msgblocklist,
+        vx_core::t_any_from_func->vx_fn_new({}, []() {
+          vx_core::Type_msgblock mymsgblock = vx_core::f_new(
+            vx_core::t_msgblock,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::f_new(
+                vx_core::t_msg,
+                vx_core::vx_new(vx_core::t_anylist, {
+                  vx_core::vx_new_string(":text"),
+                  vx_core::vx_new_string("Err")
+                })
+              )
+            })
+          );
+          vx_core::vx_ref_plus(mymsgblock);
+          vx_core::Type_msgblocklist output_1 = vx_core::f_new(
+            vx_core::t_msgblocklist,
+            vx_core::vx_new(vx_core::t_anylist, {
+              mymsgblock,
+              mymsgblock
+            })
+          );
+          vx_core::vx_release_one_except(mymsgblock, output_1);
+          return output_1;
+        })
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (msgblocklist\n  (msgblock\n   (msg :text \"Err\")))\n (let : msgblocklist\n  [mymsgblock : msgblock :=\n   (msgblock\n    (msg :text \"Err\"))]\n  (msgblocklist\n   mymsgblock\n   mymsgblock)))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("msgblocklist"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : t_msgblocklist");
+    return output;
+  }
+
+  vx_test::Type_testcase t_msglist(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: t_msglist");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test(
+      context,
+      vx_core::f_new(
+        vx_core::t_msglist,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::f_new(
+            vx_core::t_msg,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::vx_new_string(":text"),
+              vx_core::vx_new_string("Err")
+            })
+          )
+        })
+      ),
+      vx_core::f_let(
+        vx_core::t_msglist,
+        vx_core::t_any_from_func->vx_fn_new({}, []() {
+          vx_core::Type_msg mymsg = vx_core::f_new(
+            vx_core::t_msg,
+            vx_core::vx_new(vx_core::t_anylist, {
+              vx_core::vx_new_string(":text"),
+              vx_core::vx_new_string("Err")
+            })
+          );
+          vx_core::vx_ref_plus(mymsg);
+          vx_core::Type_msglist output_1 = vx_core::f_new(
+            vx_core::t_msglist,
+            vx_core::vx_new(vx_core::t_anylist, {
+              mymsg,
+              mymsg
+            })
+          );
+          vx_core::vx_release_one_except(mymsg, output_1);
+          return output_1;
+        })
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (msglist\n  (msg :text \"Err\"))\n (let : msglist\n  [mymsg : msg :=\n   (msg :text \"Err\")]\n  (msglist\n   mymsg\n   mymsg)))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("msglist"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : t_msglist");
+    return output;
+  }
+
   vx_test::Type_testcase t_string(vx_core::Type_context context) {
     vx_core::vx_log("Test Start: t_string");
     // testdescribe_1
@@ -2842,6 +3099,48 @@ namespace vx_core_test {
     return output;
   }
 
+  vx_test::Type_testcase f_is_error(vx_core::Type_context context) {
+    vx_core::vx_log("Test Start: f_is_error");
+    // testdescribe_1
+    vx_test::Type_testresult testresult_1 = vx_test::f_test_true(
+      context,
+      vx_core::f_is_error(
+        vx_core::f_new(
+          vx_core::t_stringlist,
+          vx_core::vx_new(vx_core::t_anylist, {
+            vx_core::f_new(
+              vx_core::t_msg,
+              vx_core::vx_new(vx_core::t_anylist, {
+                vx_core::vx_new_string(":code"),
+                vx_core::vx_new_string("My Err")
+              })
+            )
+          })
+        )
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test-true\n (is-error\n  (stringlist\n   (msg\n    :code \"My Err\"))))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_1
+    });
+    vx_core::vx_Type_listany listdescribe = {
+      testdescribe_1
+    };
+    vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
+      vx_core::vx_new_string(":passfail"), vx_core::c_false,
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":casename"), vx_core::vx_new_string("is-error"),
+      vx_core::vx_new_string(":describelist"),
+      vx_core::vx_any_from_any(
+        vx_test::t_testdescribelist,
+        vx_test::t_testdescribelist->vx_new_from_list(listdescribe)
+      )
+    });
+    vx_core::vx_log("Test End  : f_is_error");
+    return output;
+  }
+
   vx_test::Type_testcase f_is_int(vx_core::Type_context context) {
     vx_core::vx_log("Test Start: f_is_int");
     // testdescribe_1
@@ -4369,6 +4668,9 @@ namespace vx_core_test {
     listtestcase.push_back(vx_core_test::t_func(context));
     listtestcase.push_back(vx_core_test::t_funclist(context));
     listtestcase.push_back(vx_core_test::t_int(context));
+    listtestcase.push_back(vx_core_test::t_msgblock(context));
+    listtestcase.push_back(vx_core_test::t_msgblocklist(context));
+    listtestcase.push_back(vx_core_test::t_msglist(context));
     listtestcase.push_back(vx_core_test::t_string(context));
     listtestcase.push_back(vx_core_test::t_stringlist(context));
     listtestcase.push_back(vx_core_test::c_false(context));
@@ -4422,6 +4724,7 @@ namespace vx_core_test {
     listtestcase.push_back(vx_core_test::f_if_2(context));
     listtestcase.push_back(vx_core_test::f_int_from_string(context));
     listtestcase.push_back(vx_core_test::f_is_empty_1(context));
+    listtestcase.push_back(vx_core_test::f_is_error(context));
     listtestcase.push_back(vx_core_test::f_is_int(context));
     listtestcase.push_back(vx_core_test::f_is_number(context));
     listtestcase.push_back(vx_core_test::f_last_from_list(context));
@@ -4466,32 +4769,32 @@ namespace vx_core_test {
       }),
       vx_core::vx_new_string(":docnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(91), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(236), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(258)
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(239), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(261)
       }),
       vx_core::vx_new_string(":funcnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(55), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(76), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(136)
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(77), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(139)
       }),
       vx_core::vx_new_string(":bigospacenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(0), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(1), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(167)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(170)
       }),
       vx_core::vx_new_string(":bigotimenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(0), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(1), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(167)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(170)
       }),
       vx_core::vx_new_string(":totalnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
-        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(37), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(85), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(227)
+        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(38), 
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(89), 
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(230)
       }),
       vx_core::vx_new_string(":typenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
-        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(9), 
-        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(7), 
+        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(13), 
+        vx_core::vx_new_string(":tests"), vx_core::vx_new_int(10), 
         vx_core::vx_new_string(":total"), vx_core::vx_new_int(76)
       })
     });
@@ -4541,9 +4844,9 @@ namespace vx_core_test {
         vx_core::vx_new_string(":maptype"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":mempool"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":msg"), vx_core::vx_new_int(0),
-        vx_core::vx_new_string(":msgblock"), vx_core::vx_new_int(0),
-        vx_core::vx_new_string(":msgblocklist"), vx_core::vx_new_int(0),
-        vx_core::vx_new_string(":msglist"), vx_core::vx_new_int(0),
+        vx_core::vx_new_string(":msgblock"), vx_core::vx_new_int(2),
+        vx_core::vx_new_string(":msgblocklist"), vx_core::vx_new_int(1),
+        vx_core::vx_new_string(":msglist"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":none"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":notype"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":number"), vx_core::vx_new_int(0),
@@ -4692,6 +4995,7 @@ namespace vx_core_test {
         vx_core::vx_new_string(":is-empty"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":is-empty_1"), vx_core::vx_new_int(4),
         vx_core::vx_new_string(":is-endswith"), vx_core::vx_new_int(0),
+        vx_core::vx_new_string(":is-error"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":is-float"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":is-func"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":is-int"), vx_core::vx_new_int(4),
@@ -4713,6 +5017,7 @@ namespace vx_core_test {
         vx_core::vx_new_string(":list<-type"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":log"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":log_1"), vx_core::vx_new_int(0),
+        vx_core::vx_new_string(":log-error"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":main"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":map<-list"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":map<-map"), vx_core::vx_new_int(1),
@@ -4721,6 +5026,7 @@ namespace vx_core_test {
         vx_core::vx_new_string(":msg<-error_1"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":msg<-error_2"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":msg<-warning"), vx_core::vx_new_int(0),
+        vx_core::vx_new_string(":msgblock<-any"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":msgblock<-msgblock-msg"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":msgblock<-msgblock-msgblock"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":name<-typedef"), vx_core::vx_new_int(0),

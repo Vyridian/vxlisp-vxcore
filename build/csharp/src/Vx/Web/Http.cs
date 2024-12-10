@@ -40,9 +40,9 @@ public static class Http {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":ok")) {
+      } else if ((skey == ":ok")) {
         output = this.ok();
-      } else if ((skey==":status")) {
+      } else if ((skey == ":status")) {
         output = this.status();
       }
       return output;
@@ -117,7 +117,7 @@ public static class Http {
           }
         } else {
           if (false) {
-          } else if ((key==":ok")) {
+          } else if ((key == ":ok")) {
             if (valsub == vx_p_ok) {
             } else if (valsub is Vx.Core.Type_boolean valok) {
               ischanged = true;
@@ -139,7 +139,7 @@ public static class Http {
               msg = Vx.Core.vx_msg_from_error("vx/web/http/response", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":status")) {
+          } else if ((key == ":status")) {
             if (valsub == vx_p_status) {
             } else if (valsub is Vx.Core.Type_int valstatus) {
               ischanged = true;

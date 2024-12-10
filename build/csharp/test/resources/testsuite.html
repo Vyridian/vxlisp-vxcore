@@ -130,13 +130,13 @@
             <summary>
               <p class="passflag">Pass</p>
               <p class="pkgname">vx/core</p>
-              <p class="coveragenums">37% 85/227</p>
-              <p class="coveragenums">9% 7/76</p>
+              <p class="coveragenums">38% 89/230</p>
+              <p class="coveragenums">13% 10/76</p>
               <p class="coveragenums">13% 2/15</p>
-              <p class="coveragenums">55% 76/136</p>
-              <p class="coveragenums">91% 236/258</p>
-              <p class="coveragenums">0% 1/167</p>
-              <p class="coveragenums">0% 1/167</p>
+              <p class="coveragenums">55% 77/139</p>
+              <p class="coveragenums">91% 239/261</p>
+              <p class="coveragenums">0% 1/170</p>
+              <p class="coveragenums">0% 1/170</p>
             </summary>
             <div>
               <table>
@@ -406,6 +406,129 @@
                     </td>
                     <td>
                       <p class="preformatted">false</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">msgblock</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (decimal
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :text "Err"))))
+ (decimal
+  (msg
+   :text "Err")))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">0.0</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">0.0</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">msgblock</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (decimal
+  (msgblock
+   :msgs
+    (msglist
+     (msg :text "Err"))))
+ (let : decimal
+  [mymsgblock : msgblock :=
+   (msgblock
+    (msg
+     :text "Err"))]
+  (decimal
+   (copy
+    mymsgblock
+    mymsgblock))))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">0.0</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">0.0</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">msgblocklist</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (msgblocklist
+  (msgblock
+   (msg :text "Err")))
+ (let : msgblocklist
+  [mymsgblock : msgblock :=
+   (msgblock
+    (msg :text "Err"))]
+  (msgblocklist
+   mymsgblock
+   mymsgblock)))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(msgblocklist
+ (msgblock
+  :msgs
+   (msglist
+    (msg
+     :text "Err"))))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(msgblocklist
+ (msgblock
+  :msgs
+   (msglist
+    (msg
+     :text "Err"))))</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">msglist</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test
+ (msglist
+  (msg :text "Err"))
+ (let : msglist
+  [mymsg : msg :=
+   (msg :text "Err")]
+  (msglist
+   mymsg
+   mymsg)))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(msglist
+ (msg
+  :text "Err"))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(msglist
+ (msg
+  :text "Err"))</p>
                     </td>
                   </tr>
                   <tr>
@@ -2206,6 +2329,27 @@
                     </td>
                     <td>
                       <p class="preformatted">(test-true (is-empty (map)))</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">true</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">true</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="passflag">Pass</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">is-error</p>
+                    </td>
+                    <td>
+                      <p class="preformatted">(test-true
+ (is-error
+  (stringlist
+   (msg
+    :code "My Err"))))</p>
                     </td>
                     <td>
                       <p class="preformatted">true</p>
@@ -5648,22 +5792,13 @@ ab
         :text "a"
         :startpos 2
         :endpos 2))
-     (msgblock
-      (msg
-       :code "closedelimmissing"
-       :detail
-        (delim
-         :name "delimclose"
-         :starttext "&gt;")
-       :severity 2))))
-  (msgblock
-   (msg
-    :code "closedelimmissing"
-    :detail
-     (delim
-      :name "delimclose"
-      :starttext "&gt;")
-    :severity 2)))
+     (msg
+      :code "closedelimmissing"
+      :detail
+       (delim
+        :name "delimclose"
+        :starttext "&gt;")
+      :severity msg-error))))
  (textblock-delimnotfound
   (textblock
    :text "a"
@@ -5711,7 +5846,40 @@ ab
       (textblock
        :text "a"
        :startpos 2
-       :endpos 2)))))</p>
+       :endpos 2))
+    :msgblock
+     (msgblock
+      :msgs
+       (msglist
+        (msg
+         :code "closedelimmissing"
+         :detail
+          (delim
+           :name "delimclose"
+           :starttext "&gt;")
+         :severity 2))))
+   :msgblock
+    (msgblock
+    :msgs
+     (msglist
+      (msg
+       :code "closedelimmissing"
+       :detail
+        (delim
+         :name "delimclose"
+         :starttext "&gt;")
+       :severity 2))))
+ :msgblock
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :code "closedelimmissing"
+      :detail
+       (delim
+        :name "delimclose"
+        :starttext "&gt;")
+      :severity 2))))</p>
                     </td>
                     <td>
                       <p class="preformatted">(textblock
@@ -5735,7 +5903,40 @@ ab
       (textblock
        :text "a"
        :startpos 2
-       :endpos 2)))))</p>
+       :endpos 2))
+    :msgblock
+     (msgblock
+      :msgs
+       (msglist
+        (msg
+         :code "closedelimmissing"
+         :detail
+          (delim
+           :name "delimclose"
+           :starttext "&gt;")
+         :severity 2))))
+   :msgblock
+    (msgblock
+    :msgs
+     (msglist
+      (msg
+       :code "closedelimmissing"
+       :detail
+        (delim
+         :name "delimclose"
+         :starttext "&gt;")
+       :severity 2))))
+ :msgblock
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :code "closedelimmissing"
+      :detail
+       (delim
+        :name "delimclose"
+        :starttext "&gt;")
+      :severity 2))))</p>
                     </td>
                   </tr>
                   <tr>
@@ -7051,22 +7252,13 @@ ab
         :text "a"
         :startpos 2
         :endpos 2))
-     (msgblock
-      (msg
-       :code "closedelimmissing"
-       :detail
-        (delim
-         :name "delimclose"
-         :starttext "&gt;")
-       :severity 2))))
-  (msgblock
-   (msg
-    :code "closedelimmissing"
-    :detail
-     (delim
-      :name "delimclose"
-      :starttext "&gt;")
-    :severity 2)))
+     (msg
+      :code "closedelimmissing"
+      :detail
+       (delim
+        :name "delimclose"
+        :starttext "&gt;")
+      :severity msg-error))))
  (textblock-parse-one
   (textblock
    :text "a"
@@ -7114,7 +7306,40 @@ ab
       (textblock
        :text "a"
        :startpos 2
-       :endpos 2)))))</p>
+       :endpos 2))
+    :msgblock
+     (msgblock
+      :msgs
+       (msglist
+        (msg
+         :code "closedelimmissing"
+         :detail
+          (delim
+           :name "delimclose"
+           :starttext "&gt;")
+         :severity 2))))
+   :msgblock
+    (msgblock
+    :msgs
+     (msglist
+      (msg
+       :code "closedelimmissing"
+       :detail
+        (delim
+         :name "delimclose"
+         :starttext "&gt;")
+       :severity 2))))
+ :msgblock
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :code "closedelimmissing"
+      :detail
+       (delim
+        :name "delimclose"
+        :starttext "&gt;")
+      :severity 2))))</p>
                     </td>
                     <td>
                       <p class="preformatted">(textblock
@@ -7138,7 +7363,40 @@ ab
       (textblock
        :text "a"
        :startpos 2
-       :endpos 2)))))</p>
+       :endpos 2))
+    :msgblock
+     (msgblock
+      :msgs
+       (msglist
+        (msg
+         :code "closedelimmissing"
+         :detail
+          (delim
+           :name "delimclose"
+           :starttext "&gt;")
+         :severity 2))))
+   :msgblock
+    (msgblock
+    :msgs
+     (msglist
+      (msg
+       :code "closedelimmissing"
+       :detail
+        (delim
+         :name "delimclose"
+         :starttext "&gt;")
+       :severity 2))))
+ :msgblock
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :code "closedelimmissing"
+      :detail
+       (delim
+        :name "delimclose"
+        :starttext "&gt;")
+      :severity 2))))</p>
                     </td>
                   </tr>
                   <tr>
@@ -15077,10 +15335,24 @@ ab
   (empty argmap)))</p>
                     </td>
                     <td>
-                      <p class="preformatted">(repl)</p>
+                      <p class="preformatted">(repl
+ :msgblock
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :severity 2
+      :text "Empty delim cannot have more than one child."))))</p>
                     </td>
                     <td>
-                      <p class="preformatted">(repl)</p>
+                      <p class="preformatted">(repl
+ :msgblock
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :severity 2
+      :text "Empty delim cannot have more than one child."))))</p>
                     </td>
                   </tr>
                   <tr>
@@ -17168,7 +17440,7 @@ ab
      :endpos 0
      :line 0
      :column 0)
-   :severity 2))
+   :severity msg-error))
  (xml-close&lt;-xml-textblock
   (xml
    :tag "doc")
@@ -17177,11 +17449,39 @@ ab
                     </td>
                     <td>
                       <p class="preformatted">(xml
- :tag "doc")</p>
+ :tag "doc"
+ :msgblock
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :code ":invalidxmlclosetag"
+      :detail
+       (anymap
+        :tag "/wrong"
+        :startpos 0
+        :endpos 0
+        :line 0
+        :column 0)
+      :severity 2))))</p>
                     </td>
                     <td>
                       <p class="preformatted">(xml
- :tag "doc")</p>
+ :tag "doc"
+ :msgblock
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :code ":invalidxmlclosetag"
+      :detail
+       (anymap
+        :tag "/wrong"
+        :startpos 0
+        :endpos 0
+        :line 0
+        :column 0)
+      :severity 2))))</p>
                     </td>
                   </tr>
                   <tr>

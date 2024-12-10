@@ -518,8 +518,9 @@ public final class Csv {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Core.Type_stringlist) {
+          Core.Type_stringlist subitem = (Core.Type_stringlist)valsub;
           ischanged = true;
-          listval.add((Core.Type_stringlist)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

@@ -89,8 +89,8 @@ namespace vx_state {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       for (auto const& [key, val] : mapval) {
@@ -152,8 +152,8 @@ namespace vx_state {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -161,8 +161,17 @@ namespace vx_state {
       return output;
     }
 
-    vx_core::Type_msgblock Class_valuemap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_state::Class_valuemap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_valuemap::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_state::Class_valuemap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_valuemap::vx_empty() const {return vx_state::e_valuemap;}
     vx_core::Type_any Class_valuemap::vx_type() const {return vx_state::t_valuemap;}
 
@@ -269,7 +278,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_any_readstate_from_mapname_name::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_any_readstate_from_mapname_name::vx_dispose() {
@@ -367,7 +380,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_any_readstate_from_name::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_any_readstate_from_name::vx_dispose() {
@@ -500,7 +517,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_boolean_removestate_from_name::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_removestate_from_name::vx_dispose() {
@@ -673,7 +694,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_boolean_writestate_from_mapname_name_value::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writestate_from_mapname_name_value::vx_dispose() {
@@ -801,7 +826,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_boolean_writestate_from_name_value::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writestate_from_name_value::vx_dispose() {
@@ -918,7 +947,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_boolean_writestate_from_statelistener::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writestate_from_statelistener::vx_dispose() {
@@ -1034,7 +1067,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_change::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_change::vx_dispose() {
@@ -1148,7 +1185,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_register::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_register::vx_dispose() {
@@ -1261,7 +1302,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_state_from_context::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_state_from_context::vx_dispose() {
@@ -1374,7 +1419,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_statelistener_readstate_from_name::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_statelistener_readstate_from_name::vx_dispose() {
@@ -1497,7 +1546,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_statelistenermap_readstate::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_statelistenermap_readstate::vx_dispose() {
@@ -1610,7 +1663,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_value_readstate_from_name::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_value_readstate_from_name::vx_dispose() {
@@ -1738,7 +1795,11 @@ namespace vx_state {
     }
 
     vx_core::Type_msgblock Class_valuemap_readstate_from_mapname::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_valuemap_readstate_from_mapname::vx_dispose() {

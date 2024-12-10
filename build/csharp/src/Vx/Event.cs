@@ -89,17 +89,17 @@ public static class Event {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":from")) {
+      } else if ((skey == ":from")) {
         output = this.from();
-      } else if ((skey==":to")) {
+      } else if ((skey == ":to")) {
         output = this.to();
-      } else if ((skey==":datamap")) {
+      } else if ((skey == ":datamap")) {
         output = this.datamap();
-      } else if ((skey==":event<-event")) {
+      } else if ((skey == ":event<-event")) {
         output = this.event_from_event();
-      } else if ((skey==":event<-event-async")) {
+      } else if ((skey == ":event<-event-async")) {
         output = this.event_from_event_async();
       }
       return output;
@@ -186,7 +186,7 @@ public static class Event {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -208,7 +208,7 @@ public static class Event {
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":from")) {
+          } else if ((key == ":from")) {
             if (valsub == vx_p_from) {
             } else if (valsub is Vx.Core.Type_string valfrom) {
               ischanged = true;
@@ -230,7 +230,7 @@ public static class Event {
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":to")) {
+          } else if ((key == ":to")) {
             if (valsub == vx_p_to) {
             } else if (valsub is Vx.Core.Type_string valto) {
               ischanged = true;
@@ -252,7 +252,7 @@ public static class Event {
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":datamap")) {
+          } else if ((key == ":datamap")) {
             if (valsub == vx_p_datamap) {
             } else if (valsub is Vx.Core.Type_anymap valdatamap) {
               ischanged = true;
@@ -271,7 +271,7 @@ public static class Event {
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":event<-event")) {
+          } else if ((key == ":event<-event")) {
             if (valsub == vx_p_event_from_event) {
             } else if (valsub is Vx.Event.Func_event_from_event valevent_from_event) {
               ischanged = true;
@@ -290,7 +290,7 @@ public static class Event {
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":event<-event-async")) {
+          } else if ((key == ":event<-event-async")) {
             if (valsub == vx_p_event_from_event_async) {
             } else if (valsub is Vx.Event.Func_event_from_event_async valevent_from_event_async) {
               ischanged = true;
@@ -436,8 +436,9 @@ public static class Event {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Event.Type_event) {
+          Vx.Event.Type_event subitem = (Vx.Event.Type_event)valsub;
           ischanged = true;
-          listval.Add((Vx.Event.Type_event)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {

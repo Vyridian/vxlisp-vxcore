@@ -387,7 +387,7 @@ public final class TextblockTest {
   public static Test.Type_testdescribe f_textblock_delimnotfound_testdescribe_1(final Core.Type_context context) {
     Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      ":describename", "(test\n (textblock\n  :text \"<a\"\n  :startpos 1\n  :endpos 2\n  :children\n   (textblocklist\n    (textblock\n     :text \"<a\"\n     :startpos 1\n     :endpos 2\n     :delim\n      (copy delimbracketangle\n       :delimlist vx/data/textblock/delimlisttest1)\n     :children\n      (textblocklist\n       (textblock\n        :text \"a\"\n        :startpos 2\n        :endpos 2))\n     (msgblock\n      (msg\n       :code \"closedelimmissing\"\n       :detail\n        (delim\n         :name \"delimclose\"\n         :starttext \">\")\n       :severity 2))))\n  (msgblock\n   (msg\n    :code \"closedelimmissing\"\n    :detail\n     (delim\n      :name \"delimclose\"\n      :starttext \">\")\n    :severity 2)))\n (textblock-delimnotfound\n  (textblock\n   :text \"a\"\n   :startpos 2\n   :endpos 2\n   :delim\n    (delim\n     :delimlist vx/data/textblock/delimlisttest2)\n   :close\n    (copy delimclose\n     :starttext \">\")\n   :parent\n    (textblock\n     :text \"<a\"\n     :startpos 1\n     :endpos 2\n     :delim\n      (copy delimbracketangle\n       :delimlist vx/data/textblock/delimlisttest1)\n     :parent\n      (textblock\n       :text \"<a\"\n       :startpos 1\n       :endpos 2)))))",
+      ":describename", "(test\n (textblock\n  :text \"<a\"\n  :startpos 1\n  :endpos 2\n  :children\n   (textblocklist\n    (textblock\n     :text \"<a\"\n     :startpos 1\n     :endpos 2\n     :delim\n      (copy delimbracketangle\n       :delimlist vx/data/textblock/delimlisttest1)\n     :children\n      (textblocklist\n       (textblock\n        :text \"a\"\n        :startpos 2\n        :endpos 2))\n     (msg\n      :code \"closedelimmissing\"\n      :detail\n       (delim\n        :name \"delimclose\"\n        :starttext \">\")\n      :severity msg-error))))\n (textblock-delimnotfound\n  (textblock\n   :text \"a\"\n   :startpos 2\n   :endpos 2\n   :delim\n    (delim\n     :delimlist vx/data/textblock/delimlisttest2)\n   :close\n    (copy delimclose\n     :starttext \">\")\n   :parent\n    (textblock\n     :text \"<a\"\n     :startpos 1\n     :endpos 2\n     :delim\n      (copy delimbracketangle\n       :delimlist vx/data/textblock/delimlisttest1)\n     :parent\n      (textblock\n       :text \"<a\"\n       :startpos 1\n       :endpos 2)))))",
       ":testresult", Test.f_test(
         context,
         Core.f_new(
@@ -444,59 +444,26 @@ public final class TextblockTest {
                       )
                     ),
                     Core.f_new(
-                      Core.t_msgblock,
+                      Core.t_msg,
                       Core.vx_new(
                         Core.t_anylist,
+                        Core.vx_new_string(":code"),
+                        Core.vx_new_string("closedelimmissing"),
+                        Core.vx_new_string(":detail"),
                         Core.f_new(
-                          Core.t_msg,
+                          Textblock.t_delim,
                           Core.vx_new(
                             Core.t_anylist,
-                            Core.vx_new_string(":code"),
-                            Core.vx_new_string("closedelimmissing"),
-                            Core.vx_new_string(":detail"),
-                            Core.f_new(
-                              Textblock.t_delim,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":name"),
-                                Core.vx_new_string("delimclose"),
-                                Core.vx_new_string(":starttext"),
-                                Core.vx_new_string(">")
-                              )
-                            ),
-                            Core.vx_new_string(":severity"),
-                            Core.vx_new_int(2)
+                            Core.vx_new_string(":name"),
+                            Core.vx_new_string("delimclose"),
+                            Core.vx_new_string(":starttext"),
+                            Core.vx_new_string(">")
                           )
-                        )
+                        ),
+                        Core.vx_new_string(":severity"),
+                        Core.c_msg_error
                       )
                     )
-                  )
-                )
-              )
-            ),
-            Core.f_new(
-              Core.t_msgblock,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Core.t_msg,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":code"),
-                    Core.vx_new_string("closedelimmissing"),
-                    Core.vx_new_string(":detail"),
-                    Core.f_new(
-                      Textblock.t_delim,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":name"),
-                        Core.vx_new_string("delimclose"),
-                        Core.vx_new_string(":starttext"),
-                        Core.vx_new_string(">")
-                      )
-                    ),
-                    Core.vx_new_string(":severity"),
-                    Core.vx_new_int(2)
                   )
                 )
               )
@@ -2246,7 +2213,7 @@ public final class TextblockTest {
   public static Test.Type_testdescribe f_textblock_parse_one_testdescribe_1(final Core.Type_context context) {
     Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      ":describename", "(test\n (textblock\n  :text \"<a\"\n  :startpos 1\n  :endpos 2\n  :children\n   (textblocklist\n    (textblock\n     :text \"<a\"\n     :startpos 1\n     :endpos 2\n     :delim\n      (copy delimbracketangle\n       :delimlist vx/data/textblock/delimlisttest1)\n     :children\n      (textblocklist\n       (textblock\n        :text \"a\"\n        :startpos 2\n        :endpos 2))\n     (msgblock\n      (msg\n       :code \"closedelimmissing\"\n       :detail\n        (delim\n         :name \"delimclose\"\n         :starttext \">\")\n       :severity 2))))\n  (msgblock\n   (msg\n    :code \"closedelimmissing\"\n    :detail\n     (delim\n      :name \"delimclose\"\n      :starttext \">\")\n    :severity 2)))\n (textblock-parse-one\n  (textblock\n   :text \"a\"\n   :startpos 2\n   :endpos 2\n   :delim\n    (delim\n     :delimlist vx/data/textblock/delimlisttest2)\n   :close\n    (copy delimclose\n     :starttext \">\")\n   :parent\n    (textblock\n     :text \"<a\"\n     :startpos 1\n     :endpos 2\n     :delim\n      (copy delimbracketangle\n       :delimlist vx/data/textblock/delimlisttest1)\n     :parent\n      (textblock\n       :text \"<a\"\n       :startpos 1\n       :endpos 2)))))",
+      ":describename", "(test\n (textblock\n  :text \"<a\"\n  :startpos 1\n  :endpos 2\n  :children\n   (textblocklist\n    (textblock\n     :text \"<a\"\n     :startpos 1\n     :endpos 2\n     :delim\n      (copy delimbracketangle\n       :delimlist vx/data/textblock/delimlisttest1)\n     :children\n      (textblocklist\n       (textblock\n        :text \"a\"\n        :startpos 2\n        :endpos 2))\n     (msg\n      :code \"closedelimmissing\"\n      :detail\n       (delim\n        :name \"delimclose\"\n        :starttext \">\")\n      :severity msg-error))))\n (textblock-parse-one\n  (textblock\n   :text \"a\"\n   :startpos 2\n   :endpos 2\n   :delim\n    (delim\n     :delimlist vx/data/textblock/delimlisttest2)\n   :close\n    (copy delimclose\n     :starttext \">\")\n   :parent\n    (textblock\n     :text \"<a\"\n     :startpos 1\n     :endpos 2\n     :delim\n      (copy delimbracketangle\n       :delimlist vx/data/textblock/delimlisttest1)\n     :parent\n      (textblock\n       :text \"<a\"\n       :startpos 1\n       :endpos 2)))))",
       ":testresult", Test.f_test(
         context,
         Core.f_new(
@@ -2303,59 +2270,26 @@ public final class TextblockTest {
                       )
                     ),
                     Core.f_new(
-                      Core.t_msgblock,
+                      Core.t_msg,
                       Core.vx_new(
                         Core.t_anylist,
+                        Core.vx_new_string(":code"),
+                        Core.vx_new_string("closedelimmissing"),
+                        Core.vx_new_string(":detail"),
                         Core.f_new(
-                          Core.t_msg,
+                          Textblock.t_delim,
                           Core.vx_new(
                             Core.t_anylist,
-                            Core.vx_new_string(":code"),
-                            Core.vx_new_string("closedelimmissing"),
-                            Core.vx_new_string(":detail"),
-                            Core.f_new(
-                              Textblock.t_delim,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":name"),
-                                Core.vx_new_string("delimclose"),
-                                Core.vx_new_string(":starttext"),
-                                Core.vx_new_string(">")
-                              )
-                            ),
-                            Core.vx_new_string(":severity"),
-                            Core.vx_new_int(2)
+                            Core.vx_new_string(":name"),
+                            Core.vx_new_string("delimclose"),
+                            Core.vx_new_string(":starttext"),
+                            Core.vx_new_string(">")
                           )
-                        )
+                        ),
+                        Core.vx_new_string(":severity"),
+                        Core.c_msg_error
                       )
                     )
-                  )
-                )
-              )
-            ),
-            Core.f_new(
-              Core.t_msgblock,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Core.t_msg,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":code"),
-                    Core.vx_new_string("closedelimmissing"),
-                    Core.vx_new_string(":detail"),
-                    Core.f_new(
-                      Textblock.t_delim,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":name"),
-                        Core.vx_new_string("delimclose"),
-                        Core.vx_new_string(":starttext"),
-                        Core.vx_new_string(">")
-                      )
-                    ),
-                    Core.vx_new_string(":severity"),
-                    Core.vx_new_int(2)
                   )
                 )
               )

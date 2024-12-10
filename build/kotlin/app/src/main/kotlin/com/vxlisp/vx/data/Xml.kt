@@ -91,17 +91,17 @@ object vx_data_xml {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":tag")) {
+      } else if ((skey == ":tag")) {
         output = this.tag()
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text()
-      } else if ((skey==":prop")) {
+      } else if ((skey == ":prop")) {
         output = this.prop()
-      } else if ((skey==":propmap")) {
+      } else if ((skey == ":propmap")) {
         output = this.propmap()
-      } else if ((skey==":children")) {
+      } else if ((skey == ":children")) {
         output = this.children()
-      } else if ((skey==":parent")) {
+      } else if ((skey == ":parent")) {
         output = this.parent()
       }
       return output
@@ -191,7 +191,7 @@ object vx_data_xml {
           }
         } else {
           if (false) {
-          } else if ((key==":tag")) {
+          } else if ((key == ":tag")) {
             if (valsub == vx_p_tag) {
             } else if (valsub is vx_core.Type_string) {
               var valtag : vx_core.Type_string = valsub as vx_core.Type_string
@@ -215,7 +215,7 @@ object vx_data_xml {
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is vx_core.Type_string) {
               var valtext : vx_core.Type_string = valsub as vx_core.Type_string
@@ -239,7 +239,7 @@ object vx_data_xml {
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":prop")) {
+          } else if ((key == ":prop")) {
             if (valsub == vx_p_prop) {
             } else if (valsub is vx_core.Type_string) {
               var valprop : vx_core.Type_string = valsub as vx_core.Type_string
@@ -263,7 +263,7 @@ object vx_data_xml {
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":propmap")) {
+          } else if ((key == ":propmap")) {
             if (valsub == vx_p_propmap) {
             } else if (valsub is vx_core.Type_stringmap) {
               var valpropmap : vx_core.Type_stringmap = valsub as vx_core.Type_stringmap
@@ -284,7 +284,7 @@ object vx_data_xml {
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":children")) {
+          } else if ((key == ":children")) {
             if (valsub == vx_p_children) {
             } else if (valsub is vx_data_xml.Type_xmllist) {
               var valchildren : vx_data_xml.Type_xmllist = valsub as vx_data_xml.Type_xmllist
@@ -305,7 +305,7 @@ object vx_data_xml {
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":parent")) {
+          } else if ((key == ":parent")) {
             if (valsub == vx_p_parent) {
             } else if (valsub is vx_data_xml.Type_xml) {
               var valparent : vx_data_xml.Type_xml = valsub as vx_data_xml.Type_xml
@@ -455,8 +455,9 @@ object vx_data_xml {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_data_xml.Type_xml) {
+          var subitem : vx_data_xml.Type_xml = valsub as vx_data_xml.Type_xml
           ischanged = true
-          listval.add(valsub as vx_data_xml.Type_xml)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {

@@ -740,6 +740,9 @@
           <li class="nfunc" onclick="docjs.navigate('func_vx/core/is-endswith')">
             (f) is-endswith
           </li>
+          <li class="nfunc" onclick="docjs.navigate('func_vx/core/is-error')">
+            (f) is-error
+          </li>
           <li class="nfunc" onclick="docjs.navigate('func_vx/core/is-func')">
             (f) is-func
           </li>
@@ -803,6 +806,9 @@
           <li class="nfunc" onclick="docjs.navigate('func_vx/core/log_1')">
             (f) log
           </li>
+          <li class="nfunc" onclick="docjs.navigate('func_vx/core/log-error')">
+            (f) log-error
+          </li>
           <li class="nfunc" onclick="docjs.navigate('func_vx/core/main')">
             (f) main
           </li>
@@ -826,6 +832,9 @@
           </li>
           <li class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-warning')">
             (f) msg&lt;-warning
+          </li>
+          <li class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-any')">
+            (f) msgblock&lt;-any
           </li>
           <li class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-msgblock-msg')">
             (f) msgblock&lt;-msgblock-msg
@@ -2886,7 +2895,7 @@
         <div class="lbl">Version:</div>
         <ul>
           <li>
-            <div class="txt">0.5</div>
+            <div class="txt">0.6</div>
           </li>
         </ul>
         <div class="lbl">Author:</div>
@@ -3147,7 +3156,7 @@
           <ul>
             <li>
               <div class="source">(project core
- :version    &quot;0.5&quot;
+ :version    &quot;0.6&quot;
  :author     &quot;Vyridian&quot;
  :doc        &quot;The vx/core project&quot;
  :javadomain &quot;com.vxlisp&quot;
@@ -3330,7 +3339,7 @@
           </summary>
           <ul>
             <li>
-      <span class="nfunc" onclick="docjs.navigate('func_vx/core/.')">.</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+')">+</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+_1')">+</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+_2')">+</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+_3')">+</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+1')">+1</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-_1')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-_2')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-_3')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-1')">-1</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/*')">*</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/*_1')">*</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/*_2')">*</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/*_3')">*</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core//')">/</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/=')">=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/=_1')">=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/==')">==</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!')">!</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!=')">!=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!==')">!==</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!-empty')">!-empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!-empty_1')">!-empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;')">&lt;</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;_1')">&lt;</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;=')">&lt;=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;=_1')">&lt;=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;-')">&lt;-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;&lt;-')">&lt;&lt;-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&gt;')">&gt;</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&gt;_1')">&gt;</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&gt;=')">&gt;=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&gt;=_1')">&gt;=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/allowfuncs&lt;-security')">allowfuncs&lt;-security</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/allowtypenames&lt;-typedef')">allowtypenames&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/allowtypes&lt;-typedef')">allowtypes&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/and')">and</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/and_1')">and</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any')">any&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any-async')">any&lt;-any-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any-context')">any&lt;-any-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any-context-async')">any&lt;-any-context-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any-key-value')">any&lt;-any-key-value</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-int')">any&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-func')">any&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-func-async')">any&lt;-func-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-int-any')">any&lt;-int-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-key-value')">any&lt;-key-value</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-key-value-async')">any&lt;-key-value-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-list')">any&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-list-start-reduce')">any&lt;-list-start-reduce</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-list-start-reduce-next')">any&lt;-list-start-reduce-next</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-map')">any&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-map-start-reduce')">any&lt;-map-start-reduce</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-none')">any&lt;-none</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-none-async')">any&lt;-none-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-reduce')">any&lt;-reduce</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-reduce-async')">any&lt;-reduce-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-reduce-next')">any&lt;-reduce-next</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-reduce-next-async')">any&lt;-reduce-next-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-struct')">any&lt;-struct</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/async')">async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean&lt;-any')">boolean&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean&lt;-func')">boolean&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean&lt;-none')">boolean&lt;-none</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean-permission&lt;-func')">boolean-permission&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean-write&lt;-map-name-value')">boolean-write&lt;-map-name-value</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/case')">case</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/case_1')">case</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/compare')">compare</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/constdef&lt;-any')">constdef&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/constname&lt;-any')">constname&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/contains')">contains</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/contains_1')">contains</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/context-main')">context-main</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/copy')">copy</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/else')">else</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/empty')">empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/extends&lt;-any')">extends&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/extends&lt;-typedef')">extends&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/first&lt;-list')">first&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/first&lt;-list-any&lt;-any')">first&lt;-list-any&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/float&lt;-string')">float&lt;-string</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/fn')">fn</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/funcdef&lt;-func')">funcdef&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/funcname&lt;-funcdef')">funcname&lt;-funcdef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/if')">if</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/if_1')">if</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/if_2')">if</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/int&lt;-func')">int&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/int&lt;-string')">int&lt;-string</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-empty')">is-empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-empty_1')">is-empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-endswith')">is-endswith</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-func')">is-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-int')">is-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-float')">is-float</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-number')">is-number</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-pass&lt;-permission')">is-pass&lt;-permission</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/last&lt;-list')">last&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/length')">length</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/length_1')">length</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/length_2')">length</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/let')">let</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/let-async')">let-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-list')">list&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-list_1')">list&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-list-async')">list&lt;-list-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-list-intany')">list&lt;-list-intany</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-map')">list&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-map_1')">list&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-map-async')">list&lt;-map-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-type')">list&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/log')">log</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/log_1')">log</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/main')">main</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/map&lt;-list')">map&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/map&lt;-map')">map&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/map&lt;-map_1')">map&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-error')">msg&lt;-error</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-error_1')">msg&lt;-error</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-error_2')">msg&lt;-error</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-warning')">msg&lt;-warning</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-msgblock-msg')">msgblock&lt;-msgblock-msg</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-msgblock-msgblock')">msgblock&lt;-msgblock-msgblock</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/name&lt;-typedef')">name&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/native')">native</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/native&lt;-any')">native&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/new')">new</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/new&lt;-type')">new&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/number&lt;-func')">number&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/or')">or</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/or_1')">or</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/package-global&lt;-name')">package-global&lt;-name</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/packagename&lt;-typedef')">packagename&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/path&lt;-context-path')">path&lt;-context-path</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/path&lt;-setting-path')">path&lt;-setting-path</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/permission&lt;-id-context')">permission&lt;-id-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/properties&lt;-typedef')">properties&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/proplast&lt;-typedef')">proplast&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve')">resolve</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve_1')">resolve</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve-async')">resolve-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve-first')">resolve-first</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve-list')">resolve-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/security&lt;-context')">security&lt;-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/security&lt;-user')">security&lt;-user</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/session&lt;-context')">session&lt;-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/setting&lt;-context')">setting&lt;-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string-repeat')">string-repeat</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string&lt;-any')">string&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string&lt;-any-indent')">string&lt;-any-indent</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string&lt;-func')">string&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string&lt;-string-find-replace')">string&lt;-string-find-replace</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/stringlist&lt;-map')">stringlist&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/switch')">switch</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/then')">then</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/traits&lt;-typedef')">traits&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/type&lt;-any')">type&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typedef&lt;-any')">typedef&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typedef&lt;-type')">typedef&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typename&lt;-any')">typename&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typename&lt;-type')">typename&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typename&lt;-typedef')">typename&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typenames&lt;-typelist')">typenames&lt;-typelist</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/user&lt;-context')">user&lt;-context</span>
+      <span class="nfunc" onclick="docjs.navigate('func_vx/core/.')">.</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+')">+</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+_1')">+</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+_2')">+</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+_3')">+</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/+1')">+1</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-_1')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-_2')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-_3')">-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/-1')">-1</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/*')">*</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/*_1')">*</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/*_2')">*</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/*_3')">*</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core//')">/</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/=')">=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/=_1')">=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/==')">==</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!')">!</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!=')">!=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!==')">!==</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!-empty')">!-empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/!-empty_1')">!-empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;')">&lt;</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;_1')">&lt;</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;=')">&lt;=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;=_1')">&lt;=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;-')">&lt;-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&lt;&lt;-')">&lt;&lt;-</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&gt;')">&gt;</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&gt;_1')">&gt;</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&gt;=')">&gt;=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/&gt;=_1')">&gt;=</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/allowfuncs&lt;-security')">allowfuncs&lt;-security</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/allowtypenames&lt;-typedef')">allowtypenames&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/allowtypes&lt;-typedef')">allowtypes&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/and')">and</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/and_1')">and</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any')">any&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any-async')">any&lt;-any-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any-context')">any&lt;-any-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any-context-async')">any&lt;-any-context-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-any-key-value')">any&lt;-any-key-value</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-int')">any&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-func')">any&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-func-async')">any&lt;-func-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-int-any')">any&lt;-int-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-key-value')">any&lt;-key-value</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-key-value-async')">any&lt;-key-value-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-list')">any&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-list-start-reduce')">any&lt;-list-start-reduce</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-list-start-reduce-next')">any&lt;-list-start-reduce-next</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-map')">any&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-map-start-reduce')">any&lt;-map-start-reduce</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-none')">any&lt;-none</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-none-async')">any&lt;-none-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-reduce')">any&lt;-reduce</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-reduce-async')">any&lt;-reduce-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-reduce-next')">any&lt;-reduce-next</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-reduce-next-async')">any&lt;-reduce-next-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/any&lt;-struct')">any&lt;-struct</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/async')">async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean&lt;-any')">boolean&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean&lt;-func')">boolean&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean&lt;-none')">boolean&lt;-none</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean-permission&lt;-func')">boolean-permission&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/boolean-write&lt;-map-name-value')">boolean-write&lt;-map-name-value</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/case')">case</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/case_1')">case</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/compare')">compare</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/constdef&lt;-any')">constdef&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/constname&lt;-any')">constname&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/contains')">contains</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/contains_1')">contains</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/context-main')">context-main</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/copy')">copy</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/else')">else</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/empty')">empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/extends&lt;-any')">extends&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/extends&lt;-typedef')">extends&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/first&lt;-list')">first&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/first&lt;-list-any&lt;-any')">first&lt;-list-any&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/float&lt;-string')">float&lt;-string</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/fn')">fn</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/funcdef&lt;-func')">funcdef&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/funcname&lt;-funcdef')">funcname&lt;-funcdef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/if')">if</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/if_1')">if</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/if_2')">if</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/int&lt;-func')">int&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/int&lt;-string')">int&lt;-string</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-empty')">is-empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-empty_1')">is-empty</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-endswith')">is-endswith</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-error')">is-error</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-func')">is-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-int')">is-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-float')">is-float</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-number')">is-number</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-pass&lt;-permission')">is-pass&lt;-permission</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/last&lt;-list')">last&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/length')">length</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/length_1')">length</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/length_2')">length</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/let')">let</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/let-async')">let-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-list')">list&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-list_1')">list&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-list-async')">list&lt;-list-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-list-intany')">list&lt;-list-intany</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-map')">list&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-map_1')">list&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-map-async')">list&lt;-map-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/list&lt;-type')">list&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/log')">log</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/log_1')">log</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/log-error')">log-error</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/main')">main</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/map&lt;-list')">map&lt;-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/map&lt;-map')">map&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/map&lt;-map_1')">map&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-error')">msg&lt;-error</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-error_1')">msg&lt;-error</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-error_2')">msg&lt;-error</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msg&lt;-warning')">msg&lt;-warning</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-any')">msgblock&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-msgblock-msg')">msgblock&lt;-msgblock-msg</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-msgblock-msgblock')">msgblock&lt;-msgblock-msgblock</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/name&lt;-typedef')">name&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/native')">native</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/native&lt;-any')">native&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/new')">new</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/new&lt;-type')">new&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/number&lt;-func')">number&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/or')">or</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/or_1')">or</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/package-global&lt;-name')">package-global&lt;-name</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/packagename&lt;-typedef')">packagename&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/path&lt;-context-path')">path&lt;-context-path</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/path&lt;-setting-path')">path&lt;-setting-path</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/permission&lt;-id-context')">permission&lt;-id-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/properties&lt;-typedef')">properties&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/proplast&lt;-typedef')">proplast&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve')">resolve</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve_1')">resolve</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve-async')">resolve-async</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve-first')">resolve-first</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/resolve-list')">resolve-list</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/security&lt;-context')">security&lt;-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/security&lt;-user')">security&lt;-user</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/session&lt;-context')">session&lt;-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/setting&lt;-context')">setting&lt;-context</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string-repeat')">string-repeat</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string&lt;-any')">string&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string&lt;-any-indent')">string&lt;-any-indent</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string&lt;-func')">string&lt;-func</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/string&lt;-string-find-replace')">string&lt;-string-find-replace</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/stringlist&lt;-map')">stringlist&lt;-map</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/switch')">switch</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/then')">then</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/traits&lt;-typedef')">traits&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/type&lt;-any')">type&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typedef&lt;-any')">typedef&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typedef&lt;-type')">typedef&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typename&lt;-any')">typename&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typename&lt;-type')">typename&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typename&lt;-typedef')">typename&lt;-typedef</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/typenames&lt;-typelist')">typenames&lt;-typelist</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/core/user&lt;-context')">user&lt;-context</span>
             </li>
           </ul>
         </details>
@@ -3767,15 +3776,60 @@
  :properties
   [msgs      : msglist
    msgblocks : msgblocklist]
- :doc &quot;Block of Messages&quot;)
+ :test (test
+        (decimal
+         (msgblock
+          :msgs
+           (msglist
+            (msg
+             :text &quot;Err&quot;))))
+        (decimal
+         (msg
+          :text &quot;Err&quot;)))
+       (test
+        (decimal
+         (msgblock
+          :msgs
+           (msglist
+            (msg :text &quot;Err&quot;))))
+        (let : decimal
+         [mymsgblock : msgblock :=
+          (msgblock
+           (msg
+            :text &quot;Err&quot;))]
+         (decimal
+          (copy
+           mymsgblock
+           mymsgblock))))
+ :doc &quot;Block of Messages. Note: Identical msgblocks are suppressed.&quot;)
 
 (type msgblocklist : list
  :allowtypes [msgblock]
- :doc &quot;List of Message Blocks&quot;)
+ :test (test
+        (msgblocklist
+         (msgblock
+          (msg :text &quot;Err&quot;)))
+        (let : msgblocklist
+         [mymsgblock : msgblock :=
+          (msgblock
+           (msg :text &quot;Err&quot;))]
+         (msgblocklist
+          mymsgblock
+          mymsgblock)))
+ :doc &quot;List of Message Blocks. Note: Identical msgblocks are suppressed.&quot;)
 
 (type msglist : list
  :allowtypes [msg]
- :doc &quot;List of Messages&quot;)
+ :test (test
+        (msglist
+         (msg :text &quot;Err&quot;))
+        (let : msglist
+         [mymsg : msg :=
+          (msg :text &quot;Err&quot;)]
+         (msglist
+          mymsg
+          mymsg)))
+ :doc &quot;List of Messages. Note: Identical msgs are suppressed.&quot;)
 
 (type none
  :doc &quot;No Type. No type is returned at all. e.g. Void&quot;)
@@ -5317,23 +5371,29 @@
   values : anylist :...]
  (native
   :cpp
-   &quot;T* output = vx_core::vx_copy(generic_any_1, value, values-&gt;vx_list());&quot;
+   &quot;vx_core::vx_Type_listany listany = vx_core::vx_listany_from_anylist(
+      values);
+    T* output = vx_core::vx_copy(
+      generic_any_1, value, listany);&quot;
   :csharp
-   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     T tvalue = (T)value;
     Vx.Core.Type_any anyvalue = tvalue.vx_copy(arrayobj);
     T output = (T)anyvalue;&quot;
   :java
    &quot;@SuppressWarnings(“unchecked”)
-    Core.Type_any[] arrayany = Core.arrayany_from_anylist(
-      values);
+    Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     T output = (T)(value.vx_copy(arrayobj));&quot;
   :js
    &quot;vx_core.f_new_from_type(value, ...values)&quot;
   :kotlin
-   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.arrayany_from_anylist(
+   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.vx_arrayany_from_anylist(
       values
     )
     val valuecopy : vx_core.Type_any = value.vx_copy(*arrayany)
@@ -5800,6 +5860,20 @@
     }&quot;)
  :doc &quot;Returns true if text ends with find.&quot;)
 
+(func is-error : boolean
+ [value : any-1]
+ (let : any-1
+  [msgblock : msgblock := (msgblock&lt;-any value)]
+  (if : boolean
+   (then 
+    (!-empty msgblock) true)))
+ :test (test-true
+        (is-error
+         (stringlist
+          (msg
+           :code &quot;My Err&quot;))))
+ :doc &quot;Returns true if value has an error.&quot;)
+
 (func is-func : boolean
  [value : any]
  (native
@@ -6193,6 +6267,15 @@
     output = value&quot;)
  :doc &quot;Writes a string and a value to the console.&quot;)
 
+(func log-error : any-1
+ [value : any-1]
+ (if : any-1
+  (then
+   (is-error value)
+   (log value))
+  (else value))
+ :doc &quot;Write a value if it has an error.&quot;)
+
 (func main : string
  [args : anylist :...]
  (string args)
@@ -6324,6 +6407,16 @@
   :text warning)
  :doc &quot;Returns a msg from a warning string&quot;)
 
+(func msgblock&lt;-any : msgblock
+ [value : any]
+ (native
+  :cpp    :auto
+  :csharp :auto
+  :java   :auto
+  :js     :auto
+  :kotlin :auto)
+ :doc &quot;Returns a msgblock from any&quot;)
+
 (func msgblock&lt;-msgblock-msg : msgblock
  [origblock : msgblock
   addmsg    : msg]
@@ -6375,19 +6468,26 @@
  [values : anylist :...]
  (native
   :cpp
-   &quot;output = vx_core::vx_new(generic_any_1, values-&gt;vx_list());&quot;
+   &quot;vx_core::vx_Type_listany listany = vx_core::vx_listany_from_anylist(
+      values);
+    output = vx_core::vx_new(
+      generic_any_1, listany);&quot;
   :csharp
-   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     output = (T)(generic_any_1.vx_new(arrayobj));&quot;
   :java
-   &quot;Core.Type_any[] arrayany = Core.arrayany_from_anylist(values);
+   &quot;Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     output = (T)(generic_any_1.vx_new(arrayobj));&quot;
   :js
    &quot;vx_core.vx_new(generic_any_1, values)&quot;
   :kotlin
-   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.arrayany_from_anylist(
+   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.vx_arrayany_from_anylist(
       values
     )
     val anyvalue : vx_core.Type_any = generic_any_1.vx_new(*arrayany)
@@ -6409,19 +6509,26 @@
   values : anylist :...]
  (native
   :cpp
-   &quot;T* output = vx_core::vx_new(type, values-&gt;vx_list());&quot;
+   &quot;vx_core::vx_Type_listany listany = vx_core::vx_listany_from_anylist(
+      values);
+    T* output = vx_core::vx_new(
+      type, listany);&quot;
   :csharp
-   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     T output = (T)(type.vx_new(arrayobj));&quot;
   :java
-   &quot;Core.Type_any[] arrayany = Core.arrayany_from_anylist(values);
+   &quot;Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     T output = (T)(type.vx_new(arrayobj));&quot;
   :js
    &quot;vx_core.vx_new(type, values)&quot;
   :kotlin
-   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.arrayany_from_anylist(
+   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.vx_arrayany_from_anylist(
       values
     )
     val anyvalue : vx_core.Type_any = type.vx_new(*arrayany)
@@ -9422,7 +9529,7 @@
             <div class="lbl">Description:</div>
             <ul>
               <li>
-                <div class="txt">Block of Messages</div>
+                <div class="txt">Block of Messages. Note: Identical msgblocks are suppressed.</div>
               </li>
             </ul>
             <div class="lbl">Type Name:</div>
@@ -9480,6 +9587,31 @@
                 <span class="lbl">Usage/Test Cases:</span>
               </summary>
               <ul>
+                <li><div class="test">(test
+ (decimal
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :text &quot;Err&quot;))))
+ (decimal
+  (msg
+   :text &quot;Err&quot;)))</div></li>
+                <li><div class="test">(test
+ (decimal
+  (msgblock
+   :msgs
+    (msglist
+     (msg :text &quot;Err&quot;))))
+ (let : decimal
+  [mymsgblock : msgblock :=
+   (msgblock
+    (msg
+     :text &quot;Err&quot;))]
+  (decimal
+   (copy
+    mymsgblock
+    mymsgblock))))</div></li>
               </ul>
             </details>
             <details open="true">
@@ -9492,7 +9624,32 @@
  :properties
   [msgs      : msglist
    msgblocks : msgblocklist]
- :doc &quot;Block of Messages&quot;)</div>
+ :test (test
+        (decimal
+         (msgblock
+          :msgs
+           (msglist
+            (msg
+             :text &quot;Err&quot;))))
+        (decimal
+         (msg
+          :text &quot;Err&quot;)))
+       (test
+        (decimal
+         (msgblock
+          :msgs
+           (msglist
+            (msg :text &quot;Err&quot;))))
+        (let : decimal
+         [mymsgblock : msgblock :=
+          (msgblock
+           (msg
+            :text &quot;Err&quot;))]
+         (decimal
+          (copy
+           mymsgblock
+           mymsgblock))))
+ :doc &quot;Block of Messages. Note: Identical msgblocks are suppressed.&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -9502,7 +9659,7 @@
             <div class="lbl">Description:</div>
             <ul>
               <li>
-                <div class="txt">List of Message Blocks</div>
+                <div class="txt">List of Message Blocks. Note: Identical msgblocks are suppressed.</div>
               </li>
             </ul>
             <div class="lbl">Type Name:</div>
@@ -9534,6 +9691,17 @@
                 <span class="lbl">Usage/Test Cases:</span>
               </summary>
               <ul>
+                <li><div class="test">(test
+ (msgblocklist
+  (msgblock
+   (msg :text &quot;Err&quot;)))
+ (let : msgblocklist
+  [mymsgblock : msgblock :=
+   (msgblock
+    (msg :text &quot;Err&quot;))]
+  (msgblocklist
+   mymsgblock
+   mymsgblock)))</div></li>
               </ul>
             </details>
             <details open="true">
@@ -9544,7 +9712,18 @@
                 <li>
                   <div class="source">(type msgblocklist : list
  :allowtypes [msgblock]
- :doc &quot;List of Message Blocks&quot;)</div>
+ :test (test
+        (msgblocklist
+         (msgblock
+          (msg :text &quot;Err&quot;)))
+        (let : msgblocklist
+         [mymsgblock : msgblock :=
+          (msgblock
+           (msg :text &quot;Err&quot;))]
+         (msgblocklist
+          mymsgblock
+          mymsgblock)))
+ :doc &quot;List of Message Blocks. Note: Identical msgblocks are suppressed.&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -9554,7 +9733,7 @@
             <div class="lbl">Description:</div>
             <ul>
               <li>
-                <div class="txt">List of Messages</div>
+                <div class="txt">List of Messages. Note: Identical msgs are suppressed.</div>
               </li>
             </ul>
             <div class="lbl">Type Name:</div>
@@ -9586,6 +9765,15 @@
                 <span class="lbl">Usage/Test Cases:</span>
               </summary>
               <ul>
+                <li><div class="test">(test
+ (msglist
+  (msg :text &quot;Err&quot;))
+ (let : msglist
+  [mymsg : msg :=
+   (msg :text &quot;Err&quot;)]
+  (msglist
+   mymsg
+   mymsg)))</div></li>
               </ul>
             </details>
             <details open="true">
@@ -9596,7 +9784,16 @@
                 <li>
                   <div class="source">(type msglist : list
  :allowtypes [msg]
- :doc &quot;List of Messages&quot;)</div>
+ :test (test
+        (msglist
+         (msg :text &quot;Err&quot;))
+        (let : msglist
+         [mymsg : msg :=
+          (msg :text &quot;Err&quot;)]
+         (msglist
+          mymsg
+          mymsg)))
+ :doc &quot;List of Messages. Note: Identical msgs are suppressed.&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -18605,23 +18802,29 @@ improves readability.</div>
   values : anylist :...]
  (native
   :cpp
-   &quot;T* output = vx_core::vx_copy(generic_any_1, value, values-&gt;vx_list());&quot;
+   &quot;vx_core::vx_Type_listany listany = vx_core::vx_listany_from_anylist(
+      values);
+    T* output = vx_core::vx_copy(
+      generic_any_1, value, listany);&quot;
   :csharp
-   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     T tvalue = (T)value;
     Vx.Core.Type_any anyvalue = tvalue.vx_copy(arrayobj);
     T output = (T)anyvalue;&quot;
   :java
    &quot;@SuppressWarnings(“unchecked”)
-    Core.Type_any[] arrayany = Core.arrayany_from_anylist(
-      values);
+    Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     T output = (T)(value.vx_copy(arrayobj));&quot;
   :js
    &quot;vx_core.f_new_from_type(value, ...values)&quot;
   :kotlin
-   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.arrayany_from_anylist(
+   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.vx_arrayany_from_anylist(
       values
     )
     val valuecopy : vx_core.Type_any = value.vx_copy(*arrayany)
@@ -20195,6 +20398,83 @@ improves readability.</div>
       output = vx_core.c_true
     }&quot;)
  :doc &quot;Returns true if text ends with find.&quot;)</div>
+                </li>
+              </ul>
+            </details>
+          </div>
+          <div class="d" id="d_func_vx/core/is-error">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/core')">vx/core</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/core/is-error')">is-error</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt">Returns true if value has an error.</div>
+              </li>
+            </ul>
+            <div class="lbl">Function Name:</div>
+            <ul>
+              <li>
+                <div class="txt">is-error</div>
+              </li>
+            </ul>
+            <div class="lbl">Return Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/core/boolean')">vx/core/boolean</span></div>
+              </li>
+            </ul>
+          <details open="true">
+            <summary>
+              <span class="lbl">Arguments:</span>
+            </summary>
+            <ul>
+              <li>
+                <div class="table">
+                  <div class="th">
+                    <div class="td">Name</div>
+                    <div class="td">Type</div>
+                    <div class="td">Generic</div>
+                    <div class="td">Description</div>
+                  </div>
+                  <div class="tr">
+                    <div class="td">value</div>
+                    <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/any-1')">vx/core/any-1</span></div>
+                    <div class="td"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+                <li><div class="test">(test-true
+ (is-error
+  (stringlist
+   (msg
+    :code &quot;My Err&quot;))))</div></li>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(func is-error : boolean
+ [value : any-1]
+ (let : any-1
+  [msgblock : msgblock := (msgblock&lt;-any value)]
+  (if : boolean
+   (then 
+    (!-empty msgblock) true)))
+ :test (test-true
+        (is-error
+         (stringlist
+          (msg
+           :code &quot;My Err&quot;))))
+ :doc &quot;Returns true if value has an error.&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -21909,6 +22189,73 @@ improves readability.</div>
               </ul>
             </details>
           </div>
+          <div class="d" id="d_func_vx/core/log-error">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/core')">vx/core</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/core/log-error')">log-error</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt">Write a value if it has an error.</div>
+              </li>
+            </ul>
+            <div class="lbl">Function Name:</div>
+            <ul>
+              <li>
+                <div class="txt">log-error</div>
+              </li>
+            </ul>
+            <div class="lbl">Return Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/core/any-1')">vx/core/any-1</span></div>
+              </li>
+            </ul>
+          <details open="true">
+            <summary>
+              <span class="lbl">Arguments:</span>
+            </summary>
+            <ul>
+              <li>
+                <div class="table">
+                  <div class="th">
+                    <div class="td">Name</div>
+                    <div class="td">Type</div>
+                    <div class="td">Generic</div>
+                    <div class="td">Description</div>
+                  </div>
+                  <div class="tr">
+                    <div class="td">value</div>
+                    <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/any-1')">vx/core/any-1</span></div>
+                    <div class="td"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(func log-error : any-1
+ [value : any-1]
+ (if : any-1
+  (then
+   (is-error value)
+   (log value))
+  (else value))
+ :doc &quot;Write a value if it has an error.&quot;)</div>
+                </li>
+              </ul>
+            </details>
+          </div>
           <div class="d" id="d_func_vx/core/main">
             <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/core')">vx/core</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/core/main')">main</span></div>
             <div class="lbl">Description:</div>
@@ -22554,6 +22901,74 @@ improves readability.</div>
               </ul>
             </details>
           </div>
+          <div class="d" id="d_func_vx/core/msgblock&lt;-any">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/core')">vx/core</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-any')">msgblock&lt;-any</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt">Returns a msgblock from any</div>
+              </li>
+            </ul>
+            <div class="lbl">Function Name:</div>
+            <ul>
+              <li>
+                <div class="txt">msgblock&lt;-any</div>
+              </li>
+            </ul>
+            <div class="lbl">Return Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/core/msgblock')">vx/core/msgblock</span></div>
+              </li>
+            </ul>
+          <details open="true">
+            <summary>
+              <span class="lbl">Arguments:</span>
+            </summary>
+            <ul>
+              <li>
+                <div class="table">
+                  <div class="th">
+                    <div class="td">Name</div>
+                    <div class="td">Type</div>
+                    <div class="td">Generic</div>
+                    <div class="td">Description</div>
+                  </div>
+                  <div class="tr">
+                    <div class="td">value</div>
+                    <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/any')">vx/core/any</span></div>
+                    <div class="td"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(func msgblock&lt;-any : msgblock
+ [value : any]
+ (native
+  :cpp    :auto
+  :csharp :auto
+  :java   :auto
+  :js     :auto
+  :kotlin :auto)
+ :doc &quot;Returns a msgblock from any&quot;)</div>
+                </li>
+              </ul>
+            </details>
+          </div>
           <div class="d" id="d_func_vx/core/msgblock&lt;-msgblock-msg">
             <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/core')">vx/core</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/core/msgblock&lt;-msgblock-msg')">msgblock&lt;-msgblock-msg</span></div>
             <div class="lbl">Description:</div>
@@ -22970,19 +23385,26 @@ improves readability.</div>
  [values : anylist :...]
  (native
   :cpp
-   &quot;output = vx_core::vx_new(generic_any_1, values-&gt;vx_list());&quot;
+   &quot;vx_core::vx_Type_listany listany = vx_core::vx_listany_from_anylist(
+      values);
+    output = vx_core::vx_new(
+      generic_any_1, listany);&quot;
   :csharp
-   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     output = (T)(generic_any_1.vx_new(arrayobj));&quot;
   :java
-   &quot;Core.Type_any[] arrayany = Core.arrayany_from_anylist(values);
+   &quot;Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     output = (T)(generic_any_1.vx_new(arrayobj));&quot;
   :js
    &quot;vx_core.vx_new(generic_any_1, values)&quot;
   :kotlin
-   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.arrayany_from_anylist(
+   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.vx_arrayany_from_anylist(
       values
     )
     val anyvalue : vx_core.Type_any = generic_any_1.vx_new(*arrayany)
@@ -23077,19 +23499,26 @@ improves readability.</div>
   values : anylist :...]
  (native
   :cpp
-   &quot;T* output = vx_core::vx_new(type, values-&gt;vx_list());&quot;
+   &quot;vx_core::vx_Type_listany listany = vx_core::vx_listany_from_anylist(
+      values);
+    T* output = vx_core::vx_new(
+      type, listany);&quot;
   :csharp
-   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.arrayany_from_anylist(values);
+   &quot;Vx.Core.Type_any[] arrayany = Vx.Core.vx_arrayany_from_anylist(
+      values
+    );
     object[] arrayobj = (Vx.Core.Type_any[])arrayany;
     T output = (T)(type.vx_new(arrayobj));&quot;
   :java
-   &quot;Core.Type_any[] arrayany = Core.arrayany_from_anylist(values);
+   &quot;Core.Type_any[] arrayany = Core.vx_arrayany_from_anylist(
+      values
+    );
     Object[] arrayobj = (Core.Type_any[])arrayany;
     T output = (T)(type.vx_new(arrayobj));&quot;
   :js
    &quot;vx_core.vx_new(type, values)&quot;
   :kotlin
-   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.arrayany_from_anylist(
+   &quot;val arrayany : Array&lt;vx_core.Type_any&gt; = vx_core.vx_arrayany_from_anylist(
       values
     )
     val anyvalue : vx_core.Type_any = type.vx_new(*arrayany)
@@ -43833,22 +44262,13 @@ output : list-1 := (empty list-1)
                :text &quot;a&quot;
                :startpos 2
                :endpos 2))
-            (msgblock
-             (msg
-              :code &quot;closedelimmissing&quot;
-              :detail
-               (delim
-                :name &quot;delimclose&quot;
-                :starttext &quot;&gt;&quot;)
-              :severity 2))))
-         (msgblock
-          (msg
-           :code &quot;closedelimmissing&quot;
-           :detail
-            (delim
-             :name &quot;delimclose&quot;
-             :starttext &quot;&gt;&quot;)
-           :severity 2)))
+            (msg
+             :code &quot;closedelimmissing&quot;
+             :detail
+              (delim
+               :name &quot;delimclose&quot;
+               :starttext &quot;&gt;&quot;)
+             :severity msg-error))))
         (textblock-delimnotfound
          (textblock
           :text &quot;a&quot;
@@ -44490,34 +44910,38 @@ output : list-1 := (empty list-1)
 (func textblock-parse-one : textblock
  [textblockarg : textblock]
  (let : textblock
-  [delimarg     : delim     := (:delim    textblockarg)
-   close        : delim     := (:close    textblockarg)
-   startpos     : int       := (:startpos textblockarg)
-   textarg      : string    := (:text     textblockarg)
-   parent       : textblock := (:parent   textblockarg)
-   is-init      : boolean   := (and
-                                (is-empty parent)
-                                (= startpos 0))
+  [delimarg : delim     := (:delim    textblockarg)
+   close    : delim     := (:close    textblockarg)
+   startpos : int       := (:startpos textblockarg)
+   textarg  : string    := (:text     textblockarg)
+   parent   : textblock := (:parent   textblockarg)
+   is-init : boolean :=
+    (and
+     (is-empty parent)
+     (= startpos 0))
    starttext    : string    := (:starttext delimarg)
    endtext      : string    := (:endtext   delimarg)
    delimlistarg : delimlist := (:delimlist delimarg)
-   startposchg  : int       := (if : int
-                                (then
-                                 (= &quot;&quot; textarg)
-                                 startpos)
-                                (then
-                                 (= 0 startpos)
-                                 1)
-                                (else startpos))
-   delimlistcl  : delimlist := (if : delimlist
-                                (is-empty close)
-                                delimlistarg
-                                (copy
-                                 delimlistarg
-                                 close))
-   delimfirst   : delim     := (delim-first&lt;-string-delimlist
-                                textarg
-                                delimlistcl)]
+   startposchg : int :=
+    (if : int
+     (then
+      (= &quot;&quot; textarg)
+      startpos)
+     (then
+      (= 0 startpos)
+      1)
+     (else startpos))
+   delimlistcl : delimlist :=
+    (if : delimlist
+     (is-empty close)
+     delimlistarg
+     (copy
+      delimlistarg
+      close))
+   delimfirst : delim :=
+    (delim-first&lt;-string-delimlist
+     textarg
+     delimlistcl)]
   (if : textblock
    (then // init
     is-init
@@ -44564,22 +44988,13 @@ output : list-1 := (empty list-1)
                :text &quot;a&quot;
                :startpos 2
                :endpos 2))
-            (msgblock
-             (msg
-              :code &quot;closedelimmissing&quot;
-              :detail
-               (delim
-                :name &quot;delimclose&quot;
-                :starttext &quot;&gt;&quot;)
-              :severity 2))))
-         (msgblock
-          (msg
-           :code &quot;closedelimmissing&quot;
-           :detail
-            (delim
-             :name &quot;delimclose&quot;
-             :starttext &quot;&gt;&quot;)
-           :severity 2)))
+            (msg
+             :code &quot;closedelimmissing&quot;
+             :detail
+              (delim
+               :name &quot;delimclose&quot;
+               :starttext &quot;&gt;&quot;)
+             :severity msg-error))))
         (textblock-parse-one
          (textblock
           :text &quot;a&quot;
@@ -51652,22 +52067,13 @@ output : list-1 := (empty list-1)
         :text &quot;a&quot;
         :startpos 2
         :endpos 2))
-     (msgblock
-      (msg
-       :code &quot;closedelimmissing&quot;
-       :detail
-        (delim
-         :name &quot;delimclose&quot;
-         :starttext &quot;&gt;&quot;)
-       :severity 2))))
-  (msgblock
-   (msg
-    :code &quot;closedelimmissing&quot;
-    :detail
-     (delim
-      :name &quot;delimclose&quot;
-      :starttext &quot;&gt;&quot;)
-    :severity 2)))
+     (msg
+      :code &quot;closedelimmissing&quot;
+      :detail
+       (delim
+        :name &quot;delimclose&quot;
+        :starttext &quot;&gt;&quot;)
+      :severity msg-error))))
  (textblock-delimnotfound
   (textblock
    :text &quot;a&quot;
@@ -52282,22 +52688,13 @@ output : list-1 := (empty list-1)
                :text &quot;a&quot;
                :startpos 2
                :endpos 2))
-            (msgblock
-             (msg
-              :code &quot;closedelimmissing&quot;
-              :detail
-               (delim
-                :name &quot;delimclose&quot;
-                :starttext &quot;&gt;&quot;)
-              :severity 2))))
-         (msgblock
-          (msg
-           :code &quot;closedelimmissing&quot;
-           :detail
-            (delim
-             :name &quot;delimclose&quot;
-             :starttext &quot;&gt;&quot;)
-           :severity 2)))
+            (msg
+             :code &quot;closedelimmissing&quot;
+             :detail
+              (delim
+               :name &quot;delimclose&quot;
+               :starttext &quot;&gt;&quot;)
+             :severity msg-error))))
         (textblock-delimnotfound
          (textblock
           :text &quot;a&quot;
@@ -53333,22 +53730,13 @@ output : list-1 := (empty list-1)
         :text &quot;a&quot;
         :startpos 2
         :endpos 2))
-     (msgblock
-      (msg
-       :code &quot;closedelimmissing&quot;
-       :detail
-        (delim
-         :name &quot;delimclose&quot;
-         :starttext &quot;&gt;&quot;)
-       :severity 2))))
-  (msgblock
-   (msg
-    :code &quot;closedelimmissing&quot;
-    :detail
-     (delim
-      :name &quot;delimclose&quot;
-      :starttext &quot;&gt;&quot;)
-    :severity 2)))
+     (msg
+      :code &quot;closedelimmissing&quot;
+      :detail
+       (delim
+        :name &quot;delimclose&quot;
+        :starttext &quot;&gt;&quot;)
+      :severity msg-error))))
  (textblock-parse-one
   (textblock
    :text &quot;a&quot;
@@ -55867,34 +56255,38 @@ output : list-1 := (empty list-1)
                   <div class="source">(func textblock-parse-one : textblock
  [textblockarg : textblock]
  (let : textblock
-  [delimarg     : delim     := (:delim    textblockarg)
-   close        : delim     := (:close    textblockarg)
-   startpos     : int       := (:startpos textblockarg)
-   textarg      : string    := (:text     textblockarg)
-   parent       : textblock := (:parent   textblockarg)
-   is-init      : boolean   := (and
-                                (is-empty parent)
-                                (= startpos 0))
+  [delimarg : delim     := (:delim    textblockarg)
+   close    : delim     := (:close    textblockarg)
+   startpos : int       := (:startpos textblockarg)
+   textarg  : string    := (:text     textblockarg)
+   parent   : textblock := (:parent   textblockarg)
+   is-init : boolean :=
+    (and
+     (is-empty parent)
+     (= startpos 0))
    starttext    : string    := (:starttext delimarg)
    endtext      : string    := (:endtext   delimarg)
    delimlistarg : delimlist := (:delimlist delimarg)
-   startposchg  : int       := (if : int
-                                (then
-                                 (= &quot;&quot; textarg)
-                                 startpos)
-                                (then
-                                 (= 0 startpos)
-                                 1)
-                                (else startpos))
-   delimlistcl  : delimlist := (if : delimlist
-                                (is-empty close)
-                                delimlistarg
-                                (copy
-                                 delimlistarg
-                                 close))
-   delimfirst   : delim     := (delim-first&lt;-string-delimlist
-                                textarg
-                                delimlistcl)]
+   startposchg : int :=
+    (if : int
+     (then
+      (= &quot;&quot; textarg)
+      startpos)
+     (then
+      (= 0 startpos)
+      1)
+     (else startpos))
+   delimlistcl : delimlist :=
+    (if : delimlist
+     (is-empty close)
+     delimlistarg
+     (copy
+      delimlistarg
+      close))
+   delimfirst : delim :=
+    (delim-first&lt;-string-delimlist
+     textarg
+     delimlistcl)]
   (if : textblock
    (then // init
     is-init
@@ -55941,22 +56333,13 @@ output : list-1 := (empty list-1)
                :text &quot;a&quot;
                :startpos 2
                :endpos 2))
-            (msgblock
-             (msg
-              :code &quot;closedelimmissing&quot;
-              :detail
-               (delim
-                :name &quot;delimclose&quot;
-                :starttext &quot;&gt;&quot;)
-              :severity 2))))
-         (msgblock
-          (msg
-           :code &quot;closedelimmissing&quot;
-           :detail
-            (delim
-             :name &quot;delimclose&quot;
-             :starttext &quot;&gt;&quot;)
-           :severity 2)))
+            (msg
+             :code &quot;closedelimmissing&quot;
+             :detail
+              (delim
+               :name &quot;delimclose&quot;
+               :starttext &quot;&gt;&quot;)
+             :severity msg-error))))
         (textblock-parse-one
          (textblock
           :text &quot;a&quot;
@@ -65143,10 +65526,12 @@ output : list-1 := (empty list-1)
     tb))
   (else
    (let : xml
-    [children : tb/textblocklist := (:children tb)
-     xmlchg   : xml              := (xml
-                                     :tag    :notag
-                                     :parent xmlarg)]
+    [children : tb/textblocklist :=
+      (:children tb)
+     xmlchg : xml :=
+      (xml
+       :tag    :notag
+       :parent xmlarg)]
     (xml-properties&lt;-xml-textblocklist
      xmlchg
      children))))
@@ -65339,7 +65724,7 @@ output : list-1 := (empty list-1)
             :endpos 0
             :line 0
             :column 0)
-          :severity 2))
+          :severity msg-error))
         (xml-close&lt;-xml-textblock
          (xml
           :tag &quot;doc&quot;)
@@ -67703,10 +68088,12 @@ output : list-1 := (empty list-1)
     tb))
   (else
    (let : xml
-    [children : tb/textblocklist := (:children tb)
-     xmlchg   : xml              := (xml
-                                     :tag    :notag
-                                     :parent xmlarg)]
+    [children : tb/textblocklist :=
+      (:children tb)
+     xmlchg : xml :=
+      (xml
+       :tag    :notag
+       :parent xmlarg)]
     (xml-properties&lt;-xml-textblocklist
      xmlchg
      children))))
@@ -67919,7 +68306,7 @@ output : list-1 := (empty list-1)
      :endpos 0
      :line 0
      :column 0)
-   :severity 2))
+   :severity msg-error))
  (xml-close&lt;-xml-textblock
   (xml
    :tag &quot;doc&quot;)
@@ -68011,7 +68398,7 @@ output : list-1 := (empty list-1)
             :endpos 0
             :line 0
             :column 0)
-          :severity 2))
+          :severity msg-error))
         (xml-close&lt;-xml-textblock
          (xml
           :tag &quot;doc&quot;)

@@ -116,8 +116,9 @@ public static class Repl {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is string) {
+          Vx.Core.Type_string subitem = Vx.Core.vx_new(Vx.Core.t_string, valsub);
           ischanged = true;
-          listval.Add(Vx.Core.vx_new(Vx.Core.t_string, valsub));
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {
@@ -263,17 +264,17 @@ public static class Repl {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name();
-      } else if ((skey==":type")) {
+      } else if ((skey == ":type")) {
         output = this.type();
-      } else if ((skey==":repllist")) {
+      } else if ((skey == ":repllist")) {
         output = this.repllist();
-      } else if ((skey==":async")) {
+      } else if ((skey == ":async")) {
         output = this.async();
-      } else if ((skey==":value")) {
+      } else if ((skey == ":value")) {
         output = this.value();
-      } else if ((skey==":doc")) {
+      } else if ((skey == ":doc")) {
         output = this.doc();
       }
       return output;
@@ -360,7 +361,7 @@ public static class Repl {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is Vx.Core.Type_string valname) {
               ischanged = true;
@@ -382,7 +383,7 @@ public static class Repl {
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":type")) {
+          } else if ((key == ":type")) {
             if (valsub == vx_p_type) {
             } else if (valsub is Vx.Core.Type_any valtype) {
               ischanged = true;
@@ -401,7 +402,7 @@ public static class Repl {
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":repllist")) {
+          } else if ((key == ":repllist")) {
             if (valsub == vx_p_repllist) {
             } else if (valsub is Vx.Repl.Type_repllist valrepllist) {
               ischanged = true;
@@ -420,7 +421,7 @@ public static class Repl {
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":async")) {
+          } else if ((key == ":async")) {
             if (valsub == vx_p_async) {
             } else if (valsub is Vx.Core.Type_boolean valasync) {
               ischanged = true;
@@ -442,7 +443,7 @@ public static class Repl {
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":value")) {
+          } else if ((key == ":value")) {
             if (valsub == vx_p_value) {
             } else if (valsub is Vx.Core.Type_any valvalue) {
               ischanged = true;
@@ -461,7 +462,7 @@ public static class Repl {
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":doc")) {
+          } else if ((key == ":doc")) {
             if (valsub == vx_p_doc) {
             } else if (valsub is Vx.Core.Type_string valdoc) {
               ischanged = true;
@@ -589,11 +590,11 @@ public static class Repl {
       Vx.Core.Type_any output = Vx.Core.e_any;
       string skey = key.vx_string();
       if (false) {
-      } else if ((skey==":key")) {
+      } else if ((skey == ":key")) {
         output = this.key();
-      } else if ((skey==":current")) {
+      } else if ((skey == ":current")) {
         output = this.current();
-      } else if ((skey==":repllist")) {
+      } else if ((skey == ":repllist")) {
         output = this.repllist();
       }
       return output;
@@ -671,7 +672,7 @@ public static class Repl {
           }
         } else {
           if (false) {
-          } else if ((key==":key")) {
+          } else if ((key == ":key")) {
             if (valsub == vx_p_key) {
             } else if (valsub is Vx.Core.Type_string valkey) {
               ischanged = true;
@@ -693,7 +694,7 @@ public static class Repl {
               msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":current")) {
+          } else if ((key == ":current")) {
             if (valsub == vx_p_current) {
             } else if (valsub is Vx.Repl.Type_repl valcurrent) {
               ischanged = true;
@@ -712,7 +713,7 @@ public static class Repl {
               msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
-          } else if ((key==":repllist")) {
+          } else if ((key == ":repllist")) {
             if (valsub == vx_p_repllist) {
             } else if (valsub is Vx.Repl.Type_repllist valrepllist) {
               ischanged = true;
@@ -855,8 +856,9 @@ public static class Repl {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is Vx.Repl.Type_repl) {
+          Vx.Repl.Type_repl subitem = (Vx.Repl.Type_repl)valsub;
           ischanged = true;
-          listval.Add((Vx.Repl.Type_repl)valsub);
+          listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
           foreach (Vx.Core.Type_any item in listany) {
             if (false) {

@@ -1092,7 +1092,7 @@ public final class XmlTest {
   public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
     Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity 2))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
+      ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity msg-error))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
       ":testresult", Test.f_test(
         context,
         Core.f_new(
@@ -1125,7 +1125,7 @@ public final class XmlTest {
                   )
                 ),
                 Core.vx_new_string(":severity"),
-                Core.vx_new_int(2)
+                Core.c_msg_error
               )
             )
           )

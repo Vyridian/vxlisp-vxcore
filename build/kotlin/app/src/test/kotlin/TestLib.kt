@@ -204,7 +204,7 @@ object TestLib {
       println(actual)
       vx_core.f_log(testresult)
     }
-    if ((code==":ne")) {
+    if ((code == ":ne")) {
       assertNotEquals(expected, actual, msg)
     } else {
       assertEquals(expected, actual, msg)

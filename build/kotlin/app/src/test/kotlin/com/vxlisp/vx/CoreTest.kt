@@ -311,6 +311,281 @@ object vx_coreTest {
     return output
   }
 
+  fun t_msgblock(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "msgblock",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        t_msgblock_testdescribe_1(context),
+        t_msgblock_testdescribe_2(context)
+      )
+    )
+    return output
+  }
+
+  fun t_msgblock_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (decimal\n  (msgblock\n   :msgs\n    (msglist\n     (msg\n      :text \"Err\"))))\n (decimal\n  (msg\n   :text \"Err\")))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_decimal,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.f_new(
+              vx_core.t_msgblock,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.vx_new_string(":msgs"),
+                vx_core.f_new(
+                  vx_core.t_msglist,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    vx_core.f_new(
+                      vx_core.t_msg,
+                      vx_core.vx_new(
+                        vx_core.t_anylist,
+                        vx_core.vx_new_string(":text"),
+                        vx_core.vx_new_string("Err")
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        vx_core.f_new(
+          vx_core.t_decimal,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.f_new(
+              vx_core.t_msg,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.vx_new_string(":text"),
+                vx_core.vx_new_string("Err")
+              )
+            )
+          )
+        )
+      )
+    )
+    return output
+  }
+
+  fun t_msgblock_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (decimal\n  (msgblock\n   :msgs\n    (msglist\n     (msg :text \"Err\"))))\n (let : decimal\n  [mymsgblock : msgblock :=\n   (msgblock\n    (msg\n     :text \"Err\"))]\n  (decimal\n   (copy\n    mymsgblock\n    mymsgblock))))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_decimal,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.f_new(
+              vx_core.t_msgblock,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.vx_new_string(":msgs"),
+                vx_core.f_new(
+                  vx_core.t_msglist,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    vx_core.f_new(
+                      vx_core.t_msg,
+                      vx_core.vx_new(
+                        vx_core.t_anylist,
+                        vx_core.vx_new_string(":text"),
+                        vx_core.vx_new_string("Err")
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        vx_core.f_let(
+          vx_core.t_decimal,
+          vx_core.t_any_from_func.vx_fn_new({ ->
+            var mymsgblock : vx_core.Type_msgblock = vx_core.f_new(
+              vx_core.t_msgblock,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.f_new(
+                  vx_core.t_msg,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    vx_core.vx_new_string(":text"),
+                    vx_core.vx_new_string("Err")
+                  )
+                )
+              )
+            )
+            var output_1 : vx_core.Type_any = vx_core.f_new(
+              vx_core.t_decimal,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.f_copy(
+                  mymsgblock,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    mymsgblock
+                  )
+                )
+              )
+            )
+            output_1
+          })
+        )
+      )
+    )
+    return output
+  }
+
+  fun t_msgblocklist(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "msgblocklist",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        t_msgblocklist_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun t_msgblocklist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (msgblocklist\n  (msgblock\n   (msg :text \"Err\")))\n (let : msgblocklist\n  [mymsgblock : msgblock :=\n   (msgblock\n    (msg :text \"Err\"))]\n  (msgblocklist\n   mymsgblock\n   mymsgblock)))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_msgblocklist,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.f_new(
+              vx_core.t_msgblock,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.f_new(
+                  vx_core.t_msg,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    vx_core.vx_new_string(":text"),
+                    vx_core.vx_new_string("Err")
+                  )
+                )
+              )
+            )
+          )
+        ),
+        vx_core.f_let(
+          vx_core.t_msgblocklist,
+          vx_core.t_any_from_func.vx_fn_new({ ->
+            var mymsgblock : vx_core.Type_msgblock = vx_core.f_new(
+              vx_core.t_msgblock,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.f_new(
+                  vx_core.t_msg,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    vx_core.vx_new_string(":text"),
+                    vx_core.vx_new_string("Err")
+                  )
+                )
+              )
+            )
+            var output_1 : vx_core.Type_any = vx_core.f_new(
+              vx_core.t_msgblocklist,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                mymsgblock,
+                mymsgblock
+              )
+            )
+            output_1
+          })
+        )
+      )
+    )
+    return output
+  }
+
+  fun t_msglist(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "msglist",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        t_msglist_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun t_msglist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test\n (msglist\n  (msg :text \"Err\"))\n (let : msglist\n  [mymsg : msg :=\n   (msg :text \"Err\")]\n  (msglist\n   mymsg\n   mymsg)))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.f_new(
+          vx_core.t_msglist,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.f_new(
+              vx_core.t_msg,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.vx_new_string(":text"),
+                vx_core.vx_new_string("Err")
+              )
+            )
+          )
+        ),
+        vx_core.f_let(
+          vx_core.t_msglist,
+          vx_core.t_any_from_func.vx_fn_new({ ->
+            var mymsg : vx_core.Type_msg = vx_core.f_new(
+              vx_core.t_msg,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                vx_core.vx_new_string(":text"),
+                vx_core.vx_new_string("Err")
+              )
+            )
+            var output_1 : vx_core.Type_any = vx_core.f_new(
+              vx_core.t_msglist,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                mymsg,
+                mymsg
+              )
+            )
+            output_1
+          })
+        )
+      )
+    )
+    return output
+  }
+
   fun t_string(context : vx_core.Type_context) : vx_test.Type_testcase {
     var output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
@@ -3026,6 +3301,48 @@ object vx_coreTest {
     return output
   }
 
+  fun f_is_error(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      ":passfail", false,
+      ":testpkg", "vx/core",
+      ":casename", "is-error",
+      ":describelist",
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        f_is_error_testdescribe_1(context)
+      )
+    )
+    return output
+  }
+
+  fun f_is_error_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test-true\n (is-error\n  (stringlist\n   (msg\n    :code \"My Err\"))))",
+      ":testresult", vx_test.f_test_true(
+        context,
+        vx_core.f_is_error(
+          vx_core.f_new(
+            vx_core.t_stringlist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              vx_core.f_new(
+                vx_core.t_msg,
+                vx_core.vx_new(
+                  vx_core.t_anylist,
+                  vx_core.vx_new_string(":code"),
+                  vx_core.vx_new_string("My Err")
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+    return output
+  }
+
   fun f_is_int(context : vx_core.Type_context) : vx_test.Type_testcase {
     var output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
@@ -4654,6 +4971,9 @@ object vx_coreTest {
       vx_coreTest.t_func(context),
       vx_coreTest.t_funclist(context),
       vx_coreTest.t_int(context),
+      vx_coreTest.t_msgblock(context),
+      vx_coreTest.t_msgblocklist(context),
+      vx_coreTest.t_msglist(context),
       vx_coreTest.t_string(context),
       vx_coreTest.t_stringlist(context),
       vx_coreTest.c_false(context),
@@ -4707,6 +5027,7 @@ object vx_coreTest {
       vx_coreTest.f_if_2(context),
       vx_coreTest.f_int_from_string(context),
       vx_coreTest.f_is_empty_1(context),
+      vx_coreTest.f_is_error(context),
       vx_coreTest.f_is_int(context),
       vx_coreTest.f_is_number(context),
       vx_coreTest.f_last_from_list(context),
@@ -4747,12 +5068,12 @@ object vx_coreTest {
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/core", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
-      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 91, ":tests", 236, ":total", 258), 
-      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 76, ":total", 136), 
-      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
-      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 167), 
-      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 37, ":tests", 85, ":total", 227), 
-      ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 9, ":tests", 7, ":total", 76)
+      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 91, ":tests", 239, ":total", 261), 
+      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 55, ":tests", 77, ":total", 139), 
+      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 170), 
+      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 1, ":total", 170), 
+      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 38, ":tests", 89, ":total", 230), 
+      ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 10, ":total", 76)
     )
     return output
   }
@@ -4802,9 +5123,9 @@ object vx_coreTest {
         ":maptype", 0,
         ":mempool", 0,
         ":msg", 0,
-        ":msgblock", 0,
-        ":msgblocklist", 0,
-        ":msglist", 0,
+        ":msgblock", 2,
+        ":msgblocklist", 1,
+        ":msglist", 1,
         ":none", 0,
         ":notype", 0,
         ":number", 0,
@@ -4955,6 +5276,7 @@ object vx_coreTest {
         ":is-empty", 0,
         ":is-empty_1", 4,
         ":is-endswith", 0,
+        ":is-error", 1,
         ":is-float", 0,
         ":is-func", 0,
         ":is-int", 4,
@@ -4976,6 +5298,7 @@ object vx_coreTest {
         ":list<-type", 0,
         ":log", 0,
         ":log_1", 0,
+        ":log-error", 0,
         ":main", 0,
         ":map<-list", 1,
         ":map<-map", 1,
@@ -4984,6 +5307,7 @@ object vx_coreTest {
         ":msg<-error_1", 0,
         ":msg<-error_2", 0,
         ":msg<-warning", 0,
+        ":msgblock<-any", 0,
         ":msgblock<-msgblock-msg", 0,
         ":msgblock<-msgblock-msgblock", 0,
         ":name<-typedef", 0,

@@ -79,8 +79,9 @@ object vx_repl {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is String) {
+          var subitem : vx_core.Type_string = vx_core.vx_new(vx_core.t_string, valsub)
           ischanged = true
-          listval.add(vx_core.vx_new(vx_core.t_string, valsub))
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -230,17 +231,17 @@ object vx_repl {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":type")) {
+      } else if ((skey == ":type")) {
         output = this.type()
-      } else if ((skey==":repllist")) {
+      } else if ((skey == ":repllist")) {
         output = this.repllist()
-      } else if ((skey==":async")) {
+      } else if ((skey == ":async")) {
         output = this.async()
-      } else if ((skey==":value")) {
+      } else if ((skey == ":value")) {
         output = this.value()
-      } else if ((skey==":doc")) {
+      } else if ((skey == ":doc")) {
         output = this.doc()
       }
       return output
@@ -330,7 +331,7 @@ object vx_repl {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -354,7 +355,7 @@ object vx_repl {
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":type")) {
+          } else if ((key == ":type")) {
             if (valsub == vx_p_type) {
             } else if (valsub is vx_core.Type_any) {
               var valtype : vx_core.Type_any = valsub as vx_core.Type_any
@@ -375,7 +376,7 @@ object vx_repl {
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":repllist")) {
+          } else if ((key == ":repllist")) {
             if (valsub == vx_p_repllist) {
             } else if (valsub is vx_repl.Type_repllist) {
               var valrepllist : vx_repl.Type_repllist = valsub as vx_repl.Type_repllist
@@ -396,7 +397,7 @@ object vx_repl {
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":async")) {
+          } else if ((key == ":async")) {
             if (valsub == vx_p_async) {
             } else if (valsub is vx_core.Type_boolean) {
               var valasync : vx_core.Type_boolean = valsub as vx_core.Type_boolean
@@ -420,7 +421,7 @@ object vx_repl {
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":value")) {
+          } else if ((key == ":value")) {
             if (valsub == vx_p_value) {
             } else if (valsub is vx_core.Type_any) {
               var valvalue : vx_core.Type_any = valsub as vx_core.Type_any
@@ -441,7 +442,7 @@ object vx_repl {
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":doc")) {
+          } else if ((key == ":doc")) {
             if (valsub == vx_p_doc) {
             } else if (valsub is vx_core.Type_string) {
               var valdoc : vx_core.Type_string = valsub as vx_core.Type_string
@@ -572,11 +573,11 @@ object vx_repl {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":key")) {
+      } else if ((skey == ":key")) {
         output = this.key()
-      } else if ((skey==":current")) {
+      } else if ((skey == ":current")) {
         output = this.current()
-      } else if ((skey==":repllist")) {
+      } else if ((skey == ":repllist")) {
         output = this.repllist()
       }
       return output
@@ -657,7 +658,7 @@ object vx_repl {
           }
         } else {
           if (false) {
-          } else if ((key==":key")) {
+          } else if ((key == ":key")) {
             if (valsub == vx_p_key) {
             } else if (valsub is vx_core.Type_string) {
               var valkey : vx_core.Type_string = valsub as vx_core.Type_string
@@ -681,7 +682,7 @@ object vx_repl {
               msg = vx_core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":current")) {
+          } else if ((key == ":current")) {
             if (valsub == vx_p_current) {
             } else if (valsub is vx_repl.Type_repl) {
               var valcurrent : vx_repl.Type_repl = valsub as vx_repl.Type_repl
@@ -702,7 +703,7 @@ object vx_repl {
               msg = vx_core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":repllist")) {
+          } else if ((key == ":repllist")) {
             if (valsub == vx_p_repllist) {
             } else if (valsub is vx_repl.Type_repllist) {
               var valrepllist : vx_repl.Type_repllist = valsub as vx_repl.Type_repllist
@@ -850,8 +851,9 @@ object vx_repl {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_repl.Type_repl) {
+          var subitem : vx_repl.Type_repl = valsub as vx_repl.Type_repl
           ischanged = true
-          listval.add(valsub as vx_repl.Type_repl)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {

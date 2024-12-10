@@ -1031,7 +1031,7 @@ namespace vx_data_xml_test {
                 })
               ),
               vx_core::vx_new_string(":severity"),
-              vx_core::vx_new_int(2)
+              vx_core::c_msg_error
             })
           )
         })
@@ -1054,7 +1054,7 @@ namespace vx_data_xml_test {
       )
     );
     vx_test::Type_testdescribe testdescribe_3 = vx_core::vx_new(vx_test::t_testdescribe, {
-      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity 2))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))"),
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity msg-error))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))"),
       vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/data/xml"),
       vx_core::vx_new_string(":testresult"), testresult_3
     });

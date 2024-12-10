@@ -441,8 +441,9 @@ public final class Textblock {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Textblock.Type_delim) {
+          Textblock.Type_delim subitem = (Textblock.Type_delim)valsub;
           ischanged = true;
-          listval.add((Textblock.Type_delim)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -1189,8 +1190,9 @@ public final class Textblock {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Textblock.Type_textblock) {
+          Textblock.Type_textblock subitem = (Textblock.Type_textblock)valsub;
           ischanged = true;
-          listval.add((Textblock.Type_textblock)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

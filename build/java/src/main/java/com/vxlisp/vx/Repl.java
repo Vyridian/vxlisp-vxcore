@@ -129,8 +129,9 @@ public final class Repl {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof String) {
+          Core.Type_string subitem = Core.vx_new(Core.t_string, valsub);
           ischanged = true;
-          listval.add(Core.vx_new(Core.t_string, valsub));
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -929,8 +930,9 @@ public final class Repl {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Repl.Type_repl) {
+          Repl.Type_repl subitem = (Repl.Type_repl)valsub;
           ischanged = true;
-          listval.add((Repl.Type_repl)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

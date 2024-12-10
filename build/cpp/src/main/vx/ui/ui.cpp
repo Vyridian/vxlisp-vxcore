@@ -32,9 +32,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_align::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_align::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       }
       vx_core::vx_release_except(key, output);
@@ -57,20 +61,29 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_align val = vx_core::vx_any_from_any(vx_ui_ui::t_align, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
-      }
+      vx_ui_ui::Type_align value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_align, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_align::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_align::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_align::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_align::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_align::vx_empty() const {return vx_ui_ui::e_align;}
     vx_core::Type_any Class_align::vx_type() const {return vx_ui_ui::t_align;}
 
@@ -156,9 +169,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_bounds::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_bounds::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":left") {
         output = this->left();
@@ -193,13 +210,17 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_bounds val = vx_core::vx_any_from_any(vx_ui_ui::t_bounds, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_int vx_p_left = val->left();
-      vx_core::Type_int vx_p_right = val->right();
-      vx_core::Type_int vx_p_top = val->top();
-      vx_core::Type_int vx_p_bottom = val->bottom();
+      vx_ui_ui::Type_bounds value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_bounds, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_int vx_p_left = value->left();
+      vx_core::Type_int vx_p_right = value->right();
+      vx_core::Type_int vx_p_top = value->top();
+      vx_core::Type_int vx_p_bottom = value->bottom();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -232,7 +253,9 @@ namespace vx_ui_ui {
             if (vx_p_left == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_left = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_left = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new bounds :left " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -241,7 +264,9 @@ namespace vx_ui_ui {
             if (vx_p_right == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_right = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_right = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new bounds :right " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -250,7 +275,9 @@ namespace vx_ui_ui {
             if (vx_p_top == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_top = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_top = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new bounds :top " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -259,7 +286,9 @@ namespace vx_ui_ui {
             if (vx_p_bottom == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_bottom = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_bottom = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new bounds :bottom " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -277,42 +306,51 @@ namespace vx_ui_ui {
           if (output->vx_p_left) {
             vx_core::vx_release_one(output->vx_p_left);
           }
-          output->vx_p_left = vx_p_left;
           vx_core::vx_reserve(vx_p_left);
+          output->vx_p_left = vx_p_left;
         }
         if (output->vx_p_right != vx_p_right) {
           if (output->vx_p_right) {
             vx_core::vx_release_one(output->vx_p_right);
           }
-          output->vx_p_right = vx_p_right;
           vx_core::vx_reserve(vx_p_right);
+          output->vx_p_right = vx_p_right;
         }
         if (output->vx_p_top != vx_p_top) {
           if (output->vx_p_top) {
             vx_core::vx_release_one(output->vx_p_top);
           }
-          output->vx_p_top = vx_p_top;
           vx_core::vx_reserve(vx_p_top);
+          output->vx_p_top = vx_p_top;
         }
         if (output->vx_p_bottom != vx_p_bottom) {
           if (output->vx_p_bottom) {
             vx_core::vx_release_one(output->vx_p_bottom);
           }
-          output->vx_p_bottom = vx_p_bottom;
           vx_core::vx_reserve(vx_p_bottom);
+          output->vx_p_bottom = vx_p_bottom;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_bounds::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_bounds::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_bounds::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_bounds::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_bounds::vx_empty() const {return vx_ui_ui::e_bounds;}
     vx_core::Type_any Class_bounds::vx_type() const {return vx_ui_ui::t_bounds;}
 
@@ -376,9 +414,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_cursor::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_cursor::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       }
       vx_core::vx_release_except(key, output);
@@ -401,20 +443,29 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_cursor val = vx_core::vx_any_from_any(vx_ui_ui::t_cursor, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
-      }
+      vx_ui_ui::Type_cursor value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_cursor, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_cursor::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_cursor::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_cursor::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_cursor::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_cursor::vx_empty() const {return vx_ui_ui::e_cursor;}
     vx_core::Type_any Class_cursor::vx_type() const {return vx_ui_ui::t_cursor;}
 
@@ -472,8 +523,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_cursor_pointer::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_cursor_pointer::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_cursor_pointer::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_cursor_pointer::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_cursor_pointer::vx_empty() const {return vx_ui_ui::e_cursor_pointer;}
     vx_core::Type_any Class_cursor_pointer::vx_type() const {return vx_ui_ui::t_cursor_pointer;}
 
@@ -520,9 +580,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_flip::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_flip::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       }
       vx_core::vx_release_except(key, output);
@@ -545,20 +609,29 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_flip val = vx_core::vx_any_from_any(vx_ui_ui::t_flip, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
-      }
+      vx_ui_ui::Type_flip value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_flip, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_flip::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_flip::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_flip::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_flip::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_flip::vx_empty() const {return vx_ui_ui::e_flip;}
     vx_core::Type_any Class_flip::vx_type() const {return vx_ui_ui::t_flip;}
 
@@ -644,9 +717,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_font::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_font::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":name") {
         output = this->name();
@@ -681,13 +758,17 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_font val = vx_core::vx_any_from_any(vx_ui_ui::t_font, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_name = val->name();
-      vx_ui_ui::Type_fontface vx_p_fontface = val->fontface();
-      vx_core::Type_int vx_p_fontsize = val->fontsize();
-      vx_ui_ui::Type_fontstyle vx_p_fontstyle = val->fontstyle();
+      vx_ui_ui::Type_font value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_font, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_name = value->name();
+      vx_ui_ui::Type_fontface vx_p_fontface = value->fontface();
+      vx_core::Type_int vx_p_fontsize = value->fontsize();
+      vx_ui_ui::Type_fontstyle vx_p_fontstyle = value->fontstyle();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -720,7 +801,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new font :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -729,7 +812,9 @@ namespace vx_ui_ui {
             if (vx_p_fontface == valsub) {
             } else if (valsubtype == vx_ui_ui::t_fontface) {
               ischanged = true;
-              vx_p_fontface = vx_core::vx_any_from_any(vx_ui_ui::t_fontface, valsub);
+              vx_p_fontface = vx_core::vx_any_from_any(
+                vx_ui_ui::t_fontface, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new font :fontface " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -738,7 +823,9 @@ namespace vx_ui_ui {
             if (vx_p_fontsize == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_fontsize = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_fontsize = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new font :fontsize " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -747,7 +834,9 @@ namespace vx_ui_ui {
             if (vx_p_fontstyle == valsub) {
             } else if (valsubtype == vx_ui_ui::t_fontstyle) {
               ischanged = true;
-              vx_p_fontstyle = vx_core::vx_any_from_any(vx_ui_ui::t_fontstyle, valsub);
+              vx_p_fontstyle = vx_core::vx_any_from_any(
+                vx_ui_ui::t_fontstyle, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new font :fontstyle " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -765,42 +854,51 @@ namespace vx_ui_ui {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
         if (output->vx_p_fontface != vx_p_fontface) {
           if (output->vx_p_fontface) {
             vx_core::vx_release_one(output->vx_p_fontface);
           }
-          output->vx_p_fontface = vx_p_fontface;
           vx_core::vx_reserve(vx_p_fontface);
+          output->vx_p_fontface = vx_p_fontface;
         }
         if (output->vx_p_fontsize != vx_p_fontsize) {
           if (output->vx_p_fontsize) {
             vx_core::vx_release_one(output->vx_p_fontsize);
           }
-          output->vx_p_fontsize = vx_p_fontsize;
           vx_core::vx_reserve(vx_p_fontsize);
+          output->vx_p_fontsize = vx_p_fontsize;
         }
         if (output->vx_p_fontstyle != vx_p_fontstyle) {
           if (output->vx_p_fontstyle) {
             vx_core::vx_release_one(output->vx_p_fontstyle);
           }
-          output->vx_p_fontstyle = vx_p_fontstyle;
           vx_core::vx_reserve(vx_p_fontstyle);
+          output->vx_p_fontstyle = vx_p_fontstyle;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_font::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_font::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_font::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_font::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_font::vx_empty() const {return vx_ui_ui::e_font;}
     vx_core::Type_any Class_font::vx_type() const {return vx_ui_ui::t_font;}
 
@@ -903,9 +1001,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_fontface::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_fontface::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":name") {
         output = this->name();
@@ -940,13 +1042,17 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_fontface val = vx_core::vx_any_from_any(vx_ui_ui::t_fontface, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_name = val->name();
-      vx_core::Type_string vx_p_weight = val->weight();
-      vx_core::Type_string vx_p_unicode = val->unicode();
-      vx_data_file::Type_filelist vx_p_filelist = val->filelist();
+      vx_ui_ui::Type_fontface value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_fontface, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_name = value->name();
+      vx_core::Type_string vx_p_weight = value->weight();
+      vx_core::Type_string vx_p_unicode = value->unicode();
+      vx_data_file::Type_filelist vx_p_filelist = value->filelist();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -979,7 +1085,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new fontface :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -988,7 +1096,9 @@ namespace vx_ui_ui {
             if (vx_p_weight == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_weight = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_weight = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new fontface :weight " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -997,7 +1107,9 @@ namespace vx_ui_ui {
             if (vx_p_unicode == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_unicode = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_unicode = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new fontface :unicode " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -1006,7 +1118,9 @@ namespace vx_ui_ui {
             if (vx_p_filelist == valsub) {
             } else if (valsubtype == vx_data_file::t_filelist) {
               ischanged = true;
-              vx_p_filelist = vx_core::vx_any_from_any(vx_data_file::t_filelist, valsub);
+              vx_p_filelist = vx_core::vx_any_from_any(
+                vx_data_file::t_filelist, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new fontface :filelist " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -1024,42 +1138,51 @@ namespace vx_ui_ui {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
         if (output->vx_p_weight != vx_p_weight) {
           if (output->vx_p_weight) {
             vx_core::vx_release_one(output->vx_p_weight);
           }
-          output->vx_p_weight = vx_p_weight;
           vx_core::vx_reserve(vx_p_weight);
+          output->vx_p_weight = vx_p_weight;
         }
         if (output->vx_p_unicode != vx_p_unicode) {
           if (output->vx_p_unicode) {
             vx_core::vx_release_one(output->vx_p_unicode);
           }
-          output->vx_p_unicode = vx_p_unicode;
           vx_core::vx_reserve(vx_p_unicode);
+          output->vx_p_unicode = vx_p_unicode;
         }
         if (output->vx_p_filelist != vx_p_filelist) {
           if (output->vx_p_filelist) {
             vx_core::vx_release_one(output->vx_p_filelist);
           }
-          output->vx_p_filelist = vx_p_filelist;
           vx_core::vx_reserve(vx_p_filelist);
+          output->vx_p_filelist = vx_p_filelist;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_fontface::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_fontface::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_fontface::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_fontface::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_fontface::vx_empty() const {return vx_ui_ui::e_fontface;}
     vx_core::Type_any Class_fontface::vx_type() const {return vx_ui_ui::t_fontface;}
 
@@ -1169,8 +1292,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(listval, output);
@@ -1197,12 +1320,10 @@ namespace vx_ui_ui {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
         } else if (valsubtype == vx_core::t_msg) {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
-        } else if (valsubtype == vx_ui_ui::t_fontface) {
-          ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_ui_ui::t_fontface, valsub));
         } else if (vx_core::vx_boolean_from_type_trait(valsubtype, vx_ui_ui::t_fontface)) {
+          vx_ui_ui::Type_fontface subitem = vx_core::vx_any_from_any(vx_ui_ui::t_fontface, valsub);
           ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_ui_ui::t_fontface, valsub));
+          listval.push_back(subitem);
         } else if (valsubtype == vx_ui_ui::t_fontfacelist) {
           ischanged = true;
           vx_ui_ui::Type_fontfacelist multi = vx_core::vx_any_from_any(vx_ui_ui::t_fontfacelist, valsub);
@@ -1219,8 +1340,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -1228,8 +1349,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_fontfacelist::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_fontfacelist::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_fontfacelist::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_fontfacelist::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_fontfacelist::vx_empty() const {return vx_ui_ui::e_fontfacelist;}
     vx_core::Type_any Class_fontfacelist::vx_type() const {return vx_ui_ui::t_fontfacelist;}
 
@@ -1353,8 +1483,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       for (auto const& [key, val] : mapval) {
@@ -1424,8 +1554,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -1433,8 +1563,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_fontfacemap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_fontfacemap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_fontfacemap::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_fontfacemap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_fontfacemap::vx_empty() const {return vx_ui_ui::e_fontfacemap;}
     vx_core::Type_any Class_fontfacemap::vx_type() const {return vx_ui_ui::t_fontfacemap;}
 
@@ -1558,8 +1697,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       for (auto const& [key, val] : mapval) {
@@ -1629,8 +1768,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -1638,8 +1777,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_fontmap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_fontmap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_fontmap::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_fontmap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_fontmap::vx_empty() const {return vx_ui_ui::e_fontmap;}
     vx_core::Type_any Class_fontmap::vx_type() const {return vx_ui_ui::t_fontmap;}
 
@@ -1695,9 +1843,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_fontstyle::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_fontstyle::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":name") {
         output = this->name();
@@ -1723,10 +1875,14 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_fontstyle val = vx_core::vx_any_from_any(vx_ui_ui::t_fontstyle, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_name = val->name();
+      vx_ui_ui::Type_fontstyle value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_fontstyle, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_name = value->name();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -1753,7 +1909,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new fontstyle :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -1771,21 +1929,30 @@ namespace vx_ui_ui {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_fontstyle::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_fontstyle::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_fontstyle::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_fontstyle::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_fontstyle::vx_empty() const {return vx_ui_ui::e_fontstyle;}
     vx_core::Type_any Class_fontstyle::vx_type() const {return vx_ui_ui::t_fontstyle;}
 
@@ -1914,8 +2081,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       for (auto const& [key, val] : mapval) {
@@ -1985,8 +2152,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -1994,8 +2161,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_fontstylemap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_fontstylemap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_fontstylemap::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_fontstylemap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_fontstylemap::vx_empty() const {return vx_ui_ui::e_fontstylemap;}
     vx_core::Type_any Class_fontstylemap::vx_type() const {return vx_ui_ui::t_fontstylemap;}
 
@@ -2071,9 +2247,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_image::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_image::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":name") {
         output = this->name();
@@ -2105,12 +2285,16 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_image val = vx_core::vx_any_from_any(vx_ui_ui::t_image, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_name = val->name();
-      vx_core::Type_string vx_p_label = val->label();
-      vx_data_file::Type_file vx_p_file = val->file();
+      vx_ui_ui::Type_image value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_image, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_name = value->name();
+      vx_core::Type_string vx_p_label = value->label();
+      vx_data_file::Type_file vx_p_file = value->file();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -2141,7 +2325,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new image :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2150,7 +2336,9 @@ namespace vx_ui_ui {
             if (vx_p_label == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_label = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_label = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new image :label " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2159,7 +2347,9 @@ namespace vx_ui_ui {
             if (vx_p_file == valsub) {
             } else if (valsubtype == vx_data_file::t_file) {
               ischanged = true;
-              vx_p_file = vx_core::vx_any_from_any(vx_data_file::t_file, valsub);
+              vx_p_file = vx_core::vx_any_from_any(
+                vx_data_file::t_file, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new image :file " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2177,35 +2367,44 @@ namespace vx_ui_ui {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
         if (output->vx_p_label != vx_p_label) {
           if (output->vx_p_label) {
             vx_core::vx_release_one(output->vx_p_label);
           }
-          output->vx_p_label = vx_p_label;
           vx_core::vx_reserve(vx_p_label);
+          output->vx_p_label = vx_p_label;
         }
         if (output->vx_p_file != vx_p_file) {
           if (output->vx_p_file) {
             vx_core::vx_release_one(output->vx_p_file);
           }
-          output->vx_p_file = vx_p_file;
           vx_core::vx_reserve(vx_p_file);
+          output->vx_p_file = vx_p_file;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_image::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_image::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_image::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_image::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_image::vx_empty() const {return vx_ui_ui::e_image;}
     vx_core::Type_any Class_image::vx_type() const {return vx_ui_ui::t_image;}
 
@@ -2284,9 +2483,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_layout::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_layout::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":name") {
         output = this->name();
@@ -2315,11 +2518,15 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_layout val = vx_core::vx_any_from_any(vx_ui_ui::t_layout, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_name = val->name();
-      vx_ui_ui::Func_ui_layout_from_ui_orig_parent vx_p_fn_layout = val->fn_layout();
+      vx_ui_ui::Type_layout value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_layout, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_name = value->name();
+      vx_ui_ui::Func_ui_layout_from_ui_orig_parent vx_p_fn_layout = value->fn_layout();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -2348,7 +2555,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layout :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2357,7 +2566,9 @@ namespace vx_ui_ui {
             if (vx_p_fn_layout == valsub) {
             } else if (valsubtype == vx_ui_ui::t_ui_layout_from_ui_orig_parent) {
               ischanged = true;
-              vx_p_fn_layout = vx_core::vx_any_from_any(vx_ui_ui::t_ui_layout_from_ui_orig_parent, valsub);
+              vx_p_fn_layout = vx_core::vx_any_from_any(
+                vx_ui_ui::t_ui_layout_from_ui_orig_parent, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layout :fn-layout " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2375,28 +2586,37 @@ namespace vx_ui_ui {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
         if (output->vx_p_fn_layout != vx_p_fn_layout) {
           if (output->vx_p_fn_layout) {
             vx_core::vx_release_one(output->vx_p_fn_layout);
           }
-          output->vx_p_fn_layout = vx_p_fn_layout;
           vx_core::vx_reserve(vx_p_fn_layout);
+          output->vx_p_fn_layout = vx_p_fn_layout;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_layout::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_layout::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_layout::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_layout::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_layout::vx_empty() const {return vx_ui_ui::e_layout;}
     vx_core::Type_any Class_layout::vx_type() const {return vx_ui_ui::t_layout;}
 
@@ -2531,9 +2751,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_layoutengine::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_layoutengine::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":name") {
         output = this->name();
@@ -2580,17 +2804,21 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_layoutengine val = vx_core::vx_any_from_any(vx_ui_ui::t_layoutengine, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_name = val->name();
-      vx_ui_ui::Func_boolean_print vx_p_boolean_print = val->boolean_print();
-      vx_ui_ui::Func_boolean_layoutremove_from_ui vx_p_boolean_layoutremove = val->boolean_layoutremove();
-      vx_ui_ui::Func_boolean_layoutselected_from_ui vx_p_boolean_layoutselected = val->boolean_layoutselected();
-      vx_ui_ui::Func_boolean_layoutvisible_from_ui vx_p_boolean_layoutvisible = val->boolean_layoutvisible();
-      vx_ui_ui::Type_layoutmap vx_p_layoutmap = val->layoutmap();
-      vx_ui_ui::Type_layout vx_p_layoutelse = val->layoutelse();
-      vx_ui_ui::Func_stylesheet_render vx_p_stylesheetrender = val->stylesheetrender();
+      vx_ui_ui::Type_layoutengine value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_layoutengine, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_name = value->name();
+      vx_ui_ui::Func_boolean_print vx_p_boolean_print = value->boolean_print();
+      vx_ui_ui::Func_boolean_layoutremove_from_ui vx_p_boolean_layoutremove = value->boolean_layoutremove();
+      vx_ui_ui::Func_boolean_layoutselected_from_ui vx_p_boolean_layoutselected = value->boolean_layoutselected();
+      vx_ui_ui::Func_boolean_layoutvisible_from_ui vx_p_boolean_layoutvisible = value->boolean_layoutvisible();
+      vx_ui_ui::Type_layoutmap vx_p_layoutmap = value->layoutmap();
+      vx_ui_ui::Type_layout vx_p_layoutelse = value->layoutelse();
+      vx_ui_ui::Func_stylesheet_render vx_p_stylesheetrender = value->stylesheetrender();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -2631,7 +2859,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layoutengine :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2640,7 +2870,9 @@ namespace vx_ui_ui {
             if (vx_p_boolean_print == valsub) {
             } else if (valsubtype == vx_ui_ui::t_boolean_print) {
               ischanged = true;
-              vx_p_boolean_print = vx_core::vx_any_from_any(vx_ui_ui::t_boolean_print, valsub);
+              vx_p_boolean_print = vx_core::vx_any_from_any(
+                vx_ui_ui::t_boolean_print, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layoutengine :boolean-print " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2649,7 +2881,9 @@ namespace vx_ui_ui {
             if (vx_p_boolean_layoutremove == valsub) {
             } else if (valsubtype == vx_ui_ui::t_boolean_layoutremove_from_ui) {
               ischanged = true;
-              vx_p_boolean_layoutremove = vx_core::vx_any_from_any(vx_ui_ui::t_boolean_layoutremove_from_ui, valsub);
+              vx_p_boolean_layoutremove = vx_core::vx_any_from_any(
+                vx_ui_ui::t_boolean_layoutremove_from_ui, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layoutengine :boolean-layoutremove " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2658,7 +2892,9 @@ namespace vx_ui_ui {
             if (vx_p_boolean_layoutselected == valsub) {
             } else if (valsubtype == vx_ui_ui::t_boolean_layoutselected_from_ui) {
               ischanged = true;
-              vx_p_boolean_layoutselected = vx_core::vx_any_from_any(vx_ui_ui::t_boolean_layoutselected_from_ui, valsub);
+              vx_p_boolean_layoutselected = vx_core::vx_any_from_any(
+                vx_ui_ui::t_boolean_layoutselected_from_ui, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layoutengine :boolean-layoutselected " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2667,7 +2903,9 @@ namespace vx_ui_ui {
             if (vx_p_boolean_layoutvisible == valsub) {
             } else if (valsubtype == vx_ui_ui::t_boolean_layoutvisible_from_ui) {
               ischanged = true;
-              vx_p_boolean_layoutvisible = vx_core::vx_any_from_any(vx_ui_ui::t_boolean_layoutvisible_from_ui, valsub);
+              vx_p_boolean_layoutvisible = vx_core::vx_any_from_any(
+                vx_ui_ui::t_boolean_layoutvisible_from_ui, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layoutengine :boolean-layoutvisible " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2676,7 +2914,9 @@ namespace vx_ui_ui {
             if (vx_p_layoutmap == valsub) {
             } else if (valsubtype == vx_ui_ui::t_layoutmap) {
               ischanged = true;
-              vx_p_layoutmap = vx_core::vx_any_from_any(vx_ui_ui::t_layoutmap, valsub);
+              vx_p_layoutmap = vx_core::vx_any_from_any(
+                vx_ui_ui::t_layoutmap, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layoutengine :layoutmap " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2685,7 +2925,9 @@ namespace vx_ui_ui {
             if (vx_p_layoutelse == valsub) {
             } else if (valsubtype == vx_ui_ui::t_layout) {
               ischanged = true;
-              vx_p_layoutelse = vx_core::vx_any_from_any(vx_ui_ui::t_layout, valsub);
+              vx_p_layoutelse = vx_core::vx_any_from_any(
+                vx_ui_ui::t_layout, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layoutengine :layoutelse " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2694,7 +2936,9 @@ namespace vx_ui_ui {
             if (vx_p_stylesheetrender == valsub) {
             } else if (valsubtype == vx_ui_ui::t_stylesheet_render) {
               ischanged = true;
-              vx_p_stylesheetrender = vx_core::vx_any_from_any(vx_ui_ui::t_stylesheet_render, valsub);
+              vx_p_stylesheetrender = vx_core::vx_any_from_any(
+                vx_ui_ui::t_stylesheet_render, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new layoutengine :stylesheetrender " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -2712,70 +2956,79 @@ namespace vx_ui_ui {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
         if (output->vx_p_boolean_print != vx_p_boolean_print) {
           if (output->vx_p_boolean_print) {
             vx_core::vx_release_one(output->vx_p_boolean_print);
           }
-          output->vx_p_boolean_print = vx_p_boolean_print;
           vx_core::vx_reserve(vx_p_boolean_print);
+          output->vx_p_boolean_print = vx_p_boolean_print;
         }
         if (output->vx_p_boolean_layoutremove != vx_p_boolean_layoutremove) {
           if (output->vx_p_boolean_layoutremove) {
             vx_core::vx_release_one(output->vx_p_boolean_layoutremove);
           }
-          output->vx_p_boolean_layoutremove = vx_p_boolean_layoutremove;
           vx_core::vx_reserve(vx_p_boolean_layoutremove);
+          output->vx_p_boolean_layoutremove = vx_p_boolean_layoutremove;
         }
         if (output->vx_p_boolean_layoutselected != vx_p_boolean_layoutselected) {
           if (output->vx_p_boolean_layoutselected) {
             vx_core::vx_release_one(output->vx_p_boolean_layoutselected);
           }
-          output->vx_p_boolean_layoutselected = vx_p_boolean_layoutselected;
           vx_core::vx_reserve(vx_p_boolean_layoutselected);
+          output->vx_p_boolean_layoutselected = vx_p_boolean_layoutselected;
         }
         if (output->vx_p_boolean_layoutvisible != vx_p_boolean_layoutvisible) {
           if (output->vx_p_boolean_layoutvisible) {
             vx_core::vx_release_one(output->vx_p_boolean_layoutvisible);
           }
-          output->vx_p_boolean_layoutvisible = vx_p_boolean_layoutvisible;
           vx_core::vx_reserve(vx_p_boolean_layoutvisible);
+          output->vx_p_boolean_layoutvisible = vx_p_boolean_layoutvisible;
         }
         if (output->vx_p_layoutmap != vx_p_layoutmap) {
           if (output->vx_p_layoutmap) {
             vx_core::vx_release_one(output->vx_p_layoutmap);
           }
-          output->vx_p_layoutmap = vx_p_layoutmap;
           vx_core::vx_reserve(vx_p_layoutmap);
+          output->vx_p_layoutmap = vx_p_layoutmap;
         }
         if (output->vx_p_layoutelse != vx_p_layoutelse) {
           if (output->vx_p_layoutelse) {
             vx_core::vx_release_one(output->vx_p_layoutelse);
           }
-          output->vx_p_layoutelse = vx_p_layoutelse;
           vx_core::vx_reserve(vx_p_layoutelse);
+          output->vx_p_layoutelse = vx_p_layoutelse;
         }
         if (output->vx_p_stylesheetrender != vx_p_stylesheetrender) {
           if (output->vx_p_stylesheetrender) {
             vx_core::vx_release_one(output->vx_p_stylesheetrender);
           }
-          output->vx_p_stylesheetrender = vx_p_stylesheetrender;
           vx_core::vx_reserve(vx_p_stylesheetrender);
+          output->vx_p_stylesheetrender = vx_p_stylesheetrender;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_layoutengine::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_layoutengine::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_layoutengine::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_layoutengine::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_layoutengine::vx_empty() const {return vx_ui_ui::e_layoutengine;}
     vx_core::Type_any Class_layoutengine::vx_type() const {return vx_ui_ui::t_layoutengine;}
 
@@ -2901,8 +3154,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(listval, output);
@@ -2929,12 +3182,10 @@ namespace vx_ui_ui {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
         } else if (valsubtype == vx_core::t_msg) {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
-        } else if (valsubtype == vx_ui_ui::t_layout) {
-          ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_ui_ui::t_layout, valsub));
         } else if (vx_core::vx_boolean_from_type_trait(valsubtype, vx_ui_ui::t_layout)) {
+          vx_ui_ui::Type_layout subitem = vx_core::vx_any_from_any(vx_ui_ui::t_layout, valsub);
           ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_ui_ui::t_layout, valsub));
+          listval.push_back(subitem);
         } else if (valsubtype == vx_ui_ui::t_layoutlist) {
           ischanged = true;
           vx_ui_ui::Type_layoutlist multi = vx_core::vx_any_from_any(vx_ui_ui::t_layoutlist, valsub);
@@ -2951,8 +3202,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -2960,8 +3211,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_layoutlist::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_layoutlist::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_layoutlist::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_layoutlist::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_layoutlist::vx_empty() const {return vx_ui_ui::e_layoutlist;}
     vx_core::Type_any Class_layoutlist::vx_type() const {return vx_ui_ui::t_layoutlist;}
 
@@ -3085,8 +3345,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       for (auto const& [key, val] : mapval) {
@@ -3156,8 +3416,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -3165,8 +3425,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_layoutmap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_layoutmap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_layoutmap::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_layoutmap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_layoutmap::vx_empty() const {return vx_ui_ui::e_layoutmap;}
     vx_core::Type_any Class_layoutmap::vx_type() const {return vx_ui_ui::t_layoutmap;}
 
@@ -3222,9 +3491,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_pin::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_pin::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":name") {
         output = this->name();
@@ -3250,10 +3523,14 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_pin val = vx_core::vx_any_from_any(vx_ui_ui::t_pin, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_name = val->name();
+      vx_ui_ui::Type_pin value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_pin, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_name = value->name();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -3280,7 +3557,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new pin :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -3298,21 +3577,30 @@ namespace vx_ui_ui {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_pin::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_pin::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_pin::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_pin::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_pin::vx_empty() const {return vx_ui_ui::e_pin;}
     vx_core::Type_any Class_pin::vx_type() const {return vx_ui_ui::t_pin;}
 
@@ -3423,9 +3711,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_point::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_point::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":x") {
         output = this->x();
@@ -3466,15 +3758,19 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_point val = vx_core::vx_any_from_any(vx_ui_ui::t_point, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_int vx_p_x = val->x();
-      vx_core::Type_int vx_p_y = val->y();
-      vx_core::Type_int vx_p_z = val->z();
-      vx_core::Type_int vx_p_t = val->t();
-      vx_core::Type_int vx_p_i = val->i();
-      vx_ui_ui::Type_pointtype vx_p_pointtype = val->pointtype();
+      vx_ui_ui::Type_point value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_point, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_int vx_p_x = value->x();
+      vx_core::Type_int vx_p_y = value->y();
+      vx_core::Type_int vx_p_z = value->z();
+      vx_core::Type_int vx_p_t = value->t();
+      vx_core::Type_int vx_p_i = value->i();
+      vx_ui_ui::Type_pointtype vx_p_pointtype = value->pointtype();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -3511,7 +3807,9 @@ namespace vx_ui_ui {
             if (vx_p_x == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_x = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_x = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new point :x " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -3520,7 +3818,9 @@ namespace vx_ui_ui {
             if (vx_p_y == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_y = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_y = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new point :y " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -3529,7 +3829,9 @@ namespace vx_ui_ui {
             if (vx_p_z == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_z = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_z = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new point :z " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -3538,7 +3840,9 @@ namespace vx_ui_ui {
             if (vx_p_t == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_t = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_t = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new point :t " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -3547,7 +3851,9 @@ namespace vx_ui_ui {
             if (vx_p_i == valsub) {
             } else if (valsubtype == vx_core::t_int) {
               ischanged = true;
-              vx_p_i = vx_core::vx_any_from_any(vx_core::t_int, valsub);
+              vx_p_i = vx_core::vx_any_from_any(
+                vx_core::t_int, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new point :i " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -3556,7 +3862,9 @@ namespace vx_ui_ui {
             if (vx_p_pointtype == valsub) {
             } else if (valsubtype == vx_ui_ui::t_pointtype) {
               ischanged = true;
-              vx_p_pointtype = vx_core::vx_any_from_any(vx_ui_ui::t_pointtype, valsub);
+              vx_p_pointtype = vx_core::vx_any_from_any(
+                vx_ui_ui::t_pointtype, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new point :pointtype " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -3574,56 +3882,65 @@ namespace vx_ui_ui {
           if (output->vx_p_x) {
             vx_core::vx_release_one(output->vx_p_x);
           }
-          output->vx_p_x = vx_p_x;
           vx_core::vx_reserve(vx_p_x);
+          output->vx_p_x = vx_p_x;
         }
         if (output->vx_p_y != vx_p_y) {
           if (output->vx_p_y) {
             vx_core::vx_release_one(output->vx_p_y);
           }
-          output->vx_p_y = vx_p_y;
           vx_core::vx_reserve(vx_p_y);
+          output->vx_p_y = vx_p_y;
         }
         if (output->vx_p_z != vx_p_z) {
           if (output->vx_p_z) {
             vx_core::vx_release_one(output->vx_p_z);
           }
-          output->vx_p_z = vx_p_z;
           vx_core::vx_reserve(vx_p_z);
+          output->vx_p_z = vx_p_z;
         }
         if (output->vx_p_t != vx_p_t) {
           if (output->vx_p_t) {
             vx_core::vx_release_one(output->vx_p_t);
           }
-          output->vx_p_t = vx_p_t;
           vx_core::vx_reserve(vx_p_t);
+          output->vx_p_t = vx_p_t;
         }
         if (output->vx_p_i != vx_p_i) {
           if (output->vx_p_i) {
             vx_core::vx_release_one(output->vx_p_i);
           }
-          output->vx_p_i = vx_p_i;
           vx_core::vx_reserve(vx_p_i);
+          output->vx_p_i = vx_p_i;
         }
         if (output->vx_p_pointtype != vx_p_pointtype) {
           if (output->vx_p_pointtype) {
             vx_core::vx_release_one(output->vx_p_pointtype);
           }
-          output->vx_p_pointtype = vx_p_pointtype;
           vx_core::vx_reserve(vx_p_pointtype);
+          output->vx_p_pointtype = vx_p_pointtype;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_point::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_point::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_point::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_point::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_point::vx_empty() const {return vx_ui_ui::e_point;}
     vx_core::Type_any Class_point::vx_type() const {return vx_ui_ui::t_point;}
 
@@ -3706,8 +4023,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_pointtype::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_pointtype::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_pointtype::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_pointtype::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_pointtype::vx_empty() const {return vx_ui_ui::e_pointtype;}
     vx_core::Type_any Class_pointtype::vx_type() const {return vx_ui_ui::t_pointtype;}
 
@@ -3973,9 +4299,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_style::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_style::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":name") {
         output = this->name();
@@ -4064,31 +4394,35 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_style val = vx_core::vx_any_from_any(vx_ui_ui::t_style, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_name = val->name();
-      vx_ui_ui::Type_align vx_p_align = val->align();
-      vx_ui_ui::Type_bounds vx_p_boundsmargin = val->boundsmargin();
-      vx_ui_ui::Type_bounds vx_p_boundspadding = val->boundspadding();
-      vx_core::Type_string vx_p_color_bkg = val->color_bkg();
-      vx_core::Type_string vx_p_color_bkghover = val->color_bkghover();
-      vx_core::Type_string vx_p_color_border = val->color_border();
-      vx_core::Type_string vx_p_color_font = val->color_font();
-      vx_ui_ui::Type_cursor vx_p_cursor = val->cursor();
-      vx_ui_ui::Type_flip vx_p_flip = val->flip();
-      vx_ui_ui::Type_font vx_p_font = val->font();
-      vx_core::Type_boolean vx_p_hidden = val->hidden();
-      vx_ui_ui::Type_image vx_p_image_bkg = val->image_bkg();
-      vx_ui_ui::Type_layout vx_p_layout = val->layout();
-      vx_ui_ui::Type_styletype vx_p_type = val->type();
-      vx_ui_ui::Type_pin vx_p_pin = val->pin();
-      vx_ui_ui::Type_point vx_p_pointorigin = val->pointorigin();
-      vx_ui_ui::Type_point vx_p_pointpos = val->pointpos();
-      vx_ui_ui::Type_point vx_p_pointrotate = val->pointrotate();
-      vx_ui_ui::Type_point vx_p_pointsize = val->pointsize();
-      vx_core::Type_boolean vx_p_scroll_x = val->scroll_x();
-      vx_core::Type_boolean vx_p_scroll_y = val->scroll_y();
+      vx_ui_ui::Type_style value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_style, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_name = value->name();
+      vx_ui_ui::Type_align vx_p_align = value->align();
+      vx_ui_ui::Type_bounds vx_p_boundsmargin = value->boundsmargin();
+      vx_ui_ui::Type_bounds vx_p_boundspadding = value->boundspadding();
+      vx_core::Type_string vx_p_color_bkg = value->color_bkg();
+      vx_core::Type_string vx_p_color_bkghover = value->color_bkghover();
+      vx_core::Type_string vx_p_color_border = value->color_border();
+      vx_core::Type_string vx_p_color_font = value->color_font();
+      vx_ui_ui::Type_cursor vx_p_cursor = value->cursor();
+      vx_ui_ui::Type_flip vx_p_flip = value->flip();
+      vx_ui_ui::Type_font vx_p_font = value->font();
+      vx_core::Type_boolean vx_p_hidden = value->hidden();
+      vx_ui_ui::Type_image vx_p_image_bkg = value->image_bkg();
+      vx_ui_ui::Type_layout vx_p_layout = value->layout();
+      vx_ui_ui::Type_styletype vx_p_type = value->type();
+      vx_ui_ui::Type_pin vx_p_pin = value->pin();
+      vx_ui_ui::Type_point vx_p_pointorigin = value->pointorigin();
+      vx_ui_ui::Type_point vx_p_pointpos = value->pointpos();
+      vx_ui_ui::Type_point vx_p_pointrotate = value->pointrotate();
+      vx_ui_ui::Type_point vx_p_pointsize = value->pointsize();
+      vx_core::Type_boolean vx_p_scroll_x = value->scroll_x();
+      vx_core::Type_boolean vx_p_scroll_y = value->scroll_y();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -4157,7 +4491,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4166,7 +4502,9 @@ namespace vx_ui_ui {
             if (vx_p_align == valsub) {
             } else if (valsubtype == vx_ui_ui::t_align) {
               ischanged = true;
-              vx_p_align = vx_core::vx_any_from_any(vx_ui_ui::t_align, valsub);
+              vx_p_align = vx_core::vx_any_from_any(
+                vx_ui_ui::t_align, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :align " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4175,7 +4513,9 @@ namespace vx_ui_ui {
             if (vx_p_boundsmargin == valsub) {
             } else if (valsubtype == vx_ui_ui::t_bounds) {
               ischanged = true;
-              vx_p_boundsmargin = vx_core::vx_any_from_any(vx_ui_ui::t_bounds, valsub);
+              vx_p_boundsmargin = vx_core::vx_any_from_any(
+                vx_ui_ui::t_bounds, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :boundsmargin " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4184,7 +4524,9 @@ namespace vx_ui_ui {
             if (vx_p_boundspadding == valsub) {
             } else if (valsubtype == vx_ui_ui::t_bounds) {
               ischanged = true;
-              vx_p_boundspadding = vx_core::vx_any_from_any(vx_ui_ui::t_bounds, valsub);
+              vx_p_boundspadding = vx_core::vx_any_from_any(
+                vx_ui_ui::t_bounds, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :boundspadding " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4193,7 +4535,9 @@ namespace vx_ui_ui {
             if (vx_p_color_bkg == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_color_bkg = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_color_bkg = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :color-bkg " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4202,7 +4546,9 @@ namespace vx_ui_ui {
             if (vx_p_color_bkghover == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_color_bkghover = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_color_bkghover = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :color-bkghover " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4211,7 +4557,9 @@ namespace vx_ui_ui {
             if (vx_p_color_border == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_color_border = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_color_border = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :color-border " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4220,7 +4568,9 @@ namespace vx_ui_ui {
             if (vx_p_color_font == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_color_font = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_color_font = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :color-font " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4229,7 +4579,9 @@ namespace vx_ui_ui {
             if (vx_p_cursor == valsub) {
             } else if (valsubtype == vx_ui_ui::t_cursor) {
               ischanged = true;
-              vx_p_cursor = vx_core::vx_any_from_any(vx_ui_ui::t_cursor, valsub);
+              vx_p_cursor = vx_core::vx_any_from_any(
+                vx_ui_ui::t_cursor, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :cursor " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4238,7 +4590,9 @@ namespace vx_ui_ui {
             if (vx_p_flip == valsub) {
             } else if (valsubtype == vx_ui_ui::t_flip) {
               ischanged = true;
-              vx_p_flip = vx_core::vx_any_from_any(vx_ui_ui::t_flip, valsub);
+              vx_p_flip = vx_core::vx_any_from_any(
+                vx_ui_ui::t_flip, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :flip " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4247,7 +4601,9 @@ namespace vx_ui_ui {
             if (vx_p_font == valsub) {
             } else if (valsubtype == vx_ui_ui::t_font) {
               ischanged = true;
-              vx_p_font = vx_core::vx_any_from_any(vx_ui_ui::t_font, valsub);
+              vx_p_font = vx_core::vx_any_from_any(
+                vx_ui_ui::t_font, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :font " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4256,7 +4612,9 @@ namespace vx_ui_ui {
             if (vx_p_hidden == valsub) {
             } else if (valsubtype == vx_core::t_boolean) {
               ischanged = true;
-              vx_p_hidden = vx_core::vx_any_from_any(vx_core::t_boolean, valsub);
+              vx_p_hidden = vx_core::vx_any_from_any(
+                vx_core::t_boolean, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :hidden " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4265,7 +4623,9 @@ namespace vx_ui_ui {
             if (vx_p_image_bkg == valsub) {
             } else if (valsubtype == vx_ui_ui::t_image) {
               ischanged = true;
-              vx_p_image_bkg = vx_core::vx_any_from_any(vx_ui_ui::t_image, valsub);
+              vx_p_image_bkg = vx_core::vx_any_from_any(
+                vx_ui_ui::t_image, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :image-bkg " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4274,7 +4634,9 @@ namespace vx_ui_ui {
             if (vx_p_layout == valsub) {
             } else if (valsubtype == vx_ui_ui::t_layout) {
               ischanged = true;
-              vx_p_layout = vx_core::vx_any_from_any(vx_ui_ui::t_layout, valsub);
+              vx_p_layout = vx_core::vx_any_from_any(
+                vx_ui_ui::t_layout, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :layout " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4283,7 +4645,9 @@ namespace vx_ui_ui {
             if (vx_p_type == valsub) {
             } else if (valsubtype == vx_ui_ui::t_styletype) {
               ischanged = true;
-              vx_p_type = vx_core::vx_any_from_any(vx_ui_ui::t_styletype, valsub);
+              vx_p_type = vx_core::vx_any_from_any(
+                vx_ui_ui::t_styletype, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :type " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4292,7 +4656,9 @@ namespace vx_ui_ui {
             if (vx_p_pin == valsub) {
             } else if (valsubtype == vx_ui_ui::t_pin) {
               ischanged = true;
-              vx_p_pin = vx_core::vx_any_from_any(vx_ui_ui::t_pin, valsub);
+              vx_p_pin = vx_core::vx_any_from_any(
+                vx_ui_ui::t_pin, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :pin " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4301,7 +4667,9 @@ namespace vx_ui_ui {
             if (vx_p_pointorigin == valsub) {
             } else if (valsubtype == vx_ui_ui::t_point) {
               ischanged = true;
-              vx_p_pointorigin = vx_core::vx_any_from_any(vx_ui_ui::t_point, valsub);
+              vx_p_pointorigin = vx_core::vx_any_from_any(
+                vx_ui_ui::t_point, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :pointorigin " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4310,7 +4678,9 @@ namespace vx_ui_ui {
             if (vx_p_pointpos == valsub) {
             } else if (valsubtype == vx_ui_ui::t_point) {
               ischanged = true;
-              vx_p_pointpos = vx_core::vx_any_from_any(vx_ui_ui::t_point, valsub);
+              vx_p_pointpos = vx_core::vx_any_from_any(
+                vx_ui_ui::t_point, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :pointpos " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4319,7 +4689,9 @@ namespace vx_ui_ui {
             if (vx_p_pointrotate == valsub) {
             } else if (valsubtype == vx_ui_ui::t_point) {
               ischanged = true;
-              vx_p_pointrotate = vx_core::vx_any_from_any(vx_ui_ui::t_point, valsub);
+              vx_p_pointrotate = vx_core::vx_any_from_any(
+                vx_ui_ui::t_point, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :pointrotate " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4328,7 +4700,9 @@ namespace vx_ui_ui {
             if (vx_p_pointsize == valsub) {
             } else if (valsubtype == vx_ui_ui::t_point) {
               ischanged = true;
-              vx_p_pointsize = vx_core::vx_any_from_any(vx_ui_ui::t_point, valsub);
+              vx_p_pointsize = vx_core::vx_any_from_any(
+                vx_ui_ui::t_point, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :pointsize " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4337,7 +4711,9 @@ namespace vx_ui_ui {
             if (vx_p_scroll_x == valsub) {
             } else if (valsubtype == vx_core::t_boolean) {
               ischanged = true;
-              vx_p_scroll_x = vx_core::vx_any_from_any(vx_core::t_boolean, valsub);
+              vx_p_scroll_x = vx_core::vx_any_from_any(
+                vx_core::t_boolean, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :scroll-x " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4346,7 +4722,9 @@ namespace vx_ui_ui {
             if (vx_p_scroll_y == valsub) {
             } else if (valsubtype == vx_core::t_boolean) {
               ischanged = true;
-              vx_p_scroll_y = vx_core::vx_any_from_any(vx_core::t_boolean, valsub);
+              vx_p_scroll_y = vx_core::vx_any_from_any(
+                vx_core::t_boolean, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new style :scroll-y " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -4364,168 +4742,177 @@ namespace vx_ui_ui {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
         if (output->vx_p_align != vx_p_align) {
           if (output->vx_p_align) {
             vx_core::vx_release_one(output->vx_p_align);
           }
-          output->vx_p_align = vx_p_align;
           vx_core::vx_reserve(vx_p_align);
+          output->vx_p_align = vx_p_align;
         }
         if (output->vx_p_boundsmargin != vx_p_boundsmargin) {
           if (output->vx_p_boundsmargin) {
             vx_core::vx_release_one(output->vx_p_boundsmargin);
           }
-          output->vx_p_boundsmargin = vx_p_boundsmargin;
           vx_core::vx_reserve(vx_p_boundsmargin);
+          output->vx_p_boundsmargin = vx_p_boundsmargin;
         }
         if (output->vx_p_boundspadding != vx_p_boundspadding) {
           if (output->vx_p_boundspadding) {
             vx_core::vx_release_one(output->vx_p_boundspadding);
           }
-          output->vx_p_boundspadding = vx_p_boundspadding;
           vx_core::vx_reserve(vx_p_boundspadding);
+          output->vx_p_boundspadding = vx_p_boundspadding;
         }
         if (output->vx_p_color_bkg != vx_p_color_bkg) {
           if (output->vx_p_color_bkg) {
             vx_core::vx_release_one(output->vx_p_color_bkg);
           }
-          output->vx_p_color_bkg = vx_p_color_bkg;
           vx_core::vx_reserve(vx_p_color_bkg);
+          output->vx_p_color_bkg = vx_p_color_bkg;
         }
         if (output->vx_p_color_bkghover != vx_p_color_bkghover) {
           if (output->vx_p_color_bkghover) {
             vx_core::vx_release_one(output->vx_p_color_bkghover);
           }
-          output->vx_p_color_bkghover = vx_p_color_bkghover;
           vx_core::vx_reserve(vx_p_color_bkghover);
+          output->vx_p_color_bkghover = vx_p_color_bkghover;
         }
         if (output->vx_p_color_border != vx_p_color_border) {
           if (output->vx_p_color_border) {
             vx_core::vx_release_one(output->vx_p_color_border);
           }
-          output->vx_p_color_border = vx_p_color_border;
           vx_core::vx_reserve(vx_p_color_border);
+          output->vx_p_color_border = vx_p_color_border;
         }
         if (output->vx_p_color_font != vx_p_color_font) {
           if (output->vx_p_color_font) {
             vx_core::vx_release_one(output->vx_p_color_font);
           }
-          output->vx_p_color_font = vx_p_color_font;
           vx_core::vx_reserve(vx_p_color_font);
+          output->vx_p_color_font = vx_p_color_font;
         }
         if (output->vx_p_cursor != vx_p_cursor) {
           if (output->vx_p_cursor) {
             vx_core::vx_release_one(output->vx_p_cursor);
           }
-          output->vx_p_cursor = vx_p_cursor;
           vx_core::vx_reserve(vx_p_cursor);
+          output->vx_p_cursor = vx_p_cursor;
         }
         if (output->vx_p_flip != vx_p_flip) {
           if (output->vx_p_flip) {
             vx_core::vx_release_one(output->vx_p_flip);
           }
-          output->vx_p_flip = vx_p_flip;
           vx_core::vx_reserve(vx_p_flip);
+          output->vx_p_flip = vx_p_flip;
         }
         if (output->vx_p_font != vx_p_font) {
           if (output->vx_p_font) {
             vx_core::vx_release_one(output->vx_p_font);
           }
-          output->vx_p_font = vx_p_font;
           vx_core::vx_reserve(vx_p_font);
+          output->vx_p_font = vx_p_font;
         }
         if (output->vx_p_hidden != vx_p_hidden) {
           if (output->vx_p_hidden) {
             vx_core::vx_release_one(output->vx_p_hidden);
           }
-          output->vx_p_hidden = vx_p_hidden;
           vx_core::vx_reserve(vx_p_hidden);
+          output->vx_p_hidden = vx_p_hidden;
         }
         if (output->vx_p_image_bkg != vx_p_image_bkg) {
           if (output->vx_p_image_bkg) {
             vx_core::vx_release_one(output->vx_p_image_bkg);
           }
-          output->vx_p_image_bkg = vx_p_image_bkg;
           vx_core::vx_reserve(vx_p_image_bkg);
+          output->vx_p_image_bkg = vx_p_image_bkg;
         }
         if (output->vx_p_layout != vx_p_layout) {
           if (output->vx_p_layout) {
             vx_core::vx_release_one(output->vx_p_layout);
           }
-          output->vx_p_layout = vx_p_layout;
           vx_core::vx_reserve(vx_p_layout);
+          output->vx_p_layout = vx_p_layout;
         }
         if (output->vx_p_type != vx_p_type) {
           if (output->vx_p_type) {
             vx_core::vx_release_one(output->vx_p_type);
           }
-          output->vx_p_type = vx_p_type;
           vx_core::vx_reserve(vx_p_type);
+          output->vx_p_type = vx_p_type;
         }
         if (output->vx_p_pin != vx_p_pin) {
           if (output->vx_p_pin) {
             vx_core::vx_release_one(output->vx_p_pin);
           }
-          output->vx_p_pin = vx_p_pin;
           vx_core::vx_reserve(vx_p_pin);
+          output->vx_p_pin = vx_p_pin;
         }
         if (output->vx_p_pointorigin != vx_p_pointorigin) {
           if (output->vx_p_pointorigin) {
             vx_core::vx_release_one(output->vx_p_pointorigin);
           }
-          output->vx_p_pointorigin = vx_p_pointorigin;
           vx_core::vx_reserve(vx_p_pointorigin);
+          output->vx_p_pointorigin = vx_p_pointorigin;
         }
         if (output->vx_p_pointpos != vx_p_pointpos) {
           if (output->vx_p_pointpos) {
             vx_core::vx_release_one(output->vx_p_pointpos);
           }
-          output->vx_p_pointpos = vx_p_pointpos;
           vx_core::vx_reserve(vx_p_pointpos);
+          output->vx_p_pointpos = vx_p_pointpos;
         }
         if (output->vx_p_pointrotate != vx_p_pointrotate) {
           if (output->vx_p_pointrotate) {
             vx_core::vx_release_one(output->vx_p_pointrotate);
           }
-          output->vx_p_pointrotate = vx_p_pointrotate;
           vx_core::vx_reserve(vx_p_pointrotate);
+          output->vx_p_pointrotate = vx_p_pointrotate;
         }
         if (output->vx_p_pointsize != vx_p_pointsize) {
           if (output->vx_p_pointsize) {
             vx_core::vx_release_one(output->vx_p_pointsize);
           }
-          output->vx_p_pointsize = vx_p_pointsize;
           vx_core::vx_reserve(vx_p_pointsize);
+          output->vx_p_pointsize = vx_p_pointsize;
         }
         if (output->vx_p_scroll_x != vx_p_scroll_x) {
           if (output->vx_p_scroll_x) {
             vx_core::vx_release_one(output->vx_p_scroll_x);
           }
-          output->vx_p_scroll_x = vx_p_scroll_x;
           vx_core::vx_reserve(vx_p_scroll_x);
+          output->vx_p_scroll_x = vx_p_scroll_x;
         }
         if (output->vx_p_scroll_y != vx_p_scroll_y) {
           if (output->vx_p_scroll_y) {
             vx_core::vx_release_one(output->vx_p_scroll_y);
           }
-          output->vx_p_scroll_y = vx_p_scroll_y;
           vx_core::vx_reserve(vx_p_scroll_y);
+          output->vx_p_scroll_y = vx_p_scroll_y;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_style::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_style::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_style::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_style::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_style::vx_empty() const {return vx_ui_ui::e_style;}
     vx_core::Type_any Class_style::vx_type() const {return vx_ui_ui::t_style;}
 
@@ -4707,8 +5094,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(listval, output);
@@ -4735,12 +5122,10 @@ namespace vx_ui_ui {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
         } else if (valsubtype == vx_core::t_msg) {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
-        } else if (valsubtype == vx_ui_ui::t_style) {
-          ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_ui_ui::t_style, valsub));
         } else if (vx_core::vx_boolean_from_type_trait(valsubtype, vx_ui_ui::t_style)) {
+          vx_ui_ui::Type_style subitem = vx_core::vx_any_from_any(vx_ui_ui::t_style, valsub);
           ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_ui_ui::t_style, valsub));
+          listval.push_back(subitem);
         } else if (valsubtype == vx_ui_ui::t_stylelist) {
           ischanged = true;
           vx_ui_ui::Type_stylelist multi = vx_core::vx_any_from_any(vx_ui_ui::t_stylelist, valsub);
@@ -4757,8 +5142,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -4766,8 +5151,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_stylelist::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_stylelist::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_stylelist::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_stylelist::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_stylelist::vx_empty() const {return vx_ui_ui::e_stylelist;}
     vx_core::Type_any Class_stylelist::vx_type() const {return vx_ui_ui::t_stylelist;}
 
@@ -4891,8 +5285,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       for (auto const& [key, val] : mapval) {
@@ -4962,8 +5356,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -4971,8 +5365,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_stylemap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_stylemap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_stylemap::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_stylemap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_stylemap::vx_empty() const {return vx_ui_ui::e_stylemap;}
     vx_core::Type_any Class_stylemap::vx_type() const {return vx_ui_ui::t_stylemap;}
 
@@ -5038,9 +5441,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_stylesheet::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_stylesheet::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":fontfacemap") {
         output = this->fontfacemap();
@@ -5069,11 +5476,15 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_stylesheet val = vx_core::vx_any_from_any(vx_ui_ui::t_stylesheet, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_ui_ui::Type_fontfacemap vx_p_fontfacemap = val->fontfacemap();
-      vx_ui_ui::Type_stylemap vx_p_stylemap = val->stylemap();
+      vx_ui_ui::Type_stylesheet value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_stylesheet, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_ui_ui::Type_fontfacemap vx_p_fontfacemap = value->fontfacemap();
+      vx_ui_ui::Type_stylemap vx_p_stylemap = value->stylemap();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -5102,7 +5513,9 @@ namespace vx_ui_ui {
             if (vx_p_fontfacemap == valsub) {
             } else if (valsubtype == vx_ui_ui::t_fontfacemap) {
               ischanged = true;
-              vx_p_fontfacemap = vx_core::vx_any_from_any(vx_ui_ui::t_fontfacemap, valsub);
+              vx_p_fontfacemap = vx_core::vx_any_from_any(
+                vx_ui_ui::t_fontfacemap, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new stylesheet :fontfacemap " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5111,7 +5524,9 @@ namespace vx_ui_ui {
             if (vx_p_stylemap == valsub) {
             } else if (valsubtype == vx_ui_ui::t_stylemap) {
               ischanged = true;
-              vx_p_stylemap = vx_core::vx_any_from_any(vx_ui_ui::t_stylemap, valsub);
+              vx_p_stylemap = vx_core::vx_any_from_any(
+                vx_ui_ui::t_stylemap, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new stylesheet :stylemap " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5129,28 +5544,37 @@ namespace vx_ui_ui {
           if (output->vx_p_fontfacemap) {
             vx_core::vx_release_one(output->vx_p_fontfacemap);
           }
-          output->vx_p_fontfacemap = vx_p_fontfacemap;
           vx_core::vx_reserve(vx_p_fontfacemap);
+          output->vx_p_fontfacemap = vx_p_fontfacemap;
         }
         if (output->vx_p_stylemap != vx_p_stylemap) {
           if (output->vx_p_stylemap) {
             vx_core::vx_release_one(output->vx_p_stylemap);
           }
-          output->vx_p_stylemap = vx_p_stylemap;
           vx_core::vx_reserve(vx_p_stylemap);
+          output->vx_p_stylemap = vx_p_stylemap;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_stylesheet::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_stylesheet::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_stylesheet::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_stylesheet::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_stylesheet::vx_empty() const {return vx_ui_ui::e_stylesheet;}
     vx_core::Type_any Class_stylesheet::vx_type() const {return vx_ui_ui::t_stylesheet;}
 
@@ -5206,9 +5630,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_styletype::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_styletype::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       }
       vx_core::vx_release_except(key, output);
@@ -5231,20 +5659,29 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_styletype val = vx_core::vx_any_from_any(vx_ui_ui::t_styletype, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
-      }
+      vx_ui_ui::Type_styletype value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_styletype, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_styletype::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_styletype::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_styletype::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_styletype::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_styletype::vx_empty() const {return vx_ui_ui::e_styletype;}
     vx_core::Type_any Class_styletype::vx_type() const {return vx_ui_ui::t_styletype;}
 
@@ -5410,9 +5847,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_ui::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_ui::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":uid") {
         output = this->uid();
@@ -5471,21 +5912,25 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_ui val = vx_core::vx_any_from_any(vx_ui_ui::t_ui, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_core::Type_string vx_p_uid = val->uid();
-      vx_core::Type_string vx_p_name = val->name();
-      vx_ui_ui::Type_layout vx_p_layout = val->layout();
-      vx_core::Type_string vx_p_path = val->path();
-      vx_core::Type_boolean vx_p_hidden = val->hidden();
-      vx_core::Type_boolean vx_p_selected = val->selected();
-      vx_core::Type_boolean vx_p_selectmulti = val->selectmulti();
-      vx_ui_ui::Type_style vx_p_style = val->style();
-      vx_ui_ui::Type_stylelist vx_p_stylelist = val->stylelist();
-      vx_event::Type_eventmap vx_p_eventmap = val->eventmap();
-      vx_core::Type_any vx_p_data = val->data();
-      vx_ui_ui::Type_uimap vx_p_uimap = val->uimap();
+      vx_ui_ui::Type_ui value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_ui, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_core::Type_string vx_p_uid = value->uid();
+      vx_core::Type_string vx_p_name = value->name();
+      vx_ui_ui::Type_layout vx_p_layout = value->layout();
+      vx_core::Type_string vx_p_path = value->path();
+      vx_core::Type_boolean vx_p_hidden = value->hidden();
+      vx_core::Type_boolean vx_p_selected = value->selected();
+      vx_core::Type_boolean vx_p_selectmulti = value->selectmulti();
+      vx_ui_ui::Type_style vx_p_style = value->style();
+      vx_ui_ui::Type_stylelist vx_p_stylelist = value->stylelist();
+      vx_event::Type_eventmap vx_p_eventmap = value->eventmap();
+      vx_core::Type_any vx_p_data = value->data();
+      vx_ui_ui::Type_uimap vx_p_uimap = value->uimap();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -5534,7 +5979,9 @@ namespace vx_ui_ui {
             if (vx_p_uid == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_uid = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_uid = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :uid " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5543,7 +5990,9 @@ namespace vx_ui_ui {
             if (vx_p_name == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_name = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_name = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :name " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5552,7 +6001,9 @@ namespace vx_ui_ui {
             if (vx_p_layout == valsub) {
             } else if (valsubtype == vx_ui_ui::t_layout) {
               ischanged = true;
-              vx_p_layout = vx_core::vx_any_from_any(vx_ui_ui::t_layout, valsub);
+              vx_p_layout = vx_core::vx_any_from_any(
+                vx_ui_ui::t_layout, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :layout " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5561,7 +6012,9 @@ namespace vx_ui_ui {
             if (vx_p_path == valsub) {
             } else if (valsubtype == vx_core::t_string) {
               ischanged = true;
-              vx_p_path = vx_core::vx_any_from_any(vx_core::t_string, valsub);
+              vx_p_path = vx_core::vx_any_from_any(
+                vx_core::t_string, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :path " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5570,7 +6023,9 @@ namespace vx_ui_ui {
             if (vx_p_hidden == valsub) {
             } else if (valsubtype == vx_core::t_boolean) {
               ischanged = true;
-              vx_p_hidden = vx_core::vx_any_from_any(vx_core::t_boolean, valsub);
+              vx_p_hidden = vx_core::vx_any_from_any(
+                vx_core::t_boolean, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :hidden " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5579,7 +6034,9 @@ namespace vx_ui_ui {
             if (vx_p_selected == valsub) {
             } else if (valsubtype == vx_core::t_boolean) {
               ischanged = true;
-              vx_p_selected = vx_core::vx_any_from_any(vx_core::t_boolean, valsub);
+              vx_p_selected = vx_core::vx_any_from_any(
+                vx_core::t_boolean, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :selected " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5588,7 +6045,9 @@ namespace vx_ui_ui {
             if (vx_p_selectmulti == valsub) {
             } else if (valsubtype == vx_core::t_boolean) {
               ischanged = true;
-              vx_p_selectmulti = vx_core::vx_any_from_any(vx_core::t_boolean, valsub);
+              vx_p_selectmulti = vx_core::vx_any_from_any(
+                vx_core::t_boolean, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :selectmulti " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5597,7 +6056,9 @@ namespace vx_ui_ui {
             if (vx_p_style == valsub) {
             } else if (valsubtype == vx_ui_ui::t_style) {
               ischanged = true;
-              vx_p_style = vx_core::vx_any_from_any(vx_ui_ui::t_style, valsub);
+              vx_p_style = vx_core::vx_any_from_any(
+                vx_ui_ui::t_style, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :style " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5606,7 +6067,9 @@ namespace vx_ui_ui {
             if (vx_p_stylelist == valsub) {
             } else if (valsubtype == vx_ui_ui::t_stylelist) {
               ischanged = true;
-              vx_p_stylelist = vx_core::vx_any_from_any(vx_ui_ui::t_stylelist, valsub);
+              vx_p_stylelist = vx_core::vx_any_from_any(
+                vx_ui_ui::t_stylelist, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :stylelist " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5615,7 +6078,9 @@ namespace vx_ui_ui {
             if (vx_p_eventmap == valsub) {
             } else if (valsubtype == vx_event::t_eventmap) {
               ischanged = true;
-              vx_p_eventmap = vx_core::vx_any_from_any(vx_event::t_eventmap, valsub);
+              vx_p_eventmap = vx_core::vx_any_from_any(
+                vx_event::t_eventmap, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :eventmap " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5629,7 +6094,9 @@ namespace vx_ui_ui {
             if (vx_p_uimap == valsub) {
             } else if (valsubtype == vx_ui_ui::t_uimap) {
               ischanged = true;
-              vx_p_uimap = vx_core::vx_any_from_any(vx_ui_ui::t_uimap, valsub);
+              vx_p_uimap = vx_core::vx_any_from_any(
+                vx_ui_ui::t_uimap, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new ui :uimap " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5647,98 +6114,107 @@ namespace vx_ui_ui {
           if (output->vx_p_uid) {
             vx_core::vx_release_one(output->vx_p_uid);
           }
-          output->vx_p_uid = vx_p_uid;
           vx_core::vx_reserve(vx_p_uid);
+          output->vx_p_uid = vx_p_uid;
         }
         if (output->vx_p_name != vx_p_name) {
           if (output->vx_p_name) {
             vx_core::vx_release_one(output->vx_p_name);
           }
-          output->vx_p_name = vx_p_name;
           vx_core::vx_reserve(vx_p_name);
+          output->vx_p_name = vx_p_name;
         }
         if (output->vx_p_layout != vx_p_layout) {
           if (output->vx_p_layout) {
             vx_core::vx_release_one(output->vx_p_layout);
           }
-          output->vx_p_layout = vx_p_layout;
           vx_core::vx_reserve(vx_p_layout);
+          output->vx_p_layout = vx_p_layout;
         }
         if (output->vx_p_path != vx_p_path) {
           if (output->vx_p_path) {
             vx_core::vx_release_one(output->vx_p_path);
           }
-          output->vx_p_path = vx_p_path;
           vx_core::vx_reserve(vx_p_path);
+          output->vx_p_path = vx_p_path;
         }
         if (output->vx_p_hidden != vx_p_hidden) {
           if (output->vx_p_hidden) {
             vx_core::vx_release_one(output->vx_p_hidden);
           }
-          output->vx_p_hidden = vx_p_hidden;
           vx_core::vx_reserve(vx_p_hidden);
+          output->vx_p_hidden = vx_p_hidden;
         }
         if (output->vx_p_selected != vx_p_selected) {
           if (output->vx_p_selected) {
             vx_core::vx_release_one(output->vx_p_selected);
           }
-          output->vx_p_selected = vx_p_selected;
           vx_core::vx_reserve(vx_p_selected);
+          output->vx_p_selected = vx_p_selected;
         }
         if (output->vx_p_selectmulti != vx_p_selectmulti) {
           if (output->vx_p_selectmulti) {
             vx_core::vx_release_one(output->vx_p_selectmulti);
           }
-          output->vx_p_selectmulti = vx_p_selectmulti;
           vx_core::vx_reserve(vx_p_selectmulti);
+          output->vx_p_selectmulti = vx_p_selectmulti;
         }
         if (output->vx_p_style != vx_p_style) {
           if (output->vx_p_style) {
             vx_core::vx_release_one(output->vx_p_style);
           }
-          output->vx_p_style = vx_p_style;
           vx_core::vx_reserve(vx_p_style);
+          output->vx_p_style = vx_p_style;
         }
         if (output->vx_p_stylelist != vx_p_stylelist) {
           if (output->vx_p_stylelist) {
             vx_core::vx_release_one(output->vx_p_stylelist);
           }
-          output->vx_p_stylelist = vx_p_stylelist;
           vx_core::vx_reserve(vx_p_stylelist);
+          output->vx_p_stylelist = vx_p_stylelist;
         }
         if (output->vx_p_eventmap != vx_p_eventmap) {
           if (output->vx_p_eventmap) {
             vx_core::vx_release_one(output->vx_p_eventmap);
           }
-          output->vx_p_eventmap = vx_p_eventmap;
           vx_core::vx_reserve(vx_p_eventmap);
+          output->vx_p_eventmap = vx_p_eventmap;
         }
         if (output->vx_p_data != vx_p_data) {
           if (output->vx_p_data) {
             vx_core::vx_release_one(output->vx_p_data);
           }
-          output->vx_p_data = vx_p_data;
           vx_core::vx_reserve(vx_p_data);
+          output->vx_p_data = vx_p_data;
         }
         if (output->vx_p_uimap != vx_p_uimap) {
           if (output->vx_p_uimap) {
             vx_core::vx_release_one(output->vx_p_uimap);
           }
-          output->vx_p_uimap = vx_p_uimap;
           vx_core::vx_reserve(vx_p_uimap);
+          output->vx_p_uimap = vx_p_uimap;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_ui::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_ui::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_ui::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_ui::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_ui::vx_empty() const {return vx_ui_ui::e_ui;}
     vx_core::Type_any Class_ui::vx_type() const {return vx_ui_ui::t_ui;}
 
@@ -5873,9 +6349,13 @@ namespace vx_ui_ui {
     }
 
     // vx_get_any(key)
-    vx_core::Type_any Class_uiengine::vx_get_any(vx_core::Type_string key) const {
+    vx_core::Type_any Class_uiengine::vx_get_any(
+      vx_core::Type_string key) const {
       vx_core::Type_any output = vx_core::e_any;
       std::string skey = key->vx_string();
+      if (!vx_core::vx_boolean_from_string_starts(skey, ":")) {
+        skey = ":" + skey;
+      }
       if (false) {
       } else if (skey == ":parentmap") {
         output = this->parentmap();
@@ -5910,13 +6390,17 @@ namespace vx_ui_ui {
       if (copyval->vx_p_constdef != NULL) {
         ischanged = true;
       }
-      vx_ui_ui::Type_uiengine val = vx_core::vx_any_from_any(vx_ui_ui::t_uiengine, copyval);
-      output = val;
-      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(val->vx_msgblock(), vals);
-      vx_ui_ui::Type_uimap vx_p_parentmap = val->parentmap();
-      vx_ui_ui::Type_layoutengine vx_p_layoutengine = val->layoutengine();
-      vx_ui_ui::Type_stylesheet vx_p_stylesheet = val->stylesheet();
-      vx_ui_ui::Type_ui vx_p_ui = val->ui();
+      vx_ui_ui::Type_uiengine value = vx_core::vx_any_from_any(
+        vx_ui_ui::t_uiengine, copyval
+      );
+      output = value;
+      vx_core::Type_msgblock msgblock = vx_core::vx_msgblock_from_copy_listval(
+        value->vx_msgblock(), vals
+      );
+      vx_ui_ui::Type_uimap vx_p_parentmap = value->parentmap();
+      vx_ui_ui::Type_layoutengine vx_p_layoutengine = value->layoutengine();
+      vx_ui_ui::Type_stylesheet vx_p_stylesheet = value->stylesheet();
+      vx_ui_ui::Type_ui vx_p_ui = value->ui();
       std::string key = "";
       for (vx_core::Type_any valsub : vals) {
         vx_core::Type_any valsubtype = valsub->vx_type();
@@ -5949,7 +6433,9 @@ namespace vx_ui_ui {
             if (vx_p_parentmap == valsub) {
             } else if (valsubtype == vx_ui_ui::t_uimap) {
               ischanged = true;
-              vx_p_parentmap = vx_core::vx_any_from_any(vx_ui_ui::t_uimap, valsub);
+              vx_p_parentmap = vx_core::vx_any_from_any(
+                vx_ui_ui::t_uimap, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new uiengine :parentmap " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5958,7 +6444,9 @@ namespace vx_ui_ui {
             if (vx_p_layoutengine == valsub) {
             } else if (valsubtype == vx_ui_ui::t_layoutengine) {
               ischanged = true;
-              vx_p_layoutengine = vx_core::vx_any_from_any(vx_ui_ui::t_layoutengine, valsub);
+              vx_p_layoutengine = vx_core::vx_any_from_any(
+                vx_ui_ui::t_layoutengine, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new uiengine :layoutengine " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5967,7 +6455,9 @@ namespace vx_ui_ui {
             if (vx_p_stylesheet == valsub) {
             } else if (valsubtype == vx_ui_ui::t_stylesheet) {
               ischanged = true;
-              vx_p_stylesheet = vx_core::vx_any_from_any(vx_ui_ui::t_stylesheet, valsub);
+              vx_p_stylesheet = vx_core::vx_any_from_any(
+                vx_ui_ui::t_stylesheet, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new uiengine :stylesheet " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5976,7 +6466,9 @@ namespace vx_ui_ui {
             if (vx_p_ui == valsub) {
             } else if (valsubtype == vx_ui_ui::t_ui) {
               ischanged = true;
-              vx_p_ui = vx_core::vx_any_from_any(vx_ui_ui::t_ui, valsub);
+              vx_p_ui = vx_core::vx_any_from_any(
+                vx_ui_ui::t_ui, valsub
+              );
             } else {
               vx_core::Type_msg msg = vx_core::vx_msg_from_errortext("(new uiengine :ui " + vx_core::vx_string_from_any(valsub) + ") - Invalid Value");
               msgblock = vx_core::vx_copy(msgblock, {msg});
@@ -5994,42 +6486,51 @@ namespace vx_ui_ui {
           if (output->vx_p_parentmap) {
             vx_core::vx_release_one(output->vx_p_parentmap);
           }
-          output->vx_p_parentmap = vx_p_parentmap;
           vx_core::vx_reserve(vx_p_parentmap);
+          output->vx_p_parentmap = vx_p_parentmap;
         }
         if (output->vx_p_layoutengine != vx_p_layoutengine) {
           if (output->vx_p_layoutengine) {
             vx_core::vx_release_one(output->vx_p_layoutengine);
           }
-          output->vx_p_layoutengine = vx_p_layoutengine;
           vx_core::vx_reserve(vx_p_layoutengine);
+          output->vx_p_layoutengine = vx_p_layoutengine;
         }
         if (output->vx_p_stylesheet != vx_p_stylesheet) {
           if (output->vx_p_stylesheet) {
             vx_core::vx_release_one(output->vx_p_stylesheet);
           }
-          output->vx_p_stylesheet = vx_p_stylesheet;
           vx_core::vx_reserve(vx_p_stylesheet);
+          output->vx_p_stylesheet = vx_p_stylesheet;
         }
         if (output->vx_p_ui != vx_p_ui) {
           if (output->vx_p_ui) {
             vx_core::vx_release_one(output->vx_p_ui);
           }
-          output->vx_p_ui = vx_p_ui;
           vx_core::vx_reserve(vx_p_ui);
+          output->vx_p_ui = vx_p_ui;
         }
-      }
-      if (msgblock != vx_core::e_msgblock) {
-        output->vx_p_msgblock = msgblock;
-        vx_core::vx_reserve(msgblock);
+        if (msgblock != vx_core::e_msgblock) {
+          vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
+        }
       }
       vx_core::vx_release_except(copyval, output);
       vx_core::vx_release_except(vals, output);
       return output;
     }
 
-    vx_core::Type_msgblock Class_uiengine::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_uiengine::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_uiengine::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_uiengine::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_uiengine::vx_empty() const {return vx_ui_ui::e_uiengine;}
     vx_core::Type_any Class_uiengine::vx_type() const {return vx_ui_ui::t_uiengine;}
 
@@ -6139,8 +6640,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(listval, output);
@@ -6167,12 +6668,10 @@ namespace vx_ui_ui {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
         } else if (valsubtype == vx_core::t_msg) {
           msgblock = vx_core::vx_copy(msgblock, {valsub});
-        } else if (valsubtype == vx_ui_ui::t_ui) {
-          ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_ui_ui::t_ui, valsub));
         } else if (vx_core::vx_boolean_from_type_trait(valsubtype, vx_ui_ui::t_ui)) {
+          vx_ui_ui::Type_ui subitem = vx_core::vx_any_from_any(vx_ui_ui::t_ui, valsub);
           ischanged = true;
-          listval.push_back(vx_core::vx_any_from_any(vx_ui_ui::t_ui, valsub));
+          listval.push_back(subitem);
         } else if (valsubtype == vx_ui_ui::t_uilist) {
           ischanged = true;
           vx_ui_ui::Type_uilist multi = vx_core::vx_any_from_any(vx_ui_ui::t_uilist, valsub);
@@ -6189,8 +6688,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(valadd);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -6198,8 +6697,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_uilist::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_uilist::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_uilist::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_uilist::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_uilist::vx_empty() const {return vx_ui_ui::e_uilist;}
     vx_core::Type_any Class_uilist::vx_type() const {return vx_ui_ui::t_uilist;}
 
@@ -6323,8 +6831,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       for (auto const& [key, val] : mapval) {
@@ -6394,8 +6902,8 @@ namespace vx_ui_ui {
           vx_core::vx_reserve(val);
         }
         if (msgblock != vx_core::e_msgblock) {
-          output->vx_p_msgblock = msgblock;
           vx_core::vx_reserve(msgblock);
+          output->vx_p_msgblock = msgblock;
         }
       }
       vx_core::vx_release_except(copyval, output);
@@ -6403,8 +6911,17 @@ namespace vx_ui_ui {
       return output;
     }
 
-    vx_core::Type_msgblock Class_uimap::vx_msgblock() const {return this->vx_p_msgblock;}
-    vx_core::vx_Type_listany vx_ui_ui::Class_uimap::vx_dispose() {return vx_core::emptylistany;}
+    vx_core::Type_msgblock Class_uimap::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany vx_ui_ui::Class_uimap::vx_dispose() {
+      return vx_core::emptylistany;
+    }
     vx_core::Type_any Class_uimap::vx_empty() const {return vx_ui_ui::e_uimap;}
     vx_core::Type_any Class_uimap::vx_type() const {return vx_ui_ui::t_uimap;}
 
@@ -7537,7 +8054,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layout_from_ui_parent_selected::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layout_from_ui_parent_selected::vx_dispose() {
@@ -7668,7 +8189,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layout_from_ui_parent_visible::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layout_from_ui_parent_visible::vx_dispose() {
@@ -7795,7 +8320,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutaddchild_from_ui_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutaddchild_from_ui_parent::vx_dispose() {
@@ -7900,7 +8429,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutremove_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutremove_from_ui::vx_dispose() {
@@ -8046,7 +8579,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutremove_from_ui_keys::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutremove_from_ui_keys::vx_dispose() {
@@ -8168,7 +8705,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutremove_from_ui_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutremove_from_ui_parent::vx_dispose() {
@@ -8289,7 +8830,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutremove_from_ui_start_end::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutremove_from_ui_start_end::vx_dispose() {
@@ -8395,7 +8940,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutselected_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutselected_from_ui::vx_dispose() {
@@ -8525,7 +9074,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutselected_from_ui_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutselected_from_ui_parent::vx_dispose() {
@@ -8631,7 +9184,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutselected_from_ui_selected::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutselected_from_ui_selected::vx_dispose() {
@@ -8735,7 +9292,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_layoutvisible_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_layoutvisible_from_ui::vx_dispose() {
@@ -8862,7 +9423,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_print::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_print::vx_dispose() {
@@ -8976,7 +9541,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_removestate_uiapp::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_removestate_uiapp::vx_dispose() {
@@ -9092,7 +9661,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_write_from_ui_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_write_from_ui_parent::vx_dispose() {
@@ -9213,7 +9786,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_writeremove_from_ui_uid::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writeremove_from_ui_uid::vx_dispose() {
@@ -9370,7 +9947,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_writestate_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writestate_from_ui::vx_dispose() {
@@ -9487,7 +10068,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_writestate_from_uiapp::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writestate_from_uiapp::vx_dispose() {
@@ -9604,7 +10189,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_boolean_writestate_from_uiengine::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_writestate_from_uiengine::vx_dispose() {
@@ -9730,7 +10319,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_fontfacemap_from_fontfacelist::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_fontfacemap_from_fontfacelist::vx_dispose() {
@@ -9856,7 +10449,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_int_child_from_ui_uid::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_int_child_from_ui_uid::vx_dispose() {
@@ -9972,7 +10569,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_int_selected_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_int_selected_from_ui::vx_dispose() {
@@ -10097,7 +10698,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_int_visible_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_int_visible_from_ui::vx_dispose() {
@@ -10260,7 +10865,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_intlist_visible_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_intlist_visible_from_ui::vx_dispose() {
@@ -10375,7 +10984,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_layout_from_style::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_layout_from_style::vx_dispose() {
@@ -10500,7 +11113,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_layout_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_layout_from_ui::vx_dispose() {
@@ -10629,7 +11246,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_layout_from_ui_layoutengine::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_layout_from_ui_layoutengine::vx_dispose() {
@@ -10758,7 +11379,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_layout_from_ui_layoutmap_else::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_layout_from_ui_layoutmap_else::vx_dispose() {
@@ -10870,7 +11495,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_layoutengine_readstate::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_layoutengine_readstate::vx_dispose() {
@@ -10983,7 +11612,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_layoutmap_from_layoutlist::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_layoutmap_from_layoutlist::vx_dispose() {
@@ -11125,7 +11758,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_string_parentuid_from_uid::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_parentuid_from_uid::vx_dispose() {
@@ -11250,7 +11887,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_string_selected_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_selected_from_ui::vx_dispose() {
@@ -11391,7 +12032,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_stringlist_selected_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stringlist_selected_from_ui::vx_dispose() {
@@ -11516,7 +12161,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_stringlist_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stringlist_from_ui::vx_dispose() {
@@ -11640,7 +12289,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_stylemap_from_stylelist::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylemap_from_stylelist::vx_dispose() {
@@ -11762,7 +12415,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_stylesheet_readstate::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylesheet_readstate::vx_dispose() {
@@ -11865,7 +12522,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_stylesheet_render::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stylesheet_render::vx_dispose() {
@@ -11990,7 +12651,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_addlayout_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_addlayout_from_ui::vx_dispose() {
@@ -12119,7 +12784,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_addlayout_from_ui_layoutengine::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_addlayout_from_ui_layoutengine::vx_dispose() {
@@ -12248,7 +12917,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_addlayout_from_ui_layoutmap_else::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_addlayout_from_ui_layoutmap_else::vx_dispose() {
@@ -12364,7 +13037,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_addlayout_from_ui_uiengine::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_addlayout_from_ui_uiengine::vx_dispose() {
@@ -12479,7 +13156,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_child_from_ui_pos::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_child_from_ui_pos::vx_dispose() {
@@ -12594,7 +13275,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_child_from_ui_uid::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_child_from_ui_uid::vx_dispose() {
@@ -12708,7 +13393,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_from_from_event::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_from_from_event::vx_dispose() {
@@ -12832,7 +13521,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_layout::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout::vx_dispose() {
@@ -12951,7 +13644,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_layout_from_fn_layout_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout_from_fn_layout_ui_orig_parent::vx_dispose() {
@@ -13093,7 +13790,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_layout_from_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout_from_ui_orig_parent::vx_dispose() {
@@ -13212,7 +13913,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_layout_from_ui_parent_selected::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout_from_ui_parent_selected::vx_dispose() {
@@ -13329,7 +14034,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_layout_from_ui_parent_visible::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_layout_from_ui_parent_visible::vx_dispose() {
@@ -13432,7 +14141,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_readstate_uiapp::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_readstate_uiapp::vx_dispose() {
@@ -13545,7 +14258,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_readstate_from_uid::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_readstate_from_uid::vx_dispose() {
@@ -13671,7 +14388,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_selected_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_selected_from_ui::vx_dispose() {
@@ -13796,7 +14517,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_visible_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_visible_from_ui::vx_dispose() {
@@ -13926,7 +14651,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_write_from_ui_child::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_write_from_ui_child::vx_dispose() {
@@ -14051,7 +14780,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_write_from_ui_childmap::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_write_from_ui_childmap::vx_dispose() {
@@ -14240,7 +14973,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_write_from_ui_visible::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_write_from_ui_visible::vx_dispose() {
@@ -14360,7 +15097,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_from_layout_ui_orig_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_from_layout_ui_orig_parent::vx_dispose() {
@@ -14611,7 +15352,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_from_ui_find::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_from_ui_find::vx_dispose() {
@@ -14803,7 +15548,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_ui_from_ui_selected::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_ui_from_ui_selected::vx_dispose() {
@@ -14917,7 +15666,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uid_selected_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uid_selected_from_ui::vx_dispose() {
@@ -15030,7 +15783,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uiengine_readstate::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uiengine_readstate::vx_dispose() {
@@ -15166,7 +15923,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uiengine_render::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uiengine_render::vx_dispose() {
@@ -15307,7 +16068,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uilist_selected_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uilist_selected_from_ui::vx_dispose() {
@@ -15449,7 +16214,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uilist_visible_from_ui::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uilist_visible_from_ui::vx_dispose() {
@@ -15573,7 +16342,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uilist_from_uimap::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uilist_from_uimap::vx_dispose() {
@@ -15701,7 +16474,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uimap_addlayout_from_uimap_layoutmap_else::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uimap_addlayout_from_uimap_layoutmap_else::vx_dispose() {
@@ -15824,7 +16601,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uimap_layout_from_uimap_parent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uimap_layout_from_uimap_parent::vx_dispose() {
@@ -15937,7 +16718,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uimap_from_uilist::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uimap_from_uilist::vx_dispose() {
@@ -16053,7 +16838,11 @@ namespace vx_ui_ui {
     }
 
     vx_core::Type_msgblock Class_uimap_from_uimap_data::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_uimap_from_uimap_data::vx_dispose() {

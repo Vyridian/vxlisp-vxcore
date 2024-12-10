@@ -153,6 +153,363 @@
     (testcase
      :passfail true
      :testpkg "vx/core"
+     :casename "msgblock"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         `(test
+ (decimal
+  (msgblock
+   :msgs
+    (msglist
+     (msg
+      :text "Err"))))
+ (decimal
+  (msg
+   :text "Err")))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected 0.0
+          :actual 0.0
+          :msgblock
+           (msgblock
+            :msgblocks
+             (msgblocklist
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :text "Err")))
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :text "Err"))))))
+        :msgblock
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err"))))))))
+       (testdescribe
+        :describename
+         `(test
+ (decimal
+  (msgblock
+   :msgs
+    (msglist
+     (msg :text "Err"))))
+ (let : decimal
+  [mymsgblock : msgblock :=
+   (msgblock
+    (msg
+     :text "Err"))]
+  (decimal
+   (copy
+    mymsgblock
+    mymsgblock))))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected 0.0
+          :actual 0.0
+          :msgblock
+           (msgblock
+            :msgblocks
+             (msgblocklist
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :text "Err")))
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :text "Err"))))))
+        :msgblock
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err"))))))))
+       :msgblock
+        (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err"))))))))))
+     :msgblock
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))))
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))))
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err"))))))))))))
+    (testcase
+     :passfail true
+     :testpkg "vx/core"
+     :casename "msgblocklist"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         `(test
+ (msgblocklist
+  (msgblock
+   (msg :text "Err")))
+ (let : msgblocklist
+  [mymsgblock : msgblock :=
+   (msgblock
+    (msg :text "Err"))]
+  (msgblocklist
+   mymsgblock
+   mymsgblock)))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :text "Err"))))
+          :actual
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :text "Err"))))))))
+    (testcase
+     :passfail true
+     :testpkg "vx/core"
+     :casename "msglist"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         `(test
+ (msglist
+  (msg :text "Err"))
+ (let : msglist
+  [mymsg : msg :=
+   (msg :text "Err")]
+  (msglist
+   mymsg
+   mymsg)))`
+        :testresult
+         (testresult
+          :code ":eq"
+          :passfail true
+          :expected
+           (msglist
+            (msg
+             :text "Err"))
+          :actual
+           (msglist
+            (msg
+             :text "Err"))))))
+    (testcase
+     :passfail true
+     :testpkg "vx/core"
      :casename "string"
      :describelist
       (testdescribelist
@@ -1431,6 +1788,25 @@
     (testcase
      :passfail true
      :testpkg "vx/core"
+     :casename "is-error"
+     :describelist
+      (testdescribelist
+       (testdescribe
+        :describename
+         `(test-true
+ (is-error
+  (stringlist
+   (msg
+    :code "My Err"))))`
+        :testresult
+         (testresult
+          :code ":true"
+          :passfail true
+          :expected true
+          :actual true))))
+    (testcase
+     :passfail true
+     :testpkg "vx/core"
      :casename "is-int"
      :describelist
       (testdescribelist
@@ -2239,7 +2615,101 @@
           :code ":eq"
           :passfail true
           :expected "vx/core/string"
-          :actual "vx/core/string")))))
+          :actual "vx/core/string"))))
+    :msgblock
+     (msgblock
+     :msgblocks
+      (msgblocklist
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :text "Err")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :text "Err")))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :text "Err")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :text "Err")))))))
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err"))))))))))))
   :coveragedetail
    (testcoveragedetail
     :constmap
@@ -2356,6 +2826,7 @@
       :is-empty 0
       :is-empty_1 4
       :is-endswith 0
+      :is-error 1
       :is-float 0
       :is-func 0
       :is-int 4
@@ -2377,6 +2848,7 @@
       :list<-type 0
       :log 0
       :log_1 0
+      :log-error 0
       :main 0
       :map<-list 1
       :map<-map 1
@@ -2385,6 +2857,7 @@
       :msg<-error_1 0
       :msg<-error_2 0
       :msg<-warning 0
+      :msgblock<-any 0
       :msgblock<-msgblock-msg 0
       :msgblock<-msgblock-msgblock 0
       :name<-typedef 0
@@ -2470,9 +2943,9 @@
       :maptype 0
       :mempool 0
       :msg 0
-      :msgblock 0
-      :msgblocklist 0
-      :msglist 0
+      :msgblock 2
+      :msgblocklist 1
+      :msglist 1
       :none 0
       :notype 0
       :number 0
@@ -2513,12 +2986,12 @@
      (testcoveragenums
       :pct 0
       :tests 1
-      :total 167)
+      :total 170)
     :bigotimenums
      (testcoveragenums
       :pct 0
       :tests 1
-      :total 167)
+      :total 170)
     :constnums
      (testcoveragenums
       :pct 13
@@ -2527,26 +3000,152 @@
     :docnums
      (testcoveragenums
       :pct 91
-      :tests 236
-      :total 258)
+      :tests 239
+      :total 261)
     :funcnums
      (testcoveragenums
       :pct 55
-      :tests 76
-      :total 136)
+      :tests 77
+      :total 139)
     :testpkg "vx/core"
     :totalnums
      (testcoveragenums
-      :pct 37
-      :tests 85
-      :total 227)
+      :pct 38
+      :tests 89
+      :total 230)
     :typenums
      (testcoveragenums
-      :pct 9
-      :tests 7
+      :pct 13
+      :tests 10
       :total 76))
   :passfail true
-  :testpkg "vx/core")
+  :testpkg "vx/core"
+  :msgblock
+   (msgblock
+    :msgblocks
+     (msgblocklist
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :text "Err")))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :text "Err")))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :text "Err")))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :text "Err")))))))
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :text "Err")))))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))))
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))))
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err")))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :text "Err"))))))))))))))
  (testpackage
   :coveragedetail
    (testcoveragedetail
@@ -4824,22 +5423,13 @@ ab
         :text "a"
         :startpos 2
         :endpos 2))
-     (msgblock
-      (msg
-       :code "closedelimmissing"
-       :detail
-        (delim
-         :name "delimclose"
-         :starttext ">")
-       :severity 2))))
-  (msgblock
-   (msg
-    :code "closedelimmissing"
-    :detail
-     (delim
-      :name "delimclose"
-      :starttext ">")
-    :severity 2)))
+     (msg
+      :code "closedelimmissing"
+      :detail
+       (delim
+        :name "delimclose"
+        :starttext ">")
+      :severity msg-error))))
  (textblock-delimnotfound
   (textblock
    :text "a"
@@ -4890,7 +5480,40 @@ ab
                  (textblock
                   :text "a"
                   :startpos 2
-                  :endpos 2)))))
+                  :endpos 2))
+               :msgblock
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2))))
+              :msgblock
+               (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code "closedelimmissing"
+                  :detail
+                   (delim
+                    :name "delimclose"
+                    :starttext ">")
+                  :severity 2))))
+            :msgblock
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2))))
           :actual
            (textblock
             :text "<a"
@@ -4913,7 +5536,114 @@ ab
                  (textblock
                   :text "a"
                   :startpos 2
-                  :endpos 2)))))))
+                  :endpos 2))
+               :msgblock
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2))))
+              :msgblock
+               (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code "closedelimmissing"
+                  :detail
+                   (delim
+                    :name "delimclose"
+                    :starttext ">")
+                  :severity 2))))
+            :msgblock
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2))))
+          :msgblock
+           (msgblock
+            :msgblocks
+             (msgblocklist
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code "closedelimmissing"
+                  :detail
+                   (delim
+                    :name "delimclose"
+                    :starttext ">")
+                  :severity 2)))
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code "closedelimmissing"
+                  :detail
+                   (delim
+                    :name "delimclose"
+                    :starttext ">")
+                  :severity 2))))))
+        :msgblock
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2))))))))
        (testdescribe
         :describename
          `(test
@@ -5878,7 +6608,133 @@ ab
                  :delim
                   (delim
                    :name "delimcomma"
-                   :starttext ",")))))))))
+                   :starttext ",")))))))
+       :msgblock
+        (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2))))))))
+     :msgblock
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code "closedelimmissing"
+                :detail
+                 (delim
+                  :name "delimclose"
+                  :starttext ">")
+                :severity 2)))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code "closedelimmissing"
+                :detail
+                 (delim
+                  :name "delimclose"
+                  :starttext ">")
+                :severity 2)))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2))))))))))
     (testcase
      :passfail true
      :testpkg "vx/data/textblock"
@@ -6203,22 +7059,13 @@ ab
         :text "a"
         :startpos 2
         :endpos 2))
-     (msgblock
-      (msg
-       :code "closedelimmissing"
-       :detail
-        (delim
-         :name "delimclose"
-         :starttext ">")
-       :severity 2))))
-  (msgblock
-   (msg
-    :code "closedelimmissing"
-    :detail
-     (delim
-      :name "delimclose"
-      :starttext ">")
-    :severity 2)))
+     (msg
+      :code "closedelimmissing"
+      :detail
+       (delim
+        :name "delimclose"
+        :starttext ">")
+      :severity msg-error))))
  (textblock-parse-one
   (textblock
    :text "a"
@@ -6269,7 +7116,40 @@ ab
                  (textblock
                   :text "a"
                   :startpos 2
-                  :endpos 2)))))
+                  :endpos 2))
+               :msgblock
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2))))
+              :msgblock
+               (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code "closedelimmissing"
+                  :detail
+                   (delim
+                    :name "delimclose"
+                    :starttext ">")
+                  :severity 2))))
+            :msgblock
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2))))
           :actual
            (textblock
             :text "<a"
@@ -6292,7 +7172,114 @@ ab
                  (textblock
                   :text "a"
                   :startpos 2
-                  :endpos 2)))))))
+                  :endpos 2))
+               :msgblock
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2))))
+              :msgblock
+               (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code "closedelimmissing"
+                  :detail
+                   (delim
+                    :name "delimclose"
+                    :starttext ">")
+                  :severity 2))))
+            :msgblock
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2))))
+          :msgblock
+           (msgblock
+            :msgblocks
+             (msgblocklist
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code "closedelimmissing"
+                  :detail
+                   (delim
+                    :name "delimclose"
+                    :starttext ">")
+                  :severity 2)))
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code "closedelimmissing"
+                  :detail
+                   (delim
+                    :name "delimclose"
+                    :starttext ">")
+                  :severity 2))))))
+        :msgblock
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2))))))))
        (testdescribe
         :describename
          `(test
@@ -11817,7 +12804,133 @@ ab
                     (textblock
                      :text "d"
                      :startpos 11
-                     :endpos 11)))))))))))
+                     :endpos 11)))))))))
+       :msgblock
+        (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2))))))))
+     :msgblock
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code "closedelimmissing"
+                :detail
+                 (delim
+                  :name "delimclose"
+                  :starttext ">")
+                :severity 2)))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code "closedelimmissing"
+                :detail
+                 (delim
+                  :name "delimclose"
+                  :starttext ">")
+                :severity 2)))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2))))))))))
     (testcase
      :passfail true
      :testpkg "vx/data/textblock"
@@ -13794,7 +14907,161 @@ ab
             (textblock
              :text "2")
             (textblock
-             :text "3")))))))
+             :text "3"))))))
+    :msgblock
+     (msgblock
+     :msgblocks
+      (msgblocklist
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))))))))
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2))))))))))))
   :coveragedetail
    (testcoveragedetail
     :constmap
@@ -13895,7 +15162,213 @@ ab
       :tests 1
       :total 4))
   :passfail true
-  :testpkg "vx/data/textblock")
+  :testpkg "vx/data/textblock"
+  :msgblock
+   (msgblock
+    :msgblocks
+     (msgblocklist
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code "closedelimmissing"
+                :detail
+                 (delim
+                  :name "delimclose"
+                  :starttext ">")
+                :severity 2)))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code "closedelimmissing"
+                :detail
+                 (delim
+                  :name "delimclose"
+                  :starttext ">")
+                :severity 2)))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code "closedelimmissing"
+                :detail
+                 (delim
+                  :name "delimclose"
+                  :starttext ">")
+                :severity 2)))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code "closedelimmissing"
+                :detail
+                 (delim
+                  :name "delimclose"
+                  :starttext ">")
+                :severity 2)))))))
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :code "closedelimmissing"
+                      :detail
+                       (delim
+                        :name "delimclose"
+                        :starttext ">")
+                      :severity 2)))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :code "closedelimmissing"
+                      :detail
+                       (delim
+                        :name "delimclose"
+                        :starttext ">")
+                      :severity 2)))))
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :code "closedelimmissing"
+                      :detail
+                       (delim
+                        :name "delimclose"
+                        :starttext ">")
+                      :severity 2)))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :code "closedelimmissing"
+                      :detail
+                       (delim
+                        :name "delimclose"
+                        :starttext ">")
+                      :severity 2)))))))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code "closedelimmissing"
+                   :detail
+                    (delim
+                     :name "delimclose"
+                     :starttext ">")
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :code "closedelimmissing"
+                      :detail
+                       (delim
+                        :name "delimclose"
+                        :starttext ">")
+                      :severity 2)))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :code "closedelimmissing"
+                      :detail
+                       (delim
+                        :name "delimclose"
+                        :starttext ">")
+                      :severity 2)))))
+               (msgblock
+                :msgblocks
+                 (msgblocklist
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :code "closedelimmissing"
+                      :detail
+                       (delim
+                        :name "delimclose"
+                        :starttext ">")
+                      :severity 2)))
+                  (msgblock
+                   :msgs
+                    (msglist
+                     (msg
+                      :code "closedelimmissing"
+                      :detail
+                       (delim
+                        :name "delimclose"
+                        :starttext ">")
+                      :severity 2))))))))))))))
  (testpackage
   :caselist
    (testcaselist
@@ -14090,7 +15563,161 @@ ab
         :testresult
          (testresult
           :code ":eq"
-          :passfail true))))
+          :passfail true
+          :expected
+           (repl
+            :msgblock
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child."))))
+          :actual
+           (repl
+            :msgblock
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child."))))
+          :msgblock
+           (msgblock
+            :msgblocks
+             (msgblocklist
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :severity 2
+                  :text "Empty delim cannot have more than one child.")))
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :severity 2
+                  :text "Empty delim cannot have more than one child."))))))
+        :msgblock
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child."))))))))
+       :msgblock
+        (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child.")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child.")))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child.")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child."))))))))
+     :msgblock
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :severity 2
+                :text "Empty delim cannot have more than one child.")))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :severity 2
+                :text "Empty delim cannot have more than one child.")))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child."))))))))))
     (testcase
      :passfail true
      :testpkg "vx/repl"
@@ -14980,7 +16607,59 @@ ab
           :code ":eq"
           :passfail true
           :expected vx/core/+
-          :actual vx/core/+)))))
+          :actual vx/core/+))))
+    :msgblock
+     (msgblock
+     :msgblocks
+      (msgblocklist
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgs
+            (msglist
+             (msg
+              :severity 2
+              :text "Empty delim cannot have more than one child.")))
+          (msgblock
+           :msgs
+            (msglist
+             (msg
+              :severity 2
+              :text "Empty delim cannot have more than one child.")))))
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child.")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child.")))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child.")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child."))))))))))
   :coveragedetail
    (testcoveragedetail
     :constmap
@@ -15057,7 +16736,77 @@ ab
       :tests 0
       :total 4))
   :passfail true
-  :testpkg "vx/repl")
+  :testpkg "vx/repl"
+  :msgblock
+   (msgblock
+    :msgblocks
+     (msgblocklist
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgs
+           (msglist
+            (msg
+             :severity 2
+             :text "Empty delim cannot have more than one child.")))
+         (msgblock
+          :msgs
+           (msglist
+            (msg
+             :severity 2
+             :text "Empty delim cannot have more than one child.")))))
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :severity 2
+                :text "Empty delim cannot have more than one child.")))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :severity 2
+                :text "Empty delim cannot have more than one child.")))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child.")))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :severity 2
+                   :text "Empty delim cannot have more than one child."))))))))))))
  (testpackage
   :caselist
    (testcaselist
@@ -16086,7 +17835,7 @@ ab
      :endpos 0
      :line 0
      :column 0)
-   :severity 2))
+   :severity msg-error))
  (xml-close<-xml-textblock
   (xml
    :tag "doc")
@@ -16098,10 +17847,130 @@ ab
           :passfail true
           :expected
            (xml
-            :tag "doc")
+            :tag "doc"
+            :msgblock
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2))))
           :actual
            (xml
-            :tag "doc")))
+            :tag "doc"
+            :msgblock
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2))))
+          :msgblock
+           (msgblock
+            :msgblocks
+             (msgblocklist
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code ":invalidxmlclosetag"
+                  :detail
+                   (anymap
+                    :tag "/wrong"
+                    :startpos 0
+                    :endpos 0
+                    :line 0
+                    :column 0)
+                  :severity 2)))
+              (msgblock
+               :msgs
+                (msglist
+                 (msg
+                  :code ":invalidxmlclosetag"
+                  :detail
+                   (anymap
+                    :tag "/wrong"
+                    :startpos 0
+                    :endpos 0
+                    :line 0
+                    :column 0)
+                  :severity 2))))))
+        :msgblock
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2))))))))
        (testdescribe
         :describename
          `(test
@@ -16136,7 +18005,163 @@ ab
             :children
              (xmllist
               (xml
-               :tag "doc")))))))
+               :tag "doc")))))
+       :msgblock
+        (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2)))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2))))))))
+     :msgblock
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code ":invalidxmlclosetag"
+                :detail
+                 (anymap
+                  :tag "/wrong"
+                  :startpos 0
+                  :endpos 0
+                  :line 0
+                  :column 0)
+                :severity 2)))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code ":invalidxmlclosetag"
+                :detail
+                 (anymap
+                  :tag "/wrong"
+                  :startpos 0
+                  :endpos 0
+                  :line 0
+                  :column 0)
+                :severity 2)))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2))))))))))
     (testcase
      :passfail true
      :testpkg "vx/data/xml"
@@ -17130,7 +19155,101 @@ ab
                   :propmap
                    (stringmap
                     :prop1 "val1"
-                    :prop2 "val2")))))))))))
+                    :prop2 "val2"))))))))))
+    :msgblock
+     (msgblock
+     :msgblocks
+      (msgblocklist
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgs
+            (msglist
+             (msg
+              :code ":invalidxmlclosetag"
+              :detail
+               (anymap
+                :tag "/wrong"
+                :startpos 0
+                :endpos 0
+                :line 0
+                :column 0)
+              :severity 2)))
+          (msgblock
+           :msgs
+            (msglist
+             (msg
+              :code ":invalidxmlclosetag"
+              :detail
+               (anymap
+                :tag "/wrong"
+                :startpos 0
+                :endpos 0
+                :line 0
+                :column 0)
+              :severity 2)))))
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2)))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2))))))))))
   :coveragedetail
    (testcoveragedetail
     :constmap
@@ -17200,7 +19319,133 @@ ab
       :tests 0
       :total 3))
   :passfail true
-  :testpkg "vx/data/xml")
+  :testpkg "vx/data/xml"
+  :msgblock
+   (msgblock
+    :msgblocks
+     (msgblocklist
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgs
+           (msglist
+            (msg
+             :code ":invalidxmlclosetag"
+             :detail
+              (anymap
+               :tag "/wrong"
+               :startpos 0
+               :endpos 0
+               :line 0
+               :column 0)
+             :severity 2)))
+         (msgblock
+          :msgs
+           (msglist
+            (msg
+             :code ":invalidxmlclosetag"
+             :detail
+              (anymap
+               :tag "/wrong"
+               :startpos 0
+               :endpos 0
+               :line 0
+               :column 0)
+             :severity 2)))))
+      (msgblock
+       :msgblocks
+        (msgblocklist
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code ":invalidxmlclosetag"
+                :detail
+                 (anymap
+                  :tag "/wrong"
+                  :startpos 0
+                  :endpos 0
+                  :line 0
+                  :column 0)
+                :severity 2)))
+            (msgblock
+             :msgs
+              (msglist
+               (msg
+                :code ":invalidxmlclosetag"
+                :detail
+                 (anymap
+                  :tag "/wrong"
+                  :startpos 0
+                  :endpos 0
+                  :line 0
+                  :column 0)
+                :severity 2)))))
+         (msgblock
+          :msgblocks
+           (msgblocklist
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))))
+            (msgblock
+             :msgblocks
+              (msgblocklist
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2)))
+               (msgblock
+                :msgs
+                 (msglist
+                  (msg
+                   :code ":invalidxmlclosetag"
+                   :detail
+                    (anymap
+                     :tag "/wrong"
+                     :startpos 0
+                     :endpos 0
+                     :line 0
+                     :column 0)
+                   :severity 2))))))))))))
  (testpackage
   :caselist
    (testcaselist
@@ -18732,4 +20977,532 @@ ab
       :tests 0
       :total 0))
   :passfail true
-  :testpkg "vx/translation/all"))
+  :testpkg "vx/translation/all")
+ :msgblock
+  (msgblock
+  :msgblocks
+   (msgblocklist
+    (msgblock
+     :msgblocks
+      (msgblocklist
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :text "Err")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :text "Err")))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :text "Err")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :text "Err")))))))
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :text "Err")))))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgblocks
+                  (msgblocklist
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :text "Err")))
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :text "Err")))))
+                (msgblock
+                 :msgblocks
+                  (msgblocklist
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :text "Err")))
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :text "Err")))))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgblocks
+                  (msgblocklist
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :text "Err")))
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :text "Err")))))
+                (msgblock
+                 :msgblocks
+                  (msgblocklist
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :text "Err")))
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :text "Err")))))))))))))
+    (msgblock
+     :msgblocks
+      (msgblocklist
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code "closedelimmissing"
+                 :detail
+                  (delim
+                   :name "delimclose"
+                   :starttext ">")
+                 :severity 2)))))))
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgblocks
+                  (msgblocklist
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :code "closedelimmissing"
+                       :detail
+                        (delim
+                         :name "delimclose"
+                         :starttext ">")
+                       :severity 2)))
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :code "closedelimmissing"
+                       :detail
+                        (delim
+                         :name "delimclose"
+                         :starttext ">")
+                       :severity 2)))))
+                (msgblock
+                 :msgblocks
+                  (msgblocklist
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :code "closedelimmissing"
+                       :detail
+                        (delim
+                         :name "delimclose"
+                         :starttext ">")
+                       :severity 2)))
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :code "closedelimmissing"
+                       :detail
+                        (delim
+                         :name "delimclose"
+                         :starttext ">")
+                       :severity 2)))))))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code "closedelimmissing"
+                    :detail
+                     (delim
+                      :name "delimclose"
+                      :starttext ">")
+                    :severity 2)))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgblocks
+                  (msgblocklist
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :code "closedelimmissing"
+                       :detail
+                        (delim
+                         :name "delimclose"
+                         :starttext ">")
+                       :severity 2)))
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :code "closedelimmissing"
+                       :detail
+                        (delim
+                         :name "delimclose"
+                         :starttext ">")
+                       :severity 2)))))
+                (msgblock
+                 :msgblocks
+                  (msgblocklist
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :code "closedelimmissing"
+                       :detail
+                        (delim
+                         :name "delimclose"
+                         :starttext ">")
+                       :severity 2)))
+                   (msgblock
+                    :msgs
+                     (msglist
+                      (msg
+                       :code "closedelimmissing"
+                       :detail
+                        (delim
+                         :name "delimclose"
+                         :starttext ">")
+                       :severity 2)))))))))))))
+    (msgblock
+     :msgblocks
+      (msgblocklist
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgs
+            (msglist
+             (msg
+              :severity 2
+              :text "Empty delim cannot have more than one child.")))
+          (msgblock
+           :msgs
+            (msglist
+             (msg
+              :severity 2
+              :text "Empty delim cannot have more than one child.")))))
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child.")))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :severity 2
+                 :text "Empty delim cannot have more than one child.")))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :severity 2
+                    :text "Empty delim cannot have more than one child.")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :severity 2
+                    :text "Empty delim cannot have more than one child.")))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :severity 2
+                    :text "Empty delim cannot have more than one child.")))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :severity 2
+                    :text "Empty delim cannot have more than one child.")))))))))))
+    (msgblock
+     :msgblocks
+      (msgblocklist
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgs
+            (msglist
+             (msg
+              :code ":invalidxmlclosetag"
+              :detail
+               (anymap
+                :tag "/wrong"
+                :startpos 0
+                :endpos 0
+                :line 0
+                :column 0)
+              :severity 2)))
+          (msgblock
+           :msgs
+            (msglist
+             (msg
+              :code ":invalidxmlclosetag"
+              :detail
+               (anymap
+                :tag "/wrong"
+                :startpos 0
+                :endpos 0
+                :line 0
+                :column 0)
+              :severity 2)))))
+       (msgblock
+        :msgblocks
+         (msgblocklist
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2)))
+             (msgblock
+              :msgs
+               (msglist
+                (msg
+                 :code ":invalidxmlclosetag"
+                 :detail
+                  (anymap
+                   :tag "/wrong"
+                   :startpos 0
+                   :endpos 0
+                   :line 0
+                   :column 0)
+                 :severity 2)))))
+          (msgblock
+           :msgblocks
+            (msgblocklist
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code ":invalidxmlclosetag"
+                    :detail
+                     (anymap
+                      :tag "/wrong"
+                      :startpos 0
+                      :endpos 0
+                      :line 0
+                      :column 0)
+                    :severity 2)))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code ":invalidxmlclosetag"
+                    :detail
+                     (anymap
+                      :tag "/wrong"
+                      :startpos 0
+                      :endpos 0
+                      :line 0
+                      :column 0)
+                    :severity 2)))))
+             (msgblock
+              :msgblocks
+               (msgblocklist
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code ":invalidxmlclosetag"
+                    :detail
+                     (anymap
+                      :tag "/wrong"
+                      :startpos 0
+                      :endpos 0
+                      :line 0
+                      :column 0)
+                    :severity 2)))
+                (msgblock
+                 :msgs
+                  (msglist
+                   (msg
+                    :code ":invalidxmlclosetag"
+                    :detail
+                     (anymap
+                      :tag "/wrong"
+                      :startpos 0
+                      :endpos 0
+                      :line 0
+                      :column 0)
+                    :severity 2))))))))))))))

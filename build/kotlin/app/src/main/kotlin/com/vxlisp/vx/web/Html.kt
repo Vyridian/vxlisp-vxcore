@@ -42,7 +42,7 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -131,7 +131,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_divchildlist) {
               var valnodes : vx_web_html.Type_divchildlist = valsub as vx_web_html.Type_divchildlist
@@ -297,19 +297,19 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":summary")) {
+      } else if ((skey == ":summary")) {
         output = this.summary()
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -402,7 +402,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -426,7 +426,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -447,7 +447,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -468,7 +468,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -489,7 +489,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -510,7 +510,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":summary")) {
+          } else if ((key == ":summary")) {
             if (valsub == vx_p_summary) {
             } else if (valsub is vx_web_html.Type_divchildlist) {
               var valsummary : vx_web_html.Type_divchildlist = valsub as vx_web_html.Type_divchildlist
@@ -531,7 +531,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_divchildlist) {
               var valnodes : vx_web_html.Type_divchildlist = valsub as vx_web_html.Type_divchildlist
@@ -691,17 +691,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -805,7 +805,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -829,7 +829,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -850,7 +850,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -871,7 +871,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -892,7 +892,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -913,7 +913,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_divchildlist) {
               var valnodes : vx_web_html.Type_divchildlist = valsub as vx_web_html.Type_divchildlist
@@ -1141,8 +1141,9 @@ object vx_web_html {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_web_html.Type_divchild) {
+          var subitem : vx_web_html.Type_divchild = valsub as vx_web_html.Type_divchild
           ischanged = true
-          listval.add(valsub as vx_web_html.Type_divchild)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -1279,8 +1280,9 @@ object vx_web_html {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_web_html.Type_div) {
+          var subitem : vx_web_html.Type_div = valsub as vx_web_html.Type_div
           ischanged = true
-          listval.add(valsub as vx_web_html.Type_div)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -1370,7 +1372,7 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -1459,7 +1461,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_divchildlist) {
               var valnodes : vx_web_html.Type_divchildlist = valsub as vx_web_html.Type_divchildlist
@@ -1613,17 +1615,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text()
       }
       return output
@@ -1723,7 +1725,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1747,7 +1749,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -1768,7 +1770,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -1789,7 +1791,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -1810,7 +1812,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -1831,7 +1833,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is vx_core.Type_string) {
               var valtext : vx_core.Type_string = valsub as vx_core.Type_string
@@ -1993,17 +1995,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text()
       }
       return output
@@ -2103,7 +2105,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2127,7 +2129,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -2148,7 +2150,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -2169,7 +2171,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -2190,7 +2192,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -2211,7 +2213,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is vx_core.Type_string) {
               var valtext : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2373,17 +2375,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text()
       }
       return output
@@ -2483,7 +2485,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2507,7 +2509,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -2528,7 +2530,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -2549,7 +2551,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -2570,7 +2572,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -2591,7 +2593,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is vx_core.Type_string) {
               var valtext : vx_core.Type_string = valsub as vx_core.Type_string
@@ -2698,7 +2700,7 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -2787,7 +2789,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_headchildlist) {
               var valnodes : vx_web_html.Type_headchildlist = valsub as vx_web_html.Type_headchildlist
@@ -3010,8 +3012,9 @@ object vx_web_html {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_web_html.Type_headchild) {
+          var subitem : vx_web_html.Type_headchild = valsub as vx_web_html.Type_headchild
           ischanged = true
-          listval.add(valsub as vx_web_html.Type_headchild)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -3137,13 +3140,13 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":lang")) {
+      } else if ((skey == ":lang")) {
         output = this.lang()
-      } else if ((skey==":head")) {
+      } else if ((skey == ":head")) {
         output = this.head()
-      } else if ((skey==":body")) {
+      } else if ((skey == ":body")) {
         output = this.body()
-      } else if ((skey==":footer")) {
+      } else if ((skey == ":footer")) {
         output = this.footer()
       }
       return output
@@ -3227,7 +3230,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":lang")) {
+          } else if ((key == ":lang")) {
             if (valsub == vx_p_lang) {
             } else if (valsub is vx_core.Type_string) {
               var vallang : vx_core.Type_string = valsub as vx_core.Type_string
@@ -3251,7 +3254,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":head")) {
+          } else if ((key == ":head")) {
             if (valsub == vx_p_head) {
             } else if (valsub is vx_web_html.Type_head) {
               var valhead : vx_web_html.Type_head = valsub as vx_web_html.Type_head
@@ -3272,7 +3275,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":body")) {
+          } else if ((key == ":body")) {
             if (valsub == vx_p_body) {
             } else if (valsub is vx_web_html.Type_body) {
               var valbody : vx_web_html.Type_body = valsub as vx_web_html.Type_body
@@ -3293,7 +3296,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":footer")) {
+          } else if ((key == ":footer")) {
             if (valsub == vx_p_footer) {
             } else if (valsub is vx_web_html.Type_footer) {
               var valfooter : vx_web_html.Type_footer = valsub as vx_web_html.Type_footer
@@ -3450,17 +3453,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":src")) {
+      } else if ((skey == ":src")) {
         output = this.src()
       }
       return output
@@ -3560,7 +3563,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -3584,7 +3587,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -3605,7 +3608,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -3626,7 +3629,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -3647,7 +3650,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -3668,7 +3671,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":src")) {
+          } else if ((key == ":src")) {
             if (valsub == vx_p_src) {
             } else if (valsub is vx_core.Type_string) {
               var valsrc : vx_core.Type_string = valsub as vx_core.Type_string
@@ -3854,21 +3857,21 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":charset")) {
+      } else if ((skey == ":charset")) {
         output = this.charset()
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":content")) {
+      } else if ((skey == ":content")) {
         output = this.content()
       }
       return output
@@ -3964,7 +3967,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -3988,7 +3991,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -4009,7 +4012,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -4030,7 +4033,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -4051,7 +4054,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -4072,7 +4075,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":charset")) {
+          } else if ((key == ":charset")) {
             if (valsub == vx_p_charset) {
             } else if (valsub is vx_core.Type_string) {
               var valcharset : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4096,7 +4099,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4120,7 +4123,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":content")) {
+          } else if ((key == ":content")) {
             if (valsub == vx_p_content) {
             } else if (valsub is vx_core.Type_string) {
               var valcontent : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4277,15 +4280,15 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
       }
       return output
@@ -4372,7 +4375,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4396,7 +4399,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -4417,7 +4420,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -4438,7 +4441,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -4459,7 +4462,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -4609,8 +4612,9 @@ object vx_web_html {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_web_html.Type_node) {
+          var subitem : vx_web_html.Type_node = valsub as vx_web_html.Type_node
           ischanged = true
-          listval.add(valsub as vx_web_html.Type_node)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -4755,17 +4759,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text()
       }
       return output
@@ -4865,7 +4869,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -4889,7 +4893,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -4910,7 +4914,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -4931,7 +4935,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -4952,7 +4956,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -4973,7 +4977,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is vx_core.Type_string) {
               var valtext : vx_core.Type_string = valsub as vx_core.Type_string
@@ -5305,11 +5309,11 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":props")) {
+      } else if ((skey == ":props")) {
         output = this.props()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
       }
       return output
@@ -5390,7 +5394,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -5414,7 +5418,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":props")) {
+          } else if ((key == ":props")) {
             if (valsub == vx_p_props) {
             } else if (valsub is vx_web_html.Type_propmap) {
               var valprops : vx_web_html.Type_propmap = valsub as vx_web_html.Type_propmap
@@ -5435,7 +5439,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -5583,8 +5587,9 @@ object vx_web_html {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_web_html.Type_style) {
+          var subitem : vx_web_html.Type_style = valsub as vx_web_html.Type_style
           ischanged = true
-          listval.add(valsub as vx_web_html.Type_style)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -5954,21 +5959,21 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":styles")) {
+      } else if ((skey == ":styles")) {
         output = this.styles()
-      } else if ((skey==":stylemap")) {
+      } else if ((skey == ":stylemap")) {
         output = this.stylemap()
       }
       return output
@@ -6064,7 +6069,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -6088,7 +6093,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -6109,7 +6114,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -6130,7 +6135,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -6151,7 +6156,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -6172,7 +6177,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -6196,7 +6201,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":styles")) {
+          } else if ((key == ":styles")) {
             if (valsub == vx_p_styles) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstyles : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -6217,7 +6222,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylemap")) {
+          } else if ((key == ":stylemap")) {
             if (valsub == vx_p_stylemap) {
             } else if (valsub is vx_web_html.Type_stylemap) {
               var valstylemap : vx_web_html.Type_stylemap = valsub as vx_web_html.Type_stylemap
@@ -6390,19 +6395,19 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":tbody")) {
+      } else if ((skey == ":tbody")) {
         output = this.tbody()
-      } else if ((skey==":thead")) {
+      } else if ((skey == ":thead")) {
         output = this.thead()
       }
       return output
@@ -6495,7 +6500,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -6519,7 +6524,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -6540,7 +6545,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -6561,7 +6566,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -6582,7 +6587,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -6603,7 +6608,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":tbody")) {
+          } else if ((key == ":tbody")) {
             if (valsub == vx_p_tbody) {
             } else if (valsub is vx_web_html.Type_tbody) {
               var valtbody : vx_web_html.Type_tbody = valsub as vx_web_html.Type_tbody
@@ -6624,7 +6629,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":thead")) {
+          } else if ((key == ":thead")) {
             if (valsub == vx_p_thead) {
             } else if (valsub is vx_web_html.Type_thead) {
               var valthead : vx_web_html.Type_thead = valsub as vx_web_html.Type_thead
@@ -6784,17 +6789,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -6898,7 +6903,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -6922,7 +6927,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -6943,7 +6948,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -6964,7 +6969,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -6985,7 +6990,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -7006,7 +7011,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_trlist) {
               var valnodes : vx_web_html.Type_trlist = valsub as vx_web_html.Type_trlist
@@ -7165,17 +7170,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -7279,7 +7284,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -7303,7 +7308,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -7324,7 +7329,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -7345,7 +7350,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -7366,7 +7371,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -7387,7 +7392,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_divchildlist) {
               var valnodes : vx_web_html.Type_divchildlist = valsub as vx_web_html.Type_divchildlist
@@ -7538,8 +7543,9 @@ object vx_web_html {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_web_html.Type_td) {
+          var subitem : vx_web_html.Type_td = valsub as vx_web_html.Type_td
           ischanged = true
-          listval.add(valsub as vx_web_html.Type_td)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {
@@ -7684,17 +7690,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -7798,7 +7804,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -7822,7 +7828,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -7843,7 +7849,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -7864,7 +7870,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -7885,7 +7891,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -7906,7 +7912,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_trlist) {
               var valnodes : vx_web_html.Type_trlist = valsub as vx_web_html.Type_trlist
@@ -8065,17 +8071,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":text")) {
+      } else if ((skey == ":text")) {
         output = this.text()
       }
       return output
@@ -8165,7 +8171,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -8189,7 +8195,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -8210,7 +8216,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -8231,7 +8237,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -8252,7 +8258,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -8273,7 +8279,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":text")) {
+          } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
             } else if (valsub is vx_core.Type_string) {
               var valtext : vx_core.Type_string = valsub as vx_core.Type_string
@@ -8435,17 +8441,17 @@ object vx_web_html {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":id")) {
+      } else if ((skey == ":id")) {
         output = this.id()
-      } else if ((skey==":eventmap")) {
+      } else if ((skey == ":eventmap")) {
         output = this.eventmap()
-      } else if ((skey==":style")) {
+      } else if ((skey == ":style")) {
         output = this.style()
-      } else if ((skey==":style-unique")) {
+      } else if ((skey == ":style-unique")) {
         output = this.style_unique()
-      } else if ((skey==":stylelist")) {
+      } else if ((skey == ":stylelist")) {
         output = this.stylelist()
-      } else if ((skey==":nodes")) {
+      } else if ((skey == ":nodes")) {
         output = this.nodes()
       }
       return output
@@ -8549,7 +8555,7 @@ object vx_web_html {
           }
         } else {
           if (false) {
-          } else if ((key==":id")) {
+          } else if ((key == ":id")) {
             if (valsub == vx_p_id) {
             } else if (valsub is vx_core.Type_string) {
               var valid : vx_core.Type_string = valsub as vx_core.Type_string
@@ -8573,7 +8579,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":eventmap")) {
+          } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
             } else if (valsub is vx_event.Type_eventmap) {
               var valeventmap : vx_event.Type_eventmap = valsub as vx_event.Type_eventmap
@@ -8594,7 +8600,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style")) {
+          } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -8615,7 +8621,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":style-unique")) {
+          } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
             } else if (valsub is vx_web_html.Type_style) {
               var valstyle_unique : vx_web_html.Type_style = valsub as vx_web_html.Type_style
@@ -8636,7 +8642,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":stylelist")) {
+          } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
             } else if (valsub is vx_web_html.Type_stylelist) {
               var valstylelist : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
@@ -8657,7 +8663,7 @@ object vx_web_html {
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":nodes")) {
+          } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
             } else if (valsub is vx_web_html.Type_tdlist) {
               var valnodes : vx_web_html.Type_tdlist = valsub as vx_web_html.Type_tdlist
@@ -8808,8 +8814,9 @@ object vx_web_html {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_web_html.Type_tr) {
+          var subitem : vx_web_html.Type_tr = valsub as vx_web_html.Type_tr
           ischanged = true
-          listval.add(valsub as vx_web_html.Type_tr)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {

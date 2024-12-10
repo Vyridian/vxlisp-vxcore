@@ -102,7 +102,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_session_from_session_name::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_session_from_session_name::vx_dispose() {
@@ -215,7 +219,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_session_from_session_translation::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_session_from_session_translation::vx_dispose() {
@@ -331,7 +339,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_session_from_session_translationmap_name::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_session_from_session_translationmap_name::vx_dispose() {
@@ -458,7 +470,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_translate_1::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translate_1::vx_dispose() {
@@ -578,7 +594,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_translate::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translate::vx_dispose() {
@@ -717,7 +737,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_translate_from_translation_string::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translate_from_translation_string::vx_dispose() {
@@ -833,7 +857,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_translate_from_translationmap_name_string::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translate_from_translationmap_name_string::vx_dispose() {
@@ -938,7 +966,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_translation_load_session::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translation_load_session::vx_dispose() {
@@ -1056,7 +1088,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_translation_from_context::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translation_from_context::vx_dispose() {
@@ -1170,7 +1206,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_translation_from_session_name::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translation_from_session_name::vx_dispose() {
@@ -1284,7 +1324,11 @@ namespace vx_translate {
     }
 
     vx_core::Type_msgblock Class_translationmap_from_translations::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_translationmap_from_translations::vx_dispose() {

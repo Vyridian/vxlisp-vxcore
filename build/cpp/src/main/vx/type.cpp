@@ -230,7 +230,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_allowtypenames_from_type::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_allowtypenames_from_type::vx_dispose() {
@@ -350,7 +354,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_allowtypes_from_type::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_allowtypes_from_type::vx_dispose() {
@@ -457,7 +465,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_any_from_int::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_any_from_int::vx_dispose() {
@@ -576,7 +588,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_boolean_from_string_ends::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_from_string_ends::vx_dispose() {
@@ -683,7 +699,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_boolean_from_string_starts::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_boolean_from_string_starts::vx_dispose() {
@@ -789,7 +809,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_int_from_string_find::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_int_from_string_find::vx_dispose() {
@@ -895,7 +919,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_int_from_string_findkeyword::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_int_from_string_findkeyword::vx_dispose() {
@@ -1001,7 +1029,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_int_from_string_findlast::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_int_from_string_findlast::vx_dispose() {
@@ -1108,7 +1140,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_is_boolean::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_is_boolean::vx_dispose() {
@@ -1226,7 +1262,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_is_decimal::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_is_decimal::vx_dispose() {
@@ -1344,7 +1384,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_is_none::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_is_none::vx_dispose() {
@@ -1462,7 +1506,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_is_string::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_is_string::vx_dispose() {
@@ -1593,7 +1641,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_is_type::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_is_type::vx_dispose() {
@@ -1712,7 +1764,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_is_type_from_any_typelist::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_is_type_from_any_typelist::vx_dispose() {
@@ -1817,7 +1873,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_lowercase::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_lowercase::vx_dispose() {
@@ -1985,7 +2045,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_outdent::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_outdent::vx_dispose() {
@@ -2101,7 +2165,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_trim::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_trim::vx_dispose() {
@@ -2217,7 +2285,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_uppercase::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_uppercase::vx_dispose() {
@@ -2366,7 +2438,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_from_int::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_from_int::vx_dispose() {
@@ -2483,7 +2559,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_from_string_end::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_from_string_end::vx_dispose() {
@@ -2593,7 +2673,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_from_string_start::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_from_string_start::vx_dispose() {
@@ -2701,7 +2785,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_from_string_start_end::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_from_string_start_end::vx_dispose() {
@@ -2808,7 +2896,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_string_from_stringlist_join::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_string_from_stringlist_join::vx_dispose() {
@@ -2914,7 +3006,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_stringlist_from_string_split::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_stringlist_from_string_split::vx_dispose() {
@@ -3021,7 +3117,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_traitnames_from_any::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_traitnames_from_any::vx_dispose() {
@@ -3139,7 +3239,11 @@ namespace vx_type {
     }
 
     vx_core::Type_msgblock Class_traits_from_any::vx_msgblock() const {
-      return this->vx_p_msgblock;
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
     }
 
     vx_core::vx_Type_listany Class_traits_from_any::vx_dispose() {

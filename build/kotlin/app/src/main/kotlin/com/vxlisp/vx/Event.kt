@@ -92,17 +92,17 @@ object vx_event {
       var output : vx_core.Type_any = vx_core.e_any
       var skey : String = key.vx_string()
       if (false) {
-      } else if ((skey==":name")) {
+      } else if ((skey == ":name")) {
         output = this.name()
-      } else if ((skey==":from")) {
+      } else if ((skey == ":from")) {
         output = this.from()
-      } else if ((skey==":to")) {
+      } else if ((skey == ":to")) {
         output = this.to()
-      } else if ((skey==":datamap")) {
+      } else if ((skey == ":datamap")) {
         output = this.datamap()
-      } else if ((skey==":event<-event")) {
+      } else if ((skey == ":event<-event")) {
         output = this.event_from_event()
-      } else if ((skey==":event<-event-async")) {
+      } else if ((skey == ":event<-event-async")) {
         output = this.event_from_event_async()
       }
       return output
@@ -192,7 +192,7 @@ object vx_event {
           }
         } else {
           if (false) {
-          } else if ((key==":name")) {
+          } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
             } else if (valsub is vx_core.Type_string) {
               var valname : vx_core.Type_string = valsub as vx_core.Type_string
@@ -216,7 +216,7 @@ object vx_event {
               msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":from")) {
+          } else if ((key == ":from")) {
             if (valsub == vx_p_from) {
             } else if (valsub is vx_core.Type_string) {
               var valfrom : vx_core.Type_string = valsub as vx_core.Type_string
@@ -240,7 +240,7 @@ object vx_event {
               msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":to")) {
+          } else if ((key == ":to")) {
             if (valsub == vx_p_to) {
             } else if (valsub is vx_core.Type_string) {
               var valto : vx_core.Type_string = valsub as vx_core.Type_string
@@ -264,7 +264,7 @@ object vx_event {
               msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":datamap")) {
+          } else if ((key == ":datamap")) {
             if (valsub == vx_p_datamap) {
             } else if (valsub is vx_core.Type_anymap) {
               var valdatamap : vx_core.Type_anymap = valsub as vx_core.Type_anymap
@@ -285,7 +285,7 @@ object vx_event {
               msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":event<-event")) {
+          } else if ((key == ":event<-event")) {
             if (valsub == vx_p_event_from_event) {
             } else if (valsub is vx_event.Func_event_from_event) {
               var valevent_from_event : vx_event.Func_event_from_event = valsub as vx_event.Func_event_from_event
@@ -306,7 +306,7 @@ object vx_event {
               msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
-          } else if ((key==":event<-event-async")) {
+          } else if ((key == ":event<-event-async")) {
             if (valsub == vx_p_event_from_event_async) {
             } else if (valsub is vx_event.Func_event_from_event_async) {
               var valevent_from_event_async : vx_event.Func_event_from_event_async = valsub as vx_event.Func_event_from_event_async
@@ -457,8 +457,9 @@ object vx_event {
           ischanged = true
           listval.add(allowsub)
         } else if (valsub is vx_event.Type_event) {
+          var subitem : vx_event.Type_event = valsub as vx_event.Type_event
           ischanged = true
-          listval.add(valsub as vx_event.Type_event)
+          listval.add(subitem)
         } else if (valsub is List<*>) {
           var listunknown : List<Any> = valsub as List<Any>
           for (item : Any in listunknown) {

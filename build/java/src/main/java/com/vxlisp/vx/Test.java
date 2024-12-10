@@ -400,8 +400,9 @@ public final class Test {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Test.Type_testcase) {
+          Test.Type_testcase subitem = (Test.Type_testcase)valsub;
           ischanged = true;
-          listval.add((Test.Type_testcase)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -1894,8 +1895,9 @@ public final class Test {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Test.Type_testdescribe) {
+          Test.Type_testdescribe subitem = (Test.Type_testdescribe)valsub;
           ischanged = true;
-          listval.add((Test.Type_testdescribe)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -2387,8 +2389,9 @@ public final class Test {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Test.Type_testpackage) {
+          Test.Type_testpackage subitem = (Test.Type_testpackage)valsub;
           ischanged = true;
-          listval.add((Test.Type_testpackage)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {
@@ -2880,8 +2883,9 @@ public final class Test {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Test.Type_testresult) {
+          Test.Type_testresult subitem = (Test.Type_testresult)valsub;
           ischanged = true;
-          listval.add((Test.Type_testresult)valsub);
+          listval.add(subitem);
         } else if (valsub instanceof List<?>) {
           List<?> listunknown = (List<?>)valsub;
           for (Object item : listunknown) {

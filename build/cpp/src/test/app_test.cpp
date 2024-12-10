@@ -33,7 +33,8 @@
  * Unit test for whole App.
  */
 
-vx_test::Type_testpackagelist testsuite(vx_core::Type_context context) {
+vx_test::Type_testpackagelist testsuite(
+  vx_core::Type_context context) {
   vx_test::Type_testpackagelist output = vx_core::vx_new(vx_test::t_testpackagelist, {
     vx_core_test::test_package(context),
     vx_data_table_test::test_package(context),
@@ -63,11 +64,14 @@ vx_test::Type_testpackagelist testsuite(vx_core::Type_context context) {
   return output;
 }
 
-int main(int iarglen, char* arrayarg[]) {
+int main(
+  int iarglen,
+		char* arrayarg[]) {
   int output = 0;
   try {
     vx_core::vx_log("Test Start");
-    vx_core::Type_anylist arglist = vx_core::vx_anylist_from_arraystring(iarglen, arrayarg, true);
+    vx_core::Type_anylist arglist = vx_core::vx_anylist_from_arraystring(
+				  iarglen, arrayarg, true);
 				vx_core::vx_reserve(arglist);
     vx_core::Type_context context = vx_translation_en::f_context_test(arglist);
     vx_core::vx_reserve_context(context);
@@ -113,7 +117,7 @@ int main(int iarglen, char* arrayarg[]) {
     test_lib::test_write_html(context);
     test_lib::test_write_testpackagelist_async(context);
 
-		  vx_core::vx_release_one(arglist); +
+		  vx_core::vx_release_one(arglist);
   		test_lib::test_run_all(context, testsuite(context));
     vx_core::vx_memory_leak_test();
     vx_core::vx_log("Test End");
