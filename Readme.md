@@ -37,3 +37,24 @@
 * ./batches/runbuildkotlin - This command builds kotlin source and test files.
 
 * ./batches/runwebserver - This command runs the development webserver to server docs and test suite output.
+
+# Language Specific Tools
+
+## C++
+* g++ and make - https://code.visualstudio.com/docs/cpp/config-mingw
+* Note: The make files don't make the deps and build folders, so they currently need to be made manually.
+
+## C#
+* dotnet sdk
+
+## Java
+* jdk
+* junit
+* gradle
+* maven
+
+## Kotlin
+* jdk
+* junit
+* gradle
+* maven

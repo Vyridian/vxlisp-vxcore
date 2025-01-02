@@ -2,11 +2,11 @@
 .build
 .gradle
 bin
-deps
 gradle
 obj
 Sources
 
 # Ignore Gradle build output directory
-build/*/build
-build/*/*/build
+build/java/build
+build/kotlin/build
+build/kotlin/app/build
