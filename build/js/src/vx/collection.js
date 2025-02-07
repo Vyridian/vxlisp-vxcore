@@ -172,8 +172,10 @@ export default class vx_collection {
       const values = []
       for (const key of keys) {
         const value = map[key]
-        values.push(key)
-        values.push(value)
+        if (value != undefined) {
+          values.push(key)
+          values.push(value)           
+        }
       }
       output = vx_core.f_new_from_type(generic_map_1, ...values)
     }
