@@ -540,12 +540,12 @@ object vx_ui_uiTest {
     var output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/ui/ui", 
-      ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 47), 
-      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 65, ":tests", 95, ":total", 144), 
+      ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 50), 
+      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 64, ":tests", 95, ":total", 147), 
       ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 10, ":tests", 7, ":total", 68), 
       ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 68), 
       ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 68), 
-      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 4, ":tests", 7, ":total", 144), 
+      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 4, ":tests", 7, ":total", 147), 
       ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 29)
     )
     return output
@@ -630,6 +630,9 @@ object vx_ui_uiTest {
         ":point-center", 0,
         ":point-lefttop", 0,
         ":point-rightbottom", 0,
+        ":point-rotate-180", 0,
+        ":point-rotate-270", 0,
+        ":point-rotate-90", 0,
         ":pointtype-absolute", 0,
         ":pointtype-percent", 0,
         ":pointtype-relative", 0,

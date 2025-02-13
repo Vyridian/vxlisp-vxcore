@@ -537,12 +537,12 @@ public class UiTest {
     Vx.Test.Type_testcoveragesummary output = Vx.Core.vx_new(
       Vx.Test.t_testcoveragesummary,
       ":testpkg", "vx/ui/ui", 
-      ":constnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 47), 
-      ":docnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 65, ":tests", 95, ":total", 144), 
+      ":constnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 50), 
+      ":docnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 64, ":tests", 95, ":total", 147), 
       ":funcnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 10, ":tests", 7, ":total", 68), 
       ":bigospacenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 68), 
       ":bigotimenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 68), 
-      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 4, ":tests", 7, ":total", 144), 
+      ":totalnums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 4, ":tests", 7, ":total", 147), 
       ":typenums", Vx.Core.vx_new(Vx.Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 29)
     );
     return output;
@@ -627,6 +627,9 @@ public class UiTest {
         ":point-center", 0,
         ":point-lefttop", 0,
         ":point-rightbottom", 0,
+        ":point-rotate-180", 0,
+        ":point-rotate-270", 0,
+        ":point-rotate-90", 0,
         ":pointtype-absolute", 0,
         ":pointtype-percent", 0,
         ":pointtype-relative", 0,

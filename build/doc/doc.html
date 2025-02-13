@@ -2296,6 +2296,15 @@
           <li class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rightbottom')">
             (c) point-rightbottom
           </li>
+          <li class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-90')">
+            (c) point-rotate-90
+          </li>
+          <li class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-180')">
+            (c) point-rotate-180
+          </li>
+          <li class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-270')">
+            (c) point-rotate-270
+          </li>
           <li class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pointtype-absolute')">
             (c) pointtype-absolute
           </li>
@@ -3365,37 +3374,38 @@
 
 (type any-async&lt;-func : func
  :allowfuncs [any&lt;-func any&lt;-func-async]
- :doc        &quot;A sync or async function that returns one value.&quot;)
+ :doc &quot;A sync or async function that returns one value.&quot;)
 
 (type any&lt;-anylist : list
  :allowfuncs [any&lt;-any]
- :doc        &quot;List of any&lt;-any&quot;)
+ :doc &quot;List of any&lt;-any&quot;)
 
 (type anylist : list
  :allowtypes [any]
- :doc        &quot;A list of any&quot;)
+ :doc &quot;A list of any&quot;)
 
 (type anymap : map
  :allowtypes [any]
- :doc        &quot;A map of any&quot;)
+ :doc &quot;A map of any&quot;)
 
 (type anytype : type
- :doc     &quot;Any Type that allows any Type as a Value&quot;)
+ :doc &quot;Any Type that allows any Type as a Value&quot;)
 
 (type arg : struct
- :properties [name    : string
-              argtype : any
-              fn-any  : any&lt;-func
-              doc     : string]
- :doc        &quot;A function argument&quot;)
+ :properties
+  [name    : string
+   argtype : any
+   fn-any  : any&lt;-func
+   doc     : string]
+ :doc &quot;A function argument&quot;)
 
 (type arglist : list
  :allowtypes [arg]
- :doc        &quot;A list of arg&quot;)
+ :doc &quot;A list of arg&quot;)
 
 (type argmap : map
  :allowtypes [arg]
- :doc        &quot;A map of arg&quot;)
+ :doc &quot;A map of arg&quot;)
 
 (type boolean
  :default     false
@@ -7169,7 +7179,7 @@
                 <li>
                   <div class="source">(type any-async&lt;-func : func
  :allowfuncs [any&lt;-func any&lt;-func-async]
- :doc        &quot;A sync or async function that returns one value.&quot;)</div>
+ :doc &quot;A sync or async function that returns one value.&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -7221,7 +7231,7 @@
                 <li>
                   <div class="source">(type any&lt;-anylist : list
  :allowfuncs [any&lt;-any]
- :doc        &quot;List of any&lt;-any&quot;)</div>
+ :doc &quot;List of any&lt;-any&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -7273,7 +7283,7 @@
                 <li>
                   <div class="source">(type anylist : list
  :allowtypes [any]
- :doc        &quot;A list of any&quot;)</div>
+ :doc &quot;A list of any&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -7325,7 +7335,7 @@
                 <li>
                   <div class="source">(type anymap : map
  :allowtypes [any]
- :doc        &quot;A map of any&quot;)</div>
+ :doc &quot;A map of any&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -7370,7 +7380,7 @@
               <ul>
                 <li>
                   <div class="source">(type anytype : type
- :doc     &quot;Any Type that allows any Type as a Value&quot;)</div>
+ :doc &quot;Any Type that allows any Type as a Value&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -7461,11 +7471,12 @@
               <ul>
                 <li>
                   <div class="source">(type arg : struct
- :properties [name    : string
-              argtype : any
-              fn-any  : any&lt;-func
-              doc     : string]
- :doc        &quot;A function argument&quot;)</div>
+ :properties
+  [name    : string
+   argtype : any
+   fn-any  : any&lt;-func
+   doc     : string]
+ :doc &quot;A function argument&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -7517,7 +7528,7 @@
                 <li>
                   <div class="source">(type arglist : list
  :allowtypes [arg]
- :doc        &quot;A list of arg&quot;)</div>
+ :doc &quot;A list of arg&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -7569,7 +7580,7 @@
                 <li>
                   <div class="source">(type argmap : map
  :allowtypes [arg]
- :doc        &quot;A map of arg&quot;)</div>
+ :doc &quot;A map of arg&quot;)</div>
                 </li>
               </ul>
             </details>
@@ -74310,7 +74321,7 @@ output : list-1 := (empty list-1)
           </summary>
           <ul>
             <li>
-      <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/align-center')">align-center</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/align-left')">align-left</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/align-right')">align-right</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/flip-x')">flip-x</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/flip-y')">flip-y</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/flip-xy')">flip-xy</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-app')">layout-app</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-background')">layout-background</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-button')">layout-button</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-combobox')">layout-combobox</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-else')">layout-else</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-flow-columns')">layout-flow-columns</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-flow-item')">layout-flow-item</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-flow-rows')">layout-flow-rows</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-image')">layout-image</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-label')">layout-label</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-main')">layout-main</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-maxpanel')">layout-maxpanel</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-menubar')">layout-menubar</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-menudrawer')">layout-menudrawer</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-msgbox')">layout-msgbox</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-navbar')">layout-navbar</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-navdrawer')">layout-navdrawer</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-panel')">layout-panel</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-parallax')">layout-parallax</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-statusbar')">layout-statusbar</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-statusdrawer')">layout-statusdrawer</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-text')">layout-text</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-textentry')">layout-textentry</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-titlebar')">layout-titlebar</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-bottom')">pin-bottom</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-center')">pin-center</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-center-h')">pin-center-h</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-center-v')">pin-center-v</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-expand')">pin-expand</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-left')">pin-left</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-right')">pin-right</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-top')">pin-top</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-center')">point-center</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-lefttop')">point-lefttop</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rightbottom')">point-rightbottom</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pointtype-absolute')">pointtype-absolute</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pointtype-relative')">pointtype-relative</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pointtype-percent')">pointtype-percent</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/styletype-custom')">styletype-custom</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/styletype-shared')">styletype-shared</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/styletype-system')">styletype-system</span>
+      <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/align-center')">align-center</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/align-left')">align-left</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/align-right')">align-right</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/flip-x')">flip-x</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/flip-y')">flip-y</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/flip-xy')">flip-xy</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-app')">layout-app</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-background')">layout-background</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-button')">layout-button</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-combobox')">layout-combobox</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-else')">layout-else</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-flow-columns')">layout-flow-columns</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-flow-item')">layout-flow-item</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-flow-rows')">layout-flow-rows</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-image')">layout-image</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-label')">layout-label</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-main')">layout-main</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-maxpanel')">layout-maxpanel</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-menubar')">layout-menubar</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-menudrawer')">layout-menudrawer</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-msgbox')">layout-msgbox</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-navbar')">layout-navbar</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-navdrawer')">layout-navdrawer</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-panel')">layout-panel</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-parallax')">layout-parallax</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-statusbar')">layout-statusbar</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-statusdrawer')">layout-statusdrawer</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-text')">layout-text</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-textentry')">layout-textentry</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/layout-titlebar')">layout-titlebar</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-bottom')">pin-bottom</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-center')">pin-center</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-center-h')">pin-center-h</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-center-v')">pin-center-v</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-expand')">pin-expand</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-left')">pin-left</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-right')">pin-right</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pin-top')">pin-top</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-center')">point-center</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-lefttop')">point-lefttop</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rightbottom')">point-rightbottom</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-90')">point-rotate-90</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-180')">point-rotate-180</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-270')">point-rotate-270</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pointtype-absolute')">pointtype-absolute</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pointtype-relative')">pointtype-relative</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/pointtype-percent')">pointtype-percent</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/styletype-custom')">styletype-custom</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/styletype-shared')">styletype-shared</span>, <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/styletype-system')">styletype-system</span>
             </li>
           </ul>
         </details>
@@ -74643,6 +74654,18 @@ output : list-1 := (empty list-1)
 (const point-lefttop : point)
 
 (const point-rightbottom : point)
+
+(const point-rotate-90 : point
+ (point
+  :x 90))
+
+(const point-rotate-180 : point
+ (point
+  :x 180))
+
+(const point-rotate-270 : point
+ (point
+  :x 270))
 
 (const pointtype-absolute : pointtype)
 
@@ -79458,6 +79481,126 @@ output : list-1 := (empty list-1)
               <ul>
                 <li>
                   <div class="source">(const point-rightbottom : point)</div>
+                </li>
+              </ul>
+            </details>
+          </div>
+          <div class="d" id="d_const_vx/ui/ui/point-rotate-90">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/ui/ui')">vx/ui/ui</span> / <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-90')">point-rotate-90</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt"></div>
+              </li>
+            </ul>
+            <div class="lbl">Constant Name:</div>
+            <ul>
+              <li>
+                <div class="txt">point-rotate-90</div>
+              </li>
+            </ul>
+            <div class="lbl">Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/ui/ui/point')">vx/ui/ui/point</span></div>
+              </li>
+            </ul>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(const point-rotate-90 : point
+ (point
+  :x 90))</div>
+                </li>
+              </ul>
+            </details>
+          </div>
+          <div class="d" id="d_const_vx/ui/ui/point-rotate-180">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/ui/ui')">vx/ui/ui</span> / <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-180')">point-rotate-180</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt"></div>
+              </li>
+            </ul>
+            <div class="lbl">Constant Name:</div>
+            <ul>
+              <li>
+                <div class="txt">point-rotate-180</div>
+              </li>
+            </ul>
+            <div class="lbl">Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/ui/ui/point')">vx/ui/ui/point</span></div>
+              </li>
+            </ul>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(const point-rotate-180 : point
+ (point
+  :x 180))</div>
+                </li>
+              </ul>
+            </details>
+          </div>
+          <div class="d" id="d_const_vx/ui/ui/point-rotate-270">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/ui/ui')">vx/ui/ui</span> / <span class="nconst" onclick="docjs.navigate('const_vx/ui/ui/point-rotate-270')">point-rotate-270</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt"></div>
+              </li>
+            </ul>
+            <div class="lbl">Constant Name:</div>
+            <ul>
+              <li>
+                <div class="txt">point-rotate-270</div>
+              </li>
+            </ul>
+            <div class="lbl">Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/ui/ui/point')">vx/ui/ui/point</span></div>
+              </li>
+            </ul>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(const point-rotate-270 : point
+ (point
+  :x 270))</div>
                 </li>
               </ul>
             </details>

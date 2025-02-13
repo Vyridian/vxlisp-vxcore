@@ -519,12 +519,12 @@ namespace vx_ui_ui_test {
       vx_core::vx_new_string(":constnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(0), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(0), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(47)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(50)
       }),
       vx_core::vx_new_string(":docnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
-        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(65), 
+        vx_core::vx_new_string(":pct"), vx_core::vx_new_int(64), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(95), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(144)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(147)
       }),
       vx_core::vx_new_string(":funcnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(10), 
@@ -544,7 +544,7 @@ namespace vx_ui_ui_test {
       vx_core::vx_new_string(":totalnums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(4), 
         vx_core::vx_new_string(":tests"), vx_core::vx_new_int(7), 
-        vx_core::vx_new_string(":total"), vx_core::vx_new_int(144)
+        vx_core::vx_new_string(":total"), vx_core::vx_new_int(147)
       }),
       vx_core::vx_new_string(":typenums"), vx_core::vx_new(vx_test::t_testcoveragenums, {
         vx_core::vx_new_string(":pct"), vx_core::vx_new_int(0), 
@@ -631,6 +631,9 @@ namespace vx_ui_ui_test {
         vx_core::vx_new_string(":point-center"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":point-lefttop"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":point-rightbottom"), vx_core::vx_new_int(0),
+        vx_core::vx_new_string(":point-rotate-180"), vx_core::vx_new_int(0),
+        vx_core::vx_new_string(":point-rotate-270"), vx_core::vx_new_int(0),
+        vx_core::vx_new_string(":point-rotate-90"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":pointtype-absolute"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":pointtype-percent"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":pointtype-relative"), vx_core::vx_new_int(0),

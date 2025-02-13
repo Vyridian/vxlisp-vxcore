@@ -465,6 +465,24 @@ export default class vx_ui_ui {
   static c_point_rightbottom = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-rightbottom', type: vx_ui_ui.t_point}}
 
   /**
+   * Constant: point-rotate-180
+   * {point}
+   */
+  static c_point_rotate_180 = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-rotate-180', type: vx_ui_ui.t_point}}
+
+  /**
+   * Constant: point-rotate-270
+   * {point}
+   */
+  static c_point_rotate_270 = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-rotate-270', type: vx_ui_ui.t_point}}
+
+  /**
+   * Constant: point-rotate-90
+   * {point}
+   */
+  static c_point_rotate_90 = {vx_type: vx_ui_ui.t_point, vx_constdef: {pkgname: 'vx/ui/ui', name: 'point-rotate-90', type: vx_ui_ui.t_point}}
+
+  /**
    * Constant: pointtype-absolute
    * {pointtype}
    */
@@ -2615,6 +2633,9 @@ export default class vx_ui_ui {
       "point-center": vx_ui_ui.c_point_center,
       "point-lefttop": vx_ui_ui.c_point_lefttop,
       "point-rightbottom": vx_ui_ui.c_point_rightbottom,
+      "point-rotate-180": vx_ui_ui.c_point_rotate_180,
+      "point-rotate-270": vx_ui_ui.c_point_rotate_270,
+      "point-rotate-90": vx_ui_ui.c_point_rotate_90,
       "pointtype-absolute": vx_ui_ui.c_pointtype_absolute,
       "pointtype-percent": vx_ui_ui.c_pointtype_percent,
       "pointtype-relative": vx_ui_ui.c_pointtype_relative,
@@ -5170,6 +5191,15 @@ export default class vx_ui_ui {
       "t": 0,
       "i": 0
     })
+
+    // (const point-rotate-180)
+    Object.assign(vx_ui_ui.c_point_rotate_180, vx_core.f_new({"any-1": vx_ui_ui.t_point}, ":x", 180))
+
+    // (const point-rotate-270)
+    Object.assign(vx_ui_ui.c_point_rotate_270, vx_core.f_new({"any-1": vx_ui_ui.t_point}, ":x", 270))
+
+    // (const point-rotate-90)
+    Object.assign(vx_ui_ui.c_point_rotate_90, vx_core.f_new({"any-1": vx_ui_ui.t_point}, ":x", 90))
 
   }
 }

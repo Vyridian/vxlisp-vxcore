@@ -7869,6 +7869,120 @@ public static class Ui {
 
 
   /**
+   * Constant: point-rotate-180
+   * {point}
+   */
+  public class Const_point_rotate_180 {
+    public static Vx.Core.Type_constdef constdef() {
+      Vx.Core.Type_constdef output = Vx.Core.constdef_new(
+        "vx/ui/ui", // pkgname
+        "point-rotate-180", // name
+        Vx.Ui.Ui.t_point
+      );
+      return output;
+    }
+
+    public static void const_new(Vx.Ui.Ui.Type_point output) {
+      Vx.Ui.Ui.Class_point outval = (Vx.Ui.Ui.Class_point)output;
+      outval.vx_p_constdef = constdef();
+      Vx.Ui.Ui.Type_point value = Vx.Core.f_new(
+        Vx.Ui.Ui.t_point,
+        Vx.Core.vx_new(
+          Vx.Core.t_anylist,
+          Vx.Core.vx_new_string(":x"),
+          Vx.Core.vx_new_int(180)
+        )
+      );
+      outval.vx_p_x = value.x();
+      outval.vx_p_y = value.y();
+      outval.vx_p_z = value.z();
+      outval.vx_p_t = value.t();
+      outval.vx_p_i = value.i();
+      outval.vx_p_pointtype = value.pointtype();
+    }
+
+  }
+
+  public static Vx.Ui.Ui.Type_point c_point_rotate_180 = new Vx.Ui.Ui.Class_point();
+
+
+  /**
+   * Constant: point-rotate-270
+   * {point}
+   */
+  public class Const_point_rotate_270 {
+    public static Vx.Core.Type_constdef constdef() {
+      Vx.Core.Type_constdef output = Vx.Core.constdef_new(
+        "vx/ui/ui", // pkgname
+        "point-rotate-270", // name
+        Vx.Ui.Ui.t_point
+      );
+      return output;
+    }
+
+    public static void const_new(Vx.Ui.Ui.Type_point output) {
+      Vx.Ui.Ui.Class_point outval = (Vx.Ui.Ui.Class_point)output;
+      outval.vx_p_constdef = constdef();
+      Vx.Ui.Ui.Type_point value = Vx.Core.f_new(
+        Vx.Ui.Ui.t_point,
+        Vx.Core.vx_new(
+          Vx.Core.t_anylist,
+          Vx.Core.vx_new_string(":x"),
+          Vx.Core.vx_new_int(270)
+        )
+      );
+      outval.vx_p_x = value.x();
+      outval.vx_p_y = value.y();
+      outval.vx_p_z = value.z();
+      outval.vx_p_t = value.t();
+      outval.vx_p_i = value.i();
+      outval.vx_p_pointtype = value.pointtype();
+    }
+
+  }
+
+  public static Vx.Ui.Ui.Type_point c_point_rotate_270 = new Vx.Ui.Ui.Class_point();
+
+
+  /**
+   * Constant: point-rotate-90
+   * {point}
+   */
+  public class Const_point_rotate_90 {
+    public static Vx.Core.Type_constdef constdef() {
+      Vx.Core.Type_constdef output = Vx.Core.constdef_new(
+        "vx/ui/ui", // pkgname
+        "point-rotate-90", // name
+        Vx.Ui.Ui.t_point
+      );
+      return output;
+    }
+
+    public static void const_new(Vx.Ui.Ui.Type_point output) {
+      Vx.Ui.Ui.Class_point outval = (Vx.Ui.Ui.Class_point)output;
+      outval.vx_p_constdef = constdef();
+      Vx.Ui.Ui.Type_point value = Vx.Core.f_new(
+        Vx.Ui.Ui.t_point,
+        Vx.Core.vx_new(
+          Vx.Core.t_anylist,
+          Vx.Core.vx_new_string(":x"),
+          Vx.Core.vx_new_int(90)
+        )
+      );
+      outval.vx_p_x = value.x();
+      outval.vx_p_y = value.y();
+      outval.vx_p_z = value.z();
+      outval.vx_p_t = value.t();
+      outval.vx_p_i = value.i();
+      outval.vx_p_pointtype = value.pointtype();
+    }
+
+  }
+
+  public static Vx.Ui.Ui.Type_point c_point_rotate_90 = new Vx.Ui.Ui.Class_point();
+
+
+  /**
    * Constant: pointtype-absolute
    * {pointtype}
    */
@@ -15519,6 +15633,9 @@ public static class Ui {
     Const_point_center.const_new(c_point_center);
     Const_point_lefttop.const_new(c_point_lefttop);
     Const_point_rightbottom.const_new(c_point_rightbottom);
+    Const_point_rotate_180.const_new(c_point_rotate_180);
+    Const_point_rotate_270.const_new(c_point_rotate_270);
+    Const_point_rotate_90.const_new(c_point_rotate_90);
     Const_pointtype_absolute.const_new(c_pointtype_absolute);
     Const_pointtype_percent.const_new(c_pointtype_percent);
     Const_pointtype_relative.const_new(c_pointtype_relative);
@@ -15598,6 +15715,9 @@ public static class Ui {
     mapconst.put("point-center", Vx.Ui.Ui.c_point_center);
     mapconst.put("point-lefttop", Vx.Ui.Ui.c_point_lefttop);
     mapconst.put("point-rightbottom", Vx.Ui.Ui.c_point_rightbottom);
+    mapconst.put("point-rotate-180", Vx.Ui.Ui.c_point_rotate_180);
+    mapconst.put("point-rotate-270", Vx.Ui.Ui.c_point_rotate_270);
+    mapconst.put("point-rotate-90", Vx.Ui.Ui.c_point_rotate_90);
     mapconst.put("pointtype-absolute", Vx.Ui.Ui.c_pointtype_absolute);
     mapconst.put("pointtype-percent", Vx.Ui.Ui.c_pointtype_percent);
     mapconst.put("pointtype-relative", Vx.Ui.Ui.c_pointtype_relative);

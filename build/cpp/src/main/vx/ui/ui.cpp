@@ -7859,6 +7859,114 @@ namespace vx_ui_ui {
 
   //}
 
+  // (const point-rotate-180)
+  // class Class_point_rotate_180 {
+    // vx_const_new()
+    void vx_ui_ui::Class_point_rotate_180::vx_const_new(vx_ui_ui::Const_point_rotate_180 output) {
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/ui",
+        "point-rotate-180",
+        vx_ui_ui::t_point);
+      long irefcount = vx_core::refcount;
+      vx_ui_ui::Type_point val = vx_core::f_new(
+        vx_ui_ui::t_point,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string(":x"),
+          vx_core::vx_new_int(180)
+        })
+      );
+      output->vx_p_x = val->x();
+      vx_core::vx_reserve(output->vx_p_x);
+      output->vx_p_y = val->y();
+      vx_core::vx_reserve(output->vx_p_y);
+      output->vx_p_z = val->z();
+      vx_core::vx_reserve(output->vx_p_z);
+      output->vx_p_t = val->t();
+      vx_core::vx_reserve(output->vx_p_t);
+      output->vx_p_i = val->i();
+      vx_core::vx_reserve(output->vx_p_i);
+      output->vx_p_pointtype = val->pointtype();
+      vx_core::vx_reserve(output->vx_p_pointtype);
+      vx_core::vx_release(val);
+      vx_core::refcount = irefcount;
+      vx_core::vx_reserve_type(output);
+    }
+
+
+  //}
+
+  // (const point-rotate-270)
+  // class Class_point_rotate_270 {
+    // vx_const_new()
+    void vx_ui_ui::Class_point_rotate_270::vx_const_new(vx_ui_ui::Const_point_rotate_270 output) {
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/ui",
+        "point-rotate-270",
+        vx_ui_ui::t_point);
+      long irefcount = vx_core::refcount;
+      vx_ui_ui::Type_point val = vx_core::f_new(
+        vx_ui_ui::t_point,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string(":x"),
+          vx_core::vx_new_int(270)
+        })
+      );
+      output->vx_p_x = val->x();
+      vx_core::vx_reserve(output->vx_p_x);
+      output->vx_p_y = val->y();
+      vx_core::vx_reserve(output->vx_p_y);
+      output->vx_p_z = val->z();
+      vx_core::vx_reserve(output->vx_p_z);
+      output->vx_p_t = val->t();
+      vx_core::vx_reserve(output->vx_p_t);
+      output->vx_p_i = val->i();
+      vx_core::vx_reserve(output->vx_p_i);
+      output->vx_p_pointtype = val->pointtype();
+      vx_core::vx_reserve(output->vx_p_pointtype);
+      vx_core::vx_release(val);
+      vx_core::refcount = irefcount;
+      vx_core::vx_reserve_type(output);
+    }
+
+
+  //}
+
+  // (const point-rotate-90)
+  // class Class_point_rotate_90 {
+    // vx_const_new()
+    void vx_ui_ui::Class_point_rotate_90::vx_const_new(vx_ui_ui::Const_point_rotate_90 output) {
+      output->vx_p_constdef = vx_core::vx_constdef_new(
+        "vx/ui/ui",
+        "point-rotate-90",
+        vx_ui_ui::t_point);
+      long irefcount = vx_core::refcount;
+      vx_ui_ui::Type_point val = vx_core::f_new(
+        vx_ui_ui::t_point,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string(":x"),
+          vx_core::vx_new_int(90)
+        })
+      );
+      output->vx_p_x = val->x();
+      vx_core::vx_reserve(output->vx_p_x);
+      output->vx_p_y = val->y();
+      vx_core::vx_reserve(output->vx_p_y);
+      output->vx_p_z = val->z();
+      vx_core::vx_reserve(output->vx_p_z);
+      output->vx_p_t = val->t();
+      vx_core::vx_reserve(output->vx_p_t);
+      output->vx_p_i = val->i();
+      vx_core::vx_reserve(output->vx_p_i);
+      output->vx_p_pointtype = val->pointtype();
+      vx_core::vx_reserve(output->vx_p_pointtype);
+      vx_core::vx_release(val);
+      vx_core::refcount = irefcount;
+      vx_core::vx_reserve_type(output);
+    }
+
+
+  //}
+
   // (const pointtype-absolute)
   // class Class_pointtype_absolute {
     // vx_const_new()
@@ -16959,6 +17067,9 @@ namespace vx_ui_ui {
   vx_ui_ui::Const_point_center c_point_center = NULL;
   vx_ui_ui::Const_point_lefttop c_point_lefttop = NULL;
   vx_ui_ui::Const_point_rightbottom c_point_rightbottom = NULL;
+  vx_ui_ui::Const_point_rotate_180 c_point_rotate_180 = NULL;
+  vx_ui_ui::Const_point_rotate_270 c_point_rotate_270 = NULL;
+  vx_ui_ui::Const_point_rotate_90 c_point_rotate_90 = NULL;
   vx_ui_ui::Const_pointtype_absolute c_pointtype_absolute = NULL;
   vx_ui_ui::Const_pointtype_percent c_pointtype_percent = NULL;
   vx_ui_ui::Const_pointtype_relative c_pointtype_relative = NULL;
@@ -17148,6 +17259,9 @@ namespace vx_ui_ui {
       vx_ui_ui::c_point_center = new vx_ui_ui::Class_point_center();
       vx_ui_ui::c_point_lefttop = new vx_ui_ui::Class_point_lefttop();
       vx_ui_ui::c_point_rightbottom = new vx_ui_ui::Class_point_rightbottom();
+      vx_ui_ui::c_point_rotate_180 = new vx_ui_ui::Class_point_rotate_180();
+      vx_ui_ui::c_point_rotate_270 = new vx_ui_ui::Class_point_rotate_270();
+      vx_ui_ui::c_point_rotate_90 = new vx_ui_ui::Class_point_rotate_90();
       vx_ui_ui::c_pointtype_absolute = new vx_ui_ui::Class_pointtype_absolute();
       vx_ui_ui::c_pointtype_percent = new vx_ui_ui::Class_pointtype_percent();
       vx_ui_ui::c_pointtype_relative = new vx_ui_ui::Class_pointtype_relative();
@@ -17583,6 +17697,9 @@ namespace vx_ui_ui {
       vx_ui_ui::Class_point_center::vx_const_new(vx_ui_ui::c_point_center);
       vx_ui_ui::Class_point_lefttop::vx_const_new(vx_ui_ui::c_point_lefttop);
       vx_ui_ui::Class_point_rightbottom::vx_const_new(vx_ui_ui::c_point_rightbottom);
+      vx_ui_ui::Class_point_rotate_180::vx_const_new(vx_ui_ui::c_point_rotate_180);
+      vx_ui_ui::Class_point_rotate_270::vx_const_new(vx_ui_ui::c_point_rotate_270);
+      vx_ui_ui::Class_point_rotate_90::vx_const_new(vx_ui_ui::c_point_rotate_90);
       vx_ui_ui::Class_pointtype_absolute::vx_const_new(vx_ui_ui::c_pointtype_absolute);
       vx_ui_ui::Class_pointtype_percent::vx_const_new(vx_ui_ui::c_pointtype_percent);
       vx_ui_ui::Class_pointtype_relative::vx_const_new(vx_ui_ui::c_pointtype_relative);
@@ -17663,6 +17780,9 @@ namespace vx_ui_ui {
       mapconst["point-center"] = vx_ui_ui::c_point_center;
       mapconst["point-lefttop"] = vx_ui_ui::c_point_lefttop;
       mapconst["point-rightbottom"] = vx_ui_ui::c_point_rightbottom;
+      mapconst["point-rotate-180"] = vx_ui_ui::c_point_rotate_180;
+      mapconst["point-rotate-270"] = vx_ui_ui::c_point_rotate_270;
+      mapconst["point-rotate-90"] = vx_ui_ui::c_point_rotate_90;
       mapconst["pointtype-absolute"] = vx_ui_ui::c_pointtype_absolute;
       mapconst["pointtype-percent"] = vx_ui_ui::c_pointtype_percent;
       mapconst["pointtype-relative"] = vx_ui_ui::c_pointtype_relative;

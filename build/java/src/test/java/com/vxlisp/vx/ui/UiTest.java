@@ -541,12 +541,12 @@ public final class UiTest {
     Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/ui/ui", 
-      ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 47), 
-      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 65, ":tests", 95, ":total", 144), 
+      ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 50), 
+      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 64, ":tests", 95, ":total", 147), 
       ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 10, ":tests", 7, ":total", 68), 
       ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 68), 
       ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 68), 
-      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 4, ":tests", 7, ":total", 144), 
+      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 4, ":tests", 7, ":total", 147), 
       ":typenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 29)
     );
     return output;
@@ -631,6 +631,9 @@ public final class UiTest {
         ":point-center", 0,
         ":point-lefttop", 0,
         ":point-rightbottom", 0,
+        ":point-rotate-180", 0,
+        ":point-rotate-270", 0,
+        ":point-rotate-90", 0,
         ":pointtype-absolute", 0,
         ":pointtype-percent", 0,
         ":pointtype-relative", 0,

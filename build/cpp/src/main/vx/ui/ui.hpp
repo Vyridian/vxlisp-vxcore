@@ -253,6 +253,15 @@ namespace vx_ui_ui {
   class Class_point_rightbottom;
   typedef Class_point_rightbottom* Const_point_rightbottom;
   extern Const_point_rightbottom c_point_rightbottom;
+  class Class_point_rotate_180;
+  typedef Class_point_rotate_180* Const_point_rotate_180;
+  extern Const_point_rotate_180 c_point_rotate_180;
+  class Class_point_rotate_270;
+  typedef Class_point_rotate_270* Const_point_rotate_270;
+  extern Const_point_rotate_270 c_point_rotate_270;
+  class Class_point_rotate_90;
+  typedef Class_point_rotate_90* Const_point_rotate_90;
+  extern Const_point_rotate_90 c_point_rotate_90;
   class Class_pointtype_absolute;
   typedef Class_pointtype_absolute* Const_pointtype_absolute;
   extern Const_pointtype_absolute c_pointtype_absolute;
@@ -2143,6 +2152,24 @@ namespace vx_ui_ui {
   class Class_point_rightbottom : public vx_ui_ui::Class_point {
   public:
     static void vx_const_new(vx_ui_ui::Const_point_rightbottom output);
+  };
+
+  // (const point-rotate-180)
+  class Class_point_rotate_180 : public vx_ui_ui::Class_point {
+  public:
+    static void vx_const_new(vx_ui_ui::Const_point_rotate_180 output);
+  };
+
+  // (const point-rotate-270)
+  class Class_point_rotate_270 : public vx_ui_ui::Class_point {
+  public:
+    static void vx_const_new(vx_ui_ui::Const_point_rotate_270 output);
+  };
+
+  // (const point-rotate-90)
+  class Class_point_rotate_90 : public vx_ui_ui::Class_point {
+  public:
+    static void vx_const_new(vx_ui_ui::Const_point_rotate_90 output);
   };
 
   // (const pointtype-absolute)

@@ -8306,6 +8306,132 @@ object vx_ui_ui {
 
 
   /**
+   * Constant: point-rotate-180
+   * {point}
+   */
+  class Const_point_rotate_180 {
+    constructor() {}
+    companion object {
+
+    fun constdef() : vx_core.Type_constdef {
+      var output : vx_core.Type_constdef = vx_core.constdef_new(
+        "vx/ui/ui", // pkgname
+        "point-rotate-180", // name
+        vx_ui_ui.t_point
+      )
+      return output
+    }
+
+    fun const_new(output : vx_ui_ui.Type_point) : Unit {
+      var outval : vx_ui_ui.Class_point = output as vx_ui_ui.Class_point
+      outval.vx_p_constdef = constdef()
+      var value : vx_ui_ui.Type_point = vx_core.f_new(
+        vx_ui_ui.t_point,
+        vx_core.vx_new(
+          vx_core.t_anylist,
+          vx_core.vx_new_string(":x"),
+          vx_core.vx_new_int(180)
+        )
+      )
+      outval.vx_p_x = value.x()
+      outval.vx_p_y = value.y()
+      outval.vx_p_z = value.z()
+      outval.vx_p_t = value.t()
+      outval.vx_p_i = value.i()
+      outval.vx_p_pointtype = value.pointtype()
+    }
+
+    }
+  }
+
+  val c_point_rotate_180 : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
+
+
+  /**
+   * Constant: point-rotate-270
+   * {point}
+   */
+  class Const_point_rotate_270 {
+    constructor() {}
+    companion object {
+
+    fun constdef() : vx_core.Type_constdef {
+      var output : vx_core.Type_constdef = vx_core.constdef_new(
+        "vx/ui/ui", // pkgname
+        "point-rotate-270", // name
+        vx_ui_ui.t_point
+      )
+      return output
+    }
+
+    fun const_new(output : vx_ui_ui.Type_point) : Unit {
+      var outval : vx_ui_ui.Class_point = output as vx_ui_ui.Class_point
+      outval.vx_p_constdef = constdef()
+      var value : vx_ui_ui.Type_point = vx_core.f_new(
+        vx_ui_ui.t_point,
+        vx_core.vx_new(
+          vx_core.t_anylist,
+          vx_core.vx_new_string(":x"),
+          vx_core.vx_new_int(270)
+        )
+      )
+      outval.vx_p_x = value.x()
+      outval.vx_p_y = value.y()
+      outval.vx_p_z = value.z()
+      outval.vx_p_t = value.t()
+      outval.vx_p_i = value.i()
+      outval.vx_p_pointtype = value.pointtype()
+    }
+
+    }
+  }
+
+  val c_point_rotate_270 : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
+
+
+  /**
+   * Constant: point-rotate-90
+   * {point}
+   */
+  class Const_point_rotate_90 {
+    constructor() {}
+    companion object {
+
+    fun constdef() : vx_core.Type_constdef {
+      var output : vx_core.Type_constdef = vx_core.constdef_new(
+        "vx/ui/ui", // pkgname
+        "point-rotate-90", // name
+        vx_ui_ui.t_point
+      )
+      return output
+    }
+
+    fun const_new(output : vx_ui_ui.Type_point) : Unit {
+      var outval : vx_ui_ui.Class_point = output as vx_ui_ui.Class_point
+      outval.vx_p_constdef = constdef()
+      var value : vx_ui_ui.Type_point = vx_core.f_new(
+        vx_ui_ui.t_point,
+        vx_core.vx_new(
+          vx_core.t_anylist,
+          vx_core.vx_new_string(":x"),
+          vx_core.vx_new_int(90)
+        )
+      )
+      outval.vx_p_x = value.x()
+      outval.vx_p_y = value.y()
+      outval.vx_p_z = value.z()
+      outval.vx_p_t = value.t()
+      outval.vx_p_i = value.i()
+      outval.vx_p_pointtype = value.pointtype()
+    }
+
+    }
+  }
+
+  val c_point_rotate_90 : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
+
+
+  /**
    * Constant: pointtype-absolute
    * {pointtype}
    */
@@ -16047,6 +16173,9 @@ object vx_ui_ui {
     Const_point_center.const_new(c_point_center)
     Const_point_lefttop.const_new(c_point_lefttop)
     Const_point_rightbottom.const_new(c_point_rightbottom)
+    Const_point_rotate_180.const_new(c_point_rotate_180)
+    Const_point_rotate_270.const_new(c_point_rotate_270)
+    Const_point_rotate_90.const_new(c_point_rotate_90)
     Const_pointtype_absolute.const_new(c_pointtype_absolute)
     Const_pointtype_percent.const_new(c_pointtype_percent)
     Const_pointtype_relative.const_new(c_pointtype_relative)
@@ -16126,6 +16255,9 @@ object vx_ui_ui {
     mapconst.put("point-center", vx_ui_ui.c_point_center)
     mapconst.put("point-lefttop", vx_ui_ui.c_point_lefttop)
     mapconst.put("point-rightbottom", vx_ui_ui.c_point_rightbottom)
+    mapconst.put("point-rotate-180", vx_ui_ui.c_point_rotate_180)
+    mapconst.put("point-rotate-270", vx_ui_ui.c_point_rotate_270)
+    mapconst.put("point-rotate-90", vx_ui_ui.c_point_rotate_90)
     mapconst.put("pointtype-absolute", vx_ui_ui.c_pointtype_absolute)
     mapconst.put("pointtype-percent", vx_ui_ui.c_pointtype_percent)
     mapconst.put("pointtype-relative", vx_ui_ui.c_pointtype_relative)
