@@ -23449,15 +23449,15 @@ ab
                  (vx/web/html/p
                   :text "vx/ui/ui")
                  (vx/web/html/p
-                  :text "4% 7/144")
+                  :text "4% 7/147")
                  (vx/web/html/p
                   :text "0% 0/29")
                  (vx/web/html/p
-                  :text "0% 0/47")
+                  :text "0% 0/50")
                  (vx/web/html/p
                   :text "10% 7/68")
                  (vx/web/html/p
-                  :text "65% 95/144")
+                  :text "64% 95/147")
                  (vx/web/html/p
                   :text "0% 0/68")
                  (vx/web/html/p

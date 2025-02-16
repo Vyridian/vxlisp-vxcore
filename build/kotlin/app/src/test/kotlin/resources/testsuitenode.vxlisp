@@ -41417,7 +41417,7 @@ ab
                     :props
                      (propmap
                       :width "90px"))
-                  :text "4% 7/144")
+                  :text "4% 7/147")
                  (p
                   :style
                    (style
@@ -41433,7 +41433,7 @@ ab
                     :props
                      (propmap
                       :width "90px"))
-                  :text "0% 0/47")
+                  :text "0% 0/50")
                  (p
                   :style
                    (style
@@ -41449,7 +41449,7 @@ ab
                     :props
                      (propmap
                       :width "90px"))
-                  :text "65% 95/144")
+                  :text "64% 95/147")
                  (p
                   :style
                    (style

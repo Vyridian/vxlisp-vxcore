@@ -18979,6 +18979,9 @@ ab
       :point-center 0
       :point-lefttop 0
       :point-rightbottom 0
+      :point-rotate-180 0
+      :point-rotate-270 0
+      :point-rotate-90 0
       :pointtype-absolute 0
       :pointtype-percent 0
       :pointtype-relative 0
@@ -19097,12 +19100,12 @@ ab
       :total 68)
     :constnums
      (vx/test/testcoveragenums
-      :total 47)
+      :total 50)
     :docnums
      (vx/test/testcoveragenums
-      :pct 65
+      :pct 64
       :tests 95
-      :total 144)
+      :total 147)
     :funcnums
      (vx/test/testcoveragenums
       :pct 10
@@ -19113,7 +19116,7 @@ ab
      (vx/test/testcoveragenums
       :pct 4
       :tests 7
-      :total 144)
+      :total 147)
     :typenums
      (vx/test/testcoveragenums
       :total 29))
