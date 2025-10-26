@@ -33569,7 +33569,9 @@ improves readability.</div>
        sindent
        key
        &quot;: &quot;
-       value &quot;;&quot;)))]
+       (string&lt;-string-find-replace
+        value quote &quot;'&quot;)
+       &quot;;&quot;)))]
   (string&lt;-stringlist-join
    sprops
    &quot;&quot;))
@@ -38186,7 +38188,9 @@ improves readability.</div>
        sindent
        key
        &quot;: &quot;
-       value &quot;;&quot;)))]
+       (string&lt;-string-find-replace
+        value quote &quot;'&quot;)
+       &quot;;&quot;)))]
   (string&lt;-stringlist-join
    sprops
    &quot;&quot;))

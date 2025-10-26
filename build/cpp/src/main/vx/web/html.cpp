@@ -12524,7 +12524,11 @@ namespace vx_web_html {
                   sindent,
                   key,
                   vx_core::vx_new_string(": "),
-                  value,
+                  vx_core::f_string_from_string_find_replace(
+                    value,
+                    vx_core::c_quote,
+                    vx_core::vx_new_string("'")
+                  ),
                   vx_core::vx_new_string(";")
                 })
               );

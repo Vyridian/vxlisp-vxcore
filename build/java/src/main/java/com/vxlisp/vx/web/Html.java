@@ -13025,7 +13025,11 @@ public final class Html {
                 sindent,
                 key,
                 Core.vx_new_string(": "),
-                value,
+                Core.f_string_from_string_find_replace(
+                  value,
+                  Core.c_quote,
+                  Core.vx_new_string("'")
+                ),
                 Core.vx_new_string(";")
               )
             );

@@ -12012,7 +12012,11 @@ public static class Html {
                 sindent,
                 key,
                 Vx.Core.vx_new_string(": "),
-                value,
+                Vx.Core.f_string_from_string_find_replace(
+                  value,
+                  Vx.Core.c_quote,
+                  Vx.Core.vx_new_string("'")
+                ),
                 Vx.Core.vx_new_string(";")
               )
             );

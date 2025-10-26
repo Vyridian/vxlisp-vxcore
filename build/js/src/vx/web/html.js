@@ -1327,7 +1327,18 @@ export default class vx_web_html {
           {"any-1": vx_core.t_string, "any-2": vx_core.t_string, "list-1": vx_core.t_stringlist, "map-2": vx_web_html.t_propmap},
           propmap,
           vx_core.f_new_from_type(vx_core.t_any_from_key_value, ([key, value]) => 
-            vx_core.f_new({"any-1": vx_core.t_string}, sindent, key, ": ", value, ";"))
+            vx_core.f_new(
+              {"any-1": vx_core.t_string},
+              sindent,
+              key,
+              ": ",
+              vx_core.f_string_from_string_find_replace(
+                value,
+                vx_core.c_quote,
+                "'"
+              ),
+              ";"
+            ))
         )
         return vx_type.f_string_from_stringlist_join(sprops, "")
       })
