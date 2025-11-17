@@ -177,6 +177,17 @@ public static class Type {
     output = Vx.Core.vx_new(Vx.Core.t_stringlist, arraystring);
     return output;
   }
+
+  public static Vx.Core.Type_string vx_uid() {
+    byte[] b = new byte[16];
+    System.Security.Cryptography.RandomNumberGenerator.Fill(b);
+    String text = System.Convert.ToBase64String(b)
+      .Replace('+', '-')
+      .Replace('/', '_')
+      .TrimEnd('=');
+    Vx.Core.Type_string output = Vx.Core.vx_new_string(text);
+    return output;
+  }
   /**
    * @function allowtypenames_from_type
    * Get the name of a given type
@@ -2742,6 +2753,88 @@ public static class Type {
     return output;
   }
 
+  /**
+   * @function uid
+   * Generates a random uid
+   * @return {string}
+   * (func uid)
+   */
+  public interface Func_uid : Vx.Core.Type_func, Vx.Core.Type_replfunc {
+    public Vx.Core.Type_string vx_uid();
+  }
+
+  public class Class_uid : Vx.Core.Class_base, Func_uid {
+
+    public override Vx.Core.Type_any vx_new(params object[] vals) {
+      Vx.Type.Class_uid output = new Vx.Type.Class_uid();
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_copy(params object[] vals) {
+      Vx.Type.Class_uid output = new Vx.Type.Class_uid();
+      return output;
+    }
+
+    public override Vx.Core.Type_typedef vx_typedef() {
+      Vx.Core.Type_typedef output = Vx.Core.t_func.vx_typedef();
+      return output;
+    }
+
+    public Vx.Core.Type_funcdef vx_funcdef() {
+      Vx.Core.Type_funcdef output = Vx.Core.funcdef_new(
+        "vx/type", // pkgname
+        "uid", // name
+        0, // idx
+        false, // async
+        Vx.Core.typedef_new(
+          "vx/core", // pkgname
+          "string", // name
+          ":string", // extends
+          Vx.Core.e_typelist, // traits
+          Vx.Core.e_typelist, // allowtypes
+          Vx.Core.e_typelist, // disallowtypes
+          Vx.Core.e_funclist, // allowfuncs
+          Vx.Core.e_funclist, // disallowfuncs
+          Vx.Core.e_anylist, // allowvalues
+          Vx.Core.e_anylist, // disallowvalues
+          Vx.Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_empty() {
+      Vx.Core.Type_any output = Vx.Type.e_uid;
+      return output;
+    }
+
+    public override Vx.Core.Type_any vx_type() {
+      Vx.Core.Type_any output = Vx.Type.t_uid;
+      return output;
+    }
+
+    public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
+      Vx.Core.Type_any output = Vx.Core.e_any;
+      output = Vx.Type.f_uid();
+      return output;
+    }
+
+    public Vx.Core.Type_string vx_uid() {
+      Vx.Core.Type_string output = Vx.Type.f_uid();
+      return output;
+    }
+
+  }
+
+  public static Vx.Type.Func_uid e_uid = new Vx.Type.Class_uid();
+  public static Vx.Type.Func_uid t_uid = new Vx.Type.Class_uid();
+
+  public static Vx.Core.Type_string f_uid() {
+    Vx.Core.Type_string output = Vx.Core.e_string;
+    output = Vx.Type.vx_uid();
+    return output;
+  }
+
 
   public static class PackageRunOnce {
     public static bool RunOnce() {
@@ -2774,6 +2867,7 @@ public static class Type {
     mapfunc.put("stringlist<-string-split", Vx.Type.t_stringlist_from_string_split);
     mapfunc.put("traitnames<-any", Vx.Type.t_traitnames_from_any);
     mapfunc.put("traits<-any", Vx.Type.t_traits_from_any);
+    mapfunc.put("uid", Vx.Type.t_uid);
     Vx.Core.vx_global_package_set("vx/type", maptype, mapconst, mapfunc);
       return true;
     }

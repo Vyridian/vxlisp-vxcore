@@ -3634,11 +3634,9 @@ public final class Repl {
                     Core.t_thenelselist,
                     Core.f_then(
                       Core.t_boolean_from_func.vx_fn_new(() -> {
-                        Core.Type_any output_4 = Core.f_eq_1(
-                          Core.vx_new(
-                            Core.t_anylist,
-                            text
-                          )
+                        Core.Type_any output_4 = Core.f_eq(
+                          text,
+                          Core.vx_new_string(":")
                         );
                         return output_4;
                       }),
@@ -3729,11 +3727,9 @@ public final class Repl {
             ),
             Core.f_then(
               Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_11 = Core.f_eq_1(
-                  Core.vx_new(
-                    Core.t_anylist,
-                    key
-                  )
+                Core.Type_any output_11 = Core.f_eq(
+                  key,
+                  Core.vx_new_string(":")
                 );
                 return output_11;
               }),

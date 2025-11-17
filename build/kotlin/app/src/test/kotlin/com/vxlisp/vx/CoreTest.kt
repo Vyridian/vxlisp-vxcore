@@ -596,7 +596,8 @@ object vx_coreTest {
       vx_core.vx_new(
         vx_test.t_testdescribelist,
         t_string_testdescribe_1(context),
-        t_string_testdescribe_2(context)
+        t_string_testdescribe_2(context),
+        t_string_testdescribe_3(context)
       )
     )
     return output
@@ -633,6 +634,27 @@ object vx_coreTest {
           vx_core.vx_new(
             vx_core.t_anylist,
             vx_core.vx_new_string("a"),
+            vx_core.vx_new_string("b")
+          )
+        )
+      )
+    )
+    return output
+  }
+
+  fun t_string_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
+    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+      vx_test.t_testdescribe,
+      ":describename", "(test \"a:b\" (string \"a\" \":\" \"b\"))",
+      ":testresult", vx_test.f_test(
+        context,
+        vx_core.vx_new_string("a:b"),
+        vx_core.f_new(
+          vx_core.t_string,
+          vx_core.vx_new(
+            vx_core.t_anylist,
+            vx_core.vx_new_string("a"),
+            vx_core.vx_new_string(":"),
             vx_core.vx_new_string("b")
           )
         )
@@ -5143,7 +5165,7 @@ object vx_coreTest {
         ":state", 0,
         ":statelistener", 0,
         ":statelistenermap", 0,
-        ":string", 2,
+        ":string", 3,
         ":stringlist", 1,
         ":stringlistlist", 0,
         ":stringmap", 0,

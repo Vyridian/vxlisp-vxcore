@@ -574,9 +574,28 @@ namespace vx_core_test {
       vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
       vx_core::vx_new_string(":testresult"), testresult_2
     });
+    // testdescribe_3
+    vx_test::Type_testresult testresult_3 = vx_test::f_test(
+      context,
+      vx_core::vx_new_string("a:b"),
+      vx_core::f_new(
+        vx_core::t_string,
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_string("a"),
+          vx_core::vx_new_string(":"),
+          vx_core::vx_new_string("b")
+        })
+      )
+    );
+    vx_test::Type_testdescribe testdescribe_3 = vx_core::vx_new(vx_test::t_testdescribe, {
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test \"a:b\" (string \"a\" \":\" \"b\"))"),
+      vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
+      vx_core::vx_new_string(":testresult"), testresult_3
+    });
     vx_core::vx_Type_listany listdescribe = {
       testdescribe_1,
-      testdescribe_2
+      testdescribe_2,
+      testdescribe_3
     };
     vx_test::Type_testcase output = vx_core::vx_new(vx_test::t_testcase, {
       vx_core::vx_new_string(":passfail"), vx_core::c_false,
@@ -4864,7 +4883,7 @@ namespace vx_core_test {
         vx_core::vx_new_string(":state"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":statelistener"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":statelistenermap"), vx_core::vx_new_int(0),
-        vx_core::vx_new_string(":string"), vx_core::vx_new_int(2),
+        vx_core::vx_new_string(":string"), vx_core::vx_new_int(3),
         vx_core::vx_new_string(":stringlist"), vx_core::vx_new_int(1),
         vx_core::vx_new_string(":stringlistlist"), vx_core::vx_new_int(0),
         vx_core::vx_new_string(":stringmap"), vx_core::vx_new_int(0),

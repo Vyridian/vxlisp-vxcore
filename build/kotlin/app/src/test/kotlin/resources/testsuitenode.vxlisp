@@ -14304,7 +14304,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "69% 18/26")
+                  :text "66% 18/27")
                  (p
                   :style
                    (style
@@ -14328,7 +14328,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "69% 18/26")
+                  :text "66% 18/27")
                  (p
                   :style
                    (style
@@ -14336,7 +14336,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "80% 21/26")
+                  :text "81% 22/27")
                  (p
                   :style
                    (style
@@ -14344,7 +14344,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "0% 0/26")
+                  :text "0% 0/27")
                  (p
                   :style
                    (style
@@ -14352,7 +14352,7 @@
                     :props
                      (propmap
                       :width "90px"))
-                  :text "0% 0/26"))
+                  :text "0% 0/27"))
                :nodes
                 (divchildlist
                  (div

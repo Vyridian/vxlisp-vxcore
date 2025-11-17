@@ -596,7 +596,8 @@ public class CoreTest {
       Vx.Core.vx_new(
         Vx.Test.t_testdescribelist,
         t_string_testdescribe_1(context),
-        t_string_testdescribe_2(context)
+        t_string_testdescribe_2(context),
+        t_string_testdescribe_3(context)
       )
     );
     return output;
@@ -633,6 +634,27 @@ public class CoreTest {
           Vx.Core.vx_new(
             Vx.Core.t_anylist,
             Vx.Core.vx_new_string("a"),
+            Vx.Core.vx_new_string("b")
+          )
+        )
+      )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testdescribe t_string_testdescribe_3(Vx.Core.Type_context context) {
+    Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
+      Vx.Test.t_testdescribe,
+      ":describename", "(test \"a:b\" (string \"a\" \":\" \"b\"))",
+      ":testresult", Vx.Test.f_test(
+        context,
+        Vx.Core.vx_new_string("a:b"),
+        Vx.Core.f_new(
+          Vx.Core.t_string,
+          Vx.Core.vx_new(
+            Vx.Core.t_anylist,
+            Vx.Core.vx_new_string("a"),
+            Vx.Core.vx_new_string(":"),
             Vx.Core.vx_new_string("b")
           )
         )
@@ -5143,7 +5165,7 @@ public class CoreTest {
         ":state", 0,
         ":statelistener", 0,
         ":statelistenermap", 0,
-        ":string", 2,
+        ":string", 3,
         ":stringlist", 1,
         ":stringlistlist", 0,
         ":stringmap", 0,

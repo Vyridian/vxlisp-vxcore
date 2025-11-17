@@ -796,7 +796,7 @@ export default class vx_repl {
             vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_if_2(
               {"any-1": vx_repl.t_replarglist},
               vx_core.f_then(
-                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq_1(text)}),
+                vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(text, ":")}),
                 vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(replargs, ":key", text)})
               ),
               vx_core.f_then(
@@ -819,7 +819,7 @@ export default class vx_repl {
             )})
           ),
           vx_core.f_then(
-            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq_1(key)}),
+            vx_core.f_new_from_type(vx_core.t_boolean_from_func, () => {return vx_core.f_eq(key, ":")}),
             vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.f_copy(
               replargs,
               ":key",

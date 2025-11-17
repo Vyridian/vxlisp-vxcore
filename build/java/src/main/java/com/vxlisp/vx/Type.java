@@ -108,12 +108,26 @@ public final class Type {
     return output;
   }
 
+  // vx_stringlist_from_string_split
   public static Core.Type_stringlist vx_stringlist_from_string_split(Core.Type_string text, Core.Type_string delim) {
     Core.Type_stringlist output = Core.e_stringlist;
     String stext = text.vx_string();
     String sdelim = delim.vx_string();
     Object[] arraystring = stext.split(java.util.regex.Pattern.quote(sdelim));
     output = Core.vx_new(Core.t_stringlist, arraystring);
+    return output;
+  }
+
+  // vx_uid
+  public static Core.Type_string vx_uid() {
+    java.security.SecureRandom rng = new java.security.SecureRandom();
+    byte[] b = new byte[16];
+    rng.nextBytes(b);
+    String text = java.util.Base64
+      .getUrlEncoder()
+      .withoutPadding()
+      .encodeToString(b);
+    Core.Type_string output = Core.vx_new_string(text);
     return output;
   }
   /**
@@ -2920,6 +2934,96 @@ public final class Type {
     return output;
   }
 
+  /**
+   * @function uid
+   * Generates a random uid
+   * @return {string}
+   * (func uid)
+   */
+  public interface Func_uid extends Core.Type_func, Core.Type_replfunc {
+    public Core.Type_string vx_uid();
+  }
+
+  public static class Class_uid extends Core.Class_base implements Func_uid {
+
+    @Override
+    public Core.Type_any vx_new(final Object... vals) {
+      Type.Class_uid output = new Type.Class_uid();
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_copy(final Object... vals) {
+      Type.Class_uid output = new Type.Class_uid();
+      return output;
+    }
+
+    @Override
+    public Core.Type_typedef vx_typedef() {
+      Core.Type_typedef output = Core.t_func.vx_typedef();
+      return output;
+    }
+
+    @Override
+    public Core.Type_funcdef vx_funcdef() {
+      Core.Type_funcdef output = Core.funcdef_new(
+        "vx/type", // pkgname
+        "uid", // name
+        0, // idx
+        false, // async
+        Core.typedef_new(
+          "vx/core", // pkgname
+          "string", // name
+          ":string", // extends
+          Core.e_typelist, // traits
+          Core.e_typelist, // allowtypes
+          Core.e_typelist, // disallowtypes
+          Core.e_funclist, // allowfuncs
+          Core.e_funclist, // disallowfuncs
+          Core.e_anylist, // allowvalues
+          Core.e_anylist, // disallowvalues
+          Core.e_argmap // properties
+        ) // typedef
+      );
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_empty() {
+      Core.Type_any output = Type.e_uid;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_type() {
+      Core.Type_any output = Type.t_uid;
+      return output;
+    }
+
+    @Override
+    public Core.Type_any vx_repl(Core.Type_anylist arglist) {
+      Core.Type_any output = Core.e_any;
+      output = Type.f_uid();
+      return output;
+    }
+
+    @Override
+    public Core.Type_string vx_uid() {
+      Core.Type_string output = Type.f_uid();
+      return output;
+    }
+
+  }
+
+  public static final Type.Func_uid e_uid = new Type.Class_uid();
+  public static final Type.Func_uid t_uid = new Type.Class_uid();
+
+  public static Core.Type_string f_uid() {
+    Core.Type_string output = Core.e_string;
+    output = Type.vx_uid();
+    return output;
+  }
+
 
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();
@@ -2951,6 +3055,7 @@ public final class Type {
     mapfunc.put("stringlist<-string-split", Type.t_stringlist_from_string_split);
     mapfunc.put("traitnames<-any", Type.t_traitnames_from_any);
     mapfunc.put("traits<-any", Type.t_traits_from_any);
+    mapfunc.put("uid", Type.t_uid);
     Core.vx_global_package_set("vx/type", maptype, mapconst, mapfunc);
   }
 

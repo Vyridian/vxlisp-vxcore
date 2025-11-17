@@ -182,6 +182,19 @@ object vx_type {
     val output = vx_core.vx_new(vx_core.t_stringlist, *arraystring)
     return output
   }
+
+  // vx_uid
+  fun vx_uid() : vx_core.Type_string {
+    val b = ByteArray(16)
+    val rng = java.security.SecureRandom()
+    rng.nextBytes(b)
+    val text = java.util.Base64
+      .getUrlEncoder()
+      .withoutPadding()
+      .encodeToString(b)
+    val output = vx_core.vx_new_string(text)
+    return output
+  }
   /**
    * @function allowtypenames_from_type
    * Get the name of a given type
@@ -2773,6 +2786,89 @@ object vx_type {
     return output
   }
 
+  /**
+   * @function uid
+   * Generates a random uid
+   * @return {string}
+   * (func uid)
+   */
+  interface Func_uid : vx_core.Type_func, vx_core.Type_replfunc {
+    fun vx_uid() : vx_core.Type_string
+  }
+
+  class Class_uid : vx_core.Class_base, Func_uid {
+    constructor() {}
+
+    override fun vx_new(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_type.Class_uid = vx_type.Class_uid()
+      return output
+    }
+
+    override fun vx_copy(vararg vals : Any) : vx_core.Type_any {
+      val output : vx_type.Class_uid = vx_type.Class_uid()
+      return output
+    }
+
+    override fun vx_typedef() : vx_core.Type_typedef {
+      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      return output
+    }
+
+    override fun vx_funcdef() : vx_core.Type_funcdef {
+      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+        "vx/type", // pkgname
+        "uid", // name
+        0, // idx
+        false, // async
+        vx_core.typedef_new(
+          "vx/core", // pkgname
+          "string", // name
+          ":string", // extends
+          vx_core.e_typelist, // traits
+          vx_core.e_typelist, // allowtypes
+          vx_core.e_typelist, // disallowtypes
+          vx_core.e_funclist, // allowfuncs
+          vx_core.e_funclist, // disallowfuncs
+          vx_core.e_anylist, // allowvalues
+          vx_core.e_anylist, // disallowvalues
+          vx_core.e_argmap // properties
+        ) // typedef
+      )
+      return output
+    }
+
+    override fun vx_empty() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_type.e_uid
+      return output
+    }
+
+    override fun vx_type() : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_type.t_uid
+      return output
+    }
+
+    override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
+      var output : vx_core.Type_any = vx_core.e_any
+      output = vx_type.f_uid()
+      return output
+    }
+
+    override fun vx_uid() : vx_core.Type_string {
+      var output : vx_core.Type_string = vx_type.f_uid()
+      return output
+    }
+
+  }
+
+  val e_uid : vx_type.Func_uid = vx_type.Class_uid()
+  val t_uid : vx_type.Func_uid = vx_type.Class_uid()
+
+  fun f_uid() : vx_core.Type_string {
+    var output : vx_core.Type_string = vx_core.e_string
+    output = vx_type.vx_uid()
+    return output
+  }
+
 
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
@@ -2804,6 +2900,7 @@ object vx_type {
     mapfunc.put("stringlist<-string-split", vx_type.t_stringlist_from_string_split)
     mapfunc.put("traitnames<-any", vx_type.t_traitnames_from_any)
     mapfunc.put("traits<-any", vx_type.t_traits_from_any)
+    mapfunc.put("uid", vx_type.t_uid)
     vx_core.vx_global_package_set("vx/type", maptype, mapconst, mapfunc)
   }
 

@@ -2,6 +2,7 @@
 #define VX_TYPE_HPP
 #include <string>
 #include "../vx/core.hpp"
+#include <random>
 
 namespace vx_type {
 
@@ -110,7 +111,11 @@ namespace vx_type {
   class Abstract_traits_from_any;
   typedef Abstract_traits_from_any* Func_traits_from_any;
   extern Func_traits_from_any e_traits_from_any;
-  extern Func_traits_from_any t_traits_from_any;// :headerfirst
+  extern Func_traits_from_any t_traits_from_any;
+  class Abstract_uid;
+  typedef Abstract_uid* Func_uid;
+  extern Func_uid e_uid;
+  extern Func_uid t_uid;// :headerfirst
 // :header
 
   // vx_int_from_string_find(string, string)
@@ -145,6 +150,9 @@ namespace vx_type {
 
   // vx_stringlist_from_string_split(string, string)
   vx_core::Type_stringlist vx_stringlist_from_string_split(vx_core::Type_string text, vx_core::Type_string delim);
+
+  // vx_uid()
+  vx_core::Type_string vx_uid();
 
 
   // (func allowtypenames<-type)
@@ -221,6 +229,9 @@ namespace vx_type {
 
   // (func traits<-any)
   vx_core::Type_typelist f_traits_from_any(vx_core::Type_any value);
+
+  // (func uid)
+  vx_core::Type_string f_uid();
 
   // (func allowtypenames<-type)
   class Abstract_allowtypenames_from_type : public vx_core::Abstract_any_from_any, public virtual vx_core::Abstract_replfunc {
@@ -873,6 +884,29 @@ namespace vx_type {
     virtual vx_core::Type_any vx_type() const override;
     virtual vx_core::Func_any_from_any vx_fn_new(vx_core::vx_Type_listany lambdavars, vx_core::Abstract_any_from_any::IFn fn) const override;
     virtual vx_core::Type_any vx_any_from_any(vx_core::Type_any value) const override;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
+  };
+
+  // (func uid)
+  class Abstract_uid : public vx_core::Abstract_func, public virtual vx_core::Abstract_replfunc {
+  public:
+    Abstract_uid() {};
+    virtual ~Abstract_uid() = 0;
+    virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override = 0;
+  };
+  class Class_uid : public virtual Abstract_uid {
+  public:
+    Class_uid();
+    virtual ~Class_uid() override;
+    virtual vx_core::Type_any vx_new(vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_any vx_copy(vx_core::Type_any copyval, vx_core::vx_Type_listany vals) const override;
+    virtual vx_core::Type_funcdef vx_funcdef() const override;
+    virtual vx_core::Type_typedef vx_typedef() const override;
+    virtual vx_core::Type_constdef vx_constdef() const override;
+    virtual vx_core::Type_msgblock vx_msgblock() const override;
+    virtual vx_core::vx_Type_listany vx_dispose() override;
+    virtual vx_core::Type_any vx_empty() const override;
+    virtual vx_core::Type_any vx_type() const override;
     virtual vx_core::Type_any vx_repl(vx_core::Type_anylist arglist) override;
   };
 

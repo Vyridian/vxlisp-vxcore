@@ -1,5 +1,6 @@
 #include <string>
 #include "../vx/core.hpp"
+#include <random>
 #include "type.hpp"
 
 namespace vx_type {
@@ -137,6 +138,42 @@ namespace vx_type {
     listany.push_back(token);
     vx_core::Type_stringlist output = vx_core::vx_new(vx_core::t_stringlist, listany);
     vx_core::vx_release({text, delim});
+    return output;
+  }
+
+  // vx_uid()
+  vx_core::Type_string vx_uid() {
+    // 1. Generate 16 cryptographically strong random bytes
+    std::random_device rd;
+    std::mt19937_64 gen(rd());
+    std::uniform_int_distribution<uint32_t> dist(0, 0xFFFFFFFF);
+    uint8_t bytes[16];
+    for (int i = 0; i < 16; i += 4) {
+      uint32_t r = dist(gen);
+      bytes[i]     = (r >> 24) & 0xFF;
+      bytes[i + 1] = (r >> 16) & 0xFF;
+      bytes[i + 2] = (r >> 8)  & 0xFF;
+      bytes[i + 3] = r & 0xFF;
+    }
+    // 2. Base64-URL encode (no padding)
+    static const char B64[] =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+    std::string text;
+    text.reserve(22);
+    uint32_t val = 0;
+    int valBits = -6;
+    for (int i = 0; i < 16; i++) {
+      val = (val << 8) | bytes[i];
+      valBits += 8;
+      while (valBits >= 0) {
+        text.push_back(B64[(val >> valBits) & 63]);
+        valBits -= 6;
+      }
+    }
+    if (valBits > -6) {
+      text.push_back(B64[((val << 8) >> (valBits + 8)) & 63]);
+    }
+    vx_core::Type_string output = vx_core::vx_new_string(text);
     return output;
   }
 
@@ -3272,6 +3309,110 @@ namespace vx_type {
 
   //}
 
+  // (func uid)
+  vx_core::Type_string f_uid() {
+    vx_core::Type_string output = vx_core::e_string;
+    output = vx_type::vx_uid();
+    return output;
+  }
+  /**
+   * @function uid
+   * Generates a random uid
+   * @return {string}
+   * (func uid)
+   */
+  // (func uid)
+  // class Class_uid {
+    Abstract_uid::~Abstract_uid() {}
+
+    Class_uid::Class_uid() : Abstract_uid::Abstract_uid() {
+      vx_core::refcount += 1;
+    }
+
+    Class_uid::~Class_uid() {
+      vx_core::refcount -= 1;
+      if (this->vx_p_msgblock) {
+        vx_core::vx_release_one(this->vx_p_msgblock);
+      }
+    }
+
+    vx_core::Type_any Class_uid::vx_new(
+      vx_core::vx_Type_listany vals) const {
+      vx_type::Func_uid output = vx_type::e_uid;
+      vx_core::vx_release(vals);
+      return output;
+    }
+
+    vx_core::Type_any Class_uid::vx_copy(
+      vx_core::Type_any copyval,
+      vx_core::vx_Type_listany vals) const {
+      vx_type::Func_uid output = vx_type::e_uid;
+      vx_core::vx_release_except(copyval, output);
+      vx_core::vx_release_except(vals, output);
+      return output;
+    }
+
+    vx_core::Type_typedef Class_uid::vx_typedef() const {
+      vx_core::Type_typedef output = vx_core::Class_typedef::vx_typedef_new(
+        "vx/type", // pkgname
+        "uid", // name
+        ":func", // extends
+        vx_core::vx_new(vx_core::t_typelist, {vx_core::t_func}), // traits
+        vx_core::e_typelist, // allowtypes
+        vx_core::e_typelist, // disallowtypes
+        vx_core::e_funclist, // allowfuncs
+        vx_core::e_funclist, // disallowfuncs
+        vx_core::e_anylist, // allowvalues
+        vx_core::e_anylist, // disallowvalues
+        vx_core::e_argmap // properties
+      );
+      return output;
+    }
+
+    vx_core::Type_constdef Class_uid::vx_constdef() const {
+      return this->vx_p_constdef;
+    }
+
+    vx_core::Type_funcdef Class_uid::vx_funcdef() const {
+      vx_core::Type_funcdef output = vx_core::Class_funcdef::vx_funcdef_new(
+        "vx/type", // pkgname
+        "uid", // name
+        0, // idx
+        false, // async
+        this->vx_typedef() // typedef
+      );
+      return output;
+    }
+
+    vx_core::Type_any Class_uid::vx_empty() const {
+      return vx_type::e_uid;
+    }
+
+    vx_core::Type_any Class_uid::vx_type() const {
+      return vx_type::t_uid;
+    }
+
+    vx_core::Type_msgblock Class_uid::vx_msgblock() const {
+      vx_core::Type_msgblock output = this->vx_p_msgblock;
+      if (!output) {
+        output = vx_core::e_msgblock;
+      }
+      return output;
+    }
+
+    vx_core::vx_Type_listany Class_uid::vx_dispose() {
+      return vx_core::emptylistany;
+    }
+
+    vx_core::Type_any Class_uid::vx_repl(vx_core::Type_anylist arglist) {
+      vx_core::Type_any output = vx_core::e_any;
+      output = vx_type::f_uid();
+      vx_core::vx_release_except(arglist, output);
+      return output;
+    }
+
+  //}
+
   vx_type::Func_allowtypenames_from_type e_allowtypenames_from_type = NULL;
   vx_type::Func_allowtypenames_from_type t_allowtypenames_from_type = NULL;
   vx_type::Func_allowtypes_from_type e_allowtypes_from_type = NULL;
@@ -3324,6 +3465,8 @@ namespace vx_type {
   vx_type::Func_traitnames_from_any t_traitnames_from_any = NULL;
   vx_type::Func_traits_from_any e_traits_from_any = NULL;
   vx_type::Func_traits_from_any t_traits_from_any = NULL;
+  vx_type::Func_uid e_uid = NULL;
+  vx_type::Func_uid t_uid = NULL;
 
   // class vx_Class_package {
     vx_Class_package::vx_Class_package() {
@@ -3434,6 +3577,10 @@ namespace vx_type {
       vx_core::vx_reserve_empty(vx_type::e_traits_from_any);
       vx_type::t_traits_from_any = new vx_type::Class_traits_from_any();
       vx_core::vx_reserve_type(vx_type::t_traits_from_any);
+      vx_type::e_uid = new vx_type::Class_uid();
+      vx_core::vx_reserve_empty(vx_type::e_uid);
+      vx_type::t_uid = new vx_type::Class_uid();
+      vx_core::vx_reserve_type(vx_type::t_uid);
       vx_core::vx_Type_mapany maptype;
       vx_core::vx_Type_mapany mapconst;
       vx_core::vx_Type_mapfunc mapfunc;
@@ -3464,6 +3611,7 @@ namespace vx_type {
       mapfunc["stringlist<-string-split"] = vx_type::t_stringlist_from_string_split;
       mapfunc["traitnames<-any"] = vx_type::t_traitnames_from_any;
       mapfunc["traits<-any"] = vx_type::t_traits_from_any;
+      mapfunc["uid"] = vx_type::t_uid;
       vx_core::vx_global_package_set("vx/type", maptype, mapconst, mapfunc);
 	   }
   // }

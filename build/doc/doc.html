@@ -1235,6 +1235,9 @@
           <li class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-any')">
             (f) traits&lt;-any
           </li>
+          <li class="nfunc" onclick="docjs.navigate('func_vx/type/uid')">
+            (f) uid
+          </li>
         </ul>
       </details>
       <details>
@@ -2943,6 +2946,11 @@
                   <div class="td">Path</div>
                 </div>
                 <div class="tr">
+                  <div class="td">cpprandom</div>
+                  <div class="td">:cpp</div>
+                  <div class="td">&lt;random&gt;</div>
+                </div>
+                <div class="tr">
                   <div class="td">javaniofile</div>
                   <div class="td">:java</div>
                   <div class="td">java.nio.file.*</div>
@@ -3170,6 +3178,9 @@
  :doc        &quot;The vx/core project&quot;
  :javadomain &quot;com.vxlisp&quot;
  :libs
+  (lib cpprandom
+   :path &quot;&lt;random&gt;&quot;
+   :lang :cpp)
   (lib javaniofile
    :path &quot;java.nio.file.*&quot;
    :lang :java)
@@ -3958,6 +3969,7 @@
      }&quot;)
  :test (test &quot;a&quot; (string &quot;a&quot;))
        (test &quot;ab&quot; (string &quot;a&quot; &quot;b&quot;))
+       (test &quot;a:b&quot; (string &quot;a&quot; &quot;:&quot; &quot;b&quot;))
  :doc  &quot;A simple string.&quot;)
 
 (type stringlist : list
@@ -10981,6 +10993,7 @@
               <ul>
                 <li><div class="test">(test &quot;a&quot; (string &quot;a&quot;))</div></li>
                 <li><div class="test">(test &quot;ab&quot; (string &quot;a&quot; &quot;b&quot;))</div></li>
+                <li><div class="test">(test &quot;a:b&quot; (string &quot;a&quot; &quot;:&quot; &quot;b&quot;))</div></li>
               </ul>
             </details>
             <details open="true">
@@ -11020,6 +11033,7 @@
      }&quot;)
  :test (test &quot;a&quot; (string &quot;a&quot;))
        (test &quot;ab&quot; (string &quot;a&quot; &quot;b&quot;))
+       (test &quot;a:b&quot; (string &quot;a&quot; &quot;:&quot; &quot;b&quot;))
  :doc  &quot;A simple string.&quot;)</div>
                 </li>
               </ul>
@@ -30236,6 +30250,10 @@ improves readability.</div>
                 <div class="td">vx/test</div>
                 <div class="td">vx/test</div>
               </div>
+              <div class="tr">
+                <div class="td">cpprandom</div>
+                <div class="td">&lt;random&gt;</div>
+              </div>
             </div>
           </li>
         </ul>
@@ -30266,7 +30284,7 @@ improves readability.</div>
           </summary>
           <ul>
             <li>
-      <span class="nfunc" onclick="docjs.navigate('func_vx/type/allowtypenames&lt;-type')">allowtypenames&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/allowtypes&lt;-type')">allowtypes&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/any&lt;-int')">any&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/boolean&lt;-string-ends')">boolean&lt;-string-ends</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/boolean&lt;-string-starts')">boolean&lt;-string-starts</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-find')">int&lt;-string-find</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-findkeyword')">int&lt;-string-findkeyword</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-findlast')">int&lt;-string-findlast</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-boolean')">is-boolean</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-decimal')">is-decimal</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-none')">is-none</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-string')">is-string</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-type')">is-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-type&lt;-any-typelist')">is-type&lt;-any-typelist</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-int')">string&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-end')">string&lt;-string-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-start')">string&lt;-string-start</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-start-end')">string&lt;-string-start-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-stringlist-join')">string&lt;-stringlist-join</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-lowercase')">string-lowercase</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-outdent')">string-outdent</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-trim')">string-trim</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-uppercase')">string-uppercase</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/stringlist&lt;-string-split')">stringlist&lt;-string-split</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traitnames&lt;-any')">traitnames&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-any')">traits&lt;-any</span>
+      <span class="nfunc" onclick="docjs.navigate('func_vx/type/allowtypenames&lt;-type')">allowtypenames&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/allowtypes&lt;-type')">allowtypes&lt;-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/any&lt;-int')">any&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/boolean&lt;-string-ends')">boolean&lt;-string-ends</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/boolean&lt;-string-starts')">boolean&lt;-string-starts</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-find')">int&lt;-string-find</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-findkeyword')">int&lt;-string-findkeyword</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/int&lt;-string-findlast')">int&lt;-string-findlast</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-boolean')">is-boolean</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-decimal')">is-decimal</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-none')">is-none</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-string')">is-string</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-type')">is-type</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/is-type&lt;-any-typelist')">is-type&lt;-any-typelist</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-int')">string&lt;-int</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-end')">string&lt;-string-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-start')">string&lt;-string-start</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-string-start-end')">string&lt;-string-start-end</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string&lt;-stringlist-join')">string&lt;-stringlist-join</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-lowercase')">string-lowercase</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-outdent')">string-outdent</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-trim')">string-trim</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/string-uppercase')">string-uppercase</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/stringlist&lt;-string-split')">stringlist&lt;-string-split</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traitnames&lt;-any')">traitnames&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/traits&lt;-any')">traits&lt;-any</span>, <span class="nfunc" onclick="docjs.navigate('func_vx/type/uid')">uid</span>
             </li>
           </ul>
         </details>
@@ -30277,6 +30295,7 @@ improves readability.</div>
           <ul>
             <li>
               <div class="source">(package vx/type
+ :libs (lib cpprandom)
  :doc &quot;Type handling tools.&quot;)
 
 (func allowtypenames&lt;-type : stringlist
@@ -30687,6 +30706,15 @@ improves readability.</div>
  (traits&lt;-typedef
   (typedef&lt;-any value))
  :doc &quot;Get the traits of a given value&quot;)
+
+(func uid : string
+ (native
+  :cpp    :auto
+  :csharp :auto
+  :java   :auto
+  :js     :auto
+  :kotlin :auto)
+ :doc &quot;Generates a random uid&quot;)
 </div>
             </li>
           </ul>
@@ -32825,6 +32853,68 @@ improves readability.</div>
  (traits&lt;-typedef
   (typedef&lt;-any value))
  :doc &quot;Get the traits of a given value&quot;)</div>
+                </li>
+              </ul>
+            </details>
+          </div>
+          <div class="d" id="d_func_vx/type/uid">
+            <div class="header"><span class="npackage" onclick="docjs.navigate('pkg_vx/type')">vx/type</span> / <span class="nfunc" onclick="docjs.navigate('func_vx/type/uid')">uid</span></div>
+            <div class="lbl">Description:</div>
+            <ul>
+              <li>
+                <div class="txt">Generates a random uid</div>
+              </li>
+            </ul>
+            <div class="lbl">Function Name:</div>
+            <ul>
+              <li>
+                <div class="txt">uid</div>
+              </li>
+            </ul>
+            <div class="lbl">Return Type:</div>
+            <ul>
+              <li>
+                <div class="txt"><span class="ntype" onclick="docjs.navigate('type_vx/core/string')">vx/core/string</span></div>
+              </li>
+            </ul>
+          <details open="true">
+            <summary>
+              <span class="lbl">Arguments:</span>
+            </summary>
+            <ul>
+              <li>
+                <div class="table">
+                  <div class="th">
+                    <div class="td">Name</div>
+                    <div class="td">Type</div>
+                    <div class="td">Generic</div>
+                    <div class="td">Description</div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Usage/Test Cases:</span>
+              </summary>
+              <ul>
+              </ul>
+            </details>
+            <details open="true">
+              <summary>
+                <span class="lbl">Source Code:</span>
+              </summary>
+              <ul>
+                <li>
+                  <div class="source">(func uid : string
+ (native
+  :cpp    :auto
+  :csharp :auto
+  :java   :auto
+  :js     :auto
+  :kotlin :auto)
+ :doc &quot;Generates a random uid&quot;)</div>
                 </li>
               </ul>
             </details>

@@ -3393,11 +3393,9 @@ public static class Repl {
                     Vx.Core.t_thenelselist,
                     Vx.Core.f_then(
                       Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_4 = Vx.Core.f_eq_1(
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            text
-                          )
+                        Vx.Core.Type_any output_4 = Vx.Core.f_eq(
+                          text,
+                          Vx.Core.vx_new_string(":")
                         );
                         return output_4;
                       }),
@@ -3488,11 +3486,9 @@ public static class Repl {
             ),
             Vx.Core.f_then(
               Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_11 = Vx.Core.f_eq_1(
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    key
-                  )
+                Vx.Core.Type_any output_11 = Vx.Core.f_eq(
+                  key,
+                  Vx.Core.vx_new_string(":")
                 );
                 return output_11;
               }),

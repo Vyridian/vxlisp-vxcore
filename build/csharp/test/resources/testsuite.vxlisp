@@ -4090,7 +4090,8 @@ ab
       :string<-stringlist-join 1
       :stringlist<-string-split 1
       :traitnames<-any 0
-      :traits<-any 0)
+      :traits<-any 0
+      :uid 0)
     :testpkg "vx/type")
   :coveragesummary
    (testcoveragesummary
@@ -4098,12 +4099,12 @@ ab
      (testcoveragenums
       :pct 0
       :tests 0
-      :total 26)
+      :total 27)
     :bigotimenums
      (testcoveragenums
       :pct 0
       :tests 0
-      :total 26)
+      :total 27)
     :constnums
      (testcoveragenums
       :pct 100
@@ -4111,20 +4112,20 @@ ab
       :total 0)
     :docnums
      (testcoveragenums
-      :pct 80
-      :tests 21
-      :total 26)
+      :pct 81
+      :tests 22
+      :total 27)
     :funcnums
      (testcoveragenums
-      :pct 69
+      :pct 66
       :tests 18
-      :total 26)
+      :total 27)
     :testpkg "vx/type"
     :totalnums
      (testcoveragenums
-      :pct 69
+      :pct 66
       :tests 18
-      :total 26)
+      :total 27)
     :typenums
      (testcoveragenums
       :pct 100

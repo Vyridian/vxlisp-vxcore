@@ -3639,8 +3639,7 @@ namespace vx_repl {
                   vx_core::vx_new(vx_core::t_thenelselist, {
                     vx_core::f_then(
                       vx_core::t_boolean_from_func->vx_fn_new({text}, [text]() {
-                        vx_core::Type_boolean output_1 = vx_core::f_eq_1(vx_core::vx_new(vx_core::t_anylist, {
-                        text}));
+                        vx_core::Type_boolean output_1 = vx_core::f_eq(text, vx_core::vx_new_string(":"));
                         return output_1;
                       }),
                       vx_core::t_any_from_func->vx_fn_new({replargs, text}, [replargs, text]() {
@@ -3718,8 +3717,7 @@ namespace vx_repl {
             ),
             vx_core::f_then(
               vx_core::t_boolean_from_func->vx_fn_new({key}, [key]() {
-                vx_core::Type_boolean output_1 = vx_core::f_eq_1(vx_core::vx_new(vx_core::t_anylist, {
-                key}));
+                vx_core::Type_boolean output_1 = vx_core::f_eq(key, vx_core::vx_new_string(":"));
                 return output_1;
               }),
               vx_core::t_any_from_func->vx_fn_new({replargs, current, text}, [replargs, current, text]() {

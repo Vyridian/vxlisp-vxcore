@@ -85,7 +85,25 @@ export default class vx_type {
     const output = vx_core.f_new_from_type(vx_core.t_stringlist, ...liststring)
     return output
   }
-  /**
+
+  static vx_uid() {
+    // 16 random bytes = 128 bits
+    const bytes = new Uint8Array(16);
+    if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+      crypto.getRandomValues(bytes);
+    } else {
+      // Node fallback
+      require('crypto').randomFillSync(bytes);
+    }
+    // Base64 → Base64URL (no padding)
+    const text = Buffer.from(bytes)
+      .toString('base64')
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=+$/, '')
+    const output = vx_core.f_new_string(text)
+    return output
+  }  /**
    * @function allowtypenames_from_type
    * Get the name of a given type
    * @param  {any} type
@@ -714,6 +732,25 @@ export default class vx_type {
     return output
   }
 
+  /**
+   * @function uid
+   * Generates a random uid
+   * @return {string}
+   */
+  static t_uid = {
+    vx_type: vx_core.t_type
+  }
+  static e_uid = {
+    vx_type: vx_type.t_uid
+  }
+
+  // (func uid)
+  static f_uid() {
+    let output = vx_core.e_string
+    output = vx_type.vx_uid()
+    return output
+  }
+
 
 
   static {
@@ -746,7 +783,8 @@ export default class vx_type {
       "string<-stringlist-join": vx_type.e_string_from_stringlist_join,
       "stringlist<-string-split": vx_type.e_stringlist_from_string_split,
       "traitnames<-any": vx_type.e_traitnames_from_any,
-      "traits<-any": vx_type.e_traits_from_any
+      "traits<-any": vx_type.e_traits_from_any,
+      "uid": vx_type.e_uid
     })
     const funcmap = vx_core.vx_new_map(vx_core.t_funcmap, {
       "allowtypenames<-type": vx_type.t_allowtypenames_from_type,
@@ -774,7 +812,8 @@ export default class vx_type {
       "string<-stringlist-join": vx_type.t_string_from_stringlist_join,
       "stringlist<-string-split": vx_type.t_stringlist_from_string_split,
       "traitnames<-any": vx_type.t_traitnames_from_any,
-      "traits<-any": vx_type.t_traits_from_any
+      "traits<-any": vx_type.t_traits_from_any,
+      "uid": vx_type.t_uid
     })
     const typemap = vx_core.vx_new_map(vx_core.t_typemap, {
       
@@ -1254,6 +1293,24 @@ export default class vx_type {
       properties    : [],
       proplast      : {},
       fn            : vx_type.f_traits_from_any
+    }
+
+    // (func uid)
+    vx_type.t_uid['vx_value'] = {
+      name          : "uid",
+      pkgname       : "vx/type",
+      extends       : ":func",
+      idx           : 0,
+      allowfuncs    : [],
+      disallowfuncs : [],
+      allowtypes    : [],
+      disallowtypes : [],
+      allowvalues   : [],
+      disallowvalues: [],
+      traits        : [vx_core.t_func],
+      properties    : [],
+      proplast      : {},
+      fn            : vx_type.f_uid
     }
 
   }

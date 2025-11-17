@@ -99,7 +99,7 @@ export default class vx_core_test {
           "state", 0,
           "statelistener", 0,
           "statelistenermap", 0,
-          "string", 2,
+          "string", 3,
           "stringlist", 1,
           "stringlistlist", 0,
           "stringmap", 0,
@@ -689,6 +689,15 @@ export default class vx_core_test {
               context,
               "ab",
               vx_core.f_new({"any-1": vx_core.t_string}, "a", "b")
+            )
+          ),
+          vx_core.f_new_from_type(
+            vx_test.t_testdescribe,
+            ":describename", "(test \"a:b\" (string \"a\" \":\" \"b\"))",
+            ":testresult", vx_test.f_test(
+              context,
+              "a:b",
+              vx_core.f_new({"any-1": vx_core.t_string}, "a", ":", "b")
             )
           )
         )

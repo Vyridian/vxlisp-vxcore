@@ -3422,11 +3422,9 @@ object vx_repl {
                     vx_core.t_thenelselist,
                     vx_core.f_then(
                       vx_core.t_boolean_from_func.vx_fn_new({ ->
-                        var output_4 : vx_core.Type_any = vx_core.f_eq_1(
-                          vx_core.vx_new(
-                            vx_core.t_anylist,
-                            text
-                          )
+                        var output_4 : vx_core.Type_any = vx_core.f_eq(
+                          text,
+                          vx_core.vx_new_string(":")
                         )
                         output_4
                       }),
@@ -3517,11 +3515,9 @@ object vx_repl {
             ),
             vx_core.f_then(
               vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_11 : vx_core.Type_any = vx_core.f_eq_1(
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    key
-                  )
+                var output_11 : vx_core.Type_any = vx_core.f_eq(
+                  key,
+                  vx_core.vx_new_string(":")
                 )
                 output_11
               }),
