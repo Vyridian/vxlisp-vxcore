@@ -4,7 +4,6 @@ import com.vxlisp.vx.data.*
 
 object vx_repl {
 
-
   /**
    * type: liblist
    * List of library names
@@ -967,7 +966,6 @@ object vx_repl {
 
   val c_delimvxlisp : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimvxlispbracket
    * vxlisp Square Bracket Delimiters
@@ -1021,7 +1019,6 @@ object vx_repl {
   }
 
   val c_delimvxlispbracket : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimvxlispparen
@@ -3991,7 +3988,6 @@ object vx_repl {
     )
     return output
   }
-
 
   init {
     Const_delimvxlisp.const_new(c_delimvxlisp)

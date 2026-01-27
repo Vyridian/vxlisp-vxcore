@@ -8,7 +8,6 @@ import com.vxlisp.vx.*;
 
 public final class Textblock {
 
-
   /**
    * type: delim
    * A delimiter type supporting start and end delimiters and positions.
@@ -1299,7 +1298,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimbracketangle = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimbracketcurly
    * Curly Bracket Delimiter
@@ -1340,7 +1338,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delim c_delimbracketcurly = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimbracketsquare
@@ -1383,7 +1380,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimbracketsquare = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimclose
    * A placeholder delimiter used to mark the close of whatever is the current delimiter.
@@ -1421,7 +1417,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimclose = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimclosing
    * A placeholder delimiter used to mark the closing of whatever is the current delimiter.
@@ -1458,7 +1453,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delim c_delimclosing = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimcomma
@@ -1498,7 +1492,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delim c_delimcomma = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimcomment
@@ -1541,7 +1534,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimcomment = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimcommentblock
    * Block Comment Delimiter
@@ -1583,7 +1575,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimcommentblock = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimline
    * New Line Delimiter
@@ -1623,7 +1614,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimline = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimlisttest1
    * A delimiter used for test suite
@@ -1655,7 +1645,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delimlist c_delimlisttest1 = new Textblock.Class_delimlist();
-
 
   /**
    * Constant: delimlisttest2
@@ -1690,7 +1679,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delimlist c_delimlisttest2 = new Textblock.Class_delimlist();
 
-
   /**
    * Constant: delimlisttest3
    * A delimiter used for test suite
@@ -1723,7 +1711,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delimlist c_delimlisttest3 = new Textblock.Class_delimlist();
-
 
   /**
    * Constant: delimnonwhitespace
@@ -1766,7 +1753,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimnonwhitespace = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimparen
    * Parenthesis Delimiter
@@ -1807,7 +1793,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delim c_delimparen = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimquote
@@ -1850,7 +1835,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimquote = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimquoteblock
    * Block Quote Delimiter
@@ -1891,7 +1875,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delim c_delimquoteblock = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimspace
@@ -1934,7 +1917,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimspace = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimtest1
    * A delimiter used for test suite
@@ -1971,7 +1953,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delim c_delimtest1 = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimtest2
@@ -2010,7 +1991,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimtest2 = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimtest3
    * A delimiter used for test suite
@@ -2048,7 +2028,6 @@ public final class Textblock {
 
   public static final Textblock.Type_delim c_delimtest3 = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimtext
    * Placeholder for delimited text
@@ -2085,7 +2064,6 @@ public final class Textblock {
   }
 
   public static final Textblock.Type_delim c_delimtext = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimwhitespace
@@ -6523,7 +6501,6 @@ public final class Textblock {
     );
     return output;
   }
-
 
   static {
     Const_delimbracketangle.const_new(c_delimbracketangle);

@@ -7,7 +7,6 @@ import java.util.Map;
 
 public final class Sample {
 
-
   /**
    * type: mytype
    * (type mytype)
@@ -458,7 +457,6 @@ public final class Sample {
     );
     return output;
   }
-
 
   static {
     Const_myconst.const_new(c_myconst);

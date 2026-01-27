@@ -5,7 +5,6 @@ import com.vxlisp.vx.data.*
 
 object vx_ui_ui {
 
-
   /**
    * type: align
    * Universal Alignment
@@ -6939,7 +6938,6 @@ object vx_ui_ui {
 
   val c_align_center : vx_ui_ui.Type_align = vx_ui_ui.Class_align()
 
-
   /**
    * Constant: align-left
    * Logical Left Align in parent
@@ -6967,7 +6965,6 @@ object vx_ui_ui {
   }
 
   val c_align_left : vx_ui_ui.Type_align = vx_ui_ui.Class_align()
-
 
   /**
    * Constant: align-right
@@ -6997,7 +6994,6 @@ object vx_ui_ui {
 
   val c_align_right : vx_ui_ui.Type_align = vx_ui_ui.Class_align()
 
-
   /**
    * Constant: flip-x
    * Logical Flip Horizontally
@@ -7025,7 +7021,6 @@ object vx_ui_ui {
   }
 
   val c_flip_x : vx_ui_ui.Type_align = vx_ui_ui.Class_align()
-
 
   /**
    * Constant: flip-xy
@@ -7055,7 +7050,6 @@ object vx_ui_ui {
 
   val c_flip_xy : vx_ui_ui.Type_align = vx_ui_ui.Class_align()
 
-
   /**
    * Constant: flip-y
    * Logical Flip Vertically
@@ -7083,7 +7077,6 @@ object vx_ui_ui {
   }
 
   val c_flip_y : vx_ui_ui.Type_align = vx_ui_ui.Class_align()
-
 
   /**
    * Constant: layout-app
@@ -7122,7 +7115,6 @@ object vx_ui_ui {
 
   val c_layout_app : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-background
    * {layout}
@@ -7159,7 +7151,6 @@ object vx_ui_ui {
   }
 
   val c_layout_background : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-button
@@ -7198,7 +7189,6 @@ object vx_ui_ui {
 
   val c_layout_button : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-combobox
    * {layout}
@@ -7235,7 +7225,6 @@ object vx_ui_ui {
   }
 
   val c_layout_combobox : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-else
@@ -7274,7 +7263,6 @@ object vx_ui_ui {
 
   val c_layout_else : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-flow-columns
    * {layout}
@@ -7311,7 +7299,6 @@ object vx_ui_ui {
   }
 
   val c_layout_flow_columns : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-flow-item
@@ -7350,7 +7337,6 @@ object vx_ui_ui {
 
   val c_layout_flow_item : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-flow-rows
    * {layout}
@@ -7387,7 +7373,6 @@ object vx_ui_ui {
   }
 
   val c_layout_flow_rows : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-image
@@ -7426,7 +7411,6 @@ object vx_ui_ui {
 
   val c_layout_image : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-label
    * {layout}
@@ -7463,7 +7447,6 @@ object vx_ui_ui {
   }
 
   val c_layout_label : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-main
@@ -7502,7 +7485,6 @@ object vx_ui_ui {
 
   val c_layout_main : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-maxpanel
    * {layout}
@@ -7539,7 +7521,6 @@ object vx_ui_ui {
   }
 
   val c_layout_maxpanel : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-menubar
@@ -7578,7 +7559,6 @@ object vx_ui_ui {
 
   val c_layout_menubar : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-menudrawer
    * {layout}
@@ -7615,7 +7595,6 @@ object vx_ui_ui {
   }
 
   val c_layout_menudrawer : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-msgbox
@@ -7654,7 +7633,6 @@ object vx_ui_ui {
 
   val c_layout_msgbox : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-navbar
    * {layout}
@@ -7691,7 +7669,6 @@ object vx_ui_ui {
   }
 
   val c_layout_navbar : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-navdrawer
@@ -7730,7 +7707,6 @@ object vx_ui_ui {
 
   val c_layout_navdrawer : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-panel
    * {layout}
@@ -7767,7 +7743,6 @@ object vx_ui_ui {
   }
 
   val c_layout_panel : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-parallax
@@ -7806,7 +7781,6 @@ object vx_ui_ui {
 
   val c_layout_parallax : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-statusbar
    * {layout}
@@ -7843,7 +7817,6 @@ object vx_ui_ui {
   }
 
   val c_layout_statusbar : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-statusdrawer
@@ -7882,7 +7855,6 @@ object vx_ui_ui {
 
   val c_layout_statusdrawer : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-text
    * {layout}
@@ -7919,7 +7891,6 @@ object vx_ui_ui {
   }
 
   val c_layout_text : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-textentry
@@ -7958,7 +7929,6 @@ object vx_ui_ui {
 
   val c_layout_textentry : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-titlebar
    * {layout}
@@ -7996,7 +7966,6 @@ object vx_ui_ui {
 
   val c_layout_titlebar : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: pin-bottom
    * {pin}
@@ -8023,7 +7992,6 @@ object vx_ui_ui {
   }
 
   val c_pin_bottom : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
-
 
   /**
    * Constant: pin-center
@@ -8052,7 +8020,6 @@ object vx_ui_ui {
 
   val c_pin_center : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
 
-
   /**
    * Constant: pin-center-h
    * {pin}
@@ -8079,7 +8046,6 @@ object vx_ui_ui {
   }
 
   val c_pin_center_h : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
-
 
   /**
    * Constant: pin-center-v
@@ -8108,7 +8074,6 @@ object vx_ui_ui {
 
   val c_pin_center_v : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
 
-
   /**
    * Constant: pin-expand
    * {pin}
@@ -8135,7 +8100,6 @@ object vx_ui_ui {
   }
 
   val c_pin_expand : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
-
 
   /**
    * Constant: pin-left
@@ -8164,7 +8128,6 @@ object vx_ui_ui {
 
   val c_pin_left : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
 
-
   /**
    * Constant: pin-right
    * {pin}
@@ -8191,7 +8154,6 @@ object vx_ui_ui {
   }
 
   val c_pin_right : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
-
 
   /**
    * Constant: pin-top
@@ -8220,7 +8182,6 @@ object vx_ui_ui {
 
   val c_pin_top : vx_ui_ui.Type_pin = vx_ui_ui.Class_pin()
 
-
   /**
    * Constant: point-center
    * {point}
@@ -8247,7 +8208,6 @@ object vx_ui_ui {
   }
 
   val c_point_center : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
-
 
   /**
    * Constant: point-lefttop
@@ -8276,7 +8236,6 @@ object vx_ui_ui {
 
   val c_point_lefttop : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
 
-
   /**
    * Constant: point-rightbottom
    * {point}
@@ -8303,7 +8262,6 @@ object vx_ui_ui {
   }
 
   val c_point_rightbottom : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
-
 
   /**
    * Constant: point-rotate-180
@@ -8346,7 +8304,6 @@ object vx_ui_ui {
 
   val c_point_rotate_180 : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
 
-
   /**
    * Constant: point-rotate-270
    * {point}
@@ -8387,7 +8344,6 @@ object vx_ui_ui {
   }
 
   val c_point_rotate_270 : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
-
 
   /**
    * Constant: point-rotate-90
@@ -8430,7 +8386,6 @@ object vx_ui_ui {
 
   val c_point_rotate_90 : vx_ui_ui.Type_point = vx_ui_ui.Class_point()
 
-
   /**
    * Constant: pointtype-absolute
    * {pointtype}
@@ -8457,7 +8412,6 @@ object vx_ui_ui {
   }
 
   val c_pointtype_absolute : vx_ui_ui.Type_pointtype = vx_ui_ui.Class_pointtype()
-
 
   /**
    * Constant: pointtype-percent
@@ -8486,7 +8440,6 @@ object vx_ui_ui {
 
   val c_pointtype_percent : vx_ui_ui.Type_pointtype = vx_ui_ui.Class_pointtype()
 
-
   /**
    * Constant: pointtype-relative
    * {pointtype}
@@ -8513,7 +8466,6 @@ object vx_ui_ui {
   }
 
   val c_pointtype_relative : vx_ui_ui.Type_pointtype = vx_ui_ui.Class_pointtype()
-
 
   /**
    * Constant: styletype-custom
@@ -8542,7 +8494,6 @@ object vx_ui_ui {
 
   val c_styletype_custom : vx_ui_ui.Type_styletype = vx_ui_ui.Class_styletype()
 
-
   /**
    * Constant: styletype-shared
    * {styletype}
@@ -8569,7 +8520,6 @@ object vx_ui_ui {
   }
 
   val c_styletype_shared : vx_ui_ui.Type_styletype = vx_ui_ui.Class_styletype()
-
 
   /**
    * Constant: styletype-system
@@ -16129,7 +16079,6 @@ object vx_ui_ui {
     var output : vx_ui_ui.Type_uimap = vx_ui_ui.e_uimap
     return output
   }
-
 
   init {
     Const_align_center.const_new(c_align_center)

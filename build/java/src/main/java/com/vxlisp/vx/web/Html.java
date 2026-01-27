@@ -9,7 +9,6 @@ import com.vxlisp.vx.*;
 
 public final class Html {
 
-
   /**
    * type: body
    * Body Tag
@@ -9273,6 +9272,7 @@ public final class Html {
 
   public static final Html.Type_trlist e_trlist = new Html.Class_trlist();
   public static final Html.Type_trlist t_trlist = new Html.Class_trlist();
+
   /**
    * @function htmlstring_from_string
    * Convert text to HTML string
@@ -14594,7 +14594,6 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     return output;
   }
-
 
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();

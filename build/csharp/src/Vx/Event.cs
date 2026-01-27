@@ -2,7 +2,6 @@ namespace Vx;
 
 public static class Event {
 
-
   /**
    * type: event
    * Generic Event
@@ -730,7 +729,6 @@ public static class Event {
 
   public static Vx.Event.Type_event c_event_change = new Vx.Event.Class_event();
 
-
   /**
    * Constant: event-click
    * Click Event
@@ -769,7 +767,6 @@ public static class Event {
 
   public static Vx.Event.Type_event c_event_click = new Vx.Event.Class_event();
 
-
   /**
    * Constant: event-move
    * Move Event
@@ -807,7 +804,6 @@ public static class Event {
   }
 
   public static Vx.Event.Type_event c_event_move = new Vx.Event.Class_event();
-
 
   /**
    * Constant: event-select
@@ -1251,7 +1247,6 @@ public static class Event {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

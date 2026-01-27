@@ -10,7 +10,6 @@ import com.vxlisp.vx.ui.*;
 
 public final class Uihtml {
 
-
   /**
    * Constant: layout-app-html
    * Html App Renderer
@@ -44,7 +43,6 @@ public final class Uihtml {
   }
 
   public static final Ui.Type_layout c_layout_app_html = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-else-html
@@ -80,7 +78,6 @@ public final class Uihtml {
 
   public static final Ui.Type_layout c_layout_else_html = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-image-html
    * Html Image Renderer
@@ -115,7 +112,6 @@ public final class Uihtml {
 
   public static final Ui.Type_layout c_layout_image_html = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-label-html
    * Html Label Renderer
@@ -149,7 +145,6 @@ public final class Uihtml {
   }
 
   public static final Ui.Type_layout c_layout_label_html = new Ui.Class_layout();
-
 
   /**
    * Constant: layoutenginehtml
@@ -213,7 +208,6 @@ public final class Uihtml {
 
   public static final Ui.Type_layoutengine c_layoutenginehtml = new Ui.Class_layoutengine();
 
-
   /**
    * Constant: style-hidden
    * {style}
@@ -247,7 +241,6 @@ public final class Uihtml {
   }
 
   public static final Html.Type_style c_style_hidden = new Html.Class_style();
-
 
   /**
    * Constant: style-selected
@@ -6268,7 +6261,6 @@ public final class Uihtml {
     );
     return output;
   }
-
 
   static {
     Const_layout_app_html.const_new(c_layout_app_html);

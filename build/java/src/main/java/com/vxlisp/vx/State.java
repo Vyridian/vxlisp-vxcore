@@ -6,7 +6,6 @@ import java.util.Set;
 
 public final class State {
 
-
   /**
    * type: valuemap
    * (type valuemap)
@@ -201,6 +200,7 @@ public final class State {
 
   public static final State.Type_valuemap e_valuemap = new State.Class_valuemap();
   public static final State.Type_valuemap t_valuemap = new State.Class_valuemap();
+
   /**
    * @function any_readstate_from_mapname_name
    * Returns the named state value
@@ -1705,7 +1705,6 @@ public final class State {
     );
     return output;
   }
-
 
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();

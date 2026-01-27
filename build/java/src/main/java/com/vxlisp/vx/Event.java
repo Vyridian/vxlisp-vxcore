@@ -9,7 +9,6 @@ import java.util.Set;
 
 public final class Event {
 
-
   /**
    * type: event
    * Generic Event
@@ -796,7 +795,6 @@ public final class Event {
 
   public static final Event.Type_event c_event_change = new Event.Class_event();
 
-
   /**
    * Constant: event-click
    * Click Event
@@ -835,7 +833,6 @@ public final class Event {
 
   public static final Event.Type_event c_event_click = new Event.Class_event();
 
-
   /**
    * Constant: event-move
    * Move Event
@@ -873,7 +870,6 @@ public final class Event {
   }
 
   public static final Event.Type_event c_event_move = new Event.Class_event();
-
 
   /**
    * Constant: event-select
@@ -1358,7 +1354,6 @@ public final class Event {
     );
     return output;
   }
-
 
   static {
     Const_event_change.const_new(c_event_change);

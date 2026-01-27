@@ -130,6 +130,7 @@ public final class Type {
     Core.Type_string output = Core.vx_new_string(text);
     return output;
   }
+
   /**
    * @function allowtypenames_from_type
    * Get the name of a given type
@@ -3023,7 +3024,6 @@ public final class Type {
     output = Type.vx_uid();
     return output;
   }
-
 
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();

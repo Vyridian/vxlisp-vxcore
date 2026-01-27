@@ -2,7 +2,6 @@ package com.vxlisp.vx
 
 object vx_state {
 
-
   /**
    * type: valuemap
    * (type valuemap)
@@ -189,6 +188,7 @@ object vx_state {
 
   val e_valuemap : vx_state.Type_valuemap = vx_state.Class_valuemap()
   val t_valuemap : vx_state.Type_valuemap = vx_state.Class_valuemap()
+
   /**
    * @function any_readstate_from_mapname_name
    * Returns the named state value
@@ -1586,7 +1586,6 @@ object vx_state {
     )
     return output
   }
-
 
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()

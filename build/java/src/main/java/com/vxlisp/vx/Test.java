@@ -10,7 +10,6 @@ import com.vxlisp.vx.web.*;
 
 public final class Test {
 
-
   /**
    * type: testcase
    * Structure to describe a test case
@@ -7845,7 +7844,6 @@ public final class Test {
     );
     return output;
   }
-
 
   static {
     Const_stylesheet_test.const_new(c_stylesheet_test);

@@ -601,6 +601,7 @@ public final class File {
 
   public static final File.Type_filelist e_filelist = new File.Class_filelist();
   public static final File.Type_filelist t_filelist = new File.Class_filelist();
+
   /**
    * @function boolean_exists_from_file
    * Returns true if file/path exists.
@@ -1864,7 +1865,6 @@ public final class File {
     }
     return output;
   }
-
 
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();

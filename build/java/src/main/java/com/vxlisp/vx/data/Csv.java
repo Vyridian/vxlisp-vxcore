@@ -9,7 +9,6 @@ import com.vxlisp.vx.*;
 
 public final class Csv {
 
-
   /**
    * type: csv
    * (type csv)
@@ -1486,7 +1485,6 @@ public final class Csv {
     );
     return output;
   }
-
 
   static {
     Const_delimcsv.const_new(c_delimcsv);

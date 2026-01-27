@@ -626,6 +626,7 @@ object vx_data_file {
 
   val e_filelist : vx_data_file.Type_filelist = vx_data_file.Class_filelist()
   val t_filelist : vx_data_file.Type_filelist = vx_data_file.Class_filelist()
+
   /**
    * @function boolean_exists_from_file
    * Returns true if file/path exists.
@@ -1782,7 +1783,6 @@ object vx_data_file {
     }
     return output
   }
-
 
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()

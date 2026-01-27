@@ -1108,7 +1108,6 @@ public static class Translate {
     return output;
   }
 
-
   public static class PackageRunOnce {
     public static bool RunOnce() {
     Vx.Core.Map<string, Vx.Core.Type_any> maptype = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();

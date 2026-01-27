@@ -1045,7 +1045,6 @@ public final class Repl {
 
   public static final Textblock.Type_delim c_delimvxlisp = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimvxlispbracket
    * vxlisp Square Bracket Delimiters
@@ -1095,7 +1094,6 @@ public final class Repl {
   }
 
   public static final Textblock.Type_delim c_delimvxlispbracket = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimvxlispparen
@@ -4228,7 +4226,6 @@ public final class Repl {
     );
     return output;
   }
-
 
   static {
     Const_delimvxlisp.const_new(c_delimvxlisp);

@@ -16,8 +16,8 @@ export default class vx_collection_test {
       ":caselist", testcaselist,
       ":coveragesummary", vx_collection_test.test_coveragesummary(),
       ":coveragedetail", vx_collection_test.test_coveragedetail()
-    );
-    return output;
+    )
+    return output
   }
 
   static test_coveragesummary() {

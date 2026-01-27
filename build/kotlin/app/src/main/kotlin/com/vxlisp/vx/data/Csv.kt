@@ -4,7 +4,6 @@ import com.vxlisp.vx.*
 
 object vx_data_csv {
 
-
   /**
    * type: csv
    * (type csv)
@@ -1396,7 +1395,6 @@ object vx_data_csv {
     )
     return output
   }
-
 
   init {
     Const_delimcsv.const_new(c_delimcsv)

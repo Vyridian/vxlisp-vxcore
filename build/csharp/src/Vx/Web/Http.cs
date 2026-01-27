@@ -2,7 +2,6 @@ namespace Vx.Web;
 
 public static class Http {
 
-
   /**
    * type: response
    * (type response)
@@ -212,6 +211,7 @@ public static class Http {
 
   public static Vx.Web.Http.Type_response e_response = new Vx.Web.Http.Class_response();
   public static Vx.Web.Http.Type_response t_response = new Vx.Web.Http.Class_response();
+
   /**
    * 
    * @async
@@ -1053,7 +1053,6 @@ public static class Http {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

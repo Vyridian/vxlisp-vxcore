@@ -2,7 +2,6 @@ namespace Vx.Data;
 
 public static class Csv {
 
-
   /**
    * type: csv
    * (type csv)
@@ -1362,7 +1361,6 @@ public static class Csv {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

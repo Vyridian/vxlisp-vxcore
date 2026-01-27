@@ -1520,7 +1520,6 @@ public final class Htmldoc {
     return output;
   }
 
-
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();
     Map<String, Core.Type_any> mapconst = new LinkedHashMap<String, Core.Type_any>();

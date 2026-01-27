@@ -222,6 +222,7 @@ public final class Collection {
     }
     return output;
   }
+
   /**
    * @function minus
    * Returns a list from listmain after removing listremove.
@@ -3458,7 +3459,6 @@ public final class Collection {
     );
     return output;
   }
-
 
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();

@@ -965,7 +965,6 @@ public static class Repl {
 
   public static Vx.Data.Textblock.Type_delim c_delimvxlisp = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimvxlispbracket
    * vxlisp Square Bracket Delimiters
@@ -1015,7 +1014,6 @@ public static class Repl {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimvxlispbracket = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimvxlispparen
@@ -3959,7 +3957,6 @@ public static class Repl {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

@@ -14048,7 +14048,6 @@ object vx_core {
 
   val c_global : vx_core.Type_project = vx_core.Class_project()
 
-
   /**
    * Constant: infinity
    * Infinity. Returned during unusual calculations.
@@ -14078,7 +14077,6 @@ object vx_core {
 
   val c_infinity : vx_core.Type_int = vx_core.Class_int()
 
-
   /**
    * Constant: mempool-active
    * Active Value Memory Pool
@@ -14106,7 +14104,6 @@ object vx_core {
   }
 
   val c_mempool_active : vx_core.Type_mempool = vx_core.Class_mempool()
-
 
   /**
    * Constant: msg-error
@@ -14137,7 +14134,6 @@ object vx_core {
 
   val c_msg_error : vx_core.Type_int = vx_core.Class_int()
 
-
   /**
    * Constant: msg-info
    * Message is just information
@@ -14166,7 +14162,6 @@ object vx_core {
   }
 
   val c_msg_info : vx_core.Type_int = vx_core.Class_int()
-
 
   /**
    * Constant: msg-severe
@@ -14197,7 +14192,6 @@ object vx_core {
 
   val c_msg_severe : vx_core.Type_int = vx_core.Class_int()
 
-
   /**
    * Constant: msg-warning
    * Message is a Warning
@@ -14226,7 +14220,6 @@ object vx_core {
   }
 
   val c_msg_warning : vx_core.Type_int = vx_core.Class_int()
-
 
   /**
    * Constant: neginfinity
@@ -14257,7 +14250,6 @@ object vx_core {
 
   val c_neginfinity : vx_core.Type_int = vx_core.Class_int()
 
-
   /**
    * Constant: newline
    * New line constant
@@ -14286,7 +14278,6 @@ object vx_core {
   }
 
   val c_newline : vx_core.Type_string = vx_core.Class_string()
-
 
   /**
    * Constant: notanumber
@@ -14317,7 +14308,6 @@ object vx_core {
 
   val c_notanumber : vx_core.Type_int = vx_core.Class_int()
 
-
   /**
    * Constant: nothing
    * Nothing Value. Opposite of every other value. e.g. Nil, Null
@@ -14346,7 +14336,6 @@ object vx_core {
   }
 
   val c_nothing : vx_core.Type_string = vx_core.Class_string()
-
 
   /**
    * Constant: path-test-resources
@@ -14377,7 +14366,6 @@ object vx_core {
 
   val c_path_test_resources : vx_core.Type_string = vx_core.Class_string()
 
-
   /**
    * Constant: quote
    * Quotation mark constant
@@ -14406,7 +14394,6 @@ object vx_core {
   }
 
   val c_quote : vx_core.Type_string = vx_core.Class_string()
-
 
   /**
    * Constant: true
@@ -31278,7 +31265,6 @@ object vx_core {
     ).user()
     return output
   }
-
 
   init {
     Const_false.const_new(c_false)

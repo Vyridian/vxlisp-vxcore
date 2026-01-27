@@ -4,7 +4,6 @@ import com.vxlisp.vx.*
 
 object vx_data_table {
 
-
   /**
    * type: cell
    * (type cell)

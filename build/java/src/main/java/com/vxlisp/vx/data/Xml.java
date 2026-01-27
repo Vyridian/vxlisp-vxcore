@@ -9,7 +9,6 @@ import com.vxlisp.vx.*;
 
 public final class Xml {
 
-
   /**
    * type: xml
    * (type xml)
@@ -814,7 +813,6 @@ public final class Xml {
 
   public static final Textblock.Type_delim c_delimxml = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimxmlcdata
    * {delim}
@@ -855,7 +853,6 @@ public final class Xml {
 
   public static final Textblock.Type_delim c_delimxmlcdata = new Textblock.Class_delim();
 
-
   /**
    * Constant: delimxmlcomment
    * {delim}
@@ -895,7 +892,6 @@ public final class Xml {
   }
 
   public static final Textblock.Type_delim c_delimxmlcomment = new Textblock.Class_delim();
-
 
   /**
    * Constant: delimxmlequal
@@ -2869,7 +2865,6 @@ public final class Xml {
     );
     return output;
   }
-
 
   static {
     Const_delimxml.const_new(c_delimxml);

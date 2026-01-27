@@ -10,7 +10,6 @@ import com.vxlisp.vx.data.*;
 
 public final class Http {
 
-
   /**
    * type: response
    * (type response)
@@ -236,6 +235,7 @@ public final class Http {
 
   public static final Http.Type_response e_response = new Http.Class_response();
   public static final Http.Type_response t_response = new Http.Class_response();
+
   /**
    * 
    * @async
@@ -1157,7 +1157,6 @@ public final class Http {
     );
     return output;
   }
-
 
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();

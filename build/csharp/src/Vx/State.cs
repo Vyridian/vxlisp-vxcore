@@ -2,7 +2,6 @@ namespace Vx;
 
 public static class State {
 
-
   /**
    * type: valuemap
    * (type valuemap)
@@ -182,6 +181,7 @@ public static class State {
 
   public static Vx.State.Type_valuemap e_valuemap = new Vx.State.Class_valuemap();
   public static Vx.State.Type_valuemap t_valuemap = new Vx.State.Class_valuemap();
+
   /**
    * @function any_readstate_from_mapname_name
    * Returns the named state value
@@ -1566,7 +1566,6 @@ public static class State {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

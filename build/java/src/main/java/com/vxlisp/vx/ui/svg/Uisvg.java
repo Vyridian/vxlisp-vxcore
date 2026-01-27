@@ -7,7 +7,6 @@ import com.vxlisp.vx.ui.*;
 
 public final class Uisvg {
 
-
   static {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();
     Map<String, Core.Type_any> mapconst = new LinkedHashMap<String, Core.Type_any>();

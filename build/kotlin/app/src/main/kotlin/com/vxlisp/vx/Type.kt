@@ -195,6 +195,7 @@ object vx_type {
     val output = vx_core.vx_new_string(text)
     return output
   }
+
   /**
    * @function allowtypenames_from_type
    * Get the name of a given type
@@ -2868,7 +2869,6 @@ object vx_type {
     output = vx_type.vx_uid()
     return output
   }
-
 
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()

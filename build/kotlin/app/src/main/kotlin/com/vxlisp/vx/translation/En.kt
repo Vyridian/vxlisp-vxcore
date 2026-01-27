@@ -525,7 +525,6 @@ object vx_translation_en {
     return output
   }
 
-
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
     var mapconst : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()

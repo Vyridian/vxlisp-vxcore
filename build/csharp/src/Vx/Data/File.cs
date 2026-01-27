@@ -605,6 +605,7 @@ public static class File {
 
   public static Vx.Data.File.Type_filelist e_filelist = new Vx.Data.File.Class_filelist();
   public static Vx.Data.File.Type_filelist t_filelist = new Vx.Data.File.Class_filelist();
+
   /**
    * @function boolean_exists_from_file
    * Returns true if file/path exists.
@@ -1750,7 +1751,6 @@ public static class File {
     }
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

@@ -2,7 +2,6 @@ namespace Vx.Data;
 
 public static class Xml {
 
-
   /**
    * type: xml
    * (type xml)
@@ -748,7 +747,6 @@ public static class Xml {
 
   public static Vx.Data.Textblock.Type_delim c_delimxml = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimxmlcdata
    * {delim}
@@ -789,7 +787,6 @@ public static class Xml {
 
   public static Vx.Data.Textblock.Type_delim c_delimxmlcdata = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimxmlcomment
    * {delim}
@@ -829,7 +826,6 @@ public static class Xml {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimxmlcomment = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimxmlequal
@@ -2677,7 +2673,6 @@ public static class Xml {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

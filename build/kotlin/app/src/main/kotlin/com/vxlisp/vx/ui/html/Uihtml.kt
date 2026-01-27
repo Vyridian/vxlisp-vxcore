@@ -8,7 +8,6 @@ import com.vxlisp.vx.ui.*
 
 object vx_ui_html_uihtml {
 
-
   /**
    * Constant: layout-app-html
    * Html App Renderer
@@ -46,7 +45,6 @@ object vx_ui_html_uihtml {
   }
 
   val c_layout_app_html : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layout-else-html
@@ -86,7 +84,6 @@ object vx_ui_html_uihtml {
 
   val c_layout_else_html : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-image-html
    * Html Image Renderer
@@ -125,7 +122,6 @@ object vx_ui_html_uihtml {
 
   val c_layout_image_html : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
 
-
   /**
    * Constant: layout-label-html
    * Html Label Renderer
@@ -163,7 +159,6 @@ object vx_ui_html_uihtml {
   }
 
   val c_layout_label_html : vx_ui_ui.Type_layout = vx_ui_ui.Class_layout()
-
 
   /**
    * Constant: layoutenginehtml
@@ -231,7 +226,6 @@ object vx_ui_html_uihtml {
 
   val c_layoutenginehtml : vx_ui_ui.Type_layoutengine = vx_ui_ui.Class_layoutengine()
 
-
   /**
    * Constant: style-hidden
    * {style}
@@ -269,7 +263,6 @@ object vx_ui_html_uihtml {
   }
 
   val c_style_hidden : vx_web_html.Type_style = vx_web_html.Class_style()
-
 
   /**
    * Constant: style-selected
@@ -5979,7 +5972,6 @@ object vx_ui_html_uihtml {
     )
     return output
   }
-
 
   init {
     Const_layout_app_html.const_new(c_layout_app_html)

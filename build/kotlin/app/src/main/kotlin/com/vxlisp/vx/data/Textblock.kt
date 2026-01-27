@@ -4,7 +4,6 @@ import com.vxlisp.vx.*
 
 object vx_data_textblock {
 
-
   /**
    * type: delim
    * A delimiter type supporting start and end delimiters and positions.
@@ -1255,7 +1254,6 @@ object vx_data_textblock {
 
   val c_delimbracketangle : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimbracketcurly
    * Curly Bracket Delimiter
@@ -1300,7 +1298,6 @@ object vx_data_textblock {
   }
 
   val c_delimbracketcurly : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimbracketsquare
@@ -1347,7 +1344,6 @@ object vx_data_textblock {
 
   val c_delimbracketsquare : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimclose
    * A placeholder delimiter used to mark the close of whatever is the current delimiter.
@@ -1389,7 +1385,6 @@ object vx_data_textblock {
 
   val c_delimclose : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimclosing
    * A placeholder delimiter used to mark the closing of whatever is the current delimiter.
@@ -1430,7 +1425,6 @@ object vx_data_textblock {
   }
 
   val c_delimclosing : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimcomma
@@ -1474,7 +1468,6 @@ object vx_data_textblock {
   }
 
   val c_delimcomma : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimcomment
@@ -1521,7 +1514,6 @@ object vx_data_textblock {
 
   val c_delimcomment : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimcommentblock
    * Block Comment Delimiter
@@ -1567,7 +1559,6 @@ object vx_data_textblock {
 
   val c_delimcommentblock : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimline
    * New Line Delimiter
@@ -1611,7 +1602,6 @@ object vx_data_textblock {
 
   val c_delimline : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimlisttest1
    * A delimiter used for test suite
@@ -1647,7 +1637,6 @@ object vx_data_textblock {
   }
 
   val c_delimlisttest1 : vx_data_textblock.Type_delimlist = vx_data_textblock.Class_delimlist()
-
 
   /**
    * Constant: delimlisttest2
@@ -1686,7 +1675,6 @@ object vx_data_textblock {
 
   val c_delimlisttest2 : vx_data_textblock.Type_delimlist = vx_data_textblock.Class_delimlist()
 
-
   /**
    * Constant: delimlisttest3
    * A delimiter used for test suite
@@ -1723,7 +1711,6 @@ object vx_data_textblock {
   }
 
   val c_delimlisttest3 : vx_data_textblock.Type_delimlist = vx_data_textblock.Class_delimlist()
-
 
   /**
    * Constant: delimnonwhitespace
@@ -1770,7 +1757,6 @@ object vx_data_textblock {
 
   val c_delimnonwhitespace : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimparen
    * Parenthesis Delimiter
@@ -1815,7 +1801,6 @@ object vx_data_textblock {
   }
 
   val c_delimparen : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimquote
@@ -1862,7 +1847,6 @@ object vx_data_textblock {
 
   val c_delimquote : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimquoteblock
    * Block Quote Delimiter
@@ -1907,7 +1891,6 @@ object vx_data_textblock {
   }
 
   val c_delimquoteblock : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimspace
@@ -1954,7 +1937,6 @@ object vx_data_textblock {
 
   val c_delimspace : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimtest1
    * A delimiter used for test suite
@@ -1995,7 +1977,6 @@ object vx_data_textblock {
   }
 
   val c_delimtest1 : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimtest2
@@ -2038,7 +2019,6 @@ object vx_data_textblock {
 
   val c_delimtest2 : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimtest3
    * A delimiter used for test suite
@@ -2080,7 +2060,6 @@ object vx_data_textblock {
 
   val c_delimtest3 : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimtext
    * Placeholder for delimited text
@@ -2121,7 +2100,6 @@ object vx_data_textblock {
   }
 
   val c_delimtext : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimwhitespace
@@ -6361,7 +6339,6 @@ object vx_data_textblock {
     )
     return output
   }
-
 
   init {
     Const_delimbracketangle.const_new(c_delimbracketangle)

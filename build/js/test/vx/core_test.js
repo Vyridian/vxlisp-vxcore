@@ -14,8 +14,8 @@ export default class vx_core_test {
       ":caselist", testcaselist,
       ":coveragesummary", vx_core_test.test_coveragesummary(),
       ":coveragedetail", vx_core_test.test_coveragedetail()
-    );
-    return output;
+    )
+    return output
   }
 
   static test_coveragesummary() {

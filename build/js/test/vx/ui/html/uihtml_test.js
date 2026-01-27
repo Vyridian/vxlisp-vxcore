@@ -20,8 +20,8 @@ export default class vx_ui_html_uihtml_test {
       ":caselist", testcaselist,
       ":coveragesummary", vx_ui_html_uihtml_test.test_coveragesummary(),
       ":coveragedetail", vx_ui_html_uihtml_test.test_coveragedetail()
-    );
-    return output;
+    )
+    return output
   }
 
   static test_coveragesummary() {

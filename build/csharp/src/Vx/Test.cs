@@ -2,7 +2,6 @@ namespace Vx;
 
 public static class Test {
 
-
   /**
    * type: testcase
    * Structure to describe a test case
@@ -7291,7 +7290,6 @@ public static class Test {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

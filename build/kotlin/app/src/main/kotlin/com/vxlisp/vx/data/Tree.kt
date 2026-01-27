@@ -4,7 +4,6 @@ import com.vxlisp.vx.*
 
 object vx_data_tree {
 
-
   /**
    * type: branch
    * (type branch)
@@ -1258,7 +1257,6 @@ object vx_data_tree {
 
   val c_brancharrow_down : vx_data_tree.Type_brancharrow = vx_data_tree.Class_brancharrow()
 
-
   /**
    * Constant: brancharrow-up
    * {brancharrow}
@@ -1286,7 +1284,6 @@ object vx_data_tree {
 
   val c_brancharrow_up : vx_data_tree.Type_brancharrow = vx_data_tree.Class_brancharrow()
 
-
   /**
    * Constant: brancharrow-updown
    * {brancharrow}
@@ -1313,7 +1310,6 @@ object vx_data_tree {
   }
 
   val c_brancharrow_updown : vx_data_tree.Type_brancharrow = vx_data_tree.Class_brancharrow()
-
 
   init {
     Const_brancharrow_down.const_new(c_brancharrow_down)

@@ -10,7 +10,6 @@ import com.vxlisp.vx.data.*;
 
 public final class Ui {
 
-
   /**
    * type: align
    * Universal Alignment
@@ -7215,7 +7214,6 @@ public final class Ui {
 
   public static final Ui.Type_align c_align_center = new Ui.Class_align();
 
-
   /**
    * Constant: align-left
    * Logical Left Align in parent
@@ -7239,7 +7237,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_align c_align_left = new Ui.Class_align();
-
 
   /**
    * Constant: align-right
@@ -7265,7 +7262,6 @@ public final class Ui {
 
   public static final Ui.Type_align c_align_right = new Ui.Class_align();
 
-
   /**
    * Constant: flip-x
    * Logical Flip Horizontally
@@ -7289,7 +7285,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_align c_flip_x = new Ui.Class_align();
-
 
   /**
    * Constant: flip-xy
@@ -7315,7 +7310,6 @@ public final class Ui {
 
   public static final Ui.Type_align c_flip_xy = new Ui.Class_align();
 
-
   /**
    * Constant: flip-y
    * Logical Flip Vertically
@@ -7339,7 +7333,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_align c_flip_y = new Ui.Class_align();
-
 
   /**
    * Constant: layout-app
@@ -7374,7 +7367,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_app = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-background
    * {layout}
@@ -7407,7 +7399,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_background = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-button
@@ -7442,7 +7433,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_button = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-combobox
    * {layout}
@@ -7475,7 +7465,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_combobox = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-else
@@ -7510,7 +7499,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_else = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-flow-columns
    * {layout}
@@ -7543,7 +7531,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_flow_columns = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-flow-item
@@ -7578,7 +7565,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_flow_item = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-flow-rows
    * {layout}
@@ -7611,7 +7597,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_flow_rows = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-image
@@ -7646,7 +7631,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_image = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-label
    * {layout}
@@ -7679,7 +7663,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_label = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-main
@@ -7714,7 +7697,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_main = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-maxpanel
    * {layout}
@@ -7747,7 +7729,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_maxpanel = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-menubar
@@ -7782,7 +7763,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_menubar = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-menudrawer
    * {layout}
@@ -7815,7 +7795,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_menudrawer = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-msgbox
@@ -7850,7 +7829,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_msgbox = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-navbar
    * {layout}
@@ -7883,7 +7861,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_navbar = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-navdrawer
@@ -7918,7 +7895,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_navdrawer = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-panel
    * {layout}
@@ -7951,7 +7927,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_panel = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-parallax
@@ -7986,7 +7961,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_parallax = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-statusbar
    * {layout}
@@ -8019,7 +7993,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_statusbar = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-statusdrawer
@@ -8054,7 +8027,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_statusdrawer = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-text
    * {layout}
@@ -8087,7 +8059,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_layout c_layout_text = new Ui.Class_layout();
-
 
   /**
    * Constant: layout-textentry
@@ -8122,7 +8093,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_textentry = new Ui.Class_layout();
 
-
   /**
    * Constant: layout-titlebar
    * {layout}
@@ -8156,7 +8126,6 @@ public final class Ui {
 
   public static final Ui.Type_layout c_layout_titlebar = new Ui.Class_layout();
 
-
   /**
    * Constant: pin-bottom
    * {pin}
@@ -8179,7 +8148,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_pin c_pin_bottom = new Ui.Class_pin();
-
 
   /**
    * Constant: pin-center
@@ -8204,7 +8172,6 @@ public final class Ui {
 
   public static final Ui.Type_pin c_pin_center = new Ui.Class_pin();
 
-
   /**
    * Constant: pin-center-h
    * {pin}
@@ -8227,7 +8194,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_pin c_pin_center_h = new Ui.Class_pin();
-
 
   /**
    * Constant: pin-center-v
@@ -8252,7 +8218,6 @@ public final class Ui {
 
   public static final Ui.Type_pin c_pin_center_v = new Ui.Class_pin();
 
-
   /**
    * Constant: pin-expand
    * {pin}
@@ -8275,7 +8240,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_pin c_pin_expand = new Ui.Class_pin();
-
 
   /**
    * Constant: pin-left
@@ -8300,7 +8264,6 @@ public final class Ui {
 
   public static final Ui.Type_pin c_pin_left = new Ui.Class_pin();
 
-
   /**
    * Constant: pin-right
    * {pin}
@@ -8323,7 +8286,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_pin c_pin_right = new Ui.Class_pin();
-
 
   /**
    * Constant: pin-top
@@ -8348,7 +8310,6 @@ public final class Ui {
 
   public static final Ui.Type_pin c_pin_top = new Ui.Class_pin();
 
-
   /**
    * Constant: point-center
    * {point}
@@ -8371,7 +8332,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_point c_point_center = new Ui.Class_point();
-
 
   /**
    * Constant: point-lefttop
@@ -8396,7 +8356,6 @@ public final class Ui {
 
   public static final Ui.Type_point c_point_lefttop = new Ui.Class_point();
 
-
   /**
    * Constant: point-rightbottom
    * {point}
@@ -8419,7 +8378,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_point c_point_rightbottom = new Ui.Class_point();
-
 
   /**
    * Constant: point-rotate-180
@@ -8458,7 +8416,6 @@ public final class Ui {
 
   public static final Ui.Type_point c_point_rotate_180 = new Ui.Class_point();
 
-
   /**
    * Constant: point-rotate-270
    * {point}
@@ -8495,7 +8452,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_point c_point_rotate_270 = new Ui.Class_point();
-
 
   /**
    * Constant: point-rotate-90
@@ -8534,7 +8490,6 @@ public final class Ui {
 
   public static final Ui.Type_point c_point_rotate_90 = new Ui.Class_point();
 
-
   /**
    * Constant: pointtype-absolute
    * {pointtype}
@@ -8557,7 +8512,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_pointtype c_pointtype_absolute = new Ui.Class_pointtype();
-
 
   /**
    * Constant: pointtype-percent
@@ -8582,7 +8536,6 @@ public final class Ui {
 
   public static final Ui.Type_pointtype c_pointtype_percent = new Ui.Class_pointtype();
 
-
   /**
    * Constant: pointtype-relative
    * {pointtype}
@@ -8605,7 +8558,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_pointtype c_pointtype_relative = new Ui.Class_pointtype();
-
 
   /**
    * Constant: styletype-custom
@@ -8630,7 +8582,6 @@ public final class Ui {
 
   public static final Ui.Type_styletype c_styletype_custom = new Ui.Class_styletype();
 
-
   /**
    * Constant: styletype-shared
    * {styletype}
@@ -8653,7 +8604,6 @@ public final class Ui {
   }
 
   public static final Ui.Type_styletype c_styletype_shared = new Ui.Class_styletype();
-
 
   /**
    * Constant: styletype-system
@@ -16749,7 +16699,6 @@ public final class Ui {
     Ui.Type_uimap output = Ui.e_uimap;
     return output;
   }
-
 
   static {
     Const_align_center.const_new(c_align_center);

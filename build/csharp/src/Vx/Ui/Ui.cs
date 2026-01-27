@@ -2,7 +2,6 @@ namespace Vx.Ui;
 
 public static class Ui {
 
-
   /**
    * type: align
    * Universal Alignment
@@ -6662,7 +6661,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_align c_align_center = new Vx.Ui.Ui.Class_align();
 
-
   /**
    * Constant: align-left
    * Logical Left Align in parent
@@ -6686,7 +6684,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_align c_align_left = new Vx.Ui.Ui.Class_align();
-
 
   /**
    * Constant: align-right
@@ -6712,7 +6709,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_align c_align_right = new Vx.Ui.Ui.Class_align();
 
-
   /**
    * Constant: flip-x
    * Logical Flip Horizontally
@@ -6736,7 +6732,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_align c_flip_x = new Vx.Ui.Ui.Class_align();
-
 
   /**
    * Constant: flip-xy
@@ -6762,7 +6757,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_align c_flip_xy = new Vx.Ui.Ui.Class_align();
 
-
   /**
    * Constant: flip-y
    * Logical Flip Vertically
@@ -6786,7 +6780,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_align c_flip_y = new Vx.Ui.Ui.Class_align();
-
 
   /**
    * Constant: layout-app
@@ -6821,7 +6814,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_app = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-background
    * {layout}
@@ -6854,7 +6846,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_background = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-button
@@ -6889,7 +6880,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_button = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-combobox
    * {layout}
@@ -6922,7 +6912,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_combobox = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-else
@@ -6957,7 +6946,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_else = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-flow-columns
    * {layout}
@@ -6990,7 +6978,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_flow_columns = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-flow-item
@@ -7025,7 +7012,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_flow_item = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-flow-rows
    * {layout}
@@ -7058,7 +7044,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_flow_rows = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-image
@@ -7093,7 +7078,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_image = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-label
    * {layout}
@@ -7126,7 +7110,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_label = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-main
@@ -7161,7 +7144,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_main = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-maxpanel
    * {layout}
@@ -7194,7 +7176,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_maxpanel = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-menubar
@@ -7229,7 +7210,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_menubar = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-menudrawer
    * {layout}
@@ -7262,7 +7242,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_menudrawer = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-msgbox
@@ -7297,7 +7276,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_msgbox = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-navbar
    * {layout}
@@ -7330,7 +7308,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_navbar = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-navdrawer
@@ -7365,7 +7342,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_navdrawer = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-panel
    * {layout}
@@ -7398,7 +7374,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_panel = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-parallax
@@ -7433,7 +7408,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_parallax = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-statusbar
    * {layout}
@@ -7466,7 +7440,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_statusbar = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-statusdrawer
@@ -7501,7 +7474,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_statusdrawer = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-text
    * {layout}
@@ -7534,7 +7506,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_text = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-textentry
@@ -7569,7 +7540,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_textentry = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-titlebar
    * {layout}
@@ -7603,7 +7573,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_layout c_layout_titlebar = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: pin-bottom
    * {pin}
@@ -7626,7 +7595,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_pin c_pin_bottom = new Vx.Ui.Ui.Class_pin();
-
 
   /**
    * Constant: pin-center
@@ -7651,7 +7619,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_pin c_pin_center = new Vx.Ui.Ui.Class_pin();
 
-
   /**
    * Constant: pin-center-h
    * {pin}
@@ -7674,7 +7641,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_pin c_pin_center_h = new Vx.Ui.Ui.Class_pin();
-
 
   /**
    * Constant: pin-center-v
@@ -7699,7 +7665,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_pin c_pin_center_v = new Vx.Ui.Ui.Class_pin();
 
-
   /**
    * Constant: pin-expand
    * {pin}
@@ -7722,7 +7687,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_pin c_pin_expand = new Vx.Ui.Ui.Class_pin();
-
 
   /**
    * Constant: pin-left
@@ -7747,7 +7711,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_pin c_pin_left = new Vx.Ui.Ui.Class_pin();
 
-
   /**
    * Constant: pin-right
    * {pin}
@@ -7770,7 +7733,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_pin c_pin_right = new Vx.Ui.Ui.Class_pin();
-
 
   /**
    * Constant: pin-top
@@ -7795,7 +7757,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_pin c_pin_top = new Vx.Ui.Ui.Class_pin();
 
-
   /**
    * Constant: point-center
    * {point}
@@ -7818,7 +7779,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_point c_point_center = new Vx.Ui.Ui.Class_point();
-
 
   /**
    * Constant: point-lefttop
@@ -7843,7 +7803,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_point c_point_lefttop = new Vx.Ui.Ui.Class_point();
 
-
   /**
    * Constant: point-rightbottom
    * {point}
@@ -7866,7 +7825,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_point c_point_rightbottom = new Vx.Ui.Ui.Class_point();
-
 
   /**
    * Constant: point-rotate-180
@@ -7905,7 +7863,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_point c_point_rotate_180 = new Vx.Ui.Ui.Class_point();
 
-
   /**
    * Constant: point-rotate-270
    * {point}
@@ -7942,7 +7899,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_point c_point_rotate_270 = new Vx.Ui.Ui.Class_point();
-
 
   /**
    * Constant: point-rotate-90
@@ -7981,7 +7937,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_point c_point_rotate_90 = new Vx.Ui.Ui.Class_point();
 
-
   /**
    * Constant: pointtype-absolute
    * {pointtype}
@@ -8004,7 +7959,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_pointtype c_pointtype_absolute = new Vx.Ui.Ui.Class_pointtype();
-
 
   /**
    * Constant: pointtype-percent
@@ -8029,7 +7983,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_pointtype c_pointtype_percent = new Vx.Ui.Ui.Class_pointtype();
 
-
   /**
    * Constant: pointtype-relative
    * {pointtype}
@@ -8052,7 +8005,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_pointtype c_pointtype_relative = new Vx.Ui.Ui.Class_pointtype();
-
 
   /**
    * Constant: styletype-custom
@@ -8077,7 +8029,6 @@ public static class Ui {
 
   public static Vx.Ui.Ui.Type_styletype c_styletype_custom = new Vx.Ui.Ui.Class_styletype();
 
-
   /**
    * Constant: styletype-shared
    * {styletype}
@@ -8100,7 +8051,6 @@ public static class Ui {
   }
 
   public static Vx.Ui.Ui.Type_styletype c_styletype_shared = new Vx.Ui.Ui.Class_styletype();
-
 
   /**
    * Constant: styletype-system
@@ -15588,7 +15538,6 @@ public static class Ui {
     Vx.Ui.Ui.Type_uimap output = Vx.Ui.Ui.e_uimap;
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

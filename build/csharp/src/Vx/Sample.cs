@@ -2,7 +2,6 @@ namespace Vx;
 
 public static class Sample {
 
-
   /**
    * type: mytype
    * (type mytype)
@@ -419,7 +418,6 @@ public static class Sample {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

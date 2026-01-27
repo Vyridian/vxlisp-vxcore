@@ -4,7 +4,6 @@ import java.util.concurrent.CompletableFuture
 
 object vx_event {
 
-
   /**
    * type: event
    * Generic Event
@@ -765,7 +764,6 @@ object vx_event {
 
   val c_event_change : vx_event.Type_event = vx_event.Class_event()
 
-
   /**
    * Constant: event-click
    * Click Event
@@ -808,7 +806,6 @@ object vx_event {
 
   val c_event_click : vx_event.Type_event = vx_event.Class_event()
 
-
   /**
    * Constant: event-move
    * Move Event
@@ -850,7 +847,6 @@ object vx_event {
   }
 
   val c_event_move : vx_event.Type_event = vx_event.Class_event()
-
 
   /**
    * Constant: event-select
@@ -1302,7 +1298,6 @@ object vx_event {
     )
     return output
   }
-
 
   init {
     Const_event_change.const_new(c_event_change)

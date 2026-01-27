@@ -6,7 +6,6 @@ import com.vxlisp.vx.data.*
 
 object vx_web_http {
 
-
   /**
    * type: response
    * (type response)
@@ -224,6 +223,7 @@ object vx_web_http {
 
   val e_response : vx_web_http.Type_response = vx_web_http.Class_response()
   val t_response : vx_web_http.Type_response = vx_web_http.Class_response()
+
   /**
    * 
    * @async
@@ -1073,7 +1073,6 @@ object vx_web_http {
     )
     return output
   }
-
 
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()

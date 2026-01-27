@@ -16,8 +16,8 @@ export default class vx_ui_svg_uisvg_test {
       ":caselist", testcaselist,
       ":coveragesummary", vx_ui_svg_uisvg_test.test_coveragesummary(),
       ":coveragedetail", vx_ui_svg_uisvg_test.test_coveragedetail()
-    );
-    return output;
+    )
+    return output
   }
 
   static test_coveragesummary() {

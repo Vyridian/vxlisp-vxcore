@@ -2,7 +2,6 @@ namespace Vx.Data;
 
 public static class Tree {
 
-
   /**
    * type: branch
    * (type branch)
@@ -1203,7 +1202,6 @@ public static class Tree {
 
   public static Vx.Data.Tree.Type_brancharrow c_brancharrow_down = new Vx.Data.Tree.Class_brancharrow();
 
-
   /**
    * Constant: brancharrow-up
    * {brancharrow}
@@ -1227,7 +1225,6 @@ public static class Tree {
 
   public static Vx.Data.Tree.Type_brancharrow c_brancharrow_up = new Vx.Data.Tree.Class_brancharrow();
 
-
   /**
    * Constant: brancharrow-updown
    * {brancharrow}
@@ -1250,7 +1247,6 @@ public static class Tree {
   }
 
   public static Vx.Data.Tree.Type_brancharrow c_brancharrow_updown = new Vx.Data.Tree.Class_brancharrow();
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

@@ -8878,6 +8878,7 @@ object vx_web_html {
 
   val e_trlist : vx_web_html.Type_trlist = vx_web_html.Class_trlist()
   val t_trlist : vx_web_html.Type_trlist = vx_web_html.Class_trlist()
+
   /**
    * @function htmlstring_from_string
    * Convert text to HTML string
@@ -13869,7 +13870,6 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     return output
   }
-
 
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()

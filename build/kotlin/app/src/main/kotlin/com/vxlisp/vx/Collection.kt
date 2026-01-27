@@ -244,6 +244,7 @@ object vx_collection {
     }
     return output
   }
+
   /**
    * @function minus
    * Returns a list from listmain after removing listremove.
@@ -3245,7 +3246,6 @@ object vx_collection {
     )
     return output
   }
-
 
   init {
     var maptype : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()

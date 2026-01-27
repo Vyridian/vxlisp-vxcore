@@ -4,7 +4,6 @@ import com.vxlisp.vx.*
 
 object vx_data_xml {
 
-
   /**
    * type: xml
    * (type xml)
@@ -783,7 +782,6 @@ object vx_data_xml {
 
   val c_delimxml : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimxmlcdata
    * {delim}
@@ -828,7 +826,6 @@ object vx_data_xml {
 
   val c_delimxmlcdata : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
 
-
   /**
    * Constant: delimxmlcomment
    * {delim}
@@ -872,7 +869,6 @@ object vx_data_xml {
   }
 
   val c_delimxmlcomment : vx_data_textblock.Type_delim = vx_data_textblock.Class_delim()
-
 
   /**
    * Constant: delimxmlequal
@@ -2738,7 +2734,6 @@ object vx_data_xml {
     )
     return output
   }
-
 
   init {
     Const_delimxml.const_new(c_delimxml)

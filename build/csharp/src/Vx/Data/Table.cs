@@ -2,7 +2,6 @@ namespace Vx.Data;
 
 public static class Table {
 
-
   /**
    * type: cell
    * (type cell)

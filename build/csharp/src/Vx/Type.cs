@@ -188,6 +188,7 @@ public static class Type {
     Vx.Core.Type_string output = Vx.Core.vx_new_string(text);
     return output;
   }
+
   /**
    * @function allowtypenames_from_type
    * Get the name of a given type
@@ -2834,7 +2835,6 @@ public static class Type {
     output = Vx.Type.vx_uid();
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

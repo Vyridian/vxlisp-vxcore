@@ -6,7 +6,6 @@ import com.vxlisp.vx.web.*
 
 object vx_test {
 
-
   /**
    * type: testcase
    * Structure to describe a test case
@@ -7451,7 +7450,6 @@ object vx_test {
     )
     return output
   }
-
 
   init {
     Const_stylesheet_test.const_new(c_stylesheet_test)

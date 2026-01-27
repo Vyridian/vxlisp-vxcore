@@ -18,8 +18,8 @@ export default class vx_web_htmldoc_test {
       ":caselist", testcaselist,
       ":coveragesummary", vx_web_htmldoc_test.test_coveragesummary(),
       ":coveragedetail", vx_web_htmldoc_test.test_coveragedetail()
-    );
-    return output;
+    )
+    return output
   }
 
   static test_coveragesummary() {

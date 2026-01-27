@@ -2,7 +2,6 @@ namespace Vx.Ui.Html;
 
 public static class Uihtml {
 
-
   /**
    * Constant: layout-app-html
    * Html App Renderer
@@ -36,7 +35,6 @@ public static class Uihtml {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_app_html = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layout-else-html
@@ -72,7 +70,6 @@ public static class Uihtml {
 
   public static Vx.Ui.Ui.Type_layout c_layout_else_html = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-image-html
    * Html Image Renderer
@@ -107,7 +104,6 @@ public static class Uihtml {
 
   public static Vx.Ui.Ui.Type_layout c_layout_image_html = new Vx.Ui.Ui.Class_layout();
 
-
   /**
    * Constant: layout-label-html
    * Html Label Renderer
@@ -141,7 +137,6 @@ public static class Uihtml {
   }
 
   public static Vx.Ui.Ui.Type_layout c_layout_label_html = new Vx.Ui.Ui.Class_layout();
-
 
   /**
    * Constant: layoutenginehtml
@@ -205,7 +200,6 @@ public static class Uihtml {
 
   public static Vx.Ui.Ui.Type_layoutengine c_layoutenginehtml = new Vx.Ui.Ui.Class_layoutengine();
 
-
   /**
    * Constant: style-hidden
    * {style}
@@ -239,7 +233,6 @@ public static class Uihtml {
   }
 
   public static Vx.Web.Html.Type_style c_style_hidden = new Vx.Web.Html.Class_style();
-
 
   /**
    * Constant: style-selected
@@ -5907,7 +5900,6 @@ public static class Uihtml {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

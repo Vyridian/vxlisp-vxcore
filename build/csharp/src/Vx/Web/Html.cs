@@ -8508,6 +8508,7 @@ public static class Html {
 
   public static Vx.Web.Html.Type_trlist e_trlist = new Vx.Web.Html.Class_trlist();
   public static Vx.Web.Html.Type_trlist t_trlist = new Vx.Web.Html.Class_trlist();
+
   /**
    * @function htmlstring_from_string
    * Convert text to HTML string
@@ -13457,7 +13458,6 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

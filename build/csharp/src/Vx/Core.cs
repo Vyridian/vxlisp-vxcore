@@ -13428,7 +13428,6 @@ public static class Core {
 
   public static Vx.Core.Type_project c_global = new Vx.Core.Class_project();
 
-
   /**
    * Constant: infinity
    * Infinity. Returned during unusual calculations.
@@ -13454,7 +13453,6 @@ public static class Core {
 
   public static Vx.Core.Type_int c_infinity = new Vx.Core.Class_int();
 
-
   /**
    * Constant: mempool-active
    * Active Value Memory Pool
@@ -13478,7 +13476,6 @@ public static class Core {
   }
 
   public static Vx.Core.Type_mempool c_mempool_active = new Vx.Core.Class_mempool();
-
 
   /**
    * Constant: msg-error
@@ -13505,7 +13502,6 @@ public static class Core {
 
   public static Vx.Core.Type_int c_msg_error = new Vx.Core.Class_int();
 
-
   /**
    * Constant: msg-info
    * Message is just information
@@ -13530,7 +13526,6 @@ public static class Core {
   }
 
   public static Vx.Core.Type_int c_msg_info = new Vx.Core.Class_int();
-
 
   /**
    * Constant: msg-severe
@@ -13557,7 +13552,6 @@ public static class Core {
 
   public static Vx.Core.Type_int c_msg_severe = new Vx.Core.Class_int();
 
-
   /**
    * Constant: msg-warning
    * Message is a Warning
@@ -13582,7 +13576,6 @@ public static class Core {
   }
 
   public static Vx.Core.Type_int c_msg_warning = new Vx.Core.Class_int();
-
 
   /**
    * Constant: neginfinity
@@ -13609,7 +13602,6 @@ public static class Core {
 
   public static Vx.Core.Type_int c_neginfinity = new Vx.Core.Class_int();
 
-
   /**
    * Constant: newline
    * New line constant
@@ -13634,7 +13626,6 @@ public static class Core {
   }
 
   public static Vx.Core.Type_string c_newline = new Vx.Core.Class_string();
-
 
   /**
    * Constant: notanumber
@@ -13661,7 +13652,6 @@ public static class Core {
 
   public static Vx.Core.Type_int c_notanumber = new Vx.Core.Class_int();
 
-
   /**
    * Constant: nothing
    * Nothing Value. Opposite of every other value. e.g. Nil, Null
@@ -13686,7 +13676,6 @@ public static class Core {
   }
 
   public static Vx.Core.Type_string c_nothing = new Vx.Core.Class_string();
-
 
   /**
    * Constant: path-test-resources
@@ -13713,7 +13702,6 @@ public static class Core {
 
   public static Vx.Core.Type_string c_path_test_resources = new Vx.Core.Class_string();
 
-
   /**
    * Constant: quote
    * Quotation mark constant
@@ -13738,7 +13726,6 @@ public static class Core {
   }
 
   public static Vx.Core.Type_string c_quote = new Vx.Core.Class_string();
-
 
   /**
    * Constant: true
@@ -30395,7 +30382,6 @@ public static class Core {
     ).user();
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

@@ -14424,7 +14424,6 @@ public final class Core {
 
   public static final Core.Type_project c_global = new Core.Class_project();
 
-
   /**
    * Constant: infinity
    * Infinity. Returned during unusual calculations.
@@ -14450,7 +14449,6 @@ public final class Core {
 
   public static final Core.Type_int c_infinity = new Core.Class_int();
 
-
   /**
    * Constant: mempool-active
    * Active Value Memory Pool
@@ -14474,7 +14472,6 @@ public final class Core {
   }
 
   public static final Core.Type_mempool c_mempool_active = new Core.Class_mempool();
-
 
   /**
    * Constant: msg-error
@@ -14501,7 +14498,6 @@ public final class Core {
 
   public static final Core.Type_int c_msg_error = new Core.Class_int();
 
-
   /**
    * Constant: msg-info
    * Message is just information
@@ -14526,7 +14522,6 @@ public final class Core {
   }
 
   public static final Core.Type_int c_msg_info = new Core.Class_int();
-
 
   /**
    * Constant: msg-severe
@@ -14553,7 +14548,6 @@ public final class Core {
 
   public static final Core.Type_int c_msg_severe = new Core.Class_int();
 
-
   /**
    * Constant: msg-warning
    * Message is a Warning
@@ -14578,7 +14572,6 @@ public final class Core {
   }
 
   public static final Core.Type_int c_msg_warning = new Core.Class_int();
-
 
   /**
    * Constant: neginfinity
@@ -14605,7 +14598,6 @@ public final class Core {
 
   public static final Core.Type_int c_neginfinity = new Core.Class_int();
 
-
   /**
    * Constant: newline
    * New line constant
@@ -14630,7 +14622,6 @@ public final class Core {
   }
 
   public static final Core.Type_string c_newline = new Core.Class_string();
-
 
   /**
    * Constant: notanumber
@@ -14657,7 +14648,6 @@ public final class Core {
 
   public static final Core.Type_int c_notanumber = new Core.Class_int();
 
-
   /**
    * Constant: nothing
    * Nothing Value. Opposite of every other value. e.g. Nil, Null
@@ -14682,7 +14672,6 @@ public final class Core {
   }
 
   public static final Core.Type_string c_nothing = new Core.Class_string();
-
 
   /**
    * Constant: path-test-resources
@@ -14709,7 +14698,6 @@ public final class Core {
 
   public static final Core.Type_string c_path_test_resources = new Core.Class_string();
 
-
   /**
    * Constant: quote
    * Quotation mark constant
@@ -14734,7 +14722,6 @@ public final class Core {
   }
 
   public static final Core.Type_string c_quote = new Core.Class_string();
-
 
   /**
    * Constant: true
@@ -33091,7 +33078,6 @@ public final class Core {
     ).user();
     return output;
   }
-
 
   static {
     Const_false.const_new(c_false);

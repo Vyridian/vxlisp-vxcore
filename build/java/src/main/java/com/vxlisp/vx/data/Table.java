@@ -9,7 +9,6 @@ import com.vxlisp.vx.*;
 
 public final class Table {
 
-
   /**
    * type: cell
    * (type cell)

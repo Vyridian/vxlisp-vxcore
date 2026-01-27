@@ -2,7 +2,6 @@ namespace Vx.Data;
 
 public static class Textblock {
 
-
   /**
    * type: delim
    * A delimiter type supporting start and end delimiters and positions.
@@ -1197,7 +1196,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimbracketangle = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimbracketcurly
    * Curly Bracket Delimiter
@@ -1238,7 +1236,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimbracketcurly = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimbracketsquare
@@ -1281,7 +1278,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimbracketsquare = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimclose
    * A placeholder delimiter used to mark the close of whatever is the current delimiter.
@@ -1319,7 +1315,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimclose = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimclosing
    * A placeholder delimiter used to mark the closing of whatever is the current delimiter.
@@ -1356,7 +1351,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimclosing = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimcomma
@@ -1396,7 +1390,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimcomma = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimcomment
@@ -1439,7 +1432,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimcomment = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimcommentblock
    * Block Comment Delimiter
@@ -1481,7 +1473,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimcommentblock = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimline
    * New Line Delimiter
@@ -1521,7 +1512,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimline = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimlisttest1
    * A delimiter used for test suite
@@ -1553,7 +1543,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delimlist c_delimlisttest1 = new Vx.Data.Textblock.Class_delimlist();
-
 
   /**
    * Constant: delimlisttest2
@@ -1588,7 +1577,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delimlist c_delimlisttest2 = new Vx.Data.Textblock.Class_delimlist();
 
-
   /**
    * Constant: delimlisttest3
    * A delimiter used for test suite
@@ -1621,7 +1609,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delimlist c_delimlisttest3 = new Vx.Data.Textblock.Class_delimlist();
-
 
   /**
    * Constant: delimnonwhitespace
@@ -1664,7 +1651,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimnonwhitespace = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimparen
    * Parenthesis Delimiter
@@ -1705,7 +1691,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimparen = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimquote
@@ -1748,7 +1733,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimquote = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimquoteblock
    * Block Quote Delimiter
@@ -1789,7 +1773,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimquoteblock = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimspace
@@ -1832,7 +1815,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimspace = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimtest1
    * A delimiter used for test suite
@@ -1869,7 +1851,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimtest1 = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimtest2
@@ -1908,7 +1889,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimtest2 = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimtest3
    * A delimiter used for test suite
@@ -1946,7 +1926,6 @@ public static class Textblock {
 
   public static Vx.Data.Textblock.Type_delim c_delimtest3 = new Vx.Data.Textblock.Class_delim();
 
-
   /**
    * Constant: delimtext
    * Placeholder for delimited text
@@ -1983,7 +1962,6 @@ public static class Textblock {
   }
 
   public static Vx.Data.Textblock.Type_delim c_delimtext = new Vx.Data.Textblock.Class_delim();
-
 
   /**
    * Constant: delimwhitespace
@@ -6193,7 +6171,6 @@ public static class Textblock {
     );
     return output;
   }
-
 
   public static class PackageRunOnce {
     public static bool RunOnce() {

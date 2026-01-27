@@ -2,7 +2,6 @@ namespace Vx.Ui.Svg;
 
 public static class Uisvg {
 
-
   public static class PackageRunOnce {
     public static bool RunOnce() {
     Vx.Core.Map<string, Vx.Core.Type_any> maptype = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();

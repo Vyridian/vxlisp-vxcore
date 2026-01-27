@@ -2,7 +2,6 @@ package com.vxlisp.vx
 
 object vx_sample {
 
-
   /**
    * type: mytype
    * (type mytype)
@@ -433,7 +432,6 @@ object vx_sample {
     )
     return output
   }
-
 
   init {
     Const_myconst.const_new(c_myconst)

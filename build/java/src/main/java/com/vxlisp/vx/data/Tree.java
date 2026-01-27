@@ -8,7 +8,6 @@ import com.vxlisp.vx.*;
 
 public final class Tree {
 
-
   /**
    * type: branch
    * (type branch)
@@ -1308,7 +1307,6 @@ public final class Tree {
 
   public static final Tree.Type_brancharrow c_brancharrow_down = new Tree.Class_brancharrow();
 
-
   /**
    * Constant: brancharrow-up
    * {brancharrow}
@@ -1332,7 +1330,6 @@ public final class Tree {
 
   public static final Tree.Type_brancharrow c_brancharrow_up = new Tree.Class_brancharrow();
 
-
   /**
    * Constant: brancharrow-updown
    * {brancharrow}
@@ -1355,7 +1352,6 @@ public final class Tree {
   }
 
   public static final Tree.Type_brancharrow c_brancharrow_updown = new Tree.Class_brancharrow();
-
 
   static {
     Const_brancharrow_down.const_new(c_brancharrow_down);
