@@ -5323,6 +5323,9 @@ public final class Html {
       Core.Type_string output = Core.e_string;
       Html.Class_propmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_string> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_string);
       return output;
@@ -5945,6 +5948,9 @@ public final class Html {
       Html.Type_style output = Html.e_style;
       Html.Class_stylemap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Html.Type_style> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Html.e_style);
       return output;

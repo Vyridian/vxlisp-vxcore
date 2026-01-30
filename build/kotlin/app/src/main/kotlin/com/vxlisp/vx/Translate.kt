@@ -374,7 +374,7 @@ object vx_translate {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_translate.f_translate(context, text)
       return output
     }
@@ -477,7 +477,7 @@ object vx_translate {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var msg : vx_core.Type_msg = vx_core.f_any_from_any(vx_core.t_msg, arglist.vx_any(vx_core.vx_new_int(0)))
+      var msg : vx_core.Type_msg = vx_core.f_any_from_any(vx_core.t_msg, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_translate.f_translate_1(context, msg)
       return output
     }
@@ -812,7 +812,7 @@ object vx_translate {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var translation : vx_core.Type_translation = vx_core.f_any_from_any(vx_core.t_translation, arglist.vx_any(vx_core.vx_new_int(0)))
+      var translation : vx_core.Type_translation = vx_core.f_any_from_any(vx_core.t_translation, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_translate.f_translation_load_session(context, translation)
       return output
     }

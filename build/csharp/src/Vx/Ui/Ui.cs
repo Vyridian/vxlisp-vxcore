@@ -1335,6 +1335,9 @@ public static class Ui {
       Vx.Ui.Ui.Type_fontface output = Vx.Ui.Ui.e_fontface;
       Vx.Ui.Ui.Class_fontfacemap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Ui.Ui.Type_fontface> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Ui.Ui.e_fontface);
       return output;
@@ -1529,6 +1532,9 @@ public static class Ui {
       Vx.Ui.Ui.Type_font output = Vx.Ui.Ui.e_font;
       Vx.Ui.Ui.Class_fontmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Ui.Ui.Type_font> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Ui.Ui.e_font);
       return output;
@@ -1894,6 +1900,9 @@ public static class Ui {
       Vx.Ui.Ui.Type_fontstyle output = Vx.Ui.Ui.e_fontstyle;
       Vx.Ui.Ui.Class_fontstylemap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Ui.Ui.Type_fontstyle> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Ui.Ui.e_fontstyle);
       return output;
@@ -3107,6 +3116,9 @@ public static class Ui {
       Vx.Ui.Ui.Type_layout output = Vx.Ui.Ui.e_layout;
       Vx.Ui.Ui.Class_layoutmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Ui.Ui.Type_layout> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Ui.Ui.e_layout);
       return output;
@@ -5007,6 +5019,9 @@ public static class Ui {
       Vx.Ui.Ui.Type_style output = Vx.Ui.Ui.e_style;
       Vx.Ui.Ui.Class_stylemap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Ui.Ui.Type_style> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Ui.Ui.e_style);
       return output;
@@ -6487,6 +6502,9 @@ public static class Ui {
       Vx.Ui.Ui.Type_ui output = Vx.Ui.Ui.e_ui;
       Vx.Ui.Ui.Class_uimap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Ui.Ui.Type_ui> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Ui.Ui.e_ui);
       return output;
@@ -8141,9 +8159,9 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_boolean selected = Vx.Core.f_any_from_any(Vx.Core.t_boolean, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_boolean selected = Vx.Core.f_any_from_any(Vx.Core.t_boolean, arglist.vx_any(Vx.Core.vx_new_int(3)));
       output = Vx.Ui.Ui.f_boolean_layout_from_ui_parent_selected(context, ui, parent, selected);
       return output;
     }
@@ -8256,9 +8274,9 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_boolean visible = Vx.Core.f_any_from_any(Vx.Core.t_boolean, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_boolean visible = Vx.Core.f_any_from_any(Vx.Core.t_boolean, arglist.vx_any(Vx.Core.vx_new_int(3)));
       output = Vx.Ui.Ui.f_boolean_layout_from_ui_parent_visible(context, ui, parent, visible);
       return output;
     }
@@ -8372,8 +8390,8 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui uiarg = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui uiarg = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(2)));
       output = Vx.Ui.Ui.f_boolean_layoutaddchild_from_ui_parent(context, uiarg, parent);
       return output;
     }
@@ -8575,8 +8593,8 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_stringlist keys = Vx.Core.f_any_from_any(Vx.Core.t_stringlist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_stringlist keys = Vx.Core.f_any_from_any(Vx.Core.t_stringlist, arglist.vx_any(Vx.Core.vx_new_int(2)));
       output = Vx.Ui.Ui.f_boolean_layoutremove_from_ui_keys(context, ui, keys);
       return output;
     }
@@ -8695,8 +8713,8 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(2)));
       output = Vx.Ui.Ui.f_boolean_layoutremove_from_ui_parent(context, ui, parent);
       return output;
     }
@@ -8802,9 +8820,9 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int start = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_int end = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_int start = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_int end = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(3)));
       output = Vx.Ui.Ui.f_boolean_layoutremove_from_ui_start_end(context, ui, start, end);
       return output;
     }
@@ -9005,8 +9023,8 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Ui.Ui.Type_ui parent = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(2)));
       output = Vx.Ui.Ui.f_boolean_layoutselected_from_ui_parent(context, ui, parent);
       return output;
     }
@@ -9301,7 +9319,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_boolean_print(context, ui);
       return output;
     }
@@ -9695,7 +9713,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_boolean_writestate_from_ui(context, ui);
       return output;
     }
@@ -9855,7 +9873,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_boolean_writestate_from_uiapp(context, ui);
       return output;
     }
@@ -9956,7 +9974,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_uiengine uiengine = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_uiengine, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Ui.Ui.Type_uiengine uiengine = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_uiengine, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_boolean_writestate_from_uiengine(context, uiengine);
       return output;
     }
@@ -10712,7 +10730,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_layout_from_ui(context, ui);
       return output;
     }
@@ -11976,7 +11994,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_ui_addlayout_from_ui(context, ui);
       return output;
     }
@@ -12587,7 +12605,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_ui_from_from_event(context, evt);
       return output;
     }
@@ -13314,7 +13332,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string uid = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string uid = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_ui_readstate_from_uid(context, uid);
       return output;
     }
@@ -14749,7 +14767,7 @@ public static class Ui {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Ui.Ui.Type_uiengine uiengine = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_uiengine, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Ui.Ui.Type_uiengine uiengine = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_uiengine, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Ui.Ui.f_uiengine_render(context, uiengine);
       return output;
     }

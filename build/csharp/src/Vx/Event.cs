@@ -541,6 +541,9 @@ public static class Event {
       Vx.Event.Type_event output = Vx.Event.e_event;
       Vx.Event.Class_eventmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Event.Type_event> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Event.e_event);
       return output;
@@ -1025,7 +1028,7 @@ public static class Event {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Event.f_event_from_event(context, evt);
       return output;
     }
@@ -1123,7 +1126,7 @@ public static class Event {
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(1)));
       Task<Vx.Event.Type_event> future = Vx.Event.f_event_from_event_async(context, evt);
       output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
       return output;

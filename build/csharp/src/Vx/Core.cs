@@ -1708,9 +1708,6 @@ public static class Core {
               listval.Add(valitem);
             }
           }
-        } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/core/anylist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
         } else {
           msg = Vx.Core.vx_msg_from_error("vx/core/anylist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
           msgblock = Vx.Core.vx_copy(msgblock, msg);
@@ -1801,6 +1798,9 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Class_anymap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_any> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_any);
       return output;
@@ -2467,6 +2467,9 @@ public static class Core {
       Vx.Core.Type_arg output = Vx.Core.e_arg;
       Vx.Core.Class_argmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_arg> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_arg);
       return output;
@@ -3208,6 +3211,9 @@ public static class Core {
       Vx.Core.Type_connect output = Vx.Core.e_connect;
       Vx.Core.Class_connectmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_connect> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_connect);
       return output;
@@ -3737,9 +3743,6 @@ public static class Core {
               listval.Add(valitem);
             }
           }
-        } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/core/constlist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
         } else {
           msg = Vx.Core.vx_msg_from_error("vx/core/constlist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
           msgblock = Vx.Core.vx_copy(msgblock, msg);
@@ -3830,6 +3833,9 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Class_constmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_any> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_any);
       return output;
@@ -5154,6 +5160,9 @@ public static class Core {
       Vx.Core.Type_func output = Vx.Core.e_func;
       Vx.Core.Class_funcmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_func> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_func);
       return output;
@@ -5572,6 +5581,9 @@ public static class Core {
       Vx.Core.Type_int output = Vx.Core.e_int;
       Vx.Core.Class_intmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_int> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_int);
       return output;
@@ -5790,9 +5802,6 @@ public static class Core {
               listval.Add(valitem);
             }
           }
-        } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/core/list", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
         } else {
           msg = Vx.Core.vx_msg_from_error("vx/core/list", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
           msgblock = Vx.Core.vx_copy(msgblock, msg);
@@ -6028,6 +6037,9 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Class_map map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_any> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_any);
       return output;
@@ -7441,6 +7453,9 @@ public static class Core {
       Vx.Core.Type_number output = Vx.Core.e_number;
       Vx.Core.Class_numbermap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_number> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_number);
       return output;
@@ -7953,6 +7968,9 @@ public static class Core {
       Vx.Core.Type_package output = Vx.Core.e_package;
       Vx.Core.Class_packagemap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_package> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_package);
       return output;
@@ -8451,6 +8469,9 @@ public static class Core {
       Vx.Core.Type_permission output = Vx.Core.e_permission;
       Vx.Core.Class_permissionmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_permission> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_permission);
       return output;
@@ -9989,6 +10010,9 @@ public static class Core {
       Vx.Core.Type_statelistener output = Vx.Core.e_statelistener;
       Vx.Core.Class_statelistenermap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_statelistener> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_statelistener);
       return output;
@@ -10567,6 +10591,9 @@ public static class Core {
       Vx.Core.Type_string output = Vx.Core.e_string;
       Vx.Core.Class_stringmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_string> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_string);
       return output;
@@ -10761,6 +10788,9 @@ public static class Core {
       Vx.Core.Type_string output = Vx.Core.e_string;
       Vx.Core.Class_stringmutablemap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_string> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_string);
       return output;
@@ -11826,6 +11856,9 @@ public static class Core {
       Vx.Core.Type_translation output = Vx.Core.e_translation;
       Vx.Core.Class_translationmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_translation> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_translation);
       return output;
@@ -12691,9 +12724,6 @@ public static class Core {
               listval.Add(valitem);
             }
           }
-        } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/core/typelist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
         } else {
           msg = Vx.Core.vx_msg_from_error("vx/core/typelist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
           msgblock = Vx.Core.vx_copy(msgblock, msg);
@@ -12784,6 +12814,9 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Class_typemap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_any> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_any);
       return output;
@@ -17891,7 +17924,7 @@ public static class Core {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Core.f_any_from_any_context(generic_any_1, context, value);
       return output;
     }
@@ -17997,7 +18030,7 @@ public static class Core {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
       Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
       Task<Vx.Core.Type_any> future = Vx.Core.f_any_from_any_context_async(generic_any_1, context, value);
       output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
       return output;
@@ -20069,7 +20102,7 @@ public static class Core {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_func func = Vx.Core.f_any_from_any(Vx.Core.t_func, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_func func = Vx.Core.f_any_from_any(Vx.Core.t_func, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Core.f_boolean_permission_from_func(context, func);
       return output;
     }
@@ -23731,7 +23764,7 @@ public static class Core {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_permission permission = Vx.Core.f_any_from_any(Vx.Core.t_permission, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_permission permission = Vx.Core.f_any_from_any(Vx.Core.t_permission, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Core.f_is_pass_from_permission(context, permission);
       return output;
     }
@@ -27498,7 +27531,7 @@ public static class Core {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string path = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string path = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Core.f_path_from_context_path(context, path);
       return output;
     }
@@ -27685,7 +27718,7 @@ public static class Core {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Core.f_permission_from_id_context(context, id);
       return output;
     }

@@ -405,7 +405,7 @@ public final class Translate {
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_translate(context, text);
       return output;
     }
@@ -517,7 +517,7 @@ public final class Translate {
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_msg msg = Core.f_any_from_any(Core.t_msg, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_msg msg = Core.f_any_from_any(Core.t_msg, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_translate_1(context, msg);
       return output;
     }
@@ -875,7 +875,7 @@ public final class Translate {
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_translation_load_session(context, translation);
       return output;
     }

@@ -384,6 +384,9 @@ public static class Table {
       Vx.Data.Table.Type_cell output = Vx.Data.Table.e_cell;
       Vx.Data.Table.Class_cellmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Data.Table.Type_cell> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Data.Table.e_cell);
       return output;
@@ -1711,6 +1714,9 @@ public static class Table {
       Vx.Data.Table.Type_row output = Vx.Data.Table.e_row;
       Vx.Data.Table.Class_rowmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Data.Table.Type_row> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Data.Table.e_row);
       return output;

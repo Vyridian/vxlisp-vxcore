@@ -1866,10 +1866,6 @@ object vx_core {
               listval.add(valitem)
             }
           }
-        } else if (valsub is vx_core.Type_any) {
-          var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/core/anylist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
         } else {
           msg = vx_core.vx_msg_from_error("vx/core/anylist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
           msgblock = vx_core.vx_copy(msgblock, msg)
@@ -1961,6 +1957,9 @@ object vx_core {
       var output : vx_core.Type_any = vx_core.e_any
       var map : vx_core.Class_anymap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_any> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_any)
       return output
@@ -2653,6 +2652,9 @@ object vx_core {
       var output : vx_core.Type_arg = vx_core.e_arg
       var map : vx_core.Class_argmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_arg> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_arg)
       return output
@@ -3419,6 +3421,9 @@ object vx_core {
       var output : vx_core.Type_connect = vx_core.e_connect
       var map : vx_core.Class_connectmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_connect> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_connect)
       return output
@@ -3970,10 +3975,6 @@ object vx_core {
               listval.add(valitem)
             }
           }
-        } else if (valsub is vx_core.Type_any) {
-          var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/core/constlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
         } else {
           msg = vx_core.vx_msg_from_error("vx/core/constlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
           msgblock = vx_core.vx_copy(msgblock, msg)
@@ -4065,6 +4066,9 @@ object vx_core {
       var output : vx_core.Type_any = vx_core.e_any
       var map : vx_core.Class_constmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_any> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_any)
       return output
@@ -5442,6 +5446,9 @@ object vx_core {
       var output : vx_core.Type_func = vx_core.e_func
       var map : vx_core.Class_funcmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_func> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_func)
       return output
@@ -5877,6 +5884,9 @@ object vx_core {
       var output : vx_core.Type_int = vx_core.e_int
       var map : vx_core.Class_intmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_int> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_int)
       return output
@@ -6106,10 +6116,6 @@ object vx_core {
               listval.add(valitem)
             }
           }
-        } else if (valsub is vx_core.Type_any) {
-          var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/core/list", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
         } else {
           msg = vx_core.vx_msg_from_error("vx/core/list", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
           msgblock = vx_core.vx_copy(msgblock, msg)
@@ -6348,6 +6354,9 @@ object vx_core {
       var output : vx_core.Type_any = vx_core.e_any
       var map : vx_core.Class_map = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_any> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_any)
       return output
@@ -7809,6 +7818,9 @@ object vx_core {
       var output : vx_core.Type_number = vx_core.e_number
       var map : vx_core.Class_numbermap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_number> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_number)
       return output
@@ -8342,6 +8354,9 @@ object vx_core {
       var output : vx_core.Type_package = vx_core.e_package
       var map : vx_core.Class_packagemap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_package> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_package)
       return output
@@ -8859,6 +8874,9 @@ object vx_core {
       var output : vx_core.Type_permission = vx_core.e_permission
       var map : vx_core.Class_permissionmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_permission> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_permission)
       return output
@@ -10458,6 +10476,9 @@ object vx_core {
       var output : vx_core.Type_statelistener = vx_core.e_statelistener
       var map : vx_core.Class_statelistenermap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_statelistener> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_statelistener)
       return output
@@ -11064,6 +11085,9 @@ object vx_core {
       var output : vx_core.Type_string = vx_core.e_string
       var map : vx_core.Class_stringmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_string> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_string)
       return output
@@ -11265,6 +11289,9 @@ object vx_core {
       var output : vx_core.Type_string = vx_core.e_string
       var map : vx_core.Class_stringmutablemap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_string> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_string)
       return output
@@ -12372,6 +12399,9 @@ object vx_core {
       var output : vx_core.Type_translation = vx_core.e_translation
       var map : vx_core.Class_translationmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_translation> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_translation)
       return output
@@ -13277,10 +13307,6 @@ object vx_core {
               listval.add(valitem)
             }
           }
-        } else if (valsub is vx_core.Type_any) {
-          var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/core/typelist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
         } else {
           msg = vx_core.vx_msg_from_error("vx/core/typelist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
           msgblock = vx_core.vx_copy(msgblock, msg)
@@ -13372,6 +13398,9 @@ object vx_core {
       var output : vx_core.Type_any = vx_core.e_any
       var map : vx_core.Class_typemap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_any> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_any)
       return output
@@ -18610,7 +18639,7 @@ object vx_core {
       var output : vx_core.Type_any = vx_core.e_any
       var generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_core.f_any_from_any_context(generic_any_1, context, value)
       return output
     }
@@ -18718,7 +18747,7 @@ object vx_core {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
       var generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
       var future : CompletableFuture<vx_core.Type_any> = vx_core.f_any_from_any_context_async(generic_any_1, context, value)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output
@@ -20837,7 +20866,7 @@ object vx_core {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var func : vx_core.Type_func = vx_core.f_any_from_any(vx_core.t_func, arglist.vx_any(vx_core.vx_new_int(0)))
+      var func : vx_core.Type_func = vx_core.f_any_from_any(vx_core.t_func, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_core.f_boolean_permission_from_func(context, func)
       return output
     }
@@ -24542,7 +24571,7 @@ object vx_core {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var permission : vx_core.Type_permission = vx_core.f_any_from_any(vx_core.t_permission, arglist.vx_any(vx_core.vx_new_int(0)))
+      var permission : vx_core.Type_permission = vx_core.f_any_from_any(vx_core.t_permission, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_core.f_is_pass_from_permission(context, permission)
       return output
     }
@@ -28351,7 +28380,7 @@ object vx_core {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var path : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      var path : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_core.f_path_from_context_path(context, path)
       return output
     }
@@ -28540,7 +28569,7 @@ object vx_core {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      var id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_core.f_permission_from_id_context(context, id)
       return output
     }

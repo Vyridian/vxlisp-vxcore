@@ -1653,10 +1653,6 @@ public final class Core {
               listval.add(valitem);
             }
           }
-        } else if (valsub instanceof Core.Type_any) {
-          Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/anylist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
         } else {
           msg = Core.vx_msg_from_error("vx/core/anylist", ":invalidtype", Core.vx_new_string(valsub.toString()));
           msgblock = Core.vx_copy(msgblock, msg);
@@ -1753,6 +1749,9 @@ public final class Core {
       Core.Type_any output = Core.e_any;
       Core.Class_anymap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_any> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_any);
       return output;
@@ -2475,6 +2474,9 @@ public final class Core {
       Core.Type_arg output = Core.e_arg;
       Core.Class_argmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_arg> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_arg);
       return output;
@@ -3283,6 +3285,9 @@ public final class Core {
       Core.Type_connect output = Core.e_connect;
       Core.Class_connectmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_connect> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_connect);
       return output;
@@ -3858,10 +3863,6 @@ public final class Core {
               listval.add(valitem);
             }
           }
-        } else if (valsub instanceof Core.Type_any) {
-          Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/constlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
         } else {
           msg = Core.vx_msg_from_error("vx/core/constlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
           msgblock = Core.vx_copy(msgblock, msg);
@@ -3958,6 +3959,9 @@ public final class Core {
       Core.Type_any output = Core.e_any;
       Core.Class_constmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_any> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_any);
       return output;
@@ -5393,6 +5397,9 @@ public final class Core {
       Core.Type_func output = Core.e_func;
       Core.Class_funcmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_func> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_func);
       return output;
@@ -5850,6 +5857,9 @@ public final class Core {
       Core.Type_int output = Core.e_int;
       Core.Class_intmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_int> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_int);
       return output;
@@ -6090,10 +6100,6 @@ public final class Core {
               listval.add(valitem);
             }
           }
-        } else if (valsub instanceof Core.Type_any) {
-          Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/list", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
         } else {
           msg = Core.vx_msg_from_error("vx/core/list", ":invalidtype", Core.vx_new_string(valsub.toString()));
           msgblock = Core.vx_copy(msgblock, msg);
@@ -6347,6 +6353,9 @@ public final class Core {
       Core.Type_any output = Core.e_any;
       Core.Class_map map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_any> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_any);
       return output;
@@ -7934,6 +7943,9 @@ public final class Core {
       Core.Type_number output = Core.e_number;
       Core.Class_numbermap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_number> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_number);
       return output;
@@ -8488,6 +8500,9 @@ public final class Core {
       Core.Type_package output = Core.e_package;
       Core.Class_packagemap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_package> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_package);
       return output;
@@ -9030,6 +9045,9 @@ public final class Core {
       Core.Type_permission output = Core.e_permission;
       Core.Class_permissionmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_permission> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_permission);
       return output;
@@ -10690,6 +10708,9 @@ public final class Core {
       Core.Type_statelistener output = Core.e_statelistener;
       Core.Class_statelistenermap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_statelistener> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_statelistener);
       return output;
@@ -11326,6 +11347,9 @@ public final class Core {
       Core.Type_string output = Core.e_string;
       Core.Class_stringmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_string> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_string);
       return output;
@@ -11537,6 +11561,9 @@ public final class Core {
       Core.Type_string output = Core.e_string;
       Core.Class_stringmutablemap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_string> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_string);
       return output;
@@ -12695,6 +12722,9 @@ public final class Core {
       Core.Type_translation output = Core.e_translation;
       Core.Class_translationmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_translation> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_translation);
       return output;
@@ -13633,10 +13663,6 @@ public final class Core {
               listval.add(valitem);
             }
           }
-        } else if (valsub instanceof Core.Type_any) {
-          Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/typelist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
         } else {
           msg = Core.vx_msg_from_error("vx/core/typelist", ":invalidtype", Core.vx_new_string(valsub.toString()));
           msgblock = Core.vx_copy(msgblock, msg);
@@ -13733,6 +13759,9 @@ public final class Core {
       Core.Type_any output = Core.e_any;
       Core.Class_typemap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Core.Type_any> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Core.e_any);
       return output;
@@ -19273,7 +19302,7 @@ public final class Core {
       Core.Type_any output = Core.e_any;
       Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
       output = Core.f_any_from_any_context(generic_any_1, context, value);
       return output;
     }
@@ -19390,7 +19419,7 @@ public final class Core {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
       Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
       CompletableFuture<Core.Type_any> future = Core.f_any_from_any_context_async(generic_any_1, context, value);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -21697,7 +21726,7 @@ public final class Core {
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_func func = Core.f_any_from_any(Core.t_func, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_func func = Core.f_any_from_any(Core.t_func, arglist.vx_any(Core.vx_new_int(1)));
       output = Core.f_boolean_permission_from_func(context, func);
       return output;
     }
@@ -25741,7 +25770,7 @@ public final class Core {
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_permission permission = Core.f_any_from_any(Core.t_permission, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_permission permission = Core.f_any_from_any(Core.t_permission, arglist.vx_any(Core.vx_new_int(1)));
       output = Core.f_is_pass_from_permission(context, permission);
       return output;
     }
@@ -29882,7 +29911,7 @@ public final class Core {
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string path = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_string path = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Core.f_path_from_context_path(context, path);
       return output;
     }
@@ -30087,7 +30116,7 @@ public final class Core {
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Core.f_permission_from_id_context(context, id);
       return output;
     }

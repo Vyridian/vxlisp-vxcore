@@ -260,6 +260,9 @@ object vx_data_csv {
       var output : vx_core.Type_stringlist = vx_core.e_stringlist
       var map : vx_data_csv.Class_csvrowmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_stringlist> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_stringlist)
       return output
@@ -682,7 +685,7 @@ object vx_data_csv {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
+      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_csv.f_csv_read_from_file(context, file)
       return output
     }

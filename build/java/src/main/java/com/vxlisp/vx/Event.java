@@ -593,6 +593,9 @@ public final class Event {
       Event.Type_event output = Event.e_event;
       Event.Class_eventmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Event.Type_event> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Event.e_event);
       return output;
@@ -1110,7 +1113,7 @@ public final class Event {
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(0)));
+      Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(1)));
       output = Event.f_event_from_event(context, evt);
       return output;
     }
@@ -1219,7 +1222,7 @@ public final class Event {
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
       Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(0)));
+      Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(1)));
       CompletableFuture<Event.Type_event> future = Event.f_event_from_event_async(context, evt);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;

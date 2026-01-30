@@ -249,6 +249,9 @@ public static class Csv {
       Vx.Core.Type_stringlist output = Vx.Core.e_stringlist;
       Vx.Data.Csv.Class_csvrowmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_stringlist> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_stringlist);
       return output;
@@ -654,7 +657,7 @@ public static class Csv {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.File.Type_file file = Vx.Core.f_any_from_any(Vx.Data.File.t_file, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Data.File.Type_file file = Vx.Core.f_any_from_any(Vx.Data.File.t_file, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Data.Csv.f_csv_read_from_file(context, file);
       return output;
     }

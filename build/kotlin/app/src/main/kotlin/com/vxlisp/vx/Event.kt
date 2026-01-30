@@ -566,6 +566,9 @@ object vx_event {
       var output : vx_event.Type_event = vx_event.e_event
       var map : vx_event.Class_eventmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_event.Type_event> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_event.e_event)
       return output
@@ -1074,7 +1077,7 @@ object vx_event {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(0)))
+      var evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_event.f_event_from_event(context, evt)
       return output
     }
@@ -1173,7 +1176,7 @@ object vx_event {
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(0)))
+      var evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(1)))
       var future : CompletableFuture<vx_event.Type_event> = vx_event.f_event_from_event_async(context, evt)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output

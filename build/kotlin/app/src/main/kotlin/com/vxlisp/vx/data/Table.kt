@@ -401,6 +401,9 @@ object vx_data_table {
       var output : vx_data_table.Type_cell = vx_data_table.e_cell
       var map : vx_data_table.Class_cellmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_data_table.Type_cell> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_data_table.e_cell)
       return output
@@ -1783,6 +1786,9 @@ object vx_data_table {
       var output : vx_data_table.Type_row = vx_data_table.e_row
       var map : vx_data_table.Class_rowmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_data_table.Type_row> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_data_table.e_row)
       return output

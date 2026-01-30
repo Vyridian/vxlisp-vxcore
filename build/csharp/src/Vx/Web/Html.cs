@@ -4891,6 +4891,9 @@ public static class Html {
       Vx.Core.Type_string output = Vx.Core.e_string;
       Vx.Web.Html.Class_propmap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Core.Type_string> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Core.e_string);
       return output;
@@ -5463,6 +5466,9 @@ public static class Html {
       Vx.Web.Html.Type_style output = Vx.Web.Html.e_style;
       Vx.Web.Html.Class_stylemap map = this;
       string skey = key.vx_string();
+      if (skey.StartsWith(":")) {
+        skey = skey.Substring(1);
+      }
       Vx.Core.Map<string, Vx.Web.Html.Type_style> mapval = map.vx_p_map;
       output = mapval.getOrElse(skey, Vx.Web.Html.e_style);
       return output;

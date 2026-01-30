@@ -1231,8 +1231,8 @@ object vx_repl {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var liblist : vx_repl.Type_liblist = vx_core.f_any_from_any(vx_repl.t_liblist, arglist.vx_any(vx_core.vx_new_int(0)))
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      var liblist : vx_repl.Type_liblist = vx_core.f_any_from_any(vx_repl.t_liblist, arglist.vx_any(vx_core.vx_new_int(1)))
+      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_repl.f_any_from_liblist_string(context, liblist, text)
       return output
     }
@@ -1344,7 +1344,7 @@ object vx_repl {
       var output : vx_core.Type_any = vx_core.e_any
       var generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var anylist : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      var anylist : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_any_from_macro(generic_any_1, context, anylist)
       return output
     }
@@ -1459,7 +1459,7 @@ object vx_repl {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var repl : vx_repl.Type_repl = vx_core.f_any_from_any(vx_repl.t_repl, arglist.vx_any(vx_core.vx_new_int(0)))
+      var repl : vx_repl.Type_repl = vx_core.f_any_from_any(vx_repl.t_repl, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_any_from_repl(context, repl)
       return output
     }
@@ -1611,7 +1611,7 @@ object vx_repl {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var script : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      var script : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_any_from_script(context, script)
       return output
     }
@@ -1724,7 +1724,7 @@ object vx_repl {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var repllist : vx_repl.Type_repllist = vx_core.f_any_from_any(vx_repl.t_repllist, arglist.vx_any(vx_core.vx_new_int(0)))
+      var repllist : vx_repl.Type_repllist = vx_core.f_any_from_any(vx_repl.t_repllist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_anylist_from_repllist(context, repllist)
       return output
     }
@@ -2590,7 +2590,7 @@ object vx_repl {
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
       var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var anylist : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      var anylist : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repl_from_macro(context, anylist)
       return output
     }

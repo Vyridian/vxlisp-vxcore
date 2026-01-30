@@ -1219,8 +1219,8 @@ public static class Repl {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Repl.Type_liblist liblist = Vx.Core.f_any_from_any(Vx.Repl.t_liblist, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Repl.Type_liblist liblist = Vx.Core.f_any_from_any(Vx.Repl.t_liblist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(2)));
       output = Vx.Repl.f_any_from_liblist_string(context, liblist, text);
       return output;
     }
@@ -1331,7 +1331,7 @@ public static class Repl {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_anylist anylist = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_anylist anylist = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Repl.f_any_from_macro(generic_any_1, context, anylist);
       return output;
     }
@@ -1445,7 +1445,7 @@ public static class Repl {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Repl.Type_repl repl = Vx.Core.f_any_from_any(Vx.Repl.t_repl, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Repl.Type_repl repl = Vx.Core.f_any_from_any(Vx.Repl.t_repl, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Repl.f_any_from_repl(context, repl);
       return output;
     }
@@ -1596,7 +1596,7 @@ public static class Repl {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string script = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string script = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Repl.f_any_from_script(context, script);
       return output;
     }
@@ -1708,7 +1708,7 @@ public static class Repl {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Repl.Type_repllist repllist = Vx.Core.f_any_from_any(Vx.Repl.t_repllist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Repl.Type_repllist repllist = Vx.Core.f_any_from_any(Vx.Repl.t_repllist, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Repl.f_anylist_from_repllist(context, repllist);
       return output;
     }
@@ -2567,7 +2567,7 @@ public static class Repl {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_anylist anylist = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_anylist anylist = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Repl.f_repl_from_macro(context, anylist);
       return output;
     }

@@ -368,7 +368,7 @@ public static class Translate {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Translate.f_translate(context, text);
       return output;
     }
@@ -470,7 +470,7 @@ public static class Translate {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_msg msg = Vx.Core.f_any_from_any(Vx.Core.t_msg, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_msg msg = Vx.Core.f_any_from_any(Vx.Core.t_msg, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Translate.f_translate_1(context, msg);
       return output;
     }
@@ -802,7 +802,7 @@ public static class Translate {
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
       Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_translation translation = Vx.Core.f_any_from_any(Vx.Core.t_translation, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_translation translation = Vx.Core.f_any_from_any(Vx.Core.t_translation, arglist.vx_any(Vx.Core.vx_new_int(1)));
       output = Vx.Translate.f_translation_load_session(context, translation);
       return output;
     }

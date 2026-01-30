@@ -424,6 +424,9 @@ public final class Table {
       Table.Type_cell output = Table.e_cell;
       Table.Class_cellmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Table.Type_cell> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Table.e_cell);
       return output;
@@ -1867,6 +1870,9 @@ public final class Table {
       Table.Type_row output = Table.e_row;
       Table.Class_rowmap map = this;
       String skey = key.vx_string();
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1);
+      }
       Map<String, Table.Type_row> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Table.e_row);
       return output;

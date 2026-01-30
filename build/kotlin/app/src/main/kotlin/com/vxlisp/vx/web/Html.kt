@@ -5102,6 +5102,9 @@ object vx_web_html {
       var output : vx_core.Type_string = vx_core.e_string
       var map : vx_web_html.Class_propmap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_core.Type_string> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_string)
       return output
@@ -5697,6 +5700,9 @@ object vx_web_html {
       var output : vx_web_html.Type_style = vx_web_html.e_style
       var map : vx_web_html.Class_stylemap = this
       var skey : String = key.vx_string()
+      if (skey.startsWith(":")) {
+        skey = skey.substring(1)
+      }
       var mapval : Map<String, vx_web_html.Type_style> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_web_html.e_style)
       return output
