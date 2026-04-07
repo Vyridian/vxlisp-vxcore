@@ -28,12 +28,12 @@ object vx_translation_es {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/translation/es", // pkgname
         "translation-es", // name
         0, // idx
@@ -56,12 +56,12 @@ object vx_translation_es {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_es.e_translation_es
+      val output : vx_core.Type_any = vx_translation_es.e_translation_es
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_es.t_translation_es
+      val output : vx_core.Type_any = vx_translation_es.t_translation_es
       return output
     }
 
@@ -72,7 +72,7 @@ object vx_translation_es {
     }
 
     override fun vx_translation_es() : vx_core.Type_translation {
-      var output : vx_core.Type_translation = vx_translation_es.f_translation_es()
+      val output : vx_core.Type_translation = vx_translation_es.f_translation_es()
       return output
     }
 
@@ -120,12 +120,12 @@ object vx_translation_es {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/translation/es", // pkgname
         "words", // name
         0, // idx
@@ -148,12 +148,12 @@ object vx_translation_es {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_es.e_words
+      val output : vx_core.Type_any = vx_translation_es.e_words
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_es.t_words
+      val output : vx_core.Type_any = vx_translation_es.t_words
       return output
     }
 
@@ -164,7 +164,7 @@ object vx_translation_es {
     }
 
     override fun vx_words() : vx_core.Type_stringmap {
-      var output : vx_core.Type_stringmap = vx_translation_es.f_words()
+      val output : vx_core.Type_stringmap = vx_translation_es.f_words()
       return output
     }
 
@@ -194,7 +194,12 @@ object vx_translation_es {
     var mapfunc : MutableMap<String, vx_core.Type_func> = LinkedHashMap<String, vx_core.Type_func>()
     mapfunc.put("translation-es", vx_translation_es.t_translation_es)
     mapfunc.put("words", vx_translation_es.t_words)
-    vx_core.vx_global_package_set("vx/translation/es", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/translation/es",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

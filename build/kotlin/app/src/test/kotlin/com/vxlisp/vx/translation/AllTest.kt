@@ -6,7 +6,7 @@ import com.vxlisp.vx.*
 object vx_translation_allTest {
 
   fun f_translationmap_all(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/translation/all",
@@ -21,7 +21,7 @@ object vx_translation_allTest {
   }
 
   fun f_translationmap_all_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"Hola\"\n (trn/translate<-translationmap-name-string\n  (translationmap-all)\n  \"es\"\n  \"Hello\"))",
       ":testresult", vx_test.f_test(
@@ -41,7 +41,7 @@ object vx_translation_allTest {
     var testcases : List<vx_core.Type_any> = vx_core.arraylist_from_array(
       vx_translation_allTest.f_translationmap_all(context)
     )
-    var output : vx_test.Type_testcaselist = vx_core.vx_new(
+    val output : vx_test.Type_testcaselist = vx_core.vx_new(
       vx_test.t_testcaselist,
       testcases
     )
@@ -49,7 +49,7 @@ object vx_translation_allTest {
   }
 
   fun test_coveragesummary() : vx_test.Type_testcoveragesummary {
-    var output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/translation/all", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -64,7 +64,7 @@ object vx_translation_allTest {
   }
 
   fun test_coveragedetail() : vx_test.Type_testcoveragedetail {
-    var output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
       vx_test.t_testcoveragedetail,
       ":testpkg", "vx/translation/all",
       ":typemap", vx_core.e_intmap, 
@@ -79,8 +79,8 @@ object vx_translation_allTest {
   }
 
   fun test_package(context : vx_core.Type_context) : vx_test.Type_testpackage {
-    var testcaselist : vx_test.Type_testcaselist = test_cases(context)
-    var output : vx_test.Type_testpackage = vx_core.vx_new(
+    val testcaselist : vx_test.Type_testcaselist = test_cases(context)
+    val output : vx_test.Type_testpackage = vx_core.vx_new(
       vx_test.t_testpackage,
       ":testpkg", "vx/translation/all", 
       ":caselist", testcaselist,

@@ -11,7 +11,12 @@ public final class Uisvg {
     Map<String, Core.Type_any> maptype = new LinkedHashMap<String, Core.Type_any>();
     Map<String, Core.Type_any> mapconst = new LinkedHashMap<String, Core.Type_any>();
     Map<String, Core.Type_func> mapfunc = new LinkedHashMap<String, Core.Type_func>();
-    Core.vx_global_package_set("vx/ui/svg/uisvg", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/ui/svg/uisvg",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

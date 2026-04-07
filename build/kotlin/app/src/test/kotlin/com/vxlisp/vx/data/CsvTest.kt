@@ -6,7 +6,7 @@ import com.vxlisp.vx.*
 object vx_data_csvTest {
 
   fun f_textblock_csv_from_string(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/csv",
@@ -21,7 +21,7 @@ object vx_data_csvTest {
   }
 
   fun f_textblock_csv_from_string_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (tb/textblock\n  :text\n`\"a\",\"b\"\n1,\"2\"`\n  :startpos 1\n  :endpos 13\n  :children\n   (tb/textblocklist\n    (tb/textblock\n     :text `\"a\"`\n     :startpos 1\n     :endpos 3\n     :delim\n      (copy tb/delimquote\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"a\"\n        :startpos 2\n        :endpos 2)))\n    (tb/textblock\n     :text \",\"\n     :startpos 4\n     :endpos 4\n     :delim\n      (copy tb/delimcomma\n       :pos 0))\n    (tb/textblock\n     :text `\"b\"`\n     :startpos 5\n     :endpos 7\n     :delim\n      (copy tb/delimquote\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"b\"\n        :startpos 6\n        :endpos 6)))\n    (tb/textblock\n     :text \"\n\"\n     :startpos 8\n     :endpos 8\n     :delim\n      (copy tb/delimline\n       :pos 0))\n    (tb/textblock\n     :text \"1\"\n     :startpos 9\n     :endpos 9)\n    (tb/textblock\n     :text \",\"\n     :startpos 10\n     :endpos 10\n     :delim\n      (copy tb/delimcomma\n       :pos 0))\n    (tb/textblock\n     :text `\"2\"`\n     :startpos 11\n     :endpos 13\n     :delim\n      (copy tb/delimquote\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"2\"\n        :startpos 12\n        :endpos 12)))))\n (textblock-csv<-string\n  `\"a\",\"b\"\n1,\"2\"`))",
       ":testresult", vx_test.f_test(
@@ -252,7 +252,7 @@ object vx_data_csvTest {
     var testcases : List<vx_core.Type_any> = vx_core.arraylist_from_array(
       vx_data_csvTest.f_textblock_csv_from_string(context)
     )
-    var output : vx_test.Type_testcaselist = vx_core.vx_new(
+    val output : vx_test.Type_testcaselist = vx_core.vx_new(
       vx_test.t_testcaselist,
       testcases
     )
@@ -260,7 +260,7 @@ object vx_data_csvTest {
   }
 
   fun test_coveragesummary() : vx_test.Type_testcoveragesummary {
-    var output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/data/csv", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 1), 
@@ -275,7 +275,7 @@ object vx_data_csvTest {
   }
 
   fun test_coveragedetail() : vx_test.Type_testcoveragedetail {
-    var output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
       vx_test.t_testcoveragedetail,
       ":testpkg", "vx/data/csv",
       ":typemap", vx_core.vx_new(
@@ -303,8 +303,8 @@ object vx_data_csvTest {
   }
 
   fun test_package(context : vx_core.Type_context) : vx_test.Type_testpackage {
-    var testcaselist : vx_test.Type_testcaselist = test_cases(context)
-    var output : vx_test.Type_testpackage = vx_core.vx_new(
+    val testcaselist : vx_test.Type_testcaselist = test_cases(context)
+    val output : vx_test.Type_testpackage = vx_core.vx_new(
       vx_test.t_testpackage,
       ":testpkg", "vx/data/csv", 
       ":caselist", testcaselist,

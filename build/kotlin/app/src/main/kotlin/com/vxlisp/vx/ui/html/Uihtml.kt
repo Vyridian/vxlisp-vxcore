@@ -18,7 +18,7 @@ object vx_ui_html_uihtml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-app-html", // name
         vx_ui_ui.t_layout
@@ -56,7 +56,7 @@ object vx_ui_html_uihtml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-else-html", // name
         vx_ui_ui.t_layout
@@ -94,7 +94,7 @@ object vx_ui_html_uihtml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-image-html", // name
         vx_ui_ui.t_layout
@@ -132,7 +132,7 @@ object vx_ui_html_uihtml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layout-label-html", // name
         vx_ui_ui.t_layout
@@ -170,7 +170,7 @@ object vx_ui_html_uihtml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "layoutenginehtml", // name
         vx_ui_ui.t_layoutengine
@@ -235,7 +235,7 @@ object vx_ui_html_uihtml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style-hidden", // name
         vx_web_html.t_style
@@ -273,7 +273,7 @@ object vx_ui_html_uihtml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style-selected", // name
         vx_web_html.t_style
@@ -327,12 +327,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-layoutremove-html", // name
         0, // idx
@@ -355,12 +355,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_layoutremove_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_layoutremove_html
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_layoutremove_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_layoutremove_html
       return output
     }
 
@@ -370,21 +370,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_layoutremove_html(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_layoutremove_html(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_boolean_layoutremove_html(ui)
       return output
     }
 
     override fun vx_boolean_layoutremove_html(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_layoutremove_html(ui)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_layoutremove_html(ui)
       return output
     }
 
@@ -398,8 +398,8 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var id : vx_core.Type_string = ui.uid()
-        var output_1 : vx_core.Type_any = vx_web_htmldoc.f_boolean_remove_from_id(
+        val id : vx_core.Type_string = ui.uid()
+        val output_1 : vx_core.Type_any = vx_web_htmldoc.f_boolean_remove_from_id(
           id
         )
         output_1
@@ -433,12 +433,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-layoutselected-html", // name
         0, // idx
@@ -461,12 +461,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_layoutselected_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_layoutselected_html
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_layoutselected_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_layoutselected_html
       return output
     }
 
@@ -476,21 +476,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_layoutselected_html(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_layoutselected_html(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_boolean_layoutselected_html(ui)
       return output
     }
 
     override fun vx_boolean_layoutselected_html(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_layoutselected_html(ui)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_layoutselected_html(ui)
       return output
     }
 
@@ -532,12 +532,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-layoutvisible-html", // name
         0, // idx
@@ -560,12 +560,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_layoutvisible_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_layoutvisible_html
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_layoutvisible_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_layoutvisible_html
       return output
     }
 
@@ -575,21 +575,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_layoutvisible_html(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_layoutvisible_html(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_boolean_layoutvisible_html(ui)
       return output
     }
 
     override fun vx_boolean_layoutvisible_html(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_layoutvisible_html(ui)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_layoutvisible_html(ui)
       return output
     }
 
@@ -631,12 +631,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-print-html", // name
         0, // idx
@@ -659,12 +659,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_print_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_print_html
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_print_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_print_html
       return output
     }
 
@@ -674,22 +674,22 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_print_html(context, inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_print_html(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_html_uihtml.f_boolean_print_html(context, ui)
       return output
     }
 
     override fun vx_boolean_print_html(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_print_html(context, ui)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_print_html(context, ui)
       return output
     }
 
@@ -703,18 +703,18 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = ui.uid()
-        var stylesheetui : vx_ui_ui.Type_stylesheet = vx_ui_ui.f_stylesheet_readstate(
+        val uid : vx_core.Type_string = ui.uid()
+        val stylesheetui : vx_ui_ui.Type_stylesheet = vx_ui_ui.f_stylesheet_readstate(
           context
         )
-        var stylesheethtml : vx_web_html.Type_stylesheet = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(
+        val stylesheethtml : vx_web_html.Type_stylesheet = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(
           stylesheetui
         )
-        var styletext : vx_core.Type_string = vx_web_html.f_string_from_stylesheet_indent(
+        val styletext : vx_core.Type_string = vx_web_html.f_string_from_stylesheet_indent(
           stylesheethtml,
           vx_core.vx_new_int(0)
         )
-        var output_1 : vx_core.Type_any = vx_web_htmldoc.f_boolean_print_from_id_stylesheettext(
+        val output_1 : vx_core.Type_any = vx_web_htmldoc.f_boolean_print_from_id_stylesheettext(
           uid,
           styletext
         )
@@ -749,12 +749,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-writeclass<-ui", // name
         0, // idx
@@ -777,12 +777,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writeclass_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writeclass_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writeclass_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writeclass_from_ui
       return output
     }
 
@@ -792,21 +792,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeclass_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeclass_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_boolean_writeclass_from_ui(ui)
       return output
     }
 
     override fun vx_boolean_writeclass_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeclass_from_ui(ui)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeclass_from_ui(ui)
       return output
     }
 
@@ -820,11 +820,11 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var id : vx_core.Type_string = ui.uid()
-        var sclass : vx_core.Type_string = vx_ui_html_uihtml.f_string_class_from_ui(
+        val id : vx_core.Type_string = ui.uid()
+        val sclass : vx_core.Type_string = vx_ui_html_uihtml.f_string_class_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = vx_web_htmldoc.f_boolean_write_from_id_attribute_value(
+        val output_1 : vx_core.Type_any = vx_web_htmldoc.f_boolean_write_from_id_attribute_value(
           id,
           vx_core.vx_new_string("class"),
           sclass
@@ -860,12 +860,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-writeeventsall<-ui", // name
         0, // idx
@@ -888,12 +888,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writeeventsall_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writeeventsall_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writeeventsall_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writeeventsall_from_ui
       return output
     }
 
@@ -903,21 +903,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(ui)
       return output
     }
 
     override fun vx_boolean_writeeventsall_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(ui)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(ui)
       return output
     }
 
@@ -931,14 +931,14 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var iswrite1 : vx_core.Type_boolean = vx_web_htmldoc.f_boolean_writeevents_from_ui(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val iswrite1 : vx_core.Type_boolean = vx_web_htmldoc.f_boolean_writeevents_from_ui(
           ui
         )
-        var iswrite2 : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap(
+        val iswrite2 : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap(
           uimap
         )
-        var output_1 : vx_core.Type_any = vx_core.f_and(
+        val output_1 : vx_core.Type_any = vx_core.f_and(
           iswrite1,
           iswrite2
         )
@@ -973,12 +973,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-writeeventsall<-uimap", // name
         0, // idx
@@ -1001,12 +1001,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writeeventsall_from_uimap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writeeventsall_from_uimap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writeeventsall_from_uimap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writeeventsall_from_uimap
       return output
     }
 
@@ -1016,21 +1016,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_uimap = value as vx_ui_ui.Type_uimap
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap(inputval)
+      val inputval : vx_ui_ui.Type_uimap = value as vx_ui_ui.Type_uimap
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap(uimap)
       return output
     }
 
     override fun vx_boolean_writeeventsall_from_uimap(uimap : vx_ui_ui.Type_uimap) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap(uimap)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_uimap(uimap)
       return output
     }
 
@@ -1044,19 +1044,19 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var boollist : vx_core.Type_booleanlist = vx_core.f_list_from_map_1(
+        val boollist : vx_core.Type_booleanlist = vx_core.f_list_from_map_1(
           vx_core.t_booleanlist,
           uimap,
           vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            var value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
+            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+            val value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
             var output_2 : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
               value
             )
             output_2
           })
         )
-        var output_1 : vx_core.Type_any = vx_core.f_and_1(
+        val output_1 : vx_core.Type_any = vx_core.f_and_1(
           boollist
         )
         output_1
@@ -1090,12 +1090,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-writeselected<-ui", // name
         0, // idx
@@ -1118,12 +1118,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writeselected_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writeselected_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writeselected_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writeselected_from_ui
       return output
     }
 
@@ -1133,21 +1133,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeselected_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writeselected_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_boolean_writeselected_from_ui(ui)
       return output
     }
 
     override fun vx_boolean_writeselected_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeselected_from_ui(ui)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeselected_from_ui(ui)
       return output
     }
 
@@ -1189,12 +1189,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "boolean-writevisible<-ui", // name
         0, // idx
@@ -1217,12 +1217,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writevisible_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_boolean_writevisible_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writevisible_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_boolean_writevisible_from_ui
       return output
     }
 
@@ -1232,21 +1232,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writevisible_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_boolean_writevisible_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_boolean_writevisible_from_ui(ui)
       return output
     }
 
     override fun vx_boolean_writevisible_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writevisible_from_ui(ui)
+      val output : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writevisible_from_ui(ui)
       return output
     }
 
@@ -1286,12 +1286,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "context-write", // name
         0, // idx
@@ -1314,24 +1314,24 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_context_write
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_context_write
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_context_write
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_context_write
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_context_write(context)
       return output
     }
 
     override fun vx_context_write(context : vx_core.Type_context) : vx_core.Type_context {
-      var output : vx_core.Type_context = vx_ui_html_uihtml.f_context_write(context)
+      val output : vx_core.Type_context = vx_ui_html_uihtml.f_context_write(context)
       return output
     }
 
@@ -1373,12 +1373,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "divchild<-ui", // name
         0, // idx
@@ -1401,12 +1401,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_divchild_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_divchild_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_divchild_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_divchild_from_ui
       return output
     }
 
@@ -1416,21 +1416,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_divchild_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_divchild_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_divchild_from_ui(ui)
       return output
     }
 
     override fun vx_divchild_from_ui(ui : vx_ui_ui.Type_ui) : vx_web_html.Type_divchild {
-      var output : vx_web_html.Type_divchild = vx_ui_html_uihtml.f_divchild_from_ui(ui)
+      val output : vx_web_html.Type_divchild = vx_ui_html_uihtml.f_divchild_from_ui(ui)
       return output
     }
 
@@ -1444,17 +1444,17 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_div,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = ui.uid()
-        var uimapchild : vx_ui_ui.Type_uimap = ui.uimap()
-        var uistyle : vx_ui_ui.Type_style = ui.style()
-        var uistyles : vx_ui_ui.Type_stylelist = ui.stylelist()
-        var styleunique : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(
+        val uid : vx_core.Type_string = ui.uid()
+        val uimapchild : vx_ui_ui.Type_uimap = ui.uimap()
+        val uistyle : vx_ui_ui.Type_style = ui.style()
+        val uistyles : vx_ui_ui.Type_stylelist = ui.stylelist()
+        val styleunique : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(
           uistyle
         )
-        var htmlstyles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylelist(
+        val htmlstyles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylelist(
           uistyles
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_web_html.t_div,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -1497,12 +1497,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "divchildlist<-uimap", // name
         0, // idx
@@ -1525,12 +1525,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_divchildlist_from_uimap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_divchildlist_from_uimap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_divchildlist_from_uimap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_divchildlist_from_uimap
       return output
     }
 
@@ -1540,21 +1540,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_uimap = value as vx_ui_ui.Type_uimap
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_divchildlist_from_uimap(inputval)
+      val inputval : vx_ui_ui.Type_uimap = value as vx_ui_ui.Type_uimap
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_divchildlist_from_uimap(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_divchildlist_from_uimap(uimap)
       return output
     }
 
     override fun vx_divchildlist_from_uimap(uimap : vx_ui_ui.Type_uimap) : vx_web_html.Type_divchildlist {
-      var output : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap(uimap)
+      val output : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap(uimap)
       return output
     }
 
@@ -1569,13 +1569,13 @@ object vx_ui_html_uihtml {
       vx_web_html.t_divchildlist,
       uimap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
         var output_1 : vx_core.Type_any = vx_core.f_let(
           vx_web_html.t_div,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var uid : vx_core.Type_string = value.uid()
-            var output_2 : vx_core.Type_any = vx_core.f_new(
+            val uid : vx_core.Type_string = value.uid()
+            val output_2 : vx_core.Type_any = vx_core.f_new(
               vx_web_html.t_div,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -1617,12 +1617,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "divchildlist<-uimap", // name
         1, // idx
@@ -1645,12 +1645,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_divchildlist_from_uimap_1
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_divchildlist_from_uimap_1
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_divchildlist_from_uimap_1
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_divchildlist_from_uimap_1
       return output
     }
 
@@ -1660,21 +1660,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_uimap = value as vx_ui_ui.Type_uimap
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_divchildlist_from_uimap_1(inputval)
+      val inputval : vx_ui_ui.Type_uimap = value as vx_ui_ui.Type_uimap
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_divchildlist_from_uimap_1(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_divchildlist_from_uimap_1(uimap)
       return output
     }
 
     override fun vx_divchildlist_from_uimap_1(uimap : vx_ui_ui.Type_uimap) : vx_web_html.Type_divchildlist {
-      var output : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap_1(uimap)
+      val output : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap_1(uimap)
       return output
     }
 
@@ -1689,13 +1689,13 @@ object vx_ui_html_uihtml {
       vx_web_html.t_divchildlist,
       uimap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
         var output_1 : vx_core.Type_any = vx_core.f_let(
           vx_web_html.t_div,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var uid : vx_core.Type_string = value.uid()
-            var output_2 : vx_core.Type_any = vx_core.f_new(
+            val uid : vx_core.Type_string = value.uid()
+            val output_2 : vx_core.Type_any = vx_core.f_new(
               vx_web_html.t_div,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -1739,12 +1739,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "divchildlist<-uimap-origmap-parent", // name
         0, // idx
@@ -1767,26 +1767,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_divchildlist_from_uimap_origmap_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_divchildlist_from_uimap_origmap_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_divchildlist_from_uimap_origmap_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_divchildlist_from_uimap_origmap_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
-      var origmap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val origmap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(uimap, origmap, parent)
       return output
     }
 
     override fun vx_divchildlist_from_uimap_origmap_parent(uimap : vx_ui_ui.Type_uimap, origmap : vx_ui_ui.Type_uimap, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_divchildlist {
-      var output : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(uimap, origmap, parent)
+      val output : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(uimap, origmap, parent)
       return output
     }
 
@@ -1801,17 +1801,17 @@ object vx_ui_html_uihtml {
       vx_web_html.t_divchildlist,
       uimap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
         var output_1 : vx_core.Type_any = vx_core.f_let(
           vx_web_html.t_node,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var origvalue : vx_ui_ui.Type_ui = vx_core.f_any_from_map(
+            val origvalue : vx_ui_ui.Type_ui = vx_core.f_any_from_map(
               vx_ui_ui.t_ui,
               origmap,
               key
             )
-            var output_2 : vx_core.Type_any = vx_ui_html_uihtml.f_node_from_ui_orig_parent(
+            val output_2 : vx_core.Type_any = vx_ui_html_uihtml.f_node_from_ui_orig_parent(
               value,
               origvalue,
               parent
@@ -1851,12 +1851,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "node-app<-ui-orig-parent", // name
         0, // idx
@@ -1879,26 +1879,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_node_app_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_node_app_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_node_app_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_node_app_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_node_app_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_node_app_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node {
-      var output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_app_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_app_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -1912,15 +1912,15 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_node,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = ui.uid()
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var origmap : vx_ui_ui.Type_uimap = orig.uimap()
-        var children : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(
+        val uid : vx_core.Type_string = ui.uid()
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val origmap : vx_ui_ui.Type_uimap = orig.uimap()
+        val children : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(
           uimap,
           origmap,
           ui
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_web_html.t_div,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -1962,12 +1962,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "node-default<-ui-orig-parent", // name
         0, // idx
@@ -1990,26 +1990,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_node_default_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_node_default_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_node_default_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_node_default_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_node_default_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_node_default_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node {
-      var output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_default_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_default_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -2023,22 +2023,22 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_node,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = ui.uid()
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var uistyle : vx_ui_ui.Type_style = ui.style()
-        var origmap : vx_ui_ui.Type_uimap = orig.uimap()
-        var style : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(
+        val uid : vx_core.Type_string = ui.uid()
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val uistyle : vx_ui_ui.Type_style = ui.style()
+        val origmap : vx_ui_ui.Type_uimap = orig.uimap()
+        val style : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(
           uistyle
         )
-        var styles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_extra_from_ui(
+        val styles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_extra_from_ui(
           ui
         )
-        var children : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(
+        val children : vx_web_html.Type_divchildlist = vx_ui_html_uihtml.f_divchildlist_from_uimap_origmap_parent(
           uimap,
           origmap,
           ui
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_web_html.t_div,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -2084,12 +2084,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "node-image<-ui-orig-parent", // name
         0, // idx
@@ -2112,26 +2112,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_node_image_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_node_image_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_node_image_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_node_image_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_node_image_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_node_image_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node {
-      var output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_image_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_image_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -2145,23 +2145,23 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_node,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = ui.uid()
-        var uistyle : vx_ui_ui.Type_style = ui.style()
-        var data : vx_core.Type_any = ui.data()
-        var file : vx_data_file.Type_file = vx_core.f_any_from_any(
+        val uid : vx_core.Type_string = ui.uid()
+        val uistyle : vx_ui_ui.Type_style = ui.style()
+        val data : vx_core.Type_any = ui.data()
+        val file : vx_data_file.Type_file = vx_core.f_any_from_any(
           vx_data_file.t_file,
           data
         )
-        var path : vx_core.Type_string = vx_data_file.f_pathfull_from_file(
+        val path : vx_core.Type_string = vx_data_file.f_pathfull_from_file(
           file
         )
-        var style : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(
+        val style : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(
           uistyle
         )
-        var styles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_extra_from_ui(
+        val styles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_extra_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_web_html.t_img,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -2207,12 +2207,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "node-label<-ui-orig-parent", // name
         0, // idx
@@ -2235,26 +2235,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_node_label_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_node_label_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_node_label_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_node_label_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_node_label_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_node_label_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node {
-      var output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_label_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_label_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -2268,21 +2268,21 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_node,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = ui.uid()
-        var data : vx_core.Type_any = ui.data()
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var uistyle : vx_ui_ui.Type_style = ui.style()
-        var uistyles : vx_ui_ui.Type_stylelist = ui.stylelist()
-        var datatype : vx_core.Type_any = vx_core.f_type_from_any(
+        val uid : vx_core.Type_string = ui.uid()
+        val data : vx_core.Type_any = ui.data()
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val uistyle : vx_ui_ui.Type_style = ui.style()
+        val uistyles : vx_ui_ui.Type_stylelist = ui.stylelist()
+        val datatype : vx_core.Type_any = vx_core.f_type_from_any(
           data
         )
-        var style : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(
+        val style : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(
           uistyle
         )
-        var styles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylelist(
+        val styles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylelist(
           uistyles
         )
-        var text : vx_core.Type_string = vx_core.f_if_2(
+        val text : vx_core.Type_string = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -2312,7 +2312,7 @@ object vx_ui_html_uihtml {
             )
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_web_html.t_p,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -2358,12 +2358,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "node-layout<-node-ui-parent", // name
         0, // idx
@@ -2386,26 +2386,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_node_layout_from_node_ui_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_node_layout_from_node_ui_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_node_layout_from_node_ui_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_node_layout_from_node_ui_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var node : vx_web_html.Type_node = vx_core.f_any_from_any(vx_web_html.t_node, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val node : vx_web_html.Type_node = vx_core.f_any_from_any(vx_web_html.t_node, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(node, ui, parent)
       return output
     }
 
     override fun vx_node_layout_from_node_ui_parent(node : vx_web_html.Type_node, ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node {
-      var output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(node, ui, parent)
+      val output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(node, ui, parent)
       return output
     }
 
@@ -2419,18 +2419,18 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_node,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var id : vx_core.Type_string = ui.uid()
-        var parentid : vx_core.Type_string = parent.uid()
-        var htmltext : vx_core.Type_string = vx_web_html.f_string_from_node_indent(
+        val id : vx_core.Type_string = ui.uid()
+        val parentid : vx_core.Type_string = parent.uid()
+        val htmltext : vx_core.Type_string = vx_web_html.f_string_from_node_indent(
           node,
           vx_core.vx_new_int(2)
         )
-        var htmldone : vx_core.Type_boolean = vx_web_htmldoc.f_boolean_replace_from_id_parent_htmltext(
+        val htmldone : vx_core.Type_boolean = vx_web_htmldoc.f_boolean_replace_from_id_parent_htmltext(
           id,
           parentid,
           htmltext
         )
-        var output_1 : vx_core.Type_any = node
+        val output_1 : vx_core.Type_any = node
         output_1
       })
     )
@@ -2463,12 +2463,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "node<-ui-orig-parent", // name
         0, // idx
@@ -2491,26 +2491,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_node_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_node_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_node_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_node_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_node_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_node_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_web_html.Type_node {
-      var output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -2524,9 +2524,9 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_node,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var style : vx_ui_ui.Type_style = ui.style()
-        var layout : vx_ui_ui.Type_layout = style.layout()
-        var output_1 : vx_core.Type_any = vx_core.f_switch(
+        val style : vx_ui_ui.Type_style = ui.style()
+        val layout : vx_ui_ui.Type_layout = style.layout()
+        val output_1 : vx_core.Type_any = vx_core.f_switch(
           vx_web_html.t_node,
           layout,
           vx_core.vx_new(
@@ -2596,12 +2596,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "string-class<-ui", // name
         0, // idx
@@ -2624,12 +2624,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_string_class_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_string_class_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_string_class_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_string_class_from_ui
       return output
     }
 
@@ -2639,21 +2639,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_string_class_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_string_class_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_string_class_from_ui(ui)
       return output
     }
 
     override fun vx_string_class_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_ui_html_uihtml.f_string_class_from_ui(ui)
+      val output : vx_core.Type_string = vx_ui_html_uihtml.f_string_class_from_ui(ui)
       return output
     }
 
@@ -2667,10 +2667,10 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var htmlstyles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_extra_from_ui(
+        val htmlstyles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_extra_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_stylelist(
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_stylelist(
           htmlstyles
         )
         output_1
@@ -2704,12 +2704,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "string-style<-font", // name
         0, // idx
@@ -2732,12 +2732,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_string_style_from_font
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_string_style_from_font
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_string_style_from_font
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_string_style_from_font
       return output
     }
 
@@ -2747,21 +2747,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_font = value as vx_ui_ui.Type_font
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_string_style_from_font(inputval)
+      val inputval : vx_ui_ui.Type_font = value as vx_ui_ui.Type_font
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_string_style_from_font(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var font : vx_ui_ui.Type_font = vx_core.f_any_from_any(vx_ui_ui.t_font, arglist.vx_any(vx_core.vx_new_int(0)))
+      val font : vx_ui_ui.Type_font = vx_core.f_any_from_any(vx_ui_ui.t_font, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_string_style_from_font(font)
       return output
     }
 
     override fun vx_string_style_from_font(font : vx_ui_ui.Type_font) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_ui_html_uihtml.f_string_style_from_font(font)
+      val output : vx_core.Type_string = vx_ui_html_uihtml.f_string_style_from_font(font)
       return output
     }
 
@@ -2775,10 +2775,10 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var face : vx_ui_ui.Type_fontface = font.fontface()
-        var size : vx_core.Type_int = font.fontsize()
-        var name : vx_core.Type_string = face.name()
-        var ssize : vx_core.Type_string = vx_core.f_if_2(
+        val face : vx_ui_ui.Type_fontface = font.fontface()
+        val size : vx_core.Type_int = font.fontsize()
+        val name : vx_core.Type_string = face.name()
+        val ssize : vx_core.Type_string = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -2808,7 +2808,7 @@ object vx_ui_html_uihtml {
             )
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -2866,12 +2866,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "string-style<-image", // name
         0, // idx
@@ -2894,12 +2894,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_string_style_from_image
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_string_style_from_image
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_string_style_from_image
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_string_style_from_image
       return output
     }
 
@@ -2909,21 +2909,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_image = value as vx_ui_ui.Type_image
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_string_style_from_image(inputval)
+      val inputval : vx_ui_ui.Type_image = value as vx_ui_ui.Type_image
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_string_style_from_image(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var image : vx_ui_ui.Type_image = vx_core.f_any_from_any(vx_ui_ui.t_image, arglist.vx_any(vx_core.vx_new_int(0)))
+      val image : vx_ui_ui.Type_image = vx_core.f_any_from_any(vx_ui_ui.t_image, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_string_style_from_image(image)
       return output
     }
 
     override fun vx_string_style_from_image(image : vx_ui_ui.Type_image) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_ui_html_uihtml.f_string_style_from_image(image)
+      val output : vx_core.Type_string = vx_ui_html_uihtml.f_string_style_from_image(image)
       return output
     }
 
@@ -2949,11 +2949,11 @@ object vx_ui_html_uihtml {
             var output_2 : vx_core.Type_any = vx_core.f_let(
               vx_core.t_string,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var file : vx_data_file.Type_file = image.file()
-                var url : vx_core.Type_string = vx_data_file.f_pathfull_from_file(
+                val file : vx_data_file.Type_file = image.file()
+                val url : vx_core.Type_string = vx_data_file.f_pathfull_from_file(
                   file
                 )
-                var output_3 : vx_core.Type_any = vx_core.f_if_2(
+                val output_3 : vx_core.Type_any = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3015,12 +3015,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "string-stylename<-name-styletype", // name
         0, // idx
@@ -3043,25 +3043,25 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_string_stylename_from_name_styletype
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_string_stylename_from_name_styletype
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_string_stylename_from_name_styletype
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_string_stylename_from_name_styletype
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var styletype : vx_ui_ui.Type_styletype = vx_core.f_any_from_any(vx_ui_ui.t_styletype, arglist.vx_any(vx_core.vx_new_int(1)))
+      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val styletype : vx_ui_ui.Type_styletype = vx_core.f_any_from_any(vx_ui_ui.t_styletype, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_html_uihtml.f_string_stylename_from_name_styletype(name, styletype)
       return output
     }
 
     override fun vx_string_stylename_from_name_styletype(name : vx_core.Type_string, styletype : vx_ui_ui.Type_styletype) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_ui_html_uihtml.f_string_stylename_from_name_styletype(name, styletype)
+      val output : vx_core.Type_string = vx_ui_html_uihtml.f_string_stylename_from_name_styletype(name, styletype)
       return output
     }
 
@@ -3131,7 +3131,7 @@ object vx_ui_html_uihtml {
         ),
         vx_core.f_else(
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_7 : vx_core.Type_any = name
+            val output_7 : vx_core.Type_any = name
             output_7
           })
         )
@@ -3165,12 +3165,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style<-fontface", // name
         0, // idx
@@ -3193,12 +3193,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_style_from_fontface
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_style_from_fontface
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_style_from_fontface
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_style_from_fontface
       return output
     }
 
@@ -3208,21 +3208,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_fontface = value as vx_ui_ui.Type_fontface
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_style_from_fontface(inputval)
+      val inputval : vx_ui_ui.Type_fontface = value as vx_ui_ui.Type_fontface
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_style_from_fontface(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var fontface : vx_ui_ui.Type_fontface = vx_core.f_any_from_any(vx_ui_ui.t_fontface, arglist.vx_any(vx_core.vx_new_int(0)))
+      val fontface : vx_ui_ui.Type_fontface = vx_core.f_any_from_any(vx_ui_ui.t_fontface, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_style_from_fontface(fontface)
       return output
     }
 
     override fun vx_style_from_fontface(fontface : vx_ui_ui.Type_fontface) : vx_web_html.Type_style {
-      var output : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_fontface(fontface)
+      val output : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_fontface(fontface)
       return output
     }
 
@@ -3236,15 +3236,15 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_style,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var name : vx_core.Type_string = fontface.name()
-        var weight : vx_core.Type_string = fontface.weight()
-        var unicode : vx_core.Type_string = fontface.unicode()
-        var files : vx_data_file.Type_filelist = fontface.filelist()
-        var urls : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
+        val name : vx_core.Type_string = fontface.name()
+        val weight : vx_core.Type_string = fontface.weight()
+        val unicode : vx_core.Type_string = fontface.unicode()
+        val files : vx_data_file.Type_filelist = fontface.filelist()
+        val urls : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
           vx_core.t_stringlist,
           files,
           vx_core.t_any_from_any.vx_fn_new({file_any : vx_core.Type_any ->
-            var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, file_any)
+            val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, file_any)
             var output_2 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_string,
               vx_core.vx_new(
@@ -3259,7 +3259,7 @@ object vx_ui_html_uihtml {
             output_2
           })
         )
-        var fontfamily : vx_core.Type_string = vx_core.f_new(
+        val fontfamily : vx_core.Type_string = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -3268,11 +3268,11 @@ object vx_ui_html_uihtml {
             vx_core.c_quote
           )
         )
-        var srcurls : vx_core.Type_string = vx_type.f_string_from_stringlist_join(
+        val srcurls : vx_core.Type_string = vx_type.f_string_from_stringlist_join(
           urls,
           vx_core.vx_new_string(",")
         )
-        var src : vx_core.Type_string = vx_core.f_new(
+        val src : vx_core.Type_string = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -3280,7 +3280,7 @@ object vx_ui_html_uihtml {
             vx_core.vx_new_string(";")
           )
         )
-        var propmap : vx_web_html.Type_propmap = vx_core.f_new(
+        val propmap : vx_web_html.Type_propmap = vx_core.f_new(
           vx_web_html.t_propmap,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -3298,7 +3298,7 @@ object vx_ui_html_uihtml {
             unicode
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_web_html.t_style,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -3339,12 +3339,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "style<-style", // name
         0, // idx
@@ -3367,12 +3367,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_style_from_style
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_style_from_style
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_style_from_style
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_style_from_style
       return output
     }
 
@@ -3382,21 +3382,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_style = value as vx_ui_ui.Type_style
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_style_from_style(inputval)
+      val inputval : vx_ui_ui.Type_style = value as vx_ui_ui.Type_style
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_style_from_style(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uistyle : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uistyle : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_style_from_style(uistyle)
       return output
     }
 
     override fun vx_style_from_style(uistyle : vx_ui_ui.Type_style) : vx_web_html.Type_style {
-      var output : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(uistyle)
+      val output : vx_web_html.Type_style = vx_ui_html_uihtml.f_style_from_style(uistyle)
       return output
     }
 
@@ -3430,36 +3430,36 @@ object vx_ui_html_uihtml {
             var output_3 : vx_core.Type_any = vx_core.f_let(
               vx_web_html.t_style,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var layout : vx_ui_ui.Type_layout = uistyle.layout()
-                var name : vx_core.Type_string = uistyle.name()
-                var flip : vx_ui_ui.Type_flip = uistyle.flip()
-                var font : vx_ui_ui.Type_font = uistyle.font()
-                var pin : vx_ui_ui.Type_pin = uistyle.pin()
-                var pointorigin : vx_ui_ui.Type_point = uistyle.pointorigin()
-                var pointpos : vx_ui_ui.Type_point = uistyle.pointpos()
-                var pointsize : vx_ui_ui.Type_point = uistyle.pointsize()
-                var pointrotate : vx_ui_ui.Type_point = uistyle.pointrotate()
-                var styletype : vx_ui_ui.Type_styletype = uistyle.type()
-                var color_bkg : vx_core.Type_string = uistyle.color_bkg()
-                var color_bkghover : vx_core.Type_string = uistyle.color_bkghover()
-                var color_border : vx_core.Type_string = uistyle.color_border()
-                var color_font : vx_core.Type_string = uistyle.color_font()
-                var cursor : vx_ui_ui.Type_cursor = uistyle.cursor()
-                var hidden : vx_core.Type_boolean = uistyle.hidden()
-                var align : vx_ui_ui.Type_align = uistyle.align()
-                var scroll_x : vx_core.Type_boolean = uistyle.scroll_x()
-                var scroll_y : vx_core.Type_boolean = uistyle.scroll_y()
-                var posx : vx_core.Type_int = pointpos.x()
-                var posy : vx_core.Type_int = pointpos.y()
-                var postype : vx_ui_ui.Type_pointtype = pointpos.pointtype()
-                var sizex : vx_core.Type_int = pointsize.x()
-                var sizey : vx_core.Type_int = pointsize.y()
-                var sizetype : vx_ui_ui.Type_pointtype = pointsize.pointtype()
-                var stylename : vx_core.Type_string = vx_ui_html_uihtml.f_string_stylename_from_name_styletype(
+                val layout : vx_ui_ui.Type_layout = uistyle.layout()
+                val name : vx_core.Type_string = uistyle.name()
+                val flip : vx_ui_ui.Type_flip = uistyle.flip()
+                val font : vx_ui_ui.Type_font = uistyle.font()
+                val pin : vx_ui_ui.Type_pin = uistyle.pin()
+                val pointorigin : vx_ui_ui.Type_point = uistyle.pointorigin()
+                val pointpos : vx_ui_ui.Type_point = uistyle.pointpos()
+                val pointsize : vx_ui_ui.Type_point = uistyle.pointsize()
+                val pointrotate : vx_ui_ui.Type_point = uistyle.pointrotate()
+                val styletype : vx_ui_ui.Type_styletype = uistyle.type()
+                val color_bkg : vx_core.Type_string = uistyle.color_bkg()
+                val color_bkghover : vx_core.Type_string = uistyle.color_bkghover()
+                val color_border : vx_core.Type_string = uistyle.color_border()
+                val color_font : vx_core.Type_string = uistyle.color_font()
+                val cursor : vx_ui_ui.Type_cursor = uistyle.cursor()
+                val hidden : vx_core.Type_boolean = uistyle.hidden()
+                val align : vx_ui_ui.Type_align = uistyle.align()
+                val scroll_x : vx_core.Type_boolean = uistyle.scroll_x()
+                val scroll_y : vx_core.Type_boolean = uistyle.scroll_y()
+                val posx : vx_core.Type_int = pointpos.x()
+                val posy : vx_core.Type_int = pointpos.y()
+                val postype : vx_ui_ui.Type_pointtype = pointpos.pointtype()
+                val sizex : vx_core.Type_int = pointsize.x()
+                val sizey : vx_core.Type_int = pointsize.y()
+                val sizetype : vx_ui_ui.Type_pointtype = pointsize.pointtype()
+                val stylename : vx_core.Type_string = vx_ui_html_uihtml.f_string_stylename_from_name_styletype(
                   name,
                   styletype
                 )
-                var bkgcolor : vx_core.Type_string = vx_core.f_if_2(
+                val bkgcolor : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3484,7 +3484,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var borderwidth : vx_core.Type_string = vx_core.f_if_2(
+                val borderwidth : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3502,7 +3502,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var bordercolor : vx_core.Type_string = vx_core.f_if_2(
+                val bordercolor : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3527,7 +3527,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var borderstyle : vx_core.Type_string = vx_core.f_if_2(
+                val borderstyle : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3551,7 +3551,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var fontcolor : vx_core.Type_string = vx_core.f_if_2(
+                val fontcolor : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3576,7 +3576,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var position : vx_core.Type_string = vx_core.f_if_2(
+                val position : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3668,7 +3668,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var top : vx_core.Type_string = vx_core.f_if_2(
+                val top : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3720,7 +3720,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var bottom : vx_core.Type_string = vx_core.f_if_2(
+                val bottom : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3778,7 +3778,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var left : vx_core.Type_string = vx_core.f_if_2(
+                val left : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3843,7 +3843,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var right : vx_core.Type_string = vx_core.f_if_2(
+                val right : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3895,7 +3895,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var height : vx_core.Type_string = vx_core.f_if_2(
+                val height : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -3986,7 +3986,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var width : vx_core.Type_string = vx_core.f_if_2(
+                val width : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -4077,13 +4077,13 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var display : vx_core.Type_string = vx_core.f_if_2(
+                val display : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
                     vx_core.f_then(
                       vx_core.t_boolean_from_func.vx_fn_new({ ->
-                        var output_64 : vx_core.Type_any = hidden
+                        val output_64 : vx_core.Type_any = hidden
                         output_64
                       }),
                       vx_core.t_any_from_func.vx_fn_new({ ->
@@ -4106,10 +4106,10 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var sfont : vx_core.Type_string = vx_ui_html_uihtml.f_string_style_from_font(
+                val sfont : vx_core.Type_string = vx_ui_html_uihtml.f_string_style_from_font(
                   font
                 )
-                var gap : vx_core.Type_string = vx_core.f_if_2(
+                val gap : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -4134,13 +4134,13 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var overflowx : vx_core.Type_string = vx_core.f_if_2(
+                val overflowx : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
                     vx_core.f_then(
                       vx_core.t_boolean_from_func.vx_fn_new({ ->
-                        var output_70 : vx_core.Type_any = scroll_x
+                        val output_70 : vx_core.Type_any = scroll_x
                         output_70
                       }),
                       vx_core.t_any_from_func.vx_fn_new({ ->
@@ -4150,13 +4150,13 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var overflowy : vx_core.Type_string = vx_core.f_if_2(
+                val overflowy : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
                     vx_core.f_then(
                       vx_core.t_boolean_from_func.vx_fn_new({ ->
-                        var output_72 : vx_core.Type_any = scroll_y
+                        val output_72 : vx_core.Type_any = scroll_y
                         output_72
                       }),
                       vx_core.t_any_from_func.vx_fn_new({ ->
@@ -4166,7 +4166,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var hoverbkgrdcolor : vx_core.Type_string = vx_core.f_if_2(
+                val hoverbkgrdcolor : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -4192,7 +4192,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var scursor : vx_core.Type_string = vx_core.f_if_2(
+                val scursor : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -4211,7 +4211,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var textalign : vx_core.Type_string = vx_core.f_if_2(
+                val textalign : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -4256,7 +4256,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var transform_rotate : vx_core.Type_string = vx_core.f_if_2(
+                val transform_rotate : vx_core.Type_string = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -4288,7 +4288,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var transform_scale : vx_core.Type_string = vx_core.f_switch(
+                val transform_scale : vx_core.Type_string = vx_core.f_switch(
                   vx_core.t_string,
                   flip,
                   vx_core.vx_new(
@@ -4316,7 +4316,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var transforms : vx_core.Type_stringlist = vx_core.f_new(
+                val transforms : vx_core.Type_stringlist = vx_core.f_new(
                   vx_core.t_stringlist,
                   vx_core.vx_new(
                     vx_core.t_anylist,
@@ -4324,11 +4324,11 @@ object vx_ui_html_uihtml {
                     transform_scale
                   )
                 )
-                var transform : vx_core.Type_string = vx_type.f_string_from_stringlist_join(
+                val transform : vx_core.Type_string = vx_type.f_string_from_stringlist_join(
                   transforms,
                   vx_core.vx_new_string(" ")
                 )
-                var transformorigin : vx_core.Type_string = vx_core.f_switch(
+                val transformorigin : vx_core.Type_string = vx_core.f_switch(
                   vx_core.t_string,
                   pointorigin,
                   vx_core.vx_new(
@@ -4392,7 +4392,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var props : vx_web_html.Type_propmap = vx_core.f_new(
+                val props : vx_web_html.Type_propmap = vx_core.f_new(
                   vx_web_html.t_propmap,
                   vx_core.vx_new(
                     vx_core.t_anylist,
@@ -4440,7 +4440,7 @@ object vx_ui_html_uihtml {
                     transformorigin
                   )
                 )
-                var hoverprops : vx_web_html.Type_propmap = vx_core.f_new(
+                val hoverprops : vx_web_html.Type_propmap = vx_core.f_new(
                   vx_web_html.t_propmap,
                   vx_core.vx_new(
                     vx_core.t_anylist,
@@ -4448,7 +4448,7 @@ object vx_ui_html_uihtml {
                     hoverbkgrdcolor
                   )
                 )
-                var substylelist : vx_web_html.Type_stylelist = vx_core.f_if_2(
+                val substylelist : vx_web_html.Type_stylelist = vx_core.f_if_2(
                   vx_web_html.t_stylelist,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -4481,7 +4481,7 @@ object vx_ui_html_uihtml {
                     )
                   )
                 )
-                var output_4 : vx_core.Type_any = vx_core.f_new(
+                val output_4 : vx_core.Type_any = vx_core.f_new(
                   vx_web_html.t_style,
                   vx_core.vx_new(
                     vx_core.t_anylist,
@@ -4529,12 +4529,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "stylelist-extra<-ui", // name
         0, // idx
@@ -4557,12 +4557,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_extra_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_extra_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_extra_from_ui
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_extra_from_ui
       return output
     }
 
@@ -4572,21 +4572,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylelist_extra_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylelist_extra_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_stylelist_extra_from_ui(ui)
       return output
     }
 
     override fun vx_stylelist_extra_from_ui(ui : vx_ui_ui.Type_ui) : vx_web_html.Type_stylelist {
-      var output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_extra_from_ui(ui)
+      val output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_extra_from_ui(ui)
       return output
     }
 
@@ -4600,19 +4600,19 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_stylelist,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uistyles : vx_ui_ui.Type_stylelist = ui.stylelist()
-        var selected : vx_core.Type_boolean = ui.selected()
-        var hidden : vx_core.Type_boolean = ui.hidden()
-        var styles1 : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylelist(
+        val uistyles : vx_ui_ui.Type_stylelist = ui.stylelist()
+        val selected : vx_core.Type_boolean = ui.selected()
+        val hidden : vx_core.Type_boolean = ui.hidden()
+        val styles1 : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylelist(
           uistyles
         )
-        var styles2 : vx_web_html.Type_stylelist = vx_core.f_if_2(
+        val styles2 : vx_web_html.Type_stylelist = vx_core.f_if_2(
           vx_web_html.t_stylelist,
           vx_core.vx_new(
             vx_core.t_thenelselist,
             vx_core.f_then(
               vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_2 : vx_core.Type_any = hidden
+                val output_2 : vx_core.Type_any = hidden
                 output_2
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
@@ -4628,7 +4628,7 @@ object vx_ui_html_uihtml {
             ),
             vx_core.f_then(
               vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_4 : vx_core.Type_any = selected
+                val output_4 : vx_core.Type_any = selected
                 output_4
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
@@ -4644,13 +4644,13 @@ object vx_ui_html_uihtml {
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_6 : vx_core.Type_any = styles1
+                val output_6 : vx_core.Type_any = styles1
                 output_6
               })
             )
           )
         )
-        var output_1 : vx_core.Type_any = styles2
+        val output_1 : vx_core.Type_any = styles2
         output_1
       })
     )
@@ -4681,12 +4681,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "stylelist-reset", // name
         0, // idx
@@ -4709,12 +4709,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_reset
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_reset
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_reset
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_reset
       return output
     }
 
@@ -4725,7 +4725,7 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_stylelist_reset() : vx_web_html.Type_stylelist {
-      var output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_reset()
+      val output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_reset()
       return output
     }
 
@@ -4902,12 +4902,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "stylelist<-fontfacemap", // name
         0, // idx
@@ -4930,12 +4930,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_from_fontfacemap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_from_fontfacemap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_from_fontfacemap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_from_fontfacemap
       return output
     }
 
@@ -4945,21 +4945,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_fontfacemap = value as vx_ui_ui.Type_fontfacemap
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylelist_from_fontfacemap(inputval)
+      val inputval : vx_ui_ui.Type_fontfacemap = value as vx_ui_ui.Type_fontfacemap
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylelist_from_fontfacemap(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var fontfacemap : vx_ui_ui.Type_fontfacemap = vx_core.f_any_from_any(vx_ui_ui.t_fontfacemap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val fontfacemap : vx_ui_ui.Type_fontfacemap = vx_core.f_any_from_any(vx_ui_ui.t_fontfacemap, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_stylelist_from_fontfacemap(fontfacemap)
       return output
     }
 
     override fun vx_stylelist_from_fontfacemap(fontfacemap : vx_ui_ui.Type_fontfacemap) : vx_web_html.Type_stylelist {
-      var output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_fontfacemap(fontfacemap)
+      val output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_fontfacemap(fontfacemap)
       return output
     }
 
@@ -4974,8 +4974,8 @@ object vx_ui_html_uihtml {
       vx_web_html.t_stylelist,
       fontfacemap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, fontface_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var fontface : vx_ui_ui.Type_fontface = vx_core.f_any_from_any(vx_ui_ui.t_fontface, fontface_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val fontface : vx_ui_ui.Type_fontface = vx_core.f_any_from_any(vx_ui_ui.t_fontface, fontface_any)
         var output_1 : vx_core.Type_any = vx_ui_html_uihtml.f_style_from_fontface(
           fontface
         )
@@ -5010,12 +5010,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "stylelist<-stylelist", // name
         0, // idx
@@ -5038,12 +5038,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_from_stylelist
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_from_stylelist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_from_stylelist
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_from_stylelist
       return output
     }
 
@@ -5053,21 +5053,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_stylelist = value as vx_ui_ui.Type_stylelist
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylelist_from_stylelist(inputval)
+      val inputval : vx_ui_ui.Type_stylelist = value as vx_ui_ui.Type_stylelist
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylelist_from_stylelist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uistylelist : vx_ui_ui.Type_stylelist = vx_core.f_any_from_any(vx_ui_ui.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uistylelist : vx_ui_ui.Type_stylelist = vx_core.f_any_from_any(vx_ui_ui.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_stylelist_from_stylelist(uistylelist)
       return output
     }
 
     override fun vx_stylelist_from_stylelist(uistylelist : vx_ui_ui.Type_stylelist) : vx_web_html.Type_stylelist {
-      var output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylelist(uistylelist)
+      val output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylelist(uistylelist)
       return output
     }
 
@@ -5111,12 +5111,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "stylelist<-stylemap", // name
         0, // idx
@@ -5139,12 +5139,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_from_stylemap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_stylelist_from_stylemap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_from_stylemap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_stylelist_from_stylemap
       return output
     }
 
@@ -5154,21 +5154,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_stylemap = value as vx_ui_ui.Type_stylemap
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylelist_from_stylemap(inputval)
+      val inputval : vx_ui_ui.Type_stylemap = value as vx_ui_ui.Type_stylemap
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylelist_from_stylemap(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uistylemap : vx_ui_ui.Type_stylemap = vx_core.f_any_from_any(vx_ui_ui.t_stylemap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uistylemap : vx_ui_ui.Type_stylemap = vx_core.f_any_from_any(vx_ui_ui.t_stylemap, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_stylelist_from_stylemap(uistylemap)
       return output
     }
 
     override fun vx_stylelist_from_stylemap(uistylemap : vx_ui_ui.Type_stylemap) : vx_web_html.Type_stylelist {
-      var output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylemap(uistylemap)
+      val output : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylemap(uistylemap)
       return output
     }
 
@@ -5183,8 +5183,8 @@ object vx_ui_html_uihtml {
       vx_web_html.t_stylelist,
       uistylemap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var value : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, value_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val value : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, value_any)
         var output_1 : vx_core.Type_any = vx_ui_html_uihtml.f_style_from_style(
           value
         )
@@ -5219,12 +5219,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "stylemap<-stylemap", // name
         0, // idx
@@ -5247,12 +5247,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_stylemap_from_stylemap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_stylemap_from_stylemap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_stylemap_from_stylemap
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_stylemap_from_stylemap
       return output
     }
 
@@ -5262,21 +5262,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_stylemap = value as vx_ui_ui.Type_stylemap
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylemap_from_stylemap(inputval)
+      val inputval : vx_ui_ui.Type_stylemap = value as vx_ui_ui.Type_stylemap
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylemap_from_stylemap(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uistylemap : vx_ui_ui.Type_stylemap = vx_core.f_any_from_any(vx_ui_ui.t_stylemap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uistylemap : vx_ui_ui.Type_stylemap = vx_core.f_any_from_any(vx_ui_ui.t_stylemap, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_stylemap_from_stylemap(uistylemap)
       return output
     }
 
     override fun vx_stylemap_from_stylemap(uistylemap : vx_ui_ui.Type_stylemap) : vx_web_html.Type_stylemap {
-      var output : vx_web_html.Type_stylemap = vx_ui_html_uihtml.f_stylemap_from_stylemap(uistylemap)
+      val output : vx_web_html.Type_stylemap = vx_ui_html_uihtml.f_stylemap_from_stylemap(uistylemap)
       return output
     }
 
@@ -5291,8 +5291,8 @@ object vx_ui_html_uihtml {
       vx_web_html.t_stylemap,
       uistylemap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var value : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, value_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val value : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, value_any)
         var output_1 : vx_core.Type_any = vx_ui_html_uihtml.f_style_from_style(
           value
         )
@@ -5328,12 +5328,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "stylesheet-layout-html", // name
         0, // idx
@@ -5356,12 +5356,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_stylesheet_layout_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_stylesheet_layout_html
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_stylesheet_layout_html
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_stylesheet_layout_html
       return output
     }
 
@@ -5370,15 +5370,15 @@ object vx_ui_html_uihtml {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      var inputval : vx_ui_ui.Type_stylesheet = vx_core.f_any_from_any(vx_ui_ui.t_stylesheet, value)
-      var future : CompletableFuture<vx_ui_ui.Type_stylesheet> = vx_ui_html_uihtml.f_stylesheet_layout_html(inputval)
-      var output : CompletableFuture<T> = future as (CompletableFuture<T>)
+      val inputval : vx_ui_ui.Type_stylesheet = vx_core.f_any_from_any(vx_ui_ui.t_stylesheet, value)
+      val future : CompletableFuture<vx_ui_ui.Type_stylesheet> = vx_ui_html_uihtml.f_stylesheet_layout_html(inputval)
+      val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      var stylesheetui : vx_ui_ui.Type_stylesheet = vx_core.f_any_from_any(vx_ui_ui.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheetui : vx_ui_ui.Type_stylesheet = vx_core.f_any_from_any(vx_ui_ui.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
       var future : CompletableFuture<vx_ui_ui.Type_stylesheet> = vx_ui_html_uihtml.f_stylesheet_layout_html(stylesheetui)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output
@@ -5399,16 +5399,20 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let_async(
       vx_ui_ui.t_stylesheet,
       vx_core.t_any_from_func_async.vx_fn_new({ ->
-        var stylesheethtml : vx_web_html.Type_stylesheet = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(
+        val stylesheethtml : vx_web_html.Type_stylesheet = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(
           stylesheetui
         )
-        var future_write : CompletableFuture<vx_core.Type_boolean> = vx_web_htmldoc.f_boolean_write_from_stylesheet(
+        val future_write : CompletableFuture<vx_core.Type_boolean> = vx_web_htmldoc.f_boolean_write_from_stylesheet(
           stylesheethtml
         )
-        var output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(future_write, {write ->
-          var output_2 : vx_core.Type_any = stylesheetui
-          output_2
-        })
+        val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
+          vx_core.t_any,
+          future_write,
+          {write ->
+            val output_2 : vx_core.Type_any = stylesheetui
+            output_2
+          }
+        )
         output_1
       })
     )
@@ -5440,12 +5444,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "stylesheet<-stylesheet", // name
         0, // idx
@@ -5468,12 +5472,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_stylesheet_from_stylesheet
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_stylesheet_from_stylesheet
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_stylesheet_from_stylesheet
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_stylesheet_from_stylesheet
       return output
     }
 
@@ -5483,21 +5487,21 @@ object vx_ui_html_uihtml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_stylesheet = value as vx_ui_ui.Type_stylesheet
-      var outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(inputval)
+      val inputval : vx_ui_ui.Type_stylesheet = value as vx_ui_ui.Type_stylesheet
+      val outputval : vx_core.Type_any = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uistylesheet : vx_ui_ui.Type_stylesheet = vx_core.f_any_from_any(vx_ui_ui.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uistylesheet : vx_ui_ui.Type_stylesheet = vx_core.f_any_from_any(vx_ui_ui.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(uistylesheet)
       return output
     }
 
     override fun vx_stylesheet_from_stylesheet(uistylesheet : vx_ui_ui.Type_stylesheet) : vx_web_html.Type_stylesheet {
-      var output : vx_web_html.Type_stylesheet = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(uistylesheet)
+      val output : vx_web_html.Type_stylesheet = vx_ui_html_uihtml.f_stylesheet_from_stylesheet(uistylesheet)
       return output
     }
 
@@ -5511,16 +5515,16 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_web_html.t_stylesheet,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uistylemap : vx_ui_ui.Type_stylemap = uistylesheet.stylemap()
-        var fontfacemap : vx_ui_ui.Type_fontfacemap = uistylesheet.fontfacemap()
-        var resetlist : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_reset()
-        var fontstyles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_fontfacemap(
+        val uistylemap : vx_ui_ui.Type_stylemap = uistylesheet.stylemap()
+        val fontfacemap : vx_ui_ui.Type_fontfacemap = uistylesheet.fontfacemap()
+        val resetlist : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_reset()
+        val fontstyles : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_fontfacemap(
           fontfacemap
         )
-        var stylelist : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylemap(
+        val stylelist : vx_web_html.Type_stylelist = vx_ui_html_uihtml.f_stylelist_from_stylemap(
           uistylemap
         )
-        var allstyles : vx_web_html.Type_stylelist = vx_core.f_new(
+        val allstyles : vx_web_html.Type_stylelist = vx_core.f_new(
           vx_web_html.t_stylelist,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -5529,7 +5533,7 @@ object vx_ui_html_uihtml {
             stylelist
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_web_html.t_stylesheet,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -5569,12 +5573,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "ui-layout-app<-ui-orig-parent", // name
         0, // idx
@@ -5597,26 +5601,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_ui_layout_app_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_ui_layout_app_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_ui_layout_app_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_ui_layout_app_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_ui_layout_app_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_ui_layout_app_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_html_uihtml.f_ui_layout_app_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_ui_ui.Type_ui = vx_ui_html_uihtml.f_ui_layout_app_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -5630,20 +5634,20 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var node : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_app_from_ui_orig_parent(
+        val node : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_app_from_ui_orig_parent(
           ui,
           orig,
           parent
         )
-        var nodechg : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(
+        val nodechg : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(
           node,
           ui,
           parent
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
+        val iswrite : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = ui
+        val output_1 : vx_core.Type_any = ui
         output_1
       })
     )
@@ -5676,12 +5680,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "ui-layout-default<-ui-orig-parent", // name
         0, // idx
@@ -5704,26 +5708,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_ui_layout_default_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_ui_layout_default_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_ui_layout_default_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_ui_layout_default_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_ui_layout_default_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_ui_layout_default_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_html_uihtml.f_ui_layout_default_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_ui_ui.Type_ui = vx_ui_html_uihtml.f_ui_layout_default_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -5737,21 +5741,21 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var node : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_default_from_ui_orig_parent(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val node : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_default_from_ui_orig_parent(
           ui,
           orig,
           parent
         )
-        var nodechg : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(
+        val nodechg : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(
           node,
           ui,
           parent
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
+        val iswrite : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = ui
+        val output_1 : vx_core.Type_any = ui
         output_1
       })
     )
@@ -5784,12 +5788,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "ui-layout-image<-ui-orig-parent", // name
         0, // idx
@@ -5812,26 +5816,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_ui_layout_image_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_ui_layout_image_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_ui_layout_image_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_ui_layout_image_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_ui_layout_image_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_ui_layout_image_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_html_uihtml.f_ui_layout_image_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_ui_ui.Type_ui = vx_ui_html_uihtml.f_ui_layout_image_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -5845,20 +5849,20 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var node : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_image_from_ui_orig_parent(
+        val node : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_image_from_ui_orig_parent(
           ui,
           orig,
           parent
         )
-        var nodechg : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(
+        val nodechg : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(
           node,
           ui,
           parent
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
+        val iswrite : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = ui
+        val output_1 : vx_core.Type_any = ui
         output_1
       })
     )
@@ -5891,12 +5895,12 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/html/uihtml", // pkgname
         "ui-layout-label<-ui-orig-parent", // name
         0, // idx
@@ -5919,26 +5923,26 @@ object vx_ui_html_uihtml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.e_ui_layout_label_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.e_ui_layout_label_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_html_uihtml.t_ui_layout_label_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_html_uihtml.t_ui_layout_label_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_html_uihtml.f_ui_layout_label_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_ui_layout_label_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_html_uihtml.f_ui_layout_label_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_ui_ui.Type_ui = vx_ui_html_uihtml.f_ui_layout_label_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -5952,21 +5956,21 @@ object vx_ui_html_uihtml {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var node : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_label_from_ui_orig_parent(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val node : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_label_from_ui_orig_parent(
           ui,
           orig,
           parent
         )
-        var nodechg : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(
+        val nodechg : vx_web_html.Type_node = vx_ui_html_uihtml.f_node_layout_from_node_ui_parent(
           node,
           ui,
           parent
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
+        val iswrite : vx_core.Type_boolean = vx_ui_html_uihtml.f_boolean_writeeventsall_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = ui
+        val output_1 : vx_core.Type_any = ui
         output_1
       })
     )
@@ -6029,7 +6033,12 @@ object vx_ui_html_uihtml {
     mapfunc.put("ui-layout-default<-ui-orig-parent", vx_ui_html_uihtml.t_ui_layout_default_from_ui_orig_parent)
     mapfunc.put("ui-layout-image<-ui-orig-parent", vx_ui_html_uihtml.t_ui_layout_image_from_ui_orig_parent)
     mapfunc.put("ui-layout-label<-ui-orig-parent", vx_ui_html_uihtml.t_ui_layout_label_from_ui_orig_parent)
-    vx_core.vx_global_package_set("vx/ui/html/uihtml", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/ui/html/uihtml",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

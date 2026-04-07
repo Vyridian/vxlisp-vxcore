@@ -62,7 +62,7 @@ public final class Table {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
       map.put(":id", this.id());
       map.put(":value", this.value());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -152,7 +152,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/cell", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -173,7 +173,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("value"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/cell", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -243,13 +243,13 @@ public final class Table {
 
   public static class Class_celllist extends Core.Class_base implements Type_celllist {
 
-    public List<Table.Type_cell> vx_p_list = Core.immutablelist(
+    public List<Table.Type_cell> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Table.Type_cell>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -334,7 +334,7 @@ public final class Table {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Table.Class_celllist work = new Table.Class_celllist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -389,12 +389,13 @@ public final class Table {
 
   public static class Class_cellmap extends Core.Class_base implements Type_cellmap {
 
-    public Map<String, Table.Type_cell> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Table.Type_cell>());
+    public Map<String, Table.Type_cell> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Table.Type_cell>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -407,13 +408,13 @@ public final class Table {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Table.Type_cell> map = new LinkedHashMap<String, Table.Type_cell>(this.vx_p_map);
+        Map<String, Table.Type_cell> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Table.e_cell) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -427,20 +428,20 @@ public final class Table {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Table.Type_cell> mapval = map.vx_p_map;
+      final Map<String, Table.Type_cell> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Table.e_cell);
       return output;
     }
 
     @Override
     public Map<String, Table.Type_cell> vx_mapcell() {
-      Map<String, Table.Type_cell> output = this.vx_p_map;
+      final Map<String, Table.Type_cell> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_cell(key);
+      final Core.Type_any output = this.vx_cell(key);
       return output;
     }
 
@@ -462,7 +463,7 @@ public final class Table {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -484,7 +485,7 @@ public final class Table {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Table.Type_cell> mapval = new LinkedHashMap<String, Table.Type_cell>(value.vx_mapcell());
+      Map<String, Table.Type_cell> mapval = Core.vx_mapmutable(value.vx_mapcell());
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -531,7 +532,7 @@ public final class Table {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/data/table/cellmap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -547,7 +548,7 @@ public final class Table {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Table.Class_cellmap work = new Table.Class_cellmap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -660,7 +661,7 @@ public final class Table {
       map.put(":id", this.id());
       map.put(":name", this.name());
       map.put(":fldtype", this.fldtype());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -752,7 +753,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -776,7 +777,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -797,7 +798,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fldtype"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -868,13 +869,13 @@ public final class Table {
 
   public static class Class_fieldlist extends Core.Class_base implements Type_fieldlist {
 
-    public List<Table.Type_field> vx_p_list = Core.immutablelist(
+    public List<Table.Type_field> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Table.Type_field>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -959,7 +960,7 @@ public final class Table {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Table.Class_fieldlist work = new Table.Class_fieldlist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1014,13 +1015,13 @@ public final class Table {
 
   public static class Class_fieldmap extends Core.Class_base implements Type_fieldmap {
 
-    public List<Table.Type_field> vx_p_list = Core.immutablelist(
+    public List<Table.Type_field> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Table.Type_field>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -1105,7 +1106,7 @@ public final class Table {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Table.Class_fieldmap work = new Table.Class_fieldmap();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1218,7 +1219,7 @@ public final class Table {
       map.put(":id", this.id());
       map.put(":name", this.name());
       map.put(":idlist", this.idlist());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -1310,7 +1311,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1334,7 +1335,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1355,7 +1356,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("idlist"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1484,7 +1485,7 @@ public final class Table {
       map.put(":id", this.id());
       map.put(":cellmap", this.cellmap());
       map.put(":cellsort", this.cellsort());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -1576,7 +1577,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1597,7 +1598,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("cellmap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1618,7 +1619,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("cellsort"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1689,13 +1690,13 @@ public final class Table {
 
   public static class Class_rowlist extends Core.Class_base implements Type_rowlist {
 
-    public List<Table.Type_row> vx_p_list = Core.immutablelist(
+    public List<Table.Type_row> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Table.Type_row>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -1780,7 +1781,7 @@ public final class Table {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Table.Class_rowlist work = new Table.Class_rowlist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1835,12 +1836,13 @@ public final class Table {
 
   public static class Class_rowmap extends Core.Class_base implements Type_rowmap {
 
-    public Map<String, Table.Type_row> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Table.Type_row>());
+    public Map<String, Table.Type_row> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Table.Type_row>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -1853,13 +1855,13 @@ public final class Table {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Table.Type_row> map = new LinkedHashMap<String, Table.Type_row>(this.vx_p_map);
+        Map<String, Table.Type_row> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Table.e_row) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -1873,20 +1875,20 @@ public final class Table {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Table.Type_row> mapval = map.vx_p_map;
+      final Map<String, Table.Type_row> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Table.e_row);
       return output;
     }
 
     @Override
     public Map<String, Table.Type_row> vx_maprow() {
-      Map<String, Table.Type_row> output = this.vx_p_map;
+      final Map<String, Table.Type_row> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_row(key);
+      final Core.Type_any output = this.vx_row(key);
       return output;
     }
 
@@ -1908,7 +1910,7 @@ public final class Table {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -1930,7 +1932,7 @@ public final class Table {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Table.Type_row> mapval = new LinkedHashMap<String, Table.Type_row>(value.vx_maprow());
+      Map<String, Table.Type_row> mapval = Core.vx_mapmutable(value.vx_maprow());
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -1977,7 +1979,7 @@ public final class Table {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/data/table/rowmap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -1993,7 +1995,7 @@ public final class Table {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Table.Class_rowmap work = new Table.Class_rowmap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -2106,7 +2108,7 @@ public final class Table {
       map.put(":id", this.id());
       map.put(":name", this.name());
       map.put(":idlist", this.idlist());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -2198,7 +2200,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2222,7 +2224,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2243,7 +2245,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("idlist"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2436,7 +2438,7 @@ public final class Table {
       map.put(":rowmap", this.rowmap());
       map.put(":rowfilter", this.rowfilter());
       map.put(":rowsort", this.rowsort());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -2536,7 +2538,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2560,7 +2562,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2581,7 +2583,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fieldmap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2602,7 +2604,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fieldsort"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2623,7 +2625,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("rowmap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2644,7 +2646,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("rowfilter"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2665,7 +2667,7 @@ public final class Table {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("rowsort"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2745,7 +2747,12 @@ public final class Table {
     maptype.put("rowmap", Table.t_rowmap);
     maptype.put("sort", Table.t_sort);
     maptype.put("table", Table.t_table);
-    Core.vx_global_package_set("vx/data/table", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/data/table",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

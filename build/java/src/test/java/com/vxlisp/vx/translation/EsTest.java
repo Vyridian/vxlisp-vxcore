@@ -7,7 +7,7 @@ import com.vxlisp.vx.*;
 public final class EsTest {
 
   public static Test.Type_testcase f_translation_es(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/translation/es",
@@ -22,7 +22,7 @@ public final class EsTest {
   }
 
   public static Test.Type_testdescribe f_translation_es_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"Hola\"\n (trn/translate<-translation-string\n  (translation-es)\n  \"Hello\"))",
       ":testresult", Test.f_test(
@@ -41,7 +41,7 @@ public final class EsTest {
     List<Core.Type_any> testcases = Core.arraylist_from_array(
       EsTest.f_translation_es(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -49,7 +49,7 @@ public final class EsTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/translation/es", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -64,7 +64,7 @@ public final class EsTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/translation/es",
       ":typemap", Core.e_intmap, 
@@ -79,8 +79,8 @@ public final class EsTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/translation/es", 
       ":caselist", testcaselist,

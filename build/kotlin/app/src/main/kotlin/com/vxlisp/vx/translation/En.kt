@@ -30,12 +30,12 @@ object vx_translation_en {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/translation/en", // pkgname
         "context-en", // name
         0, // idx
@@ -58,12 +58,12 @@ object vx_translation_en {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.e_context_en
+      val output : vx_core.Type_any = vx_translation_en.e_context_en
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.t_context_en
+      val output : vx_core.Type_any = vx_translation_en.t_context_en
       return output
     }
 
@@ -73,21 +73,21 @@ object vx_translation_en {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
-      var outputval : vx_core.Type_any = vx_translation_en.f_context_en(inputval)
+      val inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
+      val outputval : vx_core.Type_any = vx_translation_en.f_context_en(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_translation_en.f_context_en(args)
       return output
     }
 
     override fun vx_context_en(args : vx_core.Type_anylist) : vx_core.Type_context {
-      var output : vx_core.Type_context = vx_translation_en.f_context_en(args)
+      val output : vx_core.Type_context = vx_translation_en.f_context_en(args)
       return output
     }
 
@@ -141,12 +141,12 @@ object vx_translation_en {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/translation/en", // pkgname
         "context-test", // name
         0, // idx
@@ -169,12 +169,12 @@ object vx_translation_en {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.e_context_test
+      val output : vx_core.Type_any = vx_translation_en.e_context_test
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.t_context_test
+      val output : vx_core.Type_any = vx_translation_en.t_context_test
       return output
     }
 
@@ -184,21 +184,21 @@ object vx_translation_en {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
-      var outputval : vx_core.Type_any = vx_translation_en.f_context_test(inputval)
+      val inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
+      val outputval : vx_core.Type_any = vx_translation_en.f_context_test(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_translation_en.f_context_test(args)
       return output
     }
 
     override fun vx_context_test(args : vx_core.Type_anylist) : vx_core.Type_context {
-      var output : vx_core.Type_context = vx_translation_en.f_context_test(args)
+      val output : vx_core.Type_context = vx_translation_en.f_context_test(args)
       return output
     }
 
@@ -260,12 +260,12 @@ object vx_translation_en {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/translation/en", // pkgname
         "securitydata-test", // name
         0, // idx
@@ -288,12 +288,12 @@ object vx_translation_en {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.e_securitydata_test
+      val output : vx_core.Type_any = vx_translation_en.e_securitydata_test
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.t_securitydata_test
+      val output : vx_core.Type_any = vx_translation_en.t_securitydata_test
       return output
     }
 
@@ -304,7 +304,7 @@ object vx_translation_en {
     }
 
     override fun vx_securitydata_test() : vx_core.Type_security {
-      var output : vx_core.Type_security = vx_translation_en.f_securitydata_test()
+      val output : vx_core.Type_security = vx_translation_en.f_securitydata_test()
       return output
     }
 
@@ -359,12 +359,12 @@ object vx_translation_en {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/translation/en", // pkgname
         "translation-en", // name
         0, // idx
@@ -387,12 +387,12 @@ object vx_translation_en {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.e_translation_en
+      val output : vx_core.Type_any = vx_translation_en.e_translation_en
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.t_translation_en
+      val output : vx_core.Type_any = vx_translation_en.t_translation_en
       return output
     }
 
@@ -403,7 +403,7 @@ object vx_translation_en {
     }
 
     override fun vx_translation_en() : vx_core.Type_translation {
-      var output : vx_core.Type_translation = vx_translation_en.f_translation_en()
+      val output : vx_core.Type_translation = vx_translation_en.f_translation_en()
       return output
     }
 
@@ -451,12 +451,12 @@ object vx_translation_en {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/translation/en", // pkgname
         "words", // name
         0, // idx
@@ -479,12 +479,12 @@ object vx_translation_en {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.e_words
+      val output : vx_core.Type_any = vx_translation_en.e_words
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_translation_en.t_words
+      val output : vx_core.Type_any = vx_translation_en.t_words
       return output
     }
 
@@ -495,7 +495,7 @@ object vx_translation_en {
     }
 
     override fun vx_words() : vx_core.Type_stringmap {
-      var output : vx_core.Type_stringmap = vx_translation_en.f_words()
+      val output : vx_core.Type_stringmap = vx_translation_en.f_words()
       return output
     }
 
@@ -534,7 +534,12 @@ object vx_translation_en {
     mapfunc.put("securitydata-test", vx_translation_en.t_securitydata_test)
     mapfunc.put("translation-en", vx_translation_en.t_translation_en)
     mapfunc.put("words", vx_translation_en.t_words)
-    vx_core.vx_global_package_set("vx/translation/en", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/translation/en",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

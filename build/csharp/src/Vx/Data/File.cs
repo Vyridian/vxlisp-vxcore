@@ -179,7 +179,7 @@ public static class File {
       map.put(":path", this.path());
       map.put(":permission", this.permission());
       map.put(":text", this.text());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -268,7 +268,7 @@ public static class File {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -287,7 +287,7 @@ public static class File {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("format"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -309,7 +309,7 @@ public static class File {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("path"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -328,7 +328,7 @@ public static class File {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("permission"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -350,7 +350,7 @@ public static class File {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -485,12 +485,12 @@ public static class File {
 
   public class Class_filelist : Vx.Core.Class_base, Type_filelist {
 
-    public List<Vx.Data.File.Type_file> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Data.File.Type_file> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Data.File.Type_file>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -565,7 +565,7 @@ public static class File {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Data.File.Class_filelist work = new Vx.Data.File.Class_filelist();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -979,15 +979,27 @@ public static class File {
 
   public static Vx.Core.Type_boolean f_boolean_write_from_file_string(Vx.Core.Type_context context, Vx.Data.File.Type_file file, Vx.Core.Type_string text) {
     Vx.Core.Type_boolean output = Vx.Core.e_boolean;
-    if (Vx.Core.f_boolean_permission_from_func(context, Vx.Data.File.t_boolean_write_from_file_string).vx_boolean()) {
+    if (Vx.Core.f_boolean_permission_from_func(
+      context,
+      Vx.Data.File.t_boolean_write_from_file_string
+    ).vx_boolean()) {
       try {
         output = Vx.Data.File.vx_boolean_write_from_file_string(context, file, text);
       } catch (Exception err) {
-        Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/data/file/boolean-write<-file-string", err);
+        Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+          "vx/data/file/boolean-write<-file-string",
+          err
+        );
         output = Vx.Core.vx_copy(output, msg);
       }
     } else {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error("vx/core/func", ":permissiondenied", Vx.Core.vx_new_string("boolean-write<-file-string"));
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        Vx.Core.vx_new_string(
+          "boolean-write<-file-string"
+        )
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -1086,7 +1098,10 @@ public static class File {
 
   public static Vx.Data.File.Type_file f_file_read_from_file(Vx.Core.Type_context context, Vx.Data.File.Type_file file) {
     Vx.Data.File.Type_file output = Vx.Data.File.e_file;
-    if (Vx.Core.f_boolean_permission_from_func(context, Vx.Data.File.t_file_read_from_file).vx_boolean()) {
+    if (Vx.Core.f_boolean_permission_from_func(
+      context,
+      Vx.Data.File.t_file_read_from_file
+    ).vx_boolean()) {
       output = Vx.Core.f_copy(
         file,
         Vx.Core.vx_new(
@@ -1099,7 +1114,11 @@ public static class File {
         )
       );
     } else {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error("vx/core/func", ":permissiondenied", Vx.Core.vx_new_string("file-read<-file"));
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        Vx.Core.vx_new_string("file-read<-file")
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -1738,15 +1757,25 @@ public static class File {
 
   public static Vx.Core.Type_string f_string_read_from_file(Vx.Core.Type_context context, Vx.Data.File.Type_file file) {
     Vx.Core.Type_string output = Vx.Core.e_string;
-    if (Vx.Core.f_boolean_permission_from_func(context, Vx.Data.File.t_string_read_from_file).vx_boolean()) {
+    if (Vx.Core.f_boolean_permission_from_func(
+      context,
+      Vx.Data.File.t_string_read_from_file
+    ).vx_boolean()) {
       try {
         output = Vx.Data.File.vx_string_read_from_file(context, file);
       } catch (Exception err) {
-        Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/data/file/string-read<-file", err);
+        Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+          "vx/data/file/string-read<-file",
+          err
+        );
         output = Vx.Core.vx_copy(output, msg);
       }
     } else {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error("vx/core/func", ":permissiondenied", Vx.Core.vx_new_string("string-read<-file"));
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        Vx.Core.vx_new_string("string-read<-file")
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -1771,7 +1800,12 @@ public static class File {
     mapfunc.put("pathcurrent<-os", Vx.Data.File.t_pathcurrent_from_os);
     mapfunc.put("pathfull<-file", Vx.Data.File.t_pathfull_from_file);
     mapfunc.put("string-read<-file", Vx.Data.File.t_string_read_from_file);
-    Vx.Core.vx_global_package_set("vx/data/file", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/data/file",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

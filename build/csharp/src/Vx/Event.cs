@@ -112,7 +112,7 @@ public static class Event {
       map.put(":datamap", this.datamap());
       map.put(":event<-event", this.event_from_event());
       map.put(":event<-event-async", this.event_from_event_async());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -203,7 +203,7 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -225,7 +225,7 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("from"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -247,7 +247,7 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("to"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -266,7 +266,7 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("datamap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -285,7 +285,7 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("event<-event"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -304,7 +304,7 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("event<-event-async"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -376,12 +376,12 @@ public static class Event {
 
   public class Class_eventlist : Vx.Core.Class_base, Type_eventlist {
 
-    public List<Vx.Event.Type_event> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Event.Type_event> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Event.Type_event>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -456,7 +456,7 @@ public static class Event {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Event.Class_eventlist work = new Vx.Event.Class_eventlist();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -509,12 +509,13 @@ public static class Event {
 
   public class Class_eventmap : Vx.Core.Class_base, Type_eventmap {
 
-    public Vx.Core.Map<string, Vx.Event.Type_event> vx_p_map = Vx.Core.immutablemap(new Vx.Core.LinkedHashMap<string, Vx.Event.Type_event>());
+    public Vx.Core.Map<string, Vx.Event.Type_event> vx_p_map = Vx.Core.vx_mapimmutable(new Vx.Core.LinkedHashMap<string, Vx.Event.Type_event>());
 
     public Vx.Core.Map<string, Vx.Core.Type_any> vx_map() {
       Vx.Core.Map<string, Vx.Core.Type_any> anymap = Vx.Core.vx_map_from_map<Vx.Core.Type_any, Vx.Event.Type_event>(this.vx_p_map);
       Vx.Core.Map<string, Vx.Core.Type_any> map = anymap.copy();
-      return Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
+      return output;
     }
 
     public Vx.Core.Type_boolean vx_set(Vx.Core.Type_string name, Vx.Core.Type_any value) {
@@ -525,13 +526,13 @@ public static class Event {
         if (key.StartsWith(":")) {
           key = key.Substring(1);
         }
-        Vx.Core.Map<string, Vx.Event.Type_event> map = new Vx.Core.LinkedHashMap<string, Vx.Event.Type_event>(this.vx_p_map);
+        Vx.Core.Map<string, Vx.Event.Type_event> map = Vx.Core.vx_mapmutable(this.vx_p_map);
         if (castval == Vx.Event.e_event) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Vx.Core.immutablemap(map);
+        this.vx_p_map = Vx.Core.vx_mapimmutable(map);
         output = Vx.Core.c_true;
       }
       return output;
@@ -575,7 +576,7 @@ public static class Event {
           msgblock = Vx.Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Vx.Core.immutablemap(map);
+      output.vx_p_map = Vx.Core.vx_mapimmutable(map);
       if (msgblock != Vx.Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -595,7 +596,7 @@ public static class Event {
       if (this.vx_constdef() != Vx.Core.e_constdef) {
         ischanged = true;
       }
-      Vx.Core.Map<string, Vx.Event.Type_event> mapval = new Vx.Core.LinkedHashMap<string, Vx.Event.Type_event>(value.vx_mapevent());
+      Vx.Core.Map<string, Vx.Event.Type_event> mapval = Vx.Core.vx_mapmutable(value.vx_mapevent());
       string key = "";
       Vx.Core.Type_msg msg = Vx.Core.e_msg;
       Vx.Core.Type_any msgval = Vx.Core.e_any;
@@ -637,7 +638,7 @@ public static class Event {
             Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
             mapany.put("key", Vx.Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
             msg = Vx.Core.vx_msg_from_error("vx/event/eventmap", ":invalidkeyvalue", msgmap);
             msgblock = Vx.Core.vx_copy(msgblock, msg);
           }
@@ -653,7 +654,7 @@ public static class Event {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Event.Class_eventmap work = new Vx.Event.Class_eventmap();
-        work.vx_p_map = Vx.Core.immutablemap(mapval);
+        work.vx_p_map = Vx.Core.vx_mapimmutable(mapval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1271,7 +1272,12 @@ public static class Event {
     mapfunc.put("event<-event", Vx.Event.t_event_from_event);
     mapfunc.put("event<-event-async", Vx.Event.t_event_from_event_async);
     mapfunc.put("eventmap<-eventlist", Vx.Event.t_eventmap_from_eventlist);
-    Vx.Core.vx_global_package_set("vx/event", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/event",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

@@ -7,7 +7,7 @@ import com.vxlisp.vx.data.*
 object vx_ui_uiTest {
 
   fun f_boolean_writestate_from_uiapp(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -22,7 +22,7 @@ object vx_ui_uiTest {
   }
 
   fun f_boolean_writestate_from_uiapp_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (ui :uid \"app\")\n (let : ui\n  [iswrite : boolean :=\n    (boolean-writestate<-uiapp\n     (ui :uid \"app\"))\n   appui : ui :=\n    (ui-readstate-uiapp)\n   isremoved : boolean :=\n    (boolean-removestate-uiapp)]\n  appui))",
       ":testresult", vx_test.f_test(
@@ -38,7 +38,7 @@ object vx_ui_uiTest {
         vx_core.f_let(
           vx_ui_ui.t_ui,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(
+            val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(
               context,
               vx_core.f_new(
                 vx_ui_ui.t_ui,
@@ -49,13 +49,13 @@ object vx_ui_uiTest {
                 )
               )
             )
-            var appui : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_uiapp(
+            val appui : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_uiapp(
               context
             )
-            var isremoved : vx_core.Type_boolean = vx_ui_ui.f_boolean_removestate_uiapp(
+            val isremoved : vx_core.Type_boolean = vx_ui_ui.f_boolean_removestate_uiapp(
               context
             )
-            var output_1 : vx_core.Type_any = appui
+            val output_1 : vx_core.Type_any = appui
             output_1
           })
         )
@@ -65,7 +65,7 @@ object vx_ui_uiTest {
   }
 
   fun f_string_parentuid_from_uid(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -81,7 +81,7 @@ object vx_ui_uiTest {
   }
 
   fun f_string_parentuid_from_uid_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"\"\n (string-parentuid<-uid\n  \"a\"))",
       ":testresult", vx_test.f_test(
@@ -96,7 +96,7 @@ object vx_ui_uiTest {
   }
 
   fun f_string_parentuid_from_uid_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"a/b\"\n (string-parentuid<-uid\n  \"a/b/c\"))",
       ":testresult", vx_test.f_test(
@@ -111,7 +111,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_readstate_uiapp(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -126,7 +126,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_readstate_uiapp_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uid \"myapp\")\n (let : ui\n  [iswrite : boolean :=\n    (boolean-writestate<-uiapp\n     (ui\n      :uid \"myapp\"))]\n  (ui-readstate-uiapp)))",
       ":testresult", vx_test.f_test(
@@ -142,7 +142,7 @@ object vx_ui_uiTest {
         vx_core.f_let(
           vx_ui_ui.t_ui,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(
+            val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(
               context,
               vx_core.f_new(
                 vx_ui_ui.t_ui,
@@ -153,7 +153,7 @@ object vx_ui_uiTest {
                 )
               )
             )
-            var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_readstate_uiapp(
+            val output_1 : vx_core.Type_any = vx_ui_ui.f_ui_readstate_uiapp(
               context
             )
             output_1
@@ -165,7 +165,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_readstate_from_uid(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -180,7 +180,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_readstate_from_uid_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uid \"a/b/c\")\n (let : ui\n  [uiapp : ui :=\n    (ui\n     :uid \"a\"\n     :uimap\n      (uimap<-uilist\n       (ui\n        :uid \"a/b\"\n        :uimap\n         (uimap<-uilist\n          (ui\n           :uid \"a/b/c\")))))\n   iswrite : boolean :=\n    (boolean-writestate<-uiapp uiapp)\n   readval : ui :=\n    (ui-readstate<-uid\n     \"a/b/c\")\n   isremoved : boolean := (boolean-removestate-uiapp)]\n  readval))",
       ":testresult", vx_test.f_test(
@@ -196,7 +196,7 @@ object vx_ui_uiTest {
         vx_core.f_let(
           vx_ui_ui.t_ui,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var uiapp : vx_ui_ui.Type_ui = vx_core.f_new(
+            val uiapp : vx_ui_ui.Type_ui = vx_core.f_new(
               vx_ui_ui.t_ui,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -232,18 +232,18 @@ object vx_ui_uiTest {
                 )
               )
             )
-            var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(
+            val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(
               context,
               uiapp
             )
-            var readval : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_from_uid(
+            val readval : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_from_uid(
               context,
               vx_core.vx_new_string("a/b/c")
             )
-            var isremoved : vx_core.Type_boolean = vx_ui_ui.f_boolean_removestate_uiapp(
+            val isremoved : vx_core.Type_boolean = vx_ui_ui.f_boolean_removestate_uiapp(
               context
             )
-            var output_1 : vx_core.Type_any = readval
+            val output_1 : vx_core.Type_any = readval
             output_1
           })
         )
@@ -253,7 +253,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_write_from_ui_visible(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -268,7 +268,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_write_from_ui_visible_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uimap\n   (uimap\n    :a\n     (ui\n      :uid \"a\"\n      :hidden true)\n    :b\n     (ui\n      :uid \"b\")))\n (ui-write<-ui-visible\n  (ui\n   :uimap\n    (uimap\n     :a\n      (ui\n       :uid \"a\")\n     :b\n      (ui\n       :uid \"b\"\n       :hidden true)))\n  2))",
       ":testresult", vx_test.f_test(
@@ -348,7 +348,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_from_ui_find(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -363,7 +363,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_from_ui_find_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uid \"a/b/c\")\n (ui<-ui-find\n  (ui\n   :uid \"a\"\n   :uimap\n    (uimap\n     :a/b\n      (ui\n       :uid \"a/b\"\n       :uimap\n        (uimap\n         :a/b/c\n          (ui\n           :uid \"a/b/c\")))))\n  \"a/b/c\"))",
       ":testresult", vx_test.f_test(
@@ -425,7 +425,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_from_ui_selected(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -440,7 +440,7 @@ object vx_ui_uiTest {
   }
 
   fun f_ui_from_ui_selected_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uimap\n   (uimap\n    :a\n     (ui\n      :uid \"a\")\n    :b\n     (ui\n      :uid \"b\"\n      :selected true)))\n (ui<-ui-selected\n  (ui\n   :uimap\n    (uimap\n     :a\n      (ui\n       :uid \"a\"\n       :selected true)\n     :b\n      (ui\n       :uid \"b\")))\n  2))",
       ":testresult", vx_test.f_test(
@@ -529,7 +529,7 @@ object vx_ui_uiTest {
       vx_ui_uiTest.f_ui_from_ui_find(context),
       vx_ui_uiTest.f_ui_from_ui_selected(context)
     )
-    var output : vx_test.Type_testcaselist = vx_core.vx_new(
+    val output : vx_test.Type_testcaselist = vx_core.vx_new(
       vx_test.t_testcaselist,
       testcases
     )
@@ -537,7 +537,7 @@ object vx_ui_uiTest {
   }
 
   fun test_coveragesummary() : vx_test.Type_testcoveragesummary {
-    var output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/ui/ui", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 50), 
@@ -552,7 +552,7 @@ object vx_ui_uiTest {
   }
 
   fun test_coveragedetail() : vx_test.Type_testcoveragedetail {
-    var output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
       vx_test.t_testcoveragedetail,
       ":testpkg", "vx/ui/ui",
       ":typemap", vx_core.vx_new(
@@ -716,8 +716,8 @@ object vx_ui_uiTest {
   }
 
   fun test_package(context : vx_core.Type_context) : vx_test.Type_testpackage {
-    var testcaselist : vx_test.Type_testcaselist = test_cases(context)
-    var output : vx_test.Type_testpackage = vx_core.vx_new(
+    val testcaselist : vx_test.Type_testcaselist = test_cases(context)
+    val output : vx_test.Type_testpackage = vx_core.vx_new(
       vx_test.t_testpackage,
       ":testpkg", "vx/ui/ui", 
       ":caselist", testcaselist,

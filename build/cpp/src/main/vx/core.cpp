@@ -477,6 +477,28 @@ namespace vx_core {
     return output;
   }
 
+  // vx_int_from_string(string)
+  vx_core::Type_int vx_int_from_string(
+    vx_core::Type_string text) {
+    vx_core::Type_int output = vx_core::e_int;
+    std::string stext = text->vx_string();
+    if (stext == "notanumber") {
+      output = vx_core::c_notanumber;
+    } else if (stext == "infinity") {
+      output = vx_core::c_infinity;
+    } else if (stext == "neginfinity") {
+      output = vx_core::c_neginfinity;
+    } else {
+      try {
+        long ival = std::stoll(stext);
+        output = vx_core::vx_new_int(ival);
+      } catch (std::exception ex) {
+        output = vx_core::c_notanumber;
+      }
+    }
+    return output;
+  }
+
   // vx_is_float(string)
   bool vx_is_float(
     std::string value) {
@@ -25122,22 +25144,22 @@ namespace vx_core {
   //}
 
   // (func boolean-permission<-func)
-  vx_core::Type_boolean f_boolean_permission_from_func(vx_core::Type_context context, vx_core::Type_func func) {
+  vx_core::Type_boolean f_boolean_permission_from_func(vx_core::Type_context context, vx_core::Type_func fnc) {
     vx_core::Type_boolean output = vx_core::e_boolean;
-    vx_core::vx_reserve(func);
+    vx_core::vx_reserve(fnc);
     output = vx_core::f_contains_1(
       vx_core::f_allowfuncs_from_security(
         vx_core::f_security_from_context(context)
       ),
-      func
+      fnc
     );
-    vx_core::vx_release_one_except(func, output);
+    vx_core::vx_release_one_except(fnc, output);
     return output;
   }
   /**
    * @function boolean_permission_from_func
    * Returns true if the given func has permission.
-   * @param  {func} func
+   * @param  {func} fnc
    * @return {boolean}
    * (func boolean-permission<-func)
    */
@@ -25239,8 +25261,8 @@ namespace vx_core {
     vx_core::Type_any Class_boolean_permission_from_func::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
       vx_core::Type_context context = vx_core::vx_any_from_any(vx_core::t_context, arglist->vx_get_any(vx_core::vx_new_int(0)));
-      vx_core::Type_func func = vx_core::vx_any_from_any(vx_core::t_func, arglist->vx_get_any(vx_core::vx_new_int(0)));
-      output = vx_core::f_boolean_permission_from_func(context, func);
+      vx_core::Type_func fnc = vx_core::vx_any_from_any(vx_core::t_func, arglist->vx_get_any(vx_core::vx_new_int(0)));
+      output = vx_core::f_boolean_permission_from_func(context, fnc);
       vx_core::vx_release_except(arglist, output);
       return output;
     }
@@ -27147,46 +27169,7 @@ namespace vx_core {
   vx_core::Type_int f_int_from_string(vx_core::Type_string value) {
     vx_core::Type_int output = vx_core::e_int;
     vx_core::vx_reserve(value);
-    output = vx_core::f_switch(
-      vx_core::t_int,
-      value,
-      vx_core::vx_new(vx_core::t_thenelselist, {
-        vx_core::f_case_1(
-          vx_core::vx_new_string("notanumber"),
-          vx_core::t_any_from_func->vx_fn_new({}, []() {
-            vx_core::Type_int output_1 = vx_core::c_notanumber;
-            return output_1;
-          })
-        ),
-        vx_core::f_case_1(
-          vx_core::vx_new_string("infinity"),
-          vx_core::t_any_from_func->vx_fn_new({}, []() {
-            vx_core::Type_int output_1 = vx_core::c_infinity;
-            return output_1;
-          })
-        ),
-        vx_core::f_case_1(
-          vx_core::vx_new_string("neginfinity"),
-          vx_core::t_any_from_func->vx_fn_new({}, []() {
-            vx_core::Type_int output_1 = vx_core::c_neginfinity;
-            return output_1;
-          })
-        ),
-        vx_core::f_else(
-          vx_core::t_any_from_func->vx_fn_new({value}, [value]() {// :capture value
-            vx_core::Type_int intresult = vx_core::e_int;
-            try {
-              std::string sval = value->vx_string();
-              long ival = std::stoll(sval);
-              intresult = vx_core::vx_new_int(ival);
-            } catch (std::exception ex) {
-              intresult = vx_core::c_notanumber;
-            }
-            return intresult;
-          })
-        )
-      })
-    );
+    output = vx_core::vx_int_from_string(value);
     vx_core::vx_release_one_except(value, output);
     return output;
   }
@@ -33194,18 +33177,18 @@ namespace vx_core {
   //}
 
   // (func string-repeat)
-  vx_core::Type_string f_string_repeat(vx_core::Type_string text, vx_core::Type_int repeat) {
+  vx_core::Type_string f_string_repeat(vx_core::Type_string text, vx_core::Type_int num) {
     vx_core::Type_string output = vx_core::e_string;
-    vx_core::vx_reserve({text, repeat});
-    std::string stringtext = vx_core::vx_string_from_string_repeat(text->vx_string(), repeat->vx_int());
+    vx_core::vx_reserve({text, num});
+    std::string stringtext = vx_core::vx_string_from_string_repeat(text->vx_string(), num->vx_int());
     output = vx_core::vx_new_string(stringtext);
-    vx_core::vx_release_one_except({text, repeat}, output);
+    vx_core::vx_release_one_except({text, num}, output);
     return output;
   }
   /**
    * @function string_repeat
    * @param  {string} text
-   * @param  {int} repeat
+   * @param  {int} num
    * @return {string}
    * (func string-repeat)
    */
@@ -33295,8 +33278,8 @@ namespace vx_core {
     vx_core::Type_any Class_string_repeat::vx_repl(vx_core::Type_anylist arglist) {
       vx_core::Type_any output = vx_core::e_any;
       vx_core::Type_string text = vx_core::vx_any_from_any(vx_core::t_string, arglist->vx_get_any(vx_core::vx_new_int(0)));
-      vx_core::Type_int repeat = vx_core::vx_any_from_any(vx_core::t_int, arglist->vx_get_any(vx_core::vx_new_int(1)));
-      output = vx_core::f_string_repeat(text, repeat);
+      vx_core::Type_int num = vx_core::vx_any_from_any(vx_core::t_int, arglist->vx_get_any(vx_core::vx_new_int(1)));
+      output = vx_core::f_string_repeat(text, num);
       vx_core::vx_release_except(arglist, output);
       return output;
     }

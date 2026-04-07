@@ -29,7 +29,7 @@ public final class Ui {
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -179,7 +179,7 @@ public final class Ui {
       map.put(":right", this.right());
       map.put(":top", this.top());
       map.put(":bottom", this.bottom());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -273,7 +273,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("left"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -297,7 +297,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("right"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -321,7 +321,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("top"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -345,7 +345,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("bottom"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -425,7 +425,7 @@ public final class Ui {
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -577,7 +577,7 @@ public final class Ui {
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -727,7 +727,7 @@ public final class Ui {
       map.put(":fontface", this.fontface());
       map.put(":fontsize", this.fontsize());
       map.put(":fontstyle", this.fontstyle());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -821,7 +821,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -842,7 +842,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fontface"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -866,7 +866,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fontsize"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -887,7 +887,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fontstyle"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1034,7 +1034,7 @@ public final class Ui {
       map.put(":weight", this.weight());
       map.put(":unicode", this.unicode());
       map.put(":filelist", this.filelist());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -1128,7 +1128,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1152,7 +1152,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("weight"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1176,7 +1176,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("unicode"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1197,7 +1197,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("filelist"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1270,13 +1270,13 @@ public final class Ui {
 
   public static class Class_fontfacelist extends Core.Class_base implements Type_fontfacelist {
 
-    public List<Ui.Type_fontface> vx_p_list = Core.immutablelist(
+    public List<Ui.Type_fontface> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Ui.Type_fontface>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -1361,7 +1361,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_fontfacelist work = new Ui.Class_fontfacelist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1417,12 +1417,13 @@ public final class Ui {
 
   public static class Class_fontfacemap extends Core.Class_base implements Type_fontfacemap {
 
-    public Map<String, Ui.Type_fontface> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Ui.Type_fontface>());
+    public Map<String, Ui.Type_fontface> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Ui.Type_fontface>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -1435,13 +1436,13 @@ public final class Ui {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Ui.Type_fontface> map = new LinkedHashMap<String, Ui.Type_fontface>(this.vx_p_map);
+        Map<String, Ui.Type_fontface> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Ui.e_fontface) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -1455,20 +1456,20 @@ public final class Ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Ui.Type_fontface> mapval = map.vx_p_map;
+      final Map<String, Ui.Type_fontface> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Ui.e_fontface);
       return output;
     }
 
     @Override
     public Map<String, Ui.Type_fontface> vx_mapfontface() {
-      Map<String, Ui.Type_fontface> output = this.vx_p_map;
+      final Map<String, Ui.Type_fontface> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_fontface(key);
+      final Core.Type_any output = this.vx_fontface(key);
       return output;
     }
 
@@ -1490,7 +1491,7 @@ public final class Ui {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -1512,7 +1513,9 @@ public final class Ui {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Ui.Type_fontface> mapval = new LinkedHashMap<String, Ui.Type_fontface>(value.vx_mapfontface());
+      Map<String, Ui.Type_fontface> mapval = Core.vx_mapmutable(
+        value.vx_mapfontface()
+      );
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -1559,7 +1562,7 @@ public final class Ui {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/ui/ui/fontfacemap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -1575,7 +1578,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_fontfacemap work = new Ui.Class_fontfacemap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1631,12 +1634,13 @@ public final class Ui {
 
   public static class Class_fontmap extends Core.Class_base implements Type_fontmap {
 
-    public Map<String, Ui.Type_font> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Ui.Type_font>());
+    public Map<String, Ui.Type_font> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Ui.Type_font>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -1649,13 +1653,13 @@ public final class Ui {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Ui.Type_font> map = new LinkedHashMap<String, Ui.Type_font>(this.vx_p_map);
+        Map<String, Ui.Type_font> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Ui.e_font) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -1669,20 +1673,20 @@ public final class Ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Ui.Type_font> mapval = map.vx_p_map;
+      final Map<String, Ui.Type_font> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Ui.e_font);
       return output;
     }
 
     @Override
     public Map<String, Ui.Type_font> vx_mapfont() {
-      Map<String, Ui.Type_font> output = this.vx_p_map;
+      final Map<String, Ui.Type_font> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_font(key);
+      final Core.Type_any output = this.vx_font(key);
       return output;
     }
 
@@ -1704,7 +1708,7 @@ public final class Ui {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -1726,7 +1730,7 @@ public final class Ui {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Ui.Type_font> mapval = new LinkedHashMap<String, Ui.Type_font>(value.vx_mapfont());
+      Map<String, Ui.Type_font> mapval = Core.vx_mapmutable(value.vx_mapfont());
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -1773,7 +1777,7 @@ public final class Ui {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/ui/ui/fontmap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -1789,7 +1793,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_fontmap work = new Ui.Class_fontmap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1871,7 +1875,7 @@ public final class Ui {
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
       map.put(":name", this.name());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -1959,7 +1963,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/fontstyle", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2029,12 +2033,13 @@ public final class Ui {
 
   public static class Class_fontstylemap extends Core.Class_base implements Type_fontstylemap {
 
-    public Map<String, Ui.Type_fontstyle> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Ui.Type_fontstyle>());
+    public Map<String, Ui.Type_fontstyle> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Ui.Type_fontstyle>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -2047,13 +2052,13 @@ public final class Ui {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Ui.Type_fontstyle> map = new LinkedHashMap<String, Ui.Type_fontstyle>(this.vx_p_map);
+        Map<String, Ui.Type_fontstyle> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Ui.e_fontstyle) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -2067,20 +2072,20 @@ public final class Ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Ui.Type_fontstyle> mapval = map.vx_p_map;
+      final Map<String, Ui.Type_fontstyle> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Ui.e_fontstyle);
       return output;
     }
 
     @Override
     public Map<String, Ui.Type_fontstyle> vx_mapfontstyle() {
-      Map<String, Ui.Type_fontstyle> output = this.vx_p_map;
+      final Map<String, Ui.Type_fontstyle> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_fontstyle(key);
+      final Core.Type_any output = this.vx_fontstyle(key);
       return output;
     }
 
@@ -2102,7 +2107,7 @@ public final class Ui {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -2124,7 +2129,9 @@ public final class Ui {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Ui.Type_fontstyle> mapval = new LinkedHashMap<String, Ui.Type_fontstyle>(value.vx_mapfontstyle());
+      Map<String, Ui.Type_fontstyle> mapval = Core.vx_mapmutable(
+        value.vx_mapfontstyle()
+      );
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -2171,7 +2178,7 @@ public final class Ui {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/ui/ui/fontstylemap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -2187,7 +2194,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_fontstylemap work = new Ui.Class_fontstylemap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -2301,7 +2308,7 @@ public final class Ui {
       map.put(":name", this.name());
       map.put(":label", this.label());
       map.put(":file", this.file());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -2393,7 +2400,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/image", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2417,7 +2424,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("label"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/image", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2438,7 +2445,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("file"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/image", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2552,7 +2559,7 @@ public final class Ui {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
       map.put(":name", this.name());
       map.put(":fn-layout", this.fn_layout());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -2642,7 +2649,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layout", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2663,7 +2670,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fn-layout"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layout", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2872,7 +2879,7 @@ public final class Ui {
       map.put(":layoutmap", this.layoutmap());
       map.put(":layoutelse", this.layoutelse());
       map.put(":stylesheetrender", this.stylesheetrender());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -2974,7 +2981,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -2995,7 +3002,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("boolean-print"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3016,7 +3023,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("boolean-layoutremove"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3037,7 +3044,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("boolean-layoutselected"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3058,7 +3065,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("boolean-layoutvisible"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3079,7 +3086,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("layoutmap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3100,7 +3107,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("layoutelse"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3121,7 +3128,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylesheetrender"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3198,13 +3205,13 @@ public final class Ui {
 
   public static class Class_layoutlist extends Core.Class_base implements Type_layoutlist {
 
-    public List<Ui.Type_layout> vx_p_list = Core.immutablelist(
+    public List<Ui.Type_layout> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Ui.Type_layout>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -3289,7 +3296,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_layoutlist work = new Ui.Class_layoutlist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -3345,12 +3352,13 @@ public final class Ui {
 
   public static class Class_layoutmap extends Core.Class_base implements Type_layoutmap {
 
-    public Map<String, Ui.Type_layout> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Ui.Type_layout>());
+    public Map<String, Ui.Type_layout> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Ui.Type_layout>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -3363,13 +3371,13 @@ public final class Ui {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Ui.Type_layout> map = new LinkedHashMap<String, Ui.Type_layout>(this.vx_p_map);
+        Map<String, Ui.Type_layout> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Ui.e_layout) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -3383,20 +3391,20 @@ public final class Ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Ui.Type_layout> mapval = map.vx_p_map;
+      final Map<String, Ui.Type_layout> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Ui.e_layout);
       return output;
     }
 
     @Override
     public Map<String, Ui.Type_layout> vx_maplayout() {
-      Map<String, Ui.Type_layout> output = this.vx_p_map;
+      final Map<String, Ui.Type_layout> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_layout(key);
+      final Core.Type_any output = this.vx_layout(key);
       return output;
     }
 
@@ -3418,7 +3426,7 @@ public final class Ui {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -3440,7 +3448,7 @@ public final class Ui {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Ui.Type_layout> mapval = new LinkedHashMap<String, Ui.Type_layout>(value.vx_maplayout());
+      Map<String, Ui.Type_layout> mapval = Core.vx_mapmutable(value.vx_maplayout());
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -3487,7 +3495,7 @@ public final class Ui {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/ui/ui/layoutmap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -3503,7 +3511,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_layoutmap work = new Ui.Class_layoutmap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -3585,7 +3593,7 @@ public final class Ui {
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
       map.put(":name", this.name());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -3673,7 +3681,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/pin", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3849,7 +3857,7 @@ public final class Ui {
       map.put(":t", this.t());
       map.put(":i", this.i());
       map.put(":pointtype", this.pointtype());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -3947,7 +3955,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("x"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3971,7 +3979,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("y"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -3995,7 +4003,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("z"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4019,7 +4027,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("t"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4043,7 +4051,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("i"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4064,7 +4072,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pointtype"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4571,7 +4579,7 @@ public final class Ui {
       map.put(":pointsize", this.pointsize());
       map.put(":scroll-x", this.scroll_x());
       map.put(":scroll-y", this.scroll_y());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -4701,7 +4709,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4722,7 +4730,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("align"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4743,7 +4751,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("boundsmargin"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4764,7 +4772,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("boundspadding"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4788,7 +4796,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("color-bkg"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4812,7 +4820,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("color-bkghover"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4836,7 +4844,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("color-border"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4860,7 +4868,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("color-font"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4881,7 +4889,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("cursor"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4902,7 +4910,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("flip"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4923,7 +4931,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("font"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4947,7 +4955,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("hidden"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4968,7 +4976,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("image-bkg"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -4989,7 +4997,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("layout"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5010,7 +5018,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("type"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5031,7 +5039,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pin"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5052,7 +5060,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pointorigin"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5073,7 +5081,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pointpos"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5094,7 +5102,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pointrotate"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5115,7 +5123,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pointsize"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5139,7 +5147,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("scroll-x"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5163,7 +5171,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("scroll-y"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5254,13 +5262,13 @@ public final class Ui {
 
   public static class Class_stylelist extends Core.Class_base implements Type_stylelist {
 
-    public List<Ui.Type_style> vx_p_list = Core.immutablelist(
+    public List<Ui.Type_style> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Ui.Type_style>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -5345,7 +5353,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_stylelist work = new Ui.Class_stylelist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -5401,12 +5409,13 @@ public final class Ui {
 
   public static class Class_stylemap extends Core.Class_base implements Type_stylemap {
 
-    public Map<String, Ui.Type_style> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Ui.Type_style>());
+    public Map<String, Ui.Type_style> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Ui.Type_style>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -5419,13 +5428,13 @@ public final class Ui {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Ui.Type_style> map = new LinkedHashMap<String, Ui.Type_style>(this.vx_p_map);
+        Map<String, Ui.Type_style> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Ui.e_style) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -5439,20 +5448,20 @@ public final class Ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Ui.Type_style> mapval = map.vx_p_map;
+      final Map<String, Ui.Type_style> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Ui.e_style);
       return output;
     }
 
     @Override
     public Map<String, Ui.Type_style> vx_mapstyle() {
-      Map<String, Ui.Type_style> output = this.vx_p_map;
+      final Map<String, Ui.Type_style> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_style(key);
+      final Core.Type_any output = this.vx_style(key);
       return output;
     }
 
@@ -5474,7 +5483,7 @@ public final class Ui {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -5496,7 +5505,7 @@ public final class Ui {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Ui.Type_style> mapval = new LinkedHashMap<String, Ui.Type_style>(value.vx_mapstyle());
+      Map<String, Ui.Type_style> mapval = Core.vx_mapmutable(value.vx_mapstyle());
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -5543,7 +5552,7 @@ public final class Ui {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/ui/ui/stylemap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -5559,7 +5568,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_stylemap work = new Ui.Class_stylemap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -5657,7 +5666,7 @@ public final class Ui {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
       map.put(":fontfacemap", this.fontfacemap());
       map.put(":stylemap", this.stylemap());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -5744,7 +5753,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fontfacemap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/stylesheet", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5765,7 +5774,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylemap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/stylesheet", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -5843,7 +5852,7 @@ public final class Ui {
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -6121,7 +6130,7 @@ public final class Ui {
       map.put(":eventmap", this.eventmap());
       map.put(":data", this.data());
       map.put(":uimap", this.uimap());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -6231,7 +6240,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("uid"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6255,7 +6264,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6276,7 +6285,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("layout"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6300,7 +6309,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("path"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6324,7 +6333,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("hidden"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6348,7 +6357,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("selected"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6372,7 +6381,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("selectmulti"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6393,7 +6402,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6414,7 +6423,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6435,7 +6444,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6456,7 +6465,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("data"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6477,7 +6486,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("uimap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6632,7 +6641,7 @@ public final class Ui {
       map.put(":layoutengine", this.layoutengine());
       map.put(":stylesheet", this.stylesheet());
       map.put(":ui", this.ui());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -6723,7 +6732,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("parentmap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6744,7 +6753,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("layoutengine"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6765,7 +6774,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylesheet"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6786,7 +6795,7 @@ public final class Ui {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("ui"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -6859,13 +6868,13 @@ public final class Ui {
 
   public static class Class_uilist extends Core.Class_base implements Type_uilist {
 
-    public List<Ui.Type_ui> vx_p_list = Core.immutablelist(
+    public List<Ui.Type_ui> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Ui.Type_ui>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -6950,7 +6959,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_uilist work = new Ui.Class_uilist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -7006,12 +7015,13 @@ public final class Ui {
 
   public static class Class_uimap extends Core.Class_base implements Type_uimap {
 
-    public Map<String, Ui.Type_ui> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Ui.Type_ui>());
+    public Map<String, Ui.Type_ui> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Ui.Type_ui>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -7024,13 +7034,13 @@ public final class Ui {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Ui.Type_ui> map = new LinkedHashMap<String, Ui.Type_ui>(this.vx_p_map);
+        Map<String, Ui.Type_ui> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Ui.e_ui) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -7044,20 +7054,20 @@ public final class Ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Ui.Type_ui> mapval = map.vx_p_map;
+      final Map<String, Ui.Type_ui> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Ui.e_ui);
       return output;
     }
 
     @Override
     public Map<String, Ui.Type_ui> vx_mapui() {
-      Map<String, Ui.Type_ui> output = this.vx_p_map;
+      final Map<String, Ui.Type_ui> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_ui(key);
+      final Core.Type_any output = this.vx_ui(key);
       return output;
     }
 
@@ -7079,7 +7089,7 @@ public final class Ui {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -7101,7 +7111,7 @@ public final class Ui {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Ui.Type_ui> mapval = new LinkedHashMap<String, Ui.Type_ui>(value.vx_mapui());
+      Map<String, Ui.Type_ui> mapval = Core.vx_mapmutable(value.vx_mapui());
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -7148,7 +7158,7 @@ public final class Ui {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/ui/ui/uimap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -7164,7 +7174,7 @@ public final class Ui {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Ui.Class_uimap work = new Ui.Class_uimap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -7215,7 +7225,7 @@ public final class Ui {
    */
   public static class Const_align_center {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-center", // name
         Ui.t_align
@@ -7239,7 +7249,7 @@ public final class Ui {
    */
   public static class Const_align_left {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-left", // name
         Ui.t_align
@@ -7263,7 +7273,7 @@ public final class Ui {
    */
   public static class Const_align_right {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-right", // name
         Ui.t_align
@@ -7287,7 +7297,7 @@ public final class Ui {
    */
   public static class Const_flip_x {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-x", // name
         Ui.t_align
@@ -7311,7 +7321,7 @@ public final class Ui {
    */
   public static class Const_flip_xy {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-xy", // name
         Ui.t_align
@@ -7335,7 +7345,7 @@ public final class Ui {
    */
   public static class Const_flip_y {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-y", // name
         Ui.t_align
@@ -7358,7 +7368,7 @@ public final class Ui {
    */
   public static class Const_layout_app {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-app", // name
         Ui.t_layout
@@ -7391,7 +7401,7 @@ public final class Ui {
    */
   public static class Const_layout_background {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-background", // name
         Ui.t_layout
@@ -7424,7 +7434,7 @@ public final class Ui {
    */
   public static class Const_layout_button {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-button", // name
         Ui.t_layout
@@ -7457,7 +7467,7 @@ public final class Ui {
    */
   public static class Const_layout_combobox {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-combobox", // name
         Ui.t_layout
@@ -7490,7 +7500,7 @@ public final class Ui {
    */
   public static class Const_layout_else {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-else", // name
         Ui.t_layout
@@ -7523,7 +7533,7 @@ public final class Ui {
    */
   public static class Const_layout_flow_columns {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-columns", // name
         Ui.t_layout
@@ -7556,7 +7566,7 @@ public final class Ui {
    */
   public static class Const_layout_flow_item {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-item", // name
         Ui.t_layout
@@ -7589,7 +7599,7 @@ public final class Ui {
    */
   public static class Const_layout_flow_rows {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-rows", // name
         Ui.t_layout
@@ -7622,7 +7632,7 @@ public final class Ui {
    */
   public static class Const_layout_image {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-image", // name
         Ui.t_layout
@@ -7655,7 +7665,7 @@ public final class Ui {
    */
   public static class Const_layout_label {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-label", // name
         Ui.t_layout
@@ -7688,7 +7698,7 @@ public final class Ui {
    */
   public static class Const_layout_main {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-main", // name
         Ui.t_layout
@@ -7721,7 +7731,7 @@ public final class Ui {
    */
   public static class Const_layout_maxpanel {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-maxpanel", // name
         Ui.t_layout
@@ -7754,7 +7764,7 @@ public final class Ui {
    */
   public static class Const_layout_menubar {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menubar", // name
         Ui.t_layout
@@ -7787,7 +7797,7 @@ public final class Ui {
    */
   public static class Const_layout_menudrawer {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menudrawer", // name
         Ui.t_layout
@@ -7820,7 +7830,7 @@ public final class Ui {
    */
   public static class Const_layout_msgbox {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-msgbox", // name
         Ui.t_layout
@@ -7853,7 +7863,7 @@ public final class Ui {
    */
   public static class Const_layout_navbar {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navbar", // name
         Ui.t_layout
@@ -7886,7 +7896,7 @@ public final class Ui {
    */
   public static class Const_layout_navdrawer {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navdrawer", // name
         Ui.t_layout
@@ -7919,7 +7929,7 @@ public final class Ui {
    */
   public static class Const_layout_panel {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-panel", // name
         Ui.t_layout
@@ -7952,7 +7962,7 @@ public final class Ui {
    */
   public static class Const_layout_parallax {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-parallax", // name
         Ui.t_layout
@@ -7985,7 +7995,7 @@ public final class Ui {
    */
   public static class Const_layout_statusbar {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusbar", // name
         Ui.t_layout
@@ -8018,7 +8028,7 @@ public final class Ui {
    */
   public static class Const_layout_statusdrawer {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusdrawer", // name
         Ui.t_layout
@@ -8051,7 +8061,7 @@ public final class Ui {
    */
   public static class Const_layout_text {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-text", // name
         Ui.t_layout
@@ -8084,7 +8094,7 @@ public final class Ui {
    */
   public static class Const_layout_textentry {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-textentry", // name
         Ui.t_layout
@@ -8117,7 +8127,7 @@ public final class Ui {
    */
   public static class Const_layout_titlebar {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-titlebar", // name
         Ui.t_layout
@@ -8150,7 +8160,7 @@ public final class Ui {
    */
   public static class Const_pin_bottom {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-bottom", // name
         Ui.t_pin
@@ -8173,7 +8183,7 @@ public final class Ui {
    */
   public static class Const_pin_center {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center", // name
         Ui.t_pin
@@ -8196,7 +8206,7 @@ public final class Ui {
    */
   public static class Const_pin_center_h {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-h", // name
         Ui.t_pin
@@ -8219,7 +8229,7 @@ public final class Ui {
    */
   public static class Const_pin_center_v {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-v", // name
         Ui.t_pin
@@ -8242,7 +8252,7 @@ public final class Ui {
    */
   public static class Const_pin_expand {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-expand", // name
         Ui.t_pin
@@ -8265,7 +8275,7 @@ public final class Ui {
    */
   public static class Const_pin_left {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-left", // name
         Ui.t_pin
@@ -8288,7 +8298,7 @@ public final class Ui {
    */
   public static class Const_pin_right {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-right", // name
         Ui.t_pin
@@ -8311,7 +8321,7 @@ public final class Ui {
    */
   public static class Const_pin_top {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-top", // name
         Ui.t_pin
@@ -8334,7 +8344,7 @@ public final class Ui {
    */
   public static class Const_point_center {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-center", // name
         Ui.t_point
@@ -8357,7 +8367,7 @@ public final class Ui {
    */
   public static class Const_point_lefttop {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-lefttop", // name
         Ui.t_point
@@ -8380,7 +8390,7 @@ public final class Ui {
    */
   public static class Const_point_rightbottom {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rightbottom", // name
         Ui.t_point
@@ -8403,7 +8413,7 @@ public final class Ui {
    */
   public static class Const_point_rotate_180 {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rotate-180", // name
         Ui.t_point
@@ -8440,7 +8450,7 @@ public final class Ui {
    */
   public static class Const_point_rotate_270 {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rotate-270", // name
         Ui.t_point
@@ -8477,7 +8487,7 @@ public final class Ui {
    */
   public static class Const_point_rotate_90 {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rotate-90", // name
         Ui.t_point
@@ -8514,7 +8524,7 @@ public final class Ui {
    */
   public static class Const_pointtype_absolute {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-absolute", // name
         Ui.t_pointtype
@@ -8537,7 +8547,7 @@ public final class Ui {
    */
   public static class Const_pointtype_percent {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-percent", // name
         Ui.t_pointtype
@@ -8560,7 +8570,7 @@ public final class Ui {
    */
   public static class Const_pointtype_relative {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-relative", // name
         Ui.t_pointtype
@@ -8583,7 +8593,7 @@ public final class Ui {
    */
   public static class Const_styletype_custom {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-custom", // name
         Ui.t_styletype
@@ -8606,7 +8616,7 @@ public final class Ui {
    */
   public static class Const_styletype_shared {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-shared", // name
         Ui.t_styletype
@@ -8629,7 +8639,7 @@ public final class Ui {
    */
   public static class Const_styletype_system {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-system", // name
         Ui.t_styletype
@@ -8675,13 +8685,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layout<-ui-parent-selected", // name
         0, // idx
@@ -8705,30 +8715,30 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layout_from_ui_parent_selected;
+      final Core.Type_any output = Ui.e_boolean_layout_from_ui_parent_selected;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layout_from_ui_parent_selected;
+      final Core.Type_any output = Ui.t_boolean_layout_from_ui_parent_selected;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
-      Core.Type_boolean selected = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(3)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_boolean selected = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(3)));
       output = Ui.f_boolean_layout_from_ui_parent_selected(context, ui, parent, selected);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layout_from_ui_parent_selected(final Core.Type_context context, final Ui.Type_ui ui, final Ui.Type_ui parent, final Core.Type_boolean selected) {
-      Core.Type_boolean output = Ui.f_boolean_layout_from_ui_parent_selected(context, ui, parent, selected);
+      final Core.Type_boolean output = Ui.f_boolean_layout_from_ui_parent_selected(context, ui, parent, selected);
       return output;
     }
 
@@ -8742,10 +8752,10 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
+        final Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
           context
         );
-        Ui.Type_ui uiselected = Core.f_copy(
+        final Ui.Type_ui uiselected = Core.f_copy(
           ui,
           Core.vx_new(
             Core.t_anylist,
@@ -8753,12 +8763,12 @@ public final class Ui {
             selected
           )
         );
-        Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
+        final Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
           uiselected,
           parent
         );
-        Ui.Func_boolean_layoutselected_from_ui fn_layoutselected = layoutengine.boolean_layoutselected();
-        Core.Type_any output_1 = Core.vx_any_from_func(
+        final Ui.Func_boolean_layoutselected_from_ui fn_layoutselected = layoutengine.boolean_layoutselected();
+        final Core.Type_any output_1 = Core.vx_any_from_func(
           Core.t_boolean,
           fn_layoutselected,
           uiselected
@@ -8798,13 +8808,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layout<-ui-parent-visible", // name
         0, // idx
@@ -8828,30 +8838,30 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layout_from_ui_parent_visible;
+      final Core.Type_any output = Ui.e_boolean_layout_from_ui_parent_visible;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layout_from_ui_parent_visible;
+      final Core.Type_any output = Ui.t_boolean_layout_from_ui_parent_visible;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
-      Core.Type_boolean visible = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(3)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_boolean visible = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(3)));
       output = Ui.f_boolean_layout_from_ui_parent_visible(context, ui, parent, visible);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layout_from_ui_parent_visible(final Core.Type_context context, final Ui.Type_ui ui, final Ui.Type_ui parent, final Core.Type_boolean visible) {
-      Core.Type_boolean output = Ui.f_boolean_layout_from_ui_parent_visible(context, ui, parent, visible);
+      final Core.Type_boolean output = Ui.f_boolean_layout_from_ui_parent_visible(context, ui, parent, visible);
       return output;
     }
 
@@ -8865,10 +8875,10 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
+        final Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
           context
         );
-        Ui.Type_ui uivisible = Core.f_copy(
+        final Ui.Type_ui uivisible = Core.f_copy(
           ui,
           Core.vx_new(
             Core.t_anylist,
@@ -8878,12 +8888,12 @@ public final class Ui {
             )
           )
         );
-        Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
+        final Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
           uivisible,
           parent
         );
-        Ui.Func_boolean_layoutvisible_from_ui fn_layoutvisible = layoutengine.boolean_layoutvisible();
-        Core.Type_any output_1 = Core.vx_any_from_func(
+        final Ui.Func_boolean_layoutvisible_from_ui fn_layoutvisible = layoutengine.boolean_layoutvisible();
+        final Core.Type_any output_1 = Core.vx_any_from_func(
           Core.t_boolean,
           fn_layoutvisible,
           uivisible
@@ -8922,13 +8932,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutaddchild<-ui-parent", // name
         0, // idx
@@ -8952,29 +8962,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutaddchild_from_ui_parent;
+      final Core.Type_any output = Ui.e_boolean_layoutaddchild_from_ui_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutaddchild_from_ui_parent;
+      final Core.Type_any output = Ui.t_boolean_layoutaddchild_from_ui_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_boolean_layoutaddchild_from_ui_parent(context, uiarg, parent);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutaddchild_from_ui_parent(final Core.Type_context context, final Ui.Type_ui uiarg, final Ui.Type_ui parent) {
-      Core.Type_boolean output = Ui.f_boolean_layoutaddchild_from_ui_parent(context, uiarg, parent);
+      final Core.Type_boolean output = Ui.f_boolean_layoutaddchild_from_ui_parent(context, uiarg, parent);
       return output;
     }
 
@@ -8988,22 +8998,22 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_ui ui2 = Ui.f_ui_addlayout_from_ui(
+        final Ui.Type_ui ui2 = Ui.f_ui_addlayout_from_ui(
           context,
           uiarg
         );
-        Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
+        final Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
           ui2,
           parent
         );
-        Ui.Type_ui ui3 = Ui.f_ui_layout_from_ui_orig_parent(
+        final Ui.Type_ui ui3 = Ui.f_ui_layout_from_ui_orig_parent(
           ui2,
           Core.f_empty(
             Ui.t_ui
           ),
           parent
         );
-        Core.Type_any output_1 = iswrite;
+        final Core.Type_any output_1 = iswrite;
         return output_1;
       })
     );
@@ -9037,13 +9047,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutremove<-ui", // name
         0, // idx
@@ -9067,13 +9077,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutremove_from_ui;
+      final Core.Type_any output = Ui.e_boolean_layoutremove_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutremove_from_ui;
+      final Core.Type_any output = Ui.t_boolean_layoutremove_from_ui;
       return output;
     }
 
@@ -9085,8 +9095,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_boolean_layoutremove_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_boolean_layoutremove_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -9094,14 +9104,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_boolean_layoutremove_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutremove_from_ui(final Ui.Type_ui ui) {
-      Core.Type_boolean output = Ui.f_boolean_layoutremove_from_ui(ui);
+      final Core.Type_boolean output = Ui.f_boolean_layoutremove_from_ui(ui);
       return output;
     }
 
@@ -9143,13 +9153,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutremove<-ui-keys", // name
         0, // idx
@@ -9173,29 +9183,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutremove_from_ui_keys;
+      final Core.Type_any output = Ui.e_boolean_layoutremove_from_ui_keys;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutremove_from_ui_keys;
+      final Core.Type_any output = Ui.t_boolean_layoutremove_from_ui_keys;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_stringlist keys = Core.f_any_from_any(Core.t_stringlist, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_stringlist keys = Core.f_any_from_any(Core.t_stringlist, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_boolean_layoutremove_from_ui_keys(context, ui, keys);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutremove_from_ui_keys(final Core.Type_context context, final Ui.Type_ui ui, final Core.Type_stringlist keys) {
-      Core.Type_boolean output = Ui.f_boolean_layoutremove_from_ui_keys(context, ui, keys);
+      final Core.Type_boolean output = Ui.f_boolean_layoutremove_from_ui_keys(context, ui, keys);
       return output;
     }
 
@@ -9209,21 +9219,21 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = ui.uimap();
-        Core.Type_booleanlist writelist = Core.f_list_from_list_1(
+        final Ui.Type_uimap uimap = ui.uimap();
+        final Core.Type_booleanlist writelist = Core.f_list_from_list_1(
           Core.t_booleanlist,
           keys,
           Core.t_any_from_any.vx_fn_new((key_any) -> {
-            Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
+            final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
             Core.Type_any output_2 = Core.f_let(
               Core.t_boolean,
               Core.t_any_from_func.vx_fn_new(() -> {
-                Ui.Type_ui childui = Core.f_any_from_map(
+                final Ui.Type_ui childui = Core.f_any_from_map(
                   Ui.t_ui,
                   uimap,
                   key
                 );
-                Core.Type_any output_3 = Ui.f_boolean_layoutremove_from_ui_parent(
+                final Core.Type_any output_3 = Ui.f_boolean_layoutremove_from_ui_parent(
                   context,
                   childui,
                   ui
@@ -9234,7 +9244,7 @@ public final class Ui {
             return output_2;
           })
         );
-        Core.Type_any output_1 = Core.f_and_1(
+        final Core.Type_any output_1 = Core.f_and_1(
           writelist
         );
         return output_1;
@@ -9271,13 +9281,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutremove<-ui-parent", // name
         0, // idx
@@ -9301,29 +9311,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutremove_from_ui_parent;
+      final Core.Type_any output = Ui.e_boolean_layoutremove_from_ui_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutremove_from_ui_parent;
+      final Core.Type_any output = Ui.t_boolean_layoutremove_from_ui_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_boolean_layoutremove_from_ui_parent(context, ui, parent);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutremove_from_ui_parent(final Core.Type_context context, final Ui.Type_ui ui, final Ui.Type_ui parent) {
-      Core.Type_boolean output = Ui.f_boolean_layoutremove_from_ui_parent(context, ui, parent);
+      final Core.Type_boolean output = Ui.f_boolean_layoutremove_from_ui_parent(context, ui, parent);
       return output;
     }
 
@@ -9337,16 +9347,16 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
+        final Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
           context
         );
-        Core.Type_string uid = ui.uid();
-        Core.Type_boolean iswrite = Ui.f_boolean_writeremove_from_ui_uid(
+        final Core.Type_string uid = ui.uid();
+        final Core.Type_boolean iswrite = Ui.f_boolean_writeremove_from_ui_uid(
           parent,
           uid
         );
-        Ui.Func_boolean_layoutremove_from_ui fn_layoutremove = layoutengine.boolean_layoutremove();
-        Core.Type_any output_1 = Core.vx_any_from_func(
+        final Ui.Func_boolean_layoutremove_from_ui fn_layoutremove = layoutengine.boolean_layoutremove();
+        final Core.Type_any output_1 = Core.vx_any_from_func(
           Core.t_boolean,
           fn_layoutremove,
           ui
@@ -9386,13 +9396,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutremove<-ui-start-end", // name
         0, // idx
@@ -9416,30 +9426,30 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutremove_from_ui_start_end;
+      final Core.Type_any output = Ui.e_boolean_layoutremove_from_ui_start_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutremove_from_ui_start_end;
+      final Core.Type_any output = Ui.t_boolean_layoutremove_from_ui_start_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
-      Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
       output = Ui.f_boolean_layoutremove_from_ui_start_end(context, ui, start, end);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutremove_from_ui_start_end(final Core.Type_context context, final Ui.Type_ui ui, final Core.Type_int start, final Core.Type_int end) {
-      Core.Type_boolean output = Ui.f_boolean_layoutremove_from_ui_start_end(context, ui, start, end);
+      final Core.Type_boolean output = Ui.f_boolean_layoutremove_from_ui_start_end(context, ui, start, end);
       return output;
     }
 
@@ -9453,17 +9463,17 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = ui.uimap();
-        Core.Type_stringlist keys = Core.f_stringlist_from_map(
+        final Ui.Type_uimap uimap = ui.uimap();
+        final Core.Type_stringlist keys = Core.f_stringlist_from_map(
           uimap
         );
-        Core.Type_stringlist subkeys = Collection.f_list_from_list_start_end(
+        final Core.Type_stringlist subkeys = Collection.f_list_from_list_start_end(
           Core.t_stringlist,
           keys,
           start,
           end
         );
-        Core.Type_any output_1 = Ui.f_boolean_layoutremove_from_ui_keys(
+        final Core.Type_any output_1 = Ui.f_boolean_layoutremove_from_ui_keys(
           context,
           ui,
           subkeys
@@ -9501,13 +9511,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutselected<-ui", // name
         0, // idx
@@ -9531,13 +9541,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutselected_from_ui;
+      final Core.Type_any output = Ui.e_boolean_layoutselected_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutselected_from_ui;
+      final Core.Type_any output = Ui.t_boolean_layoutselected_from_ui;
       return output;
     }
 
@@ -9549,8 +9559,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_boolean_layoutselected_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_boolean_layoutselected_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -9558,14 +9568,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_boolean_layoutselected_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutselected_from_ui(final Ui.Type_ui ui) {
-      Core.Type_boolean output = Ui.f_boolean_layoutselected_from_ui(ui);
+      final Core.Type_boolean output = Ui.f_boolean_layoutselected_from_ui(ui);
       return output;
     }
 
@@ -9607,13 +9617,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutselected<-ui-parent", // name
         0, // idx
@@ -9637,29 +9647,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutselected_from_ui_parent;
+      final Core.Type_any output = Ui.e_boolean_layoutselected_from_ui_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutselected_from_ui_parent;
+      final Core.Type_any output = Ui.t_boolean_layoutselected_from_ui_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_boolean_layoutselected_from_ui_parent(context, ui, parent);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutselected_from_ui_parent(final Core.Type_context context, final Ui.Type_ui ui, final Ui.Type_ui parent) {
-      Core.Type_boolean output = Ui.f_boolean_layoutselected_from_ui_parent(context, ui, parent);
+      final Core.Type_boolean output = Ui.f_boolean_layoutselected_from_ui_parent(context, ui, parent);
       return output;
     }
 
@@ -9673,15 +9683,15 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
+        final Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
           context
         );
-        Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
+        final Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
           ui,
           parent
         );
-        Ui.Func_boolean_layoutselected_from_ui fn_layoutselected = layoutengine.boolean_layoutselected();
-        Core.Type_any output_1 = Core.vx_any_from_func(
+        final Ui.Func_boolean_layoutselected_from_ui fn_layoutselected = layoutengine.boolean_layoutselected();
+        final Core.Type_any output_1 = Core.vx_any_from_func(
           Core.t_boolean,
           fn_layoutselected,
           ui
@@ -9720,13 +9730,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutselected<-ui-selected", // name
         0, // idx
@@ -9750,28 +9760,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutselected_from_ui_selected;
+      final Core.Type_any output = Ui.e_boolean_layoutselected_from_ui_selected;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutselected_from_ui_selected;
+      final Core.Type_any output = Ui.t_boolean_layoutselected_from_ui_selected;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int selected = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int selected = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_boolean_layoutselected_from_ui_selected(ui, selected);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutselected_from_ui_selected(final Ui.Type_ui ui, final Core.Type_int selected) {
-      Core.Type_boolean output = Ui.f_boolean_layoutselected_from_ui_selected(ui, selected);
+      final Core.Type_boolean output = Ui.f_boolean_layoutselected_from_ui_selected(ui, selected);
       return output;
     }
 
@@ -9812,13 +9822,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutvisible<-ui", // name
         0, // idx
@@ -9842,13 +9852,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_layoutvisible_from_ui;
+      final Core.Type_any output = Ui.e_boolean_layoutvisible_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_layoutvisible_from_ui;
+      final Core.Type_any output = Ui.t_boolean_layoutvisible_from_ui;
       return output;
     }
 
@@ -9860,8 +9870,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_boolean_layoutvisible_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_boolean_layoutvisible_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -9869,14 +9879,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_boolean_layoutvisible_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_layoutvisible_from_ui(final Ui.Type_ui ui) {
-      Core.Type_boolean output = Ui.f_boolean_layoutvisible_from_ui(ui);
+      final Core.Type_boolean output = Ui.f_boolean_layoutvisible_from_ui(ui);
       return output;
     }
 
@@ -9917,13 +9927,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-print", // name
         0, // idx
@@ -9947,13 +9957,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_print;
+      final Core.Type_any output = Ui.e_boolean_print;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_print;
+      final Core.Type_any output = Ui.t_boolean_print;
       return output;
     }
 
@@ -9965,8 +9975,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_boolean_print(context, inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_boolean_print(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -9974,15 +9984,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_boolean_print(context, ui);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_print(final Core.Type_context context, final Ui.Type_ui ui) {
-      Core.Type_boolean output = Ui.f_boolean_print(context, ui);
+      final Core.Type_boolean output = Ui.f_boolean_print(context, ui);
       return output;
     }
 
@@ -9996,11 +10006,11 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
+        final Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
           context
         );
-        Ui.Func_boolean_print fn_print = layoutengine.boolean_print();
-        Core.Type_any output_1 = Core.vx_any_from_func(
+        final Ui.Func_boolean_print fn_print = layoutengine.boolean_print();
+        final Core.Type_any output_1 = Core.vx_any_from_func(
           Core.t_boolean,
           fn_print,
           context,
@@ -10038,13 +10048,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-removestate-uiapp", // name
         0, // idx
@@ -10068,27 +10078,27 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_removestate_uiapp;
+      final Core.Type_any output = Ui.e_boolean_removestate_uiapp;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_removestate_uiapp;
+      final Core.Type_any output = Ui.t_boolean_removestate_uiapp;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_boolean_removestate_uiapp(context);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_removestate_uiapp(final Core.Type_context context) {
-      Core.Type_boolean output = Ui.f_boolean_removestate_uiapp(context);
+      final Core.Type_boolean output = Ui.f_boolean_removestate_uiapp(context);
       return output;
     }
 
@@ -10134,13 +10144,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-write<-ui-parent", // name
         0, // idx
@@ -10164,28 +10174,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_write_from_ui_parent;
+      final Core.Type_any output = Ui.e_boolean_write_from_ui_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_write_from_ui_parent;
+      final Core.Type_any output = Ui.t_boolean_write_from_ui_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_boolean_write_from_ui_parent(ui, parent);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_write_from_ui_parent(final Ui.Type_ui ui, final Ui.Type_ui parent) {
-      Core.Type_boolean output = Ui.f_boolean_write_from_ui_parent(ui, parent);
+      final Core.Type_boolean output = Ui.f_boolean_write_from_ui_parent(ui, parent);
       return output;
     }
 
@@ -10199,9 +10209,9 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string uid = ui.uid();
-        Ui.Type_uimap uimap = parent.uimap();
-        Core.Type_any output_1 = Core.f_boolean_write_from_map_name_value(
+        final Core.Type_string uid = ui.uid();
+        final Ui.Type_uimap uimap = parent.uimap();
+        final Core.Type_any output_1 = Core.f_boolean_write_from_map_name_value(
           uimap,
           uid,
           ui
@@ -10240,13 +10250,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-writeremove<-ui-uid", // name
         0, // idx
@@ -10270,28 +10280,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_writeremove_from_ui_uid;
+      final Core.Type_any output = Ui.e_boolean_writeremove_from_ui_uid;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_writeremove_from_ui_uid;
+      final Core.Type_any output = Ui.t_boolean_writeremove_from_ui_uid;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_boolean_writeremove_from_ui_uid(uiarg, uid);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_writeremove_from_ui_uid(final Ui.Type_ui uiarg, final Core.Type_string uid) {
-      Core.Type_boolean output = Ui.f_boolean_writeremove_from_ui_uid(uiarg, uid);
+      final Core.Type_boolean output = Ui.f_boolean_writeremove_from_ui_uid(uiarg, uid);
       return output;
     }
 
@@ -10305,8 +10315,8 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = uiarg.uimap();
-        Core.Type_any output_1 = Core.f_boolean_write_from_map_name_value(
+        final Ui.Type_uimap uimap = uiarg.uimap();
+        final Core.Type_any output_1 = Core.f_boolean_write_from_map_name_value(
           uimap,
           uid,
           Core.f_empty(
@@ -10345,13 +10355,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-writestate<-ui", // name
         0, // idx
@@ -10375,13 +10385,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_writestate_from_ui;
+      final Core.Type_any output = Ui.e_boolean_writestate_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_writestate_from_ui;
+      final Core.Type_any output = Ui.t_boolean_writestate_from_ui;
       return output;
     }
 
@@ -10393,8 +10403,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_boolean_writestate_from_ui(context, inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_boolean_writestate_from_ui(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -10402,15 +10412,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_boolean_writestate_from_ui(context, ui);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_writestate_from_ui(final Core.Type_context context, final Ui.Type_ui ui) {
-      Core.Type_boolean output = Ui.f_boolean_writestate_from_ui(context, ui);
+      final Core.Type_boolean output = Ui.f_boolean_writestate_from_ui(context, ui);
       return output;
     }
 
@@ -10424,14 +10434,14 @@ public final class Ui {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string uid = ui.uid();
-        Ui.Type_ui uiapp = Ui.f_ui_readstate_uiapp(
+        final Core.Type_string uid = ui.uid();
+        final Ui.Type_ui uiapp = Ui.f_ui_readstate_uiapp(
           context
         );
-        Core.Type_string parentuid = Ui.f_string_parentuid_from_uid(
+        final Core.Type_string parentuid = Ui.f_string_parentuid_from_uid(
           uid
         );
-        Ui.Type_ui parentui = Core.f_if_2(
+        final Ui.Type_ui parentui = Core.f_if_2(
           Ui.t_ui,
           Core.vx_new(
             Core.t_thenelselist,
@@ -10444,7 +10454,7 @@ public final class Ui {
                 return output_2;
               }),
               Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = uiapp;
+                final Core.Type_any output_3 = uiapp;
                 return output_3;
               })
             ),
@@ -10459,16 +10469,16 @@ public final class Ui {
             )
           )
         );
-        Core.Type_boolean isfound = Core.f_notempty_1(
+        final Core.Type_boolean isfound = Core.f_notempty_1(
           parentui
         );
-        Core.Type_boolean iswrite = Core.f_if_2(
+        final Core.Type_boolean iswrite = Core.f_if_2(
           Core.t_boolean,
           Core.vx_new(
             Core.t_thenelselist,
             Core.f_then(
               Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_5 = isfound;
+                final Core.Type_any output_5 = isfound;
                 return output_5;
               }),
               Core.t_any_from_func.vx_fn_new(() -> {
@@ -10481,7 +10491,7 @@ public final class Ui {
             )
           )
         );
-        Core.Type_any output_1 = isfound;
+        final Core.Type_any output_1 = isfound;
         return output_1;
       })
     );
@@ -10515,13 +10525,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-writestate<-uiapp", // name
         0, // idx
@@ -10545,13 +10555,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_writestate_from_uiapp;
+      final Core.Type_any output = Ui.e_boolean_writestate_from_uiapp;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_writestate_from_uiapp;
+      final Core.Type_any output = Ui.t_boolean_writestate_from_uiapp;
       return output;
     }
 
@@ -10563,8 +10573,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_boolean_writestate_from_uiapp(context, inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_boolean_writestate_from_uiapp(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -10572,15 +10582,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_boolean_writestate_from_uiapp(context, ui);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_writestate_from_uiapp(final Core.Type_context context, final Ui.Type_ui ui) {
-      Core.Type_boolean output = Ui.f_boolean_writestate_from_uiapp(context, ui);
+      final Core.Type_boolean output = Ui.f_boolean_writestate_from_uiapp(context, ui);
       return output;
     }
 
@@ -10626,13 +10636,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-writestate<-uiengine", // name
         0, // idx
@@ -10656,13 +10666,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_boolean_writestate_from_uiengine;
+      final Core.Type_any output = Ui.e_boolean_writestate_from_uiengine;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_boolean_writestate_from_uiengine;
+      final Core.Type_any output = Ui.t_boolean_writestate_from_uiengine;
       return output;
     }
 
@@ -10674,8 +10684,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_uiengine inputval = (Ui.Type_uiengine)value;
-      Core.Type_any outputval = Ui.f_boolean_writestate_from_uiengine(context, inputval);
+      final Ui.Type_uiengine inputval = (Ui.Type_uiengine)value;
+      final Core.Type_any outputval = Ui.f_boolean_writestate_from_uiengine(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -10683,15 +10693,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_uiengine uiengine = Core.f_any_from_any(Ui.t_uiengine, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_uiengine uiengine = Core.f_any_from_any(Ui.t_uiengine, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_boolean_writestate_from_uiengine(context, uiengine);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_writestate_from_uiengine(final Core.Type_context context, final Ui.Type_uiengine uiengine) {
-      Core.Type_boolean output = Ui.f_boolean_writestate_from_uiengine(context, uiengine);
+      final Core.Type_boolean output = Ui.f_boolean_writestate_from_uiengine(context, uiengine);
       return output;
     }
 
@@ -10737,13 +10747,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "fontfacemap<-fontfacelist", // name
         0, // idx
@@ -10767,13 +10777,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_fontfacemap_from_fontfacelist;
+      final Core.Type_any output = Ui.e_fontfacemap_from_fontfacelist;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_fontfacemap_from_fontfacelist;
+      final Core.Type_any output = Ui.t_fontfacemap_from_fontfacelist;
       return output;
     }
 
@@ -10785,8 +10795,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_fontfacelist inputval = (Ui.Type_fontfacelist)value;
-      Core.Type_any outputval = Ui.f_fontfacemap_from_fontfacelist(inputval);
+      final Ui.Type_fontfacelist inputval = (Ui.Type_fontfacelist)value;
+      final Core.Type_any outputval = Ui.f_fontfacemap_from_fontfacelist(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -10794,14 +10804,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_fontfacelist fontfacelist = Core.f_any_from_any(Ui.t_fontfacelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_fontfacelist fontfacelist = Core.f_any_from_any(Ui.t_fontfacelist, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_fontfacemap_from_fontfacelist(fontfacelist);
       return output;
     }
 
     @Override
     public Ui.Type_fontfacemap vx_fontfacemap_from_fontfacelist(final Ui.Type_fontfacelist fontfacelist) {
-      Ui.Type_fontfacemap output = Ui.f_fontfacemap_from_fontfacelist(fontfacelist);
+      final Ui.Type_fontfacemap output = Ui.f_fontfacemap_from_fontfacelist(fontfacelist);
       return output;
     }
 
@@ -10816,7 +10826,7 @@ public final class Ui {
       Ui.t_fontfacemap,
       fontfacelist,
       Core.t_any_from_any.vx_fn_new((fontface_any) -> {
-        Ui.Type_fontface fontface = Core.f_any_from_any(Ui.t_fontface, fontface_any);
+        final Ui.Type_fontface fontface = Core.f_any_from_any(Ui.t_fontface, fontface_any);
         Core.Type_any output_1 = fontface.name();
         return output_1;
       })
@@ -10852,13 +10862,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "int-child<-ui-uid", // name
         0, // idx
@@ -10882,28 +10892,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_int_child_from_ui_uid;
+      final Core.Type_any output = Ui.e_int_child_from_ui_uid;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_int_child_from_ui_uid;
+      final Core.Type_any output = Ui.t_int_child_from_ui_uid;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_int_child_from_ui_uid(ui, uid);
       return output;
     }
 
     @Override
     public Core.Type_int vx_int_child_from_ui_uid(final Ui.Type_ui ui, final Core.Type_string uid) {
-      Core.Type_int output = Ui.f_int_child_from_ui_uid(ui, uid);
+      final Core.Type_int output = Ui.f_int_child_from_ui_uid(ui, uid);
       return output;
     }
 
@@ -10917,8 +10927,8 @@ public final class Ui {
     output = Core.f_let(
       Core.t_int,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = ui.uimap();
-        Core.Type_any output_1 = Collection.f_int_from_map_key(
+        final Ui.Type_uimap uimap = ui.uimap();
+        final Core.Type_any output_1 = Collection.f_int_from_map_key(
           uimap,
           uid
         );
@@ -10955,13 +10965,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "int-selected<-ui", // name
         0, // idx
@@ -10985,13 +10995,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_int_selected_from_ui;
+      final Core.Type_any output = Ui.e_int_selected_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_int_selected_from_ui;
+      final Core.Type_any output = Ui.t_int_selected_from_ui;
       return output;
     }
 
@@ -11003,8 +11013,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_int_selected_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_int_selected_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -11012,14 +11022,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_int_selected_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_int vx_int_selected_from_ui(final Ui.Type_ui ui) {
-      Core.Type_int output = Ui.f_int_selected_from_ui(ui);
+      final Core.Type_int output = Ui.f_int_selected_from_ui(ui);
       return output;
     }
 
@@ -11033,13 +11043,13 @@ public final class Ui {
     output = Core.f_let(
       Core.t_int,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string uid = Ui.f_string_selected_from_ui(
+        final Core.Type_string uid = Ui.f_string_selected_from_ui(
           ui
         );
-        Core.Type_stringlist uidlist = Ui.f_stringlist_from_ui(
+        final Core.Type_stringlist uidlist = Ui.f_stringlist_from_ui(
           ui
         );
-        Core.Type_any output_1 = Collection.f_int_from_stringlist_find(
+        final Core.Type_any output_1 = Collection.f_int_from_stringlist_find(
           uidlist,
           uid
         );
@@ -11076,13 +11086,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "int-visible<-ui", // name
         0, // idx
@@ -11106,13 +11116,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_int_visible_from_ui;
+      final Core.Type_any output = Ui.e_int_visible_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_int_visible_from_ui;
+      final Core.Type_any output = Ui.t_int_visible_from_ui;
       return output;
     }
 
@@ -11124,8 +11134,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_int_visible_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_int_visible_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -11133,14 +11143,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_int_visible_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_int vx_int_visible_from_ui(final Ui.Type_ui ui) {
-      Core.Type_int output = Ui.f_int_visible_from_ui(ui);
+      final Core.Type_int output = Ui.f_int_visible_from_ui(ui);
       return output;
     }
 
@@ -11154,10 +11164,10 @@ public final class Ui {
     output = Core.f_let(
       Core.t_int,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_intlist intlist = Ui.f_intlist_visible_from_ui(
+        final Core.Type_intlist intlist = Ui.f_intlist_visible_from_ui(
           ui
         );
-        Core.Type_any output_1 = Core.f_first_from_list(
+        final Core.Type_any output_1 = Core.f_first_from_list(
           Core.t_int,
           intlist
         );
@@ -11194,13 +11204,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "intlist-visible<-ui", // name
         0, // idx
@@ -11224,13 +11234,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_intlist_visible_from_ui;
+      final Core.Type_any output = Ui.e_intlist_visible_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_intlist_visible_from_ui;
+      final Core.Type_any output = Ui.t_intlist_visible_from_ui;
       return output;
     }
 
@@ -11242,8 +11252,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_intlist_visible_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_intlist_visible_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -11251,14 +11261,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_intlist_visible_from_ui(uiarg);
       return output;
     }
 
     @Override
     public Core.Type_intlist vx_intlist_visible_from_ui(final Ui.Type_ui uiarg) {
-      Core.Type_intlist output = Ui.f_intlist_visible_from_ui(uiarg);
+      final Core.Type_intlist output = Ui.f_intlist_visible_from_ui(uiarg);
       return output;
     }
 
@@ -11272,16 +11282,16 @@ public final class Ui {
     output = Core.f_let(
       Core.t_intlist,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = uiarg.uimap();
-        Ui.Type_uilist uilist = Ui.f_uilist_from_uimap(
+        final Ui.Type_uimap uimap = uiarg.uimap();
+        final Ui.Type_uilist uilist = Ui.f_uilist_from_uimap(
           uimap
         );
-        Ui.Type_uilist intlist = Core.f_list_from_list_intany(
+        final Ui.Type_uilist intlist = Core.f_list_from_list_intany(
           Ui.t_uilist,
           uilist,
           Core.t_any_from_int_any.vx_fn_new((pos_any, subui_any) -> {
-            Core.Type_int pos = Core.f_any_from_any(Core.t_int, pos_any);
-            Ui.Type_ui subui = Core.f_any_from_any(Ui.t_ui, subui_any);
+            final Core.Type_int pos = Core.f_any_from_any(Core.t_int, pos_any);
+            final Ui.Type_ui subui = Core.f_any_from_any(Ui.t_ui, subui_any);
             Core.Type_any output_3 = Core.f_if_2(
               Core.t_int,
               Core.vx_new(
@@ -11294,7 +11304,7 @@ public final class Ui {
                     return output_4;
                   }),
                   Core.t_any_from_func.vx_fn_new(() -> {
-                    Core.Type_any output_5 = pos;
+                    final Core.Type_any output_5 = pos;
                     return output_5;
                   })
                 )
@@ -11303,11 +11313,11 @@ public final class Ui {
             return output_3;
           })
         );
-        Core.Type_any output_1 = Collection.f_list_from_list_filter(
+        final Core.Type_any output_1 = Collection.f_list_from_list_filter(
           Core.t_intlist,
           intlist,
           Core.t_any_from_any.vx_fn_new((pos_any) -> {
-            Core.Type_int pos = Core.f_any_from_any(Core.t_int, pos_any);
+            final Core.Type_int pos = Core.f_any_from_any(Core.t_int, pos_any);
             Core.Type_any output_2 = pos;
             return output_2;
           })
@@ -11344,13 +11354,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layout<-style", // name
         0, // idx
@@ -11374,13 +11384,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_layout_from_style;
+      final Core.Type_any output = Ui.e_layout_from_style;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_layout_from_style;
+      final Core.Type_any output = Ui.t_layout_from_style;
       return output;
     }
 
@@ -11392,8 +11402,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_style inputval = (Ui.Type_style)value;
-      Core.Type_any outputval = Ui.f_layout_from_style(inputval);
+      final Ui.Type_style inputval = (Ui.Type_style)value;
+      final Core.Type_any outputval = Ui.f_layout_from_style(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -11401,14 +11411,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_style style = Core.f_any_from_any(Ui.t_style, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_style style = Core.f_any_from_any(Ui.t_style, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_layout_from_style(style);
       return output;
     }
 
     @Override
     public Ui.Type_layout vx_layout_from_style(final Ui.Type_style style) {
-      Ui.Type_layout output = Ui.f_layout_from_style(style);
+      final Ui.Type_layout output = Ui.f_layout_from_style(style);
       return output;
     }
 
@@ -11450,13 +11460,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layout<-ui", // name
         0, // idx
@@ -11480,13 +11490,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_layout_from_ui;
+      final Core.Type_any output = Ui.e_layout_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_layout_from_ui;
+      final Core.Type_any output = Ui.t_layout_from_ui;
       return output;
     }
 
@@ -11498,8 +11508,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_layout_from_ui(context, inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_layout_from_ui(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -11507,15 +11517,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_layout_from_ui(context, ui);
       return output;
     }
 
     @Override
     public Ui.Type_layout vx_layout_from_ui(final Core.Type_context context, final Ui.Type_ui ui) {
-      Ui.Type_layout output = Ui.f_layout_from_ui(context, ui);
+      final Ui.Type_layout output = Ui.f_layout_from_ui(context, ui);
       return output;
     }
 
@@ -11529,10 +11539,10 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_layout,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
+        final Ui.Type_layoutengine layoutengine = Ui.f_layoutengine_readstate(
           context
         );
-        Core.Type_any output_1 = Ui.f_layout_from_ui_layoutengine(
+        final Core.Type_any output_1 = Ui.f_layout_from_ui_layoutengine(
           ui,
           layoutengine
         );
@@ -11570,13 +11580,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layout<-ui-layoutengine", // name
         0, // idx
@@ -11600,28 +11610,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_layout_from_ui_layoutengine;
+      final Core.Type_any output = Ui.e_layout_from_ui_layoutengine;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_layout_from_ui_layoutengine;
+      final Core.Type_any output = Ui.t_layout_from_ui_layoutengine;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_layoutengine layoutengine = Core.f_any_from_any(Ui.t_layoutengine, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_layoutengine layoutengine = Core.f_any_from_any(Ui.t_layoutengine, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_layout_from_ui_layoutengine(ui, layoutengine);
       return output;
     }
 
     @Override
     public Ui.Type_layout vx_layout_from_ui_layoutengine(final Ui.Type_ui ui, final Ui.Type_layoutengine layoutengine) {
-      Ui.Type_layout output = Ui.f_layout_from_ui_layoutengine(ui, layoutengine);
+      final Ui.Type_layout output = Ui.f_layout_from_ui_layoutengine(ui, layoutengine);
       return output;
     }
 
@@ -11635,9 +11645,9 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_layout,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutmap layoutmap = layoutengine.layoutmap();
-        Ui.Type_layout layoutelse = layoutengine.layoutelse();
-        Core.Type_any output_1 = Ui.f_layout_from_ui_layoutmap_else(
+        final Ui.Type_layoutmap layoutmap = layoutengine.layoutmap();
+        final Ui.Type_layout layoutelse = layoutengine.layoutelse();
+        final Core.Type_any output_1 = Ui.f_layout_from_ui_layoutmap_else(
           ui,
           layoutmap,
           layoutelse
@@ -11677,13 +11687,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layout<-ui-layoutmap-else", // name
         0, // idx
@@ -11707,29 +11717,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_layout_from_ui_layoutmap_else;
+      final Core.Type_any output = Ui.e_layout_from_ui_layoutmap_else;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_layout_from_ui_layoutmap_else;
+      final Core.Type_any output = Ui.t_layout_from_ui_layoutmap_else;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_layoutmap layoutmap = Core.f_any_from_any(Ui.t_layoutmap, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_layout layoutelse = Core.f_any_from_any(Ui.t_layout, arglist.vx_any(Core.vx_new_int(2)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_layoutmap layoutmap = Core.f_any_from_any(Ui.t_layoutmap, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_layout layoutelse = Core.f_any_from_any(Ui.t_layout, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_layout_from_ui_layoutmap_else(ui, layoutmap, layoutelse);
       return output;
     }
 
     @Override
     public Ui.Type_layout vx_layout_from_ui_layoutmap_else(final Ui.Type_ui ui, final Ui.Type_layoutmap layoutmap, final Ui.Type_layout layoutelse) {
-      Ui.Type_layout output = Ui.f_layout_from_ui_layoutmap_else(ui, layoutmap, layoutelse);
+      final Ui.Type_layout output = Ui.f_layout_from_ui_layoutmap_else(ui, layoutmap, layoutelse);
       return output;
     }
 
@@ -11743,17 +11753,17 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_layout,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_style style = ui.style();
-        Ui.Type_layout layout = Ui.f_layout_from_style(
+        final Ui.Type_style style = ui.style();
+        final Ui.Type_layout layout = Ui.f_layout_from_style(
           style
         );
-        Core.Type_string layname = layout.name();
-        Ui.Type_layout layout1 = Core.f_any_from_map(
+        final Core.Type_string layname = layout.name();
+        final Ui.Type_layout layout1 = Core.f_any_from_map(
           Ui.t_layout,
           layoutmap,
           layname
         );
-        Ui.Type_layout layout2 = Core.f_if_1(
+        final Ui.Type_layout layout2 = Core.f_if_1(
           Ui.t_layout,
           Core.f_notempty_1(
             layout1
@@ -11761,7 +11771,7 @@ public final class Ui {
           layout1,
           layoutelse
         );
-        Core.Type_any output_1 = layout2;
+        final Core.Type_any output_1 = layout2;
         return output_1;
       })
     );
@@ -11794,13 +11804,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layoutengine-readstate", // name
         0, // idx
@@ -11824,27 +11834,27 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_layoutengine_readstate;
+      final Core.Type_any output = Ui.e_layoutengine_readstate;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_layoutengine_readstate;
+      final Core.Type_any output = Ui.t_layoutengine_readstate;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_layoutengine_readstate(context);
       return output;
     }
 
     @Override
     public Ui.Type_layoutengine vx_layoutengine_readstate(final Core.Type_context context) {
-      Ui.Type_layoutengine output = Ui.f_layoutengine_readstate(context);
+      final Ui.Type_layoutengine output = Ui.f_layoutengine_readstate(context);
       return output;
     }
 
@@ -11858,10 +11868,10 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_layoutengine,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uiengine uiengine = Ui.f_uiengine_readstate(
+        final Ui.Type_uiengine uiengine = Ui.f_uiengine_readstate(
           context
         );
-        Core.Type_any output_1 = uiengine.layoutengine();
+        final Core.Type_any output_1 = uiengine.layoutengine();
         return output_1;
       })
     );
@@ -11895,13 +11905,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layoutmap<-layoutlist", // name
         0, // idx
@@ -11925,13 +11935,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_layoutmap_from_layoutlist;
+      final Core.Type_any output = Ui.e_layoutmap_from_layoutlist;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_layoutmap_from_layoutlist;
+      final Core.Type_any output = Ui.t_layoutmap_from_layoutlist;
       return output;
     }
 
@@ -11943,8 +11953,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_layoutlist inputval = (Ui.Type_layoutlist)value;
-      Core.Type_any outputval = Ui.f_layoutmap_from_layoutlist(inputval);
+      final Ui.Type_layoutlist inputval = (Ui.Type_layoutlist)value;
+      final Core.Type_any outputval = Ui.f_layoutmap_from_layoutlist(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -11952,14 +11962,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_layoutlist layoutlist = Core.f_any_from_any(Ui.t_layoutlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_layoutlist layoutlist = Core.f_any_from_any(Ui.t_layoutlist, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_layoutmap_from_layoutlist(layoutlist);
       return output;
     }
 
     @Override
     public Ui.Type_layoutmap vx_layoutmap_from_layoutlist(final Ui.Type_layoutlist layoutlist) {
-      Ui.Type_layoutmap output = Ui.f_layoutmap_from_layoutlist(layoutlist);
+      final Ui.Type_layoutmap output = Ui.f_layoutmap_from_layoutlist(layoutlist);
       return output;
     }
 
@@ -11974,7 +11984,7 @@ public final class Ui {
       Ui.t_layoutmap,
       layoutlist,
       Core.t_any_from_any.vx_fn_new((layout_any) -> {
-        Ui.Type_layout layout = Core.f_any_from_any(Ui.t_layout, layout_any);
+        final Ui.Type_layout layout = Core.f_any_from_any(Ui.t_layout, layout_any);
         Core.Type_any output_1 = layout.name();
         return output_1;
       })
@@ -12009,13 +12019,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "string-parentuid<-uid", // name
         0, // idx
@@ -12039,13 +12049,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_string_parentuid_from_uid;
+      final Core.Type_any output = Ui.e_string_parentuid_from_uid;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_string_parentuid_from_uid;
+      final Core.Type_any output = Ui.t_string_parentuid_from_uid;
       return output;
     }
 
@@ -12057,8 +12067,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_string inputval = (Core.Type_string)value;
-      Core.Type_any outputval = Ui.f_string_parentuid_from_uid(inputval);
+      final Core.Type_string inputval = (Core.Type_string)value;
+      final Core.Type_any outputval = Ui.f_string_parentuid_from_uid(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -12066,14 +12076,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_string_parentuid_from_uid(uid);
       return output;
     }
 
     @Override
     public Core.Type_string vx_string_parentuid_from_uid(final Core.Type_string uid) {
-      Core.Type_string output = Ui.f_string_parentuid_from_uid(uid);
+      final Core.Type_string output = Ui.f_string_parentuid_from_uid(uid);
       return output;
     }
 
@@ -12087,11 +12097,11 @@ public final class Ui {
     output = Core.f_let(
       Core.t_string,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_int lastpos = Type.f_int_from_string_findlast(
+        final Core.Type_int lastpos = Type.f_int_from_string_findlast(
           uid,
           Core.vx_new_string("/")
         );
-        Core.Type_any output_1 = Core.f_if_2(
+        final Core.Type_any output_1 = Core.f_if_2(
           Core.t_string,
           Core.vx_new(
             Core.t_thenelselist,
@@ -12149,13 +12159,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "string-selected<-ui", // name
         0, // idx
@@ -12179,13 +12189,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_string_selected_from_ui;
+      final Core.Type_any output = Ui.e_string_selected_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_string_selected_from_ui;
+      final Core.Type_any output = Ui.t_string_selected_from_ui;
       return output;
     }
 
@@ -12197,8 +12207,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_string_selected_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_string_selected_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -12206,14 +12216,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_string_selected_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_string vx_string_selected_from_ui(final Ui.Type_ui ui) {
-      Core.Type_string output = Ui.f_string_selected_from_ui(ui);
+      final Core.Type_string output = Ui.f_string_selected_from_ui(ui);
       return output;
     }
 
@@ -12227,10 +12237,10 @@ public final class Ui {
     output = Core.f_let(
       Core.t_string,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_ui selectedui = Ui.f_ui_selected_from_ui(
+        final Ui.Type_ui selectedui = Ui.f_ui_selected_from_ui(
           ui
         );
-        Core.Type_any output_1 = selectedui.uid();
+        final Core.Type_any output_1 = selectedui.uid();
         return output_1;
       })
     );
@@ -12264,13 +12274,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stringlist-selected<-ui", // name
         0, // idx
@@ -12294,13 +12304,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_stringlist_selected_from_ui;
+      final Core.Type_any output = Ui.e_stringlist_selected_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_stringlist_selected_from_ui;
+      final Core.Type_any output = Ui.t_stringlist_selected_from_ui;
       return output;
     }
 
@@ -12312,8 +12322,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_stringlist_selected_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_stringlist_selected_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -12321,14 +12331,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_stringlist_selected_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_stringlist vx_stringlist_selected_from_ui(final Ui.Type_ui ui) {
-      Core.Type_stringlist output = Ui.f_stringlist_selected_from_ui(ui);
+      final Core.Type_stringlist output = Ui.f_stringlist_selected_from_ui(ui);
       return output;
     }
 
@@ -12342,15 +12352,15 @@ public final class Ui {
     output = Core.f_let(
       Core.t_stringlist,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = ui.uimap();
-        Ui.Type_uilist uilist = Ui.f_uilist_from_uimap(
+        final Ui.Type_uimap uimap = ui.uimap();
+        final Ui.Type_uilist uilist = Ui.f_uilist_from_uimap(
           uimap
         );
-        Core.Type_any output_1 = Core.f_list_from_list_1(
+        final Core.Type_any output_1 = Core.f_list_from_list_1(
           Core.t_stringlist,
           uilist,
           Core.t_any_from_any.vx_fn_new((item_any) -> {
-            Ui.Type_ui item = Core.f_any_from_any(Ui.t_ui, item_any);
+            final Ui.Type_ui item = Core.f_any_from_any(Ui.t_ui, item_any);
             Core.Type_any output_2 = Core.f_if_1(
               Core.t_string,
               item.selected(),
@@ -12393,13 +12403,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stringlist<-ui", // name
         0, // idx
@@ -12423,13 +12433,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_stringlist_from_ui;
+      final Core.Type_any output = Ui.e_stringlist_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_stringlist_from_ui;
+      final Core.Type_any output = Ui.t_stringlist_from_ui;
       return output;
     }
 
@@ -12441,8 +12451,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_stringlist_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_stringlist_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -12450,14 +12460,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_stringlist_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_stringlist vx_stringlist_from_ui(final Ui.Type_ui ui) {
-      Core.Type_stringlist output = Ui.f_stringlist_from_ui(ui);
+      final Core.Type_stringlist output = Ui.f_stringlist_from_ui(ui);
       return output;
     }
 
@@ -12471,8 +12481,8 @@ public final class Ui {
     output = Core.f_let(
       Core.t_stringlist,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = ui.uimap();
-        Core.Type_any output_1 = Core.f_stringlist_from_map(
+        final Ui.Type_uimap uimap = ui.uimap();
+        final Core.Type_any output_1 = Core.f_stringlist_from_map(
           uimap
         );
         return output_1;
@@ -12507,13 +12517,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stylemap<-stylelist", // name
         0, // idx
@@ -12537,13 +12547,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_stylemap_from_stylelist;
+      final Core.Type_any output = Ui.e_stylemap_from_stylelist;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_stylemap_from_stylelist;
+      final Core.Type_any output = Ui.t_stylemap_from_stylelist;
       return output;
     }
 
@@ -12555,8 +12565,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_stylelist inputval = (Ui.Type_stylelist)value;
-      Core.Type_any outputval = Ui.f_stylemap_from_stylelist(inputval);
+      final Ui.Type_stylelist inputval = (Ui.Type_stylelist)value;
+      final Core.Type_any outputval = Ui.f_stylemap_from_stylelist(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -12564,14 +12574,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_stylelist stylelist = Core.f_any_from_any(Ui.t_stylelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_stylelist stylelist = Core.f_any_from_any(Ui.t_stylelist, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_stylemap_from_stylelist(stylelist);
       return output;
     }
 
     @Override
     public Ui.Type_stylemap vx_stylemap_from_stylelist(final Ui.Type_stylelist stylelist) {
-      Ui.Type_stylemap output = Ui.f_stylemap_from_stylelist(stylelist);
+      final Ui.Type_stylemap output = Ui.f_stylemap_from_stylelist(stylelist);
       return output;
     }
 
@@ -12586,7 +12596,7 @@ public final class Ui {
       Ui.t_stylemap,
       stylelist,
       Core.t_any_from_any.vx_fn_new((style_any) -> {
-        Ui.Type_style style = Core.f_any_from_any(Ui.t_style, style_any);
+        final Ui.Type_style style = Core.f_any_from_any(Ui.t_style, style_any);
         Core.Type_any output_1 = style.name();
         return output_1;
       })
@@ -12620,13 +12630,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stylesheet-readstate", // name
         0, // idx
@@ -12650,27 +12660,27 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_stylesheet_readstate;
+      final Core.Type_any output = Ui.e_stylesheet_readstate;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_stylesheet_readstate;
+      final Core.Type_any output = Ui.t_stylesheet_readstate;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_stylesheet_readstate(context);
       return output;
     }
 
     @Override
     public Ui.Type_stylesheet vx_stylesheet_readstate(final Core.Type_context context) {
-      Ui.Type_stylesheet output = Ui.f_stylesheet_readstate(context);
+      final Ui.Type_stylesheet output = Ui.f_stylesheet_readstate(context);
       return output;
     }
 
@@ -12684,10 +12694,10 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_stylesheet,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uiengine uiengine = Ui.f_uiengine_readstate(
+        final Ui.Type_uiengine uiengine = Ui.f_uiengine_readstate(
           context
         );
-        Core.Type_any output_1 = uiengine.stylesheet();
+        final Core.Type_any output_1 = uiengine.stylesheet();
         return output_1;
       })
     );
@@ -12721,13 +12731,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stylesheet-render", // name
         0, // idx
@@ -12751,13 +12761,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_stylesheet_render;
+      final Core.Type_any output = Ui.e_stylesheet_render;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_stylesheet_render;
+      final Core.Type_any output = Ui.t_stylesheet_render;
       return output;
     }
 
@@ -12769,8 +12779,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_stylesheet inputval = (Ui.Type_stylesheet)value;
-      Core.Type_any outputval = Ui.f_stylesheet_render(inputval);
+      final Ui.Type_stylesheet inputval = (Ui.Type_stylesheet)value;
+      final Core.Type_any outputval = Ui.f_stylesheet_render(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -12778,14 +12788,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_stylesheet stylesheetui = Core.f_any_from_any(Ui.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_stylesheet stylesheetui = Core.f_any_from_any(Ui.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_stylesheet_render(stylesheetui);
       return output;
     }
 
     @Override
     public Ui.Type_stylesheet vx_stylesheet_render(final Ui.Type_stylesheet stylesheetui) {
-      Ui.Type_stylesheet output = Ui.f_stylesheet_render(stylesheetui);
+      final Ui.Type_stylesheet output = Ui.f_stylesheet_render(stylesheetui);
       return output;
     }
 
@@ -12826,13 +12836,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-addlayout<-ui", // name
         0, // idx
@@ -12856,13 +12866,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_addlayout_from_ui;
+      final Core.Type_any output = Ui.e_ui_addlayout_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_addlayout_from_ui;
+      final Core.Type_any output = Ui.t_ui_addlayout_from_ui;
       return output;
     }
 
@@ -12874,8 +12884,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_ui_addlayout_from_ui(context, inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_ui_addlayout_from_ui(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -12883,15 +12893,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_addlayout_from_ui(context, ui);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_addlayout_from_ui(final Core.Type_context context, final Ui.Type_ui ui) {
-      Ui.Type_ui output = Ui.f_ui_addlayout_from_ui(context, ui);
+      final Ui.Type_ui output = Ui.f_ui_addlayout_from_ui(context, ui);
       return output;
     }
 
@@ -12905,10 +12915,10 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uiengine uiengine = Ui.f_uiengine_readstate(
+        final Ui.Type_uiengine uiengine = Ui.f_uiengine_readstate(
           context
         );
-        Core.Type_any output_1 = Ui.f_ui_addlayout_from_ui_uiengine(
+        final Core.Type_any output_1 = Ui.f_ui_addlayout_from_ui_uiengine(
           ui,
           uiengine
         );
@@ -12946,13 +12956,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-addlayout<-ui-layoutengine", // name
         0, // idx
@@ -12976,28 +12986,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_addlayout_from_ui_layoutengine;
+      final Core.Type_any output = Ui.e_ui_addlayout_from_ui_layoutengine;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_addlayout_from_ui_layoutengine;
+      final Core.Type_any output = Ui.t_ui_addlayout_from_ui_layoutengine;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_layoutengine layoutengine = Core.f_any_from_any(Ui.t_layoutengine, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_layoutengine layoutengine = Core.f_any_from_any(Ui.t_layoutengine, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_addlayout_from_ui_layoutengine(ui, layoutengine);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_addlayout_from_ui_layoutengine(final Ui.Type_ui ui, final Ui.Type_layoutengine layoutengine) {
-      Ui.Type_ui output = Ui.f_ui_addlayout_from_ui_layoutengine(ui, layoutengine);
+      final Ui.Type_ui output = Ui.f_ui_addlayout_from_ui_layoutengine(ui, layoutengine);
       return output;
     }
 
@@ -13011,9 +13021,9 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutmap layoutmap = layoutengine.layoutmap();
-        Ui.Type_layout layoutelse = layoutengine.layoutelse();
-        Core.Type_any output_1 = Ui.f_ui_addlayout_from_ui_layoutmap_else(
+        final Ui.Type_layoutmap layoutmap = layoutengine.layoutmap();
+        final Ui.Type_layout layoutelse = layoutengine.layoutelse();
+        final Core.Type_any output_1 = Ui.f_ui_addlayout_from_ui_layoutmap_else(
           ui,
           layoutmap,
           layoutelse
@@ -13053,13 +13063,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-addlayout<-ui-layoutmap-else", // name
         0, // idx
@@ -13083,29 +13093,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_addlayout_from_ui_layoutmap_else;
+      final Core.Type_any output = Ui.e_ui_addlayout_from_ui_layoutmap_else;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_addlayout_from_ui_layoutmap_else;
+      final Core.Type_any output = Ui.t_ui_addlayout_from_ui_layoutmap_else;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_layoutmap layoutmap = Core.f_any_from_any(Ui.t_layoutmap, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_layout layoutelse = Core.f_any_from_any(Ui.t_layout, arglist.vx_any(Core.vx_new_int(2)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_layoutmap layoutmap = Core.f_any_from_any(Ui.t_layoutmap, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_layout layoutelse = Core.f_any_from_any(Ui.t_layout, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_ui_addlayout_from_ui_layoutmap_else(ui, layoutmap, layoutelse);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_addlayout_from_ui_layoutmap_else(final Ui.Type_ui ui, final Ui.Type_layoutmap layoutmap, final Ui.Type_layout layoutelse) {
-      Ui.Type_ui output = Ui.f_ui_addlayout_from_ui_layoutmap_else(ui, layoutmap, layoutelse);
+      final Ui.Type_ui output = Ui.f_ui_addlayout_from_ui_layoutmap_else(ui, layoutmap, layoutelse);
       return output;
     }
 
@@ -13119,18 +13129,18 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = ui.uimap();
-        Ui.Type_layout layout1 = Ui.f_layout_from_ui_layoutmap_else(
+        final Ui.Type_uimap uimap = ui.uimap();
+        final Ui.Type_layout layout1 = Ui.f_layout_from_ui_layoutmap_else(
           ui,
           layoutmap,
           layoutelse
         );
-        Ui.Type_uimap uimap2 = Ui.f_uimap_addlayout_from_uimap_layoutmap_else(
+        final Ui.Type_uimap uimap2 = Ui.f_uimap_addlayout_from_uimap_layoutmap_else(
           uimap,
           layoutmap,
           layoutelse
         );
-        Core.Type_any output_1 = Core.f_copy(
+        final Core.Type_any output_1 = Core.f_copy(
           ui,
           Core.vx_new(
             Core.t_anylist,
@@ -13174,13 +13184,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-addlayout<-ui-uiengine", // name
         0, // idx
@@ -13204,28 +13214,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_addlayout_from_ui_uiengine;
+      final Core.Type_any output = Ui.e_ui_addlayout_from_ui_uiengine;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_addlayout_from_ui_uiengine;
+      final Core.Type_any output = Ui.t_ui_addlayout_from_ui_uiengine;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_uiengine uiengine = Core.f_any_from_any(Ui.t_uiengine, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_uiengine uiengine = Core.f_any_from_any(Ui.t_uiengine, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_addlayout_from_ui_uiengine(ui, uiengine);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_addlayout_from_ui_uiengine(final Ui.Type_ui ui, final Ui.Type_uiengine uiengine) {
-      Ui.Type_ui output = Ui.f_ui_addlayout_from_ui_uiengine(ui, uiengine);
+      final Ui.Type_ui output = Ui.f_ui_addlayout_from_ui_uiengine(ui, uiengine);
       return output;
     }
 
@@ -13239,8 +13249,8 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_layoutengine layoutengine = uiengine.layoutengine();
-        Core.Type_any output_1 = Ui.f_ui_addlayout_from_ui_layoutengine(
+        final Ui.Type_layoutengine layoutengine = uiengine.layoutengine();
+        final Core.Type_any output_1 = Ui.f_ui_addlayout_from_ui_layoutengine(
           ui,
           layoutengine
         );
@@ -13278,13 +13288,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-child<-ui-pos", // name
         0, // idx
@@ -13308,28 +13318,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_child_from_ui_pos;
+      final Core.Type_any output = Ui.e_ui_child_from_ui_pos;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_child_from_ui_pos;
+      final Core.Type_any output = Ui.t_ui_child_from_ui_pos;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int pos = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int pos = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_child_from_ui_pos(ui, pos);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_child_from_ui_pos(final Ui.Type_ui ui, final Core.Type_int pos) {
-      Ui.Type_ui output = Ui.f_ui_child_from_ui_pos(ui, pos);
+      final Ui.Type_ui output = Ui.f_ui_child_from_ui_pos(ui, pos);
       return output;
     }
 
@@ -13343,8 +13353,8 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap childmap = ui.uimap();
-        Core.Type_any output_1 = Collection.f_any_from_map_pos(
+        final Ui.Type_uimap childmap = ui.uimap();
+        final Core.Type_any output_1 = Collection.f_any_from_map_pos(
           Ui.t_ui,
           childmap,
           pos
@@ -13383,13 +13393,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-child<-ui-uid", // name
         0, // idx
@@ -13413,28 +13423,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_child_from_ui_uid;
+      final Core.Type_any output = Ui.e_ui_child_from_ui_uid;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_child_from_ui_uid;
+      final Core.Type_any output = Ui.t_ui_child_from_ui_uid;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_child_from_ui_uid(ui, uid);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_child_from_ui_uid(final Ui.Type_ui ui, final Core.Type_string uid) {
-      Ui.Type_ui output = Ui.f_ui_child_from_ui_uid(ui, uid);
+      final Ui.Type_ui output = Ui.f_ui_child_from_ui_uid(ui, uid);
       return output;
     }
 
@@ -13448,8 +13458,8 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap childmap = ui.uimap();
-        Core.Type_any output_1 = Core.f_any_from_map(
+        final Ui.Type_uimap childmap = ui.uimap();
+        final Core.Type_any output_1 = Core.f_any_from_map(
           Ui.t_ui,
           childmap,
           uid
@@ -13487,13 +13497,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-from<-event", // name
         0, // idx
@@ -13517,13 +13527,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_from_from_event;
+      final Core.Type_any output = Ui.e_ui_from_from_event;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_from_from_event;
+      final Core.Type_any output = Ui.t_ui_from_from_event;
       return output;
     }
 
@@ -13535,8 +13545,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Event.Type_event inputval = (Event.Type_event)value;
-      Core.Type_any outputval = Ui.f_ui_from_from_event(context, inputval);
+      final Event.Type_event inputval = (Event.Type_event)value;
+      final Core.Type_any outputval = Ui.f_ui_from_from_event(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -13544,15 +13554,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_from_from_event(context, evt);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_from_from_event(final Core.Type_context context, final Event.Type_event evt) {
-      Ui.Type_ui output = Ui.f_ui_from_from_event(context, evt);
+      final Ui.Type_ui output = Ui.f_ui_from_from_event(context, evt);
       return output;
     }
 
@@ -13566,8 +13576,8 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string uid = evt.from();
-        Core.Type_any output_1 = Ui.f_ui_readstate_from_uid(
+        final Core.Type_string uid = evt.from();
+        final Core.Type_any output_1 = Ui.f_ui_readstate_from_uid(
           context,
           uid
         );
@@ -13603,13 +13613,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout", // name
         0, // idx
@@ -13633,13 +13643,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_layout;
+      final Core.Type_any output = Ui.e_ui_layout;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_layout;
+      final Core.Type_any output = Ui.t_ui_layout;
       return output;
     }
 
@@ -13651,8 +13661,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_ui_layout(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_ui_layout(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -13660,14 +13670,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_ui_layout(uiarg);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_layout(final Ui.Type_ui uiarg) {
-      Ui.Type_ui output = Ui.f_ui_layout(uiarg);
+      final Ui.Type_ui output = Ui.f_ui_layout(uiarg);
       return output;
     }
 
@@ -13720,13 +13730,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout<-fn-layout-ui-orig-parent", // name
         0, // idx
@@ -13750,30 +13760,30 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_layout_from_fn_layout_ui_orig_parent;
+      final Core.Type_any output = Ui.e_ui_layout_from_fn_layout_ui_orig_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_layout_from_fn_layout_ui_orig_parent;
+      final Core.Type_any output = Ui.t_ui_layout_from_fn_layout_ui_orig_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Func_ui_layout_from_ui_orig_parent fn_layout = Core.f_any_from_any(Ui.t_ui_layout_from_ui_orig_parent, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_ui orig = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(3)));
+      final Ui.Func_ui_layout_from_ui_orig_parent fn_layout = Core.f_any_from_any(Ui.t_ui_layout_from_ui_orig_parent, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui orig = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(3)));
       output = Ui.f_ui_layout_from_fn_layout_ui_orig_parent(fn_layout, ui, orig, parent);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_layout_from_fn_layout_ui_orig_parent(final Ui.Func_ui_layout_from_ui_orig_parent fn_layout, final Ui.Type_ui ui, final Ui.Type_ui orig, final Ui.Type_ui parent) {
-      Ui.Type_ui output = Ui.f_ui_layout_from_fn_layout_ui_orig_parent(fn_layout, ui, orig, parent);
+      final Ui.Type_ui output = Ui.f_ui_layout_from_fn_layout_ui_orig_parent(fn_layout, ui, orig, parent);
       return output;
     }
 
@@ -13823,13 +13833,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout<-ui-orig-parent", // name
         0, // idx
@@ -13853,29 +13863,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_layout_from_ui_orig_parent;
+      final Core.Type_any output = Ui.e_ui_layout_from_ui_orig_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_layout_from_ui_orig_parent;
+      final Core.Type_any output = Ui.t_ui_layout_from_ui_orig_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui orig = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui orig = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_ui_layout_from_ui_orig_parent(ui, orig, parent);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_layout_from_ui_orig_parent(final Ui.Type_ui ui, final Ui.Type_ui orig, final Ui.Type_ui parent) {
-      Ui.Type_ui output = Ui.f_ui_layout_from_ui_orig_parent(ui, orig, parent);
+      final Ui.Type_ui output = Ui.f_ui_layout_from_ui_orig_parent(ui, orig, parent);
       return output;
     }
 
@@ -13899,7 +13909,7 @@ public final class Ui {
             return output_1;
           }),
           Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = orig;
+            final Core.Type_any output_2 = orig;
             return output_2;
           })
         ),
@@ -13908,15 +13918,15 @@ public final class Ui {
             Core.Type_any output_3 = Core.f_let(
               Ui.t_ui,
               Core.t_any_from_func.vx_fn_new(() -> {
-                Ui.Type_uimap uimap = ui.uimap();
-                Ui.Type_layout layout = ui.layout();
-                Ui.Type_ui uiout = Ui.f_ui_from_layout_ui_orig_parent(
+                final Ui.Type_uimap uimap = ui.uimap();
+                final Ui.Type_layout layout = ui.layout();
+                final Ui.Type_ui uiout = Ui.f_ui_from_layout_ui_orig_parent(
                   layout,
                   ui,
                   orig,
                   parent
                 );
-                Core.Type_any output_4 = uiout;
+                final Core.Type_any output_4 = uiout;
                 return output_4;
               })
             );
@@ -13957,13 +13967,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout<-ui-parent-selected", // name
         0, // idx
@@ -13987,29 +13997,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_layout_from_ui_parent_selected;
+      final Core.Type_any output = Ui.e_ui_layout_from_ui_parent_selected;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_layout_from_ui_parent_selected;
+      final Core.Type_any output = Ui.t_ui_layout_from_ui_parent_selected;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_int selected = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_int selected = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_ui_layout_from_ui_parent_selected(ui, parent, selected);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_layout_from_ui_parent_selected(final Ui.Type_ui ui, final Ui.Type_ui parent, final Core.Type_int selected) {
-      Ui.Type_ui output = Ui.f_ui_layout_from_ui_parent_selected(ui, parent, selected);
+      final Ui.Type_ui output = Ui.f_ui_layout_from_ui_parent_selected(ui, parent, selected);
       return output;
     }
 
@@ -14023,15 +14033,15 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_ui uichg1 = Ui.f_ui_from_ui_selected(
+        final Ui.Type_ui uichg1 = Ui.f_ui_from_ui_selected(
           ui,
           selected
         );
-        Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
+        final Core.Type_boolean iswrite = Ui.f_boolean_write_from_ui_parent(
           uichg1,
           parent
         );
-        Core.Type_any output_1 = Ui.f_ui_layout_from_ui_orig_parent(
+        final Core.Type_any output_1 = Ui.f_ui_layout_from_ui_orig_parent(
           uichg1,
           ui,
           parent
@@ -14071,13 +14081,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout<-ui-parent-visible", // name
         0, // idx
@@ -14101,29 +14111,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_layout_from_ui_parent_visible;
+      final Core.Type_any output = Ui.e_ui_layout_from_ui_parent_visible;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_layout_from_ui_parent_visible;
+      final Core.Type_any output = Ui.t_ui_layout_from_ui_parent_visible;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_int visible = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_int visible = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_ui_layout_from_ui_parent_visible(ui, parent, visible);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_layout_from_ui_parent_visible(final Ui.Type_ui ui, final Ui.Type_ui parent, final Core.Type_int visible) {
-      Ui.Type_ui output = Ui.f_ui_layout_from_ui_parent_visible(ui, parent, visible);
+      final Ui.Type_ui output = Ui.f_ui_layout_from_ui_parent_visible(ui, parent, visible);
       return output;
     }
 
@@ -14137,11 +14147,11 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_ui uichg = Ui.f_ui_write_from_ui_visible(
+        final Ui.Type_ui uichg = Ui.f_ui_write_from_ui_visible(
           ui,
           visible
         );
-        Core.Type_any output_1 = Ui.f_ui_layout_from_ui_orig_parent(
+        final Core.Type_any output_1 = Ui.f_ui_layout_from_ui_orig_parent(
           uichg,
           ui,
           parent
@@ -14178,13 +14188,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-readstate-uiapp", // name
         0, // idx
@@ -14208,27 +14218,27 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_readstate_uiapp;
+      final Core.Type_any output = Ui.e_ui_readstate_uiapp;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_readstate_uiapp;
+      final Core.Type_any output = Ui.t_ui_readstate_uiapp;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_ui_readstate_uiapp(context);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_readstate_uiapp(final Core.Type_context context) {
-      Ui.Type_ui output = Ui.f_ui_readstate_uiapp(context);
+      final Ui.Type_ui output = Ui.f_ui_readstate_uiapp(context);
       return output;
     }
 
@@ -14274,13 +14284,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-readstate<-uid", // name
         0, // idx
@@ -14304,13 +14314,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_readstate_from_uid;
+      final Core.Type_any output = Ui.e_ui_readstate_from_uid;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_readstate_from_uid;
+      final Core.Type_any output = Ui.t_ui_readstate_from_uid;
       return output;
     }
 
@@ -14322,8 +14332,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_string inputval = (Core.Type_string)value;
-      Core.Type_any outputval = Ui.f_ui_readstate_from_uid(context, inputval);
+      final Core.Type_string inputval = (Core.Type_string)value;
+      final Core.Type_any outputval = Ui.f_ui_readstate_from_uid(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -14331,15 +14341,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_readstate_from_uid(context, uid);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_readstate_from_uid(final Core.Type_context context, final Core.Type_string uid) {
-      Ui.Type_ui output = Ui.f_ui_readstate_from_uid(context, uid);
+      final Ui.Type_ui output = Ui.f_ui_readstate_from_uid(context, uid);
       return output;
     }
 
@@ -14353,10 +14363,10 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_ui uiapp = Ui.f_ui_readstate_uiapp(
+        final Ui.Type_ui uiapp = Ui.f_ui_readstate_uiapp(
           context
         );
-        Core.Type_any output_1 = Ui.f_ui_from_ui_find(
+        final Core.Type_any output_1 = Ui.f_ui_from_ui_find(
           uiapp,
           uid
         );
@@ -14393,13 +14403,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-selected<-ui", // name
         0, // idx
@@ -14423,13 +14433,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_selected_from_ui;
+      final Core.Type_any output = Ui.e_ui_selected_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_selected_from_ui;
+      final Core.Type_any output = Ui.t_ui_selected_from_ui;
       return output;
     }
 
@@ -14441,8 +14451,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_ui_selected_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_ui_selected_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -14450,14 +14460,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_ui_selected_from_ui(ui);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_selected_from_ui(final Ui.Type_ui ui) {
-      Ui.Type_ui output = Ui.f_ui_selected_from_ui(ui);
+      final Ui.Type_ui output = Ui.f_ui_selected_from_ui(ui);
       return output;
     }
 
@@ -14471,10 +14481,10 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uilist uilist = Ui.f_uilist_selected_from_ui(
+        final Ui.Type_uilist uilist = Ui.f_uilist_selected_from_ui(
           ui
         );
-        Core.Type_any output_1 = Core.f_first_from_list(
+        final Core.Type_any output_1 = Core.f_first_from_list(
           Ui.t_ui,
           uilist
         );
@@ -14511,13 +14521,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-visible<-ui", // name
         0, // idx
@@ -14541,13 +14551,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_visible_from_ui;
+      final Core.Type_any output = Ui.e_ui_visible_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_visible_from_ui;
+      final Core.Type_any output = Ui.t_ui_visible_from_ui;
       return output;
     }
 
@@ -14559,8 +14569,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_ui_visible_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_ui_visible_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -14568,14 +14578,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_ui_visible_from_ui(ui);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_visible_from_ui(final Ui.Type_ui ui) {
-      Ui.Type_ui output = Ui.f_ui_visible_from_ui(ui);
+      final Ui.Type_ui output = Ui.f_ui_visible_from_ui(ui);
       return output;
     }
 
@@ -14589,10 +14599,10 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uilist uilist = Ui.f_uilist_visible_from_ui(
+        final Ui.Type_uilist uilist = Ui.f_uilist_visible_from_ui(
           ui
         );
-        Core.Type_any output_1 = Core.f_first_from_list(
+        final Core.Type_any output_1 = Core.f_first_from_list(
           Ui.t_ui,
           uilist
         );
@@ -14630,13 +14640,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-write<-ui-child", // name
         0, // idx
@@ -14660,28 +14670,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_write_from_ui_child;
+      final Core.Type_any output = Ui.e_ui_write_from_ui_child;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_write_from_ui_child;
+      final Core.Type_any output = Ui.t_ui_write_from_ui_child;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui child = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui child = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_write_from_ui_child(ui, child);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_write_from_ui_child(final Ui.Type_ui ui, final Ui.Type_ui child) {
-      Ui.Type_ui output = Ui.f_ui_write_from_ui_child(ui, child);
+      final Ui.Type_ui output = Ui.f_ui_write_from_ui_child(ui, child);
       return output;
     }
 
@@ -14695,14 +14705,14 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string childid = child.uid();
-        Ui.Type_uimap uimap = ui.uimap();
-        Core.Type_boolean write = Core.f_boolean_write_from_map_name_value(
+        final Core.Type_string childid = child.uid();
+        final Ui.Type_uimap uimap = ui.uimap();
+        final Core.Type_boolean write = Core.f_boolean_write_from_map_name_value(
           uimap,
           childid,
           child
         );
-        Core.Type_any output_1 = ui;
+        final Core.Type_any output_1 = ui;
         return output_1;
       })
     );
@@ -14737,13 +14747,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-write<-ui-childmap", // name
         0, // idx
@@ -14767,28 +14777,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_write_from_ui_childmap;
+      final Core.Type_any output = Ui.e_ui_write_from_ui_childmap;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_write_from_ui_childmap;
+      final Core.Type_any output = Ui.t_ui_write_from_ui_childmap;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_uimap childmap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_uimap childmap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_write_from_ui_childmap(ui, childmap);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_write_from_ui_childmap(final Ui.Type_ui ui, final Ui.Type_uimap childmap) {
-      Ui.Type_ui output = Ui.f_ui_write_from_ui_childmap(ui, childmap);
+      final Ui.Type_ui output = Ui.f_ui_write_from_ui_childmap(ui, childmap);
       return output;
     }
 
@@ -14802,12 +14812,12 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap workmap = Core.f_map_from_map_1(
+        final Ui.Type_uimap workmap = Core.f_map_from_map_1(
           Ui.t_uimap,
           childmap,
           Core.t_any_from_key_value.vx_fn_new((key_any, value_any) -> {
-            Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
-            Ui.Type_ui value = Core.f_any_from_any(Ui.t_ui, value_any);
+            final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
+            final Ui.Type_ui value = Core.f_any_from_any(Ui.t_ui, value_any);
             Core.Type_any output_2 = Ui.f_ui_write_from_ui_child(
               ui,
               value
@@ -14815,7 +14825,7 @@ public final class Ui {
             return output_2;
           })
         );
-        Core.Type_any output_1 = ui;
+        final Core.Type_any output_1 = ui;
         return output_1;
       })
     );
@@ -14850,13 +14860,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-write<-ui-visible", // name
         0, // idx
@@ -14880,28 +14890,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_write_from_ui_visible;
+      final Core.Type_any output = Ui.e_ui_write_from_ui_visible;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_write_from_ui_visible;
+      final Core.Type_any output = Ui.t_ui_write_from_ui_visible;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int visible = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int visible = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_write_from_ui_visible(ui, visible);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_write_from_ui_visible(final Ui.Type_ui ui, final Core.Type_int visible) {
-      Ui.Type_ui output = Ui.f_ui_write_from_ui_visible(ui, visible);
+      final Ui.Type_ui output = Ui.f_ui_write_from_ui_visible(ui, visible);
       return output;
     }
 
@@ -14925,7 +14935,7 @@ public final class Ui {
             return output_1;
           }),
           Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = ui;
+            final Core.Type_any output_2 = ui;
             return output_2;
           })
         ),
@@ -14934,16 +14944,16 @@ public final class Ui {
             Core.Type_any output_3 = Core.f_let(
               Ui.t_ui,
               Core.t_any_from_func.vx_fn_new(() -> {
-                Ui.Type_uimap uimap = ui.uimap();
-                Ui.Type_uilist uilist1 = Ui.f_uilist_from_uimap(
+                final Ui.Type_uimap uimap = ui.uimap();
+                final Ui.Type_uilist uilist1 = Ui.f_uilist_from_uimap(
                   uimap
                 );
-                Ui.Type_uilist uilist2 = Core.f_list_from_list_intany(
+                final Ui.Type_uilist uilist2 = Core.f_list_from_list_intany(
                   Ui.t_uilist,
                   uilist1,
                   Core.t_any_from_int_any.vx_fn_new((posval_any, uival_any) -> {
-                    Core.Type_int posval = Core.f_any_from_any(Core.t_int, posval_any);
-                    Ui.Type_ui uival = Core.f_any_from_any(Ui.t_ui, uival_any);
+                    final Core.Type_int posval = Core.f_any_from_any(Core.t_int, posval_any);
+                    final Ui.Type_ui uival = Core.f_any_from_any(Ui.t_ui, uival_any);
                     Core.Type_any output_5 = Core.f_if_2(
                       Ui.t_ui,
                       Core.vx_new(
@@ -14992,7 +15002,7 @@ public final class Ui {
                     return output_5;
                   })
                 );
-                Core.Type_any output_4 = ui;
+                final Core.Type_any output_4 = ui;
                 return output_4;
               })
             );
@@ -15033,13 +15043,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui<-layout-ui-orig-parent", // name
         0, // idx
@@ -15063,30 +15073,30 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_from_layout_ui_orig_parent;
+      final Core.Type_any output = Ui.e_ui_from_layout_ui_orig_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_from_layout_ui_orig_parent;
+      final Core.Type_any output = Ui.t_ui_from_layout_ui_orig_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_layout layout = Core.f_any_from_any(Ui.t_layout, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_ui uiorig = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(3)));
+      final Ui.Type_layout layout = Core.f_any_from_any(Ui.t_layout, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui uiorig = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(2)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(3)));
       output = Ui.f_ui_from_layout_ui_orig_parent(layout, uiarg, uiorig, parent);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_from_layout_ui_orig_parent(final Ui.Type_layout layout, final Ui.Type_ui uiarg, final Ui.Type_ui uiorig, final Ui.Type_ui parent) {
-      Ui.Type_ui output = Ui.f_ui_from_layout_ui_orig_parent(layout, uiarg, uiorig, parent);
+      final Ui.Type_ui output = Ui.f_ui_from_layout_ui_orig_parent(layout, uiarg, uiorig, parent);
       return output;
     }
 
@@ -15100,16 +15110,16 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string name = layout.name();
-        Ui.Func_ui_layout_from_ui_orig_parent fn_layout = layout.fn_layout();
-        Ui.Type_ui uichg = Core.vx_any_from_func(
+        final Core.Type_string name = layout.name();
+        final Ui.Func_ui_layout_from_ui_orig_parent fn_layout = layout.fn_layout();
+        final Ui.Type_ui uichg = Core.vx_any_from_func(
           Ui.t_ui,
           fn_layout,
           uiarg,
           uiorig,
           parent
         );
-        Core.Type_any output_1 = uichg;
+        final Core.Type_any output_1 = uichg;
         return output_1;
       })
     );
@@ -15144,13 +15154,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui<-ui-find", // name
         0, // idx
@@ -15174,28 +15184,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_from_ui_find;
+      final Core.Type_any output = Ui.e_ui_from_ui_find;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_from_ui_find;
+      final Core.Type_any output = Ui.t_ui_from_ui_find;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string find = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string find = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_from_ui_find(uiarg, find);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_from_ui_find(final Ui.Type_ui uiarg, final Core.Type_string find) {
-      Ui.Type_ui output = Ui.f_ui_from_ui_find(uiarg, find);
+      final Ui.Type_ui output = Ui.f_ui_from_ui_find(uiarg, find);
       return output;
     }
 
@@ -15209,8 +15219,8 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_ui,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string uid = uiarg.uid();
-        Core.Type_any output_1 = Core.f_if_2(
+        final Core.Type_string uid = uiarg.uid();
+        final Core.Type_any output_1 = Core.f_if_2(
           Ui.t_ui,
           Core.vx_new(
             Core.t_thenelselist,
@@ -15238,7 +15248,7 @@ public final class Ui {
                 return output_4;
               }),
               Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_5 = uiarg;
+                final Core.Type_any output_5 = uiarg;
                 return output_5;
               })
             ),
@@ -15261,21 +15271,21 @@ public final class Ui {
                 Core.Type_any output_7 = Core.f_let(
                   Ui.t_ui,
                   Core.t_any_from_func.vx_fn_new(() -> {
-                    Core.Type_int afterpos = Core.f_plus(
+                    final Core.Type_int afterpos = Core.f_plus(
                       Core.f_length(
                         uid
                       ),
                       Core.vx_new_int(2)
                     );
-                    Core.Type_string after = Type.f_string_from_string_start(
+                    final Core.Type_string after = Type.f_string_from_string_start(
                       find,
                       afterpos
                     );
-                    Core.Type_int pos = Type.f_int_from_string_find(
+                    final Core.Type_int pos = Type.f_int_from_string_find(
                       after,
                       Core.vx_new_string("/")
                     );
-                    Core.Type_string subpart = Core.f_if_2(
+                    final Core.Type_string subpart = Core.f_if_2(
                       Core.t_string,
                       Core.vx_new(
                         Core.t_thenelselist,
@@ -15300,13 +15310,13 @@ public final class Ui {
                         ),
                         Core.f_else(
                           Core.t_any_from_func.vx_fn_new(() -> {
-                            Core.Type_any output_14 = after;
+                            final Core.Type_any output_14 = after;
                             return output_14;
                           })
                         )
                       )
                     );
-                    Core.Type_string subfind = Core.f_if_2(
+                    final Core.Type_string subfind = Core.f_if_2(
                       Core.t_string,
                       Core.vx_new(
                         Core.t_thenelselist,
@@ -15332,7 +15342,7 @@ public final class Ui {
                         )
                       )
                     );
-                    Core.Type_any output_8 = Core.f_if_2(
+                    final Core.Type_any output_8 = Core.f_if_2(
                       Ui.t_ui,
                       Core.vx_new(
                         Core.t_thenelselist,
@@ -15347,13 +15357,13 @@ public final class Ui {
                             Core.Type_any output_10 = Core.f_let(
                               Ui.t_ui,
                               Core.t_any_from_func.vx_fn_new(() -> {
-                                Ui.Type_uimap uimap = uiarg.uimap();
-                                Ui.Type_ui subui = Core.f_any_from_map(
+                                final Ui.Type_uimap uimap = uiarg.uimap();
+                                final Ui.Type_ui subui = Core.f_any_from_map(
                                   Ui.t_ui,
                                   uimap,
                                   subfind
                                 );
-                                Core.Type_any output_11 = Ui.f_ui_from_ui_find(
+                                final Core.Type_any output_11 = Ui.f_ui_from_ui_find(
                                   subui,
                                   find
                                 );
@@ -15407,13 +15417,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui<-ui-selected", // name
         0, // idx
@@ -15437,28 +15447,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_ui_from_ui_selected;
+      final Core.Type_any output = Ui.e_ui_from_ui_selected;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_ui_from_ui_selected;
+      final Core.Type_any output = Ui.t_ui_from_ui_selected;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int selected = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int selected = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_ui_from_ui_selected(ui, selected);
       return output;
     }
 
     @Override
     public Ui.Type_ui vx_ui_from_ui_selected(final Ui.Type_ui ui, final Core.Type_int selected) {
-      Ui.Type_ui output = Ui.f_ui_from_ui_selected(ui, selected);
+      final Ui.Type_ui output = Ui.f_ui_from_ui_selected(ui, selected);
       return output;
     }
 
@@ -15482,7 +15492,7 @@ public final class Ui {
             return output_1;
           }),
           Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = ui;
+            final Core.Type_any output_2 = ui;
             return output_2;
           })
         ),
@@ -15491,16 +15501,16 @@ public final class Ui {
             Core.Type_any output_3 = Core.f_let(
               Ui.t_ui,
               Core.t_any_from_func.vx_fn_new(() -> {
-                Ui.Type_uimap uimap = ui.uimap();
-                Ui.Type_uilist uilist1 = Ui.f_uilist_from_uimap(
+                final Ui.Type_uimap uimap = ui.uimap();
+                final Ui.Type_uilist uilist1 = Ui.f_uilist_from_uimap(
                   uimap
                 );
-                Ui.Type_uilist uilist2 = Core.f_list_from_list_intany(
+                final Ui.Type_uilist uilist2 = Core.f_list_from_list_intany(
                   Ui.t_uilist,
                   uilist1,
                   Core.t_any_from_int_any.vx_fn_new((posval_any, uival_any) -> {
-                    Core.Type_int posval = Core.f_any_from_any(Core.t_int, posval_any);
-                    Ui.Type_ui uival = Core.f_any_from_any(Ui.t_ui, uival_any);
+                    final Core.Type_int posval = Core.f_any_from_any(Core.t_int, posval_any);
+                    final Ui.Type_ui uival = Core.f_any_from_any(Ui.t_ui, uival_any);
                     Core.Type_any output_5 = Core.f_if_2(
                       Ui.t_ui,
                       Core.vx_new(
@@ -15543,10 +15553,10 @@ public final class Ui {
                     return output_5;
                   })
                 );
-                Ui.Type_uimap childmap = Ui.f_uimap_from_uilist(
+                final Ui.Type_uimap childmap = Ui.f_uimap_from_uilist(
                   uilist2
                 );
-                Core.Type_any output_4 = Core.f_copy(
+                final Core.Type_any output_4 = Core.f_copy(
                   ui,
                   Core.vx_new(
                     Core.t_anylist,
@@ -15592,13 +15602,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uid-selected<-ui", // name
         0, // idx
@@ -15622,13 +15632,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uid_selected_from_ui;
+      final Core.Type_any output = Ui.e_uid_selected_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uid_selected_from_ui;
+      final Core.Type_any output = Ui.t_uid_selected_from_ui;
       return output;
     }
 
@@ -15640,8 +15650,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_uid_selected_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_uid_selected_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -15649,14 +15659,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_uid_selected_from_ui(ui);
       return output;
     }
 
     @Override
     public Core.Type_string vx_uid_selected_from_ui(final Ui.Type_ui ui) {
-      Core.Type_string output = Ui.f_uid_selected_from_ui(ui);
+      final Core.Type_string output = Ui.f_uid_selected_from_ui(ui);
       return output;
     }
 
@@ -15670,10 +15680,10 @@ public final class Ui {
     output = Core.f_let(
       Core.t_string,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_stringlist uidlist = Ui.f_stringlist_selected_from_ui(
+        final Core.Type_stringlist uidlist = Ui.f_stringlist_selected_from_ui(
           ui
         );
-        Core.Type_any output_1 = Core.f_first_from_list(
+        final Core.Type_any output_1 = Core.f_first_from_list(
           Core.t_string,
           uidlist
         );
@@ -15709,13 +15719,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uiengine-readstate", // name
         0, // idx
@@ -15739,27 +15749,27 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uiengine_readstate;
+      final Core.Type_any output = Ui.e_uiengine_readstate;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uiengine_readstate;
+      final Core.Type_any output = Ui.t_uiengine_readstate;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_uiengine_readstate(context);
       return output;
     }
 
     @Override
     public Ui.Type_uiengine vx_uiengine_readstate(final Core.Type_context context) {
-      Ui.Type_uiengine output = Ui.f_uiengine_readstate(context);
+      final Ui.Type_uiengine output = Ui.f_uiengine_readstate(context);
       return output;
     }
 
@@ -15805,13 +15815,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uiengine-render", // name
         0, // idx
@@ -15835,13 +15845,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uiengine_render;
+      final Core.Type_any output = Ui.e_uiengine_render;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uiengine_render;
+      final Core.Type_any output = Ui.t_uiengine_render;
       return output;
     }
 
@@ -15853,8 +15863,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_uiengine inputval = (Ui.Type_uiengine)value;
-      Core.Type_any outputval = Ui.f_uiengine_render(context, inputval);
+      final Ui.Type_uiengine inputval = (Ui.Type_uiengine)value;
+      final Core.Type_any outputval = Ui.f_uiengine_render(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -15862,15 +15872,15 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_uiengine uiengine = Core.f_any_from_any(Ui.t_uiengine, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_uiengine uiengine = Core.f_any_from_any(Ui.t_uiengine, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_uiengine_render(context, uiengine);
       return output;
     }
 
     @Override
     public Ui.Type_uiengine vx_uiengine_render(final Core.Type_context context, final Ui.Type_uiengine uiengine) {
-      Ui.Type_uiengine output = Ui.f_uiengine_render(context, uiengine);
+      final Ui.Type_uiengine output = Ui.f_uiengine_render(context, uiengine);
       return output;
     }
 
@@ -15884,31 +15894,31 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_uiengine,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_stylesheet stylesheet = uiengine.stylesheet();
-        Ui.Type_ui ui = uiengine.ui();
-        Ui.Type_layoutengine layoutengine = uiengine.layoutengine();
-        Core.Type_boolean issetstate = Ui.f_boolean_writestate_from_uiengine(
+        final Ui.Type_stylesheet stylesheet = uiengine.stylesheet();
+        final Ui.Type_ui ui = uiengine.ui();
+        final Ui.Type_layoutengine layoutengine = uiengine.layoutengine();
+        final Core.Type_boolean issetstate = Ui.f_boolean_writestate_from_uiengine(
           context,
           uiengine
         );
-        Ui.Func_stylesheet_render stylesheetrender = layoutengine.stylesheetrender();
-        Ui.Type_stylesheet stylesheetrend = Core.vx_any_from_func(
+        final Ui.Func_stylesheet_render stylesheetrender = layoutengine.stylesheetrender();
+        final Ui.Type_stylesheet stylesheetrend = Core.vx_any_from_func(
           Ui.t_stylesheet,
           stylesheetrender,
           stylesheet
         );
-        Ui.Type_ui uiaddlayout = Ui.f_ui_addlayout_from_ui_layoutengine(
+        final Ui.Type_ui uiaddlayout = Ui.f_ui_addlayout_from_ui_layoutengine(
           ui,
           layoutengine
         );
-        Core.Type_boolean isuiwrite = Ui.f_boolean_writestate_from_uiapp(
+        final Core.Type_boolean isuiwrite = Ui.f_boolean_writestate_from_uiapp(
           context,
           uiaddlayout
         );
-        Ui.Type_ui uirendered = Ui.f_ui_layout(
+        final Ui.Type_ui uirendered = Ui.f_ui_layout(
           uiaddlayout
         );
-        Core.Type_any output_1 = Core.f_copy(
+        final Core.Type_any output_1 = Core.f_copy(
           uiengine,
           Core.vx_new(
             Core.t_anylist,
@@ -15949,13 +15959,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uilist-selected<-ui", // name
         0, // idx
@@ -15979,13 +15989,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uilist_selected_from_ui;
+      final Core.Type_any output = Ui.e_uilist_selected_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uilist_selected_from_ui;
+      final Core.Type_any output = Ui.t_uilist_selected_from_ui;
       return output;
     }
 
@@ -15997,8 +16007,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_uilist_selected_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_uilist_selected_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -16006,14 +16016,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_uilist_selected_from_ui(uiarg);
       return output;
     }
 
     @Override
     public Ui.Type_uilist vx_uilist_selected_from_ui(final Ui.Type_ui uiarg) {
-      Ui.Type_uilist output = Ui.f_uilist_selected_from_ui(uiarg);
+      final Ui.Type_uilist output = Ui.f_uilist_selected_from_ui(uiarg);
       return output;
     }
 
@@ -16027,15 +16037,15 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_uilist,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = uiarg.uimap();
-        Ui.Type_uilist uilist = Ui.f_uilist_from_uimap(
+        final Ui.Type_uimap uimap = uiarg.uimap();
+        final Ui.Type_uilist uilist = Ui.f_uilist_from_uimap(
           uimap
         );
-        Core.Type_any output_1 = Collection.f_list_from_list_filter(
+        final Core.Type_any output_1 = Collection.f_list_from_list_filter(
           Ui.t_uilist,
           uilist,
           Core.t_any_from_any.vx_fn_new((item_any) -> {
-            Ui.Type_ui item = Core.f_any_from_any(Ui.t_ui, item_any);
+            final Ui.Type_ui item = Core.f_any_from_any(Ui.t_ui, item_any);
             Core.Type_any output_2 = Core.f_if(
               Ui.t_ui,
               item.selected(),
@@ -16077,13 +16087,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uilist-visible<-ui", // name
         0, // idx
@@ -16107,13 +16117,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uilist_visible_from_ui;
+      final Core.Type_any output = Ui.e_uilist_visible_from_ui;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uilist_visible_from_ui;
+      final Core.Type_any output = Ui.t_uilist_visible_from_ui;
       return output;
     }
 
@@ -16125,8 +16135,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_ui inputval = (Ui.Type_ui)value;
-      Core.Type_any outputval = Ui.f_uilist_visible_from_ui(inputval);
+      final Ui.Type_ui inputval = (Ui.Type_ui)value;
+      final Core.Type_any outputval = Ui.f_uilist_visible_from_ui(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -16134,14 +16144,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui uiarg = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_uilist_visible_from_ui(uiarg);
       return output;
     }
 
     @Override
     public Ui.Type_uilist vx_uilist_visible_from_ui(final Ui.Type_ui uiarg) {
-      Ui.Type_uilist output = Ui.f_uilist_visible_from_ui(uiarg);
+      final Ui.Type_uilist output = Ui.f_uilist_visible_from_ui(uiarg);
       return output;
     }
 
@@ -16155,15 +16165,15 @@ public final class Ui {
     output = Core.f_let(
       Ui.t_uilist,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Ui.Type_uimap uimap = uiarg.uimap();
-        Ui.Type_uilist uilist = Ui.f_uilist_from_uimap(
+        final Ui.Type_uimap uimap = uiarg.uimap();
+        final Ui.Type_uilist uilist = Ui.f_uilist_from_uimap(
           uimap
         );
-        Core.Type_any output_1 = Collection.f_list_from_list_filter(
+        final Core.Type_any output_1 = Collection.f_list_from_list_filter(
           Ui.t_uilist,
           uilist,
           Core.t_any_from_any.vx_fn_new((item_any) -> {
-            Ui.Type_ui item = Core.f_any_from_any(Ui.t_ui, item_any);
+            final Ui.Type_ui item = Core.f_any_from_any(Ui.t_ui, item_any);
             Core.Type_any output_2 = Core.f_if(
               Ui.t_ui,
               Core.f_not(
@@ -16206,13 +16216,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uilist<-uimap", // name
         0, // idx
@@ -16236,13 +16246,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uilist_from_uimap;
+      final Core.Type_any output = Ui.e_uilist_from_uimap;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uilist_from_uimap;
+      final Core.Type_any output = Ui.t_uilist_from_uimap;
       return output;
     }
 
@@ -16254,8 +16264,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_uimap inputval = (Ui.Type_uimap)value;
-      Core.Type_any outputval = Ui.f_uilist_from_uimap(inputval);
+      final Ui.Type_uimap inputval = (Ui.Type_uimap)value;
+      final Core.Type_any outputval = Ui.f_uilist_from_uimap(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -16263,14 +16273,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_uimap uimap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_uimap uimap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_uilist_from_uimap(uimap);
       return output;
     }
 
     @Override
     public Ui.Type_uilist vx_uilist_from_uimap(final Ui.Type_uimap uimap) {
-      Ui.Type_uilist output = Ui.f_uilist_from_uimap(uimap);
+      final Ui.Type_uilist output = Ui.f_uilist_from_uimap(uimap);
       return output;
     }
 
@@ -16285,8 +16295,8 @@ public final class Ui {
       Ui.t_uilist,
       uimap,
       Core.t_any_from_key_value.vx_fn_new((key_any, item_any) -> {
-        Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
-        Ui.Type_ui item = Core.f_any_from_any(Ui.t_ui, item_any);
+        final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
+        final Ui.Type_ui item = Core.f_any_from_any(Ui.t_ui, item_any);
         Core.Type_any output_1 = item;
         return output_1;
       })
@@ -16323,13 +16333,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uimap-addlayout<-uimap-layoutmap-else", // name
         0, // idx
@@ -16353,29 +16363,29 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uimap_addlayout_from_uimap_layoutmap_else;
+      final Core.Type_any output = Ui.e_uimap_addlayout_from_uimap_layoutmap_else;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uimap_addlayout_from_uimap_layoutmap_else;
+      final Core.Type_any output = Ui.t_uimap_addlayout_from_uimap_layoutmap_else;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_uimap uimap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_layoutmap layoutmap = Core.f_any_from_any(Ui.t_layoutmap, arglist.vx_any(Core.vx_new_int(1)));
-      Ui.Type_layout layoutelse = Core.f_any_from_any(Ui.t_layout, arglist.vx_any(Core.vx_new_int(2)));
+      final Ui.Type_uimap uimap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_layoutmap layoutmap = Core.f_any_from_any(Ui.t_layoutmap, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_layout layoutelse = Core.f_any_from_any(Ui.t_layout, arglist.vx_any(Core.vx_new_int(2)));
       output = Ui.f_uimap_addlayout_from_uimap_layoutmap_else(uimap, layoutmap, layoutelse);
       return output;
     }
 
     @Override
     public Ui.Type_uimap vx_uimap_addlayout_from_uimap_layoutmap_else(final Ui.Type_uimap uimap, final Ui.Type_layoutmap layoutmap, final Ui.Type_layout layoutelse) {
-      Ui.Type_uimap output = Ui.f_uimap_addlayout_from_uimap_layoutmap_else(uimap, layoutmap, layoutelse);
+      final Ui.Type_uimap output = Ui.f_uimap_addlayout_from_uimap_layoutmap_else(uimap, layoutmap, layoutelse);
       return output;
     }
 
@@ -16390,8 +16400,8 @@ public final class Ui {
       Ui.t_uimap,
       uimap,
       Core.t_any_from_key_value.vx_fn_new((key_any, ui_any) -> {
-        Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
-        Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, ui_any);
+        final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
+        final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, ui_any);
         Core.Type_any output_1 = Ui.f_ui_addlayout_from_ui_layoutmap_else(
           ui,
           layoutmap,
@@ -16431,13 +16441,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uimap-layout<-uimap-parent", // name
         0, // idx
@@ -16461,28 +16471,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uimap_layout_from_uimap_parent;
+      final Core.Type_any output = Ui.e_uimap_layout_from_uimap_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uimap_layout_from_uimap_parent;
+      final Core.Type_any output = Ui.t_uimap_layout_from_uimap_parent;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_uimap uimap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(0)));
-      Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_uimap uimap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui parent = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_uimap_layout_from_uimap_parent(uimap, parent);
       return output;
     }
 
     @Override
     public Ui.Type_uimap vx_uimap_layout_from_uimap_parent(final Ui.Type_uimap uimap, final Ui.Type_ui parent) {
-      Ui.Type_uimap output = Ui.f_uimap_layout_from_uimap_parent(uimap, parent);
+      final Ui.Type_uimap output = Ui.f_uimap_layout_from_uimap_parent(uimap, parent);
       return output;
     }
 
@@ -16497,8 +16507,8 @@ public final class Ui {
       Ui.t_uimap,
       uimap,
       Core.t_any_from_key_value.vx_fn_new((key_any, value_any) -> {
-        Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
-        Ui.Type_ui value = Core.f_any_from_any(Ui.t_ui, value_any);
+        final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
+        final Ui.Type_ui value = Core.f_any_from_any(Ui.t_ui, value_any);
         Core.Type_any output_1 = Ui.f_ui_layout_from_ui_orig_parent(
           value,
           Core.f_empty(
@@ -16538,13 +16548,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uimap<-uilist", // name
         0, // idx
@@ -16568,13 +16578,13 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uimap_from_uilist;
+      final Core.Type_any output = Ui.e_uimap_from_uilist;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uimap_from_uilist;
+      final Core.Type_any output = Ui.t_uimap_from_uilist;
       return output;
     }
 
@@ -16586,8 +16596,8 @@ public final class Ui {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Ui.Type_uilist inputval = (Ui.Type_uilist)value;
-      Core.Type_any outputval = Ui.f_uimap_from_uilist(inputval);
+      final Ui.Type_uilist inputval = (Ui.Type_uilist)value;
+      final Core.Type_any outputval = Ui.f_uimap_from_uilist(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -16595,14 +16605,14 @@ public final class Ui {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_uilist uilist = Core.f_any_from_any(Ui.t_uilist, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_uilist uilist = Core.f_any_from_any(Ui.t_uilist, arglist.vx_any(Core.vx_new_int(0)));
       output = Ui.f_uimap_from_uilist(uilist);
       return output;
     }
 
     @Override
     public Ui.Type_uimap vx_uimap_from_uilist(final Ui.Type_uilist uilist) {
-      Ui.Type_uimap output = Ui.f_uimap_from_uilist(uilist);
+      final Ui.Type_uimap output = Ui.f_uimap_from_uilist(uilist);
       return output;
     }
 
@@ -16617,7 +16627,7 @@ public final class Ui {
       Ui.t_uimap,
       uilist,
       Core.t_any_from_any.vx_fn_new((ui_any) -> {
-        Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, ui_any);
+        final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, ui_any);
         Core.Type_any output_1 = ui.uid();
         return output_1;
       })
@@ -16653,13 +16663,13 @@ public final class Ui {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uimap<-uimap-data", // name
         0, // idx
@@ -16683,28 +16693,28 @@ public final class Ui {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Ui.e_uimap_from_uimap_data;
+      final Core.Type_any output = Ui.e_uimap_from_uimap_data;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Ui.t_uimap_from_uimap_data;
+      final Core.Type_any output = Ui.t_uimap_from_uimap_data;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Ui.Type_uimap uimap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any data = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Ui.Type_uimap uimap = Core.f_any_from_any(Ui.t_uimap, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any data = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
       output = Ui.f_uimap_from_uimap_data(uimap, data);
       return output;
     }
 
     @Override
     public Ui.Type_uimap vx_uimap_from_uimap_data(final Ui.Type_uimap uimap, final Core.Type_any data) {
-      Ui.Type_uimap output = Ui.f_uimap_from_uimap_data(uimap, data);
+      final Ui.Type_uimap output = Ui.f_uimap_from_uimap_data(uimap, data);
       return output;
     }
 
@@ -16919,7 +16929,12 @@ public final class Ui {
     mapfunc.put("uimap-layout<-uimap-parent", Ui.t_uimap_layout_from_uimap_parent);
     mapfunc.put("uimap<-uilist", Ui.t_uimap_from_uilist);
     mapfunc.put("uimap<-uimap-data", Ui.t_uimap_from_uimap_data);
-    Core.vx_global_package_set("vx/ui/ui", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/ui/ui",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

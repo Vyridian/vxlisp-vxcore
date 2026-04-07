@@ -23,7 +23,7 @@ object vx_ui_ui {
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -163,7 +163,7 @@ object vx_ui_ui {
       map.put(":right", this.right())
       map.put(":top", this.top())
       map.put(":bottom", this.bottom())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -255,7 +255,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("left"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -279,7 +279,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("right"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -303,7 +303,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("top"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -327,7 +327,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("bottom"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/bounds", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -403,7 +403,7 @@ object vx_ui_ui {
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -545,7 +545,7 @@ object vx_ui_ui {
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -685,7 +685,7 @@ object vx_ui_ui {
       map.put(":fontface", this.fontface())
       map.put(":fontsize", this.fontsize())
       map.put(":fontstyle", this.fontstyle())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -777,7 +777,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -798,7 +798,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fontface"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -822,7 +822,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fontsize"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -843,7 +843,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fontstyle"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/font", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -982,7 +982,7 @@ object vx_ui_ui {
       map.put(":weight", this.weight())
       map.put(":unicode", this.unicode())
       map.put(":filelist", this.filelist())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -1074,7 +1074,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1098,7 +1098,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("weight"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1122,7 +1122,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("unicode"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1143,7 +1143,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("filelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/fontface", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1214,12 +1214,12 @@ object vx_ui_ui {
   class Class_fontfacelist : vx_core.Class_base, Type_fontfacelist {
     constructor() {}
 
-    var vx_p_list : List<vx_ui_ui.Type_fontface> = vx_core.immutablelist(
+    var vx_p_list : List<vx_ui_ui.Type_fontface> = vx_core.vx_listimmutable(
       ArrayList<vx_ui_ui.Type_fontface>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -1299,7 +1299,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_fontfacelist = vx_ui_ui.Class_fontfacelist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -1353,11 +1353,12 @@ object vx_ui_ui {
   class Class_fontfacemap : vx_core.Class_base, Type_fontfacemap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_ui_ui.Type_fontface> = vx_core.immutablemap(LinkedHashMap<String, vx_ui_ui.Type_fontface>())
+    var vx_p_map : Map<String, vx_ui_ui.Type_fontface> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_ui_ui.Type_fontface>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -1369,13 +1370,13 @@ object vx_ui_ui {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_ui_ui.Type_fontface> = LinkedHashMap<String, vx_ui_ui.Type_fontface>(this.vx_p_map)
+        var map : MutableMap<String, vx_ui_ui.Type_fontface> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_ui_ui.e_fontface) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -1388,18 +1389,18 @@ object vx_ui_ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_ui_ui.Type_fontface> = map.vx_p_map
+      val mapval : Map<String, vx_ui_ui.Type_fontface> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_ui_ui.e_fontface)
       return output
     }
 
     override fun vx_mapfontface() : Map<String, vx_ui_ui.Type_fontface> {
-      var output : Map<String, vx_ui_ui.Type_fontface> = this.vx_p_map
+      val output : Map<String, vx_ui_ui.Type_fontface> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_fontface(key)
+      val output : vx_core.Type_any = this.vx_fontface(key)
       return output
     }
 
@@ -1420,7 +1421,7 @@ object vx_ui_ui {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -1440,7 +1441,9 @@ object vx_ui_ui {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_ui_ui.Type_fontface> = LinkedHashMap<String, vx_ui_ui.Type_fontface>(value.vx_mapfontface())
+      var mapval : MutableMap<String, vx_ui_ui.Type_fontface> = vx_core.vx_mapmutable(
+        value.vx_mapfontface()
+      )
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -1487,7 +1490,7 @@ object vx_ui_ui {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/ui/ui/fontfacemap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -1503,7 +1506,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_fontfacemap = vx_ui_ui.Class_fontfacemap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -1557,11 +1560,12 @@ object vx_ui_ui {
   class Class_fontmap : vx_core.Class_base, Type_fontmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_ui_ui.Type_font> = vx_core.immutablemap(LinkedHashMap<String, vx_ui_ui.Type_font>())
+    var vx_p_map : Map<String, vx_ui_ui.Type_font> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_ui_ui.Type_font>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -1573,13 +1577,13 @@ object vx_ui_ui {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_ui_ui.Type_font> = LinkedHashMap<String, vx_ui_ui.Type_font>(this.vx_p_map)
+        var map : MutableMap<String, vx_ui_ui.Type_font> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_ui_ui.e_font) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -1592,18 +1596,18 @@ object vx_ui_ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_ui_ui.Type_font> = map.vx_p_map
+      val mapval : Map<String, vx_ui_ui.Type_font> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_ui_ui.e_font)
       return output
     }
 
     override fun vx_mapfont() : Map<String, vx_ui_ui.Type_font> {
-      var output : Map<String, vx_ui_ui.Type_font> = this.vx_p_map
+      val output : Map<String, vx_ui_ui.Type_font> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_font(key)
+      val output : vx_core.Type_any = this.vx_font(key)
       return output
     }
 
@@ -1624,7 +1628,7 @@ object vx_ui_ui {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -1644,7 +1648,7 @@ object vx_ui_ui {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_ui_ui.Type_font> = LinkedHashMap<String, vx_ui_ui.Type_font>(value.vx_mapfont())
+      var mapval : MutableMap<String, vx_ui_ui.Type_font> = vx_core.vx_mapmutable(value.vx_mapfont())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -1691,7 +1695,7 @@ object vx_ui_ui {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/ui/ui/fontmap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -1707,7 +1711,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_fontmap = vx_ui_ui.Class_fontmap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -1784,7 +1788,7 @@ object vx_ui_ui {
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":name", this.name())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -1870,7 +1874,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/fontstyle", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1938,11 +1942,12 @@ object vx_ui_ui {
   class Class_fontstylemap : vx_core.Class_base, Type_fontstylemap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_ui_ui.Type_fontstyle> = vx_core.immutablemap(LinkedHashMap<String, vx_ui_ui.Type_fontstyle>())
+    var vx_p_map : Map<String, vx_ui_ui.Type_fontstyle> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_ui_ui.Type_fontstyle>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -1954,13 +1959,13 @@ object vx_ui_ui {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_ui_ui.Type_fontstyle> = LinkedHashMap<String, vx_ui_ui.Type_fontstyle>(this.vx_p_map)
+        var map : MutableMap<String, vx_ui_ui.Type_fontstyle> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_ui_ui.e_fontstyle) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -1973,18 +1978,18 @@ object vx_ui_ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_ui_ui.Type_fontstyle> = map.vx_p_map
+      val mapval : Map<String, vx_ui_ui.Type_fontstyle> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_ui_ui.e_fontstyle)
       return output
     }
 
     override fun vx_mapfontstyle() : Map<String, vx_ui_ui.Type_fontstyle> {
-      var output : Map<String, vx_ui_ui.Type_fontstyle> = this.vx_p_map
+      val output : Map<String, vx_ui_ui.Type_fontstyle> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_fontstyle(key)
+      val output : vx_core.Type_any = this.vx_fontstyle(key)
       return output
     }
 
@@ -2005,7 +2010,7 @@ object vx_ui_ui {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -2025,7 +2030,9 @@ object vx_ui_ui {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_ui_ui.Type_fontstyle> = LinkedHashMap<String, vx_ui_ui.Type_fontstyle>(value.vx_mapfontstyle())
+      var mapval : MutableMap<String, vx_ui_ui.Type_fontstyle> = vx_core.vx_mapmutable(
+        value.vx_mapfontstyle()
+      )
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -2072,7 +2079,7 @@ object vx_ui_ui {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/ui/ui/fontstylemap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -2088,7 +2095,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_fontstylemap = vx_ui_ui.Class_fontstylemap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -2195,7 +2202,7 @@ object vx_ui_ui {
       map.put(":name", this.name())
       map.put(":label", this.label())
       map.put(":file", this.file())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2285,7 +2292,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/image", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2309,7 +2316,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("label"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/image", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2330,7 +2337,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("file"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/image", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2438,7 +2445,7 @@ object vx_ui_ui {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":name", this.name())
       map.put(":fn-layout", this.fn_layout())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2526,7 +2533,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layout", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2547,7 +2554,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fn-layout"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layout", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2744,7 +2751,7 @@ object vx_ui_ui {
       map.put(":layoutmap", this.layoutmap())
       map.put(":layoutelse", this.layoutelse())
       map.put(":stylesheetrender", this.stylesheetrender())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2844,7 +2851,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2865,7 +2872,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("boolean-print"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2886,7 +2893,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("boolean-layoutremove"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2907,7 +2914,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("boolean-layoutselected"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2928,7 +2935,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("boolean-layoutvisible"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2949,7 +2956,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("layoutmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2970,7 +2977,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("layoutelse"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2991,7 +2998,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylesheetrender"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3066,12 +3073,12 @@ object vx_ui_ui {
   class Class_layoutlist : vx_core.Class_base, Type_layoutlist {
     constructor() {}
 
-    var vx_p_list : List<vx_ui_ui.Type_layout> = vx_core.immutablelist(
+    var vx_p_list : List<vx_ui_ui.Type_layout> = vx_core.vx_listimmutable(
       ArrayList<vx_ui_ui.Type_layout>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -3151,7 +3158,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_layoutlist = vx_ui_ui.Class_layoutlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -3205,11 +3212,12 @@ object vx_ui_ui {
   class Class_layoutmap : vx_core.Class_base, Type_layoutmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_ui_ui.Type_layout> = vx_core.immutablemap(LinkedHashMap<String, vx_ui_ui.Type_layout>())
+    var vx_p_map : Map<String, vx_ui_ui.Type_layout> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_ui_ui.Type_layout>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -3221,13 +3229,13 @@ object vx_ui_ui {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_ui_ui.Type_layout> = LinkedHashMap<String, vx_ui_ui.Type_layout>(this.vx_p_map)
+        var map : MutableMap<String, vx_ui_ui.Type_layout> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_ui_ui.e_layout) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -3240,18 +3248,18 @@ object vx_ui_ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_ui_ui.Type_layout> = map.vx_p_map
+      val mapval : Map<String, vx_ui_ui.Type_layout> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_ui_ui.e_layout)
       return output
     }
 
     override fun vx_maplayout() : Map<String, vx_ui_ui.Type_layout> {
-      var output : Map<String, vx_ui_ui.Type_layout> = this.vx_p_map
+      val output : Map<String, vx_ui_ui.Type_layout> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_layout(key)
+      val output : vx_core.Type_any = this.vx_layout(key)
       return output
     }
 
@@ -3272,7 +3280,7 @@ object vx_ui_ui {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -3292,7 +3300,7 @@ object vx_ui_ui {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_ui_ui.Type_layout> = LinkedHashMap<String, vx_ui_ui.Type_layout>(value.vx_maplayout())
+      var mapval : MutableMap<String, vx_ui_ui.Type_layout> = vx_core.vx_mapmutable(value.vx_maplayout())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -3339,7 +3347,7 @@ object vx_ui_ui {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/ui/ui/layoutmap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -3355,7 +3363,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_layoutmap = vx_ui_ui.Class_layoutmap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -3432,7 +3440,7 @@ object vx_ui_ui {
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":name", this.name())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -3518,7 +3526,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/pin", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3684,7 +3692,7 @@ object vx_ui_ui {
       map.put(":t", this.t())
       map.put(":i", this.i())
       map.put(":pointtype", this.pointtype())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -3780,7 +3788,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("x"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3804,7 +3812,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("y"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3828,7 +3836,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("z"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3852,7 +3860,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("t"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3876,7 +3884,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("i"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3897,7 +3905,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("pointtype"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/point", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4374,7 +4382,7 @@ object vx_ui_ui {
       map.put(":pointsize", this.pointsize())
       map.put(":scroll-x", this.scroll_x())
       map.put(":scroll-y", this.scroll_y())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -4502,7 +4510,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4523,7 +4531,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("align"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4544,7 +4552,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("boundsmargin"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4565,7 +4573,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("boundspadding"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4589,7 +4597,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("color-bkg"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4613,7 +4621,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("color-bkghover"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4637,7 +4645,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("color-border"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4661,7 +4669,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("color-font"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4682,7 +4690,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("cursor"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4703,7 +4711,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("flip"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4724,7 +4732,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("font"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4748,7 +4756,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("hidden"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4769,7 +4777,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("image-bkg"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4790,7 +4798,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("layout"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4811,7 +4819,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("type"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4832,7 +4840,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("pin"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4853,7 +4861,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("pointorigin"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4874,7 +4882,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("pointpos"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4895,7 +4903,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("pointrotate"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4916,7 +4924,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("pointsize"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4940,7 +4948,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("scroll-x"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4964,7 +4972,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("scroll-y"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -5053,12 +5061,12 @@ object vx_ui_ui {
   class Class_stylelist : vx_core.Class_base, Type_stylelist {
     constructor() {}
 
-    var vx_p_list : List<vx_ui_ui.Type_style> = vx_core.immutablelist(
+    var vx_p_list : List<vx_ui_ui.Type_style> = vx_core.vx_listimmutable(
       ArrayList<vx_ui_ui.Type_style>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -5138,7 +5146,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_stylelist = vx_ui_ui.Class_stylelist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -5192,11 +5200,12 @@ object vx_ui_ui {
   class Class_stylemap : vx_core.Class_base, Type_stylemap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_ui_ui.Type_style> = vx_core.immutablemap(LinkedHashMap<String, vx_ui_ui.Type_style>())
+    var vx_p_map : Map<String, vx_ui_ui.Type_style> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_ui_ui.Type_style>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -5208,13 +5217,13 @@ object vx_ui_ui {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_ui_ui.Type_style> = LinkedHashMap<String, vx_ui_ui.Type_style>(this.vx_p_map)
+        var map : MutableMap<String, vx_ui_ui.Type_style> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_ui_ui.e_style) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -5227,18 +5236,18 @@ object vx_ui_ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_ui_ui.Type_style> = map.vx_p_map
+      val mapval : Map<String, vx_ui_ui.Type_style> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_ui_ui.e_style)
       return output
     }
 
     override fun vx_mapstyle() : Map<String, vx_ui_ui.Type_style> {
-      var output : Map<String, vx_ui_ui.Type_style> = this.vx_p_map
+      val output : Map<String, vx_ui_ui.Type_style> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_style(key)
+      val output : vx_core.Type_any = this.vx_style(key)
       return output
     }
 
@@ -5259,7 +5268,7 @@ object vx_ui_ui {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -5279,7 +5288,7 @@ object vx_ui_ui {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_ui_ui.Type_style> = LinkedHashMap<String, vx_ui_ui.Type_style>(value.vx_mapstyle())
+      var mapval : MutableMap<String, vx_ui_ui.Type_style> = vx_core.vx_mapmutable(value.vx_mapstyle())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -5326,7 +5335,7 @@ object vx_ui_ui {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/ui/ui/stylemap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -5342,7 +5351,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_stylemap = vx_ui_ui.Class_stylemap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -5434,7 +5443,7 @@ object vx_ui_ui {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":fontfacemap", this.fontfacemap())
       map.put(":stylemap", this.stylemap())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -5519,7 +5528,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fontfacemap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -5540,7 +5549,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylemap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -5614,7 +5623,7 @@ object vx_ui_ui {
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -5874,7 +5883,7 @@ object vx_ui_ui {
       map.put(":eventmap", this.eventmap())
       map.put(":data", this.data())
       map.put(":uimap", this.uimap())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -5982,7 +5991,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("uid"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6006,7 +6015,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6027,7 +6036,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("layout"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6051,7 +6060,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("path"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6075,7 +6084,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("hidden"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6099,7 +6108,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("selected"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6123,7 +6132,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("selectmulti"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6144,7 +6153,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6165,7 +6174,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6186,7 +6195,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6207,7 +6216,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("data"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6228,7 +6237,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("uimap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/ui", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6375,7 +6384,7 @@ object vx_ui_ui {
       map.put(":layoutengine", this.layoutengine())
       map.put(":stylesheet", this.stylesheet())
       map.put(":ui", this.ui())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -6464,7 +6473,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("parentmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6485,7 +6494,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("layoutengine"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6506,7 +6515,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylesheet"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6527,7 +6536,7 @@ object vx_ui_ui {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("ui"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/ui/ui/uiengine", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6598,12 +6607,12 @@ object vx_ui_ui {
   class Class_uilist : vx_core.Class_base, Type_uilist {
     constructor() {}
 
-    var vx_p_list : List<vx_ui_ui.Type_ui> = vx_core.immutablelist(
+    var vx_p_list : List<vx_ui_ui.Type_ui> = vx_core.vx_listimmutable(
       ArrayList<vx_ui_ui.Type_ui>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -6683,7 +6692,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_uilist = vx_ui_ui.Class_uilist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -6737,11 +6746,12 @@ object vx_ui_ui {
   class Class_uimap : vx_core.Class_base, Type_uimap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_ui_ui.Type_ui> = vx_core.immutablemap(LinkedHashMap<String, vx_ui_ui.Type_ui>())
+    var vx_p_map : Map<String, vx_ui_ui.Type_ui> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_ui_ui.Type_ui>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -6753,13 +6763,13 @@ object vx_ui_ui {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_ui_ui.Type_ui> = LinkedHashMap<String, vx_ui_ui.Type_ui>(this.vx_p_map)
+        var map : MutableMap<String, vx_ui_ui.Type_ui> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_ui_ui.e_ui) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -6772,18 +6782,18 @@ object vx_ui_ui {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_ui_ui.Type_ui> = map.vx_p_map
+      val mapval : Map<String, vx_ui_ui.Type_ui> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_ui_ui.e_ui)
       return output
     }
 
     override fun vx_mapui() : Map<String, vx_ui_ui.Type_ui> {
-      var output : Map<String, vx_ui_ui.Type_ui> = this.vx_p_map
+      val output : Map<String, vx_ui_ui.Type_ui> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_ui(key)
+      val output : vx_core.Type_any = this.vx_ui(key)
       return output
     }
 
@@ -6804,7 +6814,7 @@ object vx_ui_ui {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -6824,7 +6834,7 @@ object vx_ui_ui {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_ui_ui.Type_ui> = LinkedHashMap<String, vx_ui_ui.Type_ui>(value.vx_mapui())
+      var mapval : MutableMap<String, vx_ui_ui.Type_ui> = vx_core.vx_mapmutable(value.vx_mapui())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -6871,7 +6881,7 @@ object vx_ui_ui {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/ui/ui/uimap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -6887,7 +6897,7 @@ object vx_ui_ui {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_ui_ui.Class_uimap = vx_ui_ui.Class_uimap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -6938,7 +6948,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-center", // name
         vx_ui_ui.t_align
@@ -6966,7 +6976,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-left", // name
         vx_ui_ui.t_align
@@ -6994,7 +7004,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "align-right", // name
         vx_ui_ui.t_align
@@ -7022,7 +7032,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-x", // name
         vx_ui_ui.t_align
@@ -7050,7 +7060,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-xy", // name
         vx_ui_ui.t_align
@@ -7078,7 +7088,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "flip-y", // name
         vx_ui_ui.t_align
@@ -7105,7 +7115,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-app", // name
         vx_ui_ui.t_layout
@@ -7142,7 +7152,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-background", // name
         vx_ui_ui.t_layout
@@ -7179,7 +7189,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-button", // name
         vx_ui_ui.t_layout
@@ -7216,7 +7226,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-combobox", // name
         vx_ui_ui.t_layout
@@ -7253,7 +7263,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-else", // name
         vx_ui_ui.t_layout
@@ -7290,7 +7300,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-columns", // name
         vx_ui_ui.t_layout
@@ -7327,7 +7337,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-item", // name
         vx_ui_ui.t_layout
@@ -7364,7 +7374,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-flow-rows", // name
         vx_ui_ui.t_layout
@@ -7401,7 +7411,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-image", // name
         vx_ui_ui.t_layout
@@ -7438,7 +7448,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-label", // name
         vx_ui_ui.t_layout
@@ -7475,7 +7485,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-main", // name
         vx_ui_ui.t_layout
@@ -7512,7 +7522,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-maxpanel", // name
         vx_ui_ui.t_layout
@@ -7549,7 +7559,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menubar", // name
         vx_ui_ui.t_layout
@@ -7586,7 +7596,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-menudrawer", // name
         vx_ui_ui.t_layout
@@ -7623,7 +7633,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-msgbox", // name
         vx_ui_ui.t_layout
@@ -7660,7 +7670,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navbar", // name
         vx_ui_ui.t_layout
@@ -7697,7 +7707,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-navdrawer", // name
         vx_ui_ui.t_layout
@@ -7734,7 +7744,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-panel", // name
         vx_ui_ui.t_layout
@@ -7771,7 +7781,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-parallax", // name
         vx_ui_ui.t_layout
@@ -7808,7 +7818,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusbar", // name
         vx_ui_ui.t_layout
@@ -7845,7 +7855,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-statusdrawer", // name
         vx_ui_ui.t_layout
@@ -7882,7 +7892,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-text", // name
         vx_ui_ui.t_layout
@@ -7919,7 +7929,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-textentry", // name
         vx_ui_ui.t_layout
@@ -7956,7 +7966,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "layout-titlebar", // name
         vx_ui_ui.t_layout
@@ -7993,7 +8003,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-bottom", // name
         vx_ui_ui.t_pin
@@ -8020,7 +8030,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center", // name
         vx_ui_ui.t_pin
@@ -8047,7 +8057,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-h", // name
         vx_ui_ui.t_pin
@@ -8074,7 +8084,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-center-v", // name
         vx_ui_ui.t_pin
@@ -8101,7 +8111,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-expand", // name
         vx_ui_ui.t_pin
@@ -8128,7 +8138,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-left", // name
         vx_ui_ui.t_pin
@@ -8155,7 +8165,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-right", // name
         vx_ui_ui.t_pin
@@ -8182,7 +8192,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pin-top", // name
         vx_ui_ui.t_pin
@@ -8209,7 +8219,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-center", // name
         vx_ui_ui.t_point
@@ -8236,7 +8246,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-lefttop", // name
         vx_ui_ui.t_point
@@ -8263,7 +8273,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rightbottom", // name
         vx_ui_ui.t_point
@@ -8290,7 +8300,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rotate-180", // name
         vx_ui_ui.t_point
@@ -8331,7 +8341,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rotate-270", // name
         vx_ui_ui.t_point
@@ -8372,7 +8382,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "point-rotate-90", // name
         vx_ui_ui.t_point
@@ -8413,7 +8423,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-absolute", // name
         vx_ui_ui.t_pointtype
@@ -8440,7 +8450,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-percent", // name
         vx_ui_ui.t_pointtype
@@ -8467,7 +8477,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "pointtype-relative", // name
         vx_ui_ui.t_pointtype
@@ -8494,7 +8504,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-custom", // name
         vx_ui_ui.t_styletype
@@ -8521,7 +8531,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-shared", // name
         vx_ui_ui.t_styletype
@@ -8548,7 +8558,7 @@ object vx_ui_ui {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/ui/ui", // pkgname
         "styletype-system", // name
         vx_ui_ui.t_styletype
@@ -8593,12 +8603,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layout<-ui-parent-selected", // name
         0, // idx
@@ -8621,27 +8631,27 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layout_from_ui_parent_selected
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layout_from_ui_parent_selected
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layout_from_ui_parent_selected
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layout_from_ui_parent_selected
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
-      var selected : vx_core.Type_boolean = vx_core.f_any_from_any(vx_core.t_boolean, arglist.vx_any(vx_core.vx_new_int(3)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val selected : vx_core.Type_boolean = vx_core.f_any_from_any(vx_core.t_boolean, arglist.vx_any(vx_core.vx_new_int(3)))
       output = vx_ui_ui.f_boolean_layout_from_ui_parent_selected(context, ui, parent, selected)
       return output
     }
 
     override fun vx_boolean_layout_from_ui_parent_selected(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui, selected : vx_core.Type_boolean) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layout_from_ui_parent_selected(context, ui, parent, selected)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layout_from_ui_parent_selected(context, ui, parent, selected)
       return output
     }
 
@@ -8655,10 +8665,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
+        val layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
           context
         )
-        var uiselected : vx_ui_ui.Type_ui = vx_core.f_copy(
+        val uiselected : vx_ui_ui.Type_ui = vx_core.f_copy(
           ui,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -8666,12 +8676,12 @@ object vx_ui_ui {
             selected
           )
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
+        val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
           uiselected,
           parent
         )
-        var fn_layoutselected : vx_ui_ui.Func_boolean_layoutselected_from_ui = layoutengine.boolean_layoutselected()
-        var output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
+        val fn_layoutselected : vx_ui_ui.Func_boolean_layoutselected_from_ui = layoutengine.boolean_layoutselected()
+        val output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
           vx_core.t_boolean,
           fn_layoutselected,
           uiselected
@@ -8709,12 +8719,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layout<-ui-parent-visible", // name
         0, // idx
@@ -8737,27 +8747,27 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layout_from_ui_parent_visible
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layout_from_ui_parent_visible
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layout_from_ui_parent_visible
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layout_from_ui_parent_visible
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
-      var visible : vx_core.Type_boolean = vx_core.f_any_from_any(vx_core.t_boolean, arglist.vx_any(vx_core.vx_new_int(3)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val visible : vx_core.Type_boolean = vx_core.f_any_from_any(vx_core.t_boolean, arglist.vx_any(vx_core.vx_new_int(3)))
       output = vx_ui_ui.f_boolean_layout_from_ui_parent_visible(context, ui, parent, visible)
       return output
     }
 
     override fun vx_boolean_layout_from_ui_parent_visible(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui, visible : vx_core.Type_boolean) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layout_from_ui_parent_visible(context, ui, parent, visible)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layout_from_ui_parent_visible(context, ui, parent, visible)
       return output
     }
 
@@ -8771,10 +8781,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
+        val layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
           context
         )
-        var uivisible : vx_ui_ui.Type_ui = vx_core.f_copy(
+        val uivisible : vx_ui_ui.Type_ui = vx_core.f_copy(
           ui,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -8784,12 +8794,12 @@ object vx_ui_ui {
             )
           )
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
+        val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
           uivisible,
           parent
         )
-        var fn_layoutvisible : vx_ui_ui.Func_boolean_layoutvisible_from_ui = layoutengine.boolean_layoutvisible()
-        var output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
+        val fn_layoutvisible : vx_ui_ui.Func_boolean_layoutvisible_from_ui = layoutengine.boolean_layoutvisible()
+        val output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
           vx_core.t_boolean,
           fn_layoutvisible,
           uivisible
@@ -8826,12 +8836,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutaddchild<-ui-parent", // name
         0, // idx
@@ -8854,26 +8864,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutaddchild_from_ui_parent
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutaddchild_from_ui_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutaddchild_from_ui_parent
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutaddchild_from_ui_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_boolean_layoutaddchild_from_ui_parent(context, uiarg, parent)
       return output
     }
 
     override fun vx_boolean_layoutaddchild_from_ui_parent(context : vx_core.Type_context, uiarg : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutaddchild_from_ui_parent(context, uiarg, parent)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutaddchild_from_ui_parent(context, uiarg, parent)
       return output
     }
 
@@ -8887,22 +8897,22 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var ui2 : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui(
+        val ui2 : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui(
           context,
           uiarg
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
+        val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
           ui2,
           parent
         )
-        var ui3 : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_ui_orig_parent(
+        val ui3 : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_ui_orig_parent(
           ui2,
           vx_core.f_empty(
             vx_ui_ui.t_ui
           ),
           parent
         )
-        var output_1 : vx_core.Type_any = iswrite
+        val output_1 : vx_core.Type_any = iswrite
         output_1
       })
     )
@@ -8934,12 +8944,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutremove<-ui", // name
         0, // idx
@@ -8962,12 +8972,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutremove_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutremove_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutremove_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutremove_from_ui
       return output
     }
 
@@ -8977,21 +8987,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_boolean_layoutremove_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_boolean_layoutremove_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_boolean_layoutremove_from_ui(ui)
       return output
     }
 
     override fun vx_boolean_layoutremove_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutremove_from_ui(ui)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutremove_from_ui(ui)
       return output
     }
 
@@ -9031,12 +9041,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutremove<-ui-keys", // name
         0, // idx
@@ -9059,26 +9069,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutremove_from_ui_keys
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutremove_from_ui_keys
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutremove_from_ui_keys
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutremove_from_ui_keys
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var keys : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val keys : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_boolean_layoutremove_from_ui_keys(context, ui, keys)
       return output
     }
 
     override fun vx_boolean_layoutremove_from_ui_keys(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui, keys : vx_core.Type_stringlist) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutremove_from_ui_keys(context, ui, keys)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutremove_from_ui_keys(context, ui, keys)
       return output
     }
 
@@ -9092,21 +9102,21 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var writelist : vx_core.Type_booleanlist = vx_core.f_list_from_list_1(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val writelist : vx_core.Type_booleanlist = vx_core.f_list_from_list_1(
           vx_core.t_booleanlist,
           keys,
           vx_core.t_any_from_any.vx_fn_new({key_any : vx_core.Type_any ->
-            var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
             var output_2 : vx_core.Type_any = vx_core.f_let(
               vx_core.t_boolean,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var childui : vx_ui_ui.Type_ui = vx_core.f_any_from_map(
+                val childui : vx_ui_ui.Type_ui = vx_core.f_any_from_map(
                   vx_ui_ui.t_ui,
                   uimap,
                   key
                 )
-                var output_3 : vx_core.Type_any = vx_ui_ui.f_boolean_layoutremove_from_ui_parent(
+                val output_3 : vx_core.Type_any = vx_ui_ui.f_boolean_layoutremove_from_ui_parent(
                   context,
                   childui,
                   ui
@@ -9117,7 +9127,7 @@ object vx_ui_ui {
             output_2
           })
         )
-        var output_1 : vx_core.Type_any = vx_core.f_and_1(
+        val output_1 : vx_core.Type_any = vx_core.f_and_1(
           writelist
         )
         output_1
@@ -9152,12 +9162,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutremove<-ui-parent", // name
         0, // idx
@@ -9180,26 +9190,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutremove_from_ui_parent
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutremove_from_ui_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutremove_from_ui_parent
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutremove_from_ui_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_boolean_layoutremove_from_ui_parent(context, ui, parent)
       return output
     }
 
     override fun vx_boolean_layoutremove_from_ui_parent(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutremove_from_ui_parent(context, ui, parent)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutremove_from_ui_parent(context, ui, parent)
       return output
     }
 
@@ -9213,16 +9223,16 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
+        val layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
           context
         )
-        var uid : vx_core.Type_string = ui.uid()
-        var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writeremove_from_ui_uid(
+        val uid : vx_core.Type_string = ui.uid()
+        val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writeremove_from_ui_uid(
           parent,
           uid
         )
-        var fn_layoutremove : vx_ui_ui.Func_boolean_layoutremove_from_ui = layoutengine.boolean_layoutremove()
-        var output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
+        val fn_layoutremove : vx_ui_ui.Func_boolean_layoutremove_from_ui = layoutengine.boolean_layoutremove()
+        val output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
           vx_core.t_boolean,
           fn_layoutremove,
           ui
@@ -9260,12 +9270,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutremove<-ui-start-end", // name
         0, // idx
@@ -9288,27 +9298,27 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutremove_from_ui_start_end
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutremove_from_ui_start_end
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutremove_from_ui_start_end
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutremove_from_ui_start_end
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var start : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
-      var end : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(3)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val start : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
+      val end : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(3)))
       output = vx_ui_ui.f_boolean_layoutremove_from_ui_start_end(context, ui, start, end)
       return output
     }
 
     override fun vx_boolean_layoutremove_from_ui_start_end(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui, start : vx_core.Type_int, end : vx_core.Type_int) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutremove_from_ui_start_end(context, ui, start, end)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutremove_from_ui_start_end(context, ui, start, end)
       return output
     }
 
@@ -9322,17 +9332,17 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var keys : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val keys : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
           uimap
         )
-        var subkeys : vx_core.Type_stringlist = vx_collection.f_list_from_list_start_end(
+        val subkeys : vx_core.Type_stringlist = vx_collection.f_list_from_list_start_end(
           vx_core.t_stringlist,
           keys,
           start,
           end
         )
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_boolean_layoutremove_from_ui_keys(
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_boolean_layoutremove_from_ui_keys(
           context,
           ui,
           subkeys
@@ -9368,12 +9378,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutselected<-ui", // name
         0, // idx
@@ -9396,12 +9406,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutselected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutselected_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutselected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutselected_from_ui
       return output
     }
 
@@ -9411,21 +9421,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_boolean_layoutselected_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_boolean_layoutselected_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_boolean_layoutselected_from_ui(ui)
       return output
     }
 
     override fun vx_boolean_layoutselected_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutselected_from_ui(ui)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutselected_from_ui(ui)
       return output
     }
 
@@ -9465,12 +9475,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutselected<-ui-parent", // name
         0, // idx
@@ -9493,26 +9503,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutselected_from_ui_parent
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutselected_from_ui_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutselected_from_ui_parent
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutselected_from_ui_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_boolean_layoutselected_from_ui_parent(context, ui, parent)
       return output
     }
 
     override fun vx_boolean_layoutselected_from_ui_parent(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutselected_from_ui_parent(context, ui, parent)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutselected_from_ui_parent(context, ui, parent)
       return output
     }
 
@@ -9526,15 +9536,15 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
+        val layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
           context
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
+        val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
           ui,
           parent
         )
-        var fn_layoutselected : vx_ui_ui.Func_boolean_layoutselected_from_ui = layoutengine.boolean_layoutselected()
-        var output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
+        val fn_layoutselected : vx_ui_ui.Func_boolean_layoutselected_from_ui = layoutengine.boolean_layoutselected()
+        val output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
           vx_core.t_boolean,
           fn_layoutselected,
           ui
@@ -9571,12 +9581,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutselected<-ui-selected", // name
         0, // idx
@@ -9599,25 +9609,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutselected_from_ui_selected
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutselected_from_ui_selected
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutselected_from_ui_selected
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutselected_from_ui_selected
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var selected : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val selected : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_boolean_layoutselected_from_ui_selected(ui, selected)
       return output
     }
 
     override fun vx_boolean_layoutselected_from_ui_selected(ui : vx_ui_ui.Type_ui, selected : vx_core.Type_int) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutselected_from_ui_selected(ui, selected)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutselected_from_ui_selected(ui, selected)
       return output
     }
 
@@ -9656,12 +9666,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-layoutvisible<-ui", // name
         0, // idx
@@ -9684,12 +9694,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutvisible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_layoutvisible_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutvisible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_layoutvisible_from_ui
       return output
     }
 
@@ -9699,21 +9709,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_boolean_layoutvisible_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_boolean_layoutvisible_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_boolean_layoutvisible_from_ui(ui)
       return output
     }
 
     override fun vx_boolean_layoutvisible_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutvisible_from_ui(ui)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_layoutvisible_from_ui(ui)
       return output
     }
 
@@ -9752,12 +9762,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-print", // name
         0, // idx
@@ -9780,12 +9790,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_print
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_print
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_print
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_print
       return output
     }
 
@@ -9795,22 +9805,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_boolean_print(context, inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_boolean_print(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_boolean_print(context, ui)
       return output
     }
 
     override fun vx_boolean_print(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_print(context, ui)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_print(context, ui)
       return output
     }
 
@@ -9824,11 +9834,11 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
+        val layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
           context
         )
-        var fn_print : vx_ui_ui.Func_boolean_print = layoutengine.boolean_print()
-        var output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
+        val fn_print : vx_ui_ui.Func_boolean_print = layoutengine.boolean_print()
+        val output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
           vx_core.t_boolean,
           fn_print,
           context,
@@ -9864,12 +9874,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-removestate-uiapp", // name
         0, // idx
@@ -9892,24 +9902,24 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_removestate_uiapp
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_removestate_uiapp
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_removestate_uiapp
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_removestate_uiapp
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_boolean_removestate_uiapp(context)
       return output
     }
 
     override fun vx_boolean_removestate_uiapp(context : vx_core.Type_context) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_removestate_uiapp(context)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_removestate_uiapp(context)
       return output
     }
 
@@ -9953,12 +9963,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-write<-ui-parent", // name
         0, // idx
@@ -9981,25 +9991,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_write_from_ui_parent
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_write_from_ui_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_write_from_ui_parent
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_write_from_ui_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_boolean_write_from_ui_parent(ui, parent)
       return output
     }
 
     override fun vx_boolean_write_from_ui_parent(ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(ui, parent)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(ui, parent)
       return output
     }
 
@@ -10013,9 +10023,9 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = ui.uid()
-        var uimap : vx_ui_ui.Type_uimap = parent.uimap()
-        var output_1 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
+        val uid : vx_core.Type_string = ui.uid()
+        val uimap : vx_ui_ui.Type_uimap = parent.uimap()
+        val output_1 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
           uimap,
           uid,
           ui
@@ -10052,12 +10062,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-writeremove<-ui-uid", // name
         0, // idx
@@ -10080,25 +10090,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_writeremove_from_ui_uid
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_writeremove_from_ui_uid
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_writeremove_from_ui_uid
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_writeremove_from_ui_uid
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_boolean_writeremove_from_ui_uid(uiarg, uid)
       return output
     }
 
     override fun vx_boolean_writeremove_from_ui_uid(uiarg : vx_ui_ui.Type_ui, uid : vx_core.Type_string) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_writeremove_from_ui_uid(uiarg, uid)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_writeremove_from_ui_uid(uiarg, uid)
       return output
     }
 
@@ -10112,8 +10122,8 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
-        var output_1 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
+        val uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
+        val output_1 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
           uimap,
           uid,
           vx_core.f_empty(
@@ -10150,12 +10160,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-writestate<-ui", // name
         0, // idx
@@ -10178,12 +10188,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_writestate_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_writestate_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_writestate_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_writestate_from_ui
       return output
     }
 
@@ -10193,22 +10203,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_boolean_writestate_from_ui(context, inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_boolean_writestate_from_ui(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_boolean_writestate_from_ui(context, ui)
       return output
     }
 
     override fun vx_boolean_writestate_from_ui(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_ui(context, ui)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_ui(context, ui)
       return output
     }
 
@@ -10222,14 +10232,14 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_boolean,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = ui.uid()
-        var uiapp : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_uiapp(
+        val uid : vx_core.Type_string = ui.uid()
+        val uiapp : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_uiapp(
           context
         )
-        var parentuid : vx_core.Type_string = vx_ui_ui.f_string_parentuid_from_uid(
+        val parentuid : vx_core.Type_string = vx_ui_ui.f_string_parentuid_from_uid(
           uid
         )
-        var parentui : vx_ui_ui.Type_ui = vx_core.f_if_2(
+        val parentui : vx_ui_ui.Type_ui = vx_core.f_if_2(
           vx_ui_ui.t_ui,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -10242,7 +10252,7 @@ object vx_ui_ui {
                 output_2
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = uiapp
+                val output_3 : vx_core.Type_any = uiapp
                 output_3
               })
             ),
@@ -10257,16 +10267,16 @@ object vx_ui_ui {
             )
           )
         )
-        var isfound : vx_core.Type_boolean = vx_core.f_notempty_1(
+        val isfound : vx_core.Type_boolean = vx_core.f_notempty_1(
           parentui
         )
-        var iswrite : vx_core.Type_boolean = vx_core.f_if_2(
+        val iswrite : vx_core.Type_boolean = vx_core.f_if_2(
           vx_core.t_boolean,
           vx_core.vx_new(
             vx_core.t_thenelselist,
             vx_core.f_then(
               vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = isfound
+                val output_5 : vx_core.Type_any = isfound
                 output_5
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
@@ -10279,7 +10289,7 @@ object vx_ui_ui {
             )
           )
         )
-        var output_1 : vx_core.Type_any = isfound
+        val output_1 : vx_core.Type_any = isfound
         output_1
       })
     )
@@ -10311,12 +10321,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-writestate<-uiapp", // name
         0, // idx
@@ -10339,12 +10349,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_writestate_from_uiapp
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_writestate_from_uiapp
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_writestate_from_uiapp
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_writestate_from_uiapp
       return output
     }
 
@@ -10354,22 +10364,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_boolean_writestate_from_uiapp(context, inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_boolean_writestate_from_uiapp(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_boolean_writestate_from_uiapp(context, ui)
       return output
     }
 
     override fun vx_boolean_writestate_from_uiapp(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(context, ui)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(context, ui)
       return output
     }
 
@@ -10413,12 +10423,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "boolean-writestate<-uiengine", // name
         0, // idx
@@ -10441,12 +10451,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_boolean_writestate_from_uiengine
+      val output : vx_core.Type_any = vx_ui_ui.e_boolean_writestate_from_uiengine
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_boolean_writestate_from_uiengine
+      val output : vx_core.Type_any = vx_ui_ui.t_boolean_writestate_from_uiengine
       return output
     }
 
@@ -10456,22 +10466,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_uiengine = value as vx_ui_ui.Type_uiengine
-      var outputval : vx_core.Type_any = vx_ui_ui.f_boolean_writestate_from_uiengine(context, inputval)
+      val inputval : vx_ui_ui.Type_uiengine = value as vx_ui_ui.Type_uiengine
+      val outputval : vx_core.Type_any = vx_ui_ui.f_boolean_writestate_from_uiengine(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uiengine : vx_ui_ui.Type_uiengine = vx_core.f_any_from_any(vx_ui_ui.t_uiengine, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiengine : vx_ui_ui.Type_uiengine = vx_core.f_any_from_any(vx_ui_ui.t_uiengine, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_boolean_writestate_from_uiengine(context, uiengine)
       return output
     }
 
     override fun vx_boolean_writestate_from_uiengine(context : vx_core.Type_context, uiengine : vx_ui_ui.Type_uiengine) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiengine(context, uiengine)
+      val output : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiengine(context, uiengine)
       return output
     }
 
@@ -10515,12 +10525,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "fontfacemap<-fontfacelist", // name
         0, // idx
@@ -10543,12 +10553,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_fontfacemap_from_fontfacelist
+      val output : vx_core.Type_any = vx_ui_ui.e_fontfacemap_from_fontfacelist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_fontfacemap_from_fontfacelist
+      val output : vx_core.Type_any = vx_ui_ui.t_fontfacemap_from_fontfacelist
       return output
     }
 
@@ -10558,21 +10568,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_fontfacelist = value as vx_ui_ui.Type_fontfacelist
-      var outputval : vx_core.Type_any = vx_ui_ui.f_fontfacemap_from_fontfacelist(inputval)
+      val inputval : vx_ui_ui.Type_fontfacelist = value as vx_ui_ui.Type_fontfacelist
+      val outputval : vx_core.Type_any = vx_ui_ui.f_fontfacemap_from_fontfacelist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var fontfacelist : vx_ui_ui.Type_fontfacelist = vx_core.f_any_from_any(vx_ui_ui.t_fontfacelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val fontfacelist : vx_ui_ui.Type_fontfacelist = vx_core.f_any_from_any(vx_ui_ui.t_fontfacelist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_fontfacemap_from_fontfacelist(fontfacelist)
       return output
     }
 
     override fun vx_fontfacemap_from_fontfacelist(fontfacelist : vx_ui_ui.Type_fontfacelist) : vx_ui_ui.Type_fontfacemap {
-      var output : vx_ui_ui.Type_fontfacemap = vx_ui_ui.f_fontfacemap_from_fontfacelist(fontfacelist)
+      val output : vx_ui_ui.Type_fontfacemap = vx_ui_ui.f_fontfacemap_from_fontfacelist(fontfacelist)
       return output
     }
 
@@ -10587,7 +10597,7 @@ object vx_ui_ui {
       vx_ui_ui.t_fontfacemap,
       fontfacelist,
       vx_core.t_any_from_any.vx_fn_new({fontface_any : vx_core.Type_any ->
-        var fontface : vx_ui_ui.Type_fontface = vx_core.f_any_from_any(vx_ui_ui.t_fontface, fontface_any)
+        val fontface : vx_ui_ui.Type_fontface = vx_core.f_any_from_any(vx_ui_ui.t_fontface, fontface_any)
         var output_1 : vx_core.Type_any = fontface.name()
         output_1
       })
@@ -10621,12 +10631,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "int-child<-ui-uid", // name
         0, // idx
@@ -10649,25 +10659,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_int_child_from_ui_uid
+      val output : vx_core.Type_any = vx_ui_ui.e_int_child_from_ui_uid
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_int_child_from_ui_uid
+      val output : vx_core.Type_any = vx_ui_ui.t_int_child_from_ui_uid
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_int_child_from_ui_uid(ui, uid)
       return output
     }
 
     override fun vx_int_child_from_ui_uid(ui : vx_ui_ui.Type_ui, uid : vx_core.Type_string) : vx_core.Type_int {
-      var output : vx_core.Type_int = vx_ui_ui.f_int_child_from_ui_uid(ui, uid)
+      val output : vx_core.Type_int = vx_ui_ui.f_int_child_from_ui_uid(ui, uid)
       return output
     }
 
@@ -10681,8 +10691,8 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_int,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var output_1 : vx_core.Type_any = vx_collection.f_int_from_map_key(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val output_1 : vx_core.Type_any = vx_collection.f_int_from_map_key(
           uimap,
           uid
         )
@@ -10717,12 +10727,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "int-selected<-ui", // name
         0, // idx
@@ -10745,12 +10755,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_int_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_int_selected_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_int_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_int_selected_from_ui
       return output
     }
 
@@ -10760,21 +10770,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_int_selected_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_int_selected_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_int_selected_from_ui(ui)
       return output
     }
 
     override fun vx_int_selected_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_int {
-      var output : vx_core.Type_int = vx_ui_ui.f_int_selected_from_ui(ui)
+      val output : vx_core.Type_int = vx_ui_ui.f_int_selected_from_ui(ui)
       return output
     }
 
@@ -10788,13 +10798,13 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_int,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = vx_ui_ui.f_string_selected_from_ui(
+        val uid : vx_core.Type_string = vx_ui_ui.f_string_selected_from_ui(
           ui
         )
-        var uidlist : vx_core.Type_stringlist = vx_ui_ui.f_stringlist_from_ui(
+        val uidlist : vx_core.Type_stringlist = vx_ui_ui.f_stringlist_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = vx_collection.f_int_from_stringlist_find(
+        val output_1 : vx_core.Type_any = vx_collection.f_int_from_stringlist_find(
           uidlist,
           uid
         )
@@ -10829,12 +10839,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "int-visible<-ui", // name
         0, // idx
@@ -10857,12 +10867,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_int_visible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_int_visible_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_int_visible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_int_visible_from_ui
       return output
     }
 
@@ -10872,21 +10882,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_int_visible_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_int_visible_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_int_visible_from_ui(ui)
       return output
     }
 
     override fun vx_int_visible_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_int {
-      var output : vx_core.Type_int = vx_ui_ui.f_int_visible_from_ui(ui)
+      val output : vx_core.Type_int = vx_ui_ui.f_int_visible_from_ui(ui)
       return output
     }
 
@@ -10900,10 +10910,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_int,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var intlist : vx_core.Type_intlist = vx_ui_ui.f_intlist_visible_from_ui(
+        val intlist : vx_core.Type_intlist = vx_ui_ui.f_intlist_visible_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = vx_core.f_first_from_list(
+        val output_1 : vx_core.Type_any = vx_core.f_first_from_list(
           vx_core.t_int,
           intlist
         )
@@ -10938,12 +10948,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "intlist-visible<-ui", // name
         0, // idx
@@ -10966,12 +10976,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_intlist_visible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_intlist_visible_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_intlist_visible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_intlist_visible_from_ui
       return output
     }
 
@@ -10981,21 +10991,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_intlist_visible_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_intlist_visible_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_intlist_visible_from_ui(uiarg)
       return output
     }
 
     override fun vx_intlist_visible_from_ui(uiarg : vx_ui_ui.Type_ui) : vx_core.Type_intlist {
-      var output : vx_core.Type_intlist = vx_ui_ui.f_intlist_visible_from_ui(uiarg)
+      val output : vx_core.Type_intlist = vx_ui_ui.f_intlist_visible_from_ui(uiarg)
       return output
     }
 
@@ -11009,16 +11019,16 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_intlist,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
-        var uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
+        val uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
+        val uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
           uimap
         )
-        var intlist : vx_ui_ui.Type_uilist = vx_core.f_list_from_list_intany(
+        val intlist : vx_ui_ui.Type_uilist = vx_core.f_list_from_list_intany(
           vx_ui_ui.t_uilist,
           uilist,
           vx_core.t_any_from_int_any.vx_fn_new({pos_any : vx_core.Type_any, subui_any : vx_core.Type_any ->
-            var pos : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, pos_any)
-            var subui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, subui_any)
+            val pos : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, pos_any)
+            val subui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, subui_any)
             var output_3 : vx_core.Type_any = vx_core.f_if_2(
               vx_core.t_int,
               vx_core.vx_new(
@@ -11031,7 +11041,7 @@ object vx_ui_ui {
                     output_4
                   }),
                   vx_core.t_any_from_func.vx_fn_new({ ->
-                    var output_5 : vx_core.Type_any = pos
+                    val output_5 : vx_core.Type_any = pos
                     output_5
                   })
                 )
@@ -11040,11 +11050,11 @@ object vx_ui_ui {
             output_3
           })
         )
-        var output_1 : vx_core.Type_any = vx_collection.f_list_from_list_filter(
+        val output_1 : vx_core.Type_any = vx_collection.f_list_from_list_filter(
           vx_core.t_intlist,
           intlist,
           vx_core.t_any_from_any.vx_fn_new({pos_any : vx_core.Type_any ->
-            var pos : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, pos_any)
+            val pos : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, pos_any)
             var output_2 : vx_core.Type_any = pos
             output_2
           })
@@ -11079,12 +11089,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layout<-style", // name
         0, // idx
@@ -11107,12 +11117,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_layout_from_style
+      val output : vx_core.Type_any = vx_ui_ui.e_layout_from_style
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_layout_from_style
+      val output : vx_core.Type_any = vx_ui_ui.t_layout_from_style
       return output
     }
 
@@ -11122,21 +11132,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_style = value as vx_ui_ui.Type_style
-      var outputval : vx_core.Type_any = vx_ui_ui.f_layout_from_style(inputval)
+      val inputval : vx_ui_ui.Type_style = value as vx_ui_ui.Type_style
+      val outputval : vx_core.Type_any = vx_ui_ui.f_layout_from_style(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var style : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
+      val style : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_layout_from_style(style)
       return output
     }
 
     override fun vx_layout_from_style(style : vx_ui_ui.Type_style) : vx_ui_ui.Type_layout {
-      var output : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_style(style)
+      val output : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_style(style)
       return output
     }
 
@@ -11176,12 +11186,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layout<-ui", // name
         0, // idx
@@ -11204,12 +11214,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_layout_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_layout_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_layout_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_layout_from_ui
       return output
     }
 
@@ -11219,22 +11229,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_layout_from_ui(context, inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_layout_from_ui(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_layout_from_ui(context, ui)
       return output
     }
 
     override fun vx_layout_from_ui(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui) : vx_ui_ui.Type_layout {
-      var output : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_ui(context, ui)
+      val output : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_ui(context, ui)
       return output
     }
 
@@ -11248,10 +11258,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_layout,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
+        val layoutengine : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(
           context
         )
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_layout_from_ui_layoutengine(
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_layout_from_ui_layoutengine(
           ui,
           layoutengine
         )
@@ -11287,12 +11297,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layout<-ui-layoutengine", // name
         0, // idx
@@ -11315,25 +11325,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_layout_from_ui_layoutengine
+      val output : vx_core.Type_any = vx_ui_ui.e_layout_from_ui_layoutengine
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_layout_from_ui_layoutengine
+      val output : vx_core.Type_any = vx_ui_ui.t_layout_from_ui_layoutengine
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var layoutengine : vx_ui_ui.Type_layoutengine = vx_core.f_any_from_any(vx_ui_ui.t_layoutengine, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val layoutengine : vx_ui_ui.Type_layoutengine = vx_core.f_any_from_any(vx_ui_ui.t_layoutengine, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_layout_from_ui_layoutengine(ui, layoutengine)
       return output
     }
 
     override fun vx_layout_from_ui_layoutengine(ui : vx_ui_ui.Type_ui, layoutengine : vx_ui_ui.Type_layoutengine) : vx_ui_ui.Type_layout {
-      var output : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_ui_layoutengine(ui, layoutengine)
+      val output : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_ui_layoutengine(ui, layoutengine)
       return output
     }
 
@@ -11347,9 +11357,9 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_layout,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutmap : vx_ui_ui.Type_layoutmap = layoutengine.layoutmap()
-        var layoutelse : vx_ui_ui.Type_layout = layoutengine.layoutelse()
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_layout_from_ui_layoutmap_else(
+        val layoutmap : vx_ui_ui.Type_layoutmap = layoutengine.layoutmap()
+        val layoutelse : vx_ui_ui.Type_layout = layoutengine.layoutelse()
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_layout_from_ui_layoutmap_else(
           ui,
           layoutmap,
           layoutelse
@@ -11387,12 +11397,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layout<-ui-layoutmap-else", // name
         0, // idx
@@ -11415,26 +11425,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_layout_from_ui_layoutmap_else
+      val output : vx_core.Type_any = vx_ui_ui.e_layout_from_ui_layoutmap_else
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_layout_from_ui_layoutmap_else
+      val output : vx_core.Type_any = vx_ui_ui.t_layout_from_ui_layoutmap_else
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var layoutmap : vx_ui_ui.Type_layoutmap = vx_core.f_any_from_any(vx_ui_ui.t_layoutmap, arglist.vx_any(vx_core.vx_new_int(1)))
-      var layoutelse : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val layoutmap : vx_ui_ui.Type_layoutmap = vx_core.f_any_from_any(vx_ui_ui.t_layoutmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val layoutelse : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_layout_from_ui_layoutmap_else(ui, layoutmap, layoutelse)
       return output
     }
 
     override fun vx_layout_from_ui_layoutmap_else(ui : vx_ui_ui.Type_ui, layoutmap : vx_ui_ui.Type_layoutmap, layoutelse : vx_ui_ui.Type_layout) : vx_ui_ui.Type_layout {
-      var output : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_ui_layoutmap_else(ui, layoutmap, layoutelse)
+      val output : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_ui_layoutmap_else(ui, layoutmap, layoutelse)
       return output
     }
 
@@ -11448,17 +11458,17 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_layout,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var style : vx_ui_ui.Type_style = ui.style()
-        var layout : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_style(
+        val style : vx_ui_ui.Type_style = ui.style()
+        val layout : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_style(
           style
         )
-        var layname : vx_core.Type_string = layout.name()
-        var layout1 : vx_ui_ui.Type_layout = vx_core.f_any_from_map(
+        val layname : vx_core.Type_string = layout.name()
+        val layout1 : vx_ui_ui.Type_layout = vx_core.f_any_from_map(
           vx_ui_ui.t_layout,
           layoutmap,
           layname
         )
-        var layout2 : vx_ui_ui.Type_layout = vx_core.f_if_1(
+        val layout2 : vx_ui_ui.Type_layout = vx_core.f_if_1(
           vx_ui_ui.t_layout,
           vx_core.f_notempty_1(
             layout1
@@ -11466,7 +11476,7 @@ object vx_ui_ui {
           layout1,
           layoutelse
         )
-        var output_1 : vx_core.Type_any = layout2
+        val output_1 : vx_core.Type_any = layout2
         output_1
       })
     )
@@ -11497,12 +11507,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layoutengine-readstate", // name
         0, // idx
@@ -11525,24 +11535,24 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_layoutengine_readstate
+      val output : vx_core.Type_any = vx_ui_ui.e_layoutengine_readstate
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_layoutengine_readstate
+      val output : vx_core.Type_any = vx_ui_ui.t_layoutengine_readstate
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_layoutengine_readstate(context)
       return output
     }
 
     override fun vx_layoutengine_readstate(context : vx_core.Type_context) : vx_ui_ui.Type_layoutengine {
-      var output : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(context)
+      val output : vx_ui_ui.Type_layoutengine = vx_ui_ui.f_layoutengine_readstate(context)
       return output
     }
 
@@ -11556,10 +11566,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_layoutengine,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uiengine : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_readstate(
+        val uiengine : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_readstate(
           context
         )
-        var output_1 : vx_core.Type_any = uiengine.layoutengine()
+        val output_1 : vx_core.Type_any = uiengine.layoutengine()
         output_1
       })
     )
@@ -11591,12 +11601,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "layoutmap<-layoutlist", // name
         0, // idx
@@ -11619,12 +11629,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_layoutmap_from_layoutlist
+      val output : vx_core.Type_any = vx_ui_ui.e_layoutmap_from_layoutlist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_layoutmap_from_layoutlist
+      val output : vx_core.Type_any = vx_ui_ui.t_layoutmap_from_layoutlist
       return output
     }
 
@@ -11634,21 +11644,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_layoutlist = value as vx_ui_ui.Type_layoutlist
-      var outputval : vx_core.Type_any = vx_ui_ui.f_layoutmap_from_layoutlist(inputval)
+      val inputval : vx_ui_ui.Type_layoutlist = value as vx_ui_ui.Type_layoutlist
+      val outputval : vx_core.Type_any = vx_ui_ui.f_layoutmap_from_layoutlist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var layoutlist : vx_ui_ui.Type_layoutlist = vx_core.f_any_from_any(vx_ui_ui.t_layoutlist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val layoutlist : vx_ui_ui.Type_layoutlist = vx_core.f_any_from_any(vx_ui_ui.t_layoutlist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_layoutmap_from_layoutlist(layoutlist)
       return output
     }
 
     override fun vx_layoutmap_from_layoutlist(layoutlist : vx_ui_ui.Type_layoutlist) : vx_ui_ui.Type_layoutmap {
-      var output : vx_ui_ui.Type_layoutmap = vx_ui_ui.f_layoutmap_from_layoutlist(layoutlist)
+      val output : vx_ui_ui.Type_layoutmap = vx_ui_ui.f_layoutmap_from_layoutlist(layoutlist)
       return output
     }
 
@@ -11663,7 +11673,7 @@ object vx_ui_ui {
       vx_ui_ui.t_layoutmap,
       layoutlist,
       vx_core.t_any_from_any.vx_fn_new({layout_any : vx_core.Type_any ->
-        var layout : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, layout_any)
+        val layout : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, layout_any)
         var output_1 : vx_core.Type_any = layout.name()
         output_1
       })
@@ -11696,12 +11706,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "string-parentuid<-uid", // name
         0, // idx
@@ -11724,12 +11734,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_string_parentuid_from_uid
+      val output : vx_core.Type_any = vx_ui_ui.e_string_parentuid_from_uid
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_string_parentuid_from_uid
+      val output : vx_core.Type_any = vx_ui_ui.t_string_parentuid_from_uid
       return output
     }
 
@@ -11739,21 +11749,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_ui_ui.f_string_parentuid_from_uid(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_ui_ui.f_string_parentuid_from_uid(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_string_parentuid_from_uid(uid)
       return output
     }
 
     override fun vx_string_parentuid_from_uid(uid : vx_core.Type_string) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_ui_ui.f_string_parentuid_from_uid(uid)
+      val output : vx_core.Type_string = vx_ui_ui.f_string_parentuid_from_uid(uid)
       return output
     }
 
@@ -11767,11 +11777,11 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var lastpos : vx_core.Type_int = vx_type.f_int_from_string_findlast(
+        val lastpos : vx_core.Type_int = vx_type.f_int_from_string_findlast(
           uid,
           vx_core.vx_new_string("/")
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -11827,12 +11837,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "string-selected<-ui", // name
         0, // idx
@@ -11855,12 +11865,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_string_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_string_selected_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_string_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_string_selected_from_ui
       return output
     }
 
@@ -11870,21 +11880,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_string_selected_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_string_selected_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_string_selected_from_ui(ui)
       return output
     }
 
     override fun vx_string_selected_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_ui_ui.f_string_selected_from_ui(ui)
+      val output : vx_core.Type_string = vx_ui_ui.f_string_selected_from_ui(ui)
       return output
     }
 
@@ -11898,10 +11908,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var selectedui : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_selected_from_ui(
+        val selectedui : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_selected_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = selectedui.uid()
+        val output_1 : vx_core.Type_any = selectedui.uid()
         output_1
       })
     )
@@ -11933,12 +11943,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stringlist-selected<-ui", // name
         0, // idx
@@ -11961,12 +11971,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_stringlist_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_stringlist_selected_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_stringlist_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_stringlist_selected_from_ui
       return output
     }
 
@@ -11976,21 +11986,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_stringlist_selected_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_stringlist_selected_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_stringlist_selected_from_ui(ui)
       return output
     }
 
     override fun vx_stringlist_selected_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_stringlist {
-      var output : vx_core.Type_stringlist = vx_ui_ui.f_stringlist_selected_from_ui(ui)
+      val output : vx_core.Type_stringlist = vx_ui_ui.f_stringlist_selected_from_ui(ui)
       return output
     }
 
@@ -12004,15 +12014,15 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_stringlist,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
           uimap
         )
-        var output_1 : vx_core.Type_any = vx_core.f_list_from_list_1(
+        val output_1 : vx_core.Type_any = vx_core.f_list_from_list_1(
           vx_core.t_stringlist,
           uilist,
           vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
-            var item : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, item_any)
+            val item : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, item_any)
             var output_2 : vx_core.Type_any = vx_core.f_if_1(
               vx_core.t_string,
               item.selected(),
@@ -12053,12 +12063,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stringlist<-ui", // name
         0, // idx
@@ -12081,12 +12091,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_stringlist_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_stringlist_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_stringlist_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_stringlist_from_ui
       return output
     }
 
@@ -12096,21 +12106,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_stringlist_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_stringlist_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_stringlist_from_ui(ui)
       return output
     }
 
     override fun vx_stringlist_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_stringlist {
-      var output : vx_core.Type_stringlist = vx_ui_ui.f_stringlist_from_ui(ui)
+      val output : vx_core.Type_stringlist = vx_ui_ui.f_stringlist_from_ui(ui)
       return output
     }
 
@@ -12124,8 +12134,8 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_stringlist,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var output_1 : vx_core.Type_any = vx_core.f_stringlist_from_map(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val output_1 : vx_core.Type_any = vx_core.f_stringlist_from_map(
           uimap
         )
         output_1
@@ -12158,12 +12168,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stylemap<-stylelist", // name
         0, // idx
@@ -12186,12 +12196,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_stylemap_from_stylelist
+      val output : vx_core.Type_any = vx_ui_ui.e_stylemap_from_stylelist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_stylemap_from_stylelist
+      val output : vx_core.Type_any = vx_ui_ui.t_stylemap_from_stylelist
       return output
     }
 
@@ -12201,21 +12211,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_stylelist = value as vx_ui_ui.Type_stylelist
-      var outputval : vx_core.Type_any = vx_ui_ui.f_stylemap_from_stylelist(inputval)
+      val inputval : vx_ui_ui.Type_stylelist = value as vx_ui_ui.Type_stylelist
+      val outputval : vx_core.Type_any = vx_ui_ui.f_stylemap_from_stylelist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylelist : vx_ui_ui.Type_stylelist = vx_core.f_any_from_any(vx_ui_ui.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylelist : vx_ui_ui.Type_stylelist = vx_core.f_any_from_any(vx_ui_ui.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_stylemap_from_stylelist(stylelist)
       return output
     }
 
     override fun vx_stylemap_from_stylelist(stylelist : vx_ui_ui.Type_stylelist) : vx_ui_ui.Type_stylemap {
-      var output : vx_ui_ui.Type_stylemap = vx_ui_ui.f_stylemap_from_stylelist(stylelist)
+      val output : vx_ui_ui.Type_stylemap = vx_ui_ui.f_stylemap_from_stylelist(stylelist)
       return output
     }
 
@@ -12230,7 +12240,7 @@ object vx_ui_ui {
       vx_ui_ui.t_stylemap,
       stylelist,
       vx_core.t_any_from_any.vx_fn_new({style_any : vx_core.Type_any ->
-        var style : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, style_any)
+        val style : vx_ui_ui.Type_style = vx_core.f_any_from_any(vx_ui_ui.t_style, style_any)
         var output_1 : vx_core.Type_any = style.name()
         output_1
       })
@@ -12262,12 +12272,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stylesheet-readstate", // name
         0, // idx
@@ -12290,24 +12300,24 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_stylesheet_readstate
+      val output : vx_core.Type_any = vx_ui_ui.e_stylesheet_readstate
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_stylesheet_readstate
+      val output : vx_core.Type_any = vx_ui_ui.t_stylesheet_readstate
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_stylesheet_readstate(context)
       return output
     }
 
     override fun vx_stylesheet_readstate(context : vx_core.Type_context) : vx_ui_ui.Type_stylesheet {
-      var output : vx_ui_ui.Type_stylesheet = vx_ui_ui.f_stylesheet_readstate(context)
+      val output : vx_ui_ui.Type_stylesheet = vx_ui_ui.f_stylesheet_readstate(context)
       return output
     }
 
@@ -12321,10 +12331,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_stylesheet,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uiengine : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_readstate(
+        val uiengine : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_readstate(
           context
         )
-        var output_1 : vx_core.Type_any = uiengine.stylesheet()
+        val output_1 : vx_core.Type_any = uiengine.stylesheet()
         output_1
       })
     )
@@ -12356,12 +12366,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "stylesheet-render", // name
         0, // idx
@@ -12384,12 +12394,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_stylesheet_render
+      val output : vx_core.Type_any = vx_ui_ui.e_stylesheet_render
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_stylesheet_render
+      val output : vx_core.Type_any = vx_ui_ui.t_stylesheet_render
       return output
     }
 
@@ -12399,21 +12409,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_stylesheet = value as vx_ui_ui.Type_stylesheet
-      var outputval : vx_core.Type_any = vx_ui_ui.f_stylesheet_render(inputval)
+      val inputval : vx_ui_ui.Type_stylesheet = value as vx_ui_ui.Type_stylesheet
+      val outputval : vx_core.Type_any = vx_ui_ui.f_stylesheet_render(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylesheetui : vx_ui_ui.Type_stylesheet = vx_core.f_any_from_any(vx_ui_ui.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheetui : vx_ui_ui.Type_stylesheet = vx_core.f_any_from_any(vx_ui_ui.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_stylesheet_render(stylesheetui)
       return output
     }
 
     override fun vx_stylesheet_render(stylesheetui : vx_ui_ui.Type_stylesheet) : vx_ui_ui.Type_stylesheet {
-      var output : vx_ui_ui.Type_stylesheet = vx_ui_ui.f_stylesheet_render(stylesheetui)
+      val output : vx_ui_ui.Type_stylesheet = vx_ui_ui.f_stylesheet_render(stylesheetui)
       return output
     }
 
@@ -12452,12 +12462,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-addlayout<-ui", // name
         0, // idx
@@ -12480,12 +12490,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_addlayout_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_addlayout_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_addlayout_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_addlayout_from_ui
       return output
     }
 
@@ -12495,22 +12505,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui(context, inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_addlayout_from_ui(context, ui)
       return output
     }
 
     override fun vx_ui_addlayout_from_ui(context : vx_core.Type_context, ui : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui(context, ui)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui(context, ui)
       return output
     }
 
@@ -12524,10 +12534,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uiengine : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_readstate(
+        val uiengine : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_readstate(
           context
         )
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui_uiengine(
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui_uiengine(
           ui,
           uiengine
         )
@@ -12563,12 +12573,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-addlayout<-ui-layoutengine", // name
         0, // idx
@@ -12591,25 +12601,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_addlayout_from_ui_layoutengine
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_addlayout_from_ui_layoutengine
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_addlayout_from_ui_layoutengine
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_addlayout_from_ui_layoutengine
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var layoutengine : vx_ui_ui.Type_layoutengine = vx_core.f_any_from_any(vx_ui_ui.t_layoutengine, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val layoutengine : vx_ui_ui.Type_layoutengine = vx_core.f_any_from_any(vx_ui_ui.t_layoutengine, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_addlayout_from_ui_layoutengine(ui, layoutengine)
       return output
     }
 
     override fun vx_ui_addlayout_from_ui_layoutengine(ui : vx_ui_ui.Type_ui, layoutengine : vx_ui_ui.Type_layoutengine) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui_layoutengine(ui, layoutengine)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui_layoutengine(ui, layoutengine)
       return output
     }
 
@@ -12623,9 +12633,9 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutmap : vx_ui_ui.Type_layoutmap = layoutengine.layoutmap()
-        var layoutelse : vx_ui_ui.Type_layout = layoutengine.layoutelse()
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui_layoutmap_else(
+        val layoutmap : vx_ui_ui.Type_layoutmap = layoutengine.layoutmap()
+        val layoutelse : vx_ui_ui.Type_layout = layoutengine.layoutelse()
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui_layoutmap_else(
           ui,
           layoutmap,
           layoutelse
@@ -12663,12 +12673,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-addlayout<-ui-layoutmap-else", // name
         0, // idx
@@ -12691,26 +12701,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_addlayout_from_ui_layoutmap_else
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_addlayout_from_ui_layoutmap_else
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_addlayout_from_ui_layoutmap_else
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_addlayout_from_ui_layoutmap_else
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var layoutmap : vx_ui_ui.Type_layoutmap = vx_core.f_any_from_any(vx_ui_ui.t_layoutmap, arglist.vx_any(vx_core.vx_new_int(1)))
-      var layoutelse : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val layoutmap : vx_ui_ui.Type_layoutmap = vx_core.f_any_from_any(vx_ui_ui.t_layoutmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val layoutelse : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_ui_addlayout_from_ui_layoutmap_else(ui, layoutmap, layoutelse)
       return output
     }
 
     override fun vx_ui_addlayout_from_ui_layoutmap_else(ui : vx_ui_ui.Type_ui, layoutmap : vx_ui_ui.Type_layoutmap, layoutelse : vx_ui_ui.Type_layout) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui_layoutmap_else(ui, layoutmap, layoutelse)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui_layoutmap_else(ui, layoutmap, layoutelse)
       return output
     }
 
@@ -12724,18 +12734,18 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var layout1 : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_ui_layoutmap_else(
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val layout1 : vx_ui_ui.Type_layout = vx_ui_ui.f_layout_from_ui_layoutmap_else(
           ui,
           layoutmap,
           layoutelse
         )
-        var uimap2 : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_addlayout_from_uimap_layoutmap_else(
+        val uimap2 : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_addlayout_from_uimap_layoutmap_else(
           uimap,
           layoutmap,
           layoutelse
         )
-        var output_1 : vx_core.Type_any = vx_core.f_copy(
+        val output_1 : vx_core.Type_any = vx_core.f_copy(
           ui,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -12777,12 +12787,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-addlayout<-ui-uiengine", // name
         0, // idx
@@ -12805,25 +12815,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_addlayout_from_ui_uiengine
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_addlayout_from_ui_uiengine
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_addlayout_from_ui_uiengine
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_addlayout_from_ui_uiengine
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uiengine : vx_ui_ui.Type_uiengine = vx_core.f_any_from_any(vx_ui_ui.t_uiengine, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiengine : vx_ui_ui.Type_uiengine = vx_core.f_any_from_any(vx_ui_ui.t_uiengine, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_addlayout_from_ui_uiengine(ui, uiengine)
       return output
     }
 
     override fun vx_ui_addlayout_from_ui_uiengine(ui : vx_ui_ui.Type_ui, uiengine : vx_ui_ui.Type_uiengine) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui_uiengine(ui, uiengine)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui_uiengine(ui, uiengine)
       return output
     }
 
@@ -12837,8 +12847,8 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var layoutengine : vx_ui_ui.Type_layoutengine = uiengine.layoutengine()
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui_layoutengine(
+        val layoutengine : vx_ui_ui.Type_layoutengine = uiengine.layoutengine()
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui_layoutengine(
           ui,
           layoutengine
         )
@@ -12874,12 +12884,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-child<-ui-pos", // name
         0, // idx
@@ -12902,25 +12912,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_child_from_ui_pos
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_child_from_ui_pos
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_child_from_ui_pos
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_child_from_ui_pos
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var pos : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val pos : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_child_from_ui_pos(ui, pos)
       return output
     }
 
     override fun vx_ui_child_from_ui_pos(ui : vx_ui_ui.Type_ui, pos : vx_core.Type_int) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_child_from_ui_pos(ui, pos)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_child_from_ui_pos(ui, pos)
       return output
     }
 
@@ -12934,8 +12944,8 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var childmap : vx_ui_ui.Type_uimap = ui.uimap()
-        var output_1 : vx_core.Type_any = vx_collection.f_any_from_map_pos(
+        val childmap : vx_ui_ui.Type_uimap = ui.uimap()
+        val output_1 : vx_core.Type_any = vx_collection.f_any_from_map_pos(
           vx_ui_ui.t_ui,
           childmap,
           pos
@@ -12972,12 +12982,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-child<-ui-uid", // name
         0, // idx
@@ -13000,25 +13010,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_child_from_ui_uid
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_child_from_ui_uid
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_child_from_ui_uid
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_child_from_ui_uid
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_child_from_ui_uid(ui, uid)
       return output
     }
 
     override fun vx_ui_child_from_ui_uid(ui : vx_ui_ui.Type_ui, uid : vx_core.Type_string) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_child_from_ui_uid(ui, uid)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_child_from_ui_uid(ui, uid)
       return output
     }
 
@@ -13032,8 +13042,8 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var childmap : vx_ui_ui.Type_uimap = ui.uimap()
-        var output_1 : vx_core.Type_any = vx_core.f_any_from_map(
+        val childmap : vx_ui_ui.Type_uimap = ui.uimap()
+        val output_1 : vx_core.Type_any = vx_core.f_any_from_map(
           vx_ui_ui.t_ui,
           childmap,
           uid
@@ -13069,12 +13079,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-from<-event", // name
         0, // idx
@@ -13097,12 +13107,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_from_from_event
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_from_from_event
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_from_from_event
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_from_from_event
       return output
     }
 
@@ -13112,22 +13122,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_event.Type_event = value as vx_event.Type_event
-      var outputval : vx_core.Type_any = vx_ui_ui.f_ui_from_from_event(context, inputval)
+      val inputval : vx_event.Type_event = value as vx_event.Type_event
+      val outputval : vx_core.Type_any = vx_ui_ui.f_ui_from_from_event(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_from_from_event(context, evt)
       return output
     }
 
     override fun vx_ui_from_from_event(context : vx_core.Type_context, evt : vx_event.Type_event) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_from_event(context, evt)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_from_event(context, evt)
       return output
     }
 
@@ -13141,8 +13151,8 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = evt.from()
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_readstate_from_uid(
+        val uid : vx_core.Type_string = evt.from()
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_ui_readstate_from_uid(
           context,
           uid
         )
@@ -13176,12 +13186,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout", // name
         0, // idx
@@ -13204,12 +13214,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_layout
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_layout
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_layout
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_layout
       return output
     }
 
@@ -13219,21 +13229,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_ui_layout(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_ui_layout(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_ui_layout(uiarg)
       return output
     }
 
     override fun vx_ui_layout(uiarg : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout(uiarg)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout(uiarg)
       return output
     }
 
@@ -13284,12 +13294,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout<-fn-layout-ui-orig-parent", // name
         0, // idx
@@ -13312,27 +13322,27 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_layout_from_fn_layout_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_layout_from_fn_layout_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_layout_from_fn_layout_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_layout_from_fn_layout_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var fn_layout : vx_ui_ui.Func_ui_layout_from_ui_orig_parent = vx_core.f_any_from_any(vx_ui_ui.t_ui_layout_from_ui_orig_parent, arglist.vx_any(vx_core.vx_new_int(0)))
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(3)))
+      val fn_layout : vx_ui_ui.Func_ui_layout_from_ui_orig_parent = vx_core.f_any_from_any(vx_ui_ui.t_ui_layout_from_ui_orig_parent, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(3)))
       output = vx_ui_ui.f_ui_layout_from_fn_layout_ui_orig_parent(fn_layout, ui, orig, parent)
       return output
     }
 
     override fun vx_ui_layout_from_fn_layout_ui_orig_parent(fn_layout : vx_ui_ui.Func_ui_layout_from_ui_orig_parent, ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_fn_layout_ui_orig_parent(fn_layout, ui, orig, parent)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_fn_layout_ui_orig_parent(fn_layout, ui, orig, parent)
       return output
     }
 
@@ -13380,12 +13390,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout<-ui-orig-parent", // name
         0, // idx
@@ -13408,26 +13418,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_layout_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_layout_from_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_layout_from_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_layout_from_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val orig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_ui_layout_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
     override fun vx_ui_layout_from_ui_orig_parent(ui : vx_ui_ui.Type_ui, orig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_ui_orig_parent(ui, orig, parent)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_ui_orig_parent(ui, orig, parent)
       return output
     }
 
@@ -13451,7 +13461,7 @@ object vx_ui_ui {
             output_1
           }),
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_2 : vx_core.Type_any = orig
+            val output_2 : vx_core.Type_any = orig
             output_2
           })
         ),
@@ -13460,15 +13470,15 @@ object vx_ui_ui {
             var output_3 : vx_core.Type_any = vx_core.f_let(
               vx_ui_ui.t_ui,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-                var layout : vx_ui_ui.Type_layout = ui.layout()
-                var uiout : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_layout_ui_orig_parent(
+                val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+                val layout : vx_ui_ui.Type_layout = ui.layout()
+                val uiout : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_layout_ui_orig_parent(
                   layout,
                   ui,
                   orig,
                   parent
                 )
-                var output_4 : vx_core.Type_any = uiout
+                val output_4 : vx_core.Type_any = uiout
                 output_4
               })
             )
@@ -13507,12 +13517,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout<-ui-parent-selected", // name
         0, // idx
@@ -13535,26 +13545,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_layout_from_ui_parent_selected
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_layout_from_ui_parent_selected
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_layout_from_ui_parent_selected
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_layout_from_ui_parent_selected
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var selected : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val selected : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_ui_layout_from_ui_parent_selected(ui, parent, selected)
       return output
     }
 
     override fun vx_ui_layout_from_ui_parent_selected(ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui, selected : vx_core.Type_int) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_ui_parent_selected(ui, parent, selected)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_ui_parent_selected(ui, parent, selected)
       return output
     }
 
@@ -13568,15 +13578,15 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uichg1 : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_ui_selected(
+        val uichg1 : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_ui_selected(
           ui,
           selected
         )
-        var iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
+        val iswrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_write_from_ui_parent(
           uichg1,
           parent
         )
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_layout_from_ui_orig_parent(
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_ui_layout_from_ui_orig_parent(
           uichg1,
           ui,
           parent
@@ -13614,12 +13624,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-layout<-ui-parent-visible", // name
         0, // idx
@@ -13642,26 +13652,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_layout_from_ui_parent_visible
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_layout_from_ui_parent_visible
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_layout_from_ui_parent_visible
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_layout_from_ui_parent_visible
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var visible : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val visible : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_ui_layout_from_ui_parent_visible(ui, parent, visible)
       return output
     }
 
     override fun vx_ui_layout_from_ui_parent_visible(ui : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui, visible : vx_core.Type_int) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_ui_parent_visible(ui, parent, visible)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout_from_ui_parent_visible(ui, parent, visible)
       return output
     }
 
@@ -13675,11 +13685,11 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uichg : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_write_from_ui_visible(
+        val uichg : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_write_from_ui_visible(
           ui,
           visible
         )
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_layout_from_ui_orig_parent(
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_ui_layout_from_ui_orig_parent(
           uichg,
           ui,
           parent
@@ -13714,12 +13724,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-readstate-uiapp", // name
         0, // idx
@@ -13742,24 +13752,24 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_readstate_uiapp
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_readstate_uiapp
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_readstate_uiapp
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_readstate_uiapp
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_ui_readstate_uiapp(context)
       return output
     }
 
     override fun vx_ui_readstate_uiapp(context : vx_core.Type_context) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_uiapp(context)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_uiapp(context)
       return output
     }
 
@@ -13803,12 +13813,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-readstate<-uid", // name
         0, // idx
@@ -13831,12 +13841,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_readstate_from_uid
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_readstate_from_uid
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_readstate_from_uid
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_readstate_from_uid
       return output
     }
 
@@ -13846,22 +13856,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_ui_ui.f_ui_readstate_from_uid(context, inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_ui_ui.f_ui_readstate_from_uid(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_readstate_from_uid(context, uid)
       return output
     }
 
     override fun vx_ui_readstate_from_uid(context : vx_core.Type_context, uid : vx_core.Type_string) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_from_uid(context, uid)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_from_uid(context, uid)
       return output
     }
 
@@ -13875,10 +13885,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uiapp : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_uiapp(
+        val uiapp : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_readstate_uiapp(
           context
         )
-        var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_from_ui_find(
+        val output_1 : vx_core.Type_any = vx_ui_ui.f_ui_from_ui_find(
           uiapp,
           uid
         )
@@ -13913,12 +13923,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-selected<-ui", // name
         0, // idx
@@ -13941,12 +13951,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_selected_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_selected_from_ui
       return output
     }
 
@@ -13956,21 +13966,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_ui_selected_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_ui_selected_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_ui_selected_from_ui(ui)
       return output
     }
 
     override fun vx_ui_selected_from_ui(ui : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_selected_from_ui(ui)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_selected_from_ui(ui)
       return output
     }
 
@@ -13984,10 +13994,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_selected_from_ui(
+        val uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_selected_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = vx_core.f_first_from_list(
+        val output_1 : vx_core.Type_any = vx_core.f_first_from_list(
           vx_ui_ui.t_ui,
           uilist
         )
@@ -14022,12 +14032,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-visible<-ui", // name
         0, // idx
@@ -14050,12 +14060,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_visible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_visible_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_visible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_visible_from_ui
       return output
     }
 
@@ -14065,21 +14075,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_ui_visible_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_ui_visible_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_ui_visible_from_ui(ui)
       return output
     }
 
     override fun vx_ui_visible_from_ui(ui : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_visible_from_ui(ui)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_visible_from_ui(ui)
       return output
     }
 
@@ -14093,10 +14103,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_visible_from_ui(
+        val uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_visible_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = vx_core.f_first_from_list(
+        val output_1 : vx_core.Type_any = vx_core.f_first_from_list(
           vx_ui_ui.t_ui,
           uilist
         )
@@ -14132,12 +14142,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-write<-ui-child", // name
         0, // idx
@@ -14160,25 +14170,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_write_from_ui_child
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_write_from_ui_child
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_write_from_ui_child
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_write_from_ui_child
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var child : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val child : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_write_from_ui_child(ui, child)
       return output
     }
 
     override fun vx_ui_write_from_ui_child(ui : vx_ui_ui.Type_ui, child : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_write_from_ui_child(ui, child)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_write_from_ui_child(ui, child)
       return output
     }
 
@@ -14192,14 +14202,14 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var childid : vx_core.Type_string = child.uid()
-        var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-        var write : vx_core.Type_boolean = vx_core.f_boolean_write_from_map_name_value(
+        val childid : vx_core.Type_string = child.uid()
+        val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+        val write : vx_core.Type_boolean = vx_core.f_boolean_write_from_map_name_value(
           uimap,
           childid,
           child
         )
-        var output_1 : vx_core.Type_any = ui
+        val output_1 : vx_core.Type_any = ui
         output_1
       })
     )
@@ -14232,12 +14242,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-write<-ui-childmap", // name
         0, // idx
@@ -14260,25 +14270,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_write_from_ui_childmap
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_write_from_ui_childmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_write_from_ui_childmap
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_write_from_ui_childmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var childmap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val childmap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_write_from_ui_childmap(ui, childmap)
       return output
     }
 
     override fun vx_ui_write_from_ui_childmap(ui : vx_ui_ui.Type_ui, childmap : vx_ui_ui.Type_uimap) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_write_from_ui_childmap(ui, childmap)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_write_from_ui_childmap(ui, childmap)
       return output
     }
 
@@ -14292,12 +14302,12 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var workmap : vx_ui_ui.Type_uimap = vx_core.f_map_from_map_1(
+        val workmap : vx_ui_ui.Type_uimap = vx_core.f_map_from_map_1(
           vx_ui_ui.t_uimap,
           childmap,
           vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            var value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
+            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+            val value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
             var output_2 : vx_core.Type_any = vx_ui_ui.f_ui_write_from_ui_child(
               ui,
               value
@@ -14305,7 +14315,7 @@ object vx_ui_ui {
             output_2
           })
         )
-        var output_1 : vx_core.Type_any = ui
+        val output_1 : vx_core.Type_any = ui
         output_1
       })
     )
@@ -14338,12 +14348,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui-write<-ui-visible", // name
         0, // idx
@@ -14366,25 +14376,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_write_from_ui_visible
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_write_from_ui_visible
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_write_from_ui_visible
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_write_from_ui_visible
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var visible : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val visible : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_write_from_ui_visible(ui, visible)
       return output
     }
 
     override fun vx_ui_write_from_ui_visible(ui : vx_ui_ui.Type_ui, visible : vx_core.Type_int) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_write_from_ui_visible(ui, visible)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_write_from_ui_visible(ui, visible)
       return output
     }
 
@@ -14408,7 +14418,7 @@ object vx_ui_ui {
             output_1
           }),
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_2 : vx_core.Type_any = ui
+            val output_2 : vx_core.Type_any = ui
             output_2
           })
         ),
@@ -14417,16 +14427,16 @@ object vx_ui_ui {
             var output_3 : vx_core.Type_any = vx_core.f_let(
               vx_ui_ui.t_ui,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-                var uilist1 : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
+                val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+                val uilist1 : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
                   uimap
                 )
-                var uilist2 : vx_ui_ui.Type_uilist = vx_core.f_list_from_list_intany(
+                val uilist2 : vx_ui_ui.Type_uilist = vx_core.f_list_from_list_intany(
                   vx_ui_ui.t_uilist,
                   uilist1,
                   vx_core.t_any_from_int_any.vx_fn_new({posval_any : vx_core.Type_any, uival_any : vx_core.Type_any ->
-                    var posval : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, posval_any)
-                    var uival : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, uival_any)
+                    val posval : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, posval_any)
+                    val uival : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, uival_any)
                     var output_5 : vx_core.Type_any = vx_core.f_if_2(
                       vx_ui_ui.t_ui,
                       vx_core.vx_new(
@@ -14475,7 +14485,7 @@ object vx_ui_ui {
                     output_5
                   })
                 )
-                var output_4 : vx_core.Type_any = ui
+                val output_4 : vx_core.Type_any = ui
                 output_4
               })
             )
@@ -14514,12 +14524,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui<-layout-ui-orig-parent", // name
         0, // idx
@@ -14542,27 +14552,27 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_from_layout_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_from_layout_ui_orig_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_from_layout_ui_orig_parent
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_from_layout_ui_orig_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var layout : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
-      var uiorig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(3)))
+      val layout : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val uiorig : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(2)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(3)))
       output = vx_ui_ui.f_ui_from_layout_ui_orig_parent(layout, uiarg, uiorig, parent)
       return output
     }
 
     override fun vx_ui_from_layout_ui_orig_parent(layout : vx_ui_ui.Type_layout, uiarg : vx_ui_ui.Type_ui, uiorig : vx_ui_ui.Type_ui, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_layout_ui_orig_parent(layout, uiarg, uiorig, parent)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_layout_ui_orig_parent(layout, uiarg, uiorig, parent)
       return output
     }
 
@@ -14576,16 +14586,16 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var name : vx_core.Type_string = layout.name()
-        var fn_layout : vx_ui_ui.Func_ui_layout_from_ui_orig_parent = layout.fn_layout()
-        var uichg : vx_ui_ui.Type_ui = vx_core.vx_any_from_func(
+        val name : vx_core.Type_string = layout.name()
+        val fn_layout : vx_ui_ui.Func_ui_layout_from_ui_orig_parent = layout.fn_layout()
+        val uichg : vx_ui_ui.Type_ui = vx_core.vx_any_from_func(
           vx_ui_ui.t_ui,
           fn_layout,
           uiarg,
           uiorig,
           parent
         )
-        var output_1 : vx_core.Type_any = uichg
+        val output_1 : vx_core.Type_any = uichg
         output_1
       })
     )
@@ -14618,12 +14628,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui<-ui-find", // name
         0, // idx
@@ -14646,25 +14656,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_from_ui_find
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_from_ui_find
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_from_ui_find
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_from_ui_find
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var find : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val find : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_from_ui_find(uiarg, find)
       return output
     }
 
     override fun vx_ui_from_ui_find(uiarg : vx_ui_ui.Type_ui, find : vx_core.Type_string) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_ui_find(uiarg, find)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_ui_find(uiarg, find)
       return output
     }
 
@@ -14678,8 +14688,8 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_ui,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uid : vx_core.Type_string = uiarg.uid()
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val uid : vx_core.Type_string = uiarg.uid()
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_ui_ui.t_ui,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -14707,7 +14717,7 @@ object vx_ui_ui {
                 output_4
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = uiarg
+                val output_5 : vx_core.Type_any = uiarg
                 output_5
               })
             ),
@@ -14730,21 +14740,21 @@ object vx_ui_ui {
                 var output_7 : vx_core.Type_any = vx_core.f_let(
                   vx_ui_ui.t_ui,
                   vx_core.t_any_from_func.vx_fn_new({ ->
-                    var afterpos : vx_core.Type_int = vx_core.f_plus(
+                    val afterpos : vx_core.Type_int = vx_core.f_plus(
                       vx_core.f_length(
                         uid
                       ),
                       vx_core.vx_new_int(2)
                     )
-                    var after : vx_core.Type_string = vx_type.f_string_from_string_start(
+                    val after : vx_core.Type_string = vx_type.f_string_from_string_start(
                       find,
                       afterpos
                     )
-                    var pos : vx_core.Type_int = vx_type.f_int_from_string_find(
+                    val pos : vx_core.Type_int = vx_type.f_int_from_string_find(
                       after,
                       vx_core.vx_new_string("/")
                     )
-                    var subpart : vx_core.Type_string = vx_core.f_if_2(
+                    val subpart : vx_core.Type_string = vx_core.f_if_2(
                       vx_core.t_string,
                       vx_core.vx_new(
                         vx_core.t_thenelselist,
@@ -14769,13 +14779,13 @@ object vx_ui_ui {
                         ),
                         vx_core.f_else(
                           vx_core.t_any_from_func.vx_fn_new({ ->
-                            var output_14 : vx_core.Type_any = after
+                            val output_14 : vx_core.Type_any = after
                             output_14
                           })
                         )
                       )
                     )
-                    var subfind : vx_core.Type_string = vx_core.f_if_2(
+                    val subfind : vx_core.Type_string = vx_core.f_if_2(
                       vx_core.t_string,
                       vx_core.vx_new(
                         vx_core.t_thenelselist,
@@ -14801,7 +14811,7 @@ object vx_ui_ui {
                         )
                       )
                     )
-                    var output_8 : vx_core.Type_any = vx_core.f_if_2(
+                    val output_8 : vx_core.Type_any = vx_core.f_if_2(
                       vx_ui_ui.t_ui,
                       vx_core.vx_new(
                         vx_core.t_thenelselist,
@@ -14816,13 +14826,13 @@ object vx_ui_ui {
                             var output_10 : vx_core.Type_any = vx_core.f_let(
                               vx_ui_ui.t_ui,
                               vx_core.t_any_from_func.vx_fn_new({ ->
-                                var uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
-                                var subui : vx_ui_ui.Type_ui = vx_core.f_any_from_map(
+                                val uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
+                                val subui : vx_ui_ui.Type_ui = vx_core.f_any_from_map(
                                   vx_ui_ui.t_ui,
                                   uimap,
                                   subfind
                                 )
-                                var output_11 : vx_core.Type_any = vx_ui_ui.f_ui_from_ui_find(
+                                val output_11 : vx_core.Type_any = vx_ui_ui.f_ui_from_ui_find(
                                   subui,
                                   find
                                 )
@@ -14874,12 +14884,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "ui<-ui-selected", // name
         0, // idx
@@ -14902,25 +14912,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_ui_from_ui_selected
+      val output : vx_core.Type_any = vx_ui_ui.e_ui_from_ui_selected
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_ui_from_ui_selected
+      val output : vx_core.Type_any = vx_ui_ui.t_ui_from_ui_selected
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
-      var selected : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val selected : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_ui_from_ui_selected(ui, selected)
       return output
     }
 
     override fun vx_ui_from_ui_selected(ui : vx_ui_ui.Type_ui, selected : vx_core.Type_int) : vx_ui_ui.Type_ui {
-      var output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_ui_selected(ui, selected)
+      val output : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_from_ui_selected(ui, selected)
       return output
     }
 
@@ -14944,7 +14954,7 @@ object vx_ui_ui {
             output_1
           }),
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_2 : vx_core.Type_any = ui
+            val output_2 : vx_core.Type_any = ui
             output_2
           })
         ),
@@ -14953,16 +14963,16 @@ object vx_ui_ui {
             var output_3 : vx_core.Type_any = vx_core.f_let(
               vx_ui_ui.t_ui,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var uimap : vx_ui_ui.Type_uimap = ui.uimap()
-                var uilist1 : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
+                val uimap : vx_ui_ui.Type_uimap = ui.uimap()
+                val uilist1 : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
                   uimap
                 )
-                var uilist2 : vx_ui_ui.Type_uilist = vx_core.f_list_from_list_intany(
+                val uilist2 : vx_ui_ui.Type_uilist = vx_core.f_list_from_list_intany(
                   vx_ui_ui.t_uilist,
                   uilist1,
                   vx_core.t_any_from_int_any.vx_fn_new({posval_any : vx_core.Type_any, uival_any : vx_core.Type_any ->
-                    var posval : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, posval_any)
-                    var uival : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, uival_any)
+                    val posval : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, posval_any)
+                    val uival : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, uival_any)
                     var output_5 : vx_core.Type_any = vx_core.f_if_2(
                       vx_ui_ui.t_ui,
                       vx_core.vx_new(
@@ -15005,10 +15015,10 @@ object vx_ui_ui {
                     output_5
                   })
                 )
-                var childmap : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_from_uilist(
+                val childmap : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_from_uilist(
                   uilist2
                 )
-                var output_4 : vx_core.Type_any = vx_core.f_copy(
+                val output_4 : vx_core.Type_any = vx_core.f_copy(
                   ui,
                   vx_core.vx_new(
                     vx_core.t_anylist,
@@ -15052,12 +15062,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uid-selected<-ui", // name
         0, // idx
@@ -15080,12 +15090,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uid_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_uid_selected_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uid_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_uid_selected_from_ui
       return output
     }
 
@@ -15095,21 +15105,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_uid_selected_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_uid_selected_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_uid_selected_from_ui(ui)
       return output
     }
 
     override fun vx_uid_selected_from_ui(ui : vx_ui_ui.Type_ui) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_ui_ui.f_uid_selected_from_ui(ui)
+      val output : vx_core.Type_string = vx_ui_ui.f_uid_selected_from_ui(ui)
       return output
     }
 
@@ -15123,10 +15133,10 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uidlist : vx_core.Type_stringlist = vx_ui_ui.f_stringlist_selected_from_ui(
+        val uidlist : vx_core.Type_stringlist = vx_ui_ui.f_stringlist_selected_from_ui(
           ui
         )
-        var output_1 : vx_core.Type_any = vx_core.f_first_from_list(
+        val output_1 : vx_core.Type_any = vx_core.f_first_from_list(
           vx_core.t_string,
           uidlist
         )
@@ -15160,12 +15170,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uiengine-readstate", // name
         0, // idx
@@ -15188,24 +15198,24 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uiengine_readstate
+      val output : vx_core.Type_any = vx_ui_ui.e_uiengine_readstate
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uiengine_readstate
+      val output : vx_core.Type_any = vx_ui_ui.t_uiengine_readstate
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_uiengine_readstate(context)
       return output
     }
 
     override fun vx_uiengine_readstate(context : vx_core.Type_context) : vx_ui_ui.Type_uiengine {
-      var output : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_readstate(context)
+      val output : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_readstate(context)
       return output
     }
 
@@ -15249,12 +15259,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uiengine-render", // name
         0, // idx
@@ -15277,12 +15287,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uiengine_render
+      val output : vx_core.Type_any = vx_ui_ui.e_uiengine_render
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uiengine_render
+      val output : vx_core.Type_any = vx_ui_ui.t_uiengine_render
       return output
     }
 
@@ -15292,22 +15302,22 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_uiengine = value as vx_ui_ui.Type_uiengine
-      var outputval : vx_core.Type_any = vx_ui_ui.f_uiengine_render(context, inputval)
+      val inputval : vx_ui_ui.Type_uiengine = value as vx_ui_ui.Type_uiengine
+      val outputval : vx_core.Type_any = vx_ui_ui.f_uiengine_render(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var uiengine : vx_ui_ui.Type_uiengine = vx_core.f_any_from_any(vx_ui_ui.t_uiengine, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiengine : vx_ui_ui.Type_uiengine = vx_core.f_any_from_any(vx_ui_ui.t_uiengine, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_uiengine_render(context, uiengine)
       return output
     }
 
     override fun vx_uiengine_render(context : vx_core.Type_context, uiengine : vx_ui_ui.Type_uiengine) : vx_ui_ui.Type_uiengine {
-      var output : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_render(context, uiengine)
+      val output : vx_ui_ui.Type_uiengine = vx_ui_ui.f_uiengine_render(context, uiengine)
       return output
     }
 
@@ -15321,31 +15331,31 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_uiengine,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var stylesheet : vx_ui_ui.Type_stylesheet = uiengine.stylesheet()
-        var ui : vx_ui_ui.Type_ui = uiengine.ui()
-        var layoutengine : vx_ui_ui.Type_layoutengine = uiengine.layoutengine()
-        var issetstate : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiengine(
+        val stylesheet : vx_ui_ui.Type_stylesheet = uiengine.stylesheet()
+        val ui : vx_ui_ui.Type_ui = uiengine.ui()
+        val layoutengine : vx_ui_ui.Type_layoutengine = uiengine.layoutengine()
+        val issetstate : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiengine(
           context,
           uiengine
         )
-        var stylesheetrender : vx_ui_ui.Func_stylesheet_render = layoutengine.stylesheetrender()
-        var stylesheetrend : vx_ui_ui.Type_stylesheet = vx_core.vx_any_from_func(
+        val stylesheetrender : vx_ui_ui.Func_stylesheet_render = layoutengine.stylesheetrender()
+        val stylesheetrend : vx_ui_ui.Type_stylesheet = vx_core.vx_any_from_func(
           vx_ui_ui.t_stylesheet,
           stylesheetrender,
           stylesheet
         )
-        var uiaddlayout : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui_layoutengine(
+        val uiaddlayout : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_addlayout_from_ui_layoutengine(
           ui,
           layoutengine
         )
-        var isuiwrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(
+        val isuiwrite : vx_core.Type_boolean = vx_ui_ui.f_boolean_writestate_from_uiapp(
           context,
           uiaddlayout
         )
-        var uirendered : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout(
+        val uirendered : vx_ui_ui.Type_ui = vx_ui_ui.f_ui_layout(
           uiaddlayout
         )
-        var output_1 : vx_core.Type_any = vx_core.f_copy(
+        val output_1 : vx_core.Type_any = vx_core.f_copy(
           uiengine,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -15384,12 +15394,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uilist-selected<-ui", // name
         0, // idx
@@ -15412,12 +15422,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uilist_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_uilist_selected_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uilist_selected_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_uilist_selected_from_ui
       return output
     }
 
@@ -15427,21 +15437,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_uilist_selected_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_uilist_selected_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_uilist_selected_from_ui(uiarg)
       return output
     }
 
     override fun vx_uilist_selected_from_ui(uiarg : vx_ui_ui.Type_ui) : vx_ui_ui.Type_uilist {
-      var output : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_selected_from_ui(uiarg)
+      val output : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_selected_from_ui(uiarg)
       return output
     }
 
@@ -15455,15 +15465,15 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_uilist,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
-        var uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
+        val uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
+        val uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
           uimap
         )
-        var output_1 : vx_core.Type_any = vx_collection.f_list_from_list_filter(
+        val output_1 : vx_core.Type_any = vx_collection.f_list_from_list_filter(
           vx_ui_ui.t_uilist,
           uilist,
           vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
-            var item : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, item_any)
+            val item : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, item_any)
             var output_2 : vx_core.Type_any = vx_core.f_if(
               vx_ui_ui.t_ui,
               item.selected(),
@@ -15503,12 +15513,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uilist-visible<-ui", // name
         0, // idx
@@ -15531,12 +15541,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uilist_visible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.e_uilist_visible_from_ui
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uilist_visible_from_ui
+      val output : vx_core.Type_any = vx_ui_ui.t_uilist_visible_from_ui
       return output
     }
 
@@ -15546,21 +15556,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
-      var outputval : vx_core.Type_any = vx_ui_ui.f_uilist_visible_from_ui(inputval)
+      val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
+      val outputval : vx_core.Type_any = vx_ui_ui.f_uilist_visible_from_ui(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uiarg : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_uilist_visible_from_ui(uiarg)
       return output
     }
 
     override fun vx_uilist_visible_from_ui(uiarg : vx_ui_ui.Type_ui) : vx_ui_ui.Type_uilist {
-      var output : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_visible_from_ui(uiarg)
+      val output : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_visible_from_ui(uiarg)
       return output
     }
 
@@ -15574,15 +15584,15 @@ object vx_ui_ui {
     output = vx_core.f_let(
       vx_ui_ui.t_uilist,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
-        var uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
+        val uimap : vx_ui_ui.Type_uimap = uiarg.uimap()
+        val uilist : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(
           uimap
         )
-        var output_1 : vx_core.Type_any = vx_collection.f_list_from_list_filter(
+        val output_1 : vx_core.Type_any = vx_collection.f_list_from_list_filter(
           vx_ui_ui.t_uilist,
           uilist,
           vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
-            var item : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, item_any)
+            val item : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, item_any)
             var output_2 : vx_core.Type_any = vx_core.f_if(
               vx_ui_ui.t_ui,
               vx_core.f_not(
@@ -15623,12 +15633,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uilist<-uimap", // name
         0, // idx
@@ -15651,12 +15661,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uilist_from_uimap
+      val output : vx_core.Type_any = vx_ui_ui.e_uilist_from_uimap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uilist_from_uimap
+      val output : vx_core.Type_any = vx_ui_ui.t_uilist_from_uimap
       return output
     }
 
@@ -15666,21 +15676,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_uimap = value as vx_ui_ui.Type_uimap
-      var outputval : vx_core.Type_any = vx_ui_ui.f_uilist_from_uimap(inputval)
+      val inputval : vx_ui_ui.Type_uimap = value as vx_ui_ui.Type_uimap
+      val outputval : vx_core.Type_any = vx_ui_ui.f_uilist_from_uimap(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_uilist_from_uimap(uimap)
       return output
     }
 
     override fun vx_uilist_from_uimap(uimap : vx_ui_ui.Type_uimap) : vx_ui_ui.Type_uilist {
-      var output : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(uimap)
+      val output : vx_ui_ui.Type_uilist = vx_ui_ui.f_uilist_from_uimap(uimap)
       return output
     }
 
@@ -15695,8 +15705,8 @@ object vx_ui_ui {
       vx_ui_ui.t_uilist,
       uimap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, item_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var item : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, item_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val item : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, item_any)
         var output_1 : vx_core.Type_any = item
         output_1
       })
@@ -15731,12 +15741,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uimap-addlayout<-uimap-layoutmap-else", // name
         0, // idx
@@ -15759,26 +15769,26 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uimap_addlayout_from_uimap_layoutmap_else
+      val output : vx_core.Type_any = vx_ui_ui.e_uimap_addlayout_from_uimap_layoutmap_else
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uimap_addlayout_from_uimap_layoutmap_else
+      val output : vx_core.Type_any = vx_ui_ui.t_uimap_addlayout_from_uimap_layoutmap_else
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
-      var layoutmap : vx_ui_ui.Type_layoutmap = vx_core.f_any_from_any(vx_ui_ui.t_layoutmap, arglist.vx_any(vx_core.vx_new_int(1)))
-      var layoutelse : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, arglist.vx_any(vx_core.vx_new_int(2)))
+      val uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val layoutmap : vx_ui_ui.Type_layoutmap = vx_core.f_any_from_any(vx_ui_ui.t_layoutmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val layoutelse : vx_ui_ui.Type_layout = vx_core.f_any_from_any(vx_ui_ui.t_layout, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_ui_ui.f_uimap_addlayout_from_uimap_layoutmap_else(uimap, layoutmap, layoutelse)
       return output
     }
 
     override fun vx_uimap_addlayout_from_uimap_layoutmap_else(uimap : vx_ui_ui.Type_uimap, layoutmap : vx_ui_ui.Type_layoutmap, layoutelse : vx_ui_ui.Type_layout) : vx_ui_ui.Type_uimap {
-      var output : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_addlayout_from_uimap_layoutmap_else(uimap, layoutmap, layoutelse)
+      val output : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_addlayout_from_uimap_layoutmap_else(uimap, layoutmap, layoutelse)
       return output
     }
 
@@ -15793,8 +15803,8 @@ object vx_ui_ui {
       vx_ui_ui.t_uimap,
       uimap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, ui_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, ui_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, ui_any)
         var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_addlayout_from_ui_layoutmap_else(
           ui,
           layoutmap,
@@ -15832,12 +15842,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uimap-layout<-uimap-parent", // name
         0, // idx
@@ -15860,25 +15870,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uimap_layout_from_uimap_parent
+      val output : vx_core.Type_any = vx_ui_ui.e_uimap_layout_from_uimap_parent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uimap_layout_from_uimap_parent
+      val output : vx_core.Type_any = vx_ui_ui.t_uimap_layout_from_uimap_parent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
-      var parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
+      val uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val parent : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_uimap_layout_from_uimap_parent(uimap, parent)
       return output
     }
 
     override fun vx_uimap_layout_from_uimap_parent(uimap : vx_ui_ui.Type_uimap, parent : vx_ui_ui.Type_ui) : vx_ui_ui.Type_uimap {
-      var output : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_layout_from_uimap_parent(uimap, parent)
+      val output : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_layout_from_uimap_parent(uimap, parent)
       return output
     }
 
@@ -15893,8 +15903,8 @@ object vx_ui_ui {
       vx_ui_ui.t_uimap,
       uimap,
       vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-        var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-        var value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
+        val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+        val value : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, value_any)
         var output_1 : vx_core.Type_any = vx_ui_ui.f_ui_layout_from_ui_orig_parent(
           value,
           vx_core.f_empty(
@@ -15932,12 +15942,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uimap<-uilist", // name
         0, // idx
@@ -15960,12 +15970,12 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uimap_from_uilist
+      val output : vx_core.Type_any = vx_ui_ui.e_uimap_from_uilist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uimap_from_uilist
+      val output : vx_core.Type_any = vx_ui_ui.t_uimap_from_uilist
       return output
     }
 
@@ -15975,21 +15985,21 @@ object vx_ui_ui {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_ui_ui.Type_uilist = value as vx_ui_ui.Type_uilist
-      var outputval : vx_core.Type_any = vx_ui_ui.f_uimap_from_uilist(inputval)
+      val inputval : vx_ui_ui.Type_uilist = value as vx_ui_ui.Type_uilist
+      val outputval : vx_core.Type_any = vx_ui_ui.f_uimap_from_uilist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uilist : vx_ui_ui.Type_uilist = vx_core.f_any_from_any(vx_ui_ui.t_uilist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uilist : vx_ui_ui.Type_uilist = vx_core.f_any_from_any(vx_ui_ui.t_uilist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_ui_ui.f_uimap_from_uilist(uilist)
       return output
     }
 
     override fun vx_uimap_from_uilist(uilist : vx_ui_ui.Type_uilist) : vx_ui_ui.Type_uimap {
-      var output : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_from_uilist(uilist)
+      val output : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_from_uilist(uilist)
       return output
     }
 
@@ -16004,7 +16014,7 @@ object vx_ui_ui {
       vx_ui_ui.t_uimap,
       uilist,
       vx_core.t_any_from_any.vx_fn_new({ui_any : vx_core.Type_any ->
-        var ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, ui_any)
+        val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, ui_any)
         var output_1 : vx_core.Type_any = ui.uid()
         output_1
       })
@@ -16038,12 +16048,12 @@ object vx_ui_ui {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/ui/ui", // pkgname
         "uimap<-uimap-data", // name
         0, // idx
@@ -16066,25 +16076,25 @@ object vx_ui_ui {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.e_uimap_from_uimap_data
+      val output : vx_core.Type_any = vx_ui_ui.e_uimap_from_uimap_data
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_ui_ui.t_uimap_from_uimap_data
+      val output : vx_core.Type_any = vx_ui_ui.t_uimap_from_uimap_data
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
-      var data : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
+      val uimap : vx_ui_ui.Type_uimap = vx_core.f_any_from_any(vx_ui_ui.t_uimap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val data : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_ui_ui.f_uimap_from_uimap_data(uimap, data)
       return output
     }
 
     override fun vx_uimap_from_uimap_data(uimap : vx_ui_ui.Type_uimap, data : vx_core.Type_any) : vx_ui_ui.Type_uimap {
-      var output : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_from_uimap_data(uimap, data)
+      val output : vx_ui_ui.Type_uimap = vx_ui_ui.f_uimap_from_uimap_data(uimap, data)
       return output
     }
 
@@ -16299,7 +16309,12 @@ object vx_ui_ui {
     mapfunc.put("uimap-layout<-uimap-parent", vx_ui_ui.t_uimap_layout_from_uimap_parent)
     mapfunc.put("uimap<-uilist", vx_ui_ui.t_uimap_from_uilist)
     mapfunc.put("uimap<-uimap-data", vx_ui_ui.t_uimap_from_uimap_data)
-    vx_core.vx_global_package_set("vx/ui/ui", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/ui/ui",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

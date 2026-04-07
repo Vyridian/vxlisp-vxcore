@@ -82,7 +82,7 @@ public static class Test {
       map.put(":testpkg", this.testpkg());
       map.put(":casename", this.casename());
       map.put(":describelist", this.describelist());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -169,7 +169,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -191,7 +191,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -213,7 +213,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("casename"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -232,7 +232,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("describelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -302,12 +302,12 @@ public static class Test {
 
   public class Class_testcaselist : Vx.Core.Class_base, Type_testcaselist {
 
-    public List<Vx.Test.Type_testcase> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Test.Type_testcase> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Test.Type_testcase>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -382,7 +382,7 @@ public static class Test {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Test.Class_testcaselist work = new Vx.Test.Class_testcaselist();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -503,7 +503,7 @@ public static class Test {
       map.put(":funcmap", this.funcmap());
       map.put(":testpkg", this.testpkg());
       map.put(":typemap", this.typemap());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -587,7 +587,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("constmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -606,7 +606,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("funcmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -628,7 +628,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -647,7 +647,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("typemap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -785,7 +785,7 @@ public static class Test {
       map.put(":testpkg", this.testpkg());
       map.put(":tests", this.tests());
       map.put(":total", this.total());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -872,7 +872,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("pct"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -894,7 +894,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -916,7 +916,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("tests"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -938,7 +938,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("total"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1136,7 +1136,7 @@ public static class Test {
       map.put(":testpkg", this.testpkg());
       map.put(":totalnums", this.totalnums());
       map.put(":typenums", this.typenums());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -1228,7 +1228,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("bigospacenums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1247,7 +1247,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("bigotimenums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1266,7 +1266,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("constnums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1285,7 +1285,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("docnums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1304,7 +1304,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("funcnums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1326,7 +1326,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1345,7 +1345,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("totalnums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1364,7 +1364,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("typenums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1491,7 +1491,7 @@ public static class Test {
       map.put(":describename", this.describename());
       map.put(":testpkg", this.testpkg());
       map.put(":testresult", this.testresult());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -1576,7 +1576,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("describename"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1598,7 +1598,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1617,7 +1617,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testresult"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -1686,12 +1686,12 @@ public static class Test {
 
   public class Class_testdescribelist : Vx.Core.Class_base, Type_testdescribelist {
 
-    public List<Vx.Test.Type_testdescribe> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Test.Type_testdescribe> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Test.Type_testdescribe>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -1766,7 +1766,7 @@ public static class Test {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Test.Class_testdescribelist work = new Vx.Test.Class_testdescribelist();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1902,7 +1902,7 @@ public static class Test {
       map.put(":coveragesummary", this.coveragesummary());
       map.put(":passfail", this.passfail());
       map.put(":testpkg", this.testpkg());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -1988,7 +1988,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("caselist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2007,7 +2007,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("coveragedetail"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2026,7 +2026,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("coveragesummary"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2048,7 +2048,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2070,7 +2070,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2141,12 +2141,12 @@ public static class Test {
 
   public class Class_testpackagelist : Vx.Core.Class_base, Type_testpackagelist {
 
-    public List<Vx.Test.Type_testpackage> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Test.Type_testpackage> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Test.Type_testpackage>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -2221,7 +2221,7 @@ public static class Test {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Test.Class_testpackagelist work = new Vx.Test.Class_testpackagelist();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -2357,7 +2357,7 @@ public static class Test {
       map.put(":expected", this.expected());
       map.put(":actual", this.actual());
       map.put(":fn-actual", this.fn_actual());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -2446,7 +2446,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("code"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2468,7 +2468,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2487,7 +2487,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("expected"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2506,7 +2506,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("actual"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2525,7 +2525,7 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("fn-actual"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -2596,12 +2596,12 @@ public static class Test {
 
   public class Class_testresultlist : Vx.Core.Class_base, Type_testresultlist {
 
-    public List<Vx.Test.Type_testresult> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Test.Type_testresult> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Test.Type_testresult>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -2676,7 +2676,7 @@ public static class Test {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Test.Class_testresultlist work = new Vx.Test.Class_testresultlist();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -4739,38 +4739,42 @@ public static class Test {
         Task<Vx.Test.Type_testdescribelist> future_resolvedlist = Vx.Test.f_resolve_testdescribelist(
           describelist
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_resolvedlist, (resolvedlist) => {
-          Vx.Core.Type_booleanlist passfaillist = Vx.Core.f_list_from_list_1(
-            Vx.Core.t_booleanlist,
-            resolvedlist,
-            Vx.Core.t_any_from_any.vx_fn_new((testdescribe_any) => {
-              Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(Vx.Test.t_testdescribe, testdescribe_any);
-              Vx.Core.Type_any output_3 = Vx.Core.f_let(
-                Vx.Core.t_boolean,
-                Vx.Core.t_any_from_func.vx_fn_new(() => {
-                  Vx.Test.Type_testresult testresult = testdescribe.testresult();
-                  Vx.Core.Type_any output_4 = testresult.passfail();
-                  return output_4;
-                })
-              );
-              return output_3;
-            })
-          );
-          Vx.Core.Type_boolean passfail = Vx.Core.f_and_1(
-            passfaillist
-          );
-          Vx.Core.Type_any output_2 = Vx.Core.f_copy(
-            testcase,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Core.vx_new_string(":passfail"),
-              passfail,
-              Vx.Core.vx_new_string(":describelist"),
-              resolvedlist
-            )
-          );
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_resolvedlist,
+          (resolvedlist) => {
+            Vx.Core.Type_booleanlist passfaillist = Vx.Core.f_list_from_list_1(
+              Vx.Core.t_booleanlist,
+              resolvedlist,
+              Vx.Core.t_any_from_any.vx_fn_new((testdescribe_any) => {
+                Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(Vx.Test.t_testdescribe, testdescribe_any);
+                Vx.Core.Type_any output_3 = Vx.Core.f_let(
+                  Vx.Core.t_boolean,
+                  Vx.Core.t_any_from_func.vx_fn_new(() => {
+                    Vx.Test.Type_testresult testresult = testdescribe.testresult();
+                    Vx.Core.Type_any output_4 = testresult.passfail();
+                    return output_4;
+                  })
+                );
+                return output_3;
+              })
+            );
+            Vx.Core.Type_boolean passfail = Vx.Core.f_and_1(
+              passfaillist
+            );
+            Vx.Core.Type_any output_2 = Vx.Core.f_copy(
+              testcase,
+              Vx.Core.vx_new(
+                Vx.Core.t_anylist,
+                Vx.Core.vx_new_string(":passfail"),
+                passfail,
+                Vx.Core.vx_new_string(":describelist"),
+                resolvedlist
+              )
+            );
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -4980,17 +4984,21 @@ public static class Test {
         Task<Vx.Test.Type_testresult> future_resolved = Vx.Test.f_resolve_testresult(
           testresult
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_resolved, (resolved) => {
-          Vx.Core.Type_any output_2 = Vx.Core.f_copy(
-            testdescribe,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Core.vx_new_string(":testresult"),
-              resolved
-            )
-          );
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_resolved,
+          (resolved) => {
+            Vx.Core.Type_any output_2 = Vx.Core.f_copy(
+              testdescribe,
+              Vx.Core.vx_new(
+                Vx.Core.t_anylist,
+                Vx.Core.vx_new_string(":testresult"),
+                resolved
+              )
+            );
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -5200,31 +5208,35 @@ public static class Test {
         Task<Vx.Test.Type_testcaselist> future_resolvedlist = Vx.Test.f_resolve_testcaselist(
           testcaselist
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_resolvedlist, (resolvedlist) => {
-          Vx.Core.Type_booleanlist passfaillist = Vx.Core.f_list_from_list_1(
-            Vx.Core.t_booleanlist,
-            resolvedlist,
-            Vx.Core.t_any_from_any.vx_fn_new((testcase_any) => {
-              Vx.Test.Type_testcase testcase = Vx.Core.f_any_from_any(Vx.Test.t_testcase, testcase_any);
-              Vx.Core.Type_any output_3 = testcase.passfail();
-              return output_3;
-            })
-          );
-          Vx.Core.Type_boolean passfail = Vx.Core.f_and_1(
-            passfaillist
-          );
-          Vx.Core.Type_any output_2 = Vx.Core.f_copy(
-            testpackage,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Core.vx_new_string(":passfail"),
-              passfail,
-              Vx.Core.vx_new_string(":caselist"),
-              resolvedlist
-            )
-          );
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_resolvedlist,
+          (resolvedlist) => {
+            Vx.Core.Type_booleanlist passfaillist = Vx.Core.f_list_from_list_1(
+              Vx.Core.t_booleanlist,
+              resolvedlist,
+              Vx.Core.t_any_from_any.vx_fn_new((testcase_any) => {
+                Vx.Test.Type_testcase testcase = Vx.Core.f_any_from_any(Vx.Test.t_testcase, testcase_any);
+                Vx.Core.Type_any output_3 = testcase.passfail();
+                return output_3;
+              })
+            );
+            Vx.Core.Type_boolean passfail = Vx.Core.f_and_1(
+              passfaillist
+            );
+            Vx.Core.Type_any output_2 = Vx.Core.f_copy(
+              testpackage,
+              Vx.Core.vx_new(
+                Vx.Core.t_anylist,
+                Vx.Core.vx_new_string(":passfail"),
+                passfail,
+                Vx.Core.vx_new_string(":caselist"),
+                resolvedlist
+              )
+            );
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -5436,52 +5448,56 @@ public static class Test {
           Vx.Core.t_any,
           fn_actual
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_actual, (actual) => {
-          Vx.Core.Type_any output_6 = Vx.Core.f_if_2(
-            Vx.Test.t_testresult,
-            Vx.Core.vx_new(
-              Vx.Core.t_thenelselist,
-              Vx.Core.f_then(
-                Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                  Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(
-                    fn_actual
-                  );
-                  return output_2;
-                }),
-                Vx.Core.t_any_from_func.vx_fn_new(() => {
-                  Vx.Core.Type_any output_3 = testresult;
-                  return output_3;
-                })
-              ),
-              Vx.Core.f_else(
-                Vx.Core.t_any_from_func.vx_fn_new(() => {
-                  Vx.Core.Type_any output_4 = Vx.Core.f_let(
-                    Vx.Test.t_testresult,
-                    Vx.Core.t_any_from_func.vx_fn_new(() => {
-                      Vx.Core.Type_boolean passfail = Vx.Core.f_eq(
-                        expected,
-                        actual
-                      );
-                      Vx.Core.Type_any output_5 = Vx.Core.f_copy(
-                        testresult,
-                        Vx.Core.vx_new(
-                          Vx.Core.t_anylist,
-                          Vx.Core.vx_new_string(":passfail"),
-                          passfail,
-                          Vx.Core.vx_new_string(":actual"),
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_actual,
+          (actual) => {
+            Vx.Core.Type_any output_6 = Vx.Core.f_if_2(
+              Vx.Test.t_testresult,
+              Vx.Core.vx_new(
+                Vx.Core.t_thenelselist,
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(() => {
+                    Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(
+                      fn_actual
+                    );
+                    return output_2;
+                  }),
+                  Vx.Core.t_any_from_func.vx_fn_new(() => {
+                    Vx.Core.Type_any output_3 = testresult;
+                    return output_3;
+                  })
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(() => {
+                    Vx.Core.Type_any output_4 = Vx.Core.f_let(
+                      Vx.Test.t_testresult,
+                      Vx.Core.t_any_from_func.vx_fn_new(() => {
+                        Vx.Core.Type_boolean passfail = Vx.Core.f_eq(
+                          expected,
                           actual
-                        )
-                      );
-                      return output_5;
-                    })
-                  );
-                  return output_4;
-                })
+                        );
+                        Vx.Core.Type_any output_5 = Vx.Core.f_copy(
+                          testresult,
+                          Vx.Core.vx_new(
+                            Vx.Core.t_anylist,
+                            Vx.Core.vx_new_string(":passfail"),
+                            passfail,
+                            Vx.Core.vx_new_string(":actual"),
+                            actual
+                          )
+                        );
+                        return output_5;
+                      })
+                    );
+                    return output_4;
+                  })
+                )
               )
-            )
-          );
-          return output_6;
-        });
+            );
+            return output_6;
+          }
+        );
         return output_1;
       })
     );
@@ -5909,7 +5925,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-false", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-false",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6022,7 +6041,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-false", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-false",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6130,7 +6152,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-gt", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-gt",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6233,7 +6258,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-gt", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-gt",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6341,7 +6369,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-ne", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-ne",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6444,7 +6475,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-ne", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-ne",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6554,7 +6588,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-string", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-string",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6657,7 +6694,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-string", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-string",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6775,7 +6815,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-true", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-true",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -6888,7 +6931,10 @@ public static class Test {
         )
       );
     } catch (Exception err) {
-      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test-true", err);
+      Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception(
+        "vx/test/test-true",
+        err
+      );
       output = Vx.Core.vx_copy(output, msg);
     }
     return output;
@@ -7343,7 +7389,12 @@ public static class Test {
     mapfunc.put("tr<-testdescribe-casename", Vx.Test.t_tr_from_testdescribe_casename);
     mapfunc.put("trlist<-testcase", Vx.Test.t_trlist_from_testcase);
     mapfunc.put("trlist<-testcaselist", Vx.Test.t_trlist_from_testcaselist);
-    Vx.Core.vx_global_package_set("vx/test", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/test",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

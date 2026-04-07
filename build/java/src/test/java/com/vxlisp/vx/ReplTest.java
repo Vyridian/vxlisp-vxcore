@@ -7,7 +7,7 @@ import com.vxlisp.vx.data.*;
 public final class ReplTest {
 
   public static Test.Type_testcase f_any_from_macro(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -22,7 +22,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_any_from_macro_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 5\n (any<-macro : int\n  \"(+ \"\n  (- 7 5)\n  \" 3)\"))",
       ":testresult", Test.f_test(
@@ -47,7 +47,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_any_from_repl(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -63,7 +63,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_any_from_repl_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"HelloWorld\"\n (any<-repl\n  (repl\n   :type string\n   :repllist\n    (repllist\n     (repl :value \"Hello\")\n     (repl :value \"World\")\n    ))))",
       ":testresult", Test.f_test(
@@ -109,7 +109,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_any_from_repl_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 5\n (any<-repl\n  (repl\n   :type +\n   :repllist\n    (repllist\n     (repl :value 2)\n     (repl :value 3)))))",
       ":testresult", Test.f_test(
@@ -155,7 +155,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_any_from_script(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -170,7 +170,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_any_from_script_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 5\n (any<-script\n  \"(+ 2 3)\"))",
       ":testresult", Test.f_test(
@@ -186,7 +186,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_const_from_string(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -202,7 +202,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_const_from_string_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n infinity\n (const<-string\n  \"infinity\"))",
       ":testresult", Test.f_test(
@@ -217,7 +217,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_const_from_string_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n tb/delimcomma\n (const<-string\n  \"vx/data/textblock/delimcomma\"))",
       ":testresult", Test.f_test(
@@ -232,7 +232,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_repl_empty_from_textblock_argmap(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -250,7 +250,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_empty_from_textblock_argmap_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :value 2)\n (repl-empty<-textblock-argmap\n  (tb/textblock\n   :text \"2\")\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -282,7 +282,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_empty_from_textblock_argmap_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :type +)\n (repl-empty<-textblock-argmap\n  (tb/textblock\n   :text \"+\")\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -314,7 +314,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_empty_from_textblock_argmap_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :value 2)\n (repl-empty<-textblock-argmap\n  (tb/textblock\n   :text \"1\"\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"2\")))\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -361,7 +361,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_empty_from_textblock_argmap_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  (msg<-error \"Empty delim cannot have more than one child.\"))\n (repl-empty<-textblock-argmap\n  (tb/textblock\n   :text \"1\"\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"2\")\n     (tb/textblock\n      :text \"3\")))\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -417,7 +417,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_repl_paren_from_textblock_argmap(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -432,7 +432,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_paren_from_textblock_argmap_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :type vx/core/+\n  :repllist\n   (repllist\n    (repl\n     :value 2)\n    (repl\n     :value 3)))\n (repl-paren<-textblock-argmap\n  (tb/textblock\n   :text \"(+ 2 3)\"\n   :delim\n    (copy delimvxlispparen\n     :delimlist\n      (empty delimlist))\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"+\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"2\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"3\")))\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -563,7 +563,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_repl_from_macro(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -578,7 +578,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_macro_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :type vx/core/+\n  :repllist\n   (repllist\n    (repl\n     :value 2)\n    (repl\n     :value 3)))\n (repl<-macro\n  \"(+ \"\n  (- 7 5)\n  \" 3)\"))",
       ":testresult", Test.f_test(
@@ -632,7 +632,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_repl_from_script(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -650,7 +650,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_script_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :value 2)\n (repl<-script\n  \"2\"))",
       ":testresult", Test.f_test(
@@ -672,7 +672,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_script_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :value infinity)\n (repl<-script\n  \"infinity\"))",
       ":testresult", Test.f_test(
@@ -694,7 +694,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_script_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :type +)\n (repl<-script\n  \"+\"))",
       ":testresult", Test.f_test(
@@ -716,7 +716,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_script_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :type +\n  :repllist\n   (repllist\n    (repl\n     :value 2)\n    (repl\n     :value 3)))\n (repl<-script\n  \"(+ 2 3)\"))",
       ":testresult", Test.f_test(
@@ -761,7 +761,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_repl_from_string_argmap(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -782,7 +782,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_string_argmap_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :value \"Hello\")\n (repl<-string-argmap\n  `\"Hello\"`\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -807,7 +807,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_string_argmap_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :value 2)\n (repl<-string-argmap\n  \"2\"\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -832,7 +832,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_string_argmap_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :value 2.3)\n (repl<-string-argmap\n  \"2.3\"\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -857,7 +857,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_string_argmap_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :value infinity)\n (repl<-string-argmap\n  \"infinity\"\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -882,7 +882,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_string_argmap_testdescribe_5(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :value tb/delimcomma)\n (repl<-string-argmap\n  \"vx/data/textblock/delimcomma\"\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -907,7 +907,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_string_argmap_testdescribe_6(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :type string)\n (repl<-string-argmap\n  \"string\"\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -932,7 +932,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_string_argmap_testdescribe_7(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :type +)\n (repl<-string-argmap\n  \"+\"\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -957,7 +957,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_repl_from_textblock(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -976,7 +976,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :value 2)\n (repl<-textblock\n  (tb/textblock\n   :text \"2\")))",
       ":testresult", Test.f_test(
@@ -1005,7 +1005,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :type +)\n (repl<-textblock\n  (tb/textblock\n   :text \"+\")))",
       ":testresult", Test.f_test(
@@ -1034,7 +1034,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :type +)\n (repl<-textblock\n  (tb/textblock\n   :text \"+\")))",
       ":testresult", Test.f_test(
@@ -1063,7 +1063,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :type +\n  :repllist\n   (repllist\n    (repl :value 2)\n    (repl :value 3)))\n (repl<-textblock\n  (tb/textblock\n   :text \"(+ 2 3)\"\n   :delim\n    (copy delimvxlispparen\n     :delimlist\n      (empty delimlist))\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"+\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"2\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"3\")))))",
       ":testresult", Test.f_test(
@@ -1191,7 +1191,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_testdescribe_5(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :type +\n  :repllist\n   (repllist\n    (repl :value 2)\n    (repl :value 3)))\n (repl<-textblock\n  (tb/textblock\n   :text \"(+ 2 3)\"\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"(+ 2 3)\"\n      :delim\n       (copy delimvxlispparen\n        :delimlist\n         (empty delimlist))\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"+\")\n        (tb/textblock\n         :text \" \"\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"2\")\n        (tb/textblock\n         :text \" \"\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"3\")))))))",
       ":testresult", Test.f_test(
@@ -1334,7 +1334,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_repl_from_textblock_argmap(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -1352,7 +1352,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_argmap_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :value 2)\n (repl<-textblock-argmap\n  (tb/textblock\n   :text \"2\")\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -1384,7 +1384,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_argmap_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl :type +)\n (repl<-textblock-argmap\n  (tb/textblock\n   :text \"+\")\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -1416,7 +1416,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_argmap_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :type +\n  :repllist\n   (repllist\n    (repl :value 2)\n    (repl :value 3)))\n (repl<-textblock-argmap\n  (tb/textblock\n   :text \"(+ 2 3)\"\n   :delim\n    (copy delimvxlispparen\n     :delimlist\n      (empty delimlist))\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"+\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"2\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"3\")))\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -1547,7 +1547,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_repl_from_textblock_argmap_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (repl\n  :type +\n  :repllist\n   (repllist\n    (repl :value 2)\n    (repl :value 3)))\n (repl<-textblock-argmap\n  (tb/textblock\n   :text \"(+ 2 3)\"\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"(+ 2 3)\"\n      :delim\n       (copy delimvxlispparen\n        :delimlist\n         (empty delimlist))\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"+\")\n        (tb/textblock\n         :text \" \"\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"2\")\n        (tb/textblock\n         :text \" \"\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"3\")))))\n  (empty argmap)))",
       ":testresult", Test.f_test(
@@ -1693,7 +1693,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_textblock_from_script(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -1709,7 +1709,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_textblock_from_script_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (tb/textblock\n  :text \"infinity\"\n  :startpos 1\n  :endpos 8\n  :children\n   (tb/textblocklist\n    (tb/textblock\n    :text \"infinity\"\n    :startpos 1\n    :endpos 8\n    :delim\n     (delim\n      :name \"delimvxlisp\"))))\n (textblock<-script\n  \"infinity\"))",
       ":testresult", Test.f_test(
@@ -1763,7 +1763,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_textblock_from_script_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (tb/textblock\n  :text \"(+ 2 3)\"\n  :startpos 1\n  :endpos 7\n  :children\n   (tb/textblocklist\n    (tb/textblock\n     :text \"(+ 2 3)\"\n     :startpos 1\n     :endpos 7\n     :delim\n      (copy delimvxlispparen\n       :delimlist\n        (empty delimlist))\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"+\"\n        :startpos 2\n        :endpos 2)\n       (tb/textblock\n        :text \" \"\n        :startpos 3\n        :endpos 3\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (tb/textblock\n        :text \"2\"\n        :startpos 4\n        :endpos 4)\n       (tb/textblock\n        :text \" \"\n        :startpos 5\n        :endpos 5\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (tb/textblock\n        :text \"3\"\n        :startpos 6\n        :endpos 6)))))\n (textblock<-script\n  \"(+ 2 3)\"))",
       ":testresult", Test.f_test(
@@ -1904,7 +1904,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcase f_typefunc_from_string(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/repl",
@@ -1920,7 +1920,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_typefunc_from_string_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n string\n (typefunc<-string\n  \"string\"))",
       ":testresult", Test.f_test(
@@ -1935,7 +1935,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testdescribe f_typefunc_from_string_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n +\n (typefunc<-string\n  \"+\"))",
       ":testresult", Test.f_test(
@@ -1965,7 +1965,7 @@ public final class ReplTest {
       ReplTest.f_textblock_from_script(context),
       ReplTest.f_typefunc_from_string(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -1973,7 +1973,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/repl", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 3), 
@@ -1988,7 +1988,7 @@ public final class ReplTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/repl",
       ":typemap", Core.vx_new(
@@ -2033,8 +2033,8 @@ public final class ReplTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/repl", 
       ":caselist", testcaselist,

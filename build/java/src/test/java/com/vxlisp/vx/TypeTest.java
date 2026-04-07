@@ -6,7 +6,7 @@ import java.util.List;
 public final class TypeTest {
 
   public static Test.Type_testcase f_boolean_from_string_ends(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -21,7 +21,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_boolean_from_string_ends_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (boolean<-string-ends\n  \"abcd\"\n  \"cd\"))",
       ":testresult", Test.f_test_true(
@@ -36,7 +36,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_boolean_from_string_starts(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -51,7 +51,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_boolean_from_string_starts_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (boolean<-string-starts\n  \"abcd\"\n  \"ab\"))",
       ":testresult", Test.f_test_true(
@@ -66,7 +66,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_int_from_string_find(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -81,7 +81,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_int_from_string_find_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 3\n (int<-string-find\n  \"abcdcdg\"\n  \"cd\"))",
       ":testresult", Test.f_test(
@@ -97,7 +97,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_int_from_string_findkeyword(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -113,7 +113,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_int_from_string_findkeyword_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 3\n (int<-string-findkeyword\n  \"ab\tcdefg\"\n  \":whitespace\"))",
       ":testresult", Test.f_test(
@@ -129,7 +129,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_int_from_string_findkeyword_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 5\n (int<-string-findkeyword\n  \" \t\n\rab\"\n  \":nonwhitespace\"))",
       ":testresult", Test.f_test(
@@ -145,7 +145,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_int_from_string_findlast(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -160,7 +160,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_int_from_string_findlast_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 5\n (int<-string-findlast\n  \"abcdcdg\"\n  \"cd\"))",
       ":testresult", Test.f_test(
@@ -176,7 +176,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_is_string(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -194,7 +194,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_string_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-string \"\"))",
       ":testresult", Test.f_test_true(
@@ -208,7 +208,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_string_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-string \"a\"))",
       ":testresult", Test.f_test_true(
@@ -222,7 +222,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_string_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-false\n (is-string 5))",
       ":testresult", Test.f_test_false(
@@ -236,7 +236,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_string_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-false\n (is-string (list)))",
       ":testresult", Test.f_test_false(
@@ -252,7 +252,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_is_type(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -270,7 +270,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_type_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-type false boolean))",
       ":testresult", Test.f_test_true(
@@ -285,7 +285,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_type_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-type \"a\" string))",
       ":testresult", Test.f_test_true(
@@ -300,7 +300,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_type_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-type 5.5 number))",
       ":testresult", Test.f_test_true(
@@ -315,7 +315,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_type_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-type 4 int))",
       ":testresult", Test.f_test_true(
@@ -330,7 +330,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_is_type_from_any_typelist(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -348,7 +348,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_type_from_any_typelist_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-type<-any-typelist\n  false\n  (typelist int boolean)))",
       ":testresult", Test.f_test_true(
@@ -370,7 +370,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_type_from_any_typelist_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-type<-any-typelist\n  \"a\"\n  (typelist number string)))",
       ":testresult", Test.f_test_true(
@@ -392,7 +392,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_type_from_any_typelist_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-type<-any-typelist\n  5.5\n  (typelist string number)))",
       ":testresult", Test.f_test_true(
@@ -414,7 +414,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_is_type_from_any_typelist_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-type<-any-typelist\n  4\n  (typelist string int)))",
       ":testresult", Test.f_test_true(
@@ -436,7 +436,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_lowercase(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -451,7 +451,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_lowercase_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"abc\"\n (string-lowercase\n  \"AbC\"))",
       ":testresult", Test.f_test(
@@ -466,7 +466,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_outdent(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -482,7 +482,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_outdent_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"ab\"\n (string-outdent\n  \"ab\"))",
       ":testresult", Test.f_test(
@@ -497,7 +497,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_outdent_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"a\nb\"\n (string-outdent\n  \"\n a\n b\"))",
       ":testresult", Test.f_test(
@@ -512,7 +512,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_trim(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -527,7 +527,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_trim_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"ab\"\n (string-trim\n  \" \t\nab\n\t \"))",
       ":testresult", Test.f_test(
@@ -542,7 +542,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_uppercase(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -557,7 +557,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_uppercase_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"ABC\"\n (string-uppercase\n  \"aBc\"))",
       ":testresult", Test.f_test(
@@ -572,7 +572,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_from_int(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -591,7 +591,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_int_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"4\"\n (string<-int 4))",
       ":testresult", Test.f_test(
@@ -606,7 +606,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_int_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"51\"\n (string<-int 51))",
       ":testresult", Test.f_test(
@@ -621,7 +621,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_int_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"notanumber\"\n (string<-int notanumber))",
       ":testresult", Test.f_test(
@@ -636,7 +636,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_int_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"infinity\"\n (string<-int infinity))",
       ":testresult", Test.f_test(
@@ -651,7 +651,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_int_testdescribe_5(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"neginfinity\"\n (string<-int neginfinity))",
       ":testresult", Test.f_test(
@@ -666,7 +666,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_from_string_end(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -682,7 +682,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_end_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"abc\"\n (string<-string-end\n  \"abcd\"\n  3))",
       ":testresult", Test.f_test(
@@ -698,7 +698,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_end_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"ab\"\n (string<-string-end\n  \"abcd\"\n  2))",
       ":testresult", Test.f_test(
@@ -714,7 +714,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_from_string_start(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -730,7 +730,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_start_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"abcd\"\n (string<-string-start\n  \"abcd\"\n  1))",
       ":testresult", Test.f_test(
@@ -746,7 +746,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_start_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"bcd\"\n (string<-string-start\n  \"abcd\"\n  2))",
       ":testresult", Test.f_test(
@@ -762,7 +762,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_from_string_start_end(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -781,7 +781,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_start_end_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"abc\"\n (string<-string-start-end\n  \"abcd\"\n  1\n  3))",
       ":testresult", Test.f_test(
@@ -798,7 +798,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_start_end_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"bc\"\n (string<-string-start-end\n  \"abcd\"\n  2\n  3))",
       ":testresult", Test.f_test(
@@ -815,7 +815,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_start_end_testdescribe_3(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"\"\n (string<-string-start-end\n  \"abcd\"\n  5\n  6))",
       ":testresult", Test.f_test(
@@ -832,7 +832,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_start_end_testdescribe_4(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"bcd\"\n (string<-string-start-end\n  \"abcd\"\n  2\n  5))",
       ":testresult", Test.f_test(
@@ -849,7 +849,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_string_start_end_testdescribe_5(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"bc\"\n (string<-string-start-end\n  \"abcd\"\n  2\n  -1))",
       ":testresult", Test.f_test(
@@ -866,7 +866,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_string_from_stringlist_join(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -881,7 +881,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_string_from_stringlist_join_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"a$b$c\"\n (string<-stringlist-join\n  (stringlist \"a\" \"b\" \"c\")\n  \"$\"))",
       ":testresult", Test.f_test(
@@ -905,7 +905,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcase f_stringlist_from_string_split(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/type",
@@ -920,7 +920,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testdescribe f_stringlist_from_string_split_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (stringlist<-string-split\n  \"a$b$c\"\n  \"$\"))",
       ":testresult", Test.f_test(
@@ -964,7 +964,7 @@ public final class TypeTest {
       TypeTest.f_string_from_stringlist_join(context),
       TypeTest.f_stringlist_from_string_split(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -972,7 +972,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/type", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -987,7 +987,7 @@ public final class TypeTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/type",
       ":typemap", Core.e_intmap, 
@@ -1027,8 +1027,8 @@ public final class TypeTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/type", 
       ":caselist", testcaselist,

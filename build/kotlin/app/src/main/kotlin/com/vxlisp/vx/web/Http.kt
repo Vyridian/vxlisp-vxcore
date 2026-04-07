@@ -56,7 +56,7 @@ object vx_web_http {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":ok", this.ok())
       map.put(":status", this.status())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -144,7 +144,7 @@ object vx_web_http {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("ok"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/http/response", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -168,7 +168,7 @@ object vx_web_http {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("status"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/http/response", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -251,12 +251,12 @@ object vx_web_http {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/http", // pkgname
         "csv<-httpget", // name
         0, // idx
@@ -279,12 +279,12 @@ object vx_web_http {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.e_csv_from_httpget
+      val output : vx_core.Type_any = vx_web_http.e_csv_from_httpget
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.t_csv_from_httpget
+      val output : vx_core.Type_any = vx_web_http.t_csv_from_httpget
       return output
     }
 
@@ -293,15 +293,15 @@ object vx_web_http {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      var inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
-      var future : CompletableFuture<vx_data_csv.Type_csv> = vx_web_http.f_csv_from_httpget(inputval)
-      var output : CompletableFuture<T> = future as (CompletableFuture<T>)
+      val inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
+      val future : CompletableFuture<vx_data_csv.Type_csv> = vx_web_http.f_csv_from_httpget(inputval)
+      val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      var url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       var future : CompletableFuture<vx_data_csv.Type_csv> = vx_web_http.f_csv_from_httpget(url)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output
@@ -322,16 +322,20 @@ object vx_web_http {
     output = vx_core.f_let_async(
       vx_data_csv.t_csv,
       vx_core.t_any_from_func_async.vx_fn_new({ ->
-        var future_textblock : CompletableFuture<vx_data_textblock.Type_textblock> = vx_web_http.f_textblock_from_httpget(
+        val future_textblock : CompletableFuture<vx_data_textblock.Type_textblock> = vx_web_http.f_textblock_from_httpget(
           url,
           vx_core.vx_new_string("text/csv")
         )
-        var output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(future_textblock, {textblock ->
-          var output_2 : vx_core.Type_any = vx_data_csv.f_csv_from_textblock(
-            textblock
-          )
-          output_2
-        })
+        val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
+          vx_core.t_any,
+          future_textblock,
+          {textblock ->
+            val output_2 : vx_core.Type_any = vx_data_csv.f_csv_from_textblock(
+              textblock
+            )
+            output_2
+          }
+        )
         output_1
       })
     )
@@ -365,12 +369,12 @@ object vx_web_http {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/http", // pkgname
         "json<-httpget", // name
         0, // idx
@@ -393,12 +397,12 @@ object vx_web_http {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.e_json_from_httpget
+      val output : vx_core.Type_any = vx_web_http.e_json_from_httpget
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.t_json_from_httpget
+      val output : vx_core.Type_any = vx_web_http.t_json_from_httpget
       return output
     }
 
@@ -407,15 +411,15 @@ object vx_web_http {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      var inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
-      var future : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_json_from_httpget(inputval)
-      var output : CompletableFuture<T> = future as (CompletableFuture<T>)
+      val inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
+      val future : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_json_from_httpget(inputval)
+      val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      var url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       var future : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_json_from_httpget(url)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output
@@ -436,14 +440,18 @@ object vx_web_http {
     output = vx_core.f_let_async(
       vx_web_http.t_response,
       vx_core.t_any_from_func_async.vx_fn_new({ ->
-        var future_response : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_response_from_httpget(
+        val future_response : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_response_from_httpget(
           url,
           vx_core.vx_new_string("application/json")
         )
-        var output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(future_response, {response ->
-          var output_2 : vx_core.Type_any = response
-          output_2
-        })
+        val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
+          vx_core.t_any,
+          future_response,
+          {response ->
+            val output_2 : vx_core.Type_any = response
+            output_2
+          }
+        )
         output_1
       })
     )
@@ -478,12 +486,12 @@ object vx_web_http {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/http", // pkgname
         "response<-httpget", // name
         0, // idx
@@ -506,19 +514,19 @@ object vx_web_http {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.e_response_from_httpget
+      val output : vx_core.Type_any = vx_web_http.e_response_from_httpget
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.t_response_from_httpget
+      val output : vx_core.Type_any = vx_web_http.t_response_from_httpget
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      var url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var contenttype : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val contenttype : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       var future : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_response_from_httpget(url, contenttype)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output
@@ -566,12 +574,12 @@ object vx_web_http {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/http", // pkgname
         "text<-httpget", // name
         0, // idx
@@ -594,12 +602,12 @@ object vx_web_http {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.e_text_from_httpget
+      val output : vx_core.Type_any = vx_web_http.e_text_from_httpget
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.t_text_from_httpget
+      val output : vx_core.Type_any = vx_web_http.t_text_from_httpget
       return output
     }
 
@@ -608,15 +616,15 @@ object vx_web_http {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      var inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
-      var future : CompletableFuture<vx_core.Type_string> = vx_web_http.f_text_from_httpget(inputval)
-      var output : CompletableFuture<T> = future as (CompletableFuture<T>)
+      val inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
+      val future : CompletableFuture<vx_core.Type_string> = vx_web_http.f_text_from_httpget(inputval)
+      val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      var url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       var future : CompletableFuture<vx_core.Type_string> = vx_web_http.f_text_from_httpget(url)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output
@@ -637,16 +645,20 @@ object vx_web_http {
     output = vx_core.f_let_async(
       vx_core.t_string,
       vx_core.t_any_from_func_async.vx_fn_new({ ->
-        var future_response : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_response_from_httpget(
+        val future_response : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_response_from_httpget(
           url,
           vx_core.vx_new_string("text/plain")
         )
-        var output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(future_response, {response ->
-          var output_2 : vx_core.Type_any = vx_web_http.f_text_from_response(
-            response
-          )
-          output_2
-        })
+        val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
+          vx_core.t_any,
+          future_response,
+          {response ->
+            val output_2 : vx_core.Type_any = vx_web_http.f_text_from_response(
+              response
+            )
+            output_2
+          }
+        )
         output_1
       })
     )
@@ -678,12 +690,12 @@ object vx_web_http {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/http", // pkgname
         "text<-response", // name
         0, // idx
@@ -706,12 +718,12 @@ object vx_web_http {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.e_text_from_response
+      val output : vx_core.Type_any = vx_web_http.e_text_from_response
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.t_text_from_response
+      val output : vx_core.Type_any = vx_web_http.t_text_from_response
       return output
     }
 
@@ -721,21 +733,21 @@ object vx_web_http {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_http.Type_response = value as vx_web_http.Type_response
-      var outputval : vx_core.Type_any = vx_web_http.f_text_from_response(inputval)
+      val inputval : vx_web_http.Type_response = value as vx_web_http.Type_response
+      val outputval : vx_core.Type_any = vx_web_http.f_text_from_response(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var response : vx_web_http.Type_response = vx_core.f_any_from_any(vx_web_http.t_response, arglist.vx_any(vx_core.vx_new_int(0)))
+      val response : vx_web_http.Type_response = vx_core.f_any_from_any(vx_web_http.t_response, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_http.f_text_from_response(response)
       return output
     }
 
     override fun vx_text_from_response(response : vx_web_http.Type_response) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_http.f_text_from_response(response)
+      val output : vx_core.Type_string = vx_web_http.f_text_from_response(response)
       return output
     }
 
@@ -777,12 +789,12 @@ object vx_web_http {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/http", // pkgname
         "textblock<-httpget", // name
         0, // idx
@@ -805,19 +817,19 @@ object vx_web_http {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.e_textblock_from_httpget
+      val output : vx_core.Type_any = vx_web_http.e_textblock_from_httpget
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.t_textblock_from_httpget
+      val output : vx_core.Type_any = vx_web_http.t_textblock_from_httpget
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      var url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var contenttype : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val contenttype : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       var future : CompletableFuture<vx_data_textblock.Type_textblock> = vx_web_http.f_textblock_from_httpget(url, contenttype)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output
@@ -838,16 +850,20 @@ object vx_web_http {
     output = vx_core.f_let_async(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func_async.vx_fn_new({ ->
-        var future_response : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_response_from_httpget(
+        val future_response : CompletableFuture<vx_web_http.Type_response> = vx_web_http.f_response_from_httpget(
           url,
           contenttype
         )
-        var output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(future_response, {response ->
-          var output_2 : vx_core.Type_any = vx_web_http.f_textblock_from_response(
-            response
-          )
-          output_2
-        })
+        val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
+          vx_core.t_any,
+          future_response,
+          {response ->
+            val output_2 : vx_core.Type_any = vx_web_http.f_textblock_from_response(
+              response
+            )
+            output_2
+          }
+        )
         output_1
       })
     )
@@ -879,12 +895,12 @@ object vx_web_http {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/http", // pkgname
         "textblock<-response", // name
         0, // idx
@@ -907,12 +923,12 @@ object vx_web_http {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.e_textblock_from_response
+      val output : vx_core.Type_any = vx_web_http.e_textblock_from_response
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.t_textblock_from_response
+      val output : vx_core.Type_any = vx_web_http.t_textblock_from_response
       return output
     }
 
@@ -922,21 +938,21 @@ object vx_web_http {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_http.Type_response = value as vx_web_http.Type_response
-      var outputval : vx_core.Type_any = vx_web_http.f_textblock_from_response(inputval)
+      val inputval : vx_web_http.Type_response = value as vx_web_http.Type_response
+      val outputval : vx_core.Type_any = vx_web_http.f_textblock_from_response(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var response : vx_web_http.Type_response = vx_core.f_any_from_any(vx_web_http.t_response, arglist.vx_any(vx_core.vx_new_int(0)))
+      val response : vx_web_http.Type_response = vx_core.f_any_from_any(vx_web_http.t_response, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_http.f_textblock_from_response(response)
       return output
     }
 
     override fun vx_textblock_from_response(response : vx_web_http.Type_response) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_web_http.f_textblock_from_response(response)
+      val output : vx_data_textblock.Type_textblock = vx_web_http.f_textblock_from_response(response)
       return output
     }
 
@@ -987,12 +1003,12 @@ object vx_web_http {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/http", // pkgname
         "xml<-httpget", // name
         0, // idx
@@ -1015,12 +1031,12 @@ object vx_web_http {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.e_xml_from_httpget
+      val output : vx_core.Type_any = vx_web_http.e_xml_from_httpget
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_http.t_xml_from_httpget
+      val output : vx_core.Type_any = vx_web_http.t_xml_from_httpget
       return output
     }
 
@@ -1029,15 +1045,15 @@ object vx_web_http {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      var inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
-      var future : CompletableFuture<vx_data_xml.Type_xml> = vx_web_http.f_xml_from_httpget(inputval)
-      var output : CompletableFuture<T> = future as (CompletableFuture<T>)
+      val inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
+      val future : CompletableFuture<vx_data_xml.Type_xml> = vx_web_http.f_xml_from_httpget(inputval)
+      val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      var url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val url : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       var future : CompletableFuture<vx_data_xml.Type_xml> = vx_web_http.f_xml_from_httpget(url)
       output = vx_core.vx_async_from_async(vx_core.t_any, future)
       return output
@@ -1058,16 +1074,20 @@ object vx_web_http {
     output = vx_core.f_let_async(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func_async.vx_fn_new({ ->
-        var future_textblock : CompletableFuture<vx_data_textblock.Type_textblock> = vx_web_http.f_textblock_from_httpget(
+        val future_textblock : CompletableFuture<vx_data_textblock.Type_textblock> = vx_web_http.f_textblock_from_httpget(
           url,
           vx_core.vx_new_string("text/xml")
         )
-        var output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(future_textblock, {textblock ->
-          var output_2 : vx_core.Type_any = vx_data_xml.f_xml_from_textblock(
-            textblock
-          )
-          output_2
-        })
+        val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
+          vx_core.t_any,
+          future_textblock,
+          {textblock ->
+            val output_2 : vx_core.Type_any = vx_data_xml.f_xml_from_textblock(
+              textblock
+            )
+            output_2
+          }
+        )
         output_1
       })
     )
@@ -1087,7 +1107,12 @@ object vx_web_http {
     mapfunc.put("textblock<-httpget", vx_web_http.t_textblock_from_httpget)
     mapfunc.put("textblock<-response", vx_web_http.t_textblock_from_response)
     mapfunc.put("xml<-httpget", vx_web_http.t_xml_from_httpget)
-    vx_core.vx_global_package_set("vx/web/http", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/web/http",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

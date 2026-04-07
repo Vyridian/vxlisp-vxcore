@@ -32,13 +32,13 @@ public final class Es {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translation/es", // pkgname
         "translation-es", // name
         0, // idx
@@ -62,13 +62,13 @@ public final class Es {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Es.e_translation_es;
+      final Core.Type_any output = Es.e_translation_es;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Es.t_translation_es;
+      final Core.Type_any output = Es.t_translation_es;
       return output;
     }
 
@@ -81,7 +81,7 @@ public final class Es {
 
     @Override
     public Core.Type_translation vx_translation_es() {
-      Core.Type_translation output = Es.f_translation_es();
+      final Core.Type_translation output = Es.f_translation_es();
       return output;
     }
 
@@ -131,13 +131,13 @@ public final class Es {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translation/es", // pkgname
         "words", // name
         0, // idx
@@ -161,13 +161,13 @@ public final class Es {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Es.e_words;
+      final Core.Type_any output = Es.e_words;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Es.t_words;
+      final Core.Type_any output = Es.t_words;
       return output;
     }
 
@@ -180,7 +180,7 @@ public final class Es {
 
     @Override
     public Core.Type_stringmap vx_words() {
-      Core.Type_stringmap output = Es.f_words();
+      final Core.Type_stringmap output = Es.f_words();
       return output;
     }
 
@@ -210,7 +210,12 @@ public final class Es {
     Map<String, Core.Type_func> mapfunc = new LinkedHashMap<String, Core.Type_func>();
     mapfunc.put("translation-es", Es.t_translation_es);
     mapfunc.put("words", Es.t_words);
-    Core.vx_global_package_set("vx/translation/es", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/translation/es",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

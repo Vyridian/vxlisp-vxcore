@@ -8,7 +8,7 @@ import com.vxlisp.vx.data.*;
 public final class UiTest {
 
   public static Test.Type_testcase f_boolean_writestate_from_uiapp(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -23,7 +23,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testdescribe f_boolean_writestate_from_uiapp_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (ui :uid \"app\")\n (let : ui\n  [iswrite : boolean :=\n    (boolean-writestate<-uiapp\n     (ui :uid \"app\"))\n   appui : ui :=\n    (ui-readstate-uiapp)\n   isremoved : boolean :=\n    (boolean-removestate-uiapp)]\n  appui))",
       ":testresult", Test.f_test(
@@ -39,7 +39,7 @@ public final class UiTest {
         Core.f_let(
           Ui.t_ui,
           Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_boolean iswrite = Ui.f_boolean_writestate_from_uiapp(
+            final Core.Type_boolean iswrite = Ui.f_boolean_writestate_from_uiapp(
               context,
               Core.f_new(
                 Ui.t_ui,
@@ -50,13 +50,13 @@ public final class UiTest {
                 )
               )
             );
-            Ui.Type_ui appui = Ui.f_ui_readstate_uiapp(
+            final Ui.Type_ui appui = Ui.f_ui_readstate_uiapp(
               context
             );
-            Core.Type_boolean isremoved = Ui.f_boolean_removestate_uiapp(
+            final Core.Type_boolean isremoved = Ui.f_boolean_removestate_uiapp(
               context
             );
-            Core.Type_any output_1 = appui;
+            final Core.Type_any output_1 = appui;
             return output_1;
           })
         )
@@ -66,7 +66,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testcase f_string_parentuid_from_uid(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -82,7 +82,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testdescribe f_string_parentuid_from_uid_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"\"\n (string-parentuid<-uid\n  \"a\"))",
       ":testresult", Test.f_test(
@@ -97,7 +97,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testdescribe f_string_parentuid_from_uid_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"a/b\"\n (string-parentuid<-uid\n  \"a/b/c\"))",
       ":testresult", Test.f_test(
@@ -112,7 +112,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testcase f_ui_readstate_uiapp(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -127,7 +127,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testdescribe f_ui_readstate_uiapp_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uid \"myapp\")\n (let : ui\n  [iswrite : boolean :=\n    (boolean-writestate<-uiapp\n     (ui\n      :uid \"myapp\"))]\n  (ui-readstate-uiapp)))",
       ":testresult", Test.f_test(
@@ -143,7 +143,7 @@ public final class UiTest {
         Core.f_let(
           Ui.t_ui,
           Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_boolean iswrite = Ui.f_boolean_writestate_from_uiapp(
+            final Core.Type_boolean iswrite = Ui.f_boolean_writestate_from_uiapp(
               context,
               Core.f_new(
                 Ui.t_ui,
@@ -154,7 +154,7 @@ public final class UiTest {
                 )
               )
             );
-            Core.Type_any output_1 = Ui.f_ui_readstate_uiapp(
+            final Core.Type_any output_1 = Ui.f_ui_readstate_uiapp(
               context
             );
             return output_1;
@@ -166,7 +166,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testcase f_ui_readstate_from_uid(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -181,7 +181,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testdescribe f_ui_readstate_from_uid_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uid \"a/b/c\")\n (let : ui\n  [uiapp : ui :=\n    (ui\n     :uid \"a\"\n     :uimap\n      (uimap<-uilist\n       (ui\n        :uid \"a/b\"\n        :uimap\n         (uimap<-uilist\n          (ui\n           :uid \"a/b/c\")))))\n   iswrite : boolean :=\n    (boolean-writestate<-uiapp uiapp)\n   readval : ui :=\n    (ui-readstate<-uid\n     \"a/b/c\")\n   isremoved : boolean := (boolean-removestate-uiapp)]\n  readval))",
       ":testresult", Test.f_test(
@@ -197,7 +197,7 @@ public final class UiTest {
         Core.f_let(
           Ui.t_ui,
           Core.t_any_from_func.vx_fn_new(() -> {
-            Ui.Type_ui uiapp = Core.f_new(
+            final Ui.Type_ui uiapp = Core.f_new(
               Ui.t_ui,
               Core.vx_new(
                 Core.t_anylist,
@@ -233,18 +233,18 @@ public final class UiTest {
                 )
               )
             );
-            Core.Type_boolean iswrite = Ui.f_boolean_writestate_from_uiapp(
+            final Core.Type_boolean iswrite = Ui.f_boolean_writestate_from_uiapp(
               context,
               uiapp
             );
-            Ui.Type_ui readval = Ui.f_ui_readstate_from_uid(
+            final Ui.Type_ui readval = Ui.f_ui_readstate_from_uid(
               context,
               Core.vx_new_string("a/b/c")
             );
-            Core.Type_boolean isremoved = Ui.f_boolean_removestate_uiapp(
+            final Core.Type_boolean isremoved = Ui.f_boolean_removestate_uiapp(
               context
             );
-            Core.Type_any output_1 = readval;
+            final Core.Type_any output_1 = readval;
             return output_1;
           })
         )
@@ -254,7 +254,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testcase f_ui_write_from_ui_visible(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -269,7 +269,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testdescribe f_ui_write_from_ui_visible_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uimap\n   (uimap\n    :a\n     (ui\n      :uid \"a\"\n      :hidden true)\n    :b\n     (ui\n      :uid \"b\")))\n (ui-write<-ui-visible\n  (ui\n   :uimap\n    (uimap\n     :a\n      (ui\n       :uid \"a\")\n     :b\n      (ui\n       :uid \"b\"\n       :hidden true)))\n  2))",
       ":testresult", Test.f_test(
@@ -349,7 +349,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testcase f_ui_from_ui_find(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -364,7 +364,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testdescribe f_ui_from_ui_find_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uid \"a/b/c\")\n (ui<-ui-find\n  (ui\n   :uid \"a\"\n   :uimap\n    (uimap\n     :a/b\n      (ui\n       :uid \"a/b\"\n       :uimap\n        (uimap\n         :a/b/c\n          (ui\n           :uid \"a/b/c\")))))\n  \"a/b/c\"))",
       ":testresult", Test.f_test(
@@ -426,7 +426,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testcase f_ui_from_ui_selected(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/ui/ui",
@@ -441,7 +441,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testdescribe f_ui_from_ui_selected_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (ui\n  :uimap\n   (uimap\n    :a\n     (ui\n      :uid \"a\")\n    :b\n     (ui\n      :uid \"b\"\n      :selected true)))\n (ui<-ui-selected\n  (ui\n   :uimap\n    (uimap\n     :a\n      (ui\n       :uid \"a\"\n       :selected true)\n     :b\n      (ui\n       :uid \"b\")))\n  2))",
       ":testresult", Test.f_test(
@@ -530,7 +530,7 @@ public final class UiTest {
       UiTest.f_ui_from_ui_find(context),
       UiTest.f_ui_from_ui_selected(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -538,7 +538,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/ui/ui", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 50), 
@@ -553,7 +553,7 @@ public final class UiTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/ui/ui",
       ":typemap", Core.vx_new(
@@ -717,8 +717,8 @@ public final class UiTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/ui/ui", 
       ":caselist", testcaselist,

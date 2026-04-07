@@ -11,12 +11,13 @@ public static class State {
 
   public class Class_valuemap : Vx.Core.Class_base, Type_valuemap {
 
-    public Vx.Core.Map<string, Vx.Core.Type_any> vx_p_map = Vx.Core.immutablemap(new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>());
+    public Vx.Core.Map<string, Vx.Core.Type_any> vx_p_map = Vx.Core.vx_mapimmutable(new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>());
 
     public Vx.Core.Map<string, Vx.Core.Type_any> vx_map() {
       Vx.Core.Map<string, Vx.Core.Type_any> anymap = this.vx_p_map;
       Vx.Core.Map<string, Vx.Core.Type_any> map = anymap.copy();
-      return Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
+      return output;
     }
 
     public Vx.Core.Type_boolean vx_set(Vx.Core.Type_string name, Vx.Core.Type_any value) {
@@ -27,13 +28,13 @@ public static class State {
         if (key.StartsWith(":")) {
           key = key.Substring(1);
         }
-        Vx.Core.Map<string, Vx.Core.Type_any> map = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>(this.vx_p_map);
+        Vx.Core.Map<string, Vx.Core.Type_any> map = Vx.Core.vx_mapmutable(this.vx_p_map);
         if (castval == Vx.Core.e_any) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Vx.Core.immutablemap(map);
+        this.vx_p_map = Vx.Core.vx_mapimmutable(map);
         output = Vx.Core.c_true;
       }
       return output;
@@ -66,7 +67,7 @@ public static class State {
           msgblock = Vx.Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Vx.Core.immutablemap(map);
+      output.vx_p_map = Vx.Core.vx_mapimmutable(map);
       if (msgblock != Vx.Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -86,7 +87,7 @@ public static class State {
       if (this.vx_constdef() != Vx.Core.e_constdef) {
         ischanged = true;
       }
-      Vx.Core.Map<string, Vx.Core.Type_any> mapval = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>(value.vx_map());
+      Vx.Core.Map<string, Vx.Core.Type_any> mapval = Vx.Core.vx_mapmutable(value.vx_map());
       string key = "";
       Vx.Core.Type_msg msg = Vx.Core.e_msg;
       Vx.Core.Type_any msgval = Vx.Core.e_any;
@@ -128,7 +129,7 @@ public static class State {
             Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
             mapany.put("key", Vx.Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
             msg = Vx.Core.vx_msg_from_error("vx/state/valuemap", ":invalidkeyvalue", msgmap);
             msgblock = Vx.Core.vx_copy(msgblock, msg);
           }
@@ -144,7 +145,7 @@ public static class State {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.State.Class_valuemap work = new Vx.State.Class_valuemap();
-        work.vx_p_map = Vx.Core.immutablemap(mapval);
+        work.vx_p_map = Vx.Core.vx_mapimmutable(mapval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1589,7 +1590,12 @@ public static class State {
     mapfunc.put("statelistenermap-readstate", Vx.State.t_statelistenermap_readstate);
     mapfunc.put("value-readstate<-name", Vx.State.t_value_readstate_from_name);
     mapfunc.put("valuemap-readstate<-mapname", Vx.State.t_valuemap_readstate_from_mapname);
-    Vx.Core.vx_global_package_set("vx/state", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/state",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

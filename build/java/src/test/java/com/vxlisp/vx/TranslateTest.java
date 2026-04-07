@@ -7,7 +7,7 @@ import com.vxlisp.vx.data.*;
 public final class TranslateTest {
 
   public static Test.Type_testcase f_translate(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/translate",
@@ -22,7 +22,7 @@ public final class TranslateTest {
   }
 
   public static Test.Type_testdescribe f_translate_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"!NotFound!\"\n (translate \"!NotFound!\"))",
       ":testresult", Test.f_test(
@@ -38,7 +38,7 @@ public final class TranslateTest {
   }
 
   public static Test.Type_testcase f_translate_1(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/translate",
@@ -53,7 +53,7 @@ public final class TranslateTest {
   }
 
   public static Test.Type_testdescribe f_translate_1_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"Repl Type Not Found\"\n (translate\n  (msg\n   :path \"vx/repl/repl/repl<-string-argmap\"\n   :code \"repltypenotfound\")))",
       ":testresult", Test.f_test(
@@ -78,7 +78,7 @@ public final class TranslateTest {
   }
 
   public static Test.Type_testcase f_translate_from_translation_string(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/translate",
@@ -93,7 +93,7 @@ public final class TranslateTest {
   }
 
   public static Test.Type_testdescribe f_translate_from_translation_string_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"Hola\"\n (translate<-translation-string\n  (translation\n   :wordmap\n    (stringmap\n     \"Hello\" \"Hola\"))\n  \"Hello\"))",
       ":testresult", Test.f_test(
@@ -128,7 +128,7 @@ public final class TranslateTest {
       TranslateTest.f_translate_1(context),
       TranslateTest.f_translate_from_translation_string(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -136,7 +136,7 @@ public final class TranslateTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/translate", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -151,7 +151,7 @@ public final class TranslateTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/translate",
       ":typemap", Core.e_intmap, 
@@ -175,8 +175,8 @@ public final class TranslateTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/translate", 
       ":caselist", testcaselist,

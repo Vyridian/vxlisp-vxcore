@@ -1,14 +1,41 @@
 // swift-tools-version: 5.9
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
-    name: "app",
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .executableTarget(
-            name: "app"),
-    ]
+  name: "VxProject",
+  products: [
+    .library(name: "Vx", targets: ["Vx"]),
+    .executable(name: "App", targets: ["App"]),
+    .executable(name: "AppTest", targets: ["AppTest"])
+  ],
+  targets: [
+    // Core library
+    .target(
+      name: "Vx",
+      path: "Sources/Vx"
+    ),
+    // Executable
+    .executableTarget(
+      name: "App",
+      dependencies: ["Vx"],
+      path: "Sources/App"
+    ),
+    // ===== test support =====
+    .target(
+      name: "TestLib",
+      dependencies: ["Vx"],
+      path: "TestSuite/TestLib"
+    ),
+    .target(
+      name: "VxTest",
+      dependencies: ["Vx"],
+      path: "TestSuite/Vx"
+    ),
+    // ===== test executables =====
+    .executableTarget(
+      name: "AppTest",
+      dependencies: ["TestLib", "Vx", "VxTest"],
+      path: "TestSuite/AppTest"
+    )
+  ]
 )

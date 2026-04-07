@@ -125,7 +125,7 @@ public final class Tree {
       map.put(":leaflist", this.leaflist());
       map.put(":parentbranch", this.parentbranch());
       map.put(":tree", this.tree());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -223,7 +223,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -244,7 +244,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("brancharrow"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -265,7 +265,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("branchlist"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -286,7 +286,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("leaflist"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -307,7 +307,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("parentbranch"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -328,7 +328,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("tree"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -471,13 +471,13 @@ public final class Tree {
 
   public static class Class_branchlist extends Core.Class_base implements Type_branchlist {
 
-    public List<Tree.Type_branch> vx_p_list = Core.immutablelist(
+    public List<Tree.Type_branch> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Tree.Type_branch>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -562,7 +562,7 @@ public final class Tree {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Tree.Class_branchlist work = new Tree.Class_branchlist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -675,7 +675,7 @@ public final class Tree {
       map.put(":id", this.id());
       map.put(":name", this.name());
       map.put(":value", this.value());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -767,7 +767,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -791,7 +791,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -812,7 +812,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("value"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -883,13 +883,13 @@ public final class Tree {
 
   public static class Class_leaflist extends Core.Class_base implements Type_leaflist {
 
-    public List<Tree.Type_leaf> vx_p_list = Core.immutablelist(
+    public List<Tree.Type_leaf> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Tree.Type_leaf>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -974,7 +974,7 @@ public final class Tree {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Tree.Class_leaflist work = new Tree.Class_leaflist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1087,7 +1087,7 @@ public final class Tree {
       map.put(":id", this.id());
       map.put(":name", this.name());
       map.put(":branch", this.branch());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -1179,7 +1179,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1203,7 +1203,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1224,7 +1224,7 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("branch"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -1290,7 +1290,7 @@ public final class Tree {
    */
   public static class Const_brancharrow_down {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-down", // name
         Tree.t_brancharrow
@@ -1313,7 +1313,7 @@ public final class Tree {
    */
   public static class Const_brancharrow_up {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-up", // name
         Tree.t_brancharrow
@@ -1336,7 +1336,7 @@ public final class Tree {
    */
   public static class Const_brancharrow_updown {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/data/tree", // pkgname
         "brancharrow-updown", // name
         Tree.t_brancharrow
@@ -1369,7 +1369,12 @@ public final class Tree {
     mapconst.put("brancharrow-down", Tree.c_brancharrow_down);
     mapconst.put("brancharrow-up", Tree.c_brancharrow_up);
     mapconst.put("brancharrow-updown", Tree.c_brancharrow_updown);
-    Core.vx_global_package_set("vx/data/tree", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/data/tree",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

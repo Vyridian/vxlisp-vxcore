@@ -54,7 +54,7 @@ object vx_data_table {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":id", this.id())
       map.put(":value", this.value())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -142,7 +142,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/cell", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -163,7 +163,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("value"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/cell", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -231,12 +231,12 @@ object vx_data_table {
   class Class_celllist : vx_core.Class_base, Type_celllist {
     constructor() {}
 
-    var vx_p_list : List<vx_data_table.Type_cell> = vx_core.immutablelist(
+    var vx_p_list : List<vx_data_table.Type_cell> = vx_core.vx_listimmutable(
       ArrayList<vx_data_table.Type_cell>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -316,7 +316,7 @@ object vx_data_table {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_table.Class_celllist = vx_data_table.Class_celllist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -369,11 +369,12 @@ object vx_data_table {
   class Class_cellmap : vx_core.Class_base, Type_cellmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_data_table.Type_cell> = vx_core.immutablemap(LinkedHashMap<String, vx_data_table.Type_cell>())
+    var vx_p_map : Map<String, vx_data_table.Type_cell> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_data_table.Type_cell>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -385,13 +386,13 @@ object vx_data_table {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_data_table.Type_cell> = LinkedHashMap<String, vx_data_table.Type_cell>(this.vx_p_map)
+        var map : MutableMap<String, vx_data_table.Type_cell> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_data_table.e_cell) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -404,18 +405,18 @@ object vx_data_table {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_data_table.Type_cell> = map.vx_p_map
+      val mapval : Map<String, vx_data_table.Type_cell> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_data_table.e_cell)
       return output
     }
 
     override fun vx_mapcell() : Map<String, vx_data_table.Type_cell> {
-      var output : Map<String, vx_data_table.Type_cell> = this.vx_p_map
+      val output : Map<String, vx_data_table.Type_cell> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_cell(key)
+      val output : vx_core.Type_any = this.vx_cell(key)
       return output
     }
 
@@ -436,7 +437,7 @@ object vx_data_table {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -456,7 +457,7 @@ object vx_data_table {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_data_table.Type_cell> = LinkedHashMap<String, vx_data_table.Type_cell>(value.vx_mapcell())
+      var mapval : MutableMap<String, vx_data_table.Type_cell> = vx_core.vx_mapmutable(value.vx_mapcell())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -503,7 +504,7 @@ object vx_data_table {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/data/table/cellmap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -519,7 +520,7 @@ object vx_data_table {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_table.Class_cellmap = vx_data_table.Class_cellmap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -625,7 +626,7 @@ object vx_data_table {
       map.put(":id", this.id())
       map.put(":name", this.name())
       map.put(":fldtype", this.fldtype())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -715,7 +716,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -739,7 +740,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -760,7 +761,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fldtype"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -829,12 +830,12 @@ object vx_data_table {
   class Class_fieldlist : vx_core.Class_base, Type_fieldlist {
     constructor() {}
 
-    var vx_p_list : List<vx_data_table.Type_field> = vx_core.immutablelist(
+    var vx_p_list : List<vx_data_table.Type_field> = vx_core.vx_listimmutable(
       ArrayList<vx_data_table.Type_field>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -914,7 +915,7 @@ object vx_data_table {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_table.Class_fieldlist = vx_data_table.Class_fieldlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -967,12 +968,12 @@ object vx_data_table {
   class Class_fieldmap : vx_core.Class_base, Type_fieldmap {
     constructor() {}
 
-    var vx_p_list : List<vx_data_table.Type_field> = vx_core.immutablelist(
+    var vx_p_list : List<vx_data_table.Type_field> = vx_core.vx_listimmutable(
       ArrayList<vx_data_table.Type_field>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -1052,7 +1053,7 @@ object vx_data_table {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_table.Class_fieldmap = vx_data_table.Class_fieldmap()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -1158,7 +1159,7 @@ object vx_data_table {
       map.put(":id", this.id())
       map.put(":name", this.name())
       map.put(":idlist", this.idlist())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -1248,7 +1249,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1272,7 +1273,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1293,7 +1294,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("idlist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1415,7 +1416,7 @@ object vx_data_table {
       map.put(":id", this.id())
       map.put(":cellmap", this.cellmap())
       map.put(":cellsort", this.cellsort())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -1505,7 +1506,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1526,7 +1527,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("cellmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1547,7 +1548,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("cellsort"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1616,12 +1617,12 @@ object vx_data_table {
   class Class_rowlist : vx_core.Class_base, Type_rowlist {
     constructor() {}
 
-    var vx_p_list : List<vx_data_table.Type_row> = vx_core.immutablelist(
+    var vx_p_list : List<vx_data_table.Type_row> = vx_core.vx_listimmutable(
       ArrayList<vx_data_table.Type_row>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -1701,7 +1702,7 @@ object vx_data_table {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_table.Class_rowlist = vx_data_table.Class_rowlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -1754,11 +1755,12 @@ object vx_data_table {
   class Class_rowmap : vx_core.Class_base, Type_rowmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_data_table.Type_row> = vx_core.immutablemap(LinkedHashMap<String, vx_data_table.Type_row>())
+    var vx_p_map : Map<String, vx_data_table.Type_row> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_data_table.Type_row>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -1770,13 +1772,13 @@ object vx_data_table {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_data_table.Type_row> = LinkedHashMap<String, vx_data_table.Type_row>(this.vx_p_map)
+        var map : MutableMap<String, vx_data_table.Type_row> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_data_table.e_row) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -1789,18 +1791,18 @@ object vx_data_table {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_data_table.Type_row> = map.vx_p_map
+      val mapval : Map<String, vx_data_table.Type_row> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_data_table.e_row)
       return output
     }
 
     override fun vx_maprow() : Map<String, vx_data_table.Type_row> {
-      var output : Map<String, vx_data_table.Type_row> = this.vx_p_map
+      val output : Map<String, vx_data_table.Type_row> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_row(key)
+      val output : vx_core.Type_any = this.vx_row(key)
       return output
     }
 
@@ -1821,7 +1823,7 @@ object vx_data_table {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -1841,7 +1843,7 @@ object vx_data_table {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_data_table.Type_row> = LinkedHashMap<String, vx_data_table.Type_row>(value.vx_maprow())
+      var mapval : MutableMap<String, vx_data_table.Type_row> = vx_core.vx_mapmutable(value.vx_maprow())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -1888,7 +1890,7 @@ object vx_data_table {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/data/table/rowmap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -1904,7 +1906,7 @@ object vx_data_table {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_table.Class_rowmap = vx_data_table.Class_rowmap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -2010,7 +2012,7 @@ object vx_data_table {
       map.put(":id", this.id())
       map.put(":name", this.name())
       map.put(":idlist", this.idlist())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2100,7 +2102,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2124,7 +2126,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2145,7 +2147,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("idlist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2327,7 +2329,7 @@ object vx_data_table {
       map.put(":rowmap", this.rowmap())
       map.put(":rowfilter", this.rowfilter())
       map.put(":rowsort", this.rowsort())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2425,7 +2427,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2449,7 +2451,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2470,7 +2472,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fieldmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2491,7 +2493,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fieldsort"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2512,7 +2514,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("rowmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2533,7 +2535,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("rowfilter"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2554,7 +2556,7 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("rowsort"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2631,7 +2633,12 @@ object vx_data_table {
     maptype.put("rowmap", vx_data_table.t_rowmap)
     maptype.put("sort", vx_data_table.t_sort)
     maptype.put("table", vx_data_table.t_table)
-    vx_core.vx_global_package_set("vx/data/table", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/data/table",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

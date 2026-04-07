@@ -513,7 +513,16 @@
           :code ":eq"
           :passfail true
           :expected "ab"
-          :actual "ab"))))
+          :actual "ab"))
+       (vx/test/testdescribe
+        :describename "(test \"a:b\" (string \"a\" \":\" \"b\"))"
+        :testpkg "vx/core"
+        :testresult
+         (vx/test/testresult
+          :code ":eq"
+          :passfail true
+          :expected "a:b"
+          :actual "a:b"))))
     (vx/test/testcase
      :passfail true
      :testpkg "vx/core"
@@ -3004,7 +3013,7 @@
       :state 0
       :statelistener 0
       :statelistenermap 0
-      :string 2
+      :string 3
       :stringlist 1
       :stringlistlist 0
       :stringmap 0

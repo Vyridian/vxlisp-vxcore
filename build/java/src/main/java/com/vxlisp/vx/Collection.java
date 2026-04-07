@@ -251,13 +251,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "-", // name
         0, // idx
@@ -281,29 +281,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_minus;
+      final Core.Type_any output = Collection.e_minus;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_minus;
+      final Core.Type_any output = Collection.t_minus;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list listmain = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list listremove = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list listmain = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list listremove = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_minus(generic_list_1, listmain, listremove);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list> X vx_minus(final X generic_list_1, final X listmain, final X listremove) {
-      X output = Collection.f_minus(generic_list_1, listmain, listremove);
+      final X output = Collection.f_minus(generic_list_1, listmain, listremove);
       return output;
     }
 
@@ -318,7 +318,7 @@ public final class Collection {
       generic_list_1,
       listmain,
       Core.t_any_from_any.vx_fn_new((item_any) -> {
-        Core.Type_any item = Core.f_any_from_any(Core.t_any, item_any);
+        final Core.Type_any item = Core.f_any_from_any(Core.t_any, item_any);
         Core.Type_any output_1 = Core.f_if_2(
           Core.t_any,
           Core.vx_new(
@@ -334,7 +334,7 @@ public final class Collection {
                 return output_2;
               }),
               Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = item;
+                final Core.Type_any output_3 = item;
                 return output_3;
               })
             )
@@ -374,13 +374,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "-", // name
         1, // idx
@@ -404,29 +404,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_minus_1;
+      final Core.Type_any output = Collection.e_minus_1;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_minus_1;
+      final Core.Type_any output = Collection.t_minus_1;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_map mapmain = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_map mapremove = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map mapmain = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map mapremove = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_minus_1(generic_map_1, mapmain, mapremove);
       return output;
     }
 
     @Override
     public <N extends Core.Type_map> N vx_minus_1(final N generic_map_1, final N mapmain, final N mapremove) {
-      N output = Collection.f_minus_1(generic_map_1, mapmain, mapremove);
+      final N output = Collection.f_minus_1(generic_map_1, mapmain, mapremove);
       return output;
     }
 
@@ -440,18 +440,18 @@ public final class Collection {
     output = Core.f_let(
       generic_map_1,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_stringlist keysmain = Core.f_stringlist_from_map(
+        final Core.Type_stringlist keysmain = Core.f_stringlist_from_map(
           mapmain
         );
-        Core.Type_stringlist keysremove = Core.f_stringlist_from_map(
+        final Core.Type_stringlist keysremove = Core.f_stringlist_from_map(
           mapremove
         );
-        Core.Type_stringlist keysremain = Collection.f_minus(
+        final Core.Type_stringlist keysremain = Collection.f_minus(
           Core.t_stringlist,
           keysmain,
           keysremove
         );
-        Core.Type_any output_1 = Collection.f_map_from_map_keys(
+        final Core.Type_any output_1 = Collection.f_map_from_map_keys(
           generic_map_1,
           mapmain,
           keysremain
@@ -491,13 +491,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "any<-for-until-loop", // name
         0, // idx
@@ -521,30 +521,30 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_any_from_for_until_loop;
+      final Core.Type_any output = Collection.e_any_from_for_until_loop;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_any_from_for_until_loop;
+      final Core.Type_any output = Collection.t_any_from_for_until_loop;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_boolean_from_any fn_until = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_boolean_from_any fn_until = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
       output = Collection.f_any_from_for_until_loop(generic_any_1, start, fn_until, fn_loop);
       return output;
     }
 
     @Override
     public <T extends Core.Type_any> T vx_any_from_for_until_loop(final T generic_any_1, final T start, final Core.Func_boolean_from_any fn_until, final Core.Func_any_from_any fn_loop) {
-      T output = Collection.f_any_from_for_until_loop(generic_any_1, start, fn_until, fn_loop);
+      final T output = Collection.f_any_from_for_until_loop(generic_any_1, start, fn_until, fn_loop);
       return output;
     }
 
@@ -603,13 +603,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "any<-for-until-loop-max", // name
         0, // idx
@@ -633,31 +633,31 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_any_from_for_until_loop_max;
+      final Core.Type_any output = Collection.e_any_from_for_until_loop_max;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_any_from_for_until_loop_max;
+      final Core.Type_any output = Collection.t_any_from_for_until_loop_max;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_boolean_from_any fn_until = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
-      Core.Type_int max = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_boolean_from_any fn_until = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_int max = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
       output = Collection.f_any_from_for_until_loop_max(generic_any_1, start, fn_until, fn_loop, max);
       return output;
     }
 
     @Override
     public <T extends Core.Type_any> T vx_any_from_for_until_loop_max(final T generic_any_1, final T start, final Core.Func_boolean_from_any fn_until, final Core.Func_any_from_any fn_loop, final Core.Type_int max) {
-      T output = Collection.f_any_from_for_until_loop_max(generic_any_1, start, fn_until, fn_loop, max);
+      final T output = Collection.f_any_from_for_until_loop_max(generic_any_1, start, fn_until, fn_loop, max);
       return output;
     }
 
@@ -701,13 +701,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "any<-for-while-loop", // name
         0, // idx
@@ -731,30 +731,30 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_any_from_for_while_loop;
+      final Core.Type_any output = Collection.e_any_from_for_while_loop;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_any_from_for_while_loop;
+      final Core.Type_any output = Collection.t_any_from_for_while_loop;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_boolean_from_any fn_while = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_boolean_from_any fn_while = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
       output = Collection.f_any_from_for_while_loop(generic_any_1, start, fn_while, fn_loop);
       return output;
     }
 
     @Override
     public <T extends Core.Type_any> T vx_any_from_for_while_loop(final T generic_any_1, final T start, final Core.Func_boolean_from_any fn_while, final Core.Func_any_from_any fn_loop) {
-      T output = Collection.f_any_from_for_while_loop(generic_any_1, start, fn_while, fn_loop);
+      final T output = Collection.f_any_from_for_while_loop(generic_any_1, start, fn_while, fn_loop);
       return output;
     }
 
@@ -814,13 +814,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "any<-for-while-loop-max", // name
         0, // idx
@@ -844,31 +844,31 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_any_from_for_while_loop_max;
+      final Core.Type_any output = Collection.e_any_from_for_while_loop_max;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_any_from_for_while_loop_max;
+      final Core.Type_any output = Collection.t_any_from_for_while_loop_max;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_boolean_from_any fn_while = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
-      Core.Type_int max = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_boolean_from_any fn_while = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_int max = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
       output = Collection.f_any_from_for_while_loop_max(generic_any_1, start, fn_while, fn_loop, max);
       return output;
     }
 
     @Override
     public <T extends Core.Type_any> T vx_any_from_for_while_loop_max(final T generic_any_1, final T start, final Core.Func_boolean_from_any fn_while, final Core.Func_any_from_any fn_loop, final Core.Type_int max) {
-      T output = Collection.f_any_from_for_while_loop_max(generic_any_1, start, fn_while, fn_loop, max);
+      final T output = Collection.f_any_from_for_while_loop_max(generic_any_1, start, fn_while, fn_loop, max);
       return output;
     }
 
@@ -911,13 +911,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "any<-map-pos", // name
         0, // idx
@@ -941,29 +941,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_any_from_map_pos;
+      final Core.Type_any output = Collection.e_any_from_map_pos;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_any_from_map_pos;
+      final Core.Type_any output = Collection.t_any_from_map_pos;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_map map = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int pos = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map map = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int pos = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_any_from_map_pos(generic_any_1, map, pos);
       return output;
     }
 
     @Override
     public <N extends Core.Type_map, T extends Core.Type_any> T vx_any_from_map_pos(final T generic_any_1, final N map, final Core.Type_int pos) {
-      T output = Collection.f_any_from_map_pos(generic_any_1, map, pos);
+      final T output = Collection.f_any_from_map_pos(generic_any_1, map, pos);
       return output;
     }
 
@@ -977,15 +977,15 @@ public final class Collection {
     output = Core.f_let(
       generic_any_1,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_stringlist keys = Core.f_stringlist_from_map(
+        final Core.Type_stringlist keys = Core.f_stringlist_from_map(
           map
         );
-        Core.Type_string key = Core.f_any_from_list(
+        final Core.Type_string key = Core.f_any_from_list(
           Core.t_string,
           keys,
           pos
         );
-        Core.Type_any output_1 = Core.f_any_from_map(
+        final Core.Type_any output_1 = Core.f_any_from_map(
           generic_any_1,
           map,
           key
@@ -1023,13 +1023,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "anymap<-struct", // name
         0, // idx
@@ -1053,13 +1053,13 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_anymap_from_struct;
+      final Core.Type_any output = Collection.e_anymap_from_struct;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_anymap_from_struct;
+      final Core.Type_any output = Collection.t_anymap_from_struct;
       return output;
     }
 
@@ -1071,8 +1071,8 @@ public final class Collection {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_struct inputval = (Core.Type_struct)value;
-      Core.Type_any outputval = Collection.f_anymap_from_struct(inputval);
+      final Core.Type_struct inputval = (Core.Type_struct)value;
+      final Core.Type_any outputval = Collection.f_anymap_from_struct(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1080,14 +1080,14 @@ public final class Collection {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_struct structure = Core.f_any_from_any(Core.t_struct, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_struct structure = Core.f_any_from_any(Core.t_struct, arglist.vx_any(Core.vx_new_int(0)));
       output = Collection.f_anymap_from_struct(structure);
       return output;
     }
 
     @Override
     public Core.Type_anymap vx_anymap_from_struct(final Core.Type_struct structure) {
-      Core.Type_anymap output = Collection.f_anymap_from_struct(structure);
+      final Core.Type_anymap output = Collection.f_anymap_from_struct(structure);
       return output;
     }
 
@@ -1130,13 +1130,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "boolean-write<-map-removekey", // name
         0, // idx
@@ -1160,28 +1160,28 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_boolean_write_from_map_removekey;
+      final Core.Type_any output = Collection.e_boolean_write_from_map_removekey;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_boolean_write_from_map_removekey;
+      final Core.Type_any output = Collection.t_boolean_write_from_map_removekey;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_boolean_write_from_map_removekey(valuemap, key);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_write_from_map_removekey(final Core.Type_map valuemap, final Core.Type_string key) {
-      Core.Type_boolean output = Collection.f_boolean_write_from_map_removekey(valuemap, key);
+      final Core.Type_boolean output = Collection.f_boolean_write_from_map_removekey(valuemap, key);
       return output;
     }
 
@@ -1230,13 +1230,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "boolean-write<-map-removekeys", // name
         0, // idx
@@ -1260,28 +1260,28 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_boolean_write_from_map_removekeys;
+      final Core.Type_any output = Collection.e_boolean_write_from_map_removekeys;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_boolean_write_from_map_removekeys;
+      final Core.Type_any output = Collection.t_boolean_write_from_map_removekeys;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_stringlist keys = Core.f_any_from_any(Core.t_stringlist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_stringlist keys = Core.f_any_from_any(Core.t_stringlist, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_boolean_write_from_map_removekeys(valuemap, keys);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_write_from_map_removekeys(final Core.Type_map valuemap, final Core.Type_stringlist keys) {
-      Core.Type_boolean output = Collection.f_boolean_write_from_map_removekeys(valuemap, keys);
+      final Core.Type_boolean output = Collection.f_boolean_write_from_map_removekeys(valuemap, keys);
       return output;
     }
 
@@ -1295,11 +1295,11 @@ public final class Collection {
     output = Core.f_let(
       Core.t_boolean,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_booleanlist writelist = Core.f_list_from_list_1(
+        final Core.Type_booleanlist writelist = Core.f_list_from_list_1(
           Core.t_booleanlist,
           keys,
           Core.t_any_from_any.vx_fn_new((key_any) -> {
-            Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
+            final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
             Core.Type_any output_2 = Collection.f_boolean_write_from_map_removekey(
               valuemap,
               key
@@ -1307,7 +1307,7 @@ public final class Collection {
             return output_2;
           })
         );
-        Core.Type_any output_1 = Core.f_and_1(
+        final Core.Type_any output_1 = Core.f_and_1(
           writelist
         );
         return output_1;
@@ -1344,13 +1344,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "int<-map-key", // name
         0, // idx
@@ -1374,28 +1374,28 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_int_from_map_key;
+      final Core.Type_any output = Collection.e_int_from_map_key;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_int_from_map_key;
+      final Core.Type_any output = Collection.t_int_from_map_key;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map map = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map map = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_int_from_map_key(map, key);
       return output;
     }
 
     @Override
     public Core.Type_int vx_int_from_map_key(final Core.Type_map map, final Core.Type_string key) {
-      Core.Type_int output = Collection.f_int_from_map_key(map, key);
+      final Core.Type_int output = Collection.f_int_from_map_key(map, key);
       return output;
     }
 
@@ -1409,10 +1409,10 @@ public final class Collection {
     output = Core.f_let(
       Core.t_int,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_stringlist keys = Core.f_stringlist_from_map(
+        final Core.Type_stringlist keys = Core.f_stringlist_from_map(
           map
         );
-        Core.Type_any output_1 = Collection.f_int_from_stringlist_find(
+        final Core.Type_any output_1 = Collection.f_int_from_stringlist_find(
           keys,
           key
         );
@@ -1450,13 +1450,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "int<-stringlist-find", // name
         0, // idx
@@ -1480,28 +1480,28 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_int_from_stringlist_find;
+      final Core.Type_any output = Collection.e_int_from_stringlist_find;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_int_from_stringlist_find;
+      final Core.Type_any output = Collection.t_int_from_stringlist_find;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_stringlist stringlist = Core.f_any_from_any(Core.t_stringlist, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string find = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_stringlist stringlist = Core.f_any_from_any(Core.t_stringlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string find = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_int_from_stringlist_find(stringlist, find);
       return output;
     }
 
     @Override
     public Core.Type_int vx_int_from_stringlist_find(final Core.Type_stringlist stringlist, final Core.Type_string find) {
-      Core.Type_int output = Collection.f_int_from_stringlist_find(stringlist, find);
+      final Core.Type_int output = Collection.f_int_from_stringlist_find(stringlist, find);
       return output;
     }
 
@@ -1515,12 +1515,12 @@ public final class Collection {
     output = Core.f_let(
       Core.t_int,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_intlist poslist = Core.f_list_from_list_intany(
+        final Core.Type_intlist poslist = Core.f_list_from_list_intany(
           Core.t_intlist,
           stringlist,
           Core.t_any_from_int_any.vx_fn_new((pos_any, value_any) -> {
-            Core.Type_int pos = Core.f_any_from_any(Core.t_int, pos_any);
-            Core.Type_string value = Core.f_any_from_any(Core.t_string, value_any);
+            final Core.Type_int pos = Core.f_any_from_any(Core.t_int, pos_any);
+            final Core.Type_string value = Core.f_any_from_any(Core.t_string, value_any);
             Core.Type_any output_2 = Core.f_if_1(
               Core.t_int,
               Core.f_eq(
@@ -1533,16 +1533,16 @@ public final class Collection {
             return output_2;
           })
         );
-        Core.Type_intlist gt0list = Collection.f_list_from_list_filter(
+        final Core.Type_intlist gt0list = Collection.f_list_from_list_filter(
           Core.t_intlist,
           poslist,
           Core.t_any_from_any.vx_fn_new((item_any) -> {
-            Core.Type_int item = Core.f_any_from_any(Core.t_int, item_any);
+            final Core.Type_int item = Core.f_any_from_any(Core.t_int, item_any);
             Core.Type_any output_3 = item;
             return output_3;
           })
         );
-        Core.Type_any output_1 = Core.f_first_from_list(
+        final Core.Type_any output_1 = Core.f_first_from_list(
           Core.t_int,
           gt0list
         );
@@ -1579,13 +1579,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "is-list", // name
         0, // idx
@@ -1609,13 +1609,13 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_is_list;
+      final Core.Type_any output = Collection.e_is_list;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_is_list;
+      final Core.Type_any output = Collection.t_is_list;
       return output;
     }
 
@@ -1627,8 +1627,8 @@ public final class Collection {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_any inputval = (Core.Type_any)value;
-      Core.Type_any outputval = Collection.f_is_list(inputval);
+      final Core.Type_any inputval = (Core.Type_any)value;
+      final Core.Type_any outputval = Collection.f_is_list(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1636,14 +1636,14 @@ public final class Collection {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
       output = Collection.f_is_list(value);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_is_list(final Core.Type_any value) {
-      Core.Type_boolean output = Collection.f_is_list(value);
+      final Core.Type_boolean output = Collection.f_is_list(value);
       return output;
     }
 
@@ -1690,13 +1690,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "is-map", // name
         0, // idx
@@ -1720,13 +1720,13 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_is_map;
+      final Core.Type_any output = Collection.e_is_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_is_map;
+      final Core.Type_any output = Collection.t_is_map;
       return output;
     }
 
@@ -1738,8 +1738,8 @@ public final class Collection {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_any inputval = (Core.Type_any)value;
-      Core.Type_any outputval = Collection.f_is_map(inputval);
+      final Core.Type_any inputval = (Core.Type_any)value;
+      final Core.Type_any outputval = Collection.f_is_map(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1747,14 +1747,14 @@ public final class Collection {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
       output = Collection.f_is_map(value);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_is_map(final Core.Type_any value) {
-      Core.Type_boolean output = Collection.f_is_map(value);
+      final Core.Type_boolean output = Collection.f_is_map(value);
       return output;
     }
 
@@ -1814,13 +1814,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-for-end-loop", // name
         0, // idx
@@ -1844,30 +1844,30 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_for_end_loop;
+      final Core.Type_any output = Collection.e_list_from_for_end_loop;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_for_end_loop;
+      final Core.Type_any output = Collection.t_list_from_for_end_loop;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Func_any_from_int fn_loop = Core.f_any_from_any(Core.t_any_from_int, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Func_any_from_int fn_loop = Core.f_any_from_any(Core.t_any_from_int, arglist.vx_any(Core.vx_new_int(2)));
       output = Collection.f_list_from_for_end_loop(generic_list_1, start, end, fn_loop);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list> X vx_list_from_for_end_loop(final X generic_list_1, final Core.Type_int start, final Core.Type_int end, final Core.Func_any_from_int fn_loop) {
-      X output = Collection.f_list_from_for_end_loop(generic_list_1, start, end, fn_loop);
+      final X output = Collection.f_list_from_for_end_loop(generic_list_1, start, end, fn_loop);
       return output;
     }
 
@@ -1911,13 +1911,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-for-while-loop", // name
         0, // idx
@@ -1941,30 +1941,30 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_for_while_loop;
+      final Core.Type_any output = Collection.e_list_from_for_while_loop;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_for_while_loop;
+      final Core.Type_any output = Collection.t_list_from_for_while_loop;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_boolean_from_any fn_while = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_boolean_from_any fn_while = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
       output = Collection.f_list_from_for_while_loop(generic_list_1, start, fn_while, fn_loop);
       return output;
     }
 
     @Override
     public <T extends Core.Type_any, X extends Core.Type_list> X vx_list_from_for_while_loop(final X generic_list_1, final T start, final Core.Func_boolean_from_any fn_while, final Core.Func_any_from_any fn_loop) {
-      X output = Collection.f_list_from_for_while_loop(generic_list_1, start, fn_while, fn_loop);
+      final X output = Collection.f_list_from_for_while_loop(generic_list_1, start, fn_while, fn_loop);
       return output;
     }
 
@@ -2021,13 +2021,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-for-while-loop-max", // name
         0, // idx
@@ -2051,31 +2051,31 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_for_while_loop_max;
+      final Core.Type_any output = Collection.e_list_from_for_while_loop_max;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_for_while_loop_max;
+      final Core.Type_any output = Collection.t_list_from_for_while_loop_max;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_boolean_from_any fn_while = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
-      Core.Type_int max = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_boolean_from_any fn_while = Core.f_any_from_any(Core.t_boolean_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Func_any_from_any fn_loop = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_int max = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
       output = Collection.f_list_from_for_while_loop_max(generic_list_1, start, fn_while, fn_loop, max);
       return output;
     }
 
     @Override
     public <T extends Core.Type_any, X extends Core.Type_list> X vx_list_from_for_while_loop_max(final X generic_list_1, final T start, final Core.Func_boolean_from_any fn_while, final Core.Func_any_from_any fn_loop, final Core.Type_int max) {
-      X output = Collection.f_list_from_for_while_loop_max(generic_list_1, start, fn_while, fn_loop, max);
+      final X output = Collection.f_list_from_for_while_loop_max(generic_list_1, start, fn_while, fn_loop, max);
       return output;
     }
 
@@ -2118,13 +2118,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-list-end", // name
         0, // idx
@@ -2148,29 +2148,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_list_end;
+      final Core.Type_any output = Collection.e_list_from_list_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_list_end;
+      final Core.Type_any output = Collection.t_list_from_list_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_list_from_list_end(generic_list_1, values, end);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list> X vx_list_from_list_end(final X generic_list_1, final X values, final Core.Type_int end) {
-      X output = Collection.f_list_from_list_end(generic_list_1, values, end);
+      final X output = Collection.f_list_from_list_end(generic_list_1, values, end);
       return output;
     }
 
@@ -2218,13 +2218,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-list-filter", // name
         0, // idx
@@ -2248,29 +2248,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_list_filter;
+      final Core.Type_any output = Collection.e_list_from_list_filter;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_list_filter;
+      final Core.Type_any output = Collection.t_list_from_list_filter;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list vallist = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_any_from_any fn_filter = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list vallist = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_any_from_any fn_filter = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_list_from_list_filter(generic_list_1, vallist, fn_filter);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_from_list_filter(final X generic_list_1, final Y vallist, final Core.Func_any_from_any fn_filter) {
-      X output = Collection.f_list_from_list_filter(generic_list_1, vallist, fn_filter);
+      final X output = Collection.f_list_from_list_filter(generic_list_1, vallist, fn_filter);
       return output;
     }
 
@@ -2313,13 +2313,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-list-filtertypes", // name
         0, // idx
@@ -2343,29 +2343,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_list_filtertypes;
+      final Core.Type_any output = Collection.e_list_from_list_filtertypes;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_list_filtertypes;
+      final Core.Type_any output = Collection.t_list_from_list_filtertypes;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list vallist = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_typelist filtertypes = Core.f_any_from_any(Core.t_typelist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list vallist = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typelist filtertypes = Core.f_any_from_any(Core.t_typelist, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_list_from_list_filtertypes(generic_list_1, vallist, filtertypes);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_from_list_filtertypes(final X generic_list_1, final Y vallist, final Core.Type_typelist filtertypes) {
-      X output = Collection.f_list_from_list_filtertypes(generic_list_1, vallist, filtertypes);
+      final X output = Collection.f_list_from_list_filtertypes(generic_list_1, vallist, filtertypes);
       return output;
     }
 
@@ -2380,7 +2380,7 @@ public final class Collection {
       generic_list_1,
       vallist,
       Core.t_any_from_any.vx_fn_new((value_any) -> {
-        Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
+        final Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
         Core.Type_any output_1 = Core.f_if(
           Core.t_any,
           Type.f_is_type_from_any_typelist(
@@ -2423,13 +2423,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-list-flatten", // name
         0, // idx
@@ -2453,29 +2453,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_list_flatten;
+      final Core.Type_any output = Collection.e_list_from_list_flatten;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_list_flatten;
+      final Core.Type_any output = Collection.t_list_from_list_flatten;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list listsrc = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list listsrc = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_list_from_list_flatten(generic_list_1, listsrc, fn_any_from_any);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_from_list_flatten(final X generic_list_1, final Y listsrc, final Core.Func_any_from_any fn_any_from_any) {
-      X output = Collection.f_list_from_list_flatten(generic_list_1, listsrc, fn_any_from_any);
+      final X output = Collection.f_list_from_list_flatten(generic_list_1, listsrc, fn_any_from_any);
       return output;
     }
 
@@ -2489,12 +2489,12 @@ public final class Collection {
     output = Core.f_let(
       generic_list_1,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_anylist listany = Core.f_list_from_list_1(
+        final Core.Type_anylist listany = Core.f_list_from_list_1(
           Core.t_anylist,
           listsrc,
           fn_any_from_any
         );
-        Core.Type_any output_1 = Core.f_new(
+        final Core.Type_any output_1 = Core.f_new(
           generic_list_1,
           listany
         );
@@ -2531,13 +2531,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-list-join", // name
         0, // idx
@@ -2561,13 +2561,13 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_list_join;
+      final Core.Type_any output = Collection.e_list_from_list_join;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_list_join;
+      final Core.Type_any output = Collection.t_list_from_list_join;
       return output;
     }
 
@@ -2579,8 +2579,8 @@ public final class Collection {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_list inputval = (Core.Type_list)value;
-      Core.Type_any outputval = Collection.f_list_from_list_join(Core.t_list, inputval);
+      final Core.Type_list inputval = (Core.Type_list)value;
+      final Core.Type_any outputval = Collection.f_list_from_list_join(Core.t_list, inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -2588,15 +2588,15 @@ public final class Collection {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
       output = Collection.f_list_from_list_join(generic_list_1, values);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_from_list_join(final X generic_list_1, final Y values) {
-      X output = Collection.f_list_from_list_join(generic_list_1, values);
+      final X output = Collection.f_list_from_list_join(generic_list_1, values);
       return output;
     }
 
@@ -2611,7 +2611,7 @@ public final class Collection {
       generic_list_1,
       values,
       Core.t_any_from_any.vx_fn_new((value_any) -> {
-        Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
+        final Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
         Core.Type_any output_1 = value;
         return output_1;
       })
@@ -2647,13 +2647,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-list-join", // name
         1, // idx
@@ -2677,29 +2677,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_list_join_1;
+      final Core.Type_any output = Collection.e_list_from_list_join_1;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_list_join_1;
+      final Core.Type_any output = Collection.t_list_from_list_join_1;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_list_from_list_join_1(generic_list_1, values, fn_any_from_any);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list, Y extends Core.Type_list> X vx_list_from_list_join_1(final X generic_list_1, final Y values, final Core.Func_any_from_any fn_any_from_any) {
-      X output = Collection.f_list_from_list_join_1(generic_list_1, values, fn_any_from_any);
+      final X output = Collection.f_list_from_list_join_1(generic_list_1, values, fn_any_from_any);
       return output;
     }
 
@@ -2757,13 +2757,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-list-start", // name
         0, // idx
@@ -2787,29 +2787,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_list_start;
+      final Core.Type_any output = Collection.e_list_from_list_start;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_list_start;
+      final Core.Type_any output = Collection.t_list_from_list_start;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_list_from_list_start(generic_list_1, values, start);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list> X vx_list_from_list_start(final X generic_list_1, final X values, final Core.Type_int start) {
-      X output = Collection.f_list_from_list_start(generic_list_1, values, start);
+      final X output = Collection.f_list_from_list_start(generic_list_1, values, start);
       return output;
     }
 
@@ -2860,13 +2860,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "list<-list-start-end", // name
         0, // idx
@@ -2890,30 +2890,30 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_list_from_list_start_end;
+      final Core.Type_any output = Collection.e_list_from_list_start_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_list_from_list_start_end;
+      final Core.Type_any output = Collection.t_list_from_list_start_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
       output = Collection.f_list_from_list_start_end(generic_list_1, values, start, end);
       return output;
     }
 
     @Override
     public <X extends Core.Type_list> X vx_list_from_list_start_end(final X generic_list_1, final X values, final Core.Type_int start, final Core.Type_int end) {
-      X output = Collection.f_list_from_list_start_end(generic_list_1, values, start, end);
+      final X output = Collection.f_list_from_list_start_end(generic_list_1, values, start, end);
       return output;
     }
 
@@ -2956,13 +2956,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "map<-map-end", // name
         0, // idx
@@ -2986,29 +2986,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_map_from_map_end;
+      final Core.Type_any output = Collection.e_map_from_map_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_map_from_map_end;
+      final Core.Type_any output = Collection.t_map_from_map_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_map_from_map_end(generic_map_1, valuemap, end);
       return output;
     }
 
     @Override
     public <N extends Core.Type_map> N vx_map_from_map_end(final N generic_map_1, final N valuemap, final Core.Type_int end) {
-      N output = Collection.f_map_from_map_end(generic_map_1, valuemap, end);
+      final N output = Collection.f_map_from_map_end(generic_map_1, valuemap, end);
       return output;
     }
 
@@ -3056,13 +3056,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "map<-map-keys", // name
         0, // idx
@@ -3086,29 +3086,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_map_from_map_keys;
+      final Core.Type_any output = Collection.e_map_from_map_keys;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_map_from_map_keys;
+      final Core.Type_any output = Collection.t_map_from_map_keys;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_stringlist keys = Core.f_any_from_any(Core.t_stringlist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_stringlist keys = Core.f_any_from_any(Core.t_stringlist, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_map_from_map_keys(generic_map_1, valuemap, keys);
       return output;
     }
 
     @Override
     public <N extends Core.Type_map> N vx_map_from_map_keys(final N generic_map_1, final N valuemap, final Core.Type_stringlist keys) {
-      N output = Collection.f_map_from_map_keys(generic_map_1, valuemap, keys);
+      final N output = Collection.f_map_from_map_keys(generic_map_1, valuemap, keys);
       return output;
     }
 
@@ -3151,13 +3151,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "map<-map-start", // name
         0, // idx
@@ -3181,29 +3181,29 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_map_from_map_start;
+      final Core.Type_any output = Collection.e_map_from_map_start;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_map_from_map_start;
+      final Core.Type_any output = Collection.t_map_from_map_start;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
       output = Collection.f_map_from_map_start(generic_map_1, valuemap, start);
       return output;
     }
 
     @Override
     public <N extends Core.Type_map> N vx_map_from_map_start(final N generic_map_1, final N valuemap, final Core.Type_int start) {
-      N output = Collection.f_map_from_map_start(generic_map_1, valuemap, start);
+      final N output = Collection.f_map_from_map_start(generic_map_1, valuemap, start);
       return output;
     }
 
@@ -3254,13 +3254,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "map<-map-start-end", // name
         0, // idx
@@ -3284,30 +3284,30 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_map_from_map_start_end;
+      final Core.Type_any output = Collection.e_map_from_map_start_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_map_from_map_start_end;
+      final Core.Type_any output = Collection.t_map_from_map_start_end;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int start = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_int end = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
       output = Collection.f_map_from_map_start_end(generic_map_1, valuemap, start, end);
       return output;
     }
 
     @Override
     public <N extends Core.Type_map> N vx_map_from_map_start_end(final N generic_map_1, final N valuemap, final Core.Type_int start, final Core.Type_int end) {
-      N output = Collection.f_map_from_map_start_end(generic_map_1, valuemap, start, end);
+      final N output = Collection.f_map_from_map_start_end(generic_map_1, valuemap, start, end);
       return output;
     }
 
@@ -3321,16 +3321,16 @@ public final class Collection {
     output = Core.f_let(
       generic_map_1,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_stringlist keys1 = Core.f_stringlist_from_map(
+        final Core.Type_stringlist keys1 = Core.f_stringlist_from_map(
           valuemap
         );
-        Core.Type_stringlist keys2 = Collection.f_list_from_list_start_end(
+        final Core.Type_stringlist keys2 = Collection.f_list_from_list_start_end(
           Core.t_stringlist,
           keys1,
           start,
           end
         );
-        Core.Type_any output_1 = Collection.f_map_from_map_keys(
+        final Core.Type_any output_1 = Collection.f_map_from_map_keys(
           generic_map_1,
           valuemap,
           keys2
@@ -3368,13 +3368,13 @@ public final class Collection {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/collection", // pkgname
         "map<-struct", // name
         0, // idx
@@ -3398,13 +3398,13 @@ public final class Collection {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Collection.e_map_from_struct;
+      final Core.Type_any output = Collection.e_map_from_struct;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Collection.t_map_from_struct;
+      final Core.Type_any output = Collection.t_map_from_struct;
       return output;
     }
 
@@ -3416,8 +3416,8 @@ public final class Collection {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_struct inputval = (Core.Type_struct)value;
-      Core.Type_any outputval = Collection.f_map_from_struct(Core.t_map, inputval);
+      final Core.Type_struct inputval = (Core.Type_struct)value;
+      final Core.Type_any outputval = Collection.f_map_from_struct(Core.t_map, inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -3425,15 +3425,15 @@ public final class Collection {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_struct structure = Core.f_any_from_any(Core.t_struct, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_struct structure = Core.f_any_from_any(Core.t_struct, arglist.vx_any(Core.vx_new_int(0)));
       output = Collection.f_map_from_struct(generic_map_1, structure);
       return output;
     }
 
     @Override
     public <N extends Core.Type_map, R extends Core.Type_struct> N vx_map_from_struct(final N generic_map_1, final R structure) {
-      N output = Collection.f_map_from_struct(generic_map_1, structure);
+      final N output = Collection.f_map_from_struct(generic_map_1, structure);
       return output;
     }
 
@@ -3447,10 +3447,10 @@ public final class Collection {
     output = Core.f_let(
       generic_map_1,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_anymap anymap = Collection.f_anymap_from_struct(
+        final Core.Type_anymap anymap = Collection.f_anymap_from_struct(
           structure
         );
-        Core.Type_any output_1 = Core.f_map_from_map(
+        final Core.Type_any output_1 = Core.f_map_from_map(
           generic_map_1,
           anymap
         );
@@ -3494,7 +3494,12 @@ public final class Collection {
     mapfunc.put("map<-map-start", Collection.t_map_from_map_start);
     mapfunc.put("map<-map-start-end", Collection.t_map_from_map_start_end);
     mapfunc.put("map<-struct", Collection.t_map_from_struct);
-    Core.vx_global_package_set("vx/collection", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/collection",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

@@ -34,13 +34,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "session<-session-name", // name
         0, // idx
@@ -64,28 +64,28 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_session_from_session_name;
+      final Core.Type_any output = Translate.e_session_from_session_name;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_session_from_session_name;
+      final Core.Type_any output = Translate.t_session_from_session_name;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_session session = Core.f_any_from_any(Core.t_session, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_session session = Core.f_any_from_any(Core.t_session, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_session_from_session_name(session, name);
       return output;
     }
 
     @Override
     public Core.Type_session vx_session_from_session_name(final Core.Type_session session, final Core.Type_string name) {
-      Core.Type_session output = Translate.f_session_from_session_name(session, name);
+      final Core.Type_session output = Translate.f_session_from_session_name(session, name);
       return output;
     }
 
@@ -138,13 +138,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "session<-session-translation", // name
         0, // idx
@@ -168,28 +168,28 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_session_from_session_translation;
+      final Core.Type_any output = Translate.e_session_from_session_translation;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_session_from_session_translation;
+      final Core.Type_any output = Translate.t_session_from_session_translation;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_session session = Core.f_any_from_any(Core.t_session, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_session session = Core.f_any_from_any(Core.t_session, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_session_from_session_translation(session, translation);
       return output;
     }
 
     @Override
     public Core.Type_session vx_session_from_session_translation(final Core.Type_session session, final Core.Type_translation translation) {
-      Core.Type_session output = Translate.f_session_from_session_translation(session, translation);
+      final Core.Type_session output = Translate.f_session_from_session_translation(session, translation);
       return output;
     }
 
@@ -240,13 +240,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "session<-session-translationmap-name", // name
         0, // idx
@@ -270,29 +270,29 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_session_from_session_translationmap_name;
+      final Core.Type_any output = Translate.e_session_from_session_translationmap_name;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_session_from_session_translationmap_name;
+      final Core.Type_any output = Translate.t_session_from_session_translationmap_name;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_session session = Core.f_any_from_any(Core.t_session, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_translationmap translationmap = Core.f_any_from_any(Core.t_translationmap, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_session session = Core.f_any_from_any(Core.t_session, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_translationmap translationmap = Core.f_any_from_any(Core.t_translationmap, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
       output = Translate.f_session_from_session_translationmap_name(session, translationmap, name);
       return output;
     }
 
     @Override
     public Core.Type_session vx_session_from_session_translationmap_name(final Core.Type_session session, final Core.Type_translationmap translationmap, final Core.Type_string name) {
-      Core.Type_session output = Translate.f_session_from_session_translationmap_name(session, translationmap, name);
+      final Core.Type_session output = Translate.f_session_from_session_translationmap_name(session, translationmap, name);
       return output;
     }
 
@@ -347,13 +347,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "translate", // name
         0, // idx
@@ -377,13 +377,13 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_translate;
+      final Core.Type_any output = Translate.e_translate;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_translate;
+      final Core.Type_any output = Translate.t_translate;
       return output;
     }
 
@@ -395,8 +395,8 @@ public final class Translate {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_string inputval = (Core.Type_string)value;
-      Core.Type_any outputval = Translate.f_translate(context, inputval);
+      final Core.Type_string inputval = (Core.Type_string)value;
+      final Core.Type_any outputval = Translate.f_translate(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -404,15 +404,15 @@ public final class Translate {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_translate(context, text);
       return output;
     }
 
     @Override
     public Core.Type_string vx_translate(final Core.Type_context context, final Core.Type_string text) {
-      Core.Type_string output = Translate.f_translate(context, text);
+      final Core.Type_string output = Translate.f_translate(context, text);
       return output;
     }
 
@@ -459,13 +459,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "translate", // name
         1, // idx
@@ -489,13 +489,13 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_translate_1;
+      final Core.Type_any output = Translate.e_translate_1;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_translate_1;
+      final Core.Type_any output = Translate.t_translate_1;
       return output;
     }
 
@@ -507,8 +507,8 @@ public final class Translate {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_msg inputval = (Core.Type_msg)value;
-      Core.Type_any outputval = Translate.f_translate_1(context, inputval);
+      final Core.Type_msg inputval = (Core.Type_msg)value;
+      final Core.Type_any outputval = Translate.f_translate_1(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -516,15 +516,15 @@ public final class Translate {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_msg msg = Core.f_any_from_any(Core.t_msg, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_msg msg = Core.f_any_from_any(Core.t_msg, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_translate_1(context, msg);
       return output;
     }
 
     @Override
     public Core.Type_string vx_translate_1(final Core.Type_context context, final Core.Type_msg msg) {
-      Core.Type_string output = Translate.f_translate_1(context, msg);
+      final Core.Type_string output = Translate.f_translate_1(context, msg);
       return output;
     }
 
@@ -538,9 +538,9 @@ public final class Translate {
     output = Core.f_let(
       Core.t_string,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string path = msg.path();
-        Core.Type_string code = msg.code();
-        Core.Type_string text = Core.f_new(
+        final Core.Type_string path = msg.path();
+        final Core.Type_string code = msg.code();
+        final Core.Type_string text = Core.f_new(
           Core.t_string,
           Core.vx_new(
             Core.t_anylist,
@@ -550,7 +550,7 @@ public final class Translate {
             code
           )
         );
-        Core.Type_any output_1 = Translate.f_translate(
+        final Core.Type_any output_1 = Translate.f_translate(
           context,
           text
         );
@@ -588,13 +588,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "translate<-translation-string", // name
         0, // idx
@@ -618,28 +618,28 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_translate_from_translation_string;
+      final Core.Type_any output = Translate.e_translate_from_translation_string;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_translate_from_translation_string;
+      final Core.Type_any output = Translate.t_translate_from_translation_string;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_translate_from_translation_string(translation, text);
       return output;
     }
 
     @Override
     public Core.Type_string vx_translate_from_translation_string(final Core.Type_translation translation, final Core.Type_string text) {
-      Core.Type_string output = Translate.f_translate_from_translation_string(translation, text);
+      final Core.Type_string output = Translate.f_translate_from_translation_string(translation, text);
       return output;
     }
 
@@ -659,13 +659,13 @@ public final class Translate {
       Core.f_let(
         Core.t_string,
         Core.t_any_from_func.vx_fn_new(() -> {
-          Core.Type_stringmap wordmap = translation.wordmap();
-          Core.Type_string xlate = Core.f_any_from_map(
+          final Core.Type_stringmap wordmap = translation.wordmap();
+          final Core.Type_string xlate = Core.f_any_from_map(
             Core.t_string,
             wordmap,
             text
           );
-          Core.Type_any output_1 = Core.f_if_1(
+          final Core.Type_any output_1 = Core.f_if_1(
             Core.t_string,
             Core.f_is_empty(
               xlate
@@ -709,13 +709,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "translate<-translationmap-name-string", // name
         0, // idx
@@ -739,29 +739,29 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_translate_from_translationmap_name_string;
+      final Core.Type_any output = Translate.e_translate_from_translationmap_name_string;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_translate_from_translationmap_name_string;
+      final Core.Type_any output = Translate.t_translate_from_translationmap_name_string;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_translationmap translationmap = Core.f_any_from_any(Core.t_translationmap, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_translationmap translationmap = Core.f_any_from_any(Core.t_translationmap, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
       output = Translate.f_translate_from_translationmap_name_string(translationmap, name, text);
       return output;
     }
 
     @Override
     public Core.Type_string vx_translate_from_translationmap_name_string(final Core.Type_translationmap translationmap, final Core.Type_string name, final Core.Type_string text) {
-      Core.Type_string output = Translate.f_translate_from_translationmap_name_string(translationmap, name, text);
+      final Core.Type_string output = Translate.f_translate_from_translationmap_name_string(translationmap, name, text);
       return output;
     }
 
@@ -775,12 +775,12 @@ public final class Translate {
     output = Core.f_let(
       Core.t_string,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_translation translation = Core.f_any_from_map(
+        final Core.Type_translation translation = Core.f_any_from_map(
           Core.t_translation,
           translationmap,
           name
         );
-        Core.Type_any output_1 = Translate.f_translate_from_translation_string(
+        final Core.Type_any output_1 = Translate.f_translate_from_translation_string(
           translation,
           text
         );
@@ -817,13 +817,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "translation-load-session", // name
         0, // idx
@@ -847,13 +847,13 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_translation_load_session;
+      final Core.Type_any output = Translate.e_translation_load_session;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_translation_load_session;
+      final Core.Type_any output = Translate.t_translation_load_session;
       return output;
     }
 
@@ -865,8 +865,8 @@ public final class Translate {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_translation inputval = (Core.Type_translation)value;
-      Core.Type_any outputval = Translate.f_translation_load_session(context, inputval);
+      final Core.Type_translation inputval = (Core.Type_translation)value;
+      final Core.Type_any outputval = Translate.f_translation_load_session(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -874,15 +874,15 @@ public final class Translate {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_translation_load_session(context, translation);
       return output;
     }
 
     @Override
     public Core.Type_translation vx_translation_load_session(final Core.Type_context context, final Core.Type_translation translation) {
-      Core.Type_translation output = Translate.f_translation_load_session(context, translation);
+      final Core.Type_translation output = Translate.f_translation_load_session(context, translation);
       return output;
     }
 
@@ -922,13 +922,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "translation<-context", // name
         0, // idx
@@ -952,27 +952,27 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_translation_from_context;
+      final Core.Type_any output = Translate.e_translation_from_context;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_translation_from_context;
+      final Core.Type_any output = Translate.t_translation_from_context;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
       output = Translate.f_translation_from_context(context);
       return output;
     }
 
     @Override
     public Core.Type_translation vx_translation_from_context(final Core.Type_context context) {
-      Core.Type_translation output = Translate.f_translation_from_context(context);
+      final Core.Type_translation output = Translate.f_translation_from_context(context);
       return output;
     }
 
@@ -1017,13 +1017,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "translation<-session-name", // name
         0, // idx
@@ -1047,28 +1047,28 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_translation_from_session_name;
+      final Core.Type_any output = Translate.e_translation_from_session_name;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_translation_from_session_name;
+      final Core.Type_any output = Translate.t_translation_from_session_name;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_session session = Core.f_any_from_any(Core.t_session, arglist.vx_any(Core.vx_new_int(0)));
-      Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_session session = Core.f_any_from_any(Core.t_session, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
       output = Translate.f_translation_from_session_name(session, name);
       return output;
     }
 
     @Override
     public Core.Type_translation vx_translation_from_session_name(final Core.Type_session session, final Core.Type_string name) {
-      Core.Type_translation output = Translate.f_translation_from_session_name(session, name);
+      final Core.Type_translation output = Translate.f_translation_from_session_name(session, name);
       return output;
     }
 
@@ -1082,8 +1082,8 @@ public final class Translate {
     output = Core.f_let(
       Core.t_translation,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_translationmap translationmap = session.translationmap();
-        Core.Type_any output_1 = Core.f_any_from_map(
+        final Core.Type_translationmap translationmap = session.translationmap();
+        final Core.Type_any output_1 = Core.f_any_from_map(
           Core.t_translation,
           translationmap,
           name
@@ -1121,13 +1121,13 @@ public final class Translate {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translate", // pkgname
         "translationmap<-translations", // name
         0, // idx
@@ -1151,13 +1151,13 @@ public final class Translate {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Translate.e_translationmap_from_translations;
+      final Core.Type_any output = Translate.e_translationmap_from_translations;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Translate.t_translationmap_from_translations;
+      final Core.Type_any output = Translate.t_translationmap_from_translations;
       return output;
     }
 
@@ -1169,8 +1169,8 @@ public final class Translate {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_translationlist inputval = (Core.Type_translationlist)value;
-      Core.Type_any outputval = Translate.f_translationmap_from_translations(inputval);
+      final Core.Type_translationlist inputval = (Core.Type_translationlist)value;
+      final Core.Type_any outputval = Translate.f_translationmap_from_translations(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1178,14 +1178,14 @@ public final class Translate {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_translationlist translations = Core.f_any_from_any(Core.t_translationlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_translationlist translations = Core.f_any_from_any(Core.t_translationlist, arglist.vx_any(Core.vx_new_int(0)));
       output = Translate.f_translationmap_from_translations(translations);
       return output;
     }
 
     @Override
     public Core.Type_translationmap vx_translationmap_from_translations(final Core.Type_translationlist translations) {
-      Core.Type_translationmap output = Translate.f_translationmap_from_translations(translations);
+      final Core.Type_translationmap output = Translate.f_translationmap_from_translations(translations);
       return output;
     }
 
@@ -1200,7 +1200,7 @@ public final class Translate {
       Core.t_translationmap,
       translations,
       Core.t_any_from_any.vx_fn_new((translation_any) -> {
-        Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, translation_any);
+        final Core.Type_translation translation = Core.f_any_from_any(Core.t_translation, translation_any);
         Core.Type_any output_1 = translation.name();
         return output_1;
       })
@@ -1223,7 +1223,12 @@ public final class Translate {
     mapfunc.put("translation<-context", Translate.t_translation_from_context);
     mapfunc.put("translation<-session-name", Translate.t_translation_from_session_name);
     mapfunc.put("translationmap<-translations", Translate.t_translationmap_from_translations);
-    Core.vx_global_package_set("vx/translate", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/translate",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

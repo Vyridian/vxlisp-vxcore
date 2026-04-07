@@ -51,7 +51,7 @@ public static class Csv {
       Vx.Core.Map<string, Vx.Core.Type_any> map = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
       map.put(":headers", this.headers());
       map.put(":rows", this.rows());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -131,7 +131,7 @@ public static class Csv {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("headers"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/data/csv/csv", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -150,7 +150,7 @@ public static class Csv {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("rows"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/data/csv/csv", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -217,12 +217,13 @@ public static class Csv {
 
   public class Class_csvrowmap : Vx.Core.Class_base, Type_csvrowmap {
 
-    public Vx.Core.Map<string, Vx.Core.Type_stringlist> vx_p_map = Vx.Core.immutablemap(new Vx.Core.LinkedHashMap<string, Vx.Core.Type_stringlist>());
+    public Vx.Core.Map<string, Vx.Core.Type_stringlist> vx_p_map = Vx.Core.vx_mapimmutable(new Vx.Core.LinkedHashMap<string, Vx.Core.Type_stringlist>());
 
     public Vx.Core.Map<string, Vx.Core.Type_any> vx_map() {
       Vx.Core.Map<string, Vx.Core.Type_any> anymap = Vx.Core.vx_map_from_map<Vx.Core.Type_any, Vx.Core.Type_stringlist>(this.vx_p_map);
       Vx.Core.Map<string, Vx.Core.Type_any> map = anymap.copy();
-      return Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
+      return output;
     }
 
     public Vx.Core.Type_boolean vx_set(Vx.Core.Type_string name, Vx.Core.Type_any value) {
@@ -233,13 +234,13 @@ public static class Csv {
         if (key.StartsWith(":")) {
           key = key.Substring(1);
         }
-        Vx.Core.Map<string, Vx.Core.Type_stringlist> map = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_stringlist>(this.vx_p_map);
+        Vx.Core.Map<string, Vx.Core.Type_stringlist> map = Vx.Core.vx_mapmutable(this.vx_p_map);
         if (castval == Vx.Core.e_stringlist) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Vx.Core.immutablemap(map);
+        this.vx_p_map = Vx.Core.vx_mapimmutable(map);
         output = Vx.Core.c_true;
       }
       return output;
@@ -283,7 +284,7 @@ public static class Csv {
           msgblock = Vx.Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Vx.Core.immutablemap(map);
+      output.vx_p_map = Vx.Core.vx_mapimmutable(map);
       if (msgblock != Vx.Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -303,7 +304,9 @@ public static class Csv {
       if (this.vx_constdef() != Vx.Core.e_constdef) {
         ischanged = true;
       }
-      Vx.Core.Map<string, Vx.Core.Type_stringlist> mapval = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_stringlist>(value.vx_mapstringlist());
+      Vx.Core.Map<string, Vx.Core.Type_stringlist> mapval = Vx.Core.vx_mapmutable(
+        value.vx_mapstringlist()
+      );
       string key = "";
       Vx.Core.Type_msg msg = Vx.Core.e_msg;
       Vx.Core.Type_any msgval = Vx.Core.e_any;
@@ -345,7 +348,7 @@ public static class Csv {
             Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
             mapany.put("key", Vx.Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
             msg = Vx.Core.vx_msg_from_error("vx/data/csv/csvrowmap", ":invalidkeyvalue", msgmap);
             msgblock = Vx.Core.vx_copy(msgblock, msg);
           }
@@ -361,7 +364,7 @@ public static class Csv {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Data.Csv.Class_csvrowmap work = new Vx.Data.Csv.Class_csvrowmap();
-        work.vx_p_map = Vx.Core.immutablemap(mapval);
+        work.vx_p_map = Vx.Core.vx_mapimmutable(mapval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -413,12 +416,12 @@ public static class Csv {
 
   public class Class_csvrows : Vx.Core.Class_base, Type_csvrows {
 
-    public List<Vx.Core.Type_stringlist> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Core.Type_stringlist> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Core.Type_stringlist>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -493,7 +496,7 @@ public static class Csv {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Data.Csv.Class_csvrows work = new Vx.Data.Csv.Class_csvrows();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -1382,7 +1385,12 @@ public static class Csv {
     mapfunc.put("csvrows<-textblock", Vx.Data.Csv.t_csvrows_from_textblock);
     mapfunc.put("stringmap<-csv", Vx.Data.Csv.t_stringmap_from_csv);
     mapfunc.put("textblock-csv<-string", Vx.Data.Csv.t_textblock_csv_from_string);
-    Vx.Core.vx_global_package_set("vx/data/csv", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/data/csv",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

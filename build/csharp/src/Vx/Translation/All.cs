@@ -209,7 +209,12 @@ public static class All {
     Vx.Core.Map<string, Vx.Core.Type_func> mapfunc = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_func>();
     mapfunc.put("context-all", Vx.Translation.All.t_context_all);
     mapfunc.put("translationmap-all", Vx.Translation.All.t_translationmap_all);
-    Vx.Core.vx_global_package_set("vx/translation/all", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/translation/all",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

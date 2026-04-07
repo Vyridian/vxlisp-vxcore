@@ -180,7 +180,7 @@ object vx_data_file {
       map.put(":path", this.path())
       map.put(":permission", this.permission())
       map.put(":text", this.text())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -274,7 +274,7 @@ object vx_data_file {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -295,7 +295,7 @@ object vx_data_file {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("format"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -319,7 +319,7 @@ object vx_data_file {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("path"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -340,7 +340,7 @@ object vx_data_file {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("permission"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -364,7 +364,7 @@ object vx_data_file {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -501,12 +501,12 @@ object vx_data_file {
   class Class_filelist : vx_core.Class_base, Type_filelist {
     constructor() {}
 
-    var vx_p_list : List<vx_data_file.Type_file> = vx_core.immutablelist(
+    var vx_p_list : List<vx_data_file.Type_file> = vx_core.vx_listimmutable(
       ArrayList<vx_data_file.Type_file>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -586,7 +586,7 @@ object vx_data_file {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_file.Class_filelist = vx_data_file.Class_filelist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -652,12 +652,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "boolean-exists<-file", // name
         0, // idx
@@ -680,12 +680,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_boolean_exists_from_file
+      val output : vx_core.Type_any = vx_data_file.e_boolean_exists_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_boolean_exists_from_file
+      val output : vx_core.Type_any = vx_data_file.t_boolean_exists_from_file
       return output
     }
 
@@ -695,21 +695,21 @@ object vx_data_file {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_file.f_boolean_exists_from_file(inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_file.f_boolean_exists_from_file(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_file.f_boolean_exists_from_file(file)
       return output
     }
 
     override fun vx_boolean_exists_from_file(file : vx_data_file.Type_file) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_data_file.f_boolean_exists_from_file(file)
+      val output : vx_core.Type_boolean = vx_data_file.f_boolean_exists_from_file(file)
       return output
     }
 
@@ -749,12 +749,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "boolean-write<-file", // name
         0, // idx
@@ -777,12 +777,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_boolean_write_from_file
+      val output : vx_core.Type_any = vx_data_file.e_boolean_write_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_boolean_write_from_file
+      val output : vx_core.Type_any = vx_data_file.t_boolean_write_from_file
       return output
     }
 
@@ -792,22 +792,22 @@ object vx_data_file {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_file.f_boolean_write_from_file(context, inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_file.f_boolean_write_from_file(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_file.f_boolean_write_from_file(context, file)
       return output
     }
 
     override fun vx_boolean_write_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_data_file.f_boolean_write_from_file(context, file)
+      val output : vx_core.Type_boolean = vx_data_file.f_boolean_write_from_file(context, file)
       return output
     }
 
@@ -852,12 +852,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "boolean-write<-file-any", // name
         0, // idx
@@ -880,26 +880,26 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_boolean_write_from_file_any
+      val output : vx_core.Type_any = vx_data_file.e_boolean_write_from_file_any
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_boolean_write_from_file_any
+      val output : vx_core.Type_any = vx_data_file.t_boolean_write_from_file_any
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
-      var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
+      val value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_data_file.f_boolean_write_from_file_any(context, file, value)
       return output
     }
 
     override fun vx_boolean_write_from_file_any(context : vx_core.Type_context, file : vx_data_file.Type_file, value : vx_core.Type_any) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_data_file.f_boolean_write_from_file_any(context, file, value)
+      val output : vx_core.Type_boolean = vx_data_file.f_boolean_write_from_file_any(context, file, value)
       return output
     }
 
@@ -946,12 +946,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "boolean-write<-file-string", // name
         0, // idx
@@ -974,26 +974,26 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_boolean_write_from_file_string
+      val output : vx_core.Type_any = vx_data_file.e_boolean_write_from_file_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_boolean_write_from_file_string
+      val output : vx_core.Type_any = vx_data_file.t_boolean_write_from_file_string
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_data_file.f_boolean_write_from_file_string(context, file, text)
       return output
     }
 
     override fun vx_boolean_write_from_file_string(context : vx_core.Type_context, file : vx_data_file.Type_file, text : vx_core.Type_string) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_data_file.f_boolean_write_from_file_string(context, file, text)
+      val output : vx_core.Type_boolean = vx_data_file.f_boolean_write_from_file_string(context, file, text)
       return output
     }
 
@@ -1004,15 +1004,27 @@ object vx_data_file {
 
   fun f_boolean_write_from_file_string(context : vx_core.Type_context, file : vx_data_file.Type_file, text : vx_core.Type_string) : vx_core.Type_boolean {
     var output : vx_core.Type_boolean = vx_core.e_boolean
-    if (vx_core.f_boolean_permission_from_func(context, vx_data_file.t_boolean_write_from_file_string).vx_boolean()) {
+    if (vx_core.f_boolean_permission_from_func(
+      context,
+      vx_data_file.t_boolean_write_from_file_string
+    ).vx_boolean()) {
       try {
         output = vx_data_file.vx_boolean_write_from_file_string(context, file, text)
       } catch (err : Exception) {
-        var msg : vx_core.Type_msg = vx_core.vx_msg_from_exception("vx/data/file/boolean-write<-file-string", err)
+        var msg : vx_core.Type_msg = vx_core.vx_msg_from_exception(
+          "vx/data/file/boolean-write<-file-string",
+          err
+        )
         output = vx_core.vx_copy(output, msg)
       }
     } else {
-      var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/core/func", ":permissiondenied", vx_core.vx_new_string("boolean-write<-file-string"))
+      var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        vx_core.vx_new_string(
+          "boolean-write<-file-string"
+        )
+      )
       output = vx_core.vx_copy(output, msg)
     }
     return output
@@ -1043,12 +1055,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "file-read<-file", // name
         0, // idx
@@ -1071,12 +1083,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_file_read_from_file
+      val output : vx_core.Type_any = vx_data_file.e_file_read_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_file_read_from_file
+      val output : vx_core.Type_any = vx_data_file.t_file_read_from_file
       return output
     }
 
@@ -1086,22 +1098,22 @@ object vx_data_file {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_file.f_file_read_from_file(context, inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_file.f_file_read_from_file(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_file.f_file_read_from_file(context, file)
       return output
     }
 
     override fun vx_file_read_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_data_file.Type_file {
-      var output : vx_data_file.Type_file = vx_data_file.f_file_read_from_file(context, file)
+      val output : vx_data_file.Type_file = vx_data_file.f_file_read_from_file(context, file)
       return output
     }
 
@@ -1112,7 +1124,10 @@ object vx_data_file {
 
   fun f_file_read_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_data_file.Type_file {
     var output : vx_data_file.Type_file = vx_data_file.e_file
-    if (vx_core.f_boolean_permission_from_func(context, vx_data_file.t_file_read_from_file).vx_boolean()) {
+    if (vx_core.f_boolean_permission_from_func(
+      context,
+      vx_data_file.t_file_read_from_file
+    ).vx_boolean()) {
       output = vx_core.f_copy(
         file,
         vx_core.vx_new(
@@ -1125,7 +1140,11 @@ object vx_data_file {
         )
       )
     } else {
-      var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/core/func", ":permissiondenied", vx_core.vx_new_string("file-read<-file"))
+      var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        vx_core.vx_new_string("file-read<-file")
+      )
       output = vx_core.vx_copy(output, msg)
     }
     return output
@@ -1156,12 +1175,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "file<-path", // name
         0, // idx
@@ -1184,12 +1203,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_file_from_path
+      val output : vx_core.Type_any = vx_data_file.e_file_from_path
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_file_from_path
+      val output : vx_core.Type_any = vx_data_file.t_file_from_path
       return output
     }
 
@@ -1199,21 +1218,21 @@ object vx_data_file {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_data_file.f_file_from_path(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_data_file.f_file_from_path(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var path : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val path : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_file.f_file_from_path(path)
       return output
     }
 
     override fun vx_file_from_path(path : vx_core.Type_string) : vx_data_file.Type_file {
-      var output : vx_data_file.Type_file = vx_data_file.f_file_from_path(path)
+      val output : vx_data_file.Type_file = vx_data_file.f_file_from_path(path)
       return output
     }
 
@@ -1227,23 +1246,23 @@ object vx_data_file {
     output = vx_core.f_let(
       vx_data_file.t_file,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var pos : vx_core.Type_int = vx_type.f_int_from_string_findlast(
+        val pos : vx_core.Type_int = vx_type.f_int_from_string_findlast(
           path,
           vx_core.vx_new_string("/")
         )
-        var name : vx_core.Type_string = vx_type.f_string_from_string_start(
+        val name : vx_core.Type_string = vx_type.f_string_from_string_start(
           path,
           vx_core.f_plus1(
             pos
           )
         )
-        var pth : vx_core.Type_string = vx_type.f_string_from_string_end(
+        val pth : vx_core.Type_string = vx_type.f_string_from_string_end(
           path,
           vx_core.f_minus1(
             pos
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_data_file.t_file,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -1284,12 +1303,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "name<-file", // name
         0, // idx
@@ -1312,12 +1331,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_name_from_file
+      val output : vx_core.Type_any = vx_data_file.e_name_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_name_from_file
+      val output : vx_core.Type_any = vx_data_file.t_name_from_file
       return output
     }
 
@@ -1327,21 +1346,21 @@ object vx_data_file {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_file.f_name_from_file(inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_file.f_name_from_file(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_file.f_name_from_file(file)
       return output
     }
 
     override fun vx_name_from_file(file : vx_data_file.Type_file) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_data_file.f_name_from_file(file)
+      val output : vx_core.Type_string = vx_data_file.f_name_from_file(file)
       return output
     }
 
@@ -1381,12 +1400,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "path<-file", // name
         0, // idx
@@ -1409,12 +1428,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_path_from_file
+      val output : vx_core.Type_any = vx_data_file.e_path_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_path_from_file
+      val output : vx_core.Type_any = vx_data_file.t_path_from_file
       return output
     }
 
@@ -1424,21 +1443,21 @@ object vx_data_file {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_file.f_path_from_file(inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_file.f_path_from_file(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_file.f_path_from_file(file)
       return output
     }
 
     override fun vx_path_from_file(file : vx_data_file.Type_file) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_data_file.f_path_from_file(file)
+      val output : vx_core.Type_string = vx_data_file.f_path_from_file(file)
       return output
     }
 
@@ -1477,12 +1496,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "pathcurrent<-os", // name
         0, // idx
@@ -1505,12 +1524,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_pathcurrent_from_os
+      val output : vx_core.Type_any = vx_data_file.e_pathcurrent_from_os
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_pathcurrent_from_os
+      val output : vx_core.Type_any = vx_data_file.t_pathcurrent_from_os
       return output
     }
 
@@ -1521,7 +1540,7 @@ object vx_data_file {
     }
 
     override fun vx_pathcurrent_from_os() : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_data_file.f_pathcurrent_from_os()
+      val output : vx_core.Type_string = vx_data_file.f_pathcurrent_from_os()
       return output
     }
 
@@ -1561,12 +1580,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "pathfull<-file", // name
         0, // idx
@@ -1589,12 +1608,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_pathfull_from_file
+      val output : vx_core.Type_any = vx_data_file.e_pathfull_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_pathfull_from_file
+      val output : vx_core.Type_any = vx_data_file.t_pathfull_from_file
       return output
     }
 
@@ -1604,21 +1623,21 @@ object vx_data_file {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_file.f_pathfull_from_file(inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_file.f_pathfull_from_file(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_file.f_pathfull_from_file(file)
       return output
     }
 
     override fun vx_pathfull_from_file(file : vx_data_file.Type_file) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_data_file.f_pathfull_from_file(file)
+      val output : vx_core.Type_string = vx_data_file.f_pathfull_from_file(file)
       return output
     }
 
@@ -1632,13 +1651,13 @@ object vx_data_file {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var path : vx_core.Type_string = vx_data_file.f_path_from_file(
+        val path : vx_core.Type_string = vx_data_file.f_path_from_file(
           file
         )
-        var name : vx_core.Type_string = vx_data_file.f_name_from_file(
+        val name : vx_core.Type_string = vx_data_file.f_name_from_file(
           file
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -1650,7 +1669,7 @@ object vx_data_file {
                 output_2
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = name
+                val output_3 : vx_core.Type_any = name
                 output_3
               })
             ),
@@ -1701,12 +1720,12 @@ object vx_data_file {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/file", // pkgname
         "string-read<-file", // name
         0, // idx
@@ -1729,12 +1748,12 @@ object vx_data_file {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.e_string_read_from_file
+      val output : vx_core.Type_any = vx_data_file.e_string_read_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_file.t_string_read_from_file
+      val output : vx_core.Type_any = vx_data_file.t_string_read_from_file
       return output
     }
 
@@ -1744,22 +1763,22 @@ object vx_data_file {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_file.f_string_read_from_file(context, inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_file.f_string_read_from_file(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_file.f_string_read_from_file(context, file)
       return output
     }
 
     override fun vx_string_read_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_data_file.f_string_read_from_file(context, file)
+      val output : vx_core.Type_string = vx_data_file.f_string_read_from_file(context, file)
       return output
     }
 
@@ -1770,15 +1789,25 @@ object vx_data_file {
 
   fun f_string_read_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_core.Type_string {
     var output : vx_core.Type_string = vx_core.e_string
-    if (vx_core.f_boolean_permission_from_func(context, vx_data_file.t_string_read_from_file).vx_boolean()) {
+    if (vx_core.f_boolean_permission_from_func(
+      context,
+      vx_data_file.t_string_read_from_file
+    ).vx_boolean()) {
       try {
         output = vx_data_file.vx_string_read_from_file(context, file)
       } catch (err : Exception) {
-        var msg : vx_core.Type_msg = vx_core.vx_msg_from_exception("vx/data/file/string-read<-file", err)
+        var msg : vx_core.Type_msg = vx_core.vx_msg_from_exception(
+          "vx/data/file/string-read<-file",
+          err
+        )
         output = vx_core.vx_copy(output, msg)
       }
     } else {
-      var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/core/func", ":permissiondenied", vx_core.vx_new_string("string-read<-file"))
+      var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        vx_core.vx_new_string("string-read<-file")
+      )
       output = vx_core.vx_copy(output, msg)
     }
     return output
@@ -1802,7 +1831,12 @@ object vx_data_file {
     mapfunc.put("pathcurrent<-os", vx_data_file.t_pathcurrent_from_os)
     mapfunc.put("pathfull<-file", vx_data_file.t_pathfull_from_file)
     mapfunc.put("string-read<-file", vx_data_file.t_string_read_from_file)
-    vx_core.vx_global_package_set("vx/data/file", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/data/file",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

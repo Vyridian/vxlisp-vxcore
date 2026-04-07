@@ -6,7 +6,7 @@ import com.vxlisp.vx.*
 object vx_web_htmlTest {
 
   fun f_string_from_body_indent(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -22,7 +22,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_body_indent_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<body></body>\"\n (string<-body-indent (body) 0))",
       ":testresult", vx_test.f_test(
@@ -40,7 +40,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_body_indent_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<body>\n  <div></div>\n</body>\"\n (string<-body-indent (body (div)) 0))",
       ":testresult", vx_test.f_test(
@@ -64,7 +64,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_div_indent(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -80,7 +80,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_div_indent_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<div></div>\"\n (string<-div-indent (div) 0))",
       ":testresult", vx_test.f_test(
@@ -98,7 +98,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_div_indent_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<div id=\\\"myid\\\"></div>\"\n (string<-div-indent\n  (div :id \"myid\") 0))",
       ":testresult", vx_test.f_test(
@@ -121,7 +121,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_head_indent(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -136,7 +136,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_head_indent_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<head></head>\"\n (string<-head-indent (head) 0))",
       ":testresult", vx_test.f_test(
@@ -154,7 +154,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_html(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -169,7 +169,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_html_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<!DOCTYPE html>\n<html>\n  <head></head>\n  <body></body>\n  <footer></footer>\n</html>\"\n (string<-html\n  (html :head (head) :body (body))))",
       ":testresult", vx_test.f_test(
@@ -197,7 +197,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_img_indent(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -213,7 +213,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_img_indent_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<img src=\\\"test.svg\\\" />\"\n (string<-img-indent\n  (img :src \"test.svg\")\n  0))",
       ":testresult", vx_test.f_test(
@@ -236,7 +236,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_img_indent_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<img id=\\\"myid\\\" src=\\\"test.svg\\\" />\"\n (string<-img-indent\n  (img :id \"myid\" :src \"test.svg\")\n  0))",
       ":testresult", vx_test.f_test(
@@ -261,7 +261,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_meta_indent(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -276,7 +276,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_meta_indent_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<meta charset=\\\"utf-8\\\" />\"\n (string<-meta-indent (meta :charset \"utf-8\") 0))",
       ":testresult", vx_test.f_test(
@@ -299,7 +299,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_p_indent(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -315,7 +315,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_p_indent_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<p>data</p>\"\n (string<-p-indent\n  (p :text \"data\")\n  0))",
       ":testresult", vx_test.f_test(
@@ -338,7 +338,7 @@ object vx_web_htmlTest {
   }
 
   fun f_string_from_p_indent_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"<p id=\\\"myid\\\">data</p>\"\n (string<-p-indent\n  (p :id \"myid\" :text \"data\")\n  0))",
       ":testresult", vx_test.f_test(
@@ -372,7 +372,7 @@ object vx_web_htmlTest {
       vx_web_htmlTest.f_string_from_meta_indent(context),
       vx_web_htmlTest.f_string_from_p_indent(context)
     )
-    var output : vx_test.Type_testcaselist = vx_core.vx_new(
+    val output : vx_test.Type_testcaselist = vx_core.vx_new(
       vx_test.t_testcaselist,
       testcases
     )
@@ -380,7 +380,7 @@ object vx_web_htmlTest {
   }
 
   fun test_coveragesummary() : vx_test.Type_testcoveragesummary {
-    var output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/web/html", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -395,7 +395,7 @@ object vx_web_htmlTest {
   }
 
   fun test_coveragedetail() : vx_test.Type_testcoveragedetail {
-    var output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
       vx_test.t_testcoveragedetail,
       ":testpkg", "vx/web/html",
       ":typemap", vx_core.vx_new(
@@ -484,8 +484,8 @@ object vx_web_htmlTest {
   }
 
   fun test_package(context : vx_core.Type_context) : vx_test.Type_testpackage {
-    var testcaselist : vx_test.Type_testcaselist = test_cases(context)
-    var output : vx_test.Type_testpackage = vx_core.vx_new(
+    val testcaselist : vx_test.Type_testcaselist = test_cases(context)
+    val output : vx_test.Type_testpackage = vx_core.vx_new(
       vx_test.t_testpackage,
       ":testpkg", "vx/web/html", 
       ":caselist", testcaselist,

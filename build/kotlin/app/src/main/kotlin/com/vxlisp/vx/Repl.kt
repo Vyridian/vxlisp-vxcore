@@ -17,12 +17,12 @@ object vx_repl {
   class Class_liblist : vx_core.Class_base, Type_liblist {
     constructor() {}
 
-    var vx_p_list : List<vx_core.Type_string> = vx_core.immutablelist(
+    var vx_p_list : List<vx_core.Type_string> = vx_core.vx_listimmutable(
       ArrayList<vx_core.Type_string>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -102,7 +102,7 @@ object vx_repl {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_repl.Class_liblist = vx_repl.Class_liblist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -254,7 +254,7 @@ object vx_repl {
       map.put(":async", this.async())
       map.put(":value", this.value())
       map.put(":doc", this.doc())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -350,7 +350,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -371,7 +371,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("type"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -392,7 +392,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("repllist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -416,7 +416,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("async"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -437,7 +437,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("value"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -461,7 +461,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("doc"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -587,7 +587,7 @@ object vx_repl {
       map.put(":key", this.key())
       map.put(":current", this.current())
       map.put(":repllist", this.repllist())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -677,7 +677,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("key"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -698,7 +698,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("current"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -719,7 +719,7 @@ object vx_repl {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("repllist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -789,12 +789,12 @@ object vx_repl {
   class Class_repllist : vx_core.Class_base, Type_repllist {
     constructor() {}
 
-    var vx_p_list : List<vx_repl.Type_repl> = vx_core.immutablelist(
+    var vx_p_list : List<vx_repl.Type_repl> = vx_core.vx_listimmutable(
       ArrayList<vx_repl.Type_repl>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -874,7 +874,7 @@ object vx_repl {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_repl.Class_repllist = vx_repl.Class_repllist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -925,7 +925,7 @@ object vx_repl {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/repl", // pkgname
         "delimvxlisp", // name
         vx_data_textblock.t_delim
@@ -976,7 +976,7 @@ object vx_repl {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/repl", // pkgname
         "delimvxlispbracket", // name
         vx_data_textblock.t_delim
@@ -1030,7 +1030,7 @@ object vx_repl {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/repl", // pkgname
         "delimvxlispparen", // name
         vx_data_textblock.t_delim
@@ -1101,12 +1101,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "any-repl<-functype-args", // name
         0, // idx
@@ -1129,25 +1129,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_any_repl_from_functype_args
+      val output : vx_core.Type_any = vx_repl.e_any_repl_from_functype_args
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_any_repl_from_functype_args
+      val output : vx_core.Type_any = vx_repl.t_any_repl_from_functype_args
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var type : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      var args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val type : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      val args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_any_repl_from_functype_args(type, args)
       return output
     }
 
     override fun vx_any_repl_from_functype_args(type : vx_core.Type_any, args : vx_core.Type_anylist) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.f_any_repl_from_functype_args(type, args)
+      val output : vx_core.Type_any = vx_repl.f_any_repl_from_functype_args(type, args)
       return output
     }
 
@@ -1191,12 +1191,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "any<-liblist-string", // name
         0, // idx
@@ -1219,26 +1219,26 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_any_from_liblist_string
+      val output : vx_core.Type_any = vx_repl.e_any_from_liblist_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_any_from_liblist_string
+      val output : vx_core.Type_any = vx_repl.t_any_from_liblist_string
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var liblist : vx_repl.Type_liblist = vx_core.f_any_from_any(vx_repl.t_liblist, arglist.vx_any(vx_core.vx_new_int(1)))
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val liblist : vx_repl.Type_liblist = vx_core.f_any_from_any(vx_repl.t_liblist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_repl.f_any_from_liblist_string(context, liblist, text)
       return output
     }
 
     override fun vx_any_from_liblist_string(context : vx_core.Type_context, liblist : vx_repl.Type_liblist, text : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.f_any_from_liblist_string(context, liblist, text)
+      val output : vx_core.Type_any = vx_repl.f_any_from_liblist_string(context, liblist, text)
       return output
     }
 
@@ -1252,11 +1252,11 @@ object vx_repl {
     output = vx_core.f_let(
       vx_core.t_any,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var repl : vx_repl.Type_repl = vx_repl.f_repl_from_liblist_string(
+        val repl : vx_repl.Type_repl = vx_repl.f_repl_from_liblist_string(
           liblist,
           text
         )
-        var output_1 : vx_core.Type_any = vx_repl.f_any_from_repl(
+        val output_1 : vx_core.Type_any = vx_repl.f_any_from_repl(
           context,
           repl
         )
@@ -1291,12 +1291,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "any<-macro", // name
         0, // idx
@@ -1319,12 +1319,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_any_from_macro
+      val output : vx_core.Type_any = vx_repl.e_any_from_macro
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_any_from_macro
+      val output : vx_core.Type_any = vx_repl.t_any_from_macro
       return output
     }
 
@@ -1334,23 +1334,23 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
-      var outputval : vx_core.Type_any = vx_repl.f_any_from_macro(vx_core.t_any, context, inputval)
+      val inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
+      val outputval : vx_core.Type_any = vx_repl.f_any_from_macro(vx_core.t_any, context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var anylist : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val anylist : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_any_from_macro(generic_any_1, context, anylist)
       return output
     }
 
     override fun <T : vx_core.Type_any> vx_any_from_macro(generic_any_1 : T, context : vx_core.Type_context, anylist : vx_core.Type_anylist) : T {
-      var output : T = vx_repl.f_any_from_macro(generic_any_1, context, anylist)
+      val output : T = vx_repl.f_any_from_macro(generic_any_1, context, anylist)
       return output
     }
 
@@ -1364,15 +1364,15 @@ object vx_repl {
     output = vx_core.f_let(
       generic_any_1,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var repl : vx_repl.Type_repl = vx_repl.f_repl_from_macro(
+        val repl : vx_repl.Type_repl = vx_repl.f_repl_from_macro(
           context,
           anylist
         )
-        var value : vx_core.Type_any = vx_repl.f_any_from_repl(
+        val value : vx_core.Type_any = vx_repl.f_any_from_repl(
           context,
           repl
         )
-        var output_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        val output_1 : vx_core.Type_any = vx_core.f_any_from_any(
           generic_any_1,
           value
         )
@@ -1407,12 +1407,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "any<-repl", // name
         0, // idx
@@ -1435,12 +1435,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_any_from_repl
+      val output : vx_core.Type_any = vx_repl.e_any_from_repl
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_any_from_repl
+      val output : vx_core.Type_any = vx_repl.t_any_from_repl
       return output
     }
 
@@ -1450,22 +1450,22 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_repl.Type_repl = value as vx_repl.Type_repl
-      var outputval : vx_core.Type_any = vx_repl.f_any_from_repl(context, inputval)
+      val inputval : vx_repl.Type_repl = value as vx_repl.Type_repl
+      val outputval : vx_core.Type_any = vx_repl.f_any_from_repl(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var repl : vx_repl.Type_repl = vx_core.f_any_from_any(vx_repl.t_repl, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val repl : vx_repl.Type_repl = vx_core.f_any_from_any(vx_repl.t_repl, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_any_from_repl(context, repl)
       return output
     }
 
     override fun vx_any_from_repl(context : vx_core.Type_context, repl : vx_repl.Type_repl) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.f_any_from_repl(context, repl)
+      val output : vx_core.Type_any = vx_repl.f_any_from_repl(context, repl)
       return output
     }
 
@@ -1479,14 +1479,14 @@ object vx_repl {
     output = vx_core.f_let(
       vx_core.t_any,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var value : vx_core.Type_any = repl.value()
-        var repltype : vx_core.Type_any = repl.type()
-        var repllist : vx_repl.Type_repllist = repl.repllist()
-        var args : vx_core.Type_anylist = vx_repl.f_anylist_from_repllist(
+        val value : vx_core.Type_any = repl.value()
+        val repltype : vx_core.Type_any = repl.type()
+        val repllist : vx_repl.Type_repllist = repl.repllist()
+        val args : vx_core.Type_anylist = vx_repl.f_anylist_from_repllist(
           context,
           repllist
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_core.t_any,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -1498,7 +1498,7 @@ object vx_repl {
                 output_2
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = value
+                val output_3 : vx_core.Type_any = value
                 output_3
               })
             ),
@@ -1559,12 +1559,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "any<-script", // name
         0, // idx
@@ -1587,12 +1587,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_any_from_script
+      val output : vx_core.Type_any = vx_repl.e_any_from_script
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_any_from_script
+      val output : vx_core.Type_any = vx_repl.t_any_from_script
       return output
     }
 
@@ -1602,22 +1602,22 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_repl.f_any_from_script(context, inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_repl.f_any_from_script(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var script : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val script : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_any_from_script(context, script)
       return output
     }
 
     override fun vx_any_from_script(context : vx_core.Type_context, script : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.f_any_from_script(context, script)
+      val output : vx_core.Type_any = vx_repl.f_any_from_script(context, script)
       return output
     }
 
@@ -1631,13 +1631,13 @@ object vx_repl {
     output = vx_core.f_let(
       vx_core.t_any,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var textblock : vx_data_textblock.Type_textblock = vx_repl.f_textblock_from_script(
+        val textblock : vx_data_textblock.Type_textblock = vx_repl.f_textblock_from_script(
           script
         )
-        var repl : vx_repl.Type_repl = vx_repl.f_repl_from_textblock(
+        val repl : vx_repl.Type_repl = vx_repl.f_repl_from_textblock(
           textblock
         )
-        var output_1 : vx_core.Type_any = vx_repl.f_any_from_repl(
+        val output_1 : vx_core.Type_any = vx_repl.f_any_from_repl(
           context,
           repl
         )
@@ -1672,12 +1672,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "anylist<-repllist", // name
         0, // idx
@@ -1700,12 +1700,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_anylist_from_repllist
+      val output : vx_core.Type_any = vx_repl.e_anylist_from_repllist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_anylist_from_repllist
+      val output : vx_core.Type_any = vx_repl.t_anylist_from_repllist
       return output
     }
 
@@ -1715,22 +1715,22 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_repl.Type_repllist = value as vx_repl.Type_repllist
-      var outputval : vx_core.Type_any = vx_repl.f_anylist_from_repllist(context, inputval)
+      val inputval : vx_repl.Type_repllist = value as vx_repl.Type_repllist
+      val outputval : vx_core.Type_any = vx_repl.f_anylist_from_repllist(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var repllist : vx_repl.Type_repllist = vx_core.f_any_from_any(vx_repl.t_repllist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val repllist : vx_repl.Type_repllist = vx_core.f_any_from_any(vx_repl.t_repllist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_anylist_from_repllist(context, repllist)
       return output
     }
 
     override fun vx_anylist_from_repllist(context : vx_core.Type_context, repllist : vx_repl.Type_repllist) : vx_core.Type_anylist {
-      var output : vx_core.Type_anylist = vx_repl.f_anylist_from_repllist(context, repllist)
+      val output : vx_core.Type_anylist = vx_repl.f_anylist_from_repllist(context, repllist)
       return output
     }
 
@@ -1745,7 +1745,7 @@ object vx_repl {
       vx_core.t_anylist,
       repllist,
       vx_core.t_any_from_any.vx_fn_new({repl_any : vx_core.Type_any ->
-        var repl : vx_repl.Type_repl = vx_core.f_any_from_any(vx_repl.t_repl, repl_any)
+        val repl : vx_repl.Type_repl = vx_core.f_any_from_any(vx_repl.t_repl, repl_any)
         var output_1 : vx_core.Type_any = vx_repl.f_any_from_repl(
           context,
           repl
@@ -1782,12 +1782,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "argmap<-textblock-argmap", // name
         0, // idx
@@ -1810,25 +1810,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_argmap_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.e_argmap_from_textblock_argmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_argmap_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.t_argmap_from_textblock_argmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
-      var argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_argmap_from_textblock_argmap(textblock, argmap)
       return output
     }
 
     override fun vx_argmap_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_core.Type_argmap {
-      var output : vx_core.Type_argmap = vx_repl.f_argmap_from_textblock_argmap(textblock, argmap)
+      val output : vx_core.Type_argmap = vx_repl.f_argmap_from_textblock_argmap(textblock, argmap)
       return output
     }
 
@@ -1876,12 +1876,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "const<-string", // name
         0, // idx
@@ -1904,12 +1904,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_const_from_string
+      val output : vx_core.Type_any = vx_repl.e_const_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_const_from_string
+      val output : vx_core.Type_any = vx_repl.t_const_from_string
       return output
     }
 
@@ -1919,21 +1919,21 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_repl.f_const_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_repl.f_const_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_repl.f_const_from_string(text)
       return output
     }
 
     override fun vx_const_from_string(text : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.f_const_from_string(text)
+      val output : vx_core.Type_any = vx_repl.f_const_from_string(text)
       return output
     }
 
@@ -1947,11 +1947,11 @@ object vx_repl {
     output = vx_core.f_let(
       vx_core.t_any,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var pkgpos : vx_core.Type_int = vx_type.f_int_from_string_findlast(
+        val pkgpos : vx_core.Type_int = vx_type.f_int_from_string_findlast(
           text,
           vx_core.vx_new_string("/")
         )
-        var pkgname : vx_core.Type_string = vx_core.f_if_1(
+        val pkgname : vx_core.Type_string = vx_core.f_if_1(
           vx_core.t_string,
           vx_core.f_eq(
             vx_core.vx_new_int(0),
@@ -1965,7 +1965,7 @@ object vx_repl {
             )
           )
         )
-        var name : vx_core.Type_string = vx_core.f_if_1(
+        val name : vx_core.Type_string = vx_core.f_if_1(
           vx_core.t_string,
           vx_core.f_eq(
             vx_core.vx_new_int(0),
@@ -1979,16 +1979,16 @@ object vx_repl {
             )
           )
         )
-        var pkg : vx_core.Type_package = vx_core.f_package_global_from_name(
+        val pkg : vx_core.Type_package = vx_core.f_package_global_from_name(
           pkgname
         )
-        var constmap : vx_core.Type_constmap = pkg.constmap()
-        var constval : vx_core.Type_any = vx_core.f_any_from_map(
+        val constmap : vx_core.Type_constmap = pkg.constmap()
+        val constval : vx_core.Type_any = vx_core.f_any_from_map(
           vx_core.t_any,
           constmap,
           name
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_1(
+        val output_1 : vx_core.Type_any = vx_core.f_if_1(
           vx_core.t_any,
           vx_core.f_notempty_1(
             constval
@@ -2030,12 +2030,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl-bracket<-textblock-argmap", // name
         0, // idx
@@ -2058,25 +2058,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_bracket_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.e_repl_bracket_from_textblock_argmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_bracket_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.t_repl_bracket_from_textblock_argmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
-      var argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repl_bracket_from_textblock_argmap(textblock, argmap)
       return output
     }
 
     override fun vx_repl_bracket_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_bracket_from_textblock_argmap(textblock, argmap)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_bracket_from_textblock_argmap(textblock, argmap)
       return output
     }
 
@@ -2119,12 +2119,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl-empty<-textblock-argmap", // name
         0, // idx
@@ -2147,25 +2147,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_empty_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.e_repl_empty_from_textblock_argmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_empty_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.t_repl_empty_from_textblock_argmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
-      var argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repl_empty_from_textblock_argmap(textblock, argmap)
       return output
     }
 
     override fun vx_repl_empty_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_empty_from_textblock_argmap(textblock, argmap)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_empty_from_textblock_argmap(textblock, argmap)
       return output
     }
 
@@ -2179,11 +2179,11 @@ object vx_repl {
     output = vx_core.f_let(
       vx_repl.t_repl,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var children : vx_data_textblock.Type_textblocklist = textblock.children()
-        var len : vx_core.Type_int = vx_core.f_length_1(
+        val children : vx_data_textblock.Type_textblocklist = textblock.children()
+        val len : vx_core.Type_int = vx_core.f_length_1(
           children
         )
-        var output_1 : vx_core.Type_any = vx_core.f_switch(
+        val output_1 : vx_core.Type_any = vx_core.f_switch(
           vx_repl.t_repl,
           len,
           vx_core.vx_new(
@@ -2260,12 +2260,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl-paren<-textblock-argmap", // name
         0, // idx
@@ -2288,25 +2288,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_paren_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.e_repl_paren_from_textblock_argmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_paren_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.t_repl_paren_from_textblock_argmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
-      var argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repl_paren_from_textblock_argmap(textblock, argmap)
       return output
     }
 
     override fun vx_repl_paren_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_paren_from_textblock_argmap(textblock, argmap)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_paren_from_textblock_argmap(textblock, argmap)
       return output
     }
 
@@ -2320,23 +2320,23 @@ object vx_repl {
     output = vx_core.f_let(
       vx_repl.t_repl,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var childlst : vx_data_textblock.Type_textblocklist = textblock.children()
-        var children : vx_data_textblock.Type_textblocklist = vx_data_textblock.f_textblocklist_from_textblocklist_remove(
+        val childlst : vx_data_textblock.Type_textblocklist = textblock.children()
+        val children : vx_data_textblock.Type_textblocklist = vx_data_textblock.f_textblocklist_from_textblocklist_remove(
           childlst,
           vx_data_textblock.c_delimwhitespace
         )
-        var tbfunc : vx_data_textblock.Type_textblock = vx_core.f_any_from_list(
+        val tbfunc : vx_data_textblock.Type_textblock = vx_core.f_any_from_list(
           vx_data_textblock.t_textblock,
           children,
           vx_core.vx_new_int(1)
         )
-        var sfunc : vx_core.Type_string = tbfunc.text()
-        var replfunc : vx_repl.Type_repl = vx_repl.f_repl_from_string_argmap(
+        val sfunc : vx_core.Type_string = tbfunc.text()
+        val replfunc : vx_repl.Type_repl = vx_repl.f_repl_from_string_argmap(
           sfunc,
           argmap
         )
-        var typefunc : vx_core.Type_any = replfunc.type()
-        var posarg : vx_core.Type_int = vx_core.f_switch(
+        val typefunc : vx_core.Type_any = replfunc.type()
+        val posarg : vx_core.Type_int = vx_core.f_switch(
           vx_core.t_int,
           typefunc,
           vx_core.vx_new(
@@ -2363,7 +2363,7 @@ object vx_repl {
             )
           )
         )
-        var argmap2 : vx_core.Type_argmap = vx_core.f_switch(
+        val argmap2 : vx_core.Type_argmap = vx_core.f_switch(
           vx_core.t_argmap,
           typefunc,
           vx_core.vx_new(
@@ -2398,22 +2398,22 @@ object vx_repl {
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_7 : vx_core.Type_any = argmap
+                val output_7 : vx_core.Type_any = argmap
                 output_7
               })
             )
           )
         )
-        var tbargs : vx_data_textblock.Type_textblocklist = vx_collection.f_list_from_list_start(
+        val tbargs : vx_data_textblock.Type_textblocklist = vx_collection.f_list_from_list_start(
           vx_data_textblock.t_textblocklist,
           children,
           posarg
         )
-        var replargs : vx_repl.Type_repllist = vx_repl.f_repllist_from_textblocklist_argmap(
+        val replargs : vx_repl.Type_repllist = vx_repl.f_repllist_from_textblocklist_argmap(
           tbargs,
           argmap
         )
-        var output_1 : vx_core.Type_any = vx_core.f_copy(
+        val output_1 : vx_core.Type_any = vx_core.f_copy(
           replfunc,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -2453,12 +2453,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl<-liblist-string", // name
         0, // idx
@@ -2481,25 +2481,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_from_liblist_string
+      val output : vx_core.Type_any = vx_repl.e_repl_from_liblist_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_from_liblist_string
+      val output : vx_core.Type_any = vx_repl.t_repl_from_liblist_string
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var liblist : vx_repl.Type_liblist = vx_core.f_any_from_any(vx_repl.t_liblist, arglist.vx_any(vx_core.vx_new_int(0)))
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val liblist : vx_repl.Type_liblist = vx_core.f_any_from_any(vx_repl.t_liblist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repl_from_liblist_string(liblist, text)
       return output
     }
 
     override fun vx_repl_from_liblist_string(liblist : vx_repl.Type_liblist, text : vx_core.Type_string) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_from_liblist_string(liblist, text)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_from_liblist_string(liblist, text)
       return output
     }
 
@@ -2538,12 +2538,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl<-macro", // name
         0, // idx
@@ -2566,12 +2566,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_from_macro
+      val output : vx_core.Type_any = vx_repl.e_repl_from_macro
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_from_macro
+      val output : vx_core.Type_any = vx_repl.t_repl_from_macro
       return output
     }
 
@@ -2581,22 +2581,22 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
-      var outputval : vx_core.Type_any = vx_repl.f_repl_from_macro(context, inputval)
+      val inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
+      val outputval : vx_core.Type_any = vx_repl.f_repl_from_macro(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var anylist : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val anylist : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repl_from_macro(context, anylist)
       return output
     }
 
     override fun vx_repl_from_macro(context : vx_core.Type_context, anylist : vx_core.Type_anylist) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_from_macro(context, anylist)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_from_macro(context, anylist)
       return output
     }
 
@@ -2610,18 +2610,18 @@ object vx_repl {
     output = vx_core.f_let(
       vx_repl.t_repl,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var textlist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
+        val textlist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
           vx_core.t_stringlist,
           anylist,
           vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
-            var item : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, item_any)
+            val item : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, item_any)
             var output_2 : vx_core.Type_any = vx_core.f_let(
               vx_core.t_string,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var typ : vx_core.Type_any = vx_core.f_type_from_any(
+                val typ : vx_core.Type_any = vx_core.f_type_from_any(
                   item
                 )
-                var output_3 : vx_core.Type_any = vx_core.f_switch(
+                val output_3 : vx_core.Type_any = vx_core.f_switch(
                   vx_core.t_string,
                   typ,
                   vx_core.vx_new(
@@ -2652,14 +2652,14 @@ object vx_repl {
             output_2
           })
         )
-        var script : vx_core.Type_string = vx_type.f_string_from_stringlist_join(
+        val script : vx_core.Type_string = vx_type.f_string_from_stringlist_join(
           textlist,
           vx_core.vx_new_string("")
         )
-        var tb : vx_data_textblock.Type_textblock = vx_repl.f_textblock_from_script(
+        val tb : vx_data_textblock.Type_textblock = vx_repl.f_textblock_from_script(
           script
         )
-        var output_1 : vx_core.Type_any = vx_repl.f_repl_from_textblock(
+        val output_1 : vx_core.Type_any = vx_repl.f_repl_from_textblock(
           tb
         )
         output_1
@@ -2693,12 +2693,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl<-script", // name
         0, // idx
@@ -2721,12 +2721,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_from_script
+      val output : vx_core.Type_any = vx_repl.e_repl_from_script
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_from_script
+      val output : vx_core.Type_any = vx_repl.t_repl_from_script
       return output
     }
 
@@ -2736,21 +2736,21 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_repl.f_repl_from_script(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_repl.f_repl_from_script(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var script : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val script : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_repl.f_repl_from_script(script)
       return output
     }
 
     override fun vx_repl_from_script(script : vx_core.Type_string) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_from_script(script)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_from_script(script)
       return output
     }
 
@@ -2764,10 +2764,10 @@ object vx_repl {
     output = vx_core.f_let(
       vx_repl.t_repl,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var textblock : vx_data_textblock.Type_textblock = vx_repl.f_textblock_from_script(
+        val textblock : vx_data_textblock.Type_textblock = vx_repl.f_textblock_from_script(
           script
         )
-        var output_1 : vx_core.Type_any = vx_repl.f_repl_from_textblock(
+        val output_1 : vx_core.Type_any = vx_repl.f_repl_from_textblock(
           textblock
         )
         output_1
@@ -2802,12 +2802,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl<-string-argmap", // name
         0, // idx
@@ -2830,25 +2830,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_from_string_argmap
+      val output : vx_core.Type_any = vx_repl.e_repl_from_string_argmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_from_string_argmap
+      val output : vx_core.Type_any = vx_repl.t_repl_from_string_argmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repl_from_string_argmap(text, argmap)
       return output
     }
 
     override fun vx_repl_from_string_argmap(text : vx_core.Type_string, argmap : vx_core.Type_argmap) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_from_string_argmap(text, argmap)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_from_string_argmap(text, argmap)
       return output
     }
 
@@ -2940,12 +2940,12 @@ object vx_repl {
             var output_7 : vx_core.Type_any = vx_core.f_let(
               vx_repl.t_repl,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var arg : vx_core.Type_any = vx_core.f_any_from_map(
+                val arg : vx_core.Type_any = vx_core.f_any_from_map(
                   vx_core.t_any,
                   argmap,
                   text
                 )
-                var output_8 : vx_core.Type_any = vx_core.f_if_2(
+                val output_8 : vx_core.Type_any = vx_core.f_if_2(
                   vx_repl.t_repl,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -2973,10 +2973,10 @@ object vx_repl {
                         var output_11 : vx_core.Type_any = vx_core.f_let(
                           vx_repl.t_repl,
                           vx_core.t_any_from_func.vx_fn_new({ ->
-                            var cnst : vx_core.Type_any = vx_repl.f_const_from_string(
+                            val cnst : vx_core.Type_any = vx_repl.f_const_from_string(
                               text
                             )
-                            var output_12 : vx_core.Type_any = vx_core.f_if_2(
+                            val output_12 : vx_core.Type_any = vx_core.f_if_2(
                               vx_repl.t_repl,
                               vx_core.vx_new(
                                 vx_core.t_thenelselist,
@@ -3004,10 +3004,10 @@ object vx_repl {
                                     var output_15 : vx_core.Type_any = vx_core.f_let(
                                       vx_repl.t_repl,
                                       vx_core.t_any_from_func.vx_fn_new({ ->
-                                        var typefunc : vx_core.Type_any = vx_repl.f_typefunc_from_string(
+                                        val typefunc : vx_core.Type_any = vx_repl.f_typefunc_from_string(
                                           text
                                         )
-                                        var output_16 : vx_core.Type_any = vx_core.f_if_2(
+                                        val output_16 : vx_core.Type_any = vx_core.f_if_2(
                                           vx_repl.t_repl,
                                           vx_core.vx_new(
                                             vx_core.t_thenelselist,
@@ -3099,12 +3099,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl<-textblock", // name
         0, // idx
@@ -3127,12 +3127,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_from_textblock
+      val output : vx_core.Type_any = vx_repl.e_repl_from_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_from_textblock
+      val output : vx_core.Type_any = vx_repl.t_repl_from_textblock
       return output
     }
 
@@ -3142,21 +3142,21 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_repl.f_repl_from_textblock(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_repl.f_repl_from_textblock(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_repl.f_repl_from_textblock(textblock)
       return output
     }
 
     override fun vx_repl_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_from_textblock(textblock)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_from_textblock(textblock)
       return output
     }
 
@@ -3202,12 +3202,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repl<-textblock-argmap", // name
         0, // idx
@@ -3230,25 +3230,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repl_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.e_repl_from_textblock_argmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repl_from_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.t_repl_from_textblock_argmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
-      var argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repl_from_textblock_argmap(textblock, argmap)
       return output
     }
 
     override fun vx_repl_from_textblock_argmap(textblock : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_repl {
-      var output : vx_repl.Type_repl = vx_repl.f_repl_from_textblock_argmap(textblock, argmap)
+      val output : vx_repl.Type_repl = vx_repl.f_repl_from_textblock_argmap(textblock, argmap)
       return output
     }
 
@@ -3262,9 +3262,9 @@ object vx_repl {
     output = vx_core.f_let(
       vx_repl.t_repl,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var delim : vx_data_textblock.Type_delim = textblock.delim()
-        var starttext : vx_core.Type_string = delim.starttext()
-        var output_1 : vx_core.Type_any = vx_core.f_switch(
+        val delim : vx_data_textblock.Type_delim = textblock.delim()
+        val starttext : vx_core.Type_string = delim.starttext()
+        val output_1 : vx_core.Type_any = vx_core.f_switch(
           vx_repl.t_repl,
           starttext,
           vx_core.vx_new(
@@ -3334,12 +3334,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "replarglist<-replarglist-textblock-argmap", // name
         0, // idx
@@ -3362,26 +3362,26 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_replarglist_from_replarglist_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.e_replarglist_from_replarglist_textblock_argmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_replarglist_from_replarglist_textblock_argmap
+      val output : vx_core.Type_any = vx_repl.t_replarglist_from_replarglist_textblock_argmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var replargs : vx_repl.Type_replarglist = vx_core.f_any_from_any(vx_repl.t_replarglist, arglist.vx_any(vx_core.vx_new_int(0)))
-      var tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
-      var argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(2)))
+      val replargs : vx_repl.Type_replarglist = vx_core.f_any_from_any(vx_repl.t_replarglist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_repl.f_replarglist_from_replarglist_textblock_argmap(replargs, tb, argmap)
       return output
     }
 
     override fun vx_replarglist_from_replarglist_textblock_argmap(replargs : vx_repl.Type_replarglist, tb : vx_data_textblock.Type_textblock, argmap : vx_core.Type_argmap) : vx_repl.Type_replarglist {
-      var output : vx_repl.Type_replarglist = vx_repl.f_replarglist_from_replarglist_textblock_argmap(replargs, tb, argmap)
+      val output : vx_repl.Type_replarglist = vx_repl.f_replarglist_from_replarglist_textblock_argmap(replargs, tb, argmap)
       return output
     }
 
@@ -3395,12 +3395,12 @@ object vx_repl {
     output = vx_core.f_let(
       vx_repl.t_replarglist,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var key : vx_core.Type_string = replargs.key()
-        var current : vx_repl.Type_repl = replargs.current()
-        var repllist : vx_repl.Type_repllist = replargs.repllist()
-        var currlist : vx_repl.Type_repllist = current.repllist()
-        var text : vx_core.Type_string = vx_data_textblock.t_textblock.text()
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val key : vx_core.Type_string = replargs.key()
+        val current : vx_repl.Type_repl = replargs.current()
+        val repllist : vx_repl.Type_repllist = replargs.repllist()
+        val currlist : vx_repl.Type_repllist = current.repllist()
+        val text : vx_core.Type_string = vx_data_textblock.t_textblock.text()
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_repl.t_replarglist,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -3608,7 +3608,7 @@ object vx_repl {
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_17 : vx_core.Type_any = replargs
+                val output_17 : vx_core.Type_any = replargs
                 output_17
               })
             )
@@ -3646,12 +3646,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "repllist<-textblocklist-argmap", // name
         0, // idx
@@ -3674,25 +3674,25 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_repllist_from_textblocklist_argmap
+      val output : vx_core.Type_any = vx_repl.e_repllist_from_textblocklist_argmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_repllist_from_textblocklist_argmap
+      val output : vx_core.Type_any = vx_repl.t_repllist_from_textblocklist_argmap
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblocklist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(0)))
-      var argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
+      val textblocklist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val argmap : vx_core.Type_argmap = vx_core.f_any_from_any(vx_core.t_argmap, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_repl.f_repllist_from_textblocklist_argmap(textblocklist, argmap)
       return output
     }
 
     override fun vx_repllist_from_textblocklist_argmap(textblocklist : vx_data_textblock.Type_textblocklist, argmap : vx_core.Type_argmap) : vx_repl.Type_repllist {
-      var output : vx_repl.Type_repllist = vx_repl.f_repllist_from_textblocklist_argmap(textblocklist, argmap)
+      val output : vx_repl.Type_repllist = vx_repl.f_repllist_from_textblocklist_argmap(textblocklist, argmap)
       return output
     }
 
@@ -3707,7 +3707,7 @@ object vx_repl {
       vx_repl.t_repllist,
       textblocklist,
       vx_core.t_any_from_any.vx_fn_new({textblock_any : vx_core.Type_any ->
-        var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, textblock_any)
+        val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, textblock_any)
         var output_1 : vx_core.Type_any = vx_repl.f_repl_from_textblock(
           textblock
         )
@@ -3742,12 +3742,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "textblock<-script", // name
         0, // idx
@@ -3770,12 +3770,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_textblock_from_script
+      val output : vx_core.Type_any = vx_repl.e_textblock_from_script
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_textblock_from_script
+      val output : vx_core.Type_any = vx_repl.t_textblock_from_script
       return output
     }
 
@@ -3785,21 +3785,21 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_repl.f_textblock_from_script(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_repl.f_textblock_from_script(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var script : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val script : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_repl.f_textblock_from_script(script)
       return output
     }
 
     override fun vx_textblock_from_script(script : vx_core.Type_string) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_repl.f_textblock_from_script(script)
+      val output : vx_data_textblock.Type_textblock = vx_repl.f_textblock_from_script(script)
       return output
     }
 
@@ -3842,12 +3842,12 @@ object vx_repl {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/repl", // pkgname
         "typefunc<-string", // name
         0, // idx
@@ -3870,12 +3870,12 @@ object vx_repl {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.e_typefunc_from_string
+      val output : vx_core.Type_any = vx_repl.e_typefunc_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.t_typefunc_from_string
+      val output : vx_core.Type_any = vx_repl.t_typefunc_from_string
       return output
     }
 
@@ -3885,21 +3885,21 @@ object vx_repl {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_repl.f_typefunc_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_repl.f_typefunc_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_repl.f_typefunc_from_string(text)
       return output
     }
 
     override fun vx_typefunc_from_string(text : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_repl.f_typefunc_from_string(text)
+      val output : vx_core.Type_any = vx_repl.f_typefunc_from_string(text)
       return output
     }
 
@@ -3913,11 +3913,11 @@ object vx_repl {
     output = vx_core.f_let(
       vx_core.t_any,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var pkgpos : vx_core.Type_int = vx_type.f_int_from_string_findlast(
+        val pkgpos : vx_core.Type_int = vx_type.f_int_from_string_findlast(
           text,
           vx_core.vx_new_string("/")
         )
-        var pkgname : vx_core.Type_string = vx_core.f_if_1(
+        val pkgname : vx_core.Type_string = vx_core.f_if_1(
           vx_core.t_string,
           vx_core.f_eq(
             vx_core.vx_new_int(0),
@@ -3931,7 +3931,7 @@ object vx_repl {
             )
           )
         )
-        var name : vx_core.Type_string = vx_core.f_if_1(
+        val name : vx_core.Type_string = vx_core.f_if_1(
           vx_core.t_string,
           vx_core.f_eq(
             vx_core.vx_new_int(0),
@@ -3945,16 +3945,16 @@ object vx_repl {
             )
           )
         )
-        var pkg : vx_core.Type_package = vx_core.f_package_global_from_name(
+        val pkg : vx_core.Type_package = vx_core.f_package_global_from_name(
           pkgname
         )
-        var typemap : vx_core.Type_typemap = pkg.typemap()
-        var typeval : vx_core.Type_any = vx_core.f_any_from_map(
+        val typemap : vx_core.Type_typemap = pkg.typemap()
+        val typeval : vx_core.Type_any = vx_core.f_any_from_map(
           vx_core.t_any,
           typemap,
           name
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_1(
+        val output_1 : vx_core.Type_any = vx_core.f_if_1(
           vx_core.t_any,
           vx_core.f_notempty_1(
             typeval
@@ -3963,13 +3963,13 @@ object vx_repl {
           vx_core.f_let(
             vx_core.t_any,
             vx_core.t_any_from_func.vx_fn_new({ ->
-              var funcmap : vx_core.Type_funcmap = pkg.funcmap()
-              var funcval : vx_core.Type_any = vx_core.f_any_from_map(
+              val funcmap : vx_core.Type_funcmap = pkg.funcmap()
+              val funcval : vx_core.Type_any = vx_core.f_any_from_map(
                 vx_core.t_any,
                 funcmap,
                 name
               )
-              var output_2 : vx_core.Type_any = vx_core.f_if_1(
+              val output_2 : vx_core.Type_any = vx_core.f_if_1(
                 vx_core.t_any,
                 vx_core.f_notempty_1(
                   funcval
@@ -4024,7 +4024,12 @@ object vx_repl {
     mapfunc.put("repllist<-textblocklist-argmap", vx_repl.t_repllist_from_textblocklist_argmap)
     mapfunc.put("textblock<-script", vx_repl.t_textblock_from_script)
     mapfunc.put("typefunc<-string", vx_repl.t_typefunc_from_string)
-    vx_core.vx_global_package_set("vx/repl", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/repl",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

@@ -6,7 +6,7 @@ import com.vxlisp.vx.*
 object vx_data_fileTest {
 
   fun f_boolean_exists_from_file(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -21,7 +21,7 @@ object vx_data_fileTest {
   }
 
   fun f_boolean_exists_from_file_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (boolean-exists<-file\n  (file\n   :name \"boolean_exists_from_file.txt\"\n   :path (string path-test-resources \"/vx\"))))",
       ":testresult", vx_test.f_test_true(
@@ -51,7 +51,7 @@ object vx_data_fileTest {
   }
 
   fun f_boolean_write_from_file_string(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -66,7 +66,7 @@ object vx_data_fileTest {
   }
 
   fun f_boolean_write_from_file_string_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (boolean-write<-file-string\n  (file\n   :name \"boolean_write_from_file_string.txt\"\n   :path (string path-test-resources \"/vx\"))\n  \"writetext\"))",
       ":testresult", vx_test.f_test_true(
@@ -98,7 +98,7 @@ object vx_data_fileTest {
   }
 
   fun f_file_read_from_file(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -113,7 +113,7 @@ object vx_data_fileTest {
   }
 
   fun f_file_read_from_file_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (file\n  :name \"string_read_from_file.txt\"\n  :path (string path-test-resources \"/vx\")\n  :text \"testdata\")\n (file-read<-file\n  (file\n   :name \"string_read_from_file.txt\"\n   :path (string path-test-resources \"/vx\"))))",
       ":testresult", vx_test.f_test(
@@ -163,7 +163,7 @@ object vx_data_fileTest {
   }
 
   fun f_pathfull_from_file(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -179,7 +179,7 @@ object vx_data_fileTest {
   }
 
   fun f_pathfull_from_file_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"fname\"\n (pathfull<-file\n  (file\n   :name \"fname\")))",
       ":testresult", vx_test.f_test(
@@ -201,7 +201,7 @@ object vx_data_fileTest {
   }
 
   fun f_pathfull_from_file_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"fpath/fname\"\n (pathfull<-file\n  (file\n   :path \"fpath\"\n   :name \"fname\")))",
       ":testresult", vx_test.f_test(
@@ -225,7 +225,7 @@ object vx_data_fileTest {
   }
 
   fun f_string_read_from_file(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -240,7 +240,7 @@ object vx_data_fileTest {
   }
 
   fun f_string_read_from_file_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"testdata\"\n (string-read<-file\n  (file\n   :name \"string_read_from_file.txt\"\n   :path (string path-test-resources \"/vx\"))))",
       ":testresult", vx_test.f_test(
@@ -279,7 +279,7 @@ object vx_data_fileTest {
       vx_data_fileTest.f_pathfull_from_file(context),
       vx_data_fileTest.f_string_read_from_file(context)
     )
-    var output : vx_test.Type_testcaselist = vx_core.vx_new(
+    val output : vx_test.Type_testcaselist = vx_core.vx_new(
       vx_test.t_testcaselist,
       testcases
     )
@@ -287,7 +287,7 @@ object vx_data_fileTest {
   }
 
   fun test_coveragesummary() : vx_test.Type_testcoveragesummary {
-    var output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/data/file", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -302,7 +302,7 @@ object vx_data_fileTest {
   }
 
   fun test_coveragedetail() : vx_test.Type_testcoveragedetail {
-    var output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
       vx_test.t_testcoveragedetail,
       ":testpkg", "vx/data/file",
       ":typemap", vx_core.vx_new(
@@ -331,8 +331,8 @@ object vx_data_fileTest {
   }
 
   fun test_package(context : vx_core.Type_context) : vx_test.Type_testpackage {
-    var testcaselist : vx_test.Type_testcaselist = test_cases(context)
-    var output : vx_test.Type_testpackage = vx_core.vx_new(
+    val testcaselist : vx_test.Type_testcaselist = test_cases(context)
+    val output : vx_test.Type_testpackage = vx_core.vx_new(
       vx_test.t_testpackage,
       ":testpkg", "vx/data/file", 
       ":caselist", testcaselist,

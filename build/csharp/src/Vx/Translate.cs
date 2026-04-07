@@ -1124,7 +1124,12 @@ public static class Translate {
     mapfunc.put("translation<-context", Vx.Translate.t_translation_from_context);
     mapfunc.put("translation<-session-name", Vx.Translate.t_translation_from_session_name);
     mapfunc.put("translationmap<-translations", Vx.Translate.t_translationmap_from_translations);
-    Vx.Core.vx_global_package_set("vx/translate", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/translate",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

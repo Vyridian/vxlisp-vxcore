@@ -7,7 +7,7 @@ import com.vxlisp.vx.*;
 public final class FileTest {
 
   public static Test.Type_testcase f_boolean_exists_from_file(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -22,7 +22,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testdescribe f_boolean_exists_from_file_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (boolean-exists<-file\n  (file\n   :name \"boolean_exists_from_file.txt\"\n   :path (string path-test-resources \"/vx\"))))",
       ":testresult", Test.f_test_true(
@@ -52,7 +52,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testcase f_boolean_write_from_file_string(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -67,7 +67,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testdescribe f_boolean_write_from_file_string_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (boolean-write<-file-string\n  (file\n   :name \"boolean_write_from_file_string.txt\"\n   :path (string path-test-resources \"/vx\"))\n  \"writetext\"))",
       ":testresult", Test.f_test_true(
@@ -99,7 +99,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testcase f_file_read_from_file(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -114,7 +114,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testdescribe f_file_read_from_file_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (file\n  :name \"string_read_from_file.txt\"\n  :path (string path-test-resources \"/vx\")\n  :text \"testdata\")\n (file-read<-file\n  (file\n   :name \"string_read_from_file.txt\"\n   :path (string path-test-resources \"/vx\"))))",
       ":testresult", Test.f_test(
@@ -164,7 +164,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testcase f_pathfull_from_file(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -180,7 +180,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testdescribe f_pathfull_from_file_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"fname\"\n (pathfull<-file\n  (file\n   :name \"fname\")))",
       ":testresult", Test.f_test(
@@ -202,7 +202,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testdescribe f_pathfull_from_file_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"fpath/fname\"\n (pathfull<-file\n  (file\n   :path \"fpath\"\n   :name \"fname\")))",
       ":testresult", Test.f_test(
@@ -226,7 +226,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testcase f_string_read_from_file(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/file",
@@ -241,7 +241,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testdescribe f_string_read_from_file_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"testdata\"\n (string-read<-file\n  (file\n   :name \"string_read_from_file.txt\"\n   :path (string path-test-resources \"/vx\"))))",
       ":testresult", Test.f_test(
@@ -280,7 +280,7 @@ public final class FileTest {
       FileTest.f_pathfull_from_file(context),
       FileTest.f_string_read_from_file(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -288,7 +288,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/data/file", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -303,7 +303,7 @@ public final class FileTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/data/file",
       ":typemap", Core.vx_new(
@@ -332,8 +332,8 @@ public final class FileTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/data/file", 
       ":caselist", testcaselist,

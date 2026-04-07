@@ -100,7 +100,7 @@ object vx_data_textblock {
       map.put(":endtext", this.endtext())
       map.put(":pos", this.pos())
       map.put(":delimlist", this.delimlist())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -194,7 +194,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -218,7 +218,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("starttext"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -242,7 +242,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("endtext"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -266,7 +266,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("pos"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -287,7 +287,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("delimlist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -359,12 +359,12 @@ object vx_data_textblock {
   class Class_delimlist : vx_core.Class_base, Type_delimlist {
     constructor() {}
 
-    var vx_p_list : List<vx_data_textblock.Type_delim> = vx_core.immutablelist(
+    var vx_p_list : List<vx_data_textblock.Type_delim> = vx_core.vx_listimmutable(
       ArrayList<vx_data_textblock.Type_delim>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -444,7 +444,7 @@ object vx_data_textblock {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_textblock.Class_delimlist = vx_data_textblock.Class_delimlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -671,7 +671,7 @@ object vx_data_textblock {
       map.put(":close", this.close())
       map.put(":parent", this.parent())
       map.put(":children", this.children())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -777,7 +777,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -801,7 +801,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -825,7 +825,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("startpos"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -849,7 +849,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("endpos"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -873,7 +873,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("curpos"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -897,7 +897,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("line"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -921,7 +921,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("column"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -942,7 +942,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("delim"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -963,7 +963,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("close"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -984,7 +984,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("parent"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1005,7 +1005,7 @@ object vx_data_textblock {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("children"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1083,12 +1083,12 @@ object vx_data_textblock {
   class Class_textblocklist : vx_core.Class_base, Type_textblocklist {
     constructor() {}
 
-    var vx_p_list : List<vx_data_textblock.Type_textblock> = vx_core.immutablelist(
+    var vx_p_list : List<vx_data_textblock.Type_textblock> = vx_core.vx_listimmutable(
       ArrayList<vx_data_textblock.Type_textblock>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -1168,7 +1168,7 @@ object vx_data_textblock {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_textblock.Class_textblocklist = vx_data_textblock.Class_textblocklist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -1219,7 +1219,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketangle", // name
         vx_data_textblock.t_delim
@@ -1264,7 +1264,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketcurly", // name
         vx_data_textblock.t_delim
@@ -1309,7 +1309,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimbracketsquare", // name
         vx_data_textblock.t_delim
@@ -1354,7 +1354,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimclose", // name
         vx_data_textblock.t_delim
@@ -1395,7 +1395,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimclosing", // name
         vx_data_textblock.t_delim
@@ -1436,7 +1436,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcomma", // name
         vx_data_textblock.t_delim
@@ -1479,7 +1479,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcomment", // name
         vx_data_textblock.t_delim
@@ -1524,7 +1524,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimcommentblock", // name
         vx_data_textblock.t_delim
@@ -1569,7 +1569,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimline", // name
         vx_data_textblock.t_delim
@@ -1612,7 +1612,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest1", // name
         vx_data_textblock.t_delimlist
@@ -1648,7 +1648,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest2", // name
         vx_data_textblock.t_delimlist
@@ -1685,7 +1685,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimlisttest3", // name
         vx_data_textblock.t_delimlist
@@ -1722,7 +1722,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimnonwhitespace", // name
         vx_data_textblock.t_delim
@@ -1767,7 +1767,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimparen", // name
         vx_data_textblock.t_delim
@@ -1812,7 +1812,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimquote", // name
         vx_data_textblock.t_delim
@@ -1857,7 +1857,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimquoteblock", // name
         vx_data_textblock.t_delim
@@ -1902,7 +1902,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimspace", // name
         vx_data_textblock.t_delim
@@ -1947,7 +1947,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest1", // name
         vx_data_textblock.t_delim
@@ -1988,7 +1988,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest2", // name
         vx_data_textblock.t_delim
@@ -2029,7 +2029,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtest3", // name
         vx_data_textblock.t_delim
@@ -2070,7 +2070,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimtext", // name
         vx_data_textblock.t_delim
@@ -2111,7 +2111,7 @@ object vx_data_textblock {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/textblock", // pkgname
         "delimwhitespace", // name
         vx_data_textblock.t_delim
@@ -2169,12 +2169,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "children<-textblock", // name
         0, // idx
@@ -2197,12 +2197,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_children_from_textblock
+      val output : vx_core.Type_any = vx_data_textblock.e_children_from_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_children_from_textblock
+      val output : vx_core.Type_any = vx_data_textblock.t_children_from_textblock
       return output
     }
 
@@ -2212,21 +2212,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_textblock.f_children_from_textblock(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_textblock.f_children_from_textblock(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_children_from_textblock(textblock)
       return output
     }
 
     override fun vx_children_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblocklist {
-      var output : vx_data_textblock.Type_textblocklist = vx_data_textblock.f_children_from_textblock(textblock)
+      val output : vx_data_textblock.Type_textblocklist = vx_data_textblock.f_children_from_textblock(textblock)
       return output
     }
 
@@ -2267,12 +2267,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "delim-first<-delim-delim", // name
         0, // idx
@@ -2295,25 +2295,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_delim_first_from_delim_delim
+      val output : vx_core.Type_any = vx_data_textblock.e_delim_first_from_delim_delim
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_delim_first_from_delim_delim
+      val output : vx_core.Type_any = vx_data_textblock.t_delim_first_from_delim_delim
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var delim1 : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delim2 : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
+      val delim1 : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delim2 : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_delim_first_from_delim_delim(delim1, delim2)
       return output
     }
 
     override fun vx_delim_first_from_delim_delim(delim1 : vx_data_textblock.Type_delim, delim2 : vx_data_textblock.Type_delim) : vx_data_textblock.Type_delim {
-      var output : vx_data_textblock.Type_delim = vx_data_textblock.f_delim_first_from_delim_delim(delim1, delim2)
+      val output : vx_data_textblock.Type_delim = vx_data_textblock.f_delim_first_from_delim_delim(delim1, delim2)
       return output
     }
 
@@ -2327,9 +2327,9 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_delim,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var pos1 : vx_core.Type_int = delim1.pos()
-        var pos2 : vx_core.Type_int = delim2.pos()
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val pos1 : vx_core.Type_int = delim1.pos()
+        val pos2 : vx_core.Type_int = delim2.pos()
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_textblock.t_delim,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -2342,7 +2342,7 @@ object vx_data_textblock {
                 output_2
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = delim1
+                val output_3 : vx_core.Type_any = delim1
                 output_3
               })
             ),
@@ -2355,7 +2355,7 @@ object vx_data_textblock {
                 output_4
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = delim2
+                val output_5 : vx_core.Type_any = delim2
                 output_5
               })
             ),
@@ -2367,7 +2367,7 @@ object vx_data_textblock {
                 output_6
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_7 : vx_core.Type_any = delim1
+                val output_7 : vx_core.Type_any = delim1
                 output_7
               })
             ),
@@ -2379,7 +2379,7 @@ object vx_data_textblock {
                 output_8
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_9 : vx_core.Type_any = delim2
+                val output_9 : vx_core.Type_any = delim2
                 output_9
               })
             ),
@@ -2392,13 +2392,13 @@ object vx_data_textblock {
                 output_10
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_11 : vx_core.Type_any = delim2
+                val output_11 : vx_core.Type_any = delim2
                 output_11
               })
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_12 : vx_core.Type_any = delim1
+                val output_12 : vx_core.Type_any = delim1
                 output_12
               })
             )
@@ -2436,12 +2436,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "delim-first<-string-delimlist", // name
         0, // idx
@@ -2464,25 +2464,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_delim_first_from_string_delimlist
+      val output : vx_core.Type_any = vx_data_textblock.e_delim_first_from_string_delimlist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_delim_first_from_string_delimlist
+      val output : vx_core.Type_any = vx_data_textblock.t_delim_first_from_string_delimlist
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delimlist : vx_data_textblock.Type_delimlist = vx_core.f_any_from_any(vx_data_textblock.t_delimlist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delimlist : vx_data_textblock.Type_delimlist = vx_core.f_any_from_any(vx_data_textblock.t_delimlist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_delim_first_from_string_delimlist(text, delimlist)
       return output
     }
 
     override fun vx_delim_first_from_string_delimlist(text : vx_core.Type_string, delimlist : vx_data_textblock.Type_delimlist) : vx_data_textblock.Type_delim {
-      var output : vx_data_textblock.Type_delim = vx_data_textblock.f_delim_first_from_string_delimlist(text, delimlist)
+      val output : vx_data_textblock.Type_delim = vx_data_textblock.f_delim_first_from_string_delimlist(text, delimlist)
       return output
     }
 
@@ -2516,11 +2516,11 @@ object vx_data_textblock {
             var output_3 : vx_core.Type_any = vx_core.f_let(
               vx_data_textblock.t_delim,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var resolvedlist : vx_data_textblock.Type_delimlist = vx_data_textblock.f_delimlist_pos_from_string_delimlist(
+                val resolvedlist : vx_data_textblock.Type_delimlist = vx_data_textblock.f_delimlist_pos_from_string_delimlist(
                   text,
                   delimlist
                 )
-                var output_4 : vx_core.Type_any = vx_core.f_any_from_list_start_reduce(
+                val output_4 : vx_core.Type_any = vx_core.f_any_from_list_start_reduce(
                   vx_data_textblock.t_delim,
                   resolvedlist,
                   vx_core.f_empty(
@@ -2570,12 +2570,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "delim-pos<-string-delim", // name
         0, // idx
@@ -2598,25 +2598,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_delim_pos_from_string_delim
+      val output : vx_core.Type_any = vx_data_textblock.e_delim_pos_from_string_delim
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_delim_pos_from_string_delim
+      val output : vx_core.Type_any = vx_data_textblock.t_delim_pos_from_string_delim
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_delim_pos_from_string_delim(text, delim)
       return output
     }
 
     override fun vx_delim_pos_from_string_delim(text : vx_core.Type_string, delim : vx_data_textblock.Type_delim) : vx_data_textblock.Type_delim {
-      var output : vx_data_textblock.Type_delim = vx_data_textblock.f_delim_pos_from_string_delim(text, delim)
+      val output : vx_data_textblock.Type_delim = vx_data_textblock.f_delim_pos_from_string_delim(text, delim)
       return output
     }
 
@@ -2630,12 +2630,12 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_delim,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var find : vx_core.Type_string = delim.starttext()
-        var pos : vx_core.Type_int = vx_type.f_int_from_string_findkeyword(
+        val find : vx_core.Type_string = delim.starttext()
+        val pos : vx_core.Type_int = vx_type.f_int_from_string_findkeyword(
           text,
           find
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_textblock.t_delim,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -2648,7 +2648,7 @@ object vx_data_textblock {
                 output_2
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = delim
+                val output_3 : vx_core.Type_any = delim
                 output_3
               })
             ),
@@ -2699,12 +2699,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "delimlist-pos<-string-delimlist", // name
         0, // idx
@@ -2727,25 +2727,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_delimlist_pos_from_string_delimlist
+      val output : vx_core.Type_any = vx_data_textblock.e_delimlist_pos_from_string_delimlist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_delimlist_pos_from_string_delimlist
+      val output : vx_core.Type_any = vx_data_textblock.t_delimlist_pos_from_string_delimlist
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delimlist : vx_data_textblock.Type_delimlist = vx_core.f_any_from_any(vx_data_textblock.t_delimlist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delimlist : vx_data_textblock.Type_delimlist = vx_core.f_any_from_any(vx_data_textblock.t_delimlist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_delimlist_pos_from_string_delimlist(text, delimlist)
       return output
     }
 
     override fun vx_delimlist_pos_from_string_delimlist(text : vx_core.Type_string, delimlist : vx_data_textblock.Type_delimlist) : vx_data_textblock.Type_delimlist {
-      var output : vx_data_textblock.Type_delimlist = vx_data_textblock.f_delimlist_pos_from_string_delimlist(text, delimlist)
+      val output : vx_data_textblock.Type_delimlist = vx_data_textblock.f_delimlist_pos_from_string_delimlist(text, delimlist)
       return output
     }
 
@@ -2760,7 +2760,7 @@ object vx_data_textblock {
       vx_data_textblock.t_delimlist,
       delimlist,
       vx_core.t_any_from_any.vx_fn_new({delim_any : vx_core.Type_any ->
-        var delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, delim_any)
+        val delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, delim_any)
         var output_1 : vx_core.Type_any = vx_data_textblock.f_delim_pos_from_string_delim(
           text,
           delim
@@ -2796,12 +2796,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "is-close", // name
         0, // idx
@@ -2824,12 +2824,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_is_close
+      val output : vx_core.Type_any = vx_data_textblock.e_is_close
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_is_close
+      val output : vx_core.Type_any = vx_data_textblock.t_is_close
       return output
     }
 
@@ -2839,21 +2839,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_delim = value as vx_data_textblock.Type_delim
-      var outputval : vx_core.Type_any = vx_data_textblock.f_is_close(inputval)
+      val inputval : vx_data_textblock.Type_delim = value as vx_data_textblock.Type_delim
+      val outputval : vx_core.Type_any = vx_data_textblock.f_is_close(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var delimarg : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delimarg : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_is_close(delimarg)
       return output
     }
 
     override fun vx_is_close(delimarg : vx_data_textblock.Type_delim) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_data_textblock.f_is_close(delimarg)
+      val output : vx_core.Type_boolean = vx_data_textblock.f_is_close(delimarg)
       return output
     }
 
@@ -2896,12 +2896,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "is-single", // name
         0, // idx
@@ -2924,12 +2924,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_is_single
+      val output : vx_core.Type_any = vx_data_textblock.e_is_single
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_is_single
+      val output : vx_core.Type_any = vx_data_textblock.t_is_single
       return output
     }
 
@@ -2939,21 +2939,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_delim = value as vx_data_textblock.Type_delim
-      var outputval : vx_core.Type_any = vx_data_textblock.f_is_single(inputval)
+      val inputval : vx_data_textblock.Type_delim = value as vx_data_textblock.Type_delim
+      val outputval : vx_core.Type_any = vx_data_textblock.f_is_single(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var delimarg : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delimarg : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_is_single(delimarg)
       return output
     }
 
     override fun vx_is_single(delimarg : vx_data_textblock.Type_delim) : vx_core.Type_boolean {
-      var output : vx_core.Type_boolean = vx_data_textblock.f_is_single(delimarg)
+      val output : vx_core.Type_boolean = vx_data_textblock.f_is_single(delimarg)
       return output
     }
 
@@ -3002,12 +3002,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "stringlist<-textblocklist", // name
         0, // idx
@@ -3030,12 +3030,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_stringlist_from_textblocklist
+      val output : vx_core.Type_any = vx_data_textblock.e_stringlist_from_textblocklist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_stringlist_from_textblocklist
+      val output : vx_core.Type_any = vx_data_textblock.t_stringlist_from_textblocklist
       return output
     }
 
@@ -3045,21 +3045,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblocklist = value as vx_data_textblock.Type_textblocklist
-      var outputval : vx_core.Type_any = vx_data_textblock.f_stringlist_from_textblocklist(inputval)
+      val inputval : vx_data_textblock.Type_textblocklist = value as vx_data_textblock.Type_textblocklist
+      val outputval : vx_core.Type_any = vx_data_textblock.f_stringlist_from_textblocklist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblocklist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblocklist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_stringlist_from_textblocklist(textblocklist)
       return output
     }
 
     override fun vx_stringlist_from_textblocklist(textblocklist : vx_data_textblock.Type_textblocklist) : vx_core.Type_stringlist {
-      var output : vx_core.Type_stringlist = vx_data_textblock.f_stringlist_from_textblocklist(textblocklist)
+      val output : vx_core.Type_stringlist = vx_data_textblock.f_stringlist_from_textblocklist(textblocklist)
       return output
     }
 
@@ -3103,12 +3103,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "text<-textblock", // name
         0, // idx
@@ -3131,12 +3131,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_text_from_textblock
+      val output : vx_core.Type_any = vx_data_textblock.e_text_from_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_text_from_textblock
+      val output : vx_core.Type_any = vx_data_textblock.t_text_from_textblock
       return output
     }
 
@@ -3146,21 +3146,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_textblock.f_text_from_textblock(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_textblock.f_text_from_textblock(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var block : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val block : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_text_from_textblock(block)
       return output
     }
 
     override fun vx_text_from_textblock(block : vx_data_textblock.Type_textblock) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_data_textblock.f_text_from_textblock(block)
+      val output : vx_core.Type_string = vx_data_textblock.f_text_from_textblock(block)
       return output
     }
 
@@ -3202,12 +3202,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-addchild<-textblock-find-child", // name
         0, // idx
@@ -3230,26 +3230,26 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_addchild_from_textblock_find_child
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_addchild_from_textblock_find_child
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_addchild_from_textblock_find_child
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_addchild_from_textblock_find_child
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
-      var find : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
-      var child : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(2)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val find : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val child : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_data_textblock.f_textblock_addchild_from_textblock_find_child(textblockarg, find, child)
       return output
     }
 
     override fun vx_textblock_addchild_from_textblock_find_child(textblockarg : vx_data_textblock.Type_textblock, find : vx_data_textblock.Type_textblock, child : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_addchild_from_textblock_find_child(textblockarg, find, child)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_addchild_from_textblock_find_child(textblockarg, find, child)
       return output
     }
 
@@ -3356,12 +3356,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-delimnotfound", // name
         0, // idx
@@ -3384,12 +3384,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_delimnotfound
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_delimnotfound
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_delimnotfound
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_delimnotfound
       return output
     }
 
@@ -3399,21 +3399,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_textblock.f_textblock_delimnotfound(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_textblock.f_textblock_delimnotfound(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_textblock_delimnotfound(textblockarg)
       return output
     }
 
     override fun vx_textblock_delimnotfound(textblockarg : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_delimnotfound(textblockarg)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_delimnotfound(textblockarg)
       return output
     }
 
@@ -3427,14 +3427,14 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = textblockarg.text()
-        var delima : vx_data_textblock.Type_delim = textblockarg.delim()
-        var close : vx_data_textblock.Type_delim = textblockarg.close()
-        var parent : vx_data_textblock.Type_textblock = textblockarg.parent()
-        var childp : vx_data_textblock.Type_textblocklist = parent.children()
-        var delimp : vx_data_textblock.Type_delim = parent.delim()
-        var delims : vx_data_textblock.Type_delimlist = delimp.delimlist()
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val text : vx_core.Type_string = textblockarg.text()
+        val delima : vx_data_textblock.Type_delim = textblockarg.delim()
+        val close : vx_data_textblock.Type_delim = textblockarg.close()
+        val parent : vx_data_textblock.Type_textblock = textblockarg.parent()
+        val childp : vx_data_textblock.Type_textblocklist = parent.children()
+        val delimp : vx_data_textblock.Type_delim = parent.delim()
+        val delims : vx_data_textblock.Type_delimlist = delimp.delimlist()
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -3451,11 +3451,11 @@ object vx_data_textblock {
                 var output_3 : vx_core.Type_any = vx_core.f_let(
                   vx_data_textblock.t_textblock,
                   vx_core.t_any_from_func.vx_fn_new({ ->
-                    var msgerr : vx_core.Type_msg = vx_core.f_msg_from_error_1(
+                    val msgerr : vx_core.Type_msg = vx_core.f_msg_from_error_1(
                       vx_core.vx_new_string("closedelimmissing"),
                       close
                     )
-                    var child : vx_data_textblock.Type_textblock = vx_core.f_copy(
+                    val child : vx_data_textblock.Type_textblock = vx_core.f_copy(
                       textblockarg,
                       vx_core.vx_new(
                         vx_core.t_anylist,
@@ -3473,18 +3473,18 @@ object vx_data_textblock {
                         )
                       )
                     )
-                    var find : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(
+                    val find : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(
                       parent
                     )
-                    var childrenf : vx_data_textblock.Type_textblocklist = find.children()
-                    var childrenr : vx_data_textblock.Type_textblocklist = vx_core.f_copy(
+                    val childrenf : vx_data_textblock.Type_textblocklist = find.children()
+                    val childrenr : vx_data_textblock.Type_textblocklist = vx_core.f_copy(
                       childrenf,
                       vx_core.vx_new(
                         vx_core.t_anylist,
                         child
                       )
                     )
-                    var replace : vx_data_textblock.Type_textblock = vx_core.f_copy(
+                    val replace : vx_data_textblock.Type_textblock = vx_core.f_copy(
                       find,
                       vx_core.vx_new(
                         vx_core.t_anylist,
@@ -3493,13 +3493,13 @@ object vx_data_textblock {
                         childrenr
                       )
                     )
-                    var parent2 : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(
+                    val parent2 : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(
                       parent,
                       find,
                       replace
                     )
-                    var gparent : vx_data_textblock.Type_textblock = parent2.parent()
-                    var parent3 : vx_data_textblock.Type_textblock = vx_core.f_copy(
+                    val gparent : vx_data_textblock.Type_textblock = parent2.parent()
+                    val parent3 : vx_data_textblock.Type_textblock = vx_core.f_copy(
                       parent2,
                       vx_core.vx_new(
                         vx_core.t_anylist,
@@ -3509,15 +3509,15 @@ object vx_data_textblock {
                         )
                       )
                     )
-                    var childreng : vx_data_textblock.Type_textblocklist = gparent.children()
-                    var childrenc : vx_data_textblock.Type_textblocklist = vx_core.f_copy(
+                    val childreng : vx_data_textblock.Type_textblocklist = gparent.children()
+                    val childrenc : vx_data_textblock.Type_textblocklist = vx_core.f_copy(
                       childreng,
                       vx_core.vx_new(
                         vx_core.t_anylist,
                         parent3
                       )
                     )
-                    var output_4 : vx_core.Type_any = vx_core.f_copy(
+                    val output_4 : vx_core.Type_any = vx_core.f_copy(
                       gparent,
                       vx_core.vx_new(
                         vx_core.t_anylist,
@@ -3540,7 +3540,7 @@ object vx_data_textblock {
                 output_5
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_6 : vx_core.Type_any = textblockarg
+                val output_6 : vx_core.Type_any = textblockarg
                 output_6
               })
             ),
@@ -3549,7 +3549,7 @@ object vx_data_textblock {
                 var output_7 : vx_core.Type_any = vx_core.f_let(
                   vx_data_textblock.t_textblock,
                   vx_core.t_any_from_func.vx_fn_new({ ->
-                    var delimchg : vx_data_textblock.Type_delim = vx_core.f_if_1(
+                    val delimchg : vx_data_textblock.Type_delim = vx_core.f_if_1(
                       vx_data_textblock.t_delim,
                       vx_core.f_is_empty_1(
                         delima.delimlist()
@@ -3566,7 +3566,7 @@ object vx_data_textblock {
                         )
                       )
                     )
-                    var child : vx_data_textblock.Type_textblock = vx_core.f_if_1(
+                    val child : vx_data_textblock.Type_textblock = vx_core.f_if_1(
                       vx_data_textblock.t_textblock,
                       vx_core.f_eq(
                         vx_core.vx_new_string(""),
@@ -3588,11 +3588,11 @@ object vx_data_textblock {
                         )
                       )
                     )
-                    var find : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(
+                    val find : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(
                       parent
                     )
-                    var closef : vx_data_textblock.Type_delim = find.close()
-                    var closing : vx_core.Type_boolean = vx_core.f_if(
+                    val closef : vx_data_textblock.Type_delim = find.close()
+                    val closing : vx_core.Type_boolean = vx_core.f_if(
                       vx_core.t_boolean,
                       vx_core.f_eqeq(
                         closef,
@@ -3600,24 +3600,24 @@ object vx_data_textblock {
                       ),
                       vx_core.vx_new_boolean(true)
                     )
-                    var output_8 : vx_core.Type_any = vx_core.f_if_2(
+                    val output_8 : vx_core.Type_any = vx_core.f_if_2(
                       vx_data_textblock.t_textblock,
                       vx_core.vx_new(
                         vx_core.t_thenelselist,
                         vx_core.f_then(
                           vx_core.t_boolean_from_func.vx_fn_new({ ->
-                            var output_9 : vx_core.Type_any = closing
+                            val output_9 : vx_core.Type_any = closing
                             output_9
                           }),
                           vx_core.t_any_from_func.vx_fn_new({ ->
                             var output_10 : vx_core.Type_any = vx_core.f_let(
                               vx_data_textblock.t_textblock,
                               vx_core.t_any_from_func.vx_fn_new({ ->
-                                var parent2 : vx_data_textblock.Type_textblock = find.parent()
-                                var find2 : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(
+                                val parent2 : vx_data_textblock.Type_textblock = find.parent()
+                                val find2 : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(
                                   parent2
                                 )
-                                var children1 : vx_data_textblock.Type_textblocklist = vx_core.f_if_1(
+                                val children1 : vx_data_textblock.Type_textblocklist = vx_core.f_if_1(
                                   vx_data_textblock.t_textblocklist,
                                   vx_core.f_is_empty_1(
                                     child
@@ -3631,7 +3631,7 @@ object vx_data_textblock {
                                     )
                                   )
                                 )
-                                var replace1 : vx_data_textblock.Type_textblock = vx_core.f_copy(
+                                val replace1 : vx_data_textblock.Type_textblock = vx_core.f_copy(
                                   find,
                                   vx_core.vx_new(
                                     vx_core.t_anylist,
@@ -3647,7 +3647,7 @@ object vx_data_textblock {
                                     children1
                                   )
                                 )
-                                var output_11 : vx_core.Type_any = vx_core.f_if_2(
+                                val output_11 : vx_core.Type_any = vx_core.f_if_2(
                                   vx_data_textblock.t_textblock,
                                   vx_core.vx_new(
                                     vx_core.t_thenelselist,
@@ -3688,14 +3688,14 @@ object vx_data_textblock {
                                         var output_14 : vx_core.Type_any = vx_core.f_let(
                                           vx_data_textblock.t_textblock,
                                           vx_core.t_any_from_func.vx_fn_new({ ->
-                                            var children2 : vx_data_textblock.Type_textblocklist = vx_core.f_copy(
+                                            val children2 : vx_data_textblock.Type_textblocklist = vx_core.f_copy(
                                               find2.children(),
                                               vx_core.vx_new(
                                                 vx_core.t_anylist,
                                                 replace1
                                               )
                                             )
-                                            var replace2 : vx_data_textblock.Type_textblock = vx_core.f_copy(
+                                            val replace2 : vx_data_textblock.Type_textblock = vx_core.f_copy(
                                               find2,
                                               vx_core.vx_new(
                                                 vx_core.t_anylist,
@@ -3707,12 +3707,12 @@ object vx_data_textblock {
                                                 children2
                                               )
                                             )
-                                            var replace : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(
+                                            val replace : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(
                                               parent2,
                                               find2,
                                               replace2
                                             )
-                                            var output_15 : vx_core.Type_any = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(
+                                            val output_15 : vx_core.Type_any = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(
                                               parent,
                                               find,
                                               replace
@@ -3739,7 +3739,7 @@ object vx_data_textblock {
                             output_16
                           }),
                           vx_core.t_any_from_func.vx_fn_new({ ->
-                            var output_17 : vx_core.Type_any = parent
+                            val output_17 : vx_core.Type_any = parent
                             output_17
                           })
                         ),
@@ -3794,12 +3794,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-findparent<-textblock", // name
         0, // idx
@@ -3822,12 +3822,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_findparent_from_textblock
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_findparent_from_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_findparent_from_textblock
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_findparent_from_textblock
       return output
     }
 
@@ -3837,21 +3837,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_textblock.f_textblock_findparent_from_textblock(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_textblock.f_textblock_findparent_from_textblock(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_textblock_findparent_from_textblock(textblockarg)
       return output
     }
 
     override fun vx_textblock_findparent_from_textblock(textblockarg : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(textblockarg)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(textblockarg)
       return output
     }
 
@@ -3865,12 +3865,12 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var delimcurr : vx_data_textblock.Type_delim = textblockarg.delim()
-        var parent : vx_data_textblock.Type_textblock = textblockarg.parent()
-        var children : vx_data_textblock.Type_textblocklist = textblockarg.children()
-        var starttext : vx_core.Type_string = delimcurr.starttext()
-        var endtext : vx_core.Type_string = delimcurr.endtext()
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val delimcurr : vx_data_textblock.Type_delim = textblockarg.delim()
+        val parent : vx_data_textblock.Type_textblock = textblockarg.parent()
+        val children : vx_data_textblock.Type_textblocklist = textblockarg.children()
+        val starttext : vx_core.Type_string = delimcurr.starttext()
+        val endtext : vx_core.Type_string = delimcurr.endtext()
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -3908,7 +3908,7 @@ object vx_data_textblock {
                 output_4
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = textblockarg
+                val output_5 : vx_core.Type_any = textblockarg
                 output_5
               })
             ),
@@ -3953,12 +3953,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-init", // name
         0, // idx
@@ -3981,12 +3981,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_init
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_init
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_init
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_init
       return output
     }
 
@@ -3996,21 +3996,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_textblock.f_textblock_init(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_textblock.f_textblock_init(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_textblock_init(textblockarg)
       return output
     }
 
     override fun vx_textblock_init(textblockarg : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_init(textblockarg)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_init(textblockarg)
       return output
     }
 
@@ -4024,8 +4024,8 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = textblockarg.text()
-        var startpos : vx_core.Type_int = vx_core.f_if_1(
+        val text : vx_core.Type_string = textblockarg.text()
+        val startpos : vx_core.Type_int = vx_core.f_if_1(
           vx_core.t_int,
           vx_core.f_eq(
             vx_core.vx_new_string(""),
@@ -4034,7 +4034,7 @@ object vx_data_textblock {
           vx_core.vx_new_int(0),
           vx_core.vx_new_int(1)
         )
-        var endpos : vx_core.Type_int = vx_core.f_if_1(
+        val endpos : vx_core.Type_int = vx_core.f_if_1(
           vx_core.t_int,
           vx_core.f_eq(
             vx_core.vx_new_string(""),
@@ -4045,7 +4045,7 @@ object vx_data_textblock {
             text
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_copy(
+        val output_1 : vx_core.Type_any = vx_core.f_copy(
           textblockarg,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -4101,12 +4101,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-parse", // name
         0, // idx
@@ -4129,12 +4129,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_parse
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_parse
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_parse
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_parse
       return output
     }
 
@@ -4144,21 +4144,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_textblock.f_textblock_parse(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_textblock.f_textblock_parse(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_textblock_parse(textblock)
       return output
     }
 
     override fun vx_textblock_parse(textblock : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_parse(textblock)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_parse(textblock)
       return output
     }
 
@@ -4173,14 +4173,14 @@ object vx_data_textblock {
       vx_data_textblock.t_textblock,
       textblock,
       vx_core.t_boolean_from_any.vx_fn_new({current_any : vx_core.Type_any ->
-        var current : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, current_any)
+        val current : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, current_any)
         var output_1 : vx_core.Type_any = vx_core.f_is_empty_1(
           current.parent()
         )
         output_1
       }),
       vx_core.t_any_from_any.vx_fn_new({current_any : vx_core.Type_any ->
-        var current : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, current_any)
+        val current : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, current_any)
         var output_2 : vx_core.Type_any = vx_data_textblock.f_textblock_parse_one(
           current
         )
@@ -4216,12 +4216,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-parse-one", // name
         0, // idx
@@ -4244,12 +4244,12 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_parse_one
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_parse_one
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_parse_one
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_parse_one
       return output
     }
 
@@ -4259,21 +4259,21 @@ object vx_data_textblock {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_textblock.f_textblock_parse_one(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_textblock.f_textblock_parse_one(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_textblock.f_textblock_parse_one(textblockarg)
       return output
     }
 
     override fun vx_textblock_parse_one(textblockarg : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_parse_one(textblockarg)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_parse_one(textblockarg)
       return output
     }
 
@@ -4287,12 +4287,12 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var delimarg : vx_data_textblock.Type_delim = textblockarg.delim()
-        var close : vx_data_textblock.Type_delim = textblockarg.close()
-        var startpos : vx_core.Type_int = textblockarg.startpos()
-        var textarg : vx_core.Type_string = textblockarg.text()
-        var parent : vx_data_textblock.Type_textblock = textblockarg.parent()
-        var is_init : vx_core.Type_boolean = vx_core.f_and(
+        val delimarg : vx_data_textblock.Type_delim = textblockarg.delim()
+        val close : vx_data_textblock.Type_delim = textblockarg.close()
+        val startpos : vx_core.Type_int = textblockarg.startpos()
+        val textarg : vx_core.Type_string = textblockarg.text()
+        val parent : vx_data_textblock.Type_textblock = textblockarg.parent()
+        val is_init : vx_core.Type_boolean = vx_core.f_and(
           vx_core.f_is_empty_1(
             parent
           ),
@@ -4301,10 +4301,10 @@ object vx_data_textblock {
             vx_core.vx_new_int(0)
           )
         )
-        var starttext : vx_core.Type_string = delimarg.starttext()
-        var endtext : vx_core.Type_string = delimarg.endtext()
-        var delimlistarg : vx_data_textblock.Type_delimlist = delimarg.delimlist()
-        var startposchg : vx_core.Type_int = vx_core.f_if_2(
+        val starttext : vx_core.Type_string = delimarg.starttext()
+        val endtext : vx_core.Type_string = delimarg.endtext()
+        val delimlistarg : vx_data_textblock.Type_delimlist = delimarg.delimlist()
+        val startposchg : vx_core.Type_int = vx_core.f_if_2(
           vx_core.t_int,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -4317,7 +4317,7 @@ object vx_data_textblock {
                 output_13
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_14 : vx_core.Type_any = startpos
+                val output_14 : vx_core.Type_any = startpos
                 output_14
               })
             ),
@@ -4336,13 +4336,13 @@ object vx_data_textblock {
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_17 : vx_core.Type_any = startpos
+                val output_17 : vx_core.Type_any = startpos
                 output_17
               })
             )
           )
         )
-        var delimlistcl : vx_data_textblock.Type_delimlist = vx_core.f_if_1(
+        val delimlistcl : vx_data_textblock.Type_delimlist = vx_core.f_if_1(
           vx_data_textblock.t_delimlist,
           vx_core.f_is_empty_1(
             close
@@ -4356,17 +4356,17 @@ object vx_data_textblock {
             )
           )
         )
-        var delimfirst : vx_data_textblock.Type_delim = vx_data_textblock.f_delim_first_from_string_delimlist(
+        val delimfirst : vx_data_textblock.Type_delim = vx_data_textblock.f_delim_first_from_string_delimlist(
           textarg,
           delimlistcl
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_thenelselist,
             vx_core.f_then(
               vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_2 : vx_core.Type_any = is_init
+                val output_2 : vx_core.Type_any = is_init
                 output_2
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
@@ -4384,7 +4384,7 @@ object vx_data_textblock {
                 output_4
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = textblockarg
+                val output_5 : vx_core.Type_any = textblockarg
                 output_5
               })
             ),
@@ -4475,12 +4475,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-parse<-string-delim", // name
         0, // idx
@@ -4503,25 +4503,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_parse_from_string_delim
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_parse_from_string_delim
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_parse_from_string_delim
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_parse_from_string_delim
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_textblock_parse_from_string_delim(text, delim)
       return output
     }
 
     override fun vx_textblock_parse_from_string_delim(text : vx_core.Type_string, delim : vx_data_textblock.Type_delim) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_parse_from_string_delim(text, delim)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_parse_from_string_delim(text, delim)
       return output
     }
 
@@ -4535,11 +4535,11 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var textblockinit : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_string_delim(
+        val textblockinit : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_string_delim(
           text,
           delim
         )
-        var output_1 : vx_core.Type_any = vx_data_textblock.f_textblock_parse(
+        val output_1 : vx_core.Type_any = vx_data_textblock.f_textblock_parse(
           textblockinit
         )
         output_1
@@ -4575,12 +4575,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-replace<-textblock-find-replace", // name
         0, // idx
@@ -4603,26 +4603,26 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_replace_from_textblock_find_replace
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_replace_from_textblock_find_replace
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_replace_from_textblock_find_replace
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_replace_from_textblock_find_replace
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
-      var find : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
-      var replace : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(2)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val find : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val replace : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(textblockarg, find, replace)
       return output
     }
 
     override fun vx_textblock_replace_from_textblock_find_replace(textblockarg : vx_data_textblock.Type_textblock, find : vx_data_textblock.Type_textblock, replace : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(textblockarg, find, replace)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(textblockarg, find, replace)
       return output
     }
 
@@ -4665,7 +4665,7 @@ object vx_data_textblock {
             output_3
           }),
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_4 : vx_core.Type_any = replace
+            val output_4 : vx_core.Type_any = replace
             output_4
           })
         ),
@@ -4718,12 +4718,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-startleft<-string-delim-offset", // name
         0, // idx
@@ -4746,26 +4746,26 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_startleft_from_string_delim_offset
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_startleft_from_string_delim_offset
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_startleft_from_string_delim_offset
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_startleft_from_string_delim_offset
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
-      var offset : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
+      val offset : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_data_textblock.f_textblock_startleft_from_string_delim_offset(text, delim, offset)
       return output
     }
 
     override fun vx_textblock_startleft_from_string_delim_offset(text : vx_core.Type_string, delim : vx_data_textblock.Type_delim, offset : vx_core.Type_int) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_startleft_from_string_delim_offset(text, delim, offset)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_startleft_from_string_delim_offset(text, delim, offset)
       return output
     }
 
@@ -4779,13 +4779,13 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var pos : vx_core.Type_int = delim.pos()
-        var start : vx_core.Type_int = vx_core.vx_new_int(1)
-        var end : vx_core.Type_int = vx_core.f_minus(
+        val pos : vx_core.Type_int = delim.pos()
+        val start : vx_core.Type_int = vx_core.vx_new_int(1)
+        val end : vx_core.Type_int = vx_core.f_minus(
           pos,
           vx_core.vx_new_int(1)
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -4883,12 +4883,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock-startright<-string-delim-offset", // name
         0, // idx
@@ -4911,26 +4911,26 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_startright_from_string_delim_offset
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_startright_from_string_delim_offset
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_startright_from_string_delim_offset
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_startright_from_string_delim_offset
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delimin : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
-      var offset : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delimin : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
+      val offset : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
       output = vx_data_textblock.f_textblock_startright_from_string_delim_offset(text, delimin, offset)
       return output
     }
 
     override fun vx_textblock_startright_from_string_delim_offset(text : vx_core.Type_string, delimin : vx_data_textblock.Type_delim, offset : vx_core.Type_int) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_startright_from_string_delim_offset(text, delimin, offset)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_startright_from_string_delim_offset(text, delimin, offset)
       return output
     }
 
@@ -4944,11 +4944,11 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var startpos : vx_core.Type_int = delimin.pos()
-        var starttext : vx_core.Type_string = delimin.starttext()
-        var endtext : vx_core.Type_string = delimin.endtext()
-        var delimlist : vx_data_textblock.Type_delimlist = delimin.delimlist()
-        var close : vx_data_textblock.Type_delim = vx_core.f_if_2(
+        val startpos : vx_core.Type_int = delimin.pos()
+        val starttext : vx_core.Type_string = delimin.starttext()
+        val endtext : vx_core.Type_string = delimin.endtext()
+        val delimlist : vx_data_textblock.Type_delimlist = delimin.delimlist()
+        val close : vx_data_textblock.Type_delim = vx_core.f_if_2(
           vx_data_textblock.t_delim,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -4982,7 +4982,7 @@ object vx_data_textblock {
             )
           )
         )
-        var delimlen : vx_core.Type_int = vx_core.f_switch(
+        val delimlen : vx_core.Type_int = vx_core.f_switch(
           vx_core.t_int,
           starttext,
           vx_core.vx_new(
@@ -5011,8 +5011,8 @@ object vx_data_textblock {
             )
           )
         )
-        var curpos : vx_core.Type_int = vx_core.vx_new_int(0)
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val curpos : vx_core.Type_int = vx_core.vx_new_int(0)
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -5107,12 +5107,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock<-close-textblock", // name
         0, // idx
@@ -5135,25 +5135,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_from_close_textblock
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_from_close_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_from_close_textblock
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_from_close_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var close : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val close : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_textblock_from_close_textblock(close, textblockarg)
       return output
     }
 
     override fun vx_textblock_from_close_textblock(close : vx_data_textblock.Type_delim, textblockarg : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_close_textblock(close, textblockarg)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_close_textblock(close, textblockarg)
       return output
     }
 
@@ -5167,24 +5167,24 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = textblockarg.text()
-        var parent : vx_data_textblock.Type_textblock = textblockarg.parent()
-        var startpos : vx_core.Type_int = textblockarg.startpos()
-        var endpos : vx_core.Type_int = textblockarg.endpos()
-        var pos : vx_core.Type_int = close.pos()
-        var textclose : vx_core.Type_string = close.starttext()
-        var lenclose : vx_core.Type_int = vx_core.f_length(
+        val text : vx_core.Type_string = textblockarg.text()
+        val parent : vx_data_textblock.Type_textblock = textblockarg.parent()
+        val startpos : vx_core.Type_int = textblockarg.startpos()
+        val endpos : vx_core.Type_int = textblockarg.endpos()
+        val pos : vx_core.Type_int = close.pos()
+        val textclose : vx_core.Type_string = close.starttext()
+        val lenclose : vx_core.Type_int = vx_core.f_length(
           textclose
         )
-        var posminus : vx_core.Type_int = vx_core.f_minus1(
+        val posminus : vx_core.Type_int = vx_core.f_minus1(
           pos
         )
-        var startleft : vx_core.Type_int = startpos
-        var startclose : vx_core.Type_int = vx_core.f_plus(
+        val startleft : vx_core.Type_int = startpos
+        val startclose : vx_core.Type_int = vx_core.f_plus(
           startpos,
           posminus
         )
-        var endclose : vx_core.Type_int = vx_core.f_switch(
+        val endclose : vx_core.Type_int = vx_core.f_switch(
           vx_core.t_int,
           textclose,
           vx_core.vx_new(
@@ -5212,7 +5212,7 @@ object vx_data_textblock {
             )
           )
         )
-        var endleft : vx_core.Type_int = vx_core.f_if_1(
+        val endleft : vx_core.Type_int = vx_core.f_if_1(
           vx_core.t_int,
           vx_core.f_eq(
             vx_core.vx_new_int(1),
@@ -5223,10 +5223,10 @@ object vx_data_textblock {
             startclose
           )
         )
-        var startright : vx_core.Type_int = vx_core.f_plus1(
+        val startright : vx_core.Type_int = vx_core.f_plus1(
           endclose
         )
-        var endright : vx_core.Type_int = vx_core.f_if_1(
+        val endright : vx_core.Type_int = vx_core.f_if_1(
           vx_core.t_int,
           vx_core.f_lt(
             endpos,
@@ -5235,25 +5235,25 @@ object vx_data_textblock {
           startright,
           endpos
         )
-        var textleft : vx_core.Type_string = vx_type.f_string_from_string_end(
+        val textleft : vx_core.Type_string = vx_type.f_string_from_string_end(
           text,
           posminus
         )
-        var textright : vx_core.Type_string = vx_type.f_string_from_string_start(
+        val textright : vx_core.Type_string = vx_type.f_string_from_string_start(
           text,
           vx_core.f_plus(
             pos,
             lenclose
           )
         )
-        var find : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(
+        val find : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_findparent_from_textblock(
           parent
         )
-        var closefind : vx_data_textblock.Type_delim = find.close()
-        var textfind : vx_core.Type_string = find.text()
-        var startfind : vx_core.Type_int = find.startpos()
-        var delimfind : vx_data_textblock.Type_delim = find.delim()
-        var delimright : vx_data_textblock.Type_delim = vx_core.f_new(
+        val closefind : vx_data_textblock.Type_delim = find.close()
+        val textfind : vx_core.Type_string = find.text()
+        val startfind : vx_core.Type_int = find.startpos()
+        val delimfind : vx_data_textblock.Type_delim = find.delim()
+        val delimright : vx_data_textblock.Type_delim = vx_core.f_new(
           vx_data_textblock.t_delim,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -5261,17 +5261,17 @@ object vx_data_textblock {
             delimfind.delimlist()
           )
         )
-        var lenfind : vx_core.Type_int = vx_core.f_minus(
+        val lenfind : vx_core.Type_int = vx_core.f_minus(
           vx_core.f_plus1(
             endclose
           ),
           startfind
         )
-        var textreplace : vx_core.Type_string = vx_type.f_string_from_string_end(
+        val textreplace : vx_core.Type_string = vx_type.f_string_from_string_end(
           textfind,
           lenfind
         )
-        var replace : vx_data_textblock.Type_textblock = vx_core.f_copy(
+        val replace : vx_data_textblock.Type_textblock = vx_core.f_copy(
           find,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -5294,12 +5294,12 @@ object vx_data_textblock {
             vx_data_textblock.c_delimclosing
           )
         )
-        var parentchg : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(
+        val parentchg : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_replace_from_textblock_find_replace(
           parent,
           find,
           replace
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -5362,12 +5362,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock<-empty-textblock", // name
         0, // idx
@@ -5390,25 +5390,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_from_empty_textblock
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_from_empty_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_from_empty_textblock
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_from_empty_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var empty : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val empty : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_textblock_from_empty_textblock(empty, textblockarg)
       return output
     }
 
     override fun vx_textblock_from_empty_textblock(empty : vx_data_textblock.Type_delim, textblockarg : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_empty_textblock(empty, textblockarg)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_empty_textblock(empty, textblockarg)
       return output
     }
 
@@ -5448,12 +5448,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock<-open-textblock", // name
         0, // idx
@@ -5476,25 +5476,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_from_open_textblock
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_from_open_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_from_open_textblock
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_from_open_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var open : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val open : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_textblock_from_open_textblock(open, textblockarg)
       return output
     }
 
     override fun vx_textblock_from_open_textblock(open : vx_data_textblock.Type_delim, textblockarg : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_open_textblock(open, textblockarg)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_open_textblock(open, textblockarg)
       return output
     }
 
@@ -5508,22 +5508,22 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = textblockarg.text()
-        var parent : vx_data_textblock.Type_textblock = textblockarg.parent()
-        var startpos : vx_core.Type_int = textblockarg.startpos()
-        var endpos : vx_core.Type_int = textblockarg.endpos()
-        var delima : vx_data_textblock.Type_delim = textblockarg.delim()
-        var pos : vx_core.Type_int = open.pos()
-        var textopen : vx_core.Type_string = open.starttext()
-        var textclose : vx_core.Type_string = open.endtext()
-        var delimlistl : vx_data_textblock.Type_delimlist = open.delimlist()
-        var lenopen : vx_core.Type_int = vx_core.f_length(
+        val text : vx_core.Type_string = textblockarg.text()
+        val parent : vx_data_textblock.Type_textblock = textblockarg.parent()
+        val startpos : vx_core.Type_int = textblockarg.startpos()
+        val endpos : vx_core.Type_int = textblockarg.endpos()
+        val delima : vx_data_textblock.Type_delim = textblockarg.delim()
+        val pos : vx_core.Type_int = open.pos()
+        val textopen : vx_core.Type_string = open.starttext()
+        val textclose : vx_core.Type_string = open.endtext()
+        val delimlistl : vx_data_textblock.Type_delimlist = open.delimlist()
+        val lenopen : vx_core.Type_int = vx_core.f_length(
           textopen
         )
-        var posminus : vx_core.Type_int = vx_core.f_minus1(
+        val posminus : vx_core.Type_int = vx_core.f_minus1(
           pos
         )
-        var startleft : vx_core.Type_int = vx_core.f_if_1(
+        val startleft : vx_core.Type_int = vx_core.f_if_1(
           vx_core.t_int,
           vx_core.f_eq(
             pos,
@@ -5534,7 +5534,7 @@ object vx_data_textblock {
           ),
           startpos
         )
-        var endleft : vx_core.Type_int = vx_core.f_if_1(
+        val endleft : vx_core.Type_int = vx_core.f_if_1(
           vx_core.t_int,
           vx_core.f_eq(
             pos,
@@ -5550,7 +5550,7 @@ object vx_data_textblock {
             posminus
           )
         )
-        var startright : vx_core.Type_int = vx_core.f_plus_2(
+        val startright : vx_core.Type_int = vx_core.f_plus_2(
           vx_core.vx_new(
             vx_core.t_intlist,
             startpos,
@@ -5558,26 +5558,26 @@ object vx_data_textblock {
             lenopen
           )
         )
-        var startopen : vx_core.Type_int = vx_core.f_plus(
+        val startopen : vx_core.Type_int = vx_core.f_plus(
           startpos,
           posminus
         )
-        var textleft : vx_core.Type_string = vx_type.f_string_from_string_end(
+        val textleft : vx_core.Type_string = vx_type.f_string_from_string_end(
           text,
           posminus
         )
-        var textpar : vx_core.Type_string = vx_type.f_string_from_string_start(
+        val textpar : vx_core.Type_string = vx_type.f_string_from_string_start(
           text,
           pos
         )
-        var textright : vx_core.Type_string = vx_type.f_string_from_string_start(
+        val textright : vx_core.Type_string = vx_type.f_string_from_string_start(
           text,
           vx_core.f_plus(
             pos,
             lenopen
           )
         )
-        var close : vx_data_textblock.Type_delim = vx_core.f_copy(
+        val close : vx_data_textblock.Type_delim = vx_core.f_copy(
           vx_data_textblock.c_delimclose,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -5585,7 +5585,7 @@ object vx_data_textblock {
             textclose
           )
         )
-        var tbleft : vx_data_textblock.Type_textblock = vx_core.f_if_2(
+        val tbleft : vx_data_textblock.Type_textblock = vx_core.f_if_2(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -5623,7 +5623,7 @@ object vx_data_textblock {
             )
           )
         )
-        var tbpar1 : vx_data_textblock.Type_textblock = vx_core.f_copy(
+        val tbpar1 : vx_data_textblock.Type_textblock = vx_core.f_copy(
           textblockarg,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -5646,7 +5646,7 @@ object vx_data_textblock {
             parent
           )
         )
-        var tbfind : vx_data_textblock.Type_textblock = vx_core.f_if_2(
+        val tbfind : vx_data_textblock.Type_textblock = vx_core.f_if_2(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -5675,7 +5675,7 @@ object vx_data_textblock {
             )
           )
         )
-        var tbparent : vx_data_textblock.Type_textblock = vx_core.f_if_2(
+        val tbparent : vx_data_textblock.Type_textblock = vx_core.f_if_2(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -5687,7 +5687,7 @@ object vx_data_textblock {
                 output_8
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_9 : vx_core.Type_any = tbpar1
+                val output_9 : vx_core.Type_any = tbpar1
                 output_9
               })
             ),
@@ -5703,7 +5703,7 @@ object vx_data_textblock {
             )
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -5760,12 +5760,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock<-single-textblock", // name
         0, // idx
@@ -5788,25 +5788,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_from_single_textblock
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_from_single_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_from_single_textblock
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_from_single_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var single : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
-      var textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val single : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblockarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_textblock_from_single_textblock(single, textblockarg)
       return output
     }
 
     override fun vx_textblock_from_single_textblock(single : vx_data_textblock.Type_delim, textblockarg : vx_data_textblock.Type_textblock) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_single_textblock(single, textblockarg)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_single_textblock(single, textblockarg)
       return output
     }
 
@@ -5820,13 +5820,13 @@ object vx_data_textblock {
     output = vx_core.f_let(
       vx_data_textblock.t_textblock,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = textblockarg.text()
-        var parent : vx_data_textblock.Type_textblock = textblockarg.parent()
-        var startpos : vx_core.Type_int = textblockarg.startpos()
-        var endpos : vx_core.Type_int = textblockarg.endpos()
-        var pos : vx_core.Type_int = single.pos()
-        var origsingle : vx_core.Type_string = single.starttext()
-        var textsingle : vx_core.Type_string = vx_core.f_switch(
+        val text : vx_core.Type_string = textblockarg.text()
+        val parent : vx_data_textblock.Type_textblock = textblockarg.parent()
+        val startpos : vx_core.Type_int = textblockarg.startpos()
+        val endpos : vx_core.Type_int = textblockarg.endpos()
+        val pos : vx_core.Type_int = single.pos()
+        val origsingle : vx_core.Type_string = single.starttext()
+        val textsingle : vx_core.Type_string = vx_core.f_switch(
           vx_core.t_string,
           origsingle,
           vx_core.vx_new(
@@ -5837,15 +5837,15 @@ object vx_data_textblock {
                 var output_2 : vx_core.Type_any = vx_core.f_let(
                   vx_core.t_string,
                   vx_core.t_any_from_func.vx_fn_new({ ->
-                    var text2 : vx_core.Type_string = vx_type.f_string_from_string_start(
+                    val text2 : vx_core.Type_string = vx_type.f_string_from_string_start(
                       text,
                       pos
                     )
-                    var pos2 : vx_core.Type_int = vx_type.f_int_from_string_findkeyword(
+                    val pos2 : vx_core.Type_int = vx_type.f_int_from_string_findkeyword(
                       text2,
                       vx_core.vx_new_string(":nonwhitespace")
                     )
-                    var pos3 : vx_core.Type_int = vx_core.f_if_2(
+                    val pos3 : vx_core.Type_int = vx_core.f_if_2(
                       vx_core.t_int,
                       vx_core.vx_new(
                         vx_core.t_thenelselist,
@@ -5873,7 +5873,7 @@ object vx_data_textblock {
                             output_6
                           }),
                           vx_core.t_any_from_func.vx_fn_new({ ->
-                            var output_7 : vx_core.Type_any = pos2
+                            val output_7 : vx_core.Type_any = pos2
                             output_7
                           })
                         ),
@@ -5887,7 +5887,7 @@ object vx_data_textblock {
                         )
                       )
                     )
-                    var output_3 : vx_core.Type_any = vx_type.f_string_from_string_start_end(
+                    val output_3 : vx_core.Type_any = vx_type.f_string_from_string_start_end(
                       text,
                       pos,
                       pos3
@@ -5900,25 +5900,25 @@ object vx_data_textblock {
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_9 : vx_core.Type_any = origsingle
+                val output_9 : vx_core.Type_any = origsingle
                 output_9
               })
             )
           )
         )
-        var delimlistl : vx_data_textblock.Type_delimlist = single.delimlist()
-        var lensingle : vx_core.Type_int = vx_core.f_length(
+        val delimlistl : vx_data_textblock.Type_delimlist = single.delimlist()
+        val lensingle : vx_core.Type_int = vx_core.f_length(
           textsingle
         )
-        var posminus : vx_core.Type_int = vx_core.f_minus1(
+        val posminus : vx_core.Type_int = vx_core.f_minus1(
           pos
         )
-        var startleft : vx_core.Type_int = startpos
-        var startsingle : vx_core.Type_int = vx_core.f_plus(
+        val startleft : vx_core.Type_int = startpos
+        val startsingle : vx_core.Type_int = vx_core.f_plus(
           startpos,
           posminus
         )
-        var endsingle : vx_core.Type_int = vx_core.f_switch(
+        val endsingle : vx_core.Type_int = vx_core.f_switch(
           vx_core.t_int,
           textsingle,
           vx_core.vx_new(
@@ -5946,7 +5946,7 @@ object vx_data_textblock {
             )
           )
         )
-        var endleft : vx_core.Type_int = vx_core.f_if_1(
+        val endleft : vx_core.Type_int = vx_core.f_if_1(
           vx_core.t_int,
           vx_core.f_eq(
             startsingle,
@@ -5957,25 +5957,25 @@ object vx_data_textblock {
             startsingle
           )
         )
-        var startright : vx_core.Type_int = vx_core.f_plus1(
+        val startright : vx_core.Type_int = vx_core.f_plus1(
           endsingle
         )
-        var textleft : vx_core.Type_string = vx_type.f_string_from_string_end(
+        val textleft : vx_core.Type_string = vx_type.f_string_from_string_end(
           text,
           posminus
         )
-        var textpar : vx_core.Type_string = vx_type.f_string_from_string_start(
+        val textpar : vx_core.Type_string = vx_type.f_string_from_string_start(
           text,
           pos
         )
-        var textright : vx_core.Type_string = vx_type.f_string_from_string_start(
+        val textright : vx_core.Type_string = vx_type.f_string_from_string_start(
           text,
           vx_core.f_plus(
             pos,
             lensingle
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_data_textblock.t_textblock,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -6067,12 +6067,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock<-string-delim", // name
         0, // idx
@@ -6095,25 +6095,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_from_string_delim
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_from_string_delim
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_from_string_delim
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_from_string_delim
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_textblock_from_string_delim(text, delim)
       return output
     }
 
     override fun vx_textblock_from_string_delim(text : vx_core.Type_string, delim : vx_data_textblock.Type_delim) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_string_delim(text, delim)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_string_delim(text, delim)
       return output
     }
 
@@ -6169,12 +6169,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblock<-textblock-delim", // name
         0, // idx
@@ -6197,25 +6197,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblock_from_textblock_delim
+      val output : vx_core.Type_any = vx_data_textblock.e_textblock_from_textblock_delim
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblock_from_textblock_delim
+      val output : vx_core.Type_any = vx_data_textblock.t_textblock_from_textblock_delim
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
-      var delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val delim : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_textblock_from_textblock_delim(textblock, delim)
       return output
     }
 
     override fun vx_textblock_from_textblock_delim(textblock : vx_data_textblock.Type_textblock, delim : vx_data_textblock.Type_delim) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_textblock_delim(textblock, delim)
+      val output : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_textblock_delim(textblock, delim)
       return output
     }
 
@@ -6255,12 +6255,12 @@ object vx_data_textblock {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/textblock", // pkgname
         "textblocklist<-textblocklist-remove", // name
         0, // idx
@@ -6283,25 +6283,25 @@ object vx_data_textblock {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.e_textblocklist_from_textblocklist_remove
+      val output : vx_core.Type_any = vx_data_textblock.e_textblocklist_from_textblocklist_remove
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_textblock.t_textblocklist_from_textblocklist_remove
+      val output : vx_core.Type_any = vx_data_textblock.t_textblocklist_from_textblocklist_remove
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var tblist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(0)))
-      var remove : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
+      val tblist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val remove : vx_data_textblock.Type_delim = vx_core.f_any_from_any(vx_data_textblock.t_delim, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_textblock.f_textblocklist_from_textblocklist_remove(tblist, remove)
       return output
     }
 
     override fun vx_textblocklist_from_textblocklist_remove(tblist : vx_data_textblock.Type_textblocklist, remove : vx_data_textblock.Type_delim) : vx_data_textblock.Type_textblocklist {
-      var output : vx_data_textblock.Type_textblocklist = vx_data_textblock.f_textblocklist_from_textblocklist_remove(tblist, remove)
+      val output : vx_data_textblock.Type_textblocklist = vx_data_textblock.f_textblocklist_from_textblocklist_remove(tblist, remove)
       return output
     }
 
@@ -6316,14 +6316,14 @@ object vx_data_textblock {
       vx_data_textblock.t_textblocklist,
       tblist,
       vx_core.t_any_from_any.vx_fn_new({textblock_any : vx_core.Type_any ->
-        var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, textblock_any)
+        val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, textblock_any)
         var output_1 : vx_core.Type_any = vx_core.f_let(
           vx_data_textblock.t_textblock,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var delimcurr : vx_data_textblock.Type_delim = textblock.delim()
-            var namecurr : vx_core.Type_string = delimcurr.name()
-            var nameremove : vx_core.Type_string = remove.name()
-            var output_2 : vx_core.Type_any = vx_core.f_if(
+            val delimcurr : vx_data_textblock.Type_delim = textblock.delim()
+            val namecurr : vx_core.Type_string = delimcurr.name()
+            val nameremove : vx_core.Type_string = remove.name()
+            val output_2 : vx_core.Type_any = vx_core.f_if(
               vx_data_textblock.t_textblock,
               vx_core.f_ne(
                 namecurr,
@@ -6418,7 +6418,12 @@ object vx_data_textblock {
     mapfunc.put("textblock<-string-delim", vx_data_textblock.t_textblock_from_string_delim)
     mapfunc.put("textblock<-textblock-delim", vx_data_textblock.t_textblock_from_textblock_delim)
     mapfunc.put("textblocklist<-textblocklist-remove", vx_data_textblock.t_textblocklist_from_textblocklist_remove)
-    vx_core.vx_global_package_set("vx/data/textblock", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/data/textblock",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

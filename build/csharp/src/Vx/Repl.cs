@@ -57,12 +57,12 @@ public static class Repl {
 
   public class Class_liblist : Vx.Core.Class_base, Type_liblist {
 
-    public List<Vx.Core.Type_string> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Core.Type_string> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Core.Type_string>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -137,7 +137,7 @@ public static class Repl {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Repl.Class_liblist work = new Vx.Repl.Class_liblist();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -288,7 +288,7 @@ public static class Repl {
       map.put(":async", this.async());
       map.put(":value", this.value());
       map.put(":doc", this.doc());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -379,7 +379,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -398,7 +398,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("type"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -417,7 +417,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("repllist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -439,7 +439,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("async"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -458,7 +458,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("value"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -480,7 +480,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("doc"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -605,7 +605,7 @@ public static class Repl {
       map.put(":key", this.key());
       map.put(":current", this.current());
       map.put(":repllist", this.repllist());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -690,7 +690,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("key"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -709,7 +709,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("current"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -728,7 +728,7 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("repllist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -797,12 +797,12 @@ public static class Repl {
 
   public class Class_repllist : Vx.Core.Class_base, Type_repllist {
 
-    public List<Vx.Repl.Type_repl> vx_p_list = Vx.Core.immutablelist(
+    public List<Vx.Repl.Type_repl> vx_p_list = Vx.Core.vx_listimmutable(
       new List<Vx.Repl.Type_repl>()
     );
 
     public List<Vx.Core.Type_any> vx_list() {
-      List<Vx.Core.Type_any> output = Vx.Core.immutablelist(
+      List<Vx.Core.Type_any> output = Vx.Core.vx_listimmutable(
         new List<Vx.Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -877,7 +877,7 @@ public static class Repl {
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
         Vx.Repl.Class_repllist work = new Vx.Repl.Class_repllist();
-        work.vx_p_list = Vx.Core.immutablelist(listval);
+        work.vx_p_list = Vx.Core.vx_listimmutable(listval);
         if (msgblock != Vx.Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -3994,7 +3994,12 @@ public static class Repl {
     mapfunc.put("repllist<-textblocklist-argmap", Vx.Repl.t_repllist_from_textblocklist_argmap);
     mapfunc.put("textblock<-script", Vx.Repl.t_textblock_from_script);
     mapfunc.put("typefunc<-string", Vx.Repl.t_typefunc_from_string);
-    Vx.Core.vx_global_package_set("vx/repl", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/repl",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

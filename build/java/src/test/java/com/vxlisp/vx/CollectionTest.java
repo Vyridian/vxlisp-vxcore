@@ -6,7 +6,7 @@ import java.util.List;
 public final class CollectionTest {
 
   public static Test.Type_testcase f_minus(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -21,7 +21,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_minus_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a\" \"d\")\n (- : stringlist\n  (stringlist \"a\" \"b\" \"c\" \"d\")\n  (stringlist \"b\" \"c\")))",
       ":testresult", Test.f_test(
@@ -61,7 +61,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_minus_1(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -76,7 +76,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_minus_1_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  :a \"1\"\n  :d \"4\")\n (- : stringmap\n  (stringmap\n   :a \"1\"\n   :b \"2\"\n   :c \"3\"\n   :d \"4\")\n  (stringmap\n   :b \"x\"\n   :c \"y\")))",
       ":testresult", Test.f_test(
@@ -124,7 +124,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_any_from_for_until_loop(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -139,7 +139,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_any_from_for_until_loop_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 8\n (any<-for-until-loop\n  1\n  (fn : boolean\n   [current : int]\n   (> current 6))\n  (fn : int\n   [current : int]\n   (+ current current))))",
       ":testresult", Test.f_test(
@@ -149,7 +149,7 @@ public final class CollectionTest {
           Core.t_int,
           Core.vx_new_int(1),
           Core.t_boolean_from_any.vx_fn_new((current_any) -> {
-            Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
+            final Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
             Core.Type_any output_1 = Core.f_gt(
               current,
               Core.vx_new_int(6)
@@ -157,7 +157,7 @@ public final class CollectionTest {
             return output_1;
           }),
           Core.t_any_from_any.vx_fn_new((current_any) -> {
-            Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
+            final Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
             Core.Type_any output_2 = Core.f_plus(
               current,
               current
@@ -171,7 +171,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_any_from_for_while_loop(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -186,7 +186,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_any_from_for_while_loop_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 8\n (any<-for-while-loop\n  1\n  (fn : boolean\n   [current : int]\n   (< current 5))\n  (fn : int\n   [current : int]\n   (+ current current))))",
       ":testresult", Test.f_test(
@@ -196,7 +196,7 @@ public final class CollectionTest {
           Core.t_int,
           Core.vx_new_int(1),
           Core.t_boolean_from_any.vx_fn_new((current_any) -> {
-            Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
+            final Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
             Core.Type_any output_1 = Core.f_lt(
               current,
               Core.vx_new_int(5)
@@ -204,7 +204,7 @@ public final class CollectionTest {
             return output_1;
           }),
           Core.t_any_from_any.vx_fn_new((current_any) -> {
-            Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
+            final Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
             Core.Type_any output_2 = Core.f_plus(
               current,
               current
@@ -218,7 +218,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_anymap_from_struct(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -233,7 +233,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_anymap_from_struct_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (anymap\n  :name \"sname\"\n  :wordmap\n   (stringmap\n    :a \"x\"))\n (anymap<-struct\n  (translation\n   :name \"sname\"\n   :wordmap\n    (stringmap\n     :a \"x\"))))",
       ":testresult", Test.f_test(
@@ -280,7 +280,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_int_from_map_key(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -295,7 +295,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_int_from_map_key_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 2\n (int<-map-key\n  (stringmap\n   :a \"x\"\n   :b \"y\")\n  \"b\"))",
       ":testresult", Test.f_test(
@@ -320,7 +320,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_int_from_stringlist_find(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -335,7 +335,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_int_from_stringlist_find_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n 2\n (int<-stringlist-find\n  (stringlist \"a\" \"b\")\n  \"b\"))",
       ":testresult", Test.f_test(
@@ -358,7 +358,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_is_list(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -373,7 +373,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_is_list_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-list (empty stringlist)))",
       ":testresult", Test.f_test_true(
@@ -389,7 +389,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_is_map(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -404,7 +404,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_is_map_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test-true\n (is-map (empty stringmap)))",
       ":testresult", Test.f_test_true(
@@ -420,7 +420,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_for_end_loop(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -435,7 +435,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_for_end_loop_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (intlist 4 9)\n (list<-for-end-loop : intlist\n  2\n  3\n  (fn\n   [current : int]\n   (* current current))))",
       ":testresult", Test.f_test(
@@ -453,7 +453,7 @@ public final class CollectionTest {
           Core.vx_new_int(2),
           Core.vx_new_int(3),
           Core.t_any_from_int.vx_fn_new((current_any) -> {
-            Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
+            final Core.Type_int current = Core.f_any_from_any(Core.t_int, current_any);
             Core.Type_any output_1 = Core.f_multiply(
               current,
               current
@@ -467,7 +467,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_list_end(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -482,7 +482,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_list_end_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist\n  \"a\" \"b\" \"c\")\n (list<-list-end\n  (stringlist\n   \"a\" \"b\" \"c\" \"d\")\n  3))",
       ":testresult", Test.f_test(
@@ -516,7 +516,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_list_filter(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -531,7 +531,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_list_filter_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist\n  \"a1\" \"b1\" \"c1\" \"d1\")\n (list<-list-filter : stringlist\n  (list\n   \"a\" 4 \"b\" (list) \"c\" (map) \"d\")\n  (fn : string\n   [value : any]\n   (if\n    (then\n     (is-string value)\n     (string value \"1\"))))))",
       ":testresult", Test.f_test(
@@ -566,7 +566,7 @@ public final class CollectionTest {
             )
           ),
           Core.t_any_from_any.vx_fn_new((value_any) -> {
-            Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
+            final Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
             Core.Type_any output_1 = Core.f_if_2(
               Core.t_string,
               Core.vx_new(
@@ -601,7 +601,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_list_filtertypes(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -616,7 +616,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_list_filtertypes_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (list\n  \"a\" 1 \"b\" \"c\")\n (list<-list-filtertypes : list\n  (list\n   \"a\" 1 \"b\" \"c\" 4.5)\n  string int))",
       ":testresult", Test.f_test(
@@ -656,7 +656,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_list_flatten(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -671,7 +671,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_list_flatten_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (list<-list-flatten : stringlist\n  (intlist 1 2)\n  (fn : stringlist\n   [index : int]\n   (switch : stringlist\n    index\n    (case 1\n     (stringlist \"a\" \"b\"))\n    (case 2\n     (stringlist \"c\"))))))",
       ":testresult", Test.f_test(
@@ -696,7 +696,7 @@ public final class CollectionTest {
             )
           ),
           Core.t_any_from_any.vx_fn_new((index_any) -> {
-            Core.Type_int index = Core.f_any_from_any(Core.t_int, index_any);
+            final Core.Type_int index = Core.f_any_from_any(Core.t_int, index_any);
             Core.Type_any output_1 = Core.f_switch(
               Core.t_stringlist,
               index,
@@ -740,7 +740,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_list_join(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -755,7 +755,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_list_join_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list<-list-join : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))))",
       ":testresult", Test.f_test(
@@ -801,7 +801,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_list_join_1(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -816,7 +816,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_list_join_1_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a\" \"b\" \"c\" \"d\")\n (list<-list-join : stringlist\n  (stringlistlist\n   (stringlist \"a\" \"b\")\n   (stringlist \"c\" \"d\"))\n  (fn : stringlist\n   [values : stringlist]\n   values)))",
       ":testresult", Test.f_test(
@@ -856,7 +856,7 @@ public final class CollectionTest {
             )
           ),
           Core.t_any_from_any.vx_fn_new((values_any) -> {
-            Core.Type_stringlist values = Core.f_any_from_any(Core.t_stringlist, values_any);
+            final Core.Type_stringlist values = Core.f_any_from_any(Core.t_stringlist, values_any);
             Core.Type_any output_1 = values;
             return output_1;
           })
@@ -867,7 +867,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_list_start(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -882,7 +882,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_list_start_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist\n  \"b\" \"c\" \"d\")\n (list<-list-start\n  (stringlist\n   \"a\" \"b\" \"c\" \"d\")\n  2))",
       ":testresult", Test.f_test(
@@ -916,7 +916,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_list_from_list_start_end(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -931,7 +931,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_list_from_list_start_end_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringlist\n  \"b\" \"c\")\n (list<-list-start-end\n  (stringlist\n   \"a\" \"b\" \"c\" \"d\")\n  2 3))",
       ":testresult", Test.f_test(
@@ -965,7 +965,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_map_from_map_end(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -980,7 +980,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_map_from_map_end_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  :b \"1\"\n  :a \"2\")\n (map<-map-end\n  (stringmap\n   :b \"1\"\n   :a \"2\"\n   :c \"3\")\n  2))",
       ":testresult", Test.f_test(
@@ -1017,7 +1017,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_map_from_map_keys(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -1032,7 +1032,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_map_from_map_keys_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  :c \"3\"\n  :a \"1\")\n (map<-map-keys\n  (stringmap\n   :a \"1\"\n   :b \"2\"\n   :c \"3\")\n  (stringlist\n   \"c\" \"a\")))",
       ":testresult", Test.f_test(
@@ -1076,7 +1076,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_map_from_map_start(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -1091,7 +1091,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_map_from_map_start_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  :a \"2\"\n  :c \"3\")\n (map<-map-start\n  (stringmap\n   :b \"1\"\n   :a \"2\"\n   :c \"3\")\n  2))",
       ":testresult", Test.f_test(
@@ -1128,7 +1128,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_map_from_map_start_end(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -1143,7 +1143,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_map_from_map_start_end_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  :a \"2\"\n  :c \"3\")\n (map<-map-start-end\n  (stringmap\n   :b \"1\"\n   :a \"2\"\n   :c \"3\"\n   :d \"4\")\n  2 3))",
       ":testresult", Test.f_test(
@@ -1183,7 +1183,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcase f_map_from_struct(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/collection",
@@ -1198,7 +1198,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testdescribe f_map_from_struct_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  :name \"sname\")\n (map<-struct : stringmap\n  (translation\n   :name \"sname\"\n   :wordmap\n    (stringmap\n     :a \"x\"))))",
       ":testresult", Test.f_test(
@@ -1262,7 +1262,7 @@ public final class CollectionTest {
       CollectionTest.f_map_from_map_start_end(context),
       CollectionTest.f_map_from_struct(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -1270,7 +1270,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/collection", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -1285,7 +1285,7 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/collection",
       ":typemap", Core.e_intmap, 
@@ -1328,8 +1328,8 @@ public final class CollectionTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/collection", 
       ":caselist", testcaselist,

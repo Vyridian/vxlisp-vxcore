@@ -60,7 +60,7 @@ public final class Sample {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>();
       map.put(":mynum", this.mynum());
       map.put(":mystr", this.mystr());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -150,7 +150,7 @@ public final class Sample {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("mynum"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/sample/mytype", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -174,7 +174,7 @@ public final class Sample {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("mystr"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/sample/mytype", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -240,7 +240,7 @@ public final class Sample {
    */
   public static class Const_myconst {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/sample", // pkgname
         "myconst", // name
         Core.t_int
@@ -283,13 +283,13 @@ public final class Sample {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/sample", // pkgname
         "main", // name
         0, // idx
@@ -313,13 +313,13 @@ public final class Sample {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Sample.e_main;
+      final Core.Type_any output = Sample.e_main;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Sample.t_main;
+      final Core.Type_any output = Sample.t_main;
       return output;
     }
 
@@ -332,7 +332,7 @@ public final class Sample {
 
     @Override
     public Core.Type_none vx_main() {
-      Core.Type_none output = Sample.f_main();
+      final Core.Type_none output = Sample.f_main();
       return output;
     }
 
@@ -376,13 +376,13 @@ public final class Sample {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/sample", // pkgname
         "myfunc", // name
         0, // idx
@@ -406,13 +406,13 @@ public final class Sample {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Sample.e_myfunc;
+      final Core.Type_any output = Sample.e_myfunc;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Sample.t_myfunc;
+      final Core.Type_any output = Sample.t_myfunc;
       return output;
     }
 
@@ -424,8 +424,8 @@ public final class Sample {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_int inputval = (Core.Type_int)value;
-      Core.Type_any outputval = Sample.f_myfunc(inputval);
+      final Core.Type_int inputval = (Core.Type_int)value;
+      final Core.Type_any outputval = Sample.f_myfunc(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -433,14 +433,14 @@ public final class Sample {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_int myarg = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int myarg = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
       output = Sample.f_myfunc(myarg);
       return output;
     }
 
     @Override
     public Core.Type_int vx_myfunc(final Core.Type_int myarg) {
-      Core.Type_int output = Sample.f_myfunc(myarg);
+      final Core.Type_int output = Sample.f_myfunc(myarg);
       return output;
     }
 
@@ -467,7 +467,12 @@ public final class Sample {
     mapconst.put("myconst", Sample.c_myconst);
     mapfunc.put("main", Sample.t_main);
     mapfunc.put("myfunc", Sample.t_myfunc);
-    Core.vx_global_package_set("vx/sample", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/sample",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

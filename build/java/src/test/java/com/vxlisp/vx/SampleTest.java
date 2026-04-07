@@ -6,7 +6,7 @@ import java.util.List;
 public final class SampleTest {
 
   public static Test.Type_testcase c_myconst(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/sample",
@@ -21,7 +21,7 @@ public final class SampleTest {
   }
 
   public static Test.Type_testdescribe c_myconst_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n myconst\n myconst)",
       ":testresult", Test.f_test(
@@ -34,7 +34,7 @@ public final class SampleTest {
   }
 
   public static Test.Type_testcase f_myfunc(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/sample",
@@ -49,7 +49,7 @@ public final class SampleTest {
   }
 
   public static Test.Type_testdescribe f_myfunc_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test 5 (myfunc 1))",
       ":testresult", Test.f_test(
@@ -68,7 +68,7 @@ public final class SampleTest {
       SampleTest.c_myconst(context),
       SampleTest.f_myfunc(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -76,7 +76,7 @@ public final class SampleTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/sample", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 1, ":total", 1), 
@@ -91,7 +91,7 @@ public final class SampleTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/sample",
       ":typemap", Core.vx_new(
@@ -112,8 +112,8 @@ public final class SampleTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/sample", 
       ":caselist", testcaselist,

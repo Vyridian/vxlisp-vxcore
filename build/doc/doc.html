@@ -3114,7 +3114,7 @@
                 <div class="tr">
                   <div class="td">srcswift</div>
                   <div class="td">:source</div>
-                  <div class="td">../build/swift/src/main</div>
+                  <div class="td">../build/swift/Sources</div>
                   <div class="td">:swift</div>
                   <div class="td">vx/core/main</div>
                   <div class="td">vx/translation/en/context-en</div>
@@ -3124,7 +3124,7 @@
                 <div class="tr">
                   <div class="td">testswift</div>
                   <div class="td">:test</div>
-                  <div class="td">../build/swift/src/test</div>
+                  <div class="td">../build/swift/TestSuite</div>
                   <div class="td">:swift</div>
                   <div class="td"></div>
                   <div class="td">vx/translation/en/context-test</div>
@@ -3271,14 +3271,14 @@
   (cmd srcswift
    :code    :source
    :lang    :swift
-   :path    ../build/swift/src/main
+   :path    ../build/swift/Sources
    :main    vx/core/main
    :context vx/translation/en/context-en
    :doc     &quot;Build Swift Source Code&quot;)
   (cmd testswift
    :code    :test
    :lang    :swift
-   :path    ../build/swift/src/test
+   :path    ../build/swift/TestSuite
    :context vx/translation/en/context-test
    :doc     &quot;Build Swift Test Code&quot;)
 )
@@ -3380,7 +3380,8 @@
   (native
    :cpp
     &quot;// :header
-     vx_core::Type_any vx_type_from_any(vx_core::Type_any value) const;&quot;)
+     vx_core::Type_any vx_type_from_any(vx_core::Type_any value) const;&quot;
+   :else &quot;&quot;)
  :doc &quot;Any Value for Variant Type&quot;)
 
 (type any-async&lt;-func : func
@@ -3446,6 +3447,13 @@
 
      // :implements
      override fun vx_boolean() : Boolean {
+       return vxboolean;
+     }&quot;
+   :swift
+    &quot;internal var vxboolean : Bool = false
+
+     // :implements
+     public func vx_boolean() -&gt; Bool {
        return vxboolean;
      }&quot;)
  :test (test-true true)
@@ -3548,6 +3556,18 @@
      // :implements
      override fun vx_string() : String {
        return vxdecimal
+     }&quot;
+   :swift
+    &quot;internal var vxdecimal : String = “0.0”
+
+     // :implements
+     public func vx_float() -&gt; Float {
+       return Vx_Core.vx_float_from_string(vxdecimal)
+     }
+
+     // :implements
+     public func vx_string() -&gt; String {
+       return vxdecimal
      }&quot;)
  :doc &quot;A clean version of float like Java BigDecimal.&quot;)
 
@@ -3583,6 +3603,13 @@
      // :implements
      override fun vx_float() : Float {
        return vxfloat
+     }&quot;
+   :swift
+    &quot;internal var vxfloat : Float = 0
+
+     // :implements
+     public func vx_float() -&gt; Float {
+       return vxfloat
      }&quot;)
  :test (test
         4.5
@@ -3594,7 +3621,8 @@
   (native
    :cpp
     &quot;// :header
-     vx_core::Type_funcdef vx_funcdef() const;&quot;)
+     vx_core::Type_funcdef vx_funcdef() const;&quot;
+   :else &quot;&quot;)
  :test (test
         5
         (let
@@ -3619,7 +3647,8 @@
        long idx,
        bool async,
        vx_core::Type_any typ
-     );&quot;)
+     );&quot;
+   :else &quot;&quot;)
  :doc &quot;Func Definition Class for inspecting properties.&quot;)
 
 (type funclist : list
@@ -3665,6 +3694,13 @@
      // :implements
      override fun vx_int() : Int {
        return vxint
+     }&quot;
+   :swift
+    &quot;internal var vxint : Int = 0
+
+     // :implements
+     public func vx_int() -&gt; Int {
+       return vxint
      }&quot;)
  :test (test-true  (is-int 4))
        (test-true  (is-int &quot;4&quot;))
@@ -3692,7 +3728,8 @@
      vx_core::vx_Type_listany vx_p_list;
      vx_core::vx_Type_listany vx_list() const;
      vx_core::Type_any vx_get_any(vx_core::Type_int index) const;
-     vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const;&quot;)
+     vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const;&quot;
+   :else &quot;&quot;)
  :doc &quot;A simple untyped list.&quot;)
 
 (type listtype : type
@@ -3712,7 +3749,8 @@
      vx_core::vx_Type_mapany vx_map() const;
      vx_core::Type_any vx_get_any(vx_core::Type_string key) const;
      vx_core::Type_boolean vx_set(vx_core::Type_string name, vx_core::Type_any value);
-     vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const;&quot;)
+     vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const;&quot;
+   :else &quot;&quot;)
  :doc &quot;A simple untyped map.&quot;)
 
 (type maptype : type
@@ -3770,7 +3808,8 @@
        for (Core.Type_any addany : addlistany) {
          this.vx_recycle(addany);
        }
-     }&quot;)
+     }&quot;
+   :else &quot;&quot;)
  :doc &quot;Memory Pool&quot;)
 
 (type msg : struct
@@ -3790,7 +3829,9 @@
    :java
     &quot;public Exception err = null;&quot;
    :kotlin
-    &quot;var err : Exception? = null&quot;)
+    &quot;var err : Exception? = null&quot;
+   :swift
+    &quot;public var err : Error? = nil&quot;)
  :doc &quot;Message Type for error handling&quot;)
 
 (type msgblock : struct
@@ -3966,6 +4007,13 @@
      // :implements
      override fun vx_string() : String {
        return vxstring
+     }&quot;
+   :swift
+    &quot;internal var vxstring : String = “”
+
+     // :implements
+     public func vx_string() -&gt; String {
+       return vxstring
      }&quot;)
  :test (test &quot;a&quot; (string &quot;a&quot;))
        (test &quot;ab&quot; (string &quot;a&quot; &quot;b&quot;))
@@ -4001,7 +4049,8 @@
    :cpp
     &quot;// :header
      vx_core::vx_Type_mapany vx_map() const;
-     vx_core::Type_any vx_get_any(vx_core::Type_string key) const;&quot;)
+     vx_core::Type_any vx_get_any(vx_core::Type_string key) const;&quot;
+   :else &quot;&quot;)
  :doc &quot;Struct is the type of all structures/objects with properties.&quot;)
 
 (type thenelse : struct
@@ -4064,7 +4113,8 @@
        vx_core::Type_anylist allowvalues,
        vx_core::Type_anylist disallowvalues,
        vx_core::Type_argmap properties
-     );&quot;)
+     );&quot;
+   :else &quot;&quot;)
  :doc &quot;Type Definition Class for inspecting Type properties.&quot;)
 
 (type typelist : list
@@ -4155,7 +4205,8 @@
   method     : string
   parameters : anylist :...]
  (native
-  :js &quot;target[method].apply(parameters)&quot;)
+  :js &quot;target[method].apply(parameters)&quot;
+  :else &quot;&quot;)
  :alias &quot;dotmethod&quot;
  :sideeffects &quot;Depends on object&quot;
  :doc &quot;Not Recommened: Support for Object Oriented dot notation. e.g. (this.foo 'a') = this.foo('a')&quot;)
@@ -4802,14 +4853,8 @@
    &quot;if (value is T tval) {
       output = tval;
     }&quot;
-  :java
-   &quot;@SuppressWarnings(“unchecked”)
-    output = (T)value;&quot;
   :js
-   &quot;value&quot;
-  :kotlin
-   &quot;@Suppress(“UNCHECKED_CAST”)
-    output = value as T&quot;)
+   &quot;value&quot;)
  :doc &quot;Function Type taking any value any-2 and returning generic any-1&quot;)
 
 (func any&lt;-any-async : any-1
@@ -4820,6 +4865,7 @@
 (func any&lt;-any-context : any-1
  [value : any-2]
  (native
+  :cpp &quot;&quot;
   :csharp
    &quot;if (value is T tval) {
       output = tval;
@@ -4827,6 +4873,7 @@
   :java
    &quot;@SuppressWarnings(“unchecked”)
     output = (T)value;&quot;
+  :js &quot;&quot;
   :kotlin
    &quot;@Suppress(“UNCHECKED_CAST”)
     output = (value as T)&quot;)
@@ -4936,8 +4983,6 @@
       work = fn_reduce-&gt;vx_any_from_reduce(work, item);
     };
     output = vx_core::vx_any_from_any(generic_any_1, work);&quot;
-  :csharp :auto
-  :java   :auto
   :js
    &quot;output = valstart
     const fn = fn_reduce['vx_value']
@@ -4945,8 +4990,7 @@
       for (const item of list) {
         output = fn(output, item)
       }
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test
         24
         (any&lt;-list-start-reduce : int
@@ -4966,7 +5010,6 @@
   :cpp
    &quot;vx_core::Type_any result = vx_core::vx_any_from_list_result_next(generic_any_1, list, valstart, fn_reduce_next);
     output = vx_core::vx_any_from_any(generic_any_1, result);&quot;
-  :csharp :auto
   :java
    &quot;output = valstart;
     final List&lt;Core.Type_any&gt; listval = list.vx_list();
@@ -4994,8 +5037,7 @@
         }
         current = next
       }
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :doc &quot;Returns a val from a list reduce operation&quot;)
 
 (func any&lt;-map : any-1
@@ -5060,12 +5102,7 @@
  [map       : map-1
   start     : any-1
   fn-reduce : any&lt;-any-key-value :: any-1 :: any-1]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;xayb&quot;
         (any&lt;-map-start-reduce
@@ -5134,7 +5171,7 @@
     }&quot;
   :kotlin
    &quot;val value : vx_core.Type_any = vstruct.vx_any(key)
-    output = vx_core.f_any_from_any(generic_any_1, value);&quot;)
+    output = vx_core.f_any_from_any(generic_any_1, value)&quot;)
  :test (test
         &quot;sname&quot;
         (any&lt;-struct : string
@@ -5158,6 +5195,7 @@
 (func async : any-1 :async
  [value : any-1]
  (native
+  :cpp &quot;&quot;
   :csharp
    &quot;output = Vx.Core.vx_async_new_from_value(value);&quot;
   :java
@@ -5181,11 +5219,11 @@
  :doc &quot;Function Type returning boolean with no parameters&quot;)
 
 (func boolean-permission&lt;-func : boolean
- [func : func]
+ [fnc : func]
  (contains
   (allowfuncs&lt;-security
    (security&lt;-context))
-  func)
+  fnc)
  :context
  :doc &quot;Returns true if the given func has permission.&quot;)
 
@@ -5193,12 +5231,7 @@
  [valuemap : map-1
   name     : string
   value    : any-1]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (stringmutablemap
          :b &quot;y&quot;
@@ -5250,7 +5283,6 @@
   :cpp
    &quot;long intresult = vx_core::vx_compare(val1, val2);
     output = vx_core::vx_new_int(intresult);&quot;
-  :csharp :auto
   :java
    &quot;int intresult = 0;
     if ((val1 instanceof Core.Type_number) &amp;&amp; (val2 instanceof Core.Type_number)) {
@@ -5281,20 +5313,14 @@
       output = -1
     } else {
       output = 1
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test 1 (compare 3 2))
        (test 1 (compare &quot;z&quot; &quot;a&quot;))
  :doc &quot;Returns 0 if vals are equal, 1 if val1 &gt; val2, -1 if val1 &lt; val2&quot;)
 
 (func constdef&lt;-any : constdef
  [value : any]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (constdef
          :pkgname &quot;vx/core&quot;
@@ -5360,7 +5386,6 @@
       }
     }
     output = vx_core::vx_new_boolean(booleanresult);&quot;
-  :csharp :auto
   :java
    &quot;boolean booleanresult = false;
     List&lt;Core.Type_any&gt; listvalues = values.vx_list();
@@ -5373,8 +5398,7 @@
     }
     output = Core.vx_new_boolean(booleanresult);&quot;
   :js
-   &quot;values.includes(find)&quot;
-  :kotlin :auto)
+   &quot;values.includes(find)&quot;)
  :test (test-true
         (contains (stringlist &quot;1&quot; &quot;2&quot; &quot;3&quot;) &quot;2&quot;))
        (test-true
@@ -5506,12 +5530,12 @@
       }
     }&quot;
   :js
-   &quot;output = &quot; nothing &quot;
+   &quot;output = vx_core.c_nothing
     const fn = fn_any_from_any['vx_value']
     if (fn) {
       for (let index=0;index &lt; values.length;index++) {
         output = fn(generic, values[index])
-        if (output != &quot; nothing &quot;) {
+        if (output != vx_core.c_nothing) {
           break
         }
       }
@@ -5568,6 +5592,7 @@
    &quot;value.vx_funcdef();&quot;
   :java
    &quot;value.vx_funcdef();&quot;
+  :js &quot;&quot;
   :kotlin
    &quot;value.vx_funcdef()&quot;)
  :doc &quot;Returns the definition of a function&quot;)
@@ -5681,8 +5706,6 @@
   :cpp
    &quot;vx_core::Type_any any = vx_core::vx_if_thenelselist(generic_any_1, thenelselist);
     output = vx_core::vx_any_from_any(generic_any_1, any);&quot;
-  :csharp :auto
-  :java :auto
   :js
    &quot;let fn_any = null
     for (const thenelseval of thenelselist) {
@@ -5706,8 +5729,7 @@
         output = fn()
         break
       }
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test-true
         (if
          (then (= 2 3) false)
@@ -5721,62 +5743,7 @@
 
 (func int&lt;-string : int
  [value : string]
- (switch : int
-  value
-  (case &quot;notanumber&quot;  notanumber)
-  (case &quot;infinity&quot;    infinity)
-  (case &quot;neginfinity&quot; neginfinity)
-  (else
-   (native
-    :cpp
-     &quot;// :capture value
-      vx_core::Type_int intresult = vx_core::e_int;
-      try {
-        std::string sval = value-&gt;vx_string();
-        long ival = std::stoll(sval);
-        intresult = vx_core::vx_new_int(ival);
-      } catch (std::exception ex) {
-        intresult = vx_core::c_notanumber;
-      }
-      return intresult;&quot;
-    :csharp
-     &quot;Vx.Core.Type_int intresult = Vx.Core.e_int;
-      string strval = value.vx_string();
-      try {
-        float floatresult = float.Parse(strval);
-        int iresult = (int)floatresult;
-        intresult = Vx.Core.vx_new_int(iresult);
-      } catch (Exception) {
-        intresult = Vx.Core.c_notanumber;
-      }
-      return intresult;&quot;
-    :java
-     &quot;Core.Type_int intresult = Core.e_int;
-      String strval = value.vx_string();
-      try {
-        float floatresult = Float.parseFloat(strval);
-        int iresult = (int)floatresult;
-        intresult = Core.vx_new_int(iresult);
-      } catch (Exception ex) {
-        intresult = Core.c_notanumber;
-      }
-      return intresult;&quot;
-    :js
-     &quot;parseInt(value)&quot;
-    :kotlin
-     &quot;var intresult : vx_core.Type_int = vx_core.e_int
-      val strval : String = value.vx_string()
-      try {
-        val floatresult : Float = strval.toFloat()
-        val iresult : Int = floatresult.toInt()
-        intresult = vx_core.vx_new_int(iresult)
-      } catch (ex : Exception) {
-        intresult = vx_core.c_notanumber
-      }
-      intresult&quot;
-    )
-  )
- )
+ (native :auto)
  :test (test 4 (int&lt;-string &quot;4&quot;))
        (test 5 (int&lt;-string &quot;5.4&quot;))
        (test 5 (int&lt;-string &quot;5.9&quot;))
@@ -5900,7 +5867,7 @@
  [value : any]
  (native
   :cpp
-   &quot;vx_core::Type_string extend = &quot; (extends&lt;-any value) &quot;;
+   &quot;vx_core::Type_string extend = vx_core::f_extends_from_any(value);
     std::string sextend = extend-&gt;vx_string();
     vx_core::vx_release(extend);
     if (sextend == “:func”) {
@@ -5915,7 +5882,7 @@
       output = Core.c_true;
     }&quot;
   :js
-   &quot;const extend = &quot; (extends&lt;-any value) &quot;
+   &quot;const extend = vx_core.f_extends_from_any(value)
     if (extend == ':func') {
       output = vx_core.c_true
     }&quot;
@@ -6129,7 +6096,6 @@
     });
     vx_core::Type_any anylist = generic_list_1-&gt;vx_new(list_result);
     output = vx_core::vx_any_from_any(generic_list_1, anylist);&quot;
-  :csharp :auto
   :java
    &quot;List&lt;Core.Type_any&gt; list_value = values.vx_list();
     List&lt;Core.Type_any&gt; list_result = Core.arraylist_from_arraylist_fn(list_value, (val) -&gt; {
@@ -6141,8 +6107,7 @@
     if (fn) {
       output = values.map(fn)
       output['vx_type'] = generic_list_1
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :doc &quot;Returns a list of processed items from another list&quot;)
 
 (func list&lt;-list-async  : list-1 :async
@@ -6155,8 +6120,6 @@
       return fn_any_from_any_async-&gt;vx_any_from_any_async(vx_core::vx_type(val), val);
     });
     output = vx_core::vx_async_new_from_listasync(generic_list_1, list_async_result);&quot;
-  :csharp :auto
-  :java   :auto
   :js
    &quot;const fn = fn_any_from_any_async['vx_value']
     if (fn) {
@@ -6164,19 +6127,13 @@
       const future = Promise.all(listfuture)
       output = await future
       output['vx_type'] = generic_list_1
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :doc &quot;Returns an asynchronous list of the processed asynchronous items from another list&quot;)
 
 (func list&lt;-list-intany : list-1
  [values          : list-2
   fn-any&lt;-int-any : any&lt;-int-any]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (stringlist &quot;a1&quot; &quot;b2&quot;)
         (list&lt;-list-intany : stringlist
@@ -6207,8 +6164,6 @@
  [valuemap          : map-2
   fn-any&lt;-key-value : any&lt;-key-value]
  (native
-  :cpp :auto
-  :csharp :auto
   :java
    &quot;Map&lt;String, Core.Type_any&gt; map_value = valuemap.vx_map();
     List&lt;Core.Type_any&gt; listresult = Core.arraylist_from_linkedhashmap_fn(map_value, (key, val) -&gt; {
@@ -6217,8 +6172,7 @@
     });
     output = Core.f_any_from_any(generic_list_1, generic_list_1.vx_new(listresult));&quot;
   :js
-   &quot;vx_core.vx_list_from_map_fn(generic_list_1, valuemap, fn_any_from_key_value)&quot;
-  :kotlin :auto)
+   &quot;vx_core.vx_list_from_map_fn(generic_list_1, valuemap, fn_any_from_key_value)&quot;)
  :test (test
         (stringlist &quot;a1&quot; &quot;b2&quot;)
         (list&lt;-map : stringlist
@@ -6238,7 +6192,8 @@
  (native
   :js
    &quot;output = []
-    output['vx_type'] = type&quot;)
+    output['vx_type'] = type&quot;
+  :else &quot;&quot;)
  :doc &quot;Create an empty list from a type. Used internally for default lists&quot;)
 
 (func log : any
@@ -6311,7 +6266,6 @@
    &quot;vx_core::vx_Type_listany listany = vallist-&gt;vx_list();
     vx_core::vx_Type_mapany mapany = vx_core::vx_map_from_list(listany, fn_any_from_any);
     output = vx_core::vx_new_map(generic_map_1, mapany);&quot;
-  :csharp :auto
   :java
    &quot;List&lt;Core.Type_any&gt; listval = vallist.vx_list();
     Map&lt;String, Core.Type_any&gt; mapresult = Core.vx_map_from_list_fn(listval, (val) -&gt; {
@@ -6330,8 +6284,7 @@
     output = {
       vx_type: generic_map_1,
       vx_value: valmap
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test
         (stringmap
          &quot;keya&quot; &quot;a&quot;
@@ -6431,12 +6384,7 @@
 
 (func msgblock&lt;-any : msgblock
  [value : any]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :doc &quot;Returns a msgblock from any&quot;)
 
 (func msgblock&lt;-msgblock-msg : msgblock
@@ -6471,7 +6419,7 @@
     case 'string':
       break
     default:
-      const extend = &quot; (extends&lt;-any value) &quot;
+      const extend = vx_core.f_extends_from_any(value)
       switch (extend) {
       case ':list':
         output = [...value]
@@ -6483,7 +6431,8 @@
         break
       }
       break
-    }&quot;)
+    }&quot;
+  :else &quot;&quot;)
   :doc &quot;Returns native value of value object&quot;)
 
 (func new : any-1
@@ -6695,7 +6644,7 @@
       output = fn_any.vx_any_from_func(generic_any_1);
     }&quot;
   :js
-   &quot;const typedef = &quot; (typedef&lt;-any fn-any) &quot;
+   &quot;const typedef = vx_core.f_typedef_from_any(fn_any)
     const extend = vx_core.f_extends_from_typedef(typedef)
     switch (extend) {
     case ':func':
@@ -6736,7 +6685,7 @@
       output = fn_any.vx_any_from_func_async(generic_any_1);
     }&quot;
   :js
-   &quot;const typedef = &quot; (typedef&lt;-any fn-any) &quot;
+   &quot;const typedef = vx_core.f_typedef_from_any(fn_any)
     const extend = vx_core.f_extends_from_typedef(typedef)
     switch (extend) {
     case ':func':
@@ -6789,20 +6738,18 @@
  :doc &quot;Returns setting from a context&quot;)
 
 (func string-repeat : string
- [text   : string
-  repeat : int]
+ [text : string
+  num  : int]
  (native
   :cpp
-   &quot;std::string stringtext = vx_core::vx_string_from_string_repeat(text-&gt;vx_string(), repeat-&gt;vx_int());
+   &quot;std::string stringtext = vx_core::vx_string_from_string_repeat(text-&gt;vx_string(), num-&gt;vx_int());
     output = vx_core::vx_new_string(stringtext);&quot;
-  :csharp :auto
   :java
    &quot;String stringtext = text.vx_string();
-    int intrepeat = repeat.vx_int();
+    int intrepeat = num.vx_int();
     String stringresult = stringtext.repeat(intrepeat);
     output = Core.vx_new_string(stringresult);&quot;
-  :js &quot;text.repeat(repeat)&quot;
-  :kotlin :auto)
+  :js &quot;text.repeat(num)&quot;)
  :test (test &quot;abab&quot; (string-repeat &quot;ab&quot; 2)))
 
 (func string&lt;-any : string
@@ -6833,11 +6780,8 @@
   :cpp
    &quot;std::string soutput = vx_core::vx_string_from_any_indent(value, indent-&gt;vx_int(), linefeed-&gt;vx_boolean(), false);
     output = vx_core::vx_new_string(soutput);&quot;
-  :csharp :auto
-  :java :auto
   :js
-   &quot;output = vx_core.vx_string_from_any_indent(value, indent, linefeed)&quot;
-  :kotlin :auto)
+   &quot;output = vx_core.vx_string_from_any_indent(value, indent, linefeed)&quot;)
  :doc &quot;Return a string representation of a value&quot;)
 
 (func string&lt;-func : string
@@ -6848,12 +6792,7 @@
  [text    : string
   find    : string
   replace : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;a!b!c&quot;
         (string&lt;-string-find-replace
@@ -6885,7 +6824,6 @@
   :cpp
    &quot;vx_core::Type_any any = vx_core::vx_switch(generic_any_1, value, thenelselist);
     output = vx_core::vx_any_from_any(generic_any_1, any);&quot;
-  :csharp :auto
   :java
    &quot;Core.Func_any_from_func fn_any = null;
     List&lt;Core.Type_thenelse&gt; listthenelse = thenelselist.vx_listthenelse();
@@ -6955,8 +6893,7 @@
           output = fn()
         }
       }
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test 1
         (switch : int
          &quot;d&quot;
@@ -6990,30 +6927,30 @@
   :js
    &quot;switch (typeof value) {
     case 'boolean':
-      output = &quot; boolean &quot;
+      output = vx_core.t_boolean
       break
     case 'number':
       switch (value) {
-      case &quot; infinity &quot;:
-      case &quot; neginfinity &quot;:
-      case &quot; notanumber &quot;:
-        output = &quot; int &quot;
+      case vx_core.c_infinity:
+      case vx_core.c_neginfinity:
+      case vx_core.c_notanumber:
+        output = vx_core.t_int
         break
       default:
         const strval = '' + value
         if (strval.indexOf('.') &lt; 0) {
-          output = &quot; int &quot;
+          output = vx_core.t_int
         } else {
-          output = &quot; float &quot;
+          output = vx_core.t_float
         }
         break
       }
       break
     case 'string':
-      output = &quot; string &quot;
+      output = vx_core.t_string
       break
     case 'function':
-      output = &quot; func &quot;
+      output = vx_core.t_func
       break
     default:
       output = value['vx_type']
@@ -7135,7 +7072,8 @@
   (native
    :cpp
     &quot;// :header
-     vx_core::Type_any vx_type_from_any(vx_core::Type_any value) const;&quot;)
+     vx_core::Type_any vx_type_from_any(vx_core::Type_any value) const;&quot;
+   :else &quot;&quot;)
  :doc &quot;Any Value for Variant Type&quot;)</div>
                 </li>
               </ul>
@@ -7668,6 +7606,13 @@
 
      // :implements
      override fun vx_boolean() : Boolean {
+       return vxboolean;
+     }&quot;
+   :swift
+    &quot;internal var vxboolean : Bool = false
+
+     // :implements
+     public func vx_boolean() -&gt; Bool {
        return vxboolean;
      }&quot;)
  :test (test-true true)
@@ -8440,6 +8385,18 @@
      // :implements
      override fun vx_string() : String {
        return vxdecimal
+     }&quot;
+   :swift
+    &quot;internal var vxdecimal : String = “0.0”
+
+     // :implements
+     public func vx_float() -&gt; Float {
+       return Vx_Core.vx_float_from_string(vxdecimal)
+     }
+
+     // :implements
+     public func vx_string() -&gt; String {
+       return vxdecimal
      }&quot;)
  :doc &quot;A clean version of float like Java BigDecimal.&quot;)</div>
                 </li>
@@ -8562,6 +8519,13 @@
      // :implements
      override fun vx_float() : Float {
        return vxfloat
+     }&quot;
+   :swift
+    &quot;internal var vxfloat : Float = 0
+
+     // :implements
+     public func vx_float() -&gt; Float {
+       return vxfloat
      }&quot;)
  :test (test
         4.5
@@ -8620,7 +8584,8 @@
   (native
    :cpp
     &quot;// :header
-     vx_core::Type_funcdef vx_funcdef() const;&quot;)
+     vx_core::Type_funcdef vx_funcdef() const;&quot;
+   :else &quot;&quot;)
  :test (test
         5
         (let
@@ -8740,7 +8705,8 @@
        long idx,
        bool async,
        vx_core::Type_any typ
-     );&quot;)
+     );&quot;
+   :else &quot;&quot;)
  :doc &quot;Func Definition Class for inspecting properties.&quot;)</div>
                 </li>
               </ul>
@@ -8936,6 +8902,13 @@
      // :implements
      override fun vx_int() : Int {
        return vxint
+     }&quot;
+   :swift
+    &quot;internal var vxint : Int = 0
+
+     // :implements
+     public func vx_int() -&gt; Int {
+       return vxint
      }&quot;)
  :test (test-true  (is-int 4))
        (test-true  (is-int &quot;4&quot;))
@@ -9107,7 +9080,8 @@
      vx_core::vx_Type_listany vx_p_list;
      vx_core::vx_Type_listany vx_list() const;
      vx_core::Type_any vx_get_any(vx_core::Type_int index) const;
-     vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const;&quot;)
+     vx_core::Type_any vx_new_from_list(vx_core::vx_Type_listany listval) const;&quot;
+   :else &quot;&quot;)
  :doc &quot;A simple untyped list.&quot;)</div>
                 </li>
               </ul>
@@ -9259,7 +9233,8 @@
      vx_core::vx_Type_mapany vx_map() const;
      vx_core::Type_any vx_get_any(vx_core::Type_string key) const;
      vx_core::Type_boolean vx_set(vx_core::Type_string name, vx_core::Type_any value);
-     vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const;&quot;)
+     vx_core::Type_any vx_new_from_map(vx_core::vx_Type_mapany mapval) const;&quot;
+   :else &quot;&quot;)
  :doc &quot;A simple untyped map.&quot;)</div>
                 </li>
               </ul>
@@ -9426,7 +9401,8 @@
        for (Core.Type_any addany : addlistany) {
          this.vx_recycle(addany);
        }
-     }&quot;)
+     }&quot;
+   :else &quot;&quot;)
  :doc &quot;Memory Pool&quot;)</div>
                 </li>
               </ul>
@@ -9541,7 +9517,9 @@
    :java
     &quot;public Exception err = null;&quot;
    :kotlin
-    &quot;var err : Exception? = null&quot;)
+    &quot;var err : Exception? = null&quot;
+   :swift
+    &quot;public var err : Error? = nil&quot;)
  :doc &quot;Message Type for error handling&quot;)</div>
                 </li>
               </ul>
@@ -11030,6 +11008,13 @@
      // :implements
      override fun vx_string() : String {
        return vxstring
+     }&quot;
+   :swift
+    &quot;internal var vxstring : String = “”
+
+     // :implements
+     public func vx_string() -&gt; String {
+       return vxstring
      }&quot;)
  :test (test &quot;a&quot; (string &quot;a&quot;))
        (test &quot;ab&quot; (string &quot;a&quot; &quot;b&quot;))
@@ -11305,7 +11290,8 @@
    :cpp
     &quot;// :header
      vx_core::vx_Type_mapany vx_map() const;
-     vx_core::Type_any vx_get_any(vx_core::Type_string key) const;&quot;)
+     vx_core::Type_any vx_get_any(vx_core::Type_string key) const;&quot;
+   :else &quot;&quot;)
  :doc &quot;Struct is the type of all structures/objects with properties.&quot;)</div>
                 </li>
               </ul>
@@ -11867,7 +11853,8 @@
        vx_core::Type_anylist allowvalues,
        vx_core::Type_anylist disallowvalues,
        vx_core::Type_argmap properties
-     );&quot;)
+     );&quot;
+   :else &quot;&quot;)
  :doc &quot;Type Definition Class for inspecting Type properties.&quot;)</div>
                 </li>
               </ul>
@@ -12819,7 +12806,8 @@
   method     : string
   parameters : anylist :...]
  (native
-  :js &quot;target[method].apply(parameters)&quot;)
+  :js &quot;target[method].apply(parameters)&quot;
+  :else &quot;&quot;)
  :alias &quot;dotmethod&quot;
  :sideeffects &quot;Depends on object&quot;
  :doc &quot;Not Recommened: Support for Object Oriented dot notation. e.g. (this.foo 'a') = this.foo('a')&quot;)</div>
@@ -15899,14 +15887,8 @@ improves readability.</div>
    &quot;if (value is T tval) {
       output = tval;
     }&quot;
-  :java
-   &quot;@SuppressWarnings(“unchecked”)
-    output = (T)value;&quot;
   :js
-   &quot;value&quot;
-  :kotlin
-   &quot;@Suppress(“UNCHECKED_CAST”)
-    output = value as T&quot;)
+   &quot;value&quot;)
  :doc &quot;Function Type taking any value any-2 and returning generic any-1&quot;)</div>
                 </li>
               </ul>
@@ -16033,6 +16015,7 @@ improves readability.</div>
                   <div class="source">(func any&lt;-any-context : any-1
  [value : any-2]
  (native
+  :cpp &quot;&quot;
   :csharp
    &quot;if (value is T tval) {
       output = tval;
@@ -16040,6 +16023,7 @@ improves readability.</div>
   :java
    &quot;@SuppressWarnings(“unchecked”)
     output = (T)value;&quot;
+  :js &quot;&quot;
   :kotlin
    &quot;@Suppress(“UNCHECKED_CAST”)
     output = (value as T)&quot;)
@@ -16776,8 +16760,6 @@ improves readability.</div>
       work = fn_reduce-&gt;vx_any_from_reduce(work, item);
     };
     output = vx_core::vx_any_from_any(generic_any_1, work);&quot;
-  :csharp :auto
-  :java   :auto
   :js
    &quot;output = valstart
     const fn = fn_reduce['vx_value']
@@ -16785,8 +16767,7 @@ improves readability.</div>
       for (const item of list) {
         output = fn(output, item)
       }
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test
         24
         (any&lt;-list-start-reduce : int
@@ -16874,7 +16855,6 @@ improves readability.</div>
   :cpp
    &quot;vx_core::Type_any result = vx_core::vx_any_from_list_result_next(generic_any_1, list, valstart, fn_reduce_next);
     output = vx_core::vx_any_from_any(generic_any_1, result);&quot;
-  :csharp :auto
   :java
    &quot;output = valstart;
     final List&lt;Core.Type_any&gt; listval = list.vx_list();
@@ -16902,8 +16882,7 @@ improves readability.</div>
         }
         current = next
       }
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :doc &quot;Returns a val from a list reduce operation&quot;)</div>
                 </li>
               </ul>
@@ -17095,12 +17074,7 @@ improves readability.</div>
  [map       : map-1
   start     : any-1
   fn-reduce : any&lt;-any-key-value :: any-1 :: any-1]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;xayb&quot;
         (any&lt;-map-start-reduce
@@ -17618,7 +17592,7 @@ improves readability.</div>
     }&quot;
   :kotlin
    &quot;val value : vx_core.Type_any = vstruct.vx_any(key)
-    output = vx_core.f_any_from_any(generic_any_1, value);&quot;)
+    output = vx_core.f_any_from_any(generic_any_1, value)&quot;)
  :test (test
         &quot;sname&quot;
         (any&lt;-struct : string
@@ -17700,6 +17674,7 @@ improves readability.</div>
                   <div class="source">(func async : any-1 :async
  [value : any-1]
  (native
+  :cpp &quot;&quot;
   :csharp
    &quot;output = Vx.Core.vx_async_new_from_value(value);&quot;
   :java
@@ -17923,7 +17898,7 @@ improves readability.</div>
                     <div class="td">Description</div>
                   </div>
                   <div class="tr">
-                    <div class="td">func</div>
+                    <div class="td">fnc</div>
                     <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/func')">vx/core/func</span></div>
                     <div class="td"></div>
                   </div>
@@ -17945,11 +17920,11 @@ improves readability.</div>
               <ul>
                 <li>
                   <div class="source">(func boolean-permission&lt;-func : boolean
- [func : func]
+ [fnc : func]
  (contains
   (allowfuncs&lt;-security
    (security&lt;-context))
-  func)
+  fnc)
  :context
  :doc &quot;Returns true if the given func has permission.&quot;)</div>
                 </li>
@@ -18049,12 +18024,7 @@ improves readability.</div>
  [valuemap : map-1
   name     : string
   value    : any-1]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (stringmutablemap
          :b &quot;y&quot;
@@ -18297,7 +18267,6 @@ improves readability.</div>
   :cpp
    &quot;long intresult = vx_core::vx_compare(val1, val2);
     output = vx_core::vx_new_int(intresult);&quot;
-  :csharp :auto
   :java
    &quot;int intresult = 0;
     if ((val1 instanceof Core.Type_number) &amp;&amp; (val2 instanceof Core.Type_number)) {
@@ -18328,8 +18297,7 @@ improves readability.</div>
       output = -1
     } else {
       output = 1
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test 1 (compare 3 2))
        (test 1 (compare &quot;z&quot; &quot;a&quot;))
  :doc &quot;Returns 0 if vals are equal, 1 if val1 &gt; val2, -1 if val1 &lt; val2&quot;)</div>
@@ -18400,12 +18368,7 @@ improves readability.</div>
                 <li>
                   <div class="source">(func constdef&lt;-any : constdef
  [value : any]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (constdef
          :pkgname &quot;vx/core&quot;
@@ -18666,7 +18629,6 @@ improves readability.</div>
       }
     }
     output = vx_core::vx_new_boolean(booleanresult);&quot;
-  :csharp :auto
   :java
    &quot;boolean booleanresult = false;
     List&lt;Core.Type_any&gt; listvalues = values.vx_list();
@@ -18679,8 +18641,7 @@ improves readability.</div>
     }
     output = Core.vx_new_boolean(booleanresult);&quot;
   :js
-   &quot;values.includes(find)&quot;
-  :kotlin :auto)
+   &quot;values.includes(find)&quot;)
  :test (test-true
         (contains (stringlist &quot;1&quot; &quot;2&quot; &quot;3&quot;) &quot;2&quot;))
        (test-true
@@ -19308,12 +19269,12 @@ improves readability.</div>
       }
     }&quot;
   :js
-   &quot;output = &quot; nothing &quot;
+   &quot;output = vx_core.c_nothing
     const fn = fn_any_from_any['vx_value']
     if (fn) {
       for (let index=0;index &lt; values.length;index++) {
         output = fn(generic, values[index])
-        if (output != &quot; nothing &quot;) {
+        if (output != vx_core.c_nothing) {
           break
         }
       }
@@ -19553,6 +19514,7 @@ improves readability.</div>
    &quot;value.vx_funcdef();&quot;
   :java
    &quot;value.vx_funcdef();&quot;
+  :js &quot;&quot;
   :kotlin
    &quot;value.vx_funcdef()&quot;)
  :doc &quot;Returns the definition of a function&quot;)</div>
@@ -19923,8 +19885,6 @@ improves readability.</div>
   :cpp
    &quot;vx_core::Type_any any = vx_core::vx_if_thenelselist(generic_any_1, thenelselist);
     output = vx_core::vx_any_from_any(generic_any_1, any);&quot;
-  :csharp :auto
-  :java :auto
   :js
    &quot;let fn_any = null
     for (const thenelseval of thenelselist) {
@@ -19948,8 +19908,7 @@ improves readability.</div>
         output = fn()
         break
       }
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test-true
         (if
          (then (= 2 3) false)
@@ -20080,62 +20039,7 @@ improves readability.</div>
                 <li>
                   <div class="source">(func int&lt;-string : int
  [value : string]
- (switch : int
-  value
-  (case &quot;notanumber&quot;  notanumber)
-  (case &quot;infinity&quot;    infinity)
-  (case &quot;neginfinity&quot; neginfinity)
-  (else
-   (native
-    :cpp
-     &quot;// :capture value
-      vx_core::Type_int intresult = vx_core::e_int;
-      try {
-        std::string sval = value-&gt;vx_string();
-        long ival = std::stoll(sval);
-        intresult = vx_core::vx_new_int(ival);
-      } catch (std::exception ex) {
-        intresult = vx_core::c_notanumber;
-      }
-      return intresult;&quot;
-    :csharp
-     &quot;Vx.Core.Type_int intresult = Vx.Core.e_int;
-      string strval = value.vx_string();
-      try {
-        float floatresult = float.Parse(strval);
-        int iresult = (int)floatresult;
-        intresult = Vx.Core.vx_new_int(iresult);
-      } catch (Exception) {
-        intresult = Vx.Core.c_notanumber;
-      }
-      return intresult;&quot;
-    :java
-     &quot;Core.Type_int intresult = Core.e_int;
-      String strval = value.vx_string();
-      try {
-        float floatresult = Float.parseFloat(strval);
-        int iresult = (int)floatresult;
-        intresult = Core.vx_new_int(iresult);
-      } catch (Exception ex) {
-        intresult = Core.c_notanumber;
-      }
-      return intresult;&quot;
-    :js
-     &quot;parseInt(value)&quot;
-    :kotlin
-     &quot;var intresult : vx_core.Type_int = vx_core.e_int
-      val strval : String = value.vx_string()
-      try {
-        val floatresult : Float = strval.toFloat()
-        val iresult : Int = floatresult.toInt()
-        intresult = vx_core.vx_new_int(iresult)
-      } catch (ex : Exception) {
-        intresult = vx_core.c_notanumber
-      }
-      intresult&quot;
-    )
-  )
- )
+ (native :auto)
  :test (test 4 (int&lt;-string &quot;4&quot;))
        (test 5 (int&lt;-string &quot;5.4&quot;))
        (test 5 (int&lt;-string &quot;5.9&quot;))
@@ -20563,7 +20467,7 @@ improves readability.</div>
  [value : any]
  (native
   :cpp
-   &quot;vx_core::Type_string extend = &quot; (extends&lt;-any value) &quot;;
+   &quot;vx_core::Type_string extend = vx_core::f_extends_from_any(value);
     std::string sextend = extend-&gt;vx_string();
     vx_core::vx_release(extend);
     if (sextend == “:func”) {
@@ -20578,7 +20482,7 @@ improves readability.</div>
       output = Core.c_true;
     }&quot;
   :js
-   &quot;const extend = &quot; (extends&lt;-any value) &quot;
+   &quot;const extend = vx_core.f_extends_from_any(value)
     if (extend == ':func') {
       output = vx_core.c_true
     }&quot;
@@ -21540,7 +21444,6 @@ improves readability.</div>
     });
     vx_core::Type_any anylist = generic_list_1-&gt;vx_new(list_result);
     output = vx_core::vx_any_from_any(generic_list_1, anylist);&quot;
-  :csharp :auto
   :java
    &quot;List&lt;Core.Type_any&gt; list_value = values.vx_list();
     List&lt;Core.Type_any&gt; list_result = Core.arraylist_from_arraylist_fn(list_value, (val) -&gt; {
@@ -21552,8 +21455,7 @@ improves readability.</div>
     if (fn) {
       output = values.map(fn)
       output['vx_type'] = generic_list_1
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :doc &quot;Returns a list of processed items from another list&quot;)</div>
                 </li>
               </ul>
@@ -21629,8 +21531,6 @@ improves readability.</div>
       return fn_any_from_any_async-&gt;vx_any_from_any_async(vx_core::vx_type(val), val);
     });
     output = vx_core::vx_async_new_from_listasync(generic_list_1, list_async_result);&quot;
-  :csharp :auto
-  :java   :auto
   :js
    &quot;const fn = fn_any_from_any_async['vx_value']
     if (fn) {
@@ -21638,8 +21538,7 @@ improves readability.</div>
       const future = Promise.all(listfuture)
       output = await future
       output['vx_type'] = generic_list_1
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :doc &quot;Returns an asynchronous list of the processed asynchronous items from another list&quot;)</div>
                 </li>
               </ul>
@@ -21716,12 +21615,7 @@ improves readability.</div>
                   <div class="source">(func list&lt;-list-intany : list-1
  [values          : list-2
   fn-any&lt;-int-any : any&lt;-int-any]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (stringlist &quot;a1&quot; &quot;b2&quot;)
         (list&lt;-list-intany : stringlist
@@ -21887,8 +21781,6 @@ improves readability.</div>
  [valuemap          : map-2
   fn-any&lt;-key-value : any&lt;-key-value]
  (native
-  :cpp :auto
-  :csharp :auto
   :java
    &quot;Map&lt;String, Core.Type_any&gt; map_value = valuemap.vx_map();
     List&lt;Core.Type_any&gt; listresult = Core.arraylist_from_linkedhashmap_fn(map_value, (key, val) -&gt; {
@@ -21897,8 +21789,7 @@ improves readability.</div>
     });
     output = Core.f_any_from_any(generic_list_1, generic_list_1.vx_new(listresult));&quot;
   :js
-   &quot;vx_core.vx_list_from_map_fn(generic_list_1, valuemap, fn_any_from_key_value)&quot;
-  :kotlin :auto)
+   &quot;vx_core.vx_list_from_map_fn(generic_list_1, valuemap, fn_any_from_key_value)&quot;)
  :test (test
         (stringlist &quot;a1&quot; &quot;b2&quot;)
         (list&lt;-map : stringlist
@@ -22039,7 +21930,8 @@ improves readability.</div>
  (native
   :js
    &quot;output = []
-    output['vx_type'] = type&quot;)
+    output['vx_type'] = type&quot;
+  :else &quot;&quot;)
  :doc &quot;Create an empty list from a type. Used internally for default lists&quot;)</div>
                 </li>
               </ul>
@@ -22421,7 +22313,6 @@ improves readability.</div>
    &quot;vx_core::vx_Type_listany listany = vallist-&gt;vx_list();
     vx_core::vx_Type_mapany mapany = vx_core::vx_map_from_list(listany, fn_any_from_any);
     output = vx_core::vx_new_map(generic_map_1, mapany);&quot;
-  :csharp :auto
   :java
    &quot;List&lt;Core.Type_any&gt; listval = vallist.vx_list();
     Map&lt;String, Core.Type_any&gt; mapresult = Core.vx_map_from_list_fn(listval, (val) -&gt; {
@@ -22440,8 +22331,7 @@ improves readability.</div>
     output = {
       vx_type: generic_map_1,
       vx_value: valmap
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test
         (stringmap
          &quot;keya&quot; &quot;a&quot;
@@ -22983,12 +22873,7 @@ improves readability.</div>
                 <li>
                   <div class="source">(func msgblock&lt;-any : msgblock
  [value : any]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :doc &quot;Returns a msgblock from any&quot;)</div>
                 </li>
               </ul>
@@ -23323,7 +23208,7 @@ improves readability.</div>
     case 'string':
       break
     default:
-      const extend = &quot; (extends&lt;-any value) &quot;
+      const extend = vx_core.f_extends_from_any(value)
       switch (extend) {
       case ':list':
         output = [...value]
@@ -23335,7 +23220,8 @@ improves readability.</div>
         break
       }
       break
-    }&quot;)
+    }&quot;
+  :else &quot;&quot;)
   :doc &quot;Returns native value of value object&quot;)</div>
                 </li>
               </ul>
@@ -24396,7 +24282,7 @@ improves readability.</div>
       output = fn_any.vx_any_from_func(generic_any_1);
     }&quot;
   :js
-   &quot;const typedef = &quot; (typedef&lt;-any fn-any) &quot;
+   &quot;const typedef = vx_core.f_typedef_from_any(fn_any)
     const extend = vx_core.f_extends_from_typedef(typedef)
     switch (extend) {
     case ':func':
@@ -24496,7 +24382,7 @@ improves readability.</div>
       output = fn_any.vx_any_from_func_async(generic_any_1);
     }&quot;
   :js
-   &quot;const typedef = &quot; (typedef&lt;-any fn-any) &quot;
+   &quot;const typedef = vx_core.f_typedef_from_any(fn_any)
     const extend = vx_core.f_extends_from_typedef(typedef)
     switch (extend) {
     case ':func':
@@ -24923,7 +24809,7 @@ improves readability.</div>
                     <div class="td"></div>
                   </div>
                   <div class="tr">
-                    <div class="td">repeat</div>
+                    <div class="td">num</div>
                     <div class="td"><span class="ntype" onclick="docjs.navigate('type_vx/core/int')">vx/core/int</span></div>
                     <div class="td"></div>
                   </div>
@@ -24946,20 +24832,18 @@ improves readability.</div>
               <ul>
                 <li>
                   <div class="source">(func string-repeat : string
- [text   : string
-  repeat : int]
+ [text : string
+  num  : int]
  (native
   :cpp
-   &quot;std::string stringtext = vx_core::vx_string_from_string_repeat(text-&gt;vx_string(), repeat-&gt;vx_int());
+   &quot;std::string stringtext = vx_core::vx_string_from_string_repeat(text-&gt;vx_string(), num-&gt;vx_int());
     output = vx_core::vx_new_string(stringtext);&quot;
-  :csharp :auto
   :java
    &quot;String stringtext = text.vx_string();
-    int intrepeat = repeat.vx_int();
+    int intrepeat = num.vx_int();
     String stringresult = stringtext.repeat(intrepeat);
     output = Core.vx_new_string(stringresult);&quot;
-  :js &quot;text.repeat(repeat)&quot;
-  :kotlin :auto)
+  :js &quot;text.repeat(num)&quot;)
  :test (test &quot;abab&quot; (string-repeat &quot;ab&quot; 2)))</div>
                 </li>
               </ul>
@@ -25131,11 +25015,8 @@ improves readability.</div>
   :cpp
    &quot;std::string soutput = vx_core::vx_string_from_any_indent(value, indent-&gt;vx_int(), linefeed-&gt;vx_boolean(), false);
     output = vx_core::vx_new_string(soutput);&quot;
-  :csharp :auto
-  :java :auto
   :js
-   &quot;output = vx_core.vx_string_from_any_indent(value, indent, linefeed)&quot;
-  :kotlin :auto)
+   &quot;output = vx_core.vx_string_from_any_indent(value, indent, linefeed)&quot;)
  :doc &quot;Return a string representation of a value&quot;)</div>
                 </li>
               </ul>
@@ -25273,12 +25154,7 @@ improves readability.</div>
  [text    : string
   find    : string
   replace : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;a!b!c&quot;
         (string&lt;-string-find-replace
@@ -25442,7 +25318,6 @@ improves readability.</div>
   :cpp
    &quot;vx_core::Type_any any = vx_core::vx_switch(generic_any_1, value, thenelselist);
     output = vx_core::vx_any_from_any(generic_any_1, any);&quot;
-  :csharp :auto
   :java
    &quot;Core.Func_any_from_func fn_any = null;
     List&lt;Core.Type_thenelse&gt; listthenelse = thenelselist.vx_listthenelse();
@@ -25512,8 +25387,7 @@ improves readability.</div>
           output = fn()
         }
       }
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test 1
         (switch : int
          &quot;d&quot;
@@ -25735,30 +25609,30 @@ improves readability.</div>
   :js
    &quot;switch (typeof value) {
     case 'boolean':
-      output = &quot; boolean &quot;
+      output = vx_core.t_boolean
       break
     case 'number':
       switch (value) {
-      case &quot; infinity &quot;:
-      case &quot; neginfinity &quot;:
-      case &quot; notanumber &quot;:
-        output = &quot; int &quot;
+      case vx_core.c_infinity:
+      case vx_core.c_neginfinity:
+      case vx_core.c_notanumber:
+        output = vx_core.t_int
         break
       default:
         const strval = '' + value
         if (strval.indexOf('.') &lt; 0) {
-          output = &quot; int &quot;
+          output = vx_core.t_int
         } else {
-          output = &quot; float &quot;
+          output = vx_core.t_float
         }
         break
       }
       break
     case 'string':
-      output = &quot; string &quot;
+      output = vx_core.t_string
       break
     case 'function':
-      output = &quot; func &quot;
+      output = vx_core.t_func
       break
     default:
       output = value['vx_type']
@@ -30320,12 +30194,10 @@ improves readability.</div>
   :cpp
    &quot;bool check = vx_core::vx_boolean_from_string_ends(text-&gt;vx_string(), ends-&gt;vx_string());
     output = vx_core::vx_new_boolean(check);&quot;
-  :csharp :auto
   :java
    &quot;boolean check = Core.vx_boolean_from_string_ends(text.vx_string(), ends.vx_string());
     output = Core.vx_new_boolean(check);&quot;  
-  :js &quot;vx_core.vx_boolean_from_string_ends(text, ends)&quot;
-  :kotlin :auto)
+  :js &quot;vx_core.vx_boolean_from_string_ends(text, ends)&quot;)
  :test (test-true
         (boolean&lt;-string-ends
          &quot;abcd&quot;
@@ -30339,12 +30211,9 @@ improves readability.</div>
   :cpp
    &quot;bool check = vx_core::vx_boolean_from_string_starts(text-&gt;vx_string(), starts-&gt;vx_string());
     output = vx_core::vx_new_boolean(check);&quot;
-  :csharp :auto
   :java
    &quot;boolean check = Core.vx_boolean_from_string_starts(text.vx_string(), starts.vx_string());
-    output = Core.vx_new_boolean(check);&quot;
-  :js :auto
-  :kotlin :auto)
+    output = Core.vx_new_boolean(check);&quot;)
  :test (test-true
         (boolean&lt;-string-starts
          &quot;abcd&quot;
@@ -30354,12 +30223,7 @@ improves readability.</div>
 (func int&lt;-string-find : int
  [text : string
   find : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         3
         (int&lt;-string-find
@@ -30370,12 +30234,7 @@ improves readability.</div>
 (func int&lt;-string-findkeyword : int
  [text : string
   find : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         3
         (int&lt;-string-findkeyword
@@ -30391,12 +30250,7 @@ improves readability.</div>
 (func int&lt;-string-findlast : int
  [text     : string
   findlast : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         5
         (int&lt;-string-findlast
@@ -30540,12 +30394,10 @@ improves readability.</div>
   :cpp
    &quot;std::string str = vx_core::vx_string_from_string_start_end(text-&gt;vx_string(), start-&gt;vx_int(), end-&gt;vx_int());
     output = vx_core::vx_new_string(str);&quot;
-  :csharp :auto
   :java
    &quot;String stext = Core.vx_string_from_string_start_end(text.vx_string(), start.vx_int(), end.vx_int());
     output = Core.vx_new_string(stext);&quot;
-  :js &quot;vx_core.vx_string_from_string_start_end(text, start, end)&quot;
-  :kotlin :auto)
+  :js &quot;vx_core.vx_string_from_string_start_end(text, start, end)&quot;)
  :test (test
         &quot;abc&quot;
         (string&lt;-string-start-end
@@ -30583,11 +30435,7 @@ improves readability.</div>
   delim : string]
  (native
   :cpp
-   &quot;output = vx_type::vx_string_from_stringlist_join(vals, delim);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+   &quot;output = vx_type::vx_string_from_stringlist_join(vals, delim);&quot;)
  :test (test
         &quot;a$b$c&quot;
         (string&lt;-stringlist-join
@@ -30597,12 +30445,7 @@ improves readability.</div>
 
 (func string-lowercase : string
  [text : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;abc&quot;
         (string-lowercase
@@ -30652,12 +30495,7 @@ improves readability.</div>
 
 (func string-trim : string
  [text  : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;ab&quot;
         (string-trim
@@ -30666,12 +30504,7 @@ improves readability.</div>
 
 (func string-uppercase : string
  [text : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;ABC&quot;
         (string-uppercase
@@ -30684,10 +30517,7 @@ improves readability.</div>
  (native
   :cpp
    &quot;vx_type::vx_stringlist_from_string_split(text, delim);&quot;
-  :csharp :auto
-  :java   :auto
-  :js &quot;vx_type.vx_stringlist_from_string_split(text, delim)&quot;
-  :kotlin :auto)
+  :js &quot;vx_type.vx_stringlist_from_string_split(text, delim)&quot;)
  :test (test
         (stringlist &quot;a&quot; &quot;b&quot; &quot;c&quot;)
         (stringlist&lt;-string-split
@@ -30708,12 +30538,7 @@ improves readability.</div>
  :doc &quot;Get the traits of a given value&quot;)
 
 (func uid : string
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :doc &quot;Generates a random uid&quot;)
 </div>
             </li>
@@ -30980,12 +30805,10 @@ improves readability.</div>
   :cpp
    &quot;bool check = vx_core::vx_boolean_from_string_ends(text-&gt;vx_string(), ends-&gt;vx_string());
     output = vx_core::vx_new_boolean(check);&quot;
-  :csharp :auto
   :java
    &quot;boolean check = Core.vx_boolean_from_string_ends(text.vx_string(), ends.vx_string());
     output = Core.vx_new_boolean(check);&quot;  
-  :js &quot;vx_core.vx_boolean_from_string_ends(text, ends)&quot;
-  :kotlin :auto)
+  :js &quot;vx_core.vx_boolean_from_string_ends(text, ends)&quot;)
  :test (test-true
         (boolean&lt;-string-ends
          &quot;abcd&quot;
@@ -31066,12 +30889,9 @@ improves readability.</div>
   :cpp
    &quot;bool check = vx_core::vx_boolean_from_string_starts(text-&gt;vx_string(), starts-&gt;vx_string());
     output = vx_core::vx_new_boolean(check);&quot;
-  :csharp :auto
   :java
    &quot;boolean check = Core.vx_boolean_from_string_starts(text.vx_string(), starts.vx_string());
-    output = Core.vx_new_boolean(check);&quot;
-  :js :auto
-  :kotlin :auto)
+    output = Core.vx_new_boolean(check);&quot;)
  :test (test-true
         (boolean&lt;-string-starts
          &quot;abcd&quot;
@@ -31149,12 +30969,7 @@ improves readability.</div>
                   <div class="source">(func int&lt;-string-find : int
  [text : string
   find : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         3
         (int&lt;-string-find
@@ -31238,12 +31053,7 @@ improves readability.</div>
                   <div class="source">(func int&lt;-string-findkeyword : int
  [text : string
   find : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         3
         (int&lt;-string-findkeyword
@@ -31327,12 +31137,7 @@ improves readability.</div>
                   <div class="source">(func int&lt;-string-findlast : int
  [text     : string
   findlast : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         5
         (int&lt;-string-findlast
@@ -32183,12 +31988,10 @@ improves readability.</div>
   :cpp
    &quot;std::string str = vx_core::vx_string_from_string_start_end(text-&gt;vx_string(), start-&gt;vx_int(), end-&gt;vx_int());
     output = vx_core::vx_new_string(str);&quot;
-  :csharp :auto
   :java
    &quot;String stext = Core.vx_string_from_string_start_end(text.vx_string(), start.vx_int(), end.vx_int());
     output = Core.vx_new_string(stext);&quot;
-  :js &quot;vx_core.vx_string_from_string_start_end(text, start, end)&quot;
-  :kotlin :auto)
+  :js &quot;vx_core.vx_string_from_string_start_end(text, start, end)&quot;)
  :test (test
         &quot;abc&quot;
         (string&lt;-string-start-end
@@ -32294,11 +32097,7 @@ improves readability.</div>
   delim : string]
  (native
   :cpp
-   &quot;output = vx_type::vx_string_from_stringlist_join(vals, delim);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+   &quot;output = vx_type::vx_string_from_stringlist_join(vals, delim);&quot;)
  :test (test
         &quot;a$b$c&quot;
         (string&lt;-stringlist-join
@@ -32370,12 +32169,7 @@ improves readability.</div>
                 <li>
                   <div class="source">(func string-lowercase : string
  [text : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;abc&quot;
         (string-lowercase
@@ -32553,12 +32347,7 @@ improves readability.</div>
                 <li>
                   <div class="source">(func string-trim : string
  [text  : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;ab&quot;
         (string-trim
@@ -32629,12 +32418,7 @@ improves readability.</div>
                 <li>
                   <div class="source">(func string-uppercase : string
  [text : string]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         &quot;ABC&quot;
         (string-uppercase
@@ -32715,10 +32499,7 @@ improves readability.</div>
  (native
   :cpp
    &quot;vx_type::vx_stringlist_from_string_split(text, delim);&quot;
-  :csharp :auto
-  :java   :auto
-  :js &quot;vx_type.vx_stringlist_from_string_split(text, delim)&quot;
-  :kotlin :auto)
+  :js &quot;vx_type.vx_stringlist_from_string_split(text, delim)&quot;)
  :test (test
         (stringlist &quot;a&quot; &quot;b&quot; &quot;c&quot;)
         (stringlist&lt;-string-split
@@ -32908,12 +32689,7 @@ improves readability.</div>
               <ul>
                 <li>
                   <div class="source">(func uid : string
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :doc &quot;Generates a random uid&quot;)</div>
                 </li>
               </ul>
@@ -33171,7 +32947,6 @@ improves readability.</div>
     str = vx_core::vx_string_from_string_find_replace(str, “&gt;”, “&amp;gt;”);
     str = vx_core::vx_string_from_string_find_replace(str, “&lt;”, “&amp;lt;”);
     output = vx_core::vx_new_string(str);&quot;
-  :csharp :auto
   :java
    &quot;String str = text.vx_string();
     str = str
@@ -33186,8 +32961,7 @@ improves readability.</div>
       .replace(/&amp;/g, “&amp;amp;”)
       .replace(/'/g, “\'”)
       .replace(/&gt;/g, “&amp;gt;”)   
-      .replace(/&lt;/g, “&amp;lt;”)&quot;
-  :kotlin :auto)
+      .replace(/&lt;/g, “&amp;lt;”)&quot;)
  :doc &quot;Convert text to HTML string&quot;)
 
 (func string-indent : string
@@ -33778,7 +33552,8 @@ improves readability.</div>
 (func string&lt;-uri : string
  [uri : string]
  (native
-  :js &quot;decodeURI(uri)&quot;)
+  :js &quot;decodeURI(uri)&quot;
+  :else &quot;&quot;)
  :doc &quot;Decode a URI string&quot;)
 
 (func styles&lt;-stylesheet : stylelist
@@ -33820,7 +33595,8 @@ improves readability.</div>
 (func uri&lt;-string : string
  [text : string]
  (native
-  :js &quot;encodeURI(text)&quot;)
+  :js &quot;encodeURI(text)&quot;
+  :else &quot;&quot;)
  :doc &quot;Encode a URI string&quot;)
 </div>
             </li>
@@ -36076,7 +35852,6 @@ improves readability.</div>
     str = vx_core::vx_string_from_string_find_replace(str, “&gt;”, “&amp;gt;”);
     str = vx_core::vx_string_from_string_find_replace(str, “&lt;”, “&amp;lt;”);
     output = vx_core::vx_new_string(str);&quot;
-  :csharp :auto
   :java
    &quot;String str = text.vx_string();
     str = str
@@ -36091,8 +35866,7 @@ improves readability.</div>
       .replace(/&amp;/g, “&amp;amp;”)
       .replace(/'/g, “\'”)
       .replace(/&gt;/g, “&amp;gt;”)   
-      .replace(/&lt;/g, “&amp;lt;”)&quot;
-  :kotlin :auto)
+      .replace(/&lt;/g, “&amp;lt;”)&quot;)
  :doc &quot;Convert text to HTML string&quot;)</div>
                 </li>
               </ul>
@@ -38896,7 +38670,8 @@ improves readability.</div>
                   <div class="source">(func string&lt;-uri : string
  [uri : string]
  (native
-  :js &quot;decodeURI(uri)&quot;)
+  :js &quot;decodeURI(uri)&quot;
+  :else &quot;&quot;)
  :doc &quot;Decode a URI string&quot;)</div>
                 </li>
               </ul>
@@ -39291,7 +39066,8 @@ improves readability.</div>
                   <div class="source">(func uri&lt;-string : string
  [text : string]
  (native
-  :js &quot;encodeURI(text)&quot;)
+  :js &quot;encodeURI(text)&quot;
+  :else &quot;&quot;)
  :doc &quot;Encode a URI string&quot;)</div>
                 </li>
               </ul>
@@ -39455,11 +39231,7 @@ improves readability.</div>
  (native
   :cpp
    &quot;vx_core::Type_any any = vx_collection::vx_any_from_for_until_loop_max(generic_any_1, start, fn_until, fn_loop, max);
-    output = vx_core::vx_any_from_any(generic_any_1, any);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_any_1, any);&quot;)
  :doc `Returns a value using a until loop.
 output : any-1 := start
 count : int := 0
@@ -39499,11 +39271,7 @@ count : int := 0
  (native
   :cpp
    &quot;vx_core::Type_any any = vx_collection::vx_any_from_for_while_loop_max(generic_any_1, start, fn_while, fn_loop, max);
-    output = vx_core::vx_any_from_any(generic_any_1, any);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_any_1, any);&quot;)
  :doc &quot;Returns a value using a while loop.
        output : any-1 := start
        count : int := 0
@@ -39529,12 +39297,7 @@ count : int := 0
 
 (func anymap&lt;-struct : anymap
  [structure : struct-1]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (anymap
          :name &quot;sname&quot;
@@ -39640,11 +39403,7 @@ count : int := 0
  (native
   :cpp
    &quot;vx_core::Type_any list = vx_collection::vx_list_from_for_end_loop(generic_list_1, start, end, fn_loop);
-    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;)
  :test (test
         (intlist 4 9)
         (list&lt;-for-end-loop : intlist
@@ -39693,11 +39452,7 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;vx_core::Type_any list = vx_collection::vx_list_from_for_while_loop_max(generic_list_1, start, fn_while, fn_loop, max);
-    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;)
  :doc `Returns a list of any-1 using a while loop.
 1. output : list-1 := (empty list-1)
 2. value : any-1 := start.
@@ -39726,11 +39481,7 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;vx_core::Type_any list = vx_collection::vx_list_from_list_filter(generic_list_1, vallist, fn_filter);
-    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;)
  :test (test
         (stringlist
          &quot;a1&quot; &quot;b1&quot; &quot;c1&quot; &quot;d1&quot;)
@@ -39818,7 +39569,6 @@ output : list-1 := (empty list-1)
       generic_list_1,
       list
     );&quot;
-  :csharp :auto
   :java
    &quot;List&lt;Core.Type_any&gt; list_value = values.vx_list();
     List&lt;Core.Type_any&gt; list_result = new ArrayList&lt;&gt;();
@@ -39842,8 +39592,7 @@ output : list-1 := (empty list-1)
       const listoflist = values.map(fn)
       output = listoflist.flat()
       output['vx_type'] = generic_list_1
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test
         (stringlist &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;)
         (list&lt;-list-join : stringlist
@@ -39876,11 +39625,7 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;vx_core::Type_any any = vx_collection::vx_list_from_list_start_end(generic_list_1, values, start, end);
-    output = vx_core::vx_any_from_any(generic_list_1, any);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_list_1, any);&quot;)
  :test (test
         (stringlist
          &quot;b&quot; &quot;c&quot;)
@@ -39910,12 +39655,7 @@ output : list-1 := (empty list-1)
 (func map&lt;-map-keys : map-1
  [valuemap : map-1
   keys     : stringlist]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (stringmap
          :c &quot;3&quot;
@@ -40370,11 +40110,7 @@ count : int := 0
  (native
   :cpp
    &quot;vx_core::Type_any any = vx_collection::vx_any_from_for_until_loop_max(generic_any_1, start, fn_until, fn_loop, max);
-    output = vx_core::vx_any_from_any(generic_any_1, any);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_any_1, any);&quot;)
  :doc `Returns a value using a until loop.
 output : any-1 := start
 count : int := 0
@@ -40574,11 +40310,7 @@ count : int := 0
  (native
   :cpp
    &quot;vx_core::Type_any any = vx_collection::vx_any_from_for_while_loop_max(generic_any_1, start, fn_while, fn_loop, max);
-    output = vx_core::vx_any_from_any(generic_any_1, any);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_any_1, any);&quot;)
  :doc &quot;Returns a value using a while loop.
        output : any-1 := start
        count : int := 0
@@ -40737,12 +40469,7 @@ count : int := 0
                 <li>
                   <div class="source">(func anymap&lt;-struct : anymap
  [structure : struct-1]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (anymap
          :name &quot;sname&quot;
@@ -41319,11 +41046,7 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;vx_core::Type_any list = vx_collection::vx_list_from_for_end_loop(generic_list_1, start, end, fn_loop);
-    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;)
  :test (test
         (intlist 4 9)
         (list&lt;-for-end-loop : intlist
@@ -41519,11 +41242,7 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;vx_core::Type_any list = vx_collection::vx_list_from_for_while_loop_max(generic_list_1, start, fn_while, fn_loop, max);
-    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;)
  :doc `Returns a list of any-1 using a while loop.
 1. output : list-1 := (empty list-1)
 2. value : any-1 := start.
@@ -41697,11 +41416,7 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;vx_core::Type_any list = vx_collection::vx_list_from_list_filter(generic_list_1, vallist, fn_filter);
-    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_list_1, list);&quot;)
  :test (test
         (stringlist
          &quot;a1&quot; &quot;b1&quot; &quot;c1&quot; &quot;d1&quot;)
@@ -42070,7 +41785,6 @@ output : list-1 := (empty list-1)
       generic_list_1,
       list
     );&quot;
-  :csharp :auto
   :java
    &quot;List&lt;Core.Type_any&gt; list_value = values.vx_list();
     List&lt;Core.Type_any&gt; list_result = new ArrayList&lt;&gt;();
@@ -42094,8 +41808,7 @@ output : list-1 := (empty list-1)
       const listoflist = values.map(fn)
       output = listoflist.flat()
       output['vx_type'] = generic_list_1
-    }&quot;
-  :kotlin :auto)
+    }&quot;)
  :test (test
         (stringlist &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;)
         (list&lt;-list-join : stringlist
@@ -42273,11 +41986,7 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;vx_core::Type_any any = vx_collection::vx_list_from_list_start_end(generic_list_1, values, start, end);
-    output = vx_core::vx_any_from_any(generic_list_1, any);&quot;
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+    output = vx_core::vx_any_from_any(generic_list_1, any);&quot;)
  :test (test
         (stringlist
          &quot;b&quot; &quot;c&quot;)
@@ -42454,12 +42163,7 @@ output : list-1 := (empty list-1)
                   <div class="source">(func map&lt;-map-keys : map-1
  [valuemap : map-1
   keys     : stringlist]
- (native
-  :cpp    :auto
-  :csharp :auto
-  :java   :auto
-  :js     :auto
-  :kotlin :auto)
+ (native :auto)
  :test (test
         (stringmap
          :c &quot;3&quot;
@@ -63805,7 +63509,6 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_boolean_exists_from_file(file);&quot;
-  :csharp :auto
   :java
    &quot;Core.Type_string fullpath = File.f_pathfull_from_file(file);
     String sfullpath = fullpath.vx_string();
@@ -63813,7 +63516,7 @@ output : list-1 := (empty list-1)
     if (Files.exists(path)) {
       output = Core.c_true;
     }&quot;
-  :kotlin :auto)
+  :js &quot;&quot;)
  :test (test-true
         (boolean-exists&lt;-file
          (file
@@ -63849,7 +63552,6 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_boolean_write_from_file_string(file, text);&quot;
-  :csharp :auto
   :java
    &quot;Core.Type_string fullpath = File.f_pathfull_from_file(file);
     String sfullpath = fullpath.vx_string();
@@ -63858,7 +63560,7 @@ output : list-1 := (empty list-1)
     byte[] bytes = stext.getBytes();
     java.nio.file.Files.write(path, bytes);
     output = Core.c_true;&quot;
-  :kotlin :auto)
+  :js &quot;&quot;)
  :context
  :messages
  :permission
@@ -63913,10 +63615,9 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_string_read_from_file(file);&quot;
-  :csharp :auto
   :java
    &quot;output = vx_string_read_from_file(file);&quot;
-  :kotlin :auto)
+  :js &quot;&quot;)
  :context
  :permission
  :messages
@@ -63943,13 +63644,12 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_pathcurrent_from_os();&quot;
-  :csharp :auto
   :java
    &quot;Path path = Paths.get(“”);
     path = path.toAbsolutePath();
     String spath = path.toString();
     output = Core.vx_new_string(spath);&quot;
-  :kotlin :auto)
+  :js &quot;&quot;)
  :clientserver :server
  :doc  &quot;Returns current system path.&quot;)
 
@@ -64248,7 +63948,6 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_boolean_exists_from_file(file);&quot;
-  :csharp :auto
   :java
    &quot;Core.Type_string fullpath = File.f_pathfull_from_file(file);
     String sfullpath = fullpath.vx_string();
@@ -64256,7 +63955,7 @@ output : list-1 := (empty list-1)
     if (Files.exists(path)) {
       output = Core.c_true;
     }&quot;
-  :kotlin :auto)
+  :js &quot;&quot;)
  :test (test-true
         (boolean-exists&lt;-file
          (file
@@ -64482,7 +64181,6 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_boolean_write_from_file_string(file, text);&quot;
-  :csharp :auto
   :java
    &quot;Core.Type_string fullpath = File.f_pathfull_from_file(file);
     String sfullpath = fullpath.vx_string();
@@ -64491,7 +64189,7 @@ output : list-1 := (empty list-1)
     byte[] bytes = stext.getBytes();
     java.nio.file.Files.write(path, bytes);
     output = Core.c_true;&quot;
-  :kotlin :auto)
+  :js &quot;&quot;)
  :context
  :messages
  :permission
@@ -64735,10 +64433,9 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_string_read_from_file(file);&quot;
-  :csharp :auto
   :java
    &quot;output = vx_string_read_from_file(file);&quot;
-  :kotlin :auto)
+  :js &quot;&quot;)
  :context
  :permission
  :messages
@@ -64934,13 +64631,12 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_pathcurrent_from_os();&quot;
-  :csharp :auto
   :java
    &quot;Path path = Paths.get(“”);
     path = path.toAbsolutePath();
     String spath = path.toString();
     output = Core.vx_new_string(spath);&quot;
-  :kotlin :auto)
+  :js &quot;&quot;)
  :clientserver :server
  :doc  &quot;Returns current system path.&quot;)</div>
                 </li>
@@ -85271,14 +84967,16 @@ output : list-1 := (empty list-1)
  [id : string
   stylesheettext : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :doc &quot;Print the contents of the given id.&quot;)
 
 (func boolean-replace&lt;-id-htmltext : boolean
  [id       : string
   htmltext : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Replaces an html node with given id and text.&quot;)
@@ -85288,7 +84986,8 @@ output : list-1 := (empty list-1)
   parent   : string
   htmltext : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Replaces an html node with given id, parentid, and text.&quot;)
@@ -85296,7 +84995,8 @@ output : list-1 := (empty list-1)
 (func boolean-remove&lt;-id : boolean
  [id : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Removes an html node with given id.&quot;)
@@ -85306,7 +85006,8 @@ output : list-1 := (empty list-1)
   attribute : string
   value     : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML element value.&quot;
  :clientserver :client
  :doc &quot;Writes to an html node with given id and attribute name and value.&quot;)
@@ -85315,7 +85016,8 @@ output : list-1 := (empty list-1)
  [id       : string
   htmltext : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Writes to an html node with given id and text.&quot;)
@@ -85324,7 +85026,8 @@ output : list-1 := (empty list-1)
  [id      : string
   visible : boolean]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Writes to an html node changing its visibility.&quot;)
@@ -85347,7 +85050,8 @@ output : list-1 := (empty list-1)
 (func boolean-write-stylesheet&lt;-string : boolean
  [text : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :async
  :sideeffects &quot;Changes Stylesheet display.&quot;
  :clientserver :client
@@ -85356,24 +85060,28 @@ output : list-1 := (empty list-1)
 (func boolean-writeevents&lt;-ui : boolean
  [ui : ui/ui]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :doc &quot;Writes the eventmap from ui into dom.&quot;)
 
 (func context-read : context
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :doc &quot;Reads context from document.data.context&quot;)
 
 (func context-write : context
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :context
  :doc &quot;Writes context to document.data.context&quot;)
 
 (func string&lt;-id : string
  [id   : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :clientserver :client
  :doc &quot;Reads the value of an html node by id.&quot;)
 
@@ -85392,7 +85100,8 @@ output : list-1 := (empty list-1)
 (func ui-readstate&lt;-uid : any
  [uid : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :doc &quot;Returns ui component from element.&quot;)
 </div>
             </li>
@@ -85463,7 +85172,8 @@ output : list-1 := (empty list-1)
  [id : string
   stylesheettext : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :doc &quot;Print the contents of the given id.&quot;)</div>
                 </li>
               </ul>
@@ -85533,7 +85243,8 @@ output : list-1 := (empty list-1)
  [id       : string
   htmltext : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Replaces an html node with given id and text.&quot;)</div>
@@ -85611,7 +85322,8 @@ output : list-1 := (empty list-1)
   parent   : string
   htmltext : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Replaces an html node with given id, parentid, and text.&quot;)</div>
@@ -85677,7 +85389,8 @@ output : list-1 := (empty list-1)
                   <div class="source">(func boolean-remove&lt;-id : boolean
  [id : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Removes an html node with given id.&quot;)</div>
@@ -85755,7 +85468,8 @@ output : list-1 := (empty list-1)
   attribute : string
   value     : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML element value.&quot;
  :clientserver :client
  :doc &quot;Writes to an html node with given id and attribute name and value.&quot;)</div>
@@ -85827,7 +85541,8 @@ output : list-1 := (empty list-1)
  [id       : string
   htmltext : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Writes to an html node with given id and text.&quot;)</div>
@@ -85899,7 +85614,8 @@ output : list-1 := (empty list-1)
  [id      : string
   visible : boolean]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :sideeffects &quot;Changes HTML display.&quot;
  :clientserver :client
  :doc &quot;Writes to an html node changing its visibility.&quot;)</div>
@@ -86038,7 +85754,8 @@ output : list-1 := (empty list-1)
                   <div class="source">(func boolean-write-stylesheet&lt;-string : boolean
  [text : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :async
  :sideeffects &quot;Changes Stylesheet display.&quot;
  :clientserver :client
@@ -86105,7 +85822,8 @@ output : list-1 := (empty list-1)
                   <div class="source">(func boolean-writeevents&lt;-ui : boolean
  [ui : ui/ui]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :doc &quot;Writes the eventmap from ui into dom.&quot;)</div>
                 </li>
               </ul>
@@ -86163,7 +85881,8 @@ output : list-1 := (empty list-1)
                 <li>
                   <div class="source">(func context-read : context
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :doc &quot;Reads context from document.data.context&quot;)</div>
                 </li>
               </ul>
@@ -86221,7 +85940,8 @@ output : list-1 := (empty list-1)
                 <li>
                   <div class="source">(func context-write : context
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :context
  :doc &quot;Writes context to document.data.context&quot;)</div>
                 </li>
@@ -86286,7 +86006,8 @@ output : list-1 := (empty list-1)
                   <div class="source">(func string&lt;-id : string
  [id   : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :clientserver :client
  :doc &quot;Reads the value of an html node by id.&quot;)</div>
                 </li>
@@ -86421,7 +86142,8 @@ output : list-1 := (empty list-1)
                   <div class="source">(func ui-readstate&lt;-uid : any
  [uid : string]
  (native
-  :js :auto)
+  :js :auto
+  :else &quot;&quot;)
  :doc &quot;Returns ui component from element.&quot;)</div>
                 </li>
               </ul>
@@ -94014,7 +93736,8 @@ output : list-1 := (empty list-1)
       method: 'GET',
       headers: {
        'Content-Type': contenttype
-      }})&quot;)
+      }})&quot;
+  :else &quot;&quot;)
  :async
  :clientserver :client
  :doc &quot;Returns a response from an httpget&quot;)
@@ -94030,7 +93753,9 @@ output : list-1 := (empty list-1)
 
 (func text&lt;-response : string
  [response : response]
- (native :js &quot;response.text()&quot;)
+ (native
+  :js &quot;response.text()&quot;
+  :else &quot;&quot;)
  :clientserver :client
  :doc &quot;Returns a string from a response&quot;)
 
@@ -94343,7 +94068,8 @@ output : list-1 := (empty list-1)
       method: 'GET',
       headers: {
        'Content-Type': contenttype
-      }})&quot;)
+      }})&quot;
+  :else &quot;&quot;)
  :async
  :clientserver :client
  :doc &quot;Returns a response from an httpget&quot;)</div>
@@ -94475,7 +94201,9 @@ output : list-1 := (empty list-1)
                 <li>
                   <div class="source">(func text&lt;-response : string
  [response : response]
- (native :js &quot;response.text()&quot;)
+ (native
+  :js &quot;response.text()&quot;
+  :else &quot;&quot;)
  :clientserver :client
  :doc &quot;Returns a string from a response&quot;)</div>
                 </li>

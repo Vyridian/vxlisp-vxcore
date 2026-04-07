@@ -4,7 +4,7 @@ package com.vxlisp.vx
 object vx_coreTest {
 
   fun t_boolean(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -22,7 +22,7 @@ object vx_coreTest {
   }
 
   fun t_boolean_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true true)",
       ":testresult", vx_test.f_test_true(
@@ -34,7 +34,7 @@ object vx_coreTest {
   }
 
   fun t_boolean_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false false)",
       ":testresult", vx_test.f_test_false(
@@ -46,7 +46,7 @@ object vx_coreTest {
   }
 
   fun t_boolean_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (boolean true))",
       ":testresult", vx_test.f_test_true(
@@ -64,7 +64,7 @@ object vx_coreTest {
   }
 
   fun t_boolean_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (boolean false))",
       ":testresult", vx_test.f_test_false(
@@ -82,7 +82,7 @@ object vx_coreTest {
   }
 
   fun t_float(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -97,7 +97,7 @@ object vx_coreTest {
   }
 
   fun t_float_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n 4.5\n (float 4.5))",
       ":testresult", vx_test.f_test(
@@ -116,7 +116,7 @@ object vx_coreTest {
   }
 
   fun t_func(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -131,7 +131,7 @@ object vx_coreTest {
   }
 
   fun t_func_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n 5\n (let\n  [funcvar : + := +]\n  (funcvar 2 3)))",
       ":testresult", vx_test.f_test(
@@ -140,8 +140,8 @@ object vx_coreTest {
         vx_core.f_let(
           vx_core.t_int,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var funcvar : vx_core.Func_plus =   vx_core.t_plus
-            var output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
+            val funcvar : vx_core.Func_plus =   vx_core.t_plus
+            val output_1 : vx_core.Type_any = vx_core.vx_any_from_func(
               vx_core.t_int,
               funcvar,
               vx_core.vx_new_int(2),
@@ -156,7 +156,7 @@ object vx_coreTest {
   }
 
   fun t_funclist(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -171,7 +171,7 @@ object vx_coreTest {
   }
 
   fun t_funclist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n 2\n (length\n  (funclist\n   + -)))",
       ":testresult", vx_test.f_test(
@@ -193,7 +193,7 @@ object vx_coreTest {
   }
 
   fun t_int(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -214,7 +214,7 @@ object vx_coreTest {
   }
 
   fun t_int_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true  (is-int 4))",
       ":testresult", vx_test.f_test_true(
@@ -228,7 +228,7 @@ object vx_coreTest {
   }
 
   fun t_int_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true  (is-int \"4\"))",
       ":testresult", vx_test.f_test_true(
@@ -242,7 +242,7 @@ object vx_coreTest {
   }
 
   fun t_int_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true  (is-int infinity))",
       ":testresult", vx_test.f_test_true(
@@ -256,7 +256,7 @@ object vx_coreTest {
   }
 
   fun t_int_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true  (is-int neginfinity))",
       ":testresult", vx_test.f_test_true(
@@ -270,7 +270,7 @@ object vx_coreTest {
   }
 
   fun t_int_testdescribe_5(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true  (is-int notanumber))",
       ":testresult", vx_test.f_test_true(
@@ -284,7 +284,7 @@ object vx_coreTest {
   }
 
   fun t_int_testdescribe_6(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (is-int \"a\"))",
       ":testresult", vx_test.f_test_false(
@@ -298,7 +298,7 @@ object vx_coreTest {
   }
 
   fun t_int_testdescribe_7(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (is-int 5.5))",
       ":testresult", vx_test.f_test_false(
@@ -312,7 +312,7 @@ object vx_coreTest {
   }
 
   fun t_msgblock(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -328,7 +328,7 @@ object vx_coreTest {
   }
 
   fun t_msgblock_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (decimal\n  (msgblock\n   :msgs\n    (msglist\n     (msg\n      :text \"Err\"))))\n (decimal\n  (msg\n   :text \"Err\")))",
       ":testresult", vx_test.f_test(
@@ -380,7 +380,7 @@ object vx_coreTest {
   }
 
   fun t_msgblock_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (decimal\n  (msgblock\n   :msgs\n    (msglist\n     (msg :text \"Err\"))))\n (let : decimal\n  [mymsgblock : msgblock :=\n   (msgblock\n    (msg\n     :text \"Err\"))]\n  (decimal\n   (copy\n    mymsgblock\n    mymsgblock))))",
       ":testresult", vx_test.f_test(
@@ -415,7 +415,7 @@ object vx_coreTest {
         vx_core.f_let(
           vx_core.t_decimal,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var mymsgblock : vx_core.Type_msgblock = vx_core.f_new(
+            val mymsgblock : vx_core.Type_msgblock = vx_core.f_new(
               vx_core.t_msgblock,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -429,7 +429,7 @@ object vx_coreTest {
                 )
               )
             )
-            var output_1 : vx_core.Type_any = vx_core.f_new(
+            val output_1 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_decimal,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -451,7 +451,7 @@ object vx_coreTest {
   }
 
   fun t_msgblocklist(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -466,7 +466,7 @@ object vx_coreTest {
   }
 
   fun t_msgblocklist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (msgblocklist\n  (msgblock\n   (msg :text \"Err\")))\n (let : msgblocklist\n  [mymsgblock : msgblock :=\n   (msgblock\n    (msg :text \"Err\"))]\n  (msgblocklist\n   mymsgblock\n   mymsgblock)))",
       ":testresult", vx_test.f_test(
@@ -494,7 +494,7 @@ object vx_coreTest {
         vx_core.f_let(
           vx_core.t_msgblocklist,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var mymsgblock : vx_core.Type_msgblock = vx_core.f_new(
+            val mymsgblock : vx_core.Type_msgblock = vx_core.f_new(
               vx_core.t_msgblock,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -508,7 +508,7 @@ object vx_coreTest {
                 )
               )
             )
-            var output_1 : vx_core.Type_any = vx_core.f_new(
+            val output_1 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_msgblocklist,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -525,7 +525,7 @@ object vx_coreTest {
   }
 
   fun t_msglist(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -540,7 +540,7 @@ object vx_coreTest {
   }
 
   fun t_msglist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (msglist\n  (msg :text \"Err\"))\n (let : msglist\n  [mymsg : msg :=\n   (msg :text \"Err\")]\n  (msglist\n   mymsg\n   mymsg)))",
       ":testresult", vx_test.f_test(
@@ -562,7 +562,7 @@ object vx_coreTest {
         vx_core.f_let(
           vx_core.t_msglist,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var mymsg : vx_core.Type_msg = vx_core.f_new(
+            val mymsg : vx_core.Type_msg = vx_core.f_new(
               vx_core.t_msg,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -570,7 +570,7 @@ object vx_coreTest {
                 vx_core.vx_new_string("Err")
               )
             )
-            var output_1 : vx_core.Type_any = vx_core.f_new(
+            val output_1 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_msglist,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -587,7 +587,7 @@ object vx_coreTest {
   }
 
   fun t_string(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -604,7 +604,7 @@ object vx_coreTest {
   }
 
   fun t_string_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"a\" (string \"a\"))",
       ":testresult", vx_test.f_test(
@@ -623,7 +623,7 @@ object vx_coreTest {
   }
 
   fun t_string_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"ab\" (string \"a\" \"b\"))",
       ":testresult", vx_test.f_test(
@@ -643,7 +643,7 @@ object vx_coreTest {
   }
 
   fun t_string_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"a:b\" (string \"a\" \":\" \"b\"))",
       ":testresult", vx_test.f_test(
@@ -664,7 +664,7 @@ object vx_coreTest {
   }
 
   fun t_stringlist(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -679,7 +679,7 @@ object vx_coreTest {
   }
 
   fun t_stringlist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (new : stringlist \"a\" \"b\" \"c\")\n (stringlist\n  (anylist\n   \"a\"\n   (stringlist \"b\" \"c\"))))",
       ":testresult", vx_test.f_test(
@@ -720,7 +720,7 @@ object vx_coreTest {
   }
 
   fun c_false(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -735,7 +735,7 @@ object vx_coreTest {
   }
 
   fun c_false_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false false)",
       ":testresult", vx_test.f_test_false(
@@ -747,7 +747,7 @@ object vx_coreTest {
   }
 
   fun c_true(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -762,7 +762,7 @@ object vx_coreTest {
   }
 
   fun c_true_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true true)",
       ":testresult", vx_test.f_test_true(
@@ -774,7 +774,7 @@ object vx_coreTest {
   }
 
   fun f_not(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -790,7 +790,7 @@ object vx_coreTest {
   }
 
   fun f_not_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false false)",
       ":testresult", vx_test.f_test_false(
@@ -802,7 +802,7 @@ object vx_coreTest {
   }
 
   fun f_not_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (! true))",
       ":testresult", vx_test.f_test_false(
@@ -816,7 +816,7 @@ object vx_coreTest {
   }
 
   fun f_ne(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -832,7 +832,7 @@ object vx_coreTest {
   }
 
   fun f_ne_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-ne true false)",
       ":testresult", vx_test.f_test_ne(
@@ -845,7 +845,7 @@ object vx_coreTest {
   }
 
   fun f_ne_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-ne \"a\" \"b\")",
       ":testresult", vx_test.f_test_ne(
@@ -858,7 +858,7 @@ object vx_coreTest {
   }
 
   fun f_multiply(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -874,7 +874,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 6 (* 3 2))",
       ":testresult", vx_test.f_test(
@@ -890,7 +890,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test -10 (* 5 -2))",
       ":testresult", vx_test.f_test(
@@ -906,7 +906,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -922,7 +922,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 6.4 (* 3.2 2))",
       ":testresult", vx_test.f_test(
@@ -938,7 +938,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test -10.2 (* 5.1 -2))",
       ":testresult", vx_test.f_test(
@@ -954,7 +954,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_2(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -970,7 +970,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_2_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 24 (* 3 2 4))",
       ":testresult", vx_test.f_test(
@@ -990,7 +990,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_2_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test -20 (* 5 -2 2))",
       ":testresult", vx_test.f_test(
@@ -1010,7 +1010,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_3(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1026,7 +1026,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_3_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 24 (* 3 2 4))",
       ":testresult", vx_test.f_test(
@@ -1046,7 +1046,7 @@ object vx_coreTest {
   }
 
   fun f_multiply_3_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test -20 (* 5 -2 2))",
       ":testresult", vx_test.f_test(
@@ -1066,7 +1066,7 @@ object vx_coreTest {
   }
 
   fun f_plus(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1082,7 +1082,7 @@ object vx_coreTest {
   }
 
   fun f_plus_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 5 (+ 2 3))",
       ":testresult", vx_test.f_test(
@@ -1098,7 +1098,7 @@ object vx_coreTest {
   }
 
   fun f_plus_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 3 (+ 5 -2))",
       ":testresult", vx_test.f_test(
@@ -1114,7 +1114,7 @@ object vx_coreTest {
   }
 
   fun f_plus_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1130,7 +1130,7 @@ object vx_coreTest {
   }
 
   fun f_plus_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 5 (+ 2  3))",
       ":testresult", vx_test.f_test(
@@ -1146,7 +1146,7 @@ object vx_coreTest {
   }
 
   fun f_plus_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 3 (+ 5 -2))",
       ":testresult", vx_test.f_test(
@@ -1162,7 +1162,7 @@ object vx_coreTest {
   }
 
   fun f_plus1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1178,7 +1178,7 @@ object vx_coreTest {
   }
 
   fun f_plus1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test  3 (+1  2))",
       ":testresult", vx_test.f_test(
@@ -1193,7 +1193,7 @@ object vx_coreTest {
   }
 
   fun f_plus1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test -1 (+1 -2))",
       ":testresult", vx_test.f_test(
@@ -1208,7 +1208,7 @@ object vx_coreTest {
   }
 
   fun f_minus(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1224,7 +1224,7 @@ object vx_coreTest {
   }
 
   fun f_minus_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 1 (- 3 2))",
       ":testresult", vx_test.f_test(
@@ -1240,7 +1240,7 @@ object vx_coreTest {
   }
 
   fun f_minus_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 7 (- 5 -2))",
       ":testresult", vx_test.f_test(
@@ -1256,7 +1256,7 @@ object vx_coreTest {
   }
 
   fun f_minus_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1272,7 +1272,7 @@ object vx_coreTest {
   }
 
   fun f_minus_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 5 (+ 2 3))",
       ":testresult", vx_test.f_test(
@@ -1288,7 +1288,7 @@ object vx_coreTest {
   }
 
   fun f_minus_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 3 (+ 5 -2))",
       ":testresult", vx_test.f_test(
@@ -1304,7 +1304,7 @@ object vx_coreTest {
   }
 
   fun f_minus1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1320,7 +1320,7 @@ object vx_coreTest {
   }
 
   fun f_minus1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test  1 (-1  2))",
       ":testresult", vx_test.f_test(
@@ -1335,7 +1335,7 @@ object vx_coreTest {
   }
 
   fun f_minus1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test -3 (-1 -2))",
       ":testresult", vx_test.f_test(
@@ -1350,7 +1350,7 @@ object vx_coreTest {
   }
 
   fun f_divide(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1366,7 +1366,7 @@ object vx_coreTest {
   }
 
   fun f_divide_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 3 (/ 6 2))",
       ":testresult", vx_test.f_test(
@@ -1382,7 +1382,7 @@ object vx_coreTest {
   }
 
   fun f_divide_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test -5 (/ 10 -2))",
       ":testresult", vx_test.f_test(
@@ -1398,7 +1398,7 @@ object vx_coreTest {
   }
 
   fun f_lt(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1413,7 +1413,7 @@ object vx_coreTest {
   }
 
   fun f_lt_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (< 2 3))",
       ":testresult", vx_test.f_test_true(
@@ -1428,7 +1428,7 @@ object vx_coreTest {
   }
 
   fun f_lt_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1444,7 +1444,7 @@ object vx_coreTest {
   }
 
   fun f_lt_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (< 2 3))",
       ":testresult", vx_test.f_test_true(
@@ -1459,7 +1459,7 @@ object vx_coreTest {
   }
 
   fun f_lt_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (< \"b\" \"d\" \"z\"))",
       ":testresult", vx_test.f_test_true(
@@ -1478,7 +1478,7 @@ object vx_coreTest {
   }
 
   fun f_chainfirst(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1493,7 +1493,7 @@ object vx_coreTest {
   }
 
   fun f_chainfirst_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (*\n  (+\n   (- 5 3)\n   3)\n  2)\n (<-\n  5\n  (- 3)\n  (+ 3)\n  (* 2)))",
       ":testresult", vx_test.f_test(
@@ -1524,7 +1524,7 @@ object vx_coreTest {
   }
 
   fun f_chainlast(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1539,7 +1539,7 @@ object vx_coreTest {
   }
 
   fun f_chainlast_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (* (+ (- 3 5) 3) 2)\n (<<-\n  5\n  (- 3)\n  (+ 3)\n  (* 2)))",
       ":testresult", vx_test.f_test(
@@ -1570,7 +1570,7 @@ object vx_coreTest {
   }
 
   fun f_le(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1585,7 +1585,7 @@ object vx_coreTest {
   }
 
   fun f_le_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (<= 2 3))",
       ":testresult", vx_test.f_test_true(
@@ -1600,7 +1600,7 @@ object vx_coreTest {
   }
 
   fun f_le_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1615,7 +1615,7 @@ object vx_coreTest {
   }
 
   fun f_le_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (<= \"b\" \"d\" \"z\"))",
       ":testresult", vx_test.f_test_true(
@@ -1634,7 +1634,7 @@ object vx_coreTest {
   }
 
   fun f_eq(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1653,7 +1653,7 @@ object vx_coreTest {
   }
 
   fun f_eq_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (= true true))",
       ":testresult", vx_test.f_test_true(
@@ -1668,7 +1668,7 @@ object vx_coreTest {
   }
 
   fun f_eq_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (= 2 2))",
       ":testresult", vx_test.f_test_true(
@@ -1683,7 +1683,7 @@ object vx_coreTest {
   }
 
   fun f_eq_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (= \"a\" \"a\"))",
       ":testresult", vx_test.f_test_true(
@@ -1698,7 +1698,7 @@ object vx_coreTest {
   }
 
   fun f_eq_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (=\n  (stringlist \"a\" \"b\" \"c\")\n  (new : stringlist \"a\" \"b\" \"c\")))",
       ":testresult", vx_test.f_test_true(
@@ -1729,7 +1729,7 @@ object vx_coreTest {
   }
 
   fun f_eq_testdescribe_5(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (=\n  (stringmap :a \"1\" :b \"2\")\n  (new : stringmap :a \"1\" :b \"2\")))",
       ":testresult", vx_test.f_test_true(
@@ -1762,7 +1762,7 @@ object vx_coreTest {
   }
 
   fun f_eq_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1777,7 +1777,7 @@ object vx_coreTest {
   }
 
   fun f_eq_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (= 2 2 3))",
       ":testresult", vx_test.f_test_false(
@@ -1796,7 +1796,7 @@ object vx_coreTest {
   }
 
   fun f_eqeq(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1812,7 +1812,7 @@ object vx_coreTest {
   }
 
   fun f_eqeq_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (== 0 0))",
       ":testresult", vx_test.f_test_true(
@@ -1827,7 +1827,7 @@ object vx_coreTest {
   }
 
   fun f_eqeq_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (== \"\" \"\"))",
       ":testresult", vx_test.f_test_true(
@@ -1842,7 +1842,7 @@ object vx_coreTest {
   }
 
   fun f_gt(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1857,7 +1857,7 @@ object vx_coreTest {
   }
 
   fun f_gt_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (> 3 2))",
       ":testresult", vx_test.f_test_true(
@@ -1872,7 +1872,7 @@ object vx_coreTest {
   }
 
   fun f_gt_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1887,7 +1887,7 @@ object vx_coreTest {
   }
 
   fun f_gt_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (> \"z\" \"y\" \"b\"))",
       ":testresult", vx_test.f_test_true(
@@ -1906,7 +1906,7 @@ object vx_coreTest {
   }
 
   fun f_ge(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1921,7 +1921,7 @@ object vx_coreTest {
   }
 
   fun f_ge_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (>= 3 2))",
       ":testresult", vx_test.f_test_true(
@@ -1936,7 +1936,7 @@ object vx_coreTest {
   }
 
   fun f_ge_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1951,7 +1951,7 @@ object vx_coreTest {
   }
 
   fun f_ge_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (>= \"z\" \"b\" \"b\"))",
       ":testresult", vx_test.f_test_true(
@@ -1970,7 +1970,7 @@ object vx_coreTest {
   }
 
   fun f_and(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -1986,7 +1986,7 @@ object vx_coreTest {
   }
 
   fun f_and_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (and true true))",
       ":testresult", vx_test.f_test_true(
@@ -2001,7 +2001,7 @@ object vx_coreTest {
   }
 
   fun f_and_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false\n (and true false))",
       ":testresult", vx_test.f_test_false(
@@ -2016,7 +2016,7 @@ object vx_coreTest {
   }
 
   fun f_and_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2032,7 +2032,7 @@ object vx_coreTest {
   }
 
   fun f_and_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (and true true true))",
       ":testresult", vx_test.f_test_true(
@@ -2051,7 +2051,7 @@ object vx_coreTest {
   }
 
   fun f_and_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false\n (and true true false))",
       ":testresult", vx_test.f_test_false(
@@ -2070,7 +2070,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_list(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2086,7 +2086,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_list_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"b\"\n (any<-list\n  (list \"a\" \"b\" \"c\")\n  2))",
       ":testresult", vx_test.f_test(
@@ -2111,7 +2111,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_list_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"b\"\n (:2 (stringlist \"a\" \"b\" \"c\")))",
       ":testresult", vx_test.f_test(
@@ -2136,7 +2136,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_list_start_reduce(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2151,7 +2151,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_list_start_reduce_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n 24\n (any<-list-start-reduce : int\n  (intlist 3 2 4)\n  1\n  (fn : int\n   [total : int\n    num   : int]\n   (* total num))))",
       ":testresult", vx_test.f_test(
@@ -2170,8 +2170,8 @@ object vx_coreTest {
           ),
           vx_core.vx_new_int(1),
           vx_core.t_any_from_reduce.vx_fn_new({total_any : vx_core.Type_any, num_any : vx_core.Type_any ->
-            var total : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, total_any)
-            var num : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, num_any)
+            val total : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, total_any)
+            val num : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, num_any)
             var output_1 : vx_core.Type_any = vx_core.f_multiply(
               total,
               num
@@ -2185,7 +2185,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_map(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2200,7 +2200,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_map_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"v2\"\n (any<-map\n  (stringmap\n   :a \"v1\"\n   :b \"v2\"\n   :c \"v3\")\n  :b))",
       ":testresult", vx_test.f_test(
@@ -2228,7 +2228,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_map_start_reduce(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2243,7 +2243,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_map_start_reduce_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"xayb\"\n (any<-map-start-reduce\n  (stringmap\n   :a \"x\"\n   :b \"y\")\n  \"\"\n  (fn : string\n   [current : string\n    key     : string\n    value   : any]\n   (copy current\n    value\n    key))))",
       ":testresult", vx_test.f_test(
@@ -2263,9 +2263,9 @@ object vx_coreTest {
           ),
           vx_core.vx_new_string(""),
           vx_core.t_any_from_any_key_value.vx_fn_new({current_any : vx_core.Type_any, key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            var current : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, current_any)
-            var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            var value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, value_any)
+            val current : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, current_any)
+            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+            val value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, value_any)
             var output_1 : vx_core.Type_any = vx_core.f_copy(
               current,
               vx_core.vx_new(
@@ -2283,7 +2283,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_struct(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2300,7 +2300,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_struct_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  :name))",
       ":testresult", vx_test.f_test(
@@ -2320,7 +2320,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_struct_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \"name\"))",
       ":testresult", vx_test.f_test(
@@ -2340,7 +2340,7 @@ object vx_coreTest {
   }
 
   fun f_any_from_struct_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"sname\"\n (any<-struct : string\n  (translation\n   :name \"sname\")\n  \":name\"))",
       ":testresult", vx_test.f_test(
@@ -2360,7 +2360,7 @@ object vx_coreTest {
   }
 
   fun f_boolean_write_from_map_name_value(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2376,7 +2376,7 @@ object vx_coreTest {
   }
 
   fun f_boolean_write_from_map_name_value_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringmutablemap\n  :b \"y\"\n  :a \"x\")\n (let : stringmutablemap\n  [smap : stringmutablemap :=\n    (stringmutablemap\n     :b \"y\")\n   iswrite : boolean :=\n    (boolean-write<-map-name-value\n     smap :a \"x\")]\n  smap))",
       ":testresult", vx_test.f_test(
@@ -2394,7 +2394,7 @@ object vx_coreTest {
         vx_core.f_let(
           vx_core.t_stringmutablemap,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var smap : vx_core.Type_stringmutablemap = vx_core.f_new(
+            val smap : vx_core.Type_stringmutablemap = vx_core.f_new(
               vx_core.t_stringmutablemap,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -2402,12 +2402,12 @@ object vx_coreTest {
                 vx_core.vx_new_string("y")
               )
             )
-            var iswrite : vx_core.Type_boolean = vx_core.f_boolean_write_from_map_name_value(
+            val iswrite : vx_core.Type_boolean = vx_core.f_boolean_write_from_map_name_value(
               smap,
               vx_core.vx_new_string(":a"),
               vx_core.vx_new_string("x")
             )
-            var output_1 : vx_core.Type_any = smap
+            val output_1 : vx_core.Type_any = smap
             output_1
           })
         )
@@ -2417,7 +2417,7 @@ object vx_coreTest {
   }
 
   fun f_boolean_write_from_map_name_value_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringmutablemap\n  :a \"x\")\n (let : stringmutablemap\n  [smap : stringmutablemap :=\n    (stringmutablemap\n     :b \"y\"\n     :a \"x\")\n   iswrite : boolean :=\n    (boolean-write<-map-name-value\n     smap :b \"\")]\n  smap))",
       ":testresult", vx_test.f_test(
@@ -2433,7 +2433,7 @@ object vx_coreTest {
         vx_core.f_let(
           vx_core.t_stringmutablemap,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var smap : vx_core.Type_stringmutablemap = vx_core.f_new(
+            val smap : vx_core.Type_stringmutablemap = vx_core.f_new(
               vx_core.t_stringmutablemap,
               vx_core.vx_new(
                 vx_core.t_anylist,
@@ -2443,12 +2443,12 @@ object vx_coreTest {
                 vx_core.vx_new_string("x")
               )
             )
-            var iswrite : vx_core.Type_boolean = vx_core.f_boolean_write_from_map_name_value(
+            val iswrite : vx_core.Type_boolean = vx_core.f_boolean_write_from_map_name_value(
               smap,
               vx_core.vx_new_string(":b"),
               vx_core.vx_new_string("")
             )
-            var output_2 : vx_core.Type_any = smap
+            val output_2 : vx_core.Type_any = smap
             output_2
           })
         )
@@ -2458,7 +2458,7 @@ object vx_coreTest {
   }
 
   fun f_compare(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2474,7 +2474,7 @@ object vx_coreTest {
   }
 
   fun f_compare_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 1 (compare 3 2))",
       ":testresult", vx_test.f_test(
@@ -2490,7 +2490,7 @@ object vx_coreTest {
   }
 
   fun f_compare_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 1 (compare \"z\" \"a\"))",
       ":testresult", vx_test.f_test(
@@ -2506,7 +2506,7 @@ object vx_coreTest {
   }
 
   fun f_constdef_from_any(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2521,7 +2521,7 @@ object vx_coreTest {
   }
 
   fun f_constdef_from_any_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (constdef\n  :pkgname \"vx/core\"\n  :name \"false\"\n  :type boolean)\n (constdef<-any false))",
       ":testresult", vx_test.f_test(
@@ -2547,7 +2547,7 @@ object vx_coreTest {
   }
 
   fun f_constname_from_any(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2562,7 +2562,7 @@ object vx_coreTest {
   }
 
   fun f_constname_from_any_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"vx/core/false\"\n (constname<-any false))",
       ":testresult", vx_test.f_test(
@@ -2577,7 +2577,7 @@ object vx_coreTest {
   }
 
   fun f_contains(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2593,7 +2593,7 @@ object vx_coreTest {
   }
 
   fun f_contains_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true  (contains \"abcde\" \"cd\"))",
       ":testresult", vx_test.f_test_true(
@@ -2608,7 +2608,7 @@ object vx_coreTest {
   }
 
   fun f_contains_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (contains \"abcde\" \"dc\"))",
       ":testresult", vx_test.f_test_false(
@@ -2623,7 +2623,7 @@ object vx_coreTest {
   }
 
   fun f_contains_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2640,7 +2640,7 @@ object vx_coreTest {
   }
 
   fun f_contains_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (contains (stringlist \"1\" \"2\" \"3\") \"2\"))",
       ":testresult", vx_test.f_test_true(
@@ -2663,7 +2663,7 @@ object vx_coreTest {
   }
 
   fun f_contains_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (contains (intlist 1 2 3) 2))",
       ":testresult", vx_test.f_test_true(
@@ -2686,7 +2686,7 @@ object vx_coreTest {
   }
 
   fun f_contains_1_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false\n (contains (list 1 \"2\" 3) 2))",
       ":testresult", vx_test.f_test_false(
@@ -2709,7 +2709,7 @@ object vx_coreTest {
   }
 
   fun f_copy(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2724,7 +2724,7 @@ object vx_coreTest {
   }
 
   fun f_copy_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  :a \"1\"\n  :b \"2\")\n (copy\n  (stringmap :a \"1\")\n  :b \"2\"))",
       ":testresult", vx_test.f_test(
@@ -2760,7 +2760,7 @@ object vx_coreTest {
   }
 
   fun f_empty(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2778,7 +2778,7 @@ object vx_coreTest {
   }
 
   fun f_empty_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test false  (empty boolean))",
       ":testresult", vx_test.f_test(
@@ -2793,7 +2793,7 @@ object vx_coreTest {
   }
 
   fun f_empty_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"\"     (empty string))",
       ":testresult", vx_test.f_test(
@@ -2808,7 +2808,7 @@ object vx_coreTest {
   }
 
   fun f_empty_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test (list) (empty list))",
       ":testresult", vx_test.f_test(
@@ -2825,7 +2825,7 @@ object vx_coreTest {
   }
 
   fun f_empty_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test (map)  (empty map))",
       ":testresult", vx_test.f_test(
@@ -2842,7 +2842,7 @@ object vx_coreTest {
   }
 
   fun f_first_from_list(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2857,7 +2857,7 @@ object vx_coreTest {
   }
 
   fun f_first_from_list_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"b\"\n (first<-list\n  (stringlist\n   \"b\"\n   \"c\")))",
       ":testresult", vx_test.f_test(
@@ -2880,7 +2880,7 @@ object vx_coreTest {
   }
 
   fun f_first_from_list_any_from_any(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2895,7 +2895,7 @@ object vx_coreTest {
   }
 
   fun f_first_from_list_any_from_any_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"b\"\n (first<-list-any<-any : string\n  (list nothing \"b\" \"c\")\n  resolve))",
       ":testresult", vx_test.f_test(
@@ -2920,7 +2920,7 @@ object vx_coreTest {
   }
 
   fun f_float_from_string(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2935,7 +2935,7 @@ object vx_coreTest {
   }
 
   fun f_float_from_string_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (float 2.3)\n (float<-string\n  \"2.3\"))",
       ":testresult", vx_test.f_test(
@@ -2956,7 +2956,7 @@ object vx_coreTest {
   }
 
   fun f_if(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -2972,7 +2972,7 @@ object vx_coreTest {
   }
 
   fun f_if_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"a\"\n (if (= 2 2) \"a\"))",
       ":testresult", vx_test.f_test(
@@ -2992,7 +2992,7 @@ object vx_coreTest {
   }
 
   fun f_if_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"\"\n (if : string\n  (= 1 2)\n  \"a\"))",
       ":testresult", vx_test.f_test(
@@ -3012,7 +3012,7 @@ object vx_coreTest {
   }
 
   fun f_if_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3028,7 +3028,7 @@ object vx_coreTest {
   }
 
   fun f_if_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"a\"\n (if\n  (= 2 2)\n  \"a\"\n  \"b\"))",
       ":testresult", vx_test.f_test(
@@ -3049,7 +3049,7 @@ object vx_coreTest {
   }
 
   fun f_if_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"b\"\n (if\n  (= 1 2)\n  \"a\"\n  \"b\"))",
       ":testresult", vx_test.f_test(
@@ -3070,7 +3070,7 @@ object vx_coreTest {
   }
 
   fun f_if_2(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3085,7 +3085,7 @@ object vx_coreTest {
   }
 
   fun f_if_2_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (if\n  (then (= 2 3) false)\n  (then (!= 3 3) false)\n  (else (! false))))",
       ":testresult", vx_test.f_test_true(
@@ -3136,7 +3136,7 @@ object vx_coreTest {
   }
 
   fun f_int_from_string(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3156,7 +3156,7 @@ object vx_coreTest {
   }
 
   fun f_int_from_string_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 4 (int<-string \"4\"))",
       ":testresult", vx_test.f_test(
@@ -3171,7 +3171,7 @@ object vx_coreTest {
   }
 
   fun f_int_from_string_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 5 (int<-string \"5.4\"))",
       ":testresult", vx_test.f_test(
@@ -3186,7 +3186,7 @@ object vx_coreTest {
   }
 
   fun f_int_from_string_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 5 (int<-string \"5.9\"))",
       ":testresult", vx_test.f_test(
@@ -3201,7 +3201,7 @@ object vx_coreTest {
   }
 
   fun f_int_from_string_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test notanumber  (int<-string \"notanumber\"))",
       ":testresult", vx_test.f_test(
@@ -3216,7 +3216,7 @@ object vx_coreTest {
   }
 
   fun f_int_from_string_testdescribe_5(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test infinity    (int<-string \"infinity\"))",
       ":testresult", vx_test.f_test(
@@ -3231,7 +3231,7 @@ object vx_coreTest {
   }
 
   fun f_int_from_string_testdescribe_6(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test neginfinity (int<-string \"neginfinity\"))",
       ":testresult", vx_test.f_test(
@@ -3246,7 +3246,7 @@ object vx_coreTest {
   }
 
   fun f_is_empty_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3264,7 +3264,7 @@ object vx_coreTest {
   }
 
   fun f_is_empty_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (is-empty false))",
       ":testresult", vx_test.f_test_true(
@@ -3278,7 +3278,7 @@ object vx_coreTest {
   }
 
   fun f_is_empty_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (is-empty \"\"))",
       ":testresult", vx_test.f_test_true(
@@ -3292,7 +3292,7 @@ object vx_coreTest {
   }
 
   fun f_is_empty_1_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (is-empty (list)))",
       ":testresult", vx_test.f_test_true(
@@ -3308,7 +3308,7 @@ object vx_coreTest {
   }
 
   fun f_is_empty_1_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (is-empty (map)))",
       ":testresult", vx_test.f_test_true(
@@ -3324,7 +3324,7 @@ object vx_coreTest {
   }
 
   fun f_is_error(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3339,7 +3339,7 @@ object vx_coreTest {
   }
 
   fun f_is_error_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (is-error\n  (stringlist\n   (msg\n    :code \"My Err\"))))",
       ":testresult", vx_test.f_test_true(
@@ -3366,7 +3366,7 @@ object vx_coreTest {
   }
 
   fun f_is_int(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3384,7 +3384,7 @@ object vx_coreTest {
   }
 
   fun f_is_int_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (is-int 2))",
       ":testresult", vx_test.f_test_true(
@@ -3398,7 +3398,7 @@ object vx_coreTest {
   }
 
   fun f_is_int_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (is-int \"2\"))",
       ":testresult", vx_test.f_test_true(
@@ -3412,7 +3412,7 @@ object vx_coreTest {
   }
 
   fun f_is_int_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (is-int infinity))",
       ":testresult", vx_test.f_test_true(
@@ -3426,7 +3426,7 @@ object vx_coreTest {
   }
 
   fun f_is_int_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true\n (is-int \"infinity\"))",
       ":testresult", vx_test.f_test_true(
@@ -3440,7 +3440,7 @@ object vx_coreTest {
   }
 
   fun f_is_number(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3457,7 +3457,7 @@ object vx_coreTest {
   }
 
   fun f_is_number_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true  (is-number 5))",
       ":testresult", vx_test.f_test_true(
@@ -3471,7 +3471,7 @@ object vx_coreTest {
   }
 
   fun f_is_number_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true  (is-number 5.5))",
       ":testresult", vx_test.f_test_true(
@@ -3485,7 +3485,7 @@ object vx_coreTest {
   }
 
   fun f_is_number_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (is-number \"a\"))",
       ":testresult", vx_test.f_test_false(
@@ -3499,7 +3499,7 @@ object vx_coreTest {
   }
 
   fun f_last_from_list(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3514,7 +3514,7 @@ object vx_coreTest {
   }
 
   fun f_last_from_list_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"c\"\n (last<-list\n  (stringlist\n   \"b\"\n   \"c\")))",
       ":testresult", vx_test.f_test(
@@ -3537,7 +3537,7 @@ object vx_coreTest {
   }
 
   fun f_length(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3553,7 +3553,7 @@ object vx_coreTest {
   }
 
   fun f_length_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n 4\n (length \"abcd\"))",
       ":testresult", vx_test.f_test(
@@ -3568,7 +3568,7 @@ object vx_coreTest {
   }
 
   fun f_length_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n 0\n (length \"\"))",
       ":testresult", vx_test.f_test(
@@ -3583,7 +3583,7 @@ object vx_coreTest {
   }
 
   fun f_length_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3598,7 +3598,7 @@ object vx_coreTest {
   }
 
   fun f_length_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n 3\n (length\n  (stringlist \"a\" \"b\" \"c\")))",
       ":testresult", vx_test.f_test(
@@ -3621,7 +3621,7 @@ object vx_coreTest {
   }
 
   fun f_let(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3636,7 +3636,7 @@ object vx_coreTest {
   }
 
   fun f_let_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n 7\n (let\n  [v1 : int := 2\n   v2 : int := (+ v1 3)]\n  (+ v1 v2)))",
       ":testresult", vx_test.f_test(
@@ -3645,12 +3645,12 @@ object vx_coreTest {
         vx_core.f_let(
           vx_core.t_int,
           vx_core.t_any_from_func.vx_fn_new({ ->
-            var v1 : vx_core.Type_int = vx_core.vx_new_int(2)
-            var v2 : vx_core.Type_int = vx_core.f_plus(
+            val v1 : vx_core.Type_int = vx_core.vx_new_int(2)
+            val v2 : vx_core.Type_int = vx_core.f_plus(
               v1,
               vx_core.vx_new_int(3)
             )
-            var output_1 : vx_core.Type_any = vx_core.f_plus(
+            val output_1 : vx_core.Type_any = vx_core.f_plus(
               v1,
               v2
             )
@@ -3663,7 +3663,7 @@ object vx_coreTest {
   }
 
   fun f_list_from_list(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3678,7 +3678,7 @@ object vx_coreTest {
   }
 
   fun f_list_from_list_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringlist \"10\" \"20\")\n (list<-list : stringlist\n  (anylist \"10\" \"20\")))",
       ":testresult", vx_test.f_test(
@@ -3708,7 +3708,7 @@ object vx_coreTest {
   }
 
   fun f_list_from_list_intany(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3723,7 +3723,7 @@ object vx_coreTest {
   }
 
   fun f_list_from_list_intany_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a1\" \"b2\")\n (list<-list-intany : stringlist\n  (stringlist \"a\" \"b\")\n  (fn : stringlist\n   [index : int\n    value : string]\n   (string value index))))",
       ":testresult", vx_test.f_test(
@@ -3747,8 +3747,8 @@ object vx_coreTest {
             )
           ),
           vx_core.t_any_from_int_any.vx_fn_new({index_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            var index : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, index_any)
-            var value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
+            val index : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, index_any)
+            val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
             var output_1 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_string,
               vx_core.vx_new(
@@ -3766,7 +3766,7 @@ object vx_coreTest {
   }
 
   fun f_list_from_map(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3781,7 +3781,7 @@ object vx_coreTest {
   }
 
   fun f_list_from_map_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a1\" \"b2\")\n (list<-map : stringlist\n  (stringmap\n   :x \"a1\"\n   :y \"b2\")))",
       ":testresult", vx_test.f_test(
@@ -3813,7 +3813,7 @@ object vx_coreTest {
   }
 
   fun f_list_from_map_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3828,7 +3828,7 @@ object vx_coreTest {
   }
 
   fun f_list_from_map_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a1\" \"b2\")\n (list<-map : stringlist\n  (stringmap \"a\" \"1\" \"b\" \"2\")\n  (fn : string\n   [key   : string\n    value : string]\n   (string key value))))",
       ":testresult", vx_test.f_test(
@@ -3854,8 +3854,8 @@ object vx_coreTest {
             )
           ),
           vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            var value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
+            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+            val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
             var output_1 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_string,
               vx_core.vx_new(
@@ -3873,7 +3873,7 @@ object vx_coreTest {
   }
 
   fun f_map_from_list(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3888,7 +3888,7 @@ object vx_coreTest {
   }
 
   fun f_map_from_list_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  \"keya\" \"a\"\n  \"keyb\" \"b\")\n (map<-list : stringmap\n  (stringlist \"a\" \"b\")\n  (fn : string\n   [value : string]\n   (string \"key\" value))))",
       ":testresult", vx_test.f_test(
@@ -3914,7 +3914,7 @@ object vx_coreTest {
             )
           ),
           vx_core.t_any_from_any.vx_fn_new({value_any : vx_core.Type_any ->
-            var value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
+            val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
             var output_1 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_string,
               vx_core.vx_new(
@@ -3932,7 +3932,7 @@ object vx_coreTest {
   }
 
   fun f_map_from_map(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3947,7 +3947,7 @@ object vx_coreTest {
   }
 
   fun f_map_from_map_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringmap :a \"1\")\n (map<-map : stringmap\n  (anymap :a \"1\")))",
       ":testresult", vx_test.f_test(
@@ -3977,7 +3977,7 @@ object vx_coreTest {
   }
 
   fun f_map_from_map_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -3992,7 +3992,7 @@ object vx_coreTest {
   }
 
   fun f_map_from_map_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringmap\n  :a \"a1\"\n  :b \"b2\")\n (map<-map : stringmap\n  (stringmap\n   :a \"1\"\n   :b \"2\")\n  (fn : string\n   [key : string\n    value : string]\n   (string key value))))",
       ":testresult", vx_test.f_test(
@@ -4020,8 +4020,8 @@ object vx_coreTest {
             )
           ),
           vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            var value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
+            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+            val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
             var output_1 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_string,
               vx_core.vx_new(
@@ -4039,7 +4039,7 @@ object vx_coreTest {
   }
 
   fun f_new(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4059,7 +4059,7 @@ object vx_coreTest {
   }
 
   fun f_new_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test true (new : boolean true))",
       ":testresult", vx_test.f_test(
@@ -4078,7 +4078,7 @@ object vx_coreTest {
   }
 
   fun f_new_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 4 (new : int 4))",
       ":testresult", vx_test.f_test(
@@ -4097,7 +4097,7 @@ object vx_coreTest {
   }
 
   fun f_new_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 5.4 (new : float 5.4))",
       ":testresult", vx_test.f_test(
@@ -4116,7 +4116,7 @@ object vx_coreTest {
   }
 
   fun f_new_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"a\" (new : string \"a\"))",
       ":testresult", vx_test.f_test(
@@ -4135,7 +4135,7 @@ object vx_coreTest {
   }
 
   fun f_new_testdescribe_5(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (new : stringlist \"a\" \"b\" \"c\"))",
       ":testresult", vx_test.f_test(
@@ -4164,7 +4164,7 @@ object vx_coreTest {
   }
 
   fun f_new_testdescribe_6(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringmap :a \"1\" :b \"2\")\n (new : stringmap :a \"1\" :b \"2\"))",
       ":testresult", vx_test.f_test(
@@ -4195,7 +4195,7 @@ object vx_coreTest {
   }
 
   fun f_new_from_type(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4215,7 +4215,7 @@ object vx_coreTest {
   }
 
   fun f_new_from_type_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test true (new<-type boolean true))",
       ":testresult", vx_test.f_test(
@@ -4234,7 +4234,7 @@ object vx_coreTest {
   }
 
   fun f_new_from_type_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 4 (new<-type int 4))",
       ":testresult", vx_test.f_test(
@@ -4253,7 +4253,7 @@ object vx_coreTest {
   }
 
   fun f_new_from_type_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 5.4 (new<-type float 5.4))",
       ":testresult", vx_test.f_test(
@@ -4272,7 +4272,7 @@ object vx_coreTest {
   }
 
   fun f_new_from_type_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"a\" (new<-type string \"a\"))",
       ":testresult", vx_test.f_test(
@@ -4291,7 +4291,7 @@ object vx_coreTest {
   }
 
   fun f_new_from_type_testdescribe_5(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringlist \"a\" \"b\" \"c\")\n (new<-type stringlist \"a\" \"b\" \"c\"))",
       ":testresult", vx_test.f_test(
@@ -4320,7 +4320,7 @@ object vx_coreTest {
   }
 
   fun f_new_from_type_testdescribe_6(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringmap :a \"1\" :b \"2\")\n (new<-type stringmap :a \"1\" :b \"2\"))",
       ":testresult", vx_test.f_test(
@@ -4351,7 +4351,7 @@ object vx_coreTest {
   }
 
   fun f_or(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4368,7 +4368,7 @@ object vx_coreTest {
   }
 
   fun f_or_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (or true true))",
       ":testresult", vx_test.f_test_true(
@@ -4383,7 +4383,7 @@ object vx_coreTest {
   }
 
   fun f_or_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (or true false))",
       ":testresult", vx_test.f_test_true(
@@ -4398,7 +4398,7 @@ object vx_coreTest {
   }
 
   fun f_or_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (or false false))",
       ":testresult", vx_test.f_test_false(
@@ -4413,7 +4413,7 @@ object vx_coreTest {
   }
 
   fun f_or_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4429,7 +4429,7 @@ object vx_coreTest {
   }
 
   fun f_or_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-true (or false true false))",
       ":testresult", vx_test.f_test_true(
@@ -4448,7 +4448,7 @@ object vx_coreTest {
   }
 
   fun f_or_1_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test-false (or false false false))",
       ":testresult", vx_test.f_test_false(
@@ -4467,7 +4467,7 @@ object vx_coreTest {
   }
 
   fun f_resolve(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4482,7 +4482,7 @@ object vx_coreTest {
   }
 
   fun f_resolve_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"a\" (resolve \"a\"))",
       ":testresult", vx_test.f_test(
@@ -4498,7 +4498,7 @@ object vx_coreTest {
   }
 
   fun f_resolve_1(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4513,7 +4513,7 @@ object vx_coreTest {
   }
 
   fun f_resolve_1_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 4 (resolve (fn : int [] (+ 1 3))))",
       ":testresult", vx_test.f_test(
@@ -4535,7 +4535,7 @@ object vx_coreTest {
   }
 
   fun f_resolve_async(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4550,7 +4550,7 @@ object vx_coreTest {
   }
 
   fun f_resolve_async_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 4 (resolve : int (fn : int [] (+ 1 3))))",
       ":testresult", vx_test.f_test(
@@ -4572,7 +4572,7 @@ object vx_coreTest {
   }
 
   fun f_string_repeat(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4587,7 +4587,7 @@ object vx_coreTest {
   }
 
   fun f_string_repeat_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"abab\" (string-repeat \"ab\" 2))",
       ":testresult", vx_test.f_test(
@@ -4603,7 +4603,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_any(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4623,7 +4623,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_any_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"true\"  (string<-any true))",
       ":testresult", vx_test.f_test(
@@ -4638,7 +4638,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_any_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"4\"     (string<-any 4))",
       ":testresult", vx_test.f_test(
@@ -4653,7 +4653,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_any_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"5.4\"   (string<-any 5.4))",
       ":testresult", vx_test.f_test(
@@ -4668,7 +4668,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_any_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"\\\"a\\\"\" (string<-any \"a\"))",
       ":testresult", vx_test.f_test(
@@ -4683,7 +4683,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_any_testdescribe_5(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"(stringlist\n   \\\"a\\\"\n   \\\"b\\\"\n   \\\"c\\\")\"\n (string<-any (stringlist \"a\" \"b\" \"c\")))",
       ":testresult", vx_test.f_test(
@@ -4706,7 +4706,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_any_testdescribe_6(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"(stringmap\n   :a \\\"1\\\"\n   :b \\\"2\\\")\"\n (string<-any (stringmap :a \"1\" :b \"2\")))",
       ":testresult", vx_test.f_test(
@@ -4730,7 +4730,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_string_find_replace(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4745,7 +4745,7 @@ object vx_coreTest {
   }
 
   fun f_string_from_string_find_replace_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"a!b!c\"\n (string<-string-find-replace\n  \"axybxyc\"\n  \"xy\"\n  \"!\"))",
       ":testresult", vx_test.f_test(
@@ -4762,7 +4762,7 @@ object vx_coreTest {
   }
 
   fun f_stringlist_from_map(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4777,7 +4777,7 @@ object vx_coreTest {
   }
 
   fun f_stringlist_from_map_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (stringlist \"b\" \"a\")\n (stringlist<-map\n  (intmap\n   :b 1\n   :a 2)))",
       ":testresult", vx_test.f_test(
@@ -4808,7 +4808,7 @@ object vx_coreTest {
   }
 
   fun f_switch(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4823,7 +4823,7 @@ object vx_coreTest {
   }
 
   fun f_switch_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test 1\n (switch : int\n  \"d\"\n  (case (list \"b\" \"c\" \"d\") 1)\n  (else 2)))",
       ":testresult", vx_test.f_test(
@@ -4863,7 +4863,7 @@ object vx_coreTest {
   }
 
   fun f_type_from_any(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4880,7 +4880,7 @@ object vx_coreTest {
   }
 
   fun f_type_from_any_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n boolean\n (type<-any false))",
       ":testresult", vx_test.f_test(
@@ -4895,7 +4895,7 @@ object vx_coreTest {
   }
 
   fun f_type_from_any_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n int\n (type<-any 5))",
       ":testresult", vx_test.f_test(
@@ -4910,7 +4910,7 @@ object vx_coreTest {
   }
 
   fun f_type_from_any_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n string\n (type<-any \"a\"))",
       ":testresult", vx_test.f_test(
@@ -4925,7 +4925,7 @@ object vx_coreTest {
   }
 
   fun f_typename_from_any(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/core",
@@ -4942,7 +4942,7 @@ object vx_coreTest {
   }
 
   fun f_typename_from_any_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"vx/core/boolean\" (typename<-any false))",
       ":testresult", vx_test.f_test(
@@ -4957,7 +4957,7 @@ object vx_coreTest {
   }
 
   fun f_typename_from_any_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"vx/core/int\"     (typename<-any 5))",
       ":testresult", vx_test.f_test(
@@ -4972,7 +4972,7 @@ object vx_coreTest {
   }
 
   fun f_typename_from_any_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test \"vx/core/string\"  (typename<-any \"a\"))",
       ":testresult", vx_test.f_test(
@@ -5078,7 +5078,7 @@ object vx_coreTest {
       vx_coreTest.f_type_from_any(context),
       vx_coreTest.f_typename_from_any(context)
     )
-    var output : vx_test.Type_testcaselist = vx_core.vx_new(
+    val output : vx_test.Type_testcaselist = vx_core.vx_new(
       vx_test.t_testcaselist,
       testcases
     )
@@ -5086,7 +5086,7 @@ object vx_coreTest {
   }
 
   fun test_coveragesummary() : vx_test.Type_testcoveragesummary {
-    var output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/core", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 13, ":tests", 2, ":total", 15), 
@@ -5101,7 +5101,7 @@ object vx_coreTest {
   }
 
   fun test_coveragedetail() : vx_test.Type_testcoveragedetail {
-    var output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
       vx_test.t_testcoveragedetail,
       ":testpkg", "vx/core",
       ":typemap", vx_core.vx_new(
@@ -5379,8 +5379,8 @@ object vx_coreTest {
   }
 
   fun test_package(context : vx_core.Type_context) : vx_test.Type_testpackage {
-    var testcaselist : vx_test.Type_testcaselist = test_cases(context)
-    var output : vx_test.Type_testpackage = vx_core.vx_new(
+    val testcaselist : vx_test.Type_testcaselist = test_cases(context)
+    val output : vx_test.Type_testpackage = vx_core.vx_new(
       vx_test.t_testpackage,
       ":testpkg", "vx/core", 
       ":caselist", testcaselist,

@@ -51,7 +51,7 @@ object vx_web_html {
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -148,7 +148,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/body", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -324,7 +324,7 @@ object vx_web_html {
       map.put(":stylelist", this.stylelist())
       map.put(":summary", this.summary())
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -422,7 +422,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -443,7 +443,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -464,7 +464,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -485,7 +485,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -506,7 +506,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -527,7 +527,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("summary"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -548,7 +548,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -715,7 +715,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -825,7 +825,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -846,7 +846,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -867,7 +867,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -888,7 +888,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -909,7 +909,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -930,7 +930,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1008,7 +1008,7 @@ object vx_web_html {
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -1080,12 +1080,12 @@ object vx_web_html {
   class Class_divchildlist : vx_core.Class_base, Type_divchildlist {
     constructor() {}
 
-    var vx_p_list : List<vx_web_html.Type_divchild> = vx_core.immutablelist(
+    var vx_p_list : List<vx_web_html.Type_divchild> = vx_core.vx_listimmutable(
       ArrayList<vx_web_html.Type_divchild>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -1165,7 +1165,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_divchildlist = vx_web_html.Class_divchildlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -1219,12 +1219,12 @@ object vx_web_html {
   class Class_divlist : vx_core.Class_base, Type_divlist {
     constructor() {}
 
-    var vx_p_list : List<vx_web_html.Type_div> = vx_core.immutablelist(
+    var vx_p_list : List<vx_web_html.Type_div> = vx_core.vx_listimmutable(
       ArrayList<vx_web_html.Type_div>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -1304,7 +1304,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_divlist = vx_web_html.Class_divlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -1381,7 +1381,7 @@ object vx_web_html {
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -1478,7 +1478,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/footer", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1639,7 +1639,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":text", this.text())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -1745,7 +1745,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1766,7 +1766,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1787,7 +1787,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1808,7 +1808,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1829,7 +1829,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -1853,7 +1853,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2019,7 +2019,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":text", this.text())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2125,7 +2125,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2146,7 +2146,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2167,7 +2167,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2188,7 +2188,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2209,7 +2209,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2233,7 +2233,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2399,7 +2399,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":text", this.text())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2505,7 +2505,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2526,7 +2526,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2547,7 +2547,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2568,7 +2568,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2589,7 +2589,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2613,7 +2613,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2709,7 +2709,7 @@ object vx_web_html {
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2806,7 +2806,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/head", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -2879,7 +2879,7 @@ object vx_web_html {
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -2951,12 +2951,12 @@ object vx_web_html {
   class Class_headchildlist : vx_core.Class_base, Type_headchildlist {
     constructor() {}
 
-    var vx_p_list : List<vx_web_html.Type_headchild> = vx_core.immutablelist(
+    var vx_p_list : List<vx_web_html.Type_headchild> = vx_core.vx_listimmutable(
       ArrayList<vx_web_html.Type_headchild>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -3036,7 +3036,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_headchildlist = vx_web_html.Class_headchildlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -3158,7 +3158,7 @@ object vx_web_html {
       map.put(":head", this.head())
       map.put(":body", this.body())
       map.put(":footer", this.footer())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -3250,7 +3250,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("lang"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3271,7 +3271,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("head"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3292,7 +3292,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("body"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3313,7 +3313,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("footer"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3477,7 +3477,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":src", this.src())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -3583,7 +3583,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3604,7 +3604,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3625,7 +3625,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3646,7 +3646,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3667,7 +3667,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3691,7 +3691,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("src"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -3887,7 +3887,7 @@ object vx_web_html {
       map.put(":charset", this.charset())
       map.put(":name", this.name())
       map.put(":content", this.content())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -3987,7 +3987,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4008,7 +4008,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4029,7 +4029,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4050,7 +4050,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4071,7 +4071,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4095,7 +4095,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("charset"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4119,7 +4119,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4143,7 +4143,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("content"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4301,7 +4301,7 @@ object vx_web_html {
       map.put(":style", this.style())
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -4395,7 +4395,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4416,7 +4416,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4437,7 +4437,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4458,7 +4458,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4479,7 +4479,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4551,12 +4551,12 @@ object vx_web_html {
   class Class_nodelist : vx_core.Class_base, Type_nodelist {
     constructor() {}
 
-    var vx_p_list : List<vx_web_html.Type_node> = vx_core.immutablelist(
+    var vx_p_list : List<vx_web_html.Type_node> = vx_core.vx_listimmutable(
       ArrayList<vx_web_html.Type_node>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -4636,7 +4636,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_nodelist = vx_web_html.Class_nodelist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -4783,7 +4783,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":text", this.text())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -4889,7 +4889,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4910,7 +4910,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4931,7 +4931,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4952,7 +4952,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4973,7 +4973,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -4997,7 +4997,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -5070,11 +5070,12 @@ object vx_web_html {
   class Class_propmap : vx_core.Class_base, Type_propmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_core.Type_string> = vx_core.immutablemap(LinkedHashMap<String, vx_core.Type_string>())
+    var vx_p_map : Map<String, vx_core.Type_string> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_core.Type_string>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -5086,13 +5087,13 @@ object vx_web_html {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_core.Type_string> = LinkedHashMap<String, vx_core.Type_string>(this.vx_p_map)
+        var map : MutableMap<String, vx_core.Type_string> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_core.e_string) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -5105,18 +5106,18 @@ object vx_web_html {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_core.Type_string> = map.vx_p_map
+      val mapval : Map<String, vx_core.Type_string> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_string)
       return output
     }
 
     override fun vx_mapstring() : Map<String, vx_core.Type_string> {
-      var output : Map<String, vx_core.Type_string> = this.vx_p_map
+      val output : Map<String, vx_core.Type_string> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_string(key)
+      val output : vx_core.Type_any = this.vx_string(key)
       return output
     }
 
@@ -5137,7 +5138,7 @@ object vx_web_html {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -5157,7 +5158,7 @@ object vx_web_html {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_core.Type_string> = LinkedHashMap<String, vx_core.Type_string>(value.vx_mapstring())
+      var mapval : MutableMap<String, vx_core.Type_string> = vx_core.vx_mapmutable(value.vx_mapstring())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -5204,7 +5205,7 @@ object vx_web_html {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/web/html/propmap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -5220,7 +5221,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_propmap = vx_web_html.Class_propmap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -5327,7 +5328,7 @@ object vx_web_html {
       map.put(":name", this.name())
       map.put(":props", this.props())
       map.put(":stylelist", this.stylelist())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -5417,7 +5418,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -5438,7 +5439,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("props"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -5459,7 +5460,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -5529,12 +5530,12 @@ object vx_web_html {
   class Class_stylelist : vx_core.Class_base, Type_stylelist {
     constructor() {}
 
-    var vx_p_list : List<vx_web_html.Type_style> = vx_core.immutablelist(
+    var vx_p_list : List<vx_web_html.Type_style> = vx_core.vx_listimmutable(
       ArrayList<vx_web_html.Type_style>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -5614,7 +5615,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_stylelist = vx_web_html.Class_stylelist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -5668,11 +5669,12 @@ object vx_web_html {
   class Class_stylemap : vx_core.Class_base, Type_stylemap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_web_html.Type_style> = vx_core.immutablemap(LinkedHashMap<String, vx_web_html.Type_style>())
+    var vx_p_map : Map<String, vx_web_html.Type_style> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_web_html.Type_style>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -5684,13 +5686,13 @@ object vx_web_html {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_web_html.Type_style> = LinkedHashMap<String, vx_web_html.Type_style>(this.vx_p_map)
+        var map : MutableMap<String, vx_web_html.Type_style> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_web_html.e_style) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -5703,18 +5705,18 @@ object vx_web_html {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_web_html.Type_style> = map.vx_p_map
+      val mapval : Map<String, vx_web_html.Type_style> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_web_html.e_style)
       return output
     }
 
     override fun vx_mapstyle() : Map<String, vx_web_html.Type_style> {
-      var output : Map<String, vx_web_html.Type_style> = this.vx_p_map
+      val output : Map<String, vx_web_html.Type_style> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_style(key)
+      val output : vx_core.Type_any = this.vx_style(key)
       return output
     }
 
@@ -5735,7 +5737,7 @@ object vx_web_html {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -5755,7 +5757,7 @@ object vx_web_html {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_web_html.Type_style> = LinkedHashMap<String, vx_web_html.Type_style>(value.vx_mapstyle())
+      var mapval : MutableMap<String, vx_web_html.Type_style> = vx_core.vx_mapmutable(value.vx_mapstyle())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -5802,7 +5804,7 @@ object vx_web_html {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/web/html/stylemap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -5818,7 +5820,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_stylemap = vx_web_html.Class_stylemap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -5995,7 +5997,7 @@ object vx_web_html {
       map.put(":name", this.name())
       map.put(":styles", this.styles())
       map.put(":stylemap", this.stylemap())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -6095,7 +6097,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6116,7 +6118,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6137,7 +6139,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6158,7 +6160,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6179,7 +6181,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6203,7 +6205,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6224,7 +6226,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("styles"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6245,7 +6247,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylemap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6428,7 +6430,7 @@ object vx_web_html {
       map.put(":stylelist", this.stylelist())
       map.put(":tbody", this.tbody())
       map.put(":thead", this.thead())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -6526,7 +6528,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6547,7 +6549,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6568,7 +6570,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6589,7 +6591,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6610,7 +6612,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6631,7 +6633,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("tbody"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6652,7 +6654,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("thead"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6819,7 +6821,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -6929,7 +6931,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6950,7 +6952,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6971,7 +6973,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -6992,7 +6994,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7013,7 +7015,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7034,7 +7036,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7200,7 +7202,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -7310,7 +7312,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7331,7 +7333,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7352,7 +7354,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7373,7 +7375,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7394,7 +7396,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7415,7 +7417,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7488,12 +7490,12 @@ object vx_web_html {
   class Class_tdlist : vx_core.Class_base, Type_tdlist {
     constructor() {}
 
-    var vx_p_list : List<vx_web_html.Type_td> = vx_core.immutablelist(
+    var vx_p_list : List<vx_web_html.Type_td> = vx_core.vx_listimmutable(
       ArrayList<vx_web_html.Type_td>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -7573,7 +7575,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_tdlist = vx_web_html.Class_tdlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -7720,7 +7722,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -7830,7 +7832,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7851,7 +7853,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7872,7 +7874,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7893,7 +7895,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7914,7 +7916,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -7935,7 +7937,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8101,7 +8103,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":text", this.text())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -8197,7 +8199,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8218,7 +8220,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8239,7 +8241,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8260,7 +8262,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8281,7 +8283,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8305,7 +8307,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8471,7 +8473,7 @@ object vx_web_html {
       map.put(":style-unique", this.style_unique())
       map.put(":stylelist", this.stylelist())
       map.put(":nodes", this.nodes())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -8581,7 +8583,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8602,7 +8604,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8623,7 +8625,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8644,7 +8646,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8665,7 +8667,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8686,7 +8688,7 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -8759,12 +8761,12 @@ object vx_web_html {
   class Class_trlist : vx_core.Class_base, Type_trlist {
     constructor() {}
 
-    var vx_p_list : List<vx_web_html.Type_tr> = vx_core.immutablelist(
+    var vx_p_list : List<vx_web_html.Type_tr> = vx_core.vx_listimmutable(
       ArrayList<vx_web_html.Type_tr>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -8844,7 +8846,7 @@ object vx_web_html {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_web_html.Class_trlist = vx_web_html.Class_trlist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -8910,12 +8912,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "htmlstring<-string", // name
         0, // idx
@@ -8938,12 +8940,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_htmlstring_from_string
+      val output : vx_core.Type_any = vx_web_html.e_htmlstring_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_htmlstring_from_string
+      val output : vx_core.Type_any = vx_web_html.t_htmlstring_from_string
       return output
     }
 
@@ -8953,21 +8955,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_web_html.f_htmlstring_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_web_html.f_htmlstring_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_htmlstring_from_string(text)
       return output
     }
 
     override fun vx_htmlstring_from_string(text : vx_core.Type_string) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_htmlstring_from_string(text)
+      val output : vx_core.Type_string = vx_web_html.f_htmlstring_from_string(text)
       return output
     }
 
@@ -9006,12 +9008,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string-indent", // name
         0, // idx
@@ -9034,12 +9036,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_indent
       return output
     }
 
@@ -9049,21 +9051,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_int = value as vx_core.Type_int
-      var outputval : vx_core.Type_any = vx_web_html.f_string_indent(inputval)
+      val inputval : vx_core.Type_int = value as vx_core.Type_int
+      val outputval : vx_core.Type_any = vx_web_html.f_string_indent(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_indent(indent)
       return output
     }
 
     override fun vx_string_indent(indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_indent(indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_indent(indent)
       return output
     }
 
@@ -9107,12 +9109,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-body-indent", // name
         0, // idx
@@ -9135,25 +9137,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_body_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_body_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_body_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_body_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var body : vx_web_html.Type_body = vx_core.f_any_from_any(vx_web_html.t_body, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val body : vx_web_html.Type_body = vx_core.f_any_from_any(vx_web_html.t_body, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_body_indent(body, indent)
       return output
     }
 
     override fun vx_string_from_body_indent(body : vx_web_html.Type_body, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_body_indent(body, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_body_indent(body, indent)
       return output
     }
 
@@ -9167,8 +9169,8 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var nodes : vx_web_html.Type_divchildlist = body.nodes()
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+        val nodes : vx_web_html.Type_divchildlist = body.nodes()
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           vx_core.vx_new_string("body"),
           vx_core.vx_new_string(""),
@@ -9206,12 +9208,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-details-indent", // name
         0, // idx
@@ -9234,25 +9236,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_details_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_details_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_details_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_details_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var details : vx_web_html.Type_details = vx_core.f_any_from_any(vx_web_html.t_details, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val details : vx_web_html.Type_details = vx_core.f_any_from_any(vx_web_html.t_details, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_details_indent(details, indent)
       return output
     }
 
     override fun vx_string_from_details_indent(details : vx_web_html.Type_details, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_details_indent(details, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_details_indent(details, indent)
       return output
     }
 
@@ -9266,26 +9268,26 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var summary : vx_web_html.Type_divchildlist = details.summary()
-        var nodes : vx_web_html.Type_divchildlist = details.nodes()
-        var ssummary : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
+        val summary : vx_web_html.Type_divchildlist = details.summary()
+        val nodes : vx_web_html.Type_divchildlist = details.nodes()
+        val ssummary : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
           summary,
           vx_core.f_plus(
             indent,
             vx_core.vx_new_int(2)
           )
         )
-        var snodes : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
+        val snodes : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
           nodes,
           vx_core.f_plus(
             indent,
             vx_core.vx_new_int(1)
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -9333,12 +9335,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-div-indent", // name
         0, // idx
@@ -9361,25 +9363,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_div_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_div_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_div_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_div_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var div : vx_web_html.Type_div = vx_core.f_any_from_any(vx_web_html.t_div, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val div : vx_web_html.Type_div = vx_core.f_any_from_any(vx_web_html.t_div, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_div_indent(div, indent)
       return output
     }
 
     override fun vx_string_from_div_indent(div : vx_web_html.Type_div, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_div_indent(div, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_div_indent(div, indent)
       return output
     }
 
@@ -9393,19 +9395,19 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var nodes : vx_web_html.Type_divchildlist = div.nodes()
-        var sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val nodes : vx_web_html.Type_divchildlist = div.nodes()
+        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("id"),
           div.id()
         )
-        var sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
+        val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
           div.style(),
           div.stylelist()
         )
-        var sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
+        val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
           div.style_unique()
         )
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           vx_core.vx_new_string("div"),
           vx_core.f_new(
@@ -9451,12 +9453,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-footer-indent", // name
         0, // idx
@@ -9479,25 +9481,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_footer_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_footer_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_footer_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_footer_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var footer : vx_web_html.Type_footer = vx_core.f_any_from_any(vx_web_html.t_footer, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val footer : vx_web_html.Type_footer = vx_core.f_any_from_any(vx_web_html.t_footer, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_footer_indent(footer, indent)
       return output
     }
 
     override fun vx_string_from_footer_indent(footer : vx_web_html.Type_footer, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_footer_indent(footer, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_footer_indent(footer, indent)
       return output
     }
 
@@ -9511,8 +9513,8 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var nodes : vx_web_html.Type_divchildlist = footer.nodes()
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+        val nodes : vx_web_html.Type_divchildlist = footer.nodes()
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           vx_core.vx_new_string("footer"),
           vx_core.vx_new_string(""),
@@ -9550,12 +9552,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-h1-indent", // name
         0, // idx
@@ -9578,25 +9580,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_h1_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_h1_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_h1_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_h1_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var h1 : vx_web_html.Type_h1 = vx_core.f_any_from_any(vx_web_html.t_h1, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val h1 : vx_web_html.Type_h1 = vx_core.f_any_from_any(vx_web_html.t_h1, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_h1_indent(h1, indent)
       return output
     }
 
     override fun vx_string_from_h1_indent(h1 : vx_web_html.Type_h1, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_h1_indent(h1, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_h1_indent(h1, indent)
       return output
     }
 
@@ -9610,15 +9612,15 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var text : vx_core.Type_string = h1.text()
-        var sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val text : vx_core.Type_string = h1.text()
+        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("id"),
           h1.id()
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -9662,12 +9664,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-h2-indent", // name
         0, // idx
@@ -9690,25 +9692,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_h2_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_h2_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_h2_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_h2_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var h2 : vx_web_html.Type_h2 = vx_core.f_any_from_any(vx_web_html.t_h2, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val h2 : vx_web_html.Type_h2 = vx_core.f_any_from_any(vx_web_html.t_h2, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_h2_indent(h2, indent)
       return output
     }
 
     override fun vx_string_from_h2_indent(h2 : vx_web_html.Type_h2, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_h2_indent(h2, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_h2_indent(h2, indent)
       return output
     }
 
@@ -9722,15 +9724,15 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = h2.text()
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val text : vx_core.Type_string = h2.text()
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("id"),
           h2.id()
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -9774,12 +9776,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-h3-indent", // name
         0, // idx
@@ -9802,25 +9804,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_h3_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_h3_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_h3_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_h3_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var h3 : vx_web_html.Type_h3 = vx_core.f_any_from_any(vx_web_html.t_h3, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val h3 : vx_web_html.Type_h3 = vx_core.f_any_from_any(vx_web_html.t_h3, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_h3_indent(h3, indent)
       return output
     }
 
     override fun vx_string_from_h3_indent(h3 : vx_web_html.Type_h3, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_h3_indent(h3, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_h3_indent(h3, indent)
       return output
     }
 
@@ -9834,15 +9836,15 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = h3.text()
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val text : vx_core.Type_string = h3.text()
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("id"),
           h3.id()
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -9886,12 +9888,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-head-indent", // name
         0, // idx
@@ -9914,25 +9916,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_head_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_head_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_head_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_head_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var head : vx_web_html.Type_head = vx_core.f_any_from_any(vx_web_html.t_head, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val head : vx_web_html.Type_head = vx_core.f_any_from_any(vx_web_html.t_head, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_head_indent(head, indent)
       return output
     }
 
     override fun vx_string_from_head_indent(head : vx_web_html.Type_head, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_head_indent(head, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_head_indent(head, indent)
       return output
     }
 
@@ -9946,8 +9948,8 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var nodes : vx_web_html.Type_headchildlist = head.nodes()
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+        val nodes : vx_web_html.Type_headchildlist = head.nodes()
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           vx_core.vx_new_string("head"),
           vx_core.vx_new_string(""),
@@ -9984,12 +9986,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-html", // name
         0, // idx
@@ -10012,12 +10014,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_html
+      val output : vx_core.Type_any = vx_web_html.e_string_from_html
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_html
+      val output : vx_core.Type_any = vx_web_html.t_string_from_html
       return output
     }
 
@@ -10027,21 +10029,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_html = value as vx_web_html.Type_html
-      var outputval : vx_core.Type_any = vx_web_html.f_string_from_html(inputval)
+      val inputval : vx_web_html.Type_html = value as vx_web_html.Type_html
+      val outputval : vx_core.Type_any = vx_web_html.f_string_from_html(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var html : vx_web_html.Type_html = vx_core.f_any_from_any(vx_web_html.t_html, arglist.vx_any(vx_core.vx_new_int(0)))
+      val html : vx_web_html.Type_html = vx_core.f_any_from_any(vx_web_html.t_html, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_from_html(html)
       return output
     }
 
     override fun vx_string_from_html(html : vx_web_html.Type_html) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_html(html)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_html(html)
       return output
     }
 
@@ -10055,26 +10057,26 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var lang : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val lang : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("lang"),
           html.lang()
         )
-        var head : vx_web_html.Type_head = html.head()
-        var body : vx_web_html.Type_body = html.body()
-        var footer : vx_web_html.Type_footer = html.footer()
-        var shead : vx_core.Type_string = vx_web_html.f_string_from_head_indent(
+        val head : vx_web_html.Type_head = html.head()
+        val body : vx_web_html.Type_body = html.body()
+        val footer : vx_web_html.Type_footer = html.footer()
+        val shead : vx_core.Type_string = vx_web_html.f_string_from_head_indent(
           head,
           vx_core.vx_new_int(1)
         )
-        var sbody : vx_core.Type_string = vx_web_html.f_string_from_body_indent(
+        val sbody : vx_core.Type_string = vx_web_html.f_string_from_body_indent(
           body,
           vx_core.vx_new_int(1)
         )
-        var sfooter : vx_core.Type_string = vx_web_html.f_string_from_footer_indent(
+        val sfooter : vx_core.Type_string = vx_web_html.f_string_from_footer_indent(
           footer,
           vx_core.vx_new_int(1)
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -10122,12 +10124,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-img-indent", // name
         0, // idx
@@ -10150,25 +10152,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_img_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_img_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_img_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_img_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var img : vx_web_html.Type_img = vx_core.f_any_from_any(vx_web_html.t_img, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val img : vx_web_html.Type_img = vx_core.f_any_from_any(vx_web_html.t_img, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_img_indent(img, indent)
       return output
     }
 
     override fun vx_string_from_img_indent(img : vx_web_html.Type_img, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_img_indent(img, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_img_indent(img, indent)
       return output
     }
 
@@ -10182,25 +10184,25 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var ssrc : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val ssrc : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("src"),
           img.src()
         )
-        var sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("id"),
           img.id()
         )
-        var sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
+        val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
           img.style(),
           img.stylelist()
         )
-        var sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
+        val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
           img.style_unique()
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -10244,12 +10246,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-indent", // name
         0, // idx
@@ -10272,12 +10274,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_indent
       return output
     }
 
@@ -10287,21 +10289,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_int = value as vx_core.Type_int
-      var outputval : vx_core.Type_any = vx_web_html.f_string_from_indent(inputval)
+      val inputval : vx_core.Type_int = value as vx_core.Type_int
+      val outputval : vx_core.Type_any = vx_web_html.f_string_from_indent(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_from_indent(indent)
       return output
     }
 
     override fun vx_string_from_indent(indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
       return output
     }
 
@@ -10359,12 +10361,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-meta-indent", // name
         0, // idx
@@ -10387,25 +10389,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_meta_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_meta_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_meta_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_meta_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var meta : vx_web_html.Type_meta = vx_core.f_any_from_any(vx_web_html.t_meta, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val meta : vx_web_html.Type_meta = vx_core.f_any_from_any(vx_web_html.t_meta, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_meta_indent(meta, indent)
       return output
     }
 
     override fun vx_string_from_meta_indent(meta : vx_web_html.Type_meta, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_meta_indent(meta, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_meta_indent(meta, indent)
       return output
     }
 
@@ -10419,13 +10421,13 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var charset : vx_core.Type_string = meta.charset()
-        var name : vx_core.Type_string = meta.name()
-        var content : vx_core.Type_string = meta.content()
-        var scharset : vx_core.Type_string = vx_core.f_if_2(
+        val charset : vx_core.Type_string = meta.charset()
+        val name : vx_core.Type_string = meta.name()
+        val content : vx_core.Type_string = meta.content()
+        val scharset : vx_core.Type_string = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -10447,7 +10449,7 @@ object vx_web_html {
             )
           )
         )
-        var sname : vx_core.Type_string = vx_core.f_if_2(
+        val sname : vx_core.Type_string = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -10469,7 +10471,7 @@ object vx_web_html {
             )
           )
         )
-        var scontext : vx_core.Type_string = vx_core.f_if_2(
+        val scontext : vx_core.Type_string = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -10491,7 +10493,7 @@ object vx_web_html {
             )
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -10534,12 +10536,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-node", // name
         0, // idx
@@ -10562,12 +10564,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_node
+      val output : vx_core.Type_any = vx_web_html.e_string_from_node
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_node
+      val output : vx_core.Type_any = vx_web_html.t_string_from_node
       return output
     }
 
@@ -10577,21 +10579,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_any = value as vx_core.Type_any
-      var outputval : vx_core.Type_any = vx_web_html.f_string_from_node(inputval)
+      val inputval : vx_core.Type_any = value as vx_core.Type_any
+      val outputval : vx_core.Type_any = vx_web_html.f_string_from_node(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var node : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      val node : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_from_node(node)
       return output
     }
 
     override fun vx_string_from_node(node : vx_core.Type_any) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_node(node)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_node(node)
       return output
     }
 
@@ -10635,12 +10637,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-node-indent", // name
         0, // idx
@@ -10663,25 +10665,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_node_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_node_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_node_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_node_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var node : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val node : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_node_indent(node, indent)
       return output
     }
 
     override fun vx_string_from_node_indent(node : vx_core.Type_any, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_node_indent(node, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_node_indent(node, indent)
       return output
     }
 
@@ -10964,12 +10966,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-nodelist-indent", // name
         0, // idx
@@ -10992,25 +10994,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_nodelist_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_nodelist_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_nodelist_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_nodelist_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var nodelist : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val nodelist : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_nodelist_indent(nodelist, indent)
       return output
     }
 
     override fun vx_string_from_nodelist_indent(nodelist : vx_core.Type_list, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(nodelist, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(nodelist, indent)
       return output
     }
 
@@ -11024,11 +11026,11 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var textlist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
+        val textlist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
           vx_core.t_stringlist,
           nodelist,
           vx_core.t_any_from_any.vx_fn_new({node_any : vx_core.Type_any ->
-            var node : vx_web_html.Type_node = vx_core.f_any_from_any(vx_web_html.t_node, node_any)
+            val node : vx_web_html.Type_node = vx_core.f_any_from_any(vx_web_html.t_node, node_any)
             var output_2 : vx_core.Type_any = vx_web_html.f_string_from_node_indent(
               node,
               indent
@@ -11036,7 +11038,7 @@ object vx_web_html {
             output_2
           })
         )
-        var output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
+        val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
           textlist,
           vx_core.vx_new_string("")
         )
@@ -11074,12 +11076,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-nodelist-tag-prop-indent", // name
         0, // idx
@@ -11102,27 +11104,27 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_nodelist_tag_prop_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_nodelist_tag_prop_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_nodelist_tag_prop_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_nodelist_tag_prop_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var nodes : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      var tag : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
-      var prop : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(3)))
+      val nodes : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
+      val tag : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val prop : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(3)))
       output = vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, tag, prop, indent)
       return output
     }
 
     override fun vx_string_from_nodelist_tag_prop_indent(nodes : vx_core.Type_list, tag : vx_core.Type_string, prop : vx_core.Type_string, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, tag, prop, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, tag, prop, indent)
       return output
     }
 
@@ -11136,16 +11138,16 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
+        val text : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
           nodes,
           vx_core.f_plus1(
             indent
           )
         )
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var eindent : vx_core.Type_string = vx_core.f_if_2(
+        val eindent : vx_core.Type_string = vx_core.f_if_2(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -11175,13 +11177,13 @@ object vx_web_html {
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_6 : vx_core.Type_any = sindent
+                val output_6 : vx_core.Type_any = sindent
                 output_6
               })
             )
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -11229,12 +11231,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-p-indent", // name
         0, // idx
@@ -11257,25 +11259,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_p_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_p_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_p_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_p_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var p : vx_web_html.Type_p = vx_core.f_any_from_any(vx_web_html.t_p, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val p : vx_web_html.Type_p = vx_core.f_any_from_any(vx_web_html.t_p, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_p_indent(p, indent)
       return output
     }
 
     override fun vx_string_from_p_indent(p : vx_web_html.Type_p, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_p_indent(p, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_p_indent(p, indent)
       return output
     }
 
@@ -11289,24 +11291,24 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var text : vx_core.Type_string = vx_web_html.f_htmlstring_from_string(
+        val text : vx_core.Type_string = vx_web_html.f_htmlstring_from_string(
           p.text()
         )
-        var sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("id"),
           p.id()
         )
-        var sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
+        val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
           p.style(),
           p.stylelist()
         )
-        var sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
+        val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
           p.style_unique()
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -11352,12 +11354,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-propname-val", // name
         0, // idx
@@ -11380,25 +11382,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_propname_val
+      val output : vx_core.Type_any = vx_web_html.e_string_from_propname_val
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_propname_val
+      val output : vx_core.Type_any = vx_web_html.t_string_from_propname_val
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      var value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_propname_val(key, value)
       return output
     }
 
     override fun vx_string_from_propname_val(key : vx_core.Type_string, value : vx_core.Type_string) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_propname_val(key, value)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_propname_val(key, value)
       return output
     }
 
@@ -11455,12 +11457,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-propstyle", // name
         0, // idx
@@ -11483,12 +11485,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_propstyle
+      val output : vx_core.Type_any = vx_web_html.e_string_from_propstyle
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_propstyle
+      val output : vx_core.Type_any = vx_web_html.t_string_from_propstyle
       return output
     }
 
@@ -11498,21 +11500,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_style = value as vx_web_html.Type_style
-      var outputval : vx_core.Type_any = vx_web_html.f_string_from_propstyle(inputval)
+      val inputval : vx_web_html.Type_style = value as vx_web_html.Type_style
+      val outputval : vx_core.Type_any = vx_web_html.f_string_from_propstyle(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
+      val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_from_propstyle(style)
       return output
     }
 
     override fun vx_string_from_propstyle(style : vx_web_html.Type_style) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_propstyle(style)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_propstyle(style)
       return output
     }
 
@@ -11582,12 +11584,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-propstyle-stylelist", // name
         0, // idx
@@ -11610,25 +11612,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_propstyle_stylelist
+      val output : vx_core.Type_any = vx_web_html.e_string_from_propstyle_stylelist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_propstyle_stylelist
+      val output : vx_core.Type_any = vx_web_html.t_string_from_propstyle_stylelist
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
-      var stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_propstyle_stylelist(style, stylelist)
       return output
     }
 
     override fun vx_string_from_propstyle_stylelist(style : vx_web_html.Type_style, stylelist : vx_web_html.Type_stylelist) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(style, stylelist)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(style, stylelist)
       return output
     }
 
@@ -11701,12 +11703,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-propstylelist", // name
         0, // idx
@@ -11729,12 +11731,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_propstylelist
+      val output : vx_core.Type_any = vx_web_html.e_string_from_propstylelist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_propstylelist
+      val output : vx_core.Type_any = vx_web_html.t_string_from_propstylelist
       return output
     }
 
@@ -11744,21 +11746,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
-      var outputval : vx_core.Type_any = vx_web_html.f_string_from_propstylelist(inputval)
+      val inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
+      val outputval : vx_core.Type_any = vx_web_html.f_string_from_propstylelist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_from_propstylelist(stylelist)
       return output
     }
 
     override fun vx_string_from_propstylelist(stylelist : vx_web_html.Type_stylelist) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_propstylelist(stylelist)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_propstylelist(stylelist)
       return output
     }
 
@@ -11784,10 +11786,10 @@ object vx_web_html {
             var output_2 : vx_core.Type_any = vx_core.f_let(
               vx_core.t_string,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var joined : vx_core.Type_string = vx_web_html.f_string_from_stylelist(
+                val joined : vx_core.Type_string = vx_web_html.f_string_from_stylelist(
                   stylelist
                 )
-                var output_3 : vx_core.Type_any = vx_core.f_if(
+                val output_3 : vx_core.Type_any = vx_core.f_if(
                   vx_core.t_string,
                   vx_core.f_ne(
                     vx_core.vx_new_string(""),
@@ -11840,12 +11842,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-propstyleunique", // name
         0, // idx
@@ -11868,12 +11870,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_propstyleunique
+      val output : vx_core.Type_any = vx_web_html.e_string_from_propstyleunique
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_propstyleunique
+      val output : vx_core.Type_any = vx_web_html.t_string_from_propstyleunique
       return output
     }
 
@@ -11883,21 +11885,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_style = value as vx_web_html.Type_style
-      var outputval : vx_core.Type_any = vx_web_html.f_string_from_propstyleunique(inputval)
+      val inputval : vx_web_html.Type_style = value as vx_web_html.Type_style
+      val outputval : vx_core.Type_any = vx_web_html.f_string_from_propstyleunique(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
+      val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_from_propstyleunique(style)
       return output
     }
 
     override fun vx_string_from_propstyleunique(style : vx_web_html.Type_style) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(style)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(style)
       return output
     }
 
@@ -11923,12 +11925,12 @@ object vx_web_html {
             var output_2 : vx_core.Type_any = vx_core.f_let(
               vx_core.t_string,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var props : vx_web_html.Type_propmap = style.props()
-                var text : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(
+                val props : vx_web_html.Type_propmap = style.props()
+                val text : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(
                   props,
                   vx_core.vx_new_int(0)
                 )
-                var output_3 : vx_core.Type_any = vx_core.f_if_2(
+                val output_3 : vx_core.Type_any = vx_core.f_if_2(
                   vx_core.t_string,
                   vx_core.vx_new(
                     vx_core.t_thenelselist,
@@ -11992,12 +11994,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-style-indent", // name
         0, // idx
@@ -12020,25 +12022,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_style_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_style_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_style_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_style_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_style_indent(style, indent)
       return output
     }
 
     override fun vx_string_from_style_indent(style : vx_web_html.Type_style, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_style_indent(style, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_style_indent(style, indent)
       return output
     }
 
@@ -12052,25 +12054,25 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var name : vx_core.Type_string = style.name()
-        var propmap : vx_web_html.Type_propmap = style.props()
-        var sublist : vx_web_html.Type_stylelist = style.stylelist()
-        var stext : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(
+        val name : vx_core.Type_string = style.name()
+        val propmap : vx_web_html.Type_propmap = style.props()
+        val sublist : vx_web_html.Type_stylelist = style.stylelist()
+        val stext : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(
           propmap,
           vx_core.f_plus1(
             indent
           )
         )
-        var subtext : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
+        val subtext : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
           sublist,
           vx_core.f_plus1(
             indent
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -12114,12 +12116,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-stylelist", // name
         0, // idx
@@ -12142,12 +12144,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_stylelist
+      val output : vx_core.Type_any = vx_web_html.e_string_from_stylelist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_stylelist
+      val output : vx_core.Type_any = vx_web_html.t_string_from_stylelist
       return output
     }
 
@@ -12157,21 +12159,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
-      var outputval : vx_core.Type_any = vx_web_html.f_string_from_stylelist(inputval)
+      val inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
+      val outputval : vx_core.Type_any = vx_web_html.f_string_from_stylelist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_from_stylelist(stylelist)
       return output
     }
 
     override fun vx_string_from_stylelist(stylelist : vx_web_html.Type_stylelist) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_stylelist(stylelist)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_stylelist(stylelist)
       return output
     }
 
@@ -12185,11 +12187,11 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var namelist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
+        val namelist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
           vx_core.t_stringlist,
           stylelist,
           vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
-            var item : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, item_any)
+            val item : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, item_any)
             var output_2 : vx_core.Type_any = vx_type.f_string_from_string_start(
               item.name(),
               vx_core.vx_new_int(2)
@@ -12197,7 +12199,7 @@ object vx_web_html {
             output_2
           })
         )
-        var output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
+        val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
           namelist,
           vx_core.vx_new_string(" ")
         )
@@ -12233,12 +12235,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-stylelist-indent", // name
         0, // idx
@@ -12261,25 +12263,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_stylelist_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_stylelist_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_stylelist_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_stylelist_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_stylelist_indent(stylelist, indent)
       return output
     }
 
     override fun vx_string_from_stylelist_indent(stylelist : vx_web_html.Type_stylelist, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(stylelist, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(stylelist, indent)
       return output
     }
 
@@ -12293,11 +12295,11 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sstyles : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
+        val sstyles : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
           vx_core.t_stringlist,
           stylelist,
           vx_core.t_any_from_any.vx_fn_new({substyle_any : vx_core.Type_any ->
-            var substyle : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, substyle_any)
+            val substyle : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, substyle_any)
             var output_2 : vx_core.Type_any = vx_web_html.f_string_from_style_indent(
               substyle,
               indent
@@ -12305,7 +12307,7 @@ object vx_web_html {
             output_2
           })
         )
-        var output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
+        val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
           sstyles,
           vx_core.c_newline
         )
@@ -12341,12 +12343,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-stylepropmap-indent", // name
         0, // idx
@@ -12369,25 +12371,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_stylepropmap_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_stylepropmap_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_stylepropmap_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_stylepropmap_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var propmap : vx_web_html.Type_propmap = vx_core.f_any_from_any(vx_web_html.t_propmap, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val propmap : vx_web_html.Type_propmap = vx_core.f_any_from_any(vx_web_html.t_propmap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_stylepropmap_indent(propmap, indent)
       return output
     }
 
     override fun vx_string_from_stylepropmap_indent(propmap : vx_web_html.Type_propmap, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(propmap, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(propmap, indent)
       return output
     }
 
@@ -12401,15 +12403,15 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var sprops : vx_core.Type_stringlist = vx_core.f_list_from_map_1(
+        val sprops : vx_core.Type_stringlist = vx_core.f_list_from_map_1(
           vx_core.t_stringlist,
           propmap,
           vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            var value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
+            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+            val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
             var output_2 : vx_core.Type_any = vx_core.f_new(
               vx_core.t_string,
               vx_core.vx_new(
@@ -12428,7 +12430,7 @@ object vx_web_html {
             output_2
           })
         )
-        var output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
+        val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
           sprops,
           vx_core.vx_new_string("")
         )
@@ -12464,12 +12466,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-stylesheet-indent", // name
         0, // idx
@@ -12492,25 +12494,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_stylesheet_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_stylesheet_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_stylesheet_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_stylesheet_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_stylesheet_indent(stylesheet, indent)
       return output
     }
 
     override fun vx_string_from_stylesheet_indent(stylesheet : vx_web_html.Type_stylesheet, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_stylesheet_indent(stylesheet, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_stylesheet_indent(stylesheet, indent)
       return output
     }
 
@@ -12524,24 +12526,24 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var styles : vx_web_html.Type_stylelist = stylesheet.styles()
-        var sstyles : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
+        val styles : vx_web_html.Type_stylelist = stylesheet.styles()
+        val sstyles : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
           styles,
           vx_core.f_plus1(
             indent
           )
         )
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var eindent : vx_core.Type_string = vx_core.f_if(
+        val eindent : vx_core.Type_string = vx_core.f_if(
           vx_core.t_string,
           vx_core.f_notempty(
             sstyles
           ),
           sindent
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -12584,12 +12586,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-table-indent", // name
         0, // idx
@@ -12612,25 +12614,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_table_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_table_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_table_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_table_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var table : vx_web_html.Type_table = vx_core.f_any_from_any(vx_web_html.t_table, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val table : vx_web_html.Type_table = vx_core.f_any_from_any(vx_web_html.t_table, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_table_indent(table, indent)
       return output
     }
 
     override fun vx_string_from_table_indent(table : vx_web_html.Type_table, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_table_indent(table, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_table_indent(table, indent)
       return output
     }
 
@@ -12644,28 +12646,28 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
           vx_core.vx_new_string("id"),
           table.id()
         )
-        var thead : vx_web_html.Type_thead = table.thead()
-        var tbody : vx_web_html.Type_tbody = table.tbody()
-        var shead : vx_core.Type_string = vx_web_html.f_string_from_thead_indent(
+        val thead : vx_web_html.Type_thead = table.thead()
+        val tbody : vx_web_html.Type_tbody = table.tbody()
+        val shead : vx_core.Type_string = vx_web_html.f_string_from_thead_indent(
           thead,
           vx_core.f_plus1(
             indent
           )
         )
-        var sbody : vx_core.Type_string = vx_web_html.f_string_from_tbody_indent(
+        val sbody : vx_core.Type_string = vx_web_html.f_string_from_tbody_indent(
           tbody,
           vx_core.f_plus1(
             indent
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -12711,12 +12713,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-tbody-indent", // name
         0, // idx
@@ -12739,25 +12741,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_tbody_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_tbody_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_tbody_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_tbody_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var tbody : vx_web_html.Type_tbody = vx_core.f_any_from_any(vx_web_html.t_tbody, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val tbody : vx_web_html.Type_tbody = vx_core.f_any_from_any(vx_web_html.t_tbody, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_tbody_indent(tbody, indent)
       return output
     }
 
     override fun vx_string_from_tbody_indent(tbody : vx_web_html.Type_tbody, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_tbody_indent(tbody, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_tbody_indent(tbody, indent)
       return output
     }
 
@@ -12771,8 +12773,8 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var nodes : vx_web_html.Type_trlist = tbody.nodes()
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+        val nodes : vx_web_html.Type_trlist = tbody.nodes()
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           vx_core.vx_new_string("tbody"),
           vx_core.vx_new_string(""),
@@ -12810,12 +12812,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-td-indent", // name
         0, // idx
@@ -12838,25 +12840,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_td_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_td_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_td_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_td_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var td : vx_web_html.Type_td = vx_core.f_any_from_any(vx_web_html.t_td, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val td : vx_web_html.Type_td = vx_core.f_any_from_any(vx_web_html.t_td, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_td_indent(td, indent)
       return output
     }
 
     override fun vx_string_from_td_indent(td : vx_web_html.Type_td, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_td_indent(td, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_td_indent(td, indent)
       return output
     }
 
@@ -12870,8 +12872,8 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var nodes : vx_web_html.Type_divchildlist = td.nodes()
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+        val nodes : vx_web_html.Type_divchildlist = td.nodes()
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           vx_core.vx_new_string("td"),
           vx_core.vx_new_string(""),
@@ -12909,12 +12911,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-thead-indent", // name
         0, // idx
@@ -12937,25 +12939,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_thead_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_thead_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_thead_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_thead_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var thead : vx_web_html.Type_thead = vx_core.f_any_from_any(vx_web_html.t_thead, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val thead : vx_web_html.Type_thead = vx_core.f_any_from_any(vx_web_html.t_thead, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_thead_indent(thead, indent)
       return output
     }
 
     override fun vx_string_from_thead_indent(thead : vx_web_html.Type_thead, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_thead_indent(thead, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_thead_indent(thead, indent)
       return output
     }
 
@@ -12969,8 +12971,8 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var nodes : vx_web_html.Type_trlist = thead.nodes()
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+        val nodes : vx_web_html.Type_trlist = thead.nodes()
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           vx_core.vx_new_string("thead"),
           vx_core.vx_new_string(""),
@@ -13008,12 +13010,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-title-indent", // name
         0, // idx
@@ -13036,25 +13038,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_title_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_title_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_title_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_title_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var title : vx_web_html.Type_title = vx_core.f_any_from_any(vx_web_html.t_title, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val title : vx_web_html.Type_title = vx_core.f_any_from_any(vx_web_html.t_title, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_title_indent(title, indent)
       return output
     }
 
     override fun vx_string_from_title_indent(title : vx_web_html.Type_title, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_title_indent(title, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_title_indent(title, indent)
       return output
     }
 
@@ -13068,11 +13070,11 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
+        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
           indent
         )
-        var text : vx_core.Type_string = title.text()
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val text : vx_core.Type_string = title.text()
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_core.t_string,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -13114,12 +13116,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-tr-indent", // name
         0, // idx
@@ -13142,25 +13144,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_tr_indent
+      val output : vx_core.Type_any = vx_web_html.e_string_from_tr_indent
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_tr_indent
+      val output : vx_core.Type_any = vx_web_html.t_string_from_tr_indent
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var tr : vx_web_html.Type_tr = vx_core.f_any_from_any(vx_web_html.t_tr, arglist.vx_any(vx_core.vx_new_int(0)))
-      var indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val tr : vx_web_html.Type_tr = vx_core.f_any_from_any(vx_web_html.t_tr, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_string_from_tr_indent(tr, indent)
       return output
     }
 
     override fun vx_string_from_tr_indent(tr : vx_web_html.Type_tr, indent : vx_core.Type_int) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_tr_indent(tr, indent)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_tr_indent(tr, indent)
       return output
     }
 
@@ -13174,8 +13176,8 @@ object vx_web_html {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var nodes : vx_web_html.Type_tdlist = tr.nodes()
-        var output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+        val nodes : vx_web_html.Type_tdlist = tr.nodes()
+        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
           nodes,
           vx_core.vx_new_string("tr"),
           vx_core.vx_new_string(""),
@@ -13212,12 +13214,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "string<-uri", // name
         0, // idx
@@ -13240,12 +13242,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_string_from_uri
+      val output : vx_core.Type_any = vx_web_html.e_string_from_uri
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_string_from_uri
+      val output : vx_core.Type_any = vx_web_html.t_string_from_uri
       return output
     }
 
@@ -13255,21 +13257,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_web_html.f_string_from_uri(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_web_html.f_string_from_uri(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var uri : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uri : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_string_from_uri(uri)
       return output
     }
 
     override fun vx_string_from_uri(uri : vx_core.Type_string) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_string_from_uri(uri)
+      val output : vx_core.Type_string = vx_web_html.f_string_from_uri(uri)
       return output
     }
 
@@ -13309,12 +13311,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "style<-stylesheet-name", // name
         0, // idx
@@ -13337,25 +13339,25 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_style_from_stylesheet_name
+      val output : vx_core.Type_any = vx_web_html.e_style_from_stylesheet_name
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_style_from_stylesheet_name
+      val output : vx_core.Type_any = vx_web_html.t_style_from_stylesheet_name
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
-      var name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_web_html.f_style_from_stylesheet_name(stylesheet, name)
       return output
     }
 
     override fun vx_style_from_stylesheet_name(stylesheet : vx_web_html.Type_stylesheet, name : vx_core.Type_string) : vx_web_html.Type_style {
-      var output : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(stylesheet, name)
+      val output : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(stylesheet, name)
       return output
     }
 
@@ -13401,12 +13403,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "stylemap<-stylelist", // name
         0, // idx
@@ -13429,12 +13431,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_stylemap_from_stylelist
+      val output : vx_core.Type_any = vx_web_html.e_stylemap_from_stylelist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_stylemap_from_stylelist
+      val output : vx_core.Type_any = vx_web_html.t_stylemap_from_stylelist
       return output
     }
 
@@ -13444,21 +13446,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
-      var outputval : vx_core.Type_any = vx_web_html.f_stylemap_from_stylelist(inputval)
+      val inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
+      val outputval : vx_core.Type_any = vx_web_html.f_stylemap_from_stylelist(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_stylemap_from_stylelist(stylelist)
       return output
     }
 
     override fun vx_stylemap_from_stylelist(stylelist : vx_web_html.Type_stylelist) : vx_web_html.Type_stylemap {
-      var output : vx_web_html.Type_stylemap = vx_web_html.f_stylemap_from_stylelist(stylelist)
+      val output : vx_web_html.Type_stylemap = vx_web_html.f_stylemap_from_stylelist(stylelist)
       return output
     }
 
@@ -13473,7 +13475,7 @@ object vx_web_html {
       vx_web_html.t_stylemap,
       stylelist,
       vx_core.t_any_from_any.vx_fn_new({style_any : vx_core.Type_any ->
-        var style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, style_any)
+        val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, style_any)
         var output_1 : vx_core.Type_any = style.name()
         output_1
       })
@@ -13506,12 +13508,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "stylemap<-stylesheet", // name
         0, // idx
@@ -13534,12 +13536,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_stylemap_from_stylesheet
+      val output : vx_core.Type_any = vx_web_html.e_stylemap_from_stylesheet
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_stylemap_from_stylesheet
+      val output : vx_core.Type_any = vx_web_html.t_stylemap_from_stylesheet
       return output
     }
 
@@ -13549,21 +13551,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
-      var outputval : vx_core.Type_any = vx_web_html.f_stylemap_from_stylesheet(inputval)
+      val inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
+      val outputval : vx_core.Type_any = vx_web_html.f_stylemap_from_stylesheet(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_stylemap_from_stylesheet(stylesheet)
       return output
     }
 
     override fun vx_stylemap_from_stylesheet(stylesheet : vx_web_html.Type_stylesheet) : vx_web_html.Type_stylemap {
-      var output : vx_web_html.Type_stylemap = vx_web_html.f_stylemap_from_stylesheet(stylesheet)
+      val output : vx_web_html.Type_stylemap = vx_web_html.f_stylemap_from_stylesheet(stylesheet)
       return output
     }
 
@@ -13603,12 +13605,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "styles<-stylesheet", // name
         0, // idx
@@ -13631,12 +13633,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_styles_from_stylesheet
+      val output : vx_core.Type_any = vx_web_html.e_styles_from_stylesheet
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_styles_from_stylesheet
+      val output : vx_core.Type_any = vx_web_html.t_styles_from_stylesheet
       return output
     }
 
@@ -13646,21 +13648,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
-      var outputval : vx_core.Type_any = vx_web_html.f_styles_from_stylesheet(inputval)
+      val inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
+      val outputval : vx_core.Type_any = vx_web_html.f_styles_from_stylesheet(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_styles_from_stylesheet(stylesheet)
       return output
     }
 
     override fun vx_styles_from_stylesheet(stylesheet : vx_web_html.Type_stylesheet) : vx_web_html.Type_stylelist {
-      var output : vx_web_html.Type_stylelist = vx_web_html.f_styles_from_stylesheet(stylesheet)
+      val output : vx_web_html.Type_stylelist = vx_web_html.f_styles_from_stylesheet(stylesheet)
       return output
     }
 
@@ -13700,12 +13702,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "stylesheet-loadmap", // name
         0, // idx
@@ -13728,12 +13730,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_stylesheet_loadmap
+      val output : vx_core.Type_any = vx_web_html.e_stylesheet_loadmap
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_stylesheet_loadmap
+      val output : vx_core.Type_any = vx_web_html.t_stylesheet_loadmap
       return output
     }
 
@@ -13743,21 +13745,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
-      var outputval : vx_core.Type_any = vx_web_html.f_stylesheet_loadmap(inputval)
+      val inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
+      val outputval : vx_core.Type_any = vx_web_html.f_stylesheet_loadmap(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_stylesheet_loadmap(stylesheet)
       return output
     }
 
     override fun vx_stylesheet_loadmap(stylesheet : vx_web_html.Type_stylesheet) : vx_web_html.Type_stylesheet {
-      var output : vx_web_html.Type_stylesheet = vx_web_html.f_stylesheet_loadmap(stylesheet)
+      val output : vx_web_html.Type_stylesheet = vx_web_html.f_stylesheet_loadmap(stylesheet)
       return output
     }
 
@@ -13806,12 +13808,12 @@ object vx_web_html {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/web/html", // pkgname
         "uri<-string", // name
         0, // idx
@@ -13834,12 +13836,12 @@ object vx_web_html {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.e_uri_from_string
+      val output : vx_core.Type_any = vx_web_html.e_uri_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_web_html.t_uri_from_string
+      val output : vx_core.Type_any = vx_web_html.t_uri_from_string
       return output
     }
 
@@ -13849,21 +13851,21 @@ object vx_web_html {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_web_html.f_uri_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_web_html.f_uri_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_web_html.f_uri_from_string(text)
       return output
     }
 
     override fun vx_uri_from_string(text : vx_core.Type_string) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_web_html.f_uri_from_string(text)
+      val output : vx_core.Type_string = vx_web_html.f_uri_from_string(text)
       return output
     }
 
@@ -13955,7 +13957,12 @@ object vx_web_html {
     mapfunc.put("styles<-stylesheet", vx_web_html.t_styles_from_stylesheet)
     mapfunc.put("stylesheet-loadmap", vx_web_html.t_stylesheet_loadmap)
     mapfunc.put("uri<-string", vx_web_html.t_uri_from_string)
-    vx_core.vx_global_package_set("vx/web/html", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/web/html",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

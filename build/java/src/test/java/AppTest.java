@@ -2,7 +2,6 @@
  * Unit test for whole App.
  */
 import com.vxlisp.vx.Core;
-import com.vxlisp.vx.translation.En;
 import com.vxlisp.vx.CoreTest;
 import com.vxlisp.vx.data.TableTest;
 import com.vxlisp.vx.data.TreeTest;
@@ -27,6 +26,7 @@ import com.vxlisp.vx.ui.html.UihtmlTest;
 import com.vxlisp.vx.ui.svg.UisvgTest;
 import com.vxlisp.vx.web.HttpTest;
 import com.vxlisp.vx.translation.AllTest;
+import com.vxlisp.vx.translation.En;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

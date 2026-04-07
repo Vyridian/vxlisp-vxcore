@@ -2868,7 +2868,12 @@ public static class Type {
     mapfunc.put("traitnames<-any", Vx.Type.t_traitnames_from_any);
     mapfunc.put("traits<-any", Vx.Type.t_traits_from_any);
     mapfunc.put("uid", Vx.Type.t_uid);
-    Vx.Core.vx_global_package_set("vx/type", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/type",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

@@ -33,13 +33,13 @@ public final class All {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translation/all", // pkgname
         "context-all", // name
         0, // idx
@@ -63,13 +63,13 @@ public final class All {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = All.e_context_all;
+      final Core.Type_any output = All.e_context_all;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = All.t_context_all;
+      final Core.Type_any output = All.t_context_all;
       return output;
     }
 
@@ -81,8 +81,8 @@ public final class All {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_anylist inputval = (Core.Type_anylist)value;
-      Core.Type_any outputval = All.f_context_all(inputval);
+      final Core.Type_anylist inputval = (Core.Type_anylist)value;
+      final Core.Type_any outputval = All.f_context_all(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -90,14 +90,14 @@ public final class All {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
       output = All.f_context_all(args);
       return output;
     }
 
     @Override
     public Core.Type_context vx_context_all(final Core.Type_anylist args) {
-      Core.Type_context output = All.f_context_all(args);
+      final Core.Type_context output = All.f_context_all(args);
       return output;
     }
 
@@ -154,13 +154,13 @@ public final class All {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/translation/all", // pkgname
         "translationmap-all", // name
         0, // idx
@@ -184,13 +184,13 @@ public final class All {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = All.e_translationmap_all;
+      final Core.Type_any output = All.e_translationmap_all;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = All.t_translationmap_all;
+      final Core.Type_any output = All.t_translationmap_all;
       return output;
     }
 
@@ -203,7 +203,7 @@ public final class All {
 
     @Override
     public Core.Type_translationmap vx_translationmap_all() {
-      Core.Type_translationmap output = All.f_translationmap_all();
+      final Core.Type_translationmap output = All.f_translationmap_all();
       return output;
     }
 
@@ -230,7 +230,12 @@ public final class All {
     Map<String, Core.Type_func> mapfunc = new LinkedHashMap<String, Core.Type_func>();
     mapfunc.put("context-all", All.t_context_all);
     mapfunc.put("translationmap-all", All.t_translationmap_all);
-    Core.vx_global_package_set("vx/translation/all", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/translation/all",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

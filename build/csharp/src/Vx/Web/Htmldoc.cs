@@ -811,10 +811,14 @@ public static class Htmldoc {
         Task<Vx.Core.Type_boolean> future_iswrite = Vx.Web.Htmldoc.f_boolean_write_stylesheet_from_string(
           text
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_iswrite, (iswrite) => {
-          Vx.Core.Type_any output_2 = iswrite;
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_iswrite,
+          (iswrite) => {
+            Vx.Core.Type_any output_2 = iswrite;
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -1398,7 +1402,12 @@ public static class Htmldoc {
     mapfunc.put("string<-id", Vx.Web.Htmldoc.t_string_from_id);
     mapfunc.put("string<-stylesheet", Vx.Web.Htmldoc.t_string_from_stylesheet);
     mapfunc.put("ui-readstate<-uid", Vx.Web.Htmldoc.t_ui_readstate_from_uid);
-    Vx.Core.vx_global_package_set("vx/web/htmldoc", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/web/htmldoc",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

@@ -51,7 +51,7 @@ public static class Http {
       Vx.Core.Map<string, Vx.Core.Type_any> map = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
       map.put(":ok", this.ok());
       map.put(":status", this.status());
-      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.immutablemap(map);
+      Vx.Core.Map<string, Vx.Core.Type_any> output = Vx.Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -134,7 +134,7 @@ public static class Http {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("ok"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/web/http/response", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -156,7 +156,7 @@ public static class Http {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("status"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(mapany);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
               msg = Vx.Core.vx_msg_from_error("vx/web/http/response", ":invalidvalue", msgmap);
               msgblock = Vx.Core.vx_copy(msgblock, msg);
             }
@@ -313,12 +313,16 @@ public static class Http {
           url,
           Vx.Core.vx_new_string("text/csv")
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_textblock, (textblock) => {
-          Vx.Core.Type_any output_2 = Vx.Data.Csv.f_csv_from_textblock(
-            textblock
-          );
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_textblock,
+          (textblock) => {
+            Vx.Core.Type_any output_2 = Vx.Data.Csv.f_csv_from_textblock(
+              textblock
+            );
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -426,10 +430,14 @@ public static class Http {
           url,
           Vx.Core.vx_new_string("application/json")
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_response, (response) => {
-          Vx.Core.Type_any output_2 = response;
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_response,
+          (response) => {
+            Vx.Core.Type_any output_2 = response;
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -625,12 +633,16 @@ public static class Http {
           url,
           Vx.Core.vx_new_string("text/plain")
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_response, (response) => {
-          Vx.Core.Type_any output_2 = Vx.Web.Http.f_text_from_response(
-            response
-          );
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_response,
+          (response) => {
+            Vx.Core.Type_any output_2 = Vx.Web.Http.f_text_from_response(
+              response
+            );
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -824,12 +836,16 @@ public static class Http {
           url,
           contenttype
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_response, (response) => {
-          Vx.Core.Type_any output_2 = Vx.Web.Http.f_textblock_from_response(
-            response
-          );
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_response,
+          (response) => {
+            Vx.Core.Type_any output_2 = Vx.Web.Http.f_textblock_from_response(
+              response
+            );
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -1042,12 +1058,16 @@ public static class Http {
           url,
           Vx.Core.vx_new_string("text/xml")
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_textblock, (textblock) => {
-          Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_from_textblock(
-            textblock
-          );
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_textblock,
+          (textblock) => {
+            Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_from_textblock(
+              textblock
+            );
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -1068,7 +1088,12 @@ public static class Http {
     mapfunc.put("textblock<-httpget", Vx.Web.Http.t_textblock_from_httpget);
     mapfunc.put("textblock<-response", Vx.Web.Http.t_textblock_from_response);
     mapfunc.put("xml<-httpget", Vx.Web.Http.t_xml_from_httpget);
-    Vx.Core.vx_global_package_set("vx/web/http", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/web/http",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

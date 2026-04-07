@@ -191,7 +191,12 @@ public static class Es {
     Vx.Core.Map<string, Vx.Core.Type_func> mapfunc = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_func>();
     mapfunc.put("translation-es", Vx.Translation.Es.t_translation_es);
     mapfunc.put("words", Vx.Translation.Es.t_words);
-    Vx.Core.vx_global_package_set("vx/translation/es", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/translation/es",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

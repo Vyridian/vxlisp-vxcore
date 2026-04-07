@@ -127,7 +127,7 @@ public final class Event {
       map.put(":datamap", this.datamap());
       map.put(":event<-event", this.event_from_event());
       map.put(":event<-event-async", this.event_from_event_async());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -225,7 +225,7 @@ public final class Event {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -249,7 +249,7 @@ public final class Event {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("from"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -273,7 +273,7 @@ public final class Event {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("to"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -294,7 +294,7 @@ public final class Event {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("datamap"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -315,7 +315,7 @@ public final class Event {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("event<-event"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -336,7 +336,7 @@ public final class Event {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("event<-event-async"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -411,13 +411,13 @@ public final class Event {
 
   public static class Class_eventlist extends Core.Class_base implements Type_eventlist {
 
-    public List<Event.Type_event> vx_p_list = Core.immutablelist(
+    public List<Event.Type_event> vx_p_list = Core.vx_listimmutable(
       new ArrayList<Event.Type_event>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -502,7 +502,7 @@ public final class Event {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Event.Class_eventlist work = new Event.Class_eventlist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -558,12 +558,13 @@ public final class Event {
 
   public static class Class_eventmap extends Core.Class_base implements Type_eventmap {
 
-    public Map<String, Event.Type_event> vx_p_map = Core.immutablemap(new LinkedHashMap<String, Event.Type_event>());
+    public Map<String, Event.Type_event> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Event.Type_event>());
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
       Map<String, Core.Type_any> map = new LinkedHashMap<String, Core.Type_any>(this.vx_p_map);
-      return Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
+      return output;
     }
 
     @Override
@@ -576,13 +577,13 @@ public final class Event {
         if (key.startsWith(":")) {
           key = key.substring(1);
         }
-        Map<String, Event.Type_event> map = new LinkedHashMap<String, Event.Type_event>(this.vx_p_map);
+        Map<String, Event.Type_event> map = Core.vx_mapmutable(this.vx_p_map);
         if (castval == Event.e_event) {
           map.remove(key);
         } else {
           map.put(key, castval);
         }
-        this.vx_p_map = Core.immutablemap(map);
+        this.vx_p_map = Core.vx_mapimmutable(map);
         output = Core.c_true;
       }
       return output;
@@ -596,20 +597,20 @@ public final class Event {
       if (skey.startsWith(":")) {
         skey = skey.substring(1);
       }
-      Map<String, Event.Type_event> mapval = map.vx_p_map;
+      final Map<String, Event.Type_event> mapval = map.vx_p_map;
       output = mapval.getOrDefault(skey, Event.e_event);
       return output;
     }
 
     @Override
     public Map<String, Event.Type_event> vx_mapevent() {
-      Map<String, Event.Type_event> output = this.vx_p_map;
+      final Map<String, Event.Type_event> output = this.vx_p_map;
       return output;
     }
 
     @Override
     public Core.Type_any vx_any(final Core.Type_string key) {
-      Core.Type_any output = this.vx_event(key);
+      final Core.Type_any output = this.vx_event(key);
       return output;
     }
 
@@ -631,7 +632,7 @@ public final class Event {
           msgblock = Core.vx_copy(msgblock, msg);
         }
       }
-      output.vx_p_map = Core.immutablemap(map);
+      output.vx_p_map = Core.vx_mapimmutable(map);
       if (msgblock != Core.e_msgblock) {
         output.vxmsgblock = msgblock;
       }
@@ -653,7 +654,7 @@ public final class Event {
       if (this.vx_constdef() != Core.e_constdef) {
         ischanged = true;
       }
-      Map<String, Event.Type_event> mapval = new LinkedHashMap<String, Event.Type_event>(value.vx_mapevent());
+      Map<String, Event.Type_event> mapval = Core.vx_mapmutable(value.vx_mapevent());
       String key = "";
       Core.Type_msg msg = Core.e_msg;
       Core.Type_any msgval = Core.e_any;
@@ -700,7 +701,7 @@ public final class Event {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
             msg = Core.vx_msg_from_error("vx/event/eventmap", ":invalidkeyvalue", msgmap);
             msgblock = Core.vx_copy(msgblock, msg);
           }
@@ -716,7 +717,7 @@ public final class Event {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         Event.Class_eventmap work = new Event.Class_eventmap();
-        work.vx_p_map = Core.immutablemap(mapval);
+        work.vx_p_map = Core.vx_mapimmutable(mapval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -767,7 +768,7 @@ public final class Event {
    */
   public static class Const_event_change {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/event", // pkgname
         "event-change", // name
         Event.t_event
@@ -805,7 +806,7 @@ public final class Event {
    */
   public static class Const_event_click {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/event", // pkgname
         "event-click", // name
         Event.t_event
@@ -843,7 +844,7 @@ public final class Event {
    */
   public static class Const_event_move {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/event", // pkgname
         "event-move", // name
         Event.t_event
@@ -881,7 +882,7 @@ public final class Event {
    */
   public static class Const_event_select {
     public static Core.Type_constdef constdef() {
-      Core.Type_constdef output = Core.constdef_new(
+      final Core.Type_constdef output = Core.constdef_new(
         "vx/event", // pkgname
         "event-select", // name
         Event.t_event
@@ -938,13 +939,13 @@ public final class Event {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/event", // pkgname
         "any-from<-event", // name
         0, // idx
@@ -968,13 +969,13 @@ public final class Event {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Event.e_any_from_from_event;
+      final Core.Type_any output = Event.e_any_from_from_event;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Event.t_any_from_from_event;
+      final Core.Type_any output = Event.t_any_from_from_event;
       return output;
     }
 
@@ -986,8 +987,8 @@ public final class Event {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Event.Type_event inputval = (Event.Type_event)value;
-      Core.Type_any outputval = Event.f_any_from_from_event(Core.t_any, inputval);
+      final Event.Type_event inputval = (Event.Type_event)value;
+      final Core.Type_any outputval = Event.f_any_from_from_event(Core.t_any, inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -995,15 +996,15 @@ public final class Event {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(0)));
       output = Event.f_any_from_from_event(generic_any_1, evt);
       return output;
     }
 
     @Override
     public <T extends Core.Type_any> T vx_any_from_from_event(final T generic_any_1, final Event.Type_event evt) {
-      T output = Event.f_any_from_from_event(generic_any_1, evt);
+      final T output = Event.f_any_from_from_event(generic_any_1, evt);
       return output;
     }
 
@@ -1017,8 +1018,8 @@ public final class Event {
     output = Core.f_let(
       generic_any_1,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_any value = evt.from();
-        Core.Type_any output_1 = Core.f_any_from_any(
+        final Core.Type_any value = evt.from();
+        final Core.Type_any output_1 = Core.f_any_from_any(
           generic_any_1,
           value
         );
@@ -1055,13 +1056,13 @@ public final class Event {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/event", // pkgname
         "event<-event", // name
         0, // idx
@@ -1085,13 +1086,13 @@ public final class Event {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Event.e_event_from_event;
+      final Core.Type_any output = Event.e_event_from_event;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Event.t_event_from_event;
+      final Core.Type_any output = Event.t_event_from_event;
       return output;
     }
 
@@ -1103,8 +1104,8 @@ public final class Event {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Event.Type_event inputval = (Event.Type_event)value;
-      Core.Type_any outputval = Event.f_event_from_event(context, inputval);
+      final Event.Type_event inputval = (Event.Type_event)value;
+      final Core.Type_any outputval = Event.f_event_from_event(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -1112,15 +1113,15 @@ public final class Event {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(1)));
       output = Event.f_event_from_event(context, evt);
       return output;
     }
 
     @Override
     public Event.Type_event vx_event_from_event(final Core.Type_context context, final Event.Type_event evt) {
-      Event.Type_event output = Event.f_event_from_event(context, evt);
+      final Event.Type_event output = Event.f_event_from_event(context, evt);
       return output;
     }
 
@@ -1164,13 +1165,13 @@ public final class Event {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/event", // pkgname
         "event<-event-async", // name
         0, // idx
@@ -1194,13 +1195,13 @@ public final class Event {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Event.e_event_from_event_async;
+      final Core.Type_any output = Event.e_event_from_event_async;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Event.t_event_from_event_async;
+      final Core.Type_any output = Event.t_event_from_event_async;
       return output;
     }
 
@@ -1211,18 +1212,18 @@ public final class Event {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_context_async(final T generic_any_1, final Core.Type_context context, final U value) {
-      Event.Type_event inputval = Core.f_any_from_any(Event.t_event, value);
-      CompletableFuture<Event.Type_event> future = Event.f_event_from_event_async(context, inputval);
+      final Event.Type_event inputval = Core.f_any_from_any(Event.t_event, value);
+      final CompletableFuture<Event.Type_event> future = Event.f_event_from_event_async(context, inputval);
       @SuppressWarnings("unchecked")
-      CompletableFuture<T> output = (CompletableFuture<T>)future;
+      final CompletableFuture<T> output = (CompletableFuture<T>)future;
       return output;
     }
 
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Event.Type_event evt = Core.f_any_from_any(Event.t_event, arglist.vx_any(Core.vx_new_int(1)));
       CompletableFuture<Event.Type_event> future = Event.f_event_from_event_async(context, evt);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -1271,13 +1272,13 @@ public final class Event {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/event", // pkgname
         "eventmap<-eventlist", // name
         0, // idx
@@ -1301,13 +1302,13 @@ public final class Event {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = Event.e_eventmap_from_eventlist;
+      final Core.Type_any output = Event.e_eventmap_from_eventlist;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = Event.t_eventmap_from_eventlist;
+      final Core.Type_any output = Event.t_eventmap_from_eventlist;
       return output;
     }
 
@@ -1319,8 +1320,8 @@ public final class Event {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Event.Type_eventlist inputval = (Event.Type_eventlist)value;
-      Core.Type_any outputval = Event.f_eventmap_from_eventlist(inputval);
+      final Event.Type_eventlist inputval = (Event.Type_eventlist)value;
+      final Core.Type_any outputval = Event.f_eventmap_from_eventlist(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1328,14 +1329,14 @@ public final class Event {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Event.Type_eventlist eventlist = Core.f_any_from_any(Event.t_eventlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Event.Type_eventlist eventlist = Core.f_any_from_any(Event.t_eventlist, arglist.vx_any(Core.vx_new_int(0)));
       output = Event.f_eventmap_from_eventlist(eventlist);
       return output;
     }
 
     @Override
     public Event.Type_eventmap vx_eventmap_from_eventlist(final Event.Type_eventlist eventlist) {
-      Event.Type_eventmap output = Event.f_eventmap_from_eventlist(eventlist);
+      final Event.Type_eventmap output = Event.f_eventmap_from_eventlist(eventlist);
       return output;
     }
 
@@ -1350,7 +1351,7 @@ public final class Event {
       Event.t_eventmap,
       eventlist,
       Core.t_any_from_any.vx_fn_new((evt_any) -> {
-        Event.Type_event evt = Core.f_any_from_any(Event.t_event, evt_any);
+        final Event.Type_event evt = Core.f_any_from_any(Event.t_event, evt_any);
         Core.Type_any output_1 = evt.name();
         return output_1;
       })
@@ -1377,7 +1378,12 @@ public final class Event {
     mapfunc.put("event<-event", Event.t_event_from_event);
     mapfunc.put("event<-event-async", Event.t_event_from_event_async);
     mapfunc.put("eventmap<-eventlist", Event.t_eventmap_from_eventlist);
-    Core.vx_global_package_set("vx/event", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/event",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

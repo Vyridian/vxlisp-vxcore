@@ -212,6 +212,22 @@ export default class vx_core {
     }
   }
 
+  static vx_int_from_string(
+    text
+  ) {
+    let output = vx_core.e_int
+    if (text == "notanumber") {
+      output = vx_core.c_notanumber
+    } else if (text == "infinity") {
+      output = vx_core.c_infinity
+    } else if (text == "neginfinity") {
+      output = vx_core.c_neginfinity
+    } else {
+      output = parseInt(text)
+    }
+    return output
+  }
+
   // vx_is_allowtype(allowtypes, typedef)
   static vx_is_allowtype(
     allowtypes,
@@ -3625,7 +3641,7 @@ export default class vx_core {
   /**
    * @function boolean_permission_from_func
    * Returns true if the given func has permission.
-   * @param  {func} func
+   * @param  {func} fnc
    * @return {boolean}
    */
   static t_boolean_permission_from_func = {
@@ -3636,13 +3652,13 @@ export default class vx_core {
   }
 
   // (func boolean-permission<-func)
-  static f_boolean_permission_from_func(context, func) {
+  static f_boolean_permission_from_func(context, fnc) {
     let output = vx_core.e_boolean
     output = vx_core.f_contains_1(
       vx_core.f_allowfuncs_from_security(
         vx_core.f_security_from_context(context)
       ),
-      func
+      fnc
     )
     return output
   }
@@ -4290,25 +4306,7 @@ export default class vx_core {
   // (func int<-string)
   static f_int_from_string(value) {
     let output = vx_core.e_int
-    output = vx_core.f_switch(
-      {"any-1": vx_core.t_int, "any-2": vx_core.t_string},
-      value,
-      vx_core.f_case_1(
-        "notanumber",
-        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.c_notanumber})
-      ),
-      vx_core.f_case_1(
-        "infinity",
-        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.c_infinity})
-      ),
-      vx_core.f_case_1(
-        "neginfinity",
-        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return vx_core.c_neginfinity})
-      ),
-      vx_core.f_else(
-        vx_core.f_new_from_type(vx_core.t_any_from_func, () => {return parseInt(value)})
-      )
-    )
+    output = vx_core.vx_int_from_string(value)
     return output
   }
 
@@ -5817,7 +5815,7 @@ export default class vx_core {
   /**
    * @function string_repeat
    * @param  {string} text
-   * @param  {int} repeat
+   * @param  {int} num
    * @return {string}
    */
   static t_string_repeat = {
@@ -5828,9 +5826,9 @@ export default class vx_core {
   }
 
   // (func string-repeat)
-  static f_string_repeat(text, repeat) {
+  static f_string_repeat(text, num) {
     let output = vx_core.e_string
-    output = text.repeat(repeat)
+    output = text.repeat(num)
     return output
   }
 

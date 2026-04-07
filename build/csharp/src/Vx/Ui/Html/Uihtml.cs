@@ -5338,10 +5338,14 @@ public static class Uihtml {
         Task<Vx.Core.Type_boolean> future_write = Vx.Web.Htmldoc.f_boolean_write_from_stylesheet(
           stylesheethtml
         );
-        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(future_write, (write) => {
-          Vx.Core.Type_any output_2 = stylesheetui;
-          return output_2;
-        });
+        Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
+          Vx.Core.t_any,
+          future_write,
+          (write) => {
+            Vx.Core.Type_any output_2 = stylesheetui;
+            return output_2;
+          }
+        );
         return output_1;
       })
     );
@@ -5958,7 +5962,12 @@ public static class Uihtml {
     mapfunc.put("ui-layout-default<-ui-orig-parent", Vx.Ui.Html.Uihtml.t_ui_layout_default_from_ui_orig_parent);
     mapfunc.put("ui-layout-image<-ui-orig-parent", Vx.Ui.Html.Uihtml.t_ui_layout_image_from_ui_orig_parent);
     mapfunc.put("ui-layout-label<-ui-orig-parent", Vx.Ui.Html.Uihtml.t_ui_layout_label_from_ui_orig_parent);
-    Vx.Core.vx_global_package_set("vx/ui/html/uihtml", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/ui/html/uihtml",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

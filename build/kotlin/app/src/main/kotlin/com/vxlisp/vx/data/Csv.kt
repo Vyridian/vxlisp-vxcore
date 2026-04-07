@@ -54,7 +54,7 @@ object vx_data_csv {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
       map.put(":headers", this.headers())
       map.put(":rows", this.rows())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -139,7 +139,7 @@ object vx_data_csv {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("headers"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/csv/csv", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -160,7 +160,7 @@ object vx_data_csv {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("rows"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/csv/csv", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -228,11 +228,12 @@ object vx_data_csv {
   class Class_csvrowmap : vx_core.Class_base, Type_csvrowmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_core.Type_stringlist> = vx_core.immutablemap(LinkedHashMap<String, vx_core.Type_stringlist>())
+    var vx_p_map : Map<String, vx_core.Type_stringlist> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_core.Type_stringlist>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -244,13 +245,13 @@ object vx_data_csv {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_core.Type_stringlist> = LinkedHashMap<String, vx_core.Type_stringlist>(this.vx_p_map)
+        var map : MutableMap<String, vx_core.Type_stringlist> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_core.e_stringlist) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -263,18 +264,18 @@ object vx_data_csv {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_core.Type_stringlist> = map.vx_p_map
+      val mapval : Map<String, vx_core.Type_stringlist> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_stringlist)
       return output
     }
 
     override fun vx_mapstringlist() : Map<String, vx_core.Type_stringlist> {
-      var output : Map<String, vx_core.Type_stringlist> = this.vx_p_map
+      val output : Map<String, vx_core.Type_stringlist> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_stringlist(key)
+      val output : vx_core.Type_any = this.vx_stringlist(key)
       return output
     }
 
@@ -295,7 +296,7 @@ object vx_data_csv {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -315,7 +316,9 @@ object vx_data_csv {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_core.Type_stringlist> = LinkedHashMap<String, vx_core.Type_stringlist>(value.vx_mapstringlist())
+      var mapval : MutableMap<String, vx_core.Type_stringlist> = vx_core.vx_mapmutable(
+        value.vx_mapstringlist()
+      )
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -362,7 +365,7 @@ object vx_data_csv {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/data/csv/csvrowmap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -378,7 +381,7 @@ object vx_data_csv {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_csv.Class_csvrowmap = vx_data_csv.Class_csvrowmap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -431,12 +434,12 @@ object vx_data_csv {
   class Class_csvrows : vx_core.Class_base, Type_csvrows {
     constructor() {}
 
-    var vx_p_list : List<vx_core.Type_stringlist> = vx_core.immutablelist(
+    var vx_p_list : List<vx_core.Type_stringlist> = vx_core.vx_listimmutable(
       ArrayList<vx_core.Type_stringlist>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -516,7 +519,7 @@ object vx_data_csv {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_csv.Class_csvrows = vx_data_csv.Class_csvrows()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -567,7 +570,7 @@ object vx_data_csv {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/csv", // pkgname
         "delimcsv", // name
         vx_data_textblock.t_delim
@@ -633,12 +636,12 @@ object vx_data_csv {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/csv", // pkgname
         "csv-read<-file", // name
         0, // idx
@@ -661,12 +664,12 @@ object vx_data_csv {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.e_csv_read_from_file
+      val output : vx_core.Type_any = vx_data_csv.e_csv_read_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.t_csv_read_from_file
+      val output : vx_core.Type_any = vx_data_csv.t_csv_read_from_file
       return output
     }
 
@@ -676,22 +679,22 @@ object vx_data_csv {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_csv.f_csv_read_from_file(context, inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_csv.f_csv_read_from_file(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_csv.f_csv_read_from_file(context, file)
       return output
     }
 
     override fun vx_csv_read_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_data_csv.Type_csv {
-      var output : vx_data_csv.Type_csv = vx_data_csv.f_csv_read_from_file(context, file)
+      val output : vx_data_csv.Type_csv = vx_data_csv.f_csv_read_from_file(context, file)
       return output
     }
 
@@ -705,11 +708,11 @@ object vx_data_csv {
     output = vx_core.f_let(
       vx_data_csv.t_csv,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var loaded : vx_data_file.Type_file = vx_data_file.f_file_read_from_file(
+        val loaded : vx_data_file.Type_file = vx_data_file.f_file_read_from_file(
           context,
           file
         )
-        var output_1 : vx_core.Type_any = vx_data_csv.f_csv_from_file(
+        val output_1 : vx_core.Type_any = vx_data_csv.f_csv_from_file(
           loaded
         )
         output_1
@@ -743,12 +746,12 @@ object vx_data_csv {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/csv", // pkgname
         "csv<-file", // name
         0, // idx
@@ -771,12 +774,12 @@ object vx_data_csv {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.e_csv_from_file
+      val output : vx_core.Type_any = vx_data_csv.e_csv_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.t_csv_from_file
+      val output : vx_core.Type_any = vx_data_csv.t_csv_from_file
       return output
     }
 
@@ -786,21 +789,21 @@ object vx_data_csv {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_csv.f_csv_from_file(inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_csv.f_csv_from_file(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_csv.f_csv_from_file(file)
       return output
     }
 
     override fun vx_csv_from_file(file : vx_data_file.Type_file) : vx_data_csv.Type_csv {
-      var output : vx_data_csv.Type_csv = vx_data_csv.f_csv_from_file(file)
+      val output : vx_data_csv.Type_csv = vx_data_csv.f_csv_from_file(file)
       return output
     }
 
@@ -814,8 +817,8 @@ object vx_data_csv {
     output = vx_core.f_let(
       vx_data_csv.t_csv,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = file.text()
-        var output_1 : vx_core.Type_any = vx_data_csv.f_csv_from_string(
+        val text : vx_core.Type_string = file.text()
+        val output_1 : vx_core.Type_any = vx_data_csv.f_csv_from_string(
           text
         )
         output_1
@@ -849,12 +852,12 @@ object vx_data_csv {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/csv", // pkgname
         "csv<-string", // name
         0, // idx
@@ -877,12 +880,12 @@ object vx_data_csv {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.e_csv_from_string
+      val output : vx_core.Type_any = vx_data_csv.e_csv_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.t_csv_from_string
+      val output : vx_core.Type_any = vx_data_csv.t_csv_from_string
       return output
     }
 
@@ -892,21 +895,21 @@ object vx_data_csv {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_data_csv.f_csv_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_data_csv.f_csv_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_csv.f_csv_from_string(text)
       return output
     }
 
     override fun vx_csv_from_string(text : vx_core.Type_string) : vx_data_csv.Type_csv {
-      var output : vx_data_csv.Type_csv = vx_data_csv.f_csv_from_string(text)
+      val output : vx_data_csv.Type_csv = vx_data_csv.f_csv_from_string(text)
       return output
     }
 
@@ -951,12 +954,12 @@ object vx_data_csv {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/csv", // pkgname
         "csv<-textblock", // name
         0, // idx
@@ -979,12 +982,12 @@ object vx_data_csv {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.e_csv_from_textblock
+      val output : vx_core.Type_any = vx_data_csv.e_csv_from_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.t_csv_from_textblock
+      val output : vx_core.Type_any = vx_data_csv.t_csv_from_textblock
       return output
     }
 
@@ -994,21 +997,21 @@ object vx_data_csv {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_csv.f_csv_from_textblock(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_csv.f_csv_from_textblock(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_csv.f_csv_from_textblock(textblock)
       return output
     }
 
     override fun vx_csv_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_data_csv.Type_csv {
-      var output : vx_data_csv.Type_csv = vx_data_csv.f_csv_from_textblock(textblock)
+      val output : vx_data_csv.Type_csv = vx_data_csv.f_csv_from_textblock(textblock)
       return output
     }
 
@@ -1022,20 +1025,20 @@ object vx_data_csv {
     output = vx_core.f_let(
       vx_data_csv.t_csv,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var allrows : vx_data_csv.Type_csvrows = vx_data_csv.f_csvrows_from_textblock(
+        val allrows : vx_data_csv.Type_csvrows = vx_data_csv.f_csvrows_from_textblock(
           textblock
         )
-        var headers : vx_core.Type_stringlist = vx_core.f_any_from_list(
+        val headers : vx_core.Type_stringlist = vx_core.f_any_from_list(
           vx_core.t_stringlist,
           allrows,
           vx_core.vx_new_int(1)
         )
-        var rows : vx_data_csv.Type_csvrows = vx_collection.f_list_from_list_end(
+        val rows : vx_data_csv.Type_csvrows = vx_collection.f_list_from_list_end(
           vx_data_csv.t_csvrows,
           allrows,
           vx_core.vx_new_int(2)
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_data_csv.t_csv,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -1075,12 +1078,12 @@ object vx_data_csv {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/csv", // pkgname
         "csvrows<-textblock", // name
         0, // idx
@@ -1103,12 +1106,12 @@ object vx_data_csv {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.e_csvrows_from_textblock
+      val output : vx_core.Type_any = vx_data_csv.e_csvrows_from_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.t_csvrows_from_textblock
+      val output : vx_core.Type_any = vx_data_csv.t_csvrows_from_textblock
       return output
     }
 
@@ -1118,21 +1121,21 @@ object vx_data_csv {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_csv.f_csvrows_from_textblock(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_csv.f_csvrows_from_textblock(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_csv.f_csvrows_from_textblock(textblock)
       return output
     }
 
     override fun vx_csvrows_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_data_csv.Type_csvrows {
-      var output : vx_data_csv.Type_csvrows = vx_data_csv.f_csvrows_from_textblock(textblock)
+      val output : vx_data_csv.Type_csvrows = vx_data_csv.f_csvrows_from_textblock(textblock)
       return output
     }
 
@@ -1146,17 +1149,17 @@ object vx_data_csv {
     output = vx_core.f_let(
       vx_data_csv.t_csvrows,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var parsedtb : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_textblock_delim(
+        val parsedtb : vx_data_textblock.Type_textblock = vx_data_textblock.f_textblock_from_textblock_delim(
           textblock,
           vx_data_csv.c_delimcsv
         )
-        var children : vx_data_textblock.Type_textblocklist = vx_data_textblock.f_children_from_textblock(
+        val children : vx_data_textblock.Type_textblocklist = vx_data_textblock.f_children_from_textblock(
           parsedtb
         )
-        var strings : vx_core.Type_stringlist = vx_data_textblock.f_stringlist_from_textblocklist(
+        val strings : vx_core.Type_stringlist = vx_data_textblock.f_stringlist_from_textblocklist(
           children
         )
-        var output_1 : vx_core.Type_any = vx_core.f_new(
+        val output_1 : vx_core.Type_any = vx_core.f_new(
           vx_data_csv.t_csvrows,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -1194,12 +1197,12 @@ object vx_data_csv {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/csv", // pkgname
         "stringmap<-csv", // name
         0, // idx
@@ -1222,12 +1225,12 @@ object vx_data_csv {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.e_stringmap_from_csv
+      val output : vx_core.Type_any = vx_data_csv.e_stringmap_from_csv
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.t_stringmap_from_csv
+      val output : vx_core.Type_any = vx_data_csv.t_stringmap_from_csv
       return output
     }
 
@@ -1237,21 +1240,21 @@ object vx_data_csv {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_csv.Type_csv = value as vx_data_csv.Type_csv
-      var outputval : vx_core.Type_any = vx_data_csv.f_stringmap_from_csv(inputval)
+      val inputval : vx_data_csv.Type_csv = value as vx_data_csv.Type_csv
+      val outputval : vx_core.Type_any = vx_data_csv.f_stringmap_from_csv(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var csv : vx_data_csv.Type_csv = vx_core.f_any_from_any(vx_data_csv.t_csv, arglist.vx_any(vx_core.vx_new_int(0)))
+      val csv : vx_data_csv.Type_csv = vx_core.f_any_from_any(vx_data_csv.t_csv, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_csv.f_stringmap_from_csv(csv)
       return output
     }
 
     override fun vx_stringmap_from_csv(csv : vx_data_csv.Type_csv) : vx_core.Type_stringmap {
-      var output : vx_core.Type_stringmap = vx_data_csv.f_stringmap_from_csv(csv)
+      val output : vx_core.Type_stringmap = vx_data_csv.f_stringmap_from_csv(csv)
       return output
     }
 
@@ -1265,12 +1268,12 @@ object vx_data_csv {
     output = vx_core.f_let(
       vx_core.t_stringmap,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var rows : vx_data_csv.Type_csvrows = csv.rows()
-        var rowmap : vx_data_csv.Type_csvrowmap = vx_core.f_map_from_list(
+        val rows : vx_data_csv.Type_csvrows = csv.rows()
+        val rowmap : vx_data_csv.Type_csvrowmap = vx_core.f_map_from_list(
           vx_data_csv.t_csvrowmap,
           rows,
           vx_core.t_any_from_any.vx_fn_new({textlist_any : vx_core.Type_any ->
-            var textlist : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, textlist_any)
+            val textlist : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, textlist_any)
             var output_3 : vx_core.Type_any = vx_core.f_any_from_list(
               vx_core.t_string,
               textlist,
@@ -1279,12 +1282,12 @@ object vx_data_csv {
             output_3
           })
         )
-        var output_1 : vx_core.Type_any = vx_core.f_map_from_map_1(
+        val output_1 : vx_core.Type_any = vx_core.f_map_from_map_1(
           vx_core.t_stringmap,
           rowmap,
           vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            var key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            var value : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, value_any)
+            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
+            val value : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, value_any)
             var output_2 : vx_core.Type_any = vx_core.f_any_from_list(
               vx_core.t_string,
               value,
@@ -1324,12 +1327,12 @@ object vx_data_csv {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/csv", // pkgname
         "textblock-csv<-string", // name
         0, // idx
@@ -1352,12 +1355,12 @@ object vx_data_csv {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.e_textblock_csv_from_string
+      val output : vx_core.Type_any = vx_data_csv.e_textblock_csv_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_csv.t_textblock_csv_from_string
+      val output : vx_core.Type_any = vx_data_csv.t_textblock_csv_from_string
       return output
     }
 
@@ -1367,21 +1370,21 @@ object vx_data_csv {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_data_csv.f_textblock_csv_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_data_csv.f_textblock_csv_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_csv.f_textblock_csv_from_string(text)
       return output
     }
 
     override fun vx_textblock_csv_from_string(text : vx_core.Type_string) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_csv.f_textblock_csv_from_string(text)
+      val output : vx_data_textblock.Type_textblock = vx_data_csv.f_textblock_csv_from_string(text)
       return output
     }
 
@@ -1415,7 +1418,12 @@ object vx_data_csv {
     mapfunc.put("csvrows<-textblock", vx_data_csv.t_csvrows_from_textblock)
     mapfunc.put("stringmap<-csv", vx_data_csv.t_stringmap_from_csv)
     mapfunc.put("textblock-csv<-string", vx_data_csv.t_textblock_csv_from_string)
-    vx_core.vx_global_package_set("vx/data/csv", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/data/csv",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

@@ -7,12 +7,12 @@ import com.vxlisp.vx.ui.*;
 public final class UisvgTest {
 
   public static Test.Type_testcaselist test_cases(final Core.Type_context context) {
-    Test.Type_testcaselist output = Test.e_testcaselist;
+    final Test.Type_testcaselist output = Test.e_testcaselist;
     return output;
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/ui/svg/uisvg", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -27,7 +27,7 @@ public final class UisvgTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/ui/svg/uisvg",
       ":typemap", Core.e_intmap, 
@@ -38,8 +38,8 @@ public final class UisvgTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/ui/svg/uisvg", 
       ":caselist", testcaselist,

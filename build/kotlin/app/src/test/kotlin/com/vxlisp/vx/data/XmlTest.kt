@@ -6,7 +6,7 @@ import com.vxlisp.vx.*
 object vx_data_xmlTest {
 
   fun f_string_first_from_xml(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -21,7 +21,7 @@ object vx_data_xmlTest {
   }
 
   fun f_string_first_from_xml_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n \"text\"\n (string-first<-xml\n  (xml\n   :children\n    (xmllist\n     (xml\n      :text \"text\")))))",
       ":testresult", vx_test.f_test(
@@ -56,7 +56,7 @@ object vx_data_xmlTest {
   }
 
   fun f_textblock_xml_from_string(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -71,7 +71,7 @@ object vx_data_xmlTest {
   }
 
   fun f_textblock_xml_from_string_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (tb/textblock\n  :text\n   \"<doc>\n      <tag1>\n        <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n      </tag1>\n    </doc>\"\n  :startpos 1\n  :endpos 70\n  :children\n   (tb/textblocklist\n    (tb/textblock\n     :text \"<doc>\"\n     :startpos 1\n     :endpos 5\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"doc\"\n        :startpos 2\n        :endpos 4)))\n    (tb/textblock\n     :text \"\n  \"\n     :startpos 6\n     :endpos 8)\n    (tb/textblock\n     :text \"<tag1>\"\n     :startpos 9\n     :endpos 14\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"tag1\"\n        :startpos 10\n        :endpos 13)))\n    (tb/textblock\n     :text \"\n    \"\n     :startpos 15\n     :endpos 19)\n    (tb/textblock\n     :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n     :startpos 20\n     :endpos 53\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"tag2\"\n        :startpos 21\n        :endpos 24)\n       (tb/textblock\n        :text \" \"\n        :startpos 25\n        :endpos 25\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (textblock\n        :text \"prop1\"\n        :startpos 26\n        :endpos 30)\n       (textblock\n        :text \"=\"\n        :startpos 31\n        :endpos 31\n        :delim\n         (copy delimxmlequal\n          :pos 0))\n       (tb/textblock\n        :text \"\\\"val1\\\"\"\n        :startpos 32\n        :endpos 37\n        :delim\n         (copy tb/delimquote\n          :pos 0)\n        :children\n         (tb/textblocklist\n          (tb/textblock\n           :text \"val1\"\n           :startpos 33\n           :endpos 36)))\n       (tb/textblock\n        :text \" \"\n        :startpos 38\n        :endpos 38\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (tb/textblock\n        :text \"prop2\"\n        :startpos 39\n        :endpos 43)\n       (textblock\n        :text \"=\"\n        :startpos 44\n        :endpos 44\n        :delim\n         (copy delimxmlequal\n          :pos 0))\n       (tb/textblock\n        :text \"\\\"val2\\\"\"\n        :startpos 45\n        :endpos 50\n        :delim\n         (copy tb/delimquote\n          :pos 0)\n        :children\n         (tb/textblocklist\n          (tb/textblock\n           :text \"val2\"\n           :startpos 46\n           :endpos 49)))\n        (tb/textblock\n         :text \" \"\n         :startpos 51\n         :endpos 51\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"/\"\n         :startpos 52\n         :endpos 52)))\n    (tb/textblock\n     :text \"\n  \"\n     :startpos 54\n     :endpos 56)\n    (tb/textblock\n     :text \"</tag1>\"\n     :startpos 57\n     :endpos 63\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"/tag1\"\n        :startpos 58\n        :endpos 62)))\n    (tb/textblock\n     :text \"\n\"\n     :startpos 64\n     :endpos 64)\n    (tb/textblock\n     :text \"</doc>\"\n     :startpos 65\n     :endpos 70\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"/doc\"\n        :startpos 66\n        :endpos 69)))))\n (textblock-xml<-string\n  \"<doc>\n     <tag1>\n       <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n     </tag1>\n   </doc>\"))",
       ":testresult", vx_test.f_test(
@@ -573,7 +573,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_angle_from_xml_textblock(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -590,7 +590,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_angle_from_xml_textblock_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag :notag)\n (xml-angle<-xml-textblock\n  (empty xml)\n  (empty tb/textblock)))",
       ":testresult", vx_test.f_test(
@@ -617,7 +617,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_angle_from_xml_textblock_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-angle<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"<doc>\"\n   :startpos 1\n   :endpos 5\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"doc\"\n      :startpos 2\n      :endpos 4)))))",
       ":testresult", vx_test.f_test(
@@ -681,7 +681,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_angle_from_xml_textblock_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\"))))\n (xml-angle<-xml-textblock\n  (xml\n   :tag \"tag1\")\n  (tb/textblock\n   :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n   :startpos 20\n   :endpos 53\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag2\"\n      :startpos 21\n      :endpos 24)\n     (tb/textblock\n      :text \" \"\n      :startpos 25\n      :endpos 25\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop1\"\n      :startpos 26\n      :endpos 30)\n     (tb/textblock\n      :text \"=\"\n      :startpos 31\n      :endpos 31\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val1\\\"\"\n      :startpos 32\n      :endpos 37\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val1\"\n         :startpos 33\n         :endpos 36)))\n     (tb/textblock\n      :text \" \"\n      :startpos 38\n      :endpos 38\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop2\"\n      :startpos 39\n      :endpos 43)\n     (tb/textblock\n      :text \"=\"\n      :startpos 44\n      :endpos 44\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val2\\\"\"\n      :startpos 45\n      :endpos 50\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val2\"\n         :startpos 46\n         :endpos 49)))\n      (tb/textblock\n       :text \" \"\n       :startpos 51\n       :endpos 51\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"/\"\n       :startpos 52\n       :endpos 52)))))",
       ":testresult", vx_test.f_test(
@@ -997,7 +997,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_close_from_xml_textblock(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -1015,7 +1015,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_close_from_xml_textblock_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/\")))",
       ":testresult", vx_test.f_test(
@@ -1052,7 +1052,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_close_from_xml_textblock_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"</doc>\")))",
       ":testresult", vx_test.f_test(
@@ -1089,7 +1089,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_close_from_xml_textblock_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity msg-error))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
       ":testresult", vx_test.f_test(
@@ -1153,7 +1153,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_close_from_xml_textblock_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"top\"\n  :children\n   (xmllist\n    (xml\n     :tag \"doc\")))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\"\n   :parent\n    (xml\n     :tag \"top\"))\n  (tb/textblock\n   :text \"/\")))",
       ":testresult", vx_test.f_test(
@@ -1214,7 +1214,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_parse_from_xml_textblock(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -1233,7 +1233,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_parse_from_xml_textblock_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-parse<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"<doc>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"doc\")))))",
       ":testresult", vx_test.f_test(
@@ -1289,7 +1289,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_parse_from_xml_textblock_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"\n  \"\n   :delim\n    (copy tb/delimwhitespace\n     :pos 0))))",
       ":testresult", vx_test.f_test(
@@ -1335,7 +1335,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_parse_from_xml_textblock_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :parent\n   (xml\n    :tag \"doc\"))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"<tag1>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag1\")))))",
       ":testresult", vx_test.f_test(
@@ -1405,7 +1405,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_parse_from_xml_textblock_testdescribe_4(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\")))\n  :parent\n   (xml\n    :tag \"doc\"))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblock\n   :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag2\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop1\")\n     (tb/textblock\n      :text \"=\"\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val1\\\"\"\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val1\")))\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop2\")\n     (tb/textblock\n      :text \"=\"\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val2\\\"\"\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val2\")))\n      (tb/textblock\n       :text \" \"\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"/\")))))",
       ":testresult", vx_test.f_test(
@@ -1683,7 +1683,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_parse_from_xml_textblock_testdescribe_5(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n    :tag \"tag1\"\n    :children\n     (xmllist\n      (xml\n       :tag \"tag2\"\n       :propmap\n        (stringmap\n         :prop1 \"val1\"\n         :prop2 \"val2\"))))))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :children\n    (xmllist\n     (xml\n      :tag \"tag2\"\n      :propmap\n       (stringmap\n        :prop1 \"val1\"\n        :prop2 \"val2\")))\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblock\n   :text \"</tag1>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"/tag1\")))))",
       ":testresult", vx_test.f_test(
@@ -1820,7 +1820,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_parse_from_xml_textblocklist(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -1835,7 +1835,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_parse_from_xml_textblocklist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag1\"\n     :children\n      (xmllist\n       (xml\n        :tag \"tag2\"\n        :propmap\n         (stringmap\n          :prop1 \"val1\"\n          :prop2 \"val2\"))))))\n (xml-parse<-xml-textblocklist\n  (empty xml)\n  (tb/textblocklist\n   (tb/textblock\n    :text \"<doc>\"\n    :startpos 1\n    :endpos 5\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"doc\"\n       :startpos 2\n       :endpos 4)))\n   (tb/textblock\n    :text \"\n  \"\n    :startpos 6\n    :endpos 8\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"<tag1>\"\n    :startpos 9\n    :endpos 14\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"tag1\"\n       :startpos 10\n       :endpos 13)))\n   (tb/textblock\n    :text \"\n    \"\n    :startpos 15\n    :endpos 19\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n    :startpos 20\n    :endpos 53\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"tag2\"\n       :startpos 21\n       :endpos 24)\n      (tb/textblock\n       :text \" \"\n       :startpos 25\n       :endpos 25\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"prop1\"\n       :startpos 26\n       :endpos 30)\n      (tb/textblock\n       :text \"=\"\n       :startpos 31\n       :endpos 31\n       :delim\n        (copy delimxmlequal\n         :pos 0))\n      (tb/textblock\n       :text \"\\\"val1\\\"\"\n       :startpos 32\n       :endpos 37\n       :delim\n        (copy tb/delimquote\n         :pos 0)\n       :children\n        (tb/textblocklist\n         (tb/textblock\n          :text \"val1\"\n          :startpos 33\n          :endpos 36)))\n      (tb/textblock\n       :text \" \"\n       :startpos 38\n       :endpos 38\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"prop2\"\n       :startpos 39\n       :endpos 43)\n      (tb/textblock\n       :text \"=\"\n       :startpos 44\n       :endpos 44\n       :delim\n        (copy delimxmlequal\n         :pos 0))\n      (tb/textblock\n       :text \"\\\"val2\\\"\"\n       :startpos 45\n       :endpos 50\n       :delim\n        (copy tb/delimquote\n         :pos 0)\n       :children\n        (tb/textblocklist\n         (tb/textblock\n          :text \"val2\"\n          :startpos 46\n          :endpos 49)))\n       (tb/textblock\n        :text \" \"\n        :startpos 51\n        :endpos 51\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (tb/textblock\n        :text \"/\"\n        :startpos 52\n        :endpos 52)))\n   (tb/textblock\n    :text \"\n  \"\n    :startpos 54\n    :endpos 56\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"</tag1>\"\n    :startpos 57\n    :endpos 63\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"/tag1\"\n       :startpos 58\n       :endpos 62)))\n   (tb/textblock\n    :text \"\n\"\n    :startpos 64\n    :endpos 64\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"</doc>\"\n    :startpos 65\n    :endpos 70\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"/doc\"\n       :startpos 66\n       :endpos 69))))))",
       ":testresult", vx_test.f_test(
@@ -2411,7 +2411,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_properties_from_xml_textblocklist(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -2426,7 +2426,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_properties_from_xml_textblocklist_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\"))))\n (xml-properties<-xml-textblocklist\n  (xml\n   :tag :notag\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblocklist\n   (tb/textblock\n    :text \"tag2\")\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"prop1\")\n   (tb/textblock\n    :text \"=\"\n    :delim\n     (copy delimxmlequal\n      :pos 0))\n   (tb/textblock\n    :text \"\\\"val1\\\"\"\n    :startpos 32\n    :endpos 37\n    :delim\n     (copy tb/delimquote\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"val1\")))\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"prop2\")\n   (tb/textblock\n    :text \"=\"\n    :delim\n     (copy delimxmlequal\n      :pos 0))\n   (tb/textblock\n    :text \"\\\"val2\\\"\"\n    :delim\n     (copy tb/delimquote\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"val2\")))\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"/\"))))",
       ":testresult", vx_test.f_test(
@@ -2681,7 +2681,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_property_from_xml_textblock(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -2698,7 +2698,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_property_from_xml_textblock_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"tag1\")\n (xml-property<-xml-textblock\n  (xml\n   :tag \":notag\")\n  (tb/textblock\n   :text \"tag1\")))",
       ":testresult", vx_test.f_test(
@@ -2735,7 +2735,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_property_from_xml_textblock_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :prop \"prop1\")\n (xml-property<-xml-textblock\n  (xml\n   :tag \"tag1\")\n  (tb/textblock\n   :text \"prop1\")))",
       ":testresult", vx_test.f_test(
@@ -2774,7 +2774,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_property_from_xml_textblock_testdescribe_3(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :propmap\n   (stringmap\n    :prop1 \"val1\"))\n (xml-property<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :prop \"prop1\")\n  (tb/textblock\n   :delim\n    (copy tb/delimquote\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"val1\")))))",
       ":testresult", vx_test.f_test(
@@ -2844,7 +2844,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_text_from_xml_textblock(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -2860,7 +2860,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_text_from_xml_textblock_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :text \"text1\")\n (xml-text<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"text1\")))",
       ":testresult", vx_test.f_test(
@@ -2892,7 +2892,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_text_from_xml_textblock_testdescribe_2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :text \"text1\")))\n (xml-text<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"text1\")))",
       ":testresult", vx_test.f_test(
@@ -2944,7 +2944,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_from_textblock(context : vx_core.Type_context) : vx_test.Type_testcase {
-    var output : vx_test.Type_testcase = vx_core.vx_new(
+    val output : vx_test.Type_testcase = vx_core.vx_new(
       vx_test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/data/xml",
@@ -2959,7 +2959,7 @@ object vx_data_xmlTest {
   }
 
   fun f_xml_from_textblock_testdescribe_1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
-    var output : vx_test.Type_testdescribe = vx_core.vx_new(
+    val output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
       ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag1\"\n     :children\n      (xmllist\n       (xml\n        :tag \"tag2\"\n        :propmap\n         (stringmap\n          :prop1 \"val1\"\n          :prop2 \"val2\"))))))\n (xml<-textblock\n  (tb/textblock\n   :text\n    \"<doc>\n       <tag1>\n         <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n       </tag1>\n     </doc>\"\n   :startpos 1\n   :endpos 70\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"<doc>\"\n      :startpos 1\n      :endpos 5\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"doc\"\n         :startpos 2\n         :endpos 4)))\n     (tb/textblock\n      :text \"\n  \"\n      :startpos 6\n      :endpos 8\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"<tag1>\"\n      :startpos 9\n      :endpos 14\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"tag1\"\n         :startpos 10\n         :endpos 13)))\n     (tb/textblock\n      :text \"\n    \"\n      :startpos 15\n      :endpos 19\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n      :startpos 20\n      :endpos 53\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"tag2\"\n         :startpos 21\n         :endpos 24)\n        (tb/textblock\n         :text \" \"\n         :startpos 25\n         :endpos 25\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"prop1\"\n         :startpos 26\n         :endpos 30)\n        (tb/textblock\n         :text \"=\"\n         :startpos 31\n         :endpos 31\n         :delim\n          (copy delimxmlequal\n           :pos 0))\n        (tb/textblock\n         :text \"\\\"val1\\\"\"\n         :startpos 32\n         :endpos 37\n         :delim\n          (copy tb/delimquote\n           :pos 0)\n         :children\n          (tb/textblocklist\n           (tb/textblock\n            :text \"val1\"\n            :startpos 33\n            :endpos 36)))\n        (tb/textblock\n         :text \" \"\n         :startpos 38\n         :endpos 38\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"prop2\"\n         :startpos 39\n         :endpos 43)\n        (tb/textblock\n         :text \"=\"\n         :startpos 44\n         :endpos 44\n         :delim\n          (copy delimxmlequal\n           :pos 0))\n        (tb/textblock\n         :text \"\\\"val2\\\"\"\n         :startpos 45\n         :endpos 50\n         :delim\n          (copy tb/delimquote\n           :pos 0)\n         :children\n          (tb/textblocklist\n           (tb/textblock\n            :text \"val2\"\n            :startpos 46\n            :endpos 49)))\n         (tb/textblock\n          :text \" \"\n          :startpos 51\n          :endpos 51\n          :delim\n           (copy tb/delimwhitespace\n            :pos 0))\n         (tb/textblock\n          :text \"/\"\n          :startpos 52\n          :endpos 52)))\n     (tb/textblock\n      :text \"\n  \"\n      :startpos 54\n      :endpos 56\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"</tag1>\"\n      :startpos 57\n      :endpos 63\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"/tag1\"\n         :startpos 58\n         :endpos 62)))\n     (tb/textblock\n      :text \"\n\"\n      :startpos 64\n      :endpos 64\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"</doc>\"\n      :startpos 65\n      :endpos 70\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"/doc\"\n         :startpos 66\n         :endpos 69)))))))",
       ":testresult", vx_test.f_test(
@@ -3557,7 +3557,7 @@ object vx_data_xmlTest {
       vx_data_xmlTest.f_xml_text_from_xml_textblock(context),
       vx_data_xmlTest.f_xml_from_textblock(context)
     )
-    var output : vx_test.Type_testcaselist = vx_core.vx_new(
+    val output : vx_test.Type_testcaselist = vx_core.vx_new(
       vx_test.t_testcaselist,
       testcases
     )
@@ -3565,7 +3565,7 @@ object vx_data_xmlTest {
   }
 
   fun test_coveragesummary() : vx_test.Type_testcoveragesummary {
-    var output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
       ":testpkg", "vx/data/xml", 
       ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 4), 
@@ -3580,7 +3580,7 @@ object vx_data_xmlTest {
   }
 
   fun test_coveragedetail() : vx_test.Type_testcoveragedetail {
-    var output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
+    val output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
       vx_test.t_testcoveragedetail,
       ":testpkg", "vx/data/xml",
       ":typemap", vx_core.vx_new(
@@ -3618,8 +3618,8 @@ object vx_data_xmlTest {
   }
 
   fun test_package(context : vx_core.Type_context) : vx_test.Type_testpackage {
-    var testcaselist : vx_test.Type_testcaselist = test_cases(context)
-    var output : vx_test.Type_testpackage = vx_core.vx_new(
+    val testcaselist : vx_test.Type_testcaselist = test_cases(context)
+    val output : vx_test.Type_testpackage = vx_core.vx_new(
       vx_test.t_testpackage,
       ":testpkg", "vx/data/xml", 
       ":caselist", testcaselist,

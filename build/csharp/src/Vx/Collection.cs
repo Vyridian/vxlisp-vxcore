@@ -3235,7 +3235,12 @@ public static class Collection {
     mapfunc.put("map<-map-start", Vx.Collection.t_map_from_map_start);
     mapfunc.put("map<-map-start-end", Vx.Collection.t_map_from_map_start_end);
     mapfunc.put("map<-struct", Vx.Collection.t_map_from_struct);
-    Vx.Core.vx_global_package_set("vx/collection", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/collection",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }

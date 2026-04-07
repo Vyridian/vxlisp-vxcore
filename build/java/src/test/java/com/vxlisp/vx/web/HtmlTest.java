@@ -7,7 +7,7 @@ import com.vxlisp.vx.*;
 public final class HtmlTest {
 
   public static Test.Type_testcase f_string_from_body_indent(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -23,7 +23,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_body_indent_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<body></body>\"\n (string<-body-indent (body) 0))",
       ":testresult", Test.f_test(
@@ -41,7 +41,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_body_indent_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<body>\n  <div></div>\n</body>\"\n (string<-body-indent (body (div)) 0))",
       ":testresult", Test.f_test(
@@ -65,7 +65,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testcase f_string_from_div_indent(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -81,7 +81,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_div_indent_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<div></div>\"\n (string<-div-indent (div) 0))",
       ":testresult", Test.f_test(
@@ -99,7 +99,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_div_indent_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<div id=\\\"myid\\\"></div>\"\n (string<-div-indent\n  (div :id \"myid\") 0))",
       ":testresult", Test.f_test(
@@ -122,7 +122,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testcase f_string_from_head_indent(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -137,7 +137,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_head_indent_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<head></head>\"\n (string<-head-indent (head) 0))",
       ":testresult", Test.f_test(
@@ -155,7 +155,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testcase f_string_from_html(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -170,7 +170,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_html_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<!DOCTYPE html>\n<html>\n  <head></head>\n  <body></body>\n  <footer></footer>\n</html>\"\n (string<-html\n  (html :head (head) :body (body))))",
       ":testresult", Test.f_test(
@@ -198,7 +198,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testcase f_string_from_img_indent(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -214,7 +214,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_img_indent_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<img src=\\\"test.svg\\\" />\"\n (string<-img-indent\n  (img :src \"test.svg\")\n  0))",
       ":testresult", Test.f_test(
@@ -237,7 +237,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_img_indent_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<img id=\\\"myid\\\" src=\\\"test.svg\\\" />\"\n (string<-img-indent\n  (img :id \"myid\" :src \"test.svg\")\n  0))",
       ":testresult", Test.f_test(
@@ -262,7 +262,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testcase f_string_from_meta_indent(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -277,7 +277,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_meta_indent_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<meta charset=\\\"utf-8\\\" />\"\n (string<-meta-indent (meta :charset \"utf-8\") 0))",
       ":testresult", Test.f_test(
@@ -300,7 +300,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testcase f_string_from_p_indent(final Core.Type_context context) {
-    Test.Type_testcase output = Core.vx_new(
+    final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
       ":passfail", false,
       ":testpkg", "vx/web/html",
@@ -316,7 +316,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_p_indent_testdescribe_1(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<p>data</p>\"\n (string<-p-indent\n  (p :text \"data\")\n  0))",
       ":testresult", Test.f_test(
@@ -339,7 +339,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testdescribe f_string_from_p_indent_testdescribe_2(final Core.Type_context context) {
-    Test.Type_testdescribe output = Core.vx_new(
+    final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
       ":describename", "(test\n \"<p id=\\\"myid\\\">data</p>\"\n (string<-p-indent\n  (p :id \"myid\" :text \"data\")\n  0))",
       ":testresult", Test.f_test(
@@ -373,7 +373,7 @@ public final class HtmlTest {
       HtmlTest.f_string_from_meta_indent(context),
       HtmlTest.f_string_from_p_indent(context)
     );
-    Test.Type_testcaselist output = Core.vx_new(
+    final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
       testcases
     );
@@ -381,7 +381,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testcoveragesummary test_coveragesummary() {
-    Test.Type_testcoveragesummary output = Core.vx_new(
+    final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
       ":testpkg", "vx/web/html", 
       ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
@@ -396,7 +396,7 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testcoveragedetail test_coveragedetail() {
-    Test.Type_testcoveragedetail output = Core.vx_new(
+    final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
       ":testpkg", "vx/web/html",
       ":typemap", Core.vx_new(
@@ -485,8 +485,8 @@ public final class HtmlTest {
   }
 
   public static Test.Type_testpackage test_package(final Core.Type_context context) {
-    Test.Type_testcaselist testcaselist = test_cases(context);
-    Test.Type_testpackage output = Core.vx_new(
+    final Test.Type_testcaselist testcaselist = test_cases(context);
+    final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
       ":testpkg", "vx/web/html", 
       ":caselist", testcaselist,

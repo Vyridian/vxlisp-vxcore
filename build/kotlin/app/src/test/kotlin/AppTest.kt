@@ -2,10 +2,10 @@
  * Unit test for whole App.
  */
 import com.vxlisp.vx.*
-import com.vxlisp.vx.translation.*
 import com.vxlisp.vx.data.*
 import com.vxlisp.vx.web.*
 import com.vxlisp.vx.ui.*
+import com.vxlisp.vx.translation.*
 import com.vxlisp.vx.ui.html.*
 import com.vxlisp.vx.ui.svg.*
 

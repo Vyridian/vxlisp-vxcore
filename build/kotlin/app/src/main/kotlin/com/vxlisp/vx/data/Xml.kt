@@ -114,7 +114,7 @@ object vx_data_xml {
       map.put(":propmap", this.propmap())
       map.put(":children", this.children())
       map.put(":parent", this.parent())
-      var output : Map<String, vx_core.Type_any> = vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
       return output
     }
 
@@ -210,7 +210,7 @@ object vx_data_xml {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("tag"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -234,7 +234,7 @@ object vx_data_xml {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -258,7 +258,7 @@ object vx_data_xml {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("prop"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -279,7 +279,7 @@ object vx_data_xml {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("propmap"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -300,7 +300,7 @@ object vx_data_xml {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("children"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -321,7 +321,7 @@ object vx_data_xml {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("parent"))
               mapany.put("value", msgval)
-              var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
               msg = vx_core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap)
               msgblock = vx_core.vx_copy(msgblock, msg)
             }
@@ -393,12 +393,12 @@ object vx_data_xml {
   class Class_xmllist : vx_core.Class_base, Type_xmllist {
     constructor() {}
 
-    var vx_p_list : List<vx_data_xml.Type_xml> = vx_core.immutablelist(
+    var vx_p_list : List<vx_data_xml.Type_xml> = vx_core.vx_listimmutable(
       ArrayList<vx_data_xml.Type_xml>()
     )
 
     override fun vx_list() : List<vx_core.Type_any> {
-      var output : List<vx_core.Type_any> = vx_core.immutablelist(
+      var output : List<vx_core.Type_any> = vx_core.vx_listimmutable(
         ArrayList<vx_core.Type_any>(this.vx_p_list)
       )
       return output
@@ -478,7 +478,7 @@ object vx_data_xml {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_xml.Class_xmllist = vx_data_xml.Class_xmllist()
-        work.vx_p_list = vx_core.immutablelist(listval)
+        work.vx_p_list = vx_core.vx_listimmutable(listval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -531,11 +531,12 @@ object vx_data_xml {
   class Class_xmlpropmap : vx_core.Class_base, Type_xmlpropmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_core.Type_string> = vx_core.immutablemap(LinkedHashMap<String, vx_core.Type_string>())
+    var vx_p_map : Map<String, vx_core.Type_string> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_core.Type_string>())
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
-      return vx_core.immutablemap(map)
+      val output : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(map)
+      return output
     }
 
     override fun vx_set(name : vx_core.Type_string, value : vx_core.Type_any) : vx_core.Type_boolean {
@@ -547,13 +548,13 @@ object vx_data_xml {
         if (key.startsWith(":")) {
           key = key.substring(1)
         }
-        var map : MutableMap<String, vx_core.Type_string> = LinkedHashMap<String, vx_core.Type_string>(this.vx_p_map)
+        var map : MutableMap<String, vx_core.Type_string> = vx_core.vx_mapmutable(this.vx_p_map)
         if (castval == vx_core.e_string) {
           map.remove(key)
         } else {
           map.put(key, castval)
         }
-        this.vx_p_map = vx_core.immutablemap(map)
+        this.vx_p_map = vx_core.vx_mapimmutable(map)
         output = vx_core.c_true
       }
       return output
@@ -566,18 +567,18 @@ object vx_data_xml {
       if (skey.startsWith(":")) {
         skey = skey.substring(1)
       }
-      var mapval : Map<String, vx_core.Type_string> = map.vx_p_map
+      val mapval : Map<String, vx_core.Type_string> = map.vx_p_map
       output = mapval.getOrDefault(skey, vx_core.e_string)
       return output
     }
 
     override fun vx_mapstring() : Map<String, vx_core.Type_string> {
-      var output : Map<String, vx_core.Type_string> = this.vx_p_map
+      val output : Map<String, vx_core.Type_string> = this.vx_p_map
       return output
     }
 
     override fun vx_any(key : vx_core.Type_string) : vx_core.Type_any {
-      var output : vx_core.Type_any = this.vx_string(key)
+      val output : vx_core.Type_any = this.vx_string(key)
       return output
     }
 
@@ -598,7 +599,7 @@ object vx_data_xml {
           msgblock = vx_core.vx_copy(msgblock, msg)
         }
       }
-      output.vx_p_map = vx_core.immutablemap(map)
+      output.vx_p_map = vx_core.vx_mapimmutable(map)
       if (msgblock != vx_core.e_msgblock) {
         output.vxmsgblock = msgblock
       }
@@ -618,7 +619,7 @@ object vx_data_xml {
       if (this.vx_constdef() != vx_core.e_constdef) {
         ischanged = true
       }
-      var mapval : MutableMap<String, vx_core.Type_string> = LinkedHashMap<String, vx_core.Type_string>(value.vx_mapstring())
+      var mapval : MutableMap<String, vx_core.Type_string> = vx_core.vx_mapmutable(value.vx_mapstring())
       var key : String = ""
       var msg : vx_core.Type_msg = vx_core.e_msg
       var msgval : vx_core.Type_any = vx_core.e_any
@@ -665,7 +666,7 @@ object vx_data_xml {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            var msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(mapany)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
             msg = vx_core.vx_msg_from_error("vx/data/xml/xmlpropmap", ":invalidkeyvalue", msgmap)
             msgblock = vx_core.vx_copy(msgblock, msg)
           }
@@ -681,7 +682,7 @@ object vx_data_xml {
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
         var work : vx_data_xml.Class_xmlpropmap = vx_data_xml.Class_xmlpropmap()
-        work.vx_p_map = vx_core.immutablemap(mapval)
+        work.vx_p_map = vx_core.vx_mapimmutable(mapval)
         if (msgblock != vx_core.e_msgblock) {
           work.vxmsgblock = msgblock
         }
@@ -731,7 +732,7 @@ object vx_data_xml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxml", // name
         vx_data_textblock.t_delim
@@ -794,7 +795,7 @@ object vx_data_xml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlcdata", // name
         vx_data_textblock.t_delim
@@ -838,7 +839,7 @@ object vx_data_xml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlcomment", // name
         vx_data_textblock.t_delim
@@ -882,7 +883,7 @@ object vx_data_xml {
     companion object {
 
     fun constdef() : vx_core.Type_constdef {
-      var output : vx_core.Type_constdef = vx_core.constdef_new(
+      val output : vx_core.Type_constdef = vx_core.constdef_new(
         "vx/data/xml", // pkgname
         "delimxmlequal", // name
         vx_data_textblock.t_delim
@@ -940,12 +941,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "string-decodexml<-string", // name
         0, // idx
@@ -968,12 +969,12 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_string_decodexml_from_string
+      val output : vx_core.Type_any = vx_data_xml.e_string_decodexml_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_string_decodexml_from_string
+      val output : vx_core.Type_any = vx_data_xml.t_string_decodexml_from_string
       return output
     }
 
@@ -983,21 +984,21 @@ object vx_data_xml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_data_xml.f_string_decodexml_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_data_xml.f_string_decodexml_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_xml.f_string_decodexml_from_string(text)
       return output
     }
 
     override fun vx_string_decodexml_from_string(text : vx_core.Type_string) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_data_xml.f_string_decodexml_from_string(text)
+      val output : vx_core.Type_string = vx_data_xml.f_string_decodexml_from_string(text)
       return output
     }
 
@@ -1011,27 +1012,27 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var lt : vx_core.Type_string = vx_core.f_string_from_string_find_replace(
+        val lt : vx_core.Type_string = vx_core.f_string_from_string_find_replace(
           text,
           vx_core.vx_new_string("&lt;"),
           vx_core.vx_new_string("<")
         )
-        var gt : vx_core.Type_string = vx_core.f_string_from_string_find_replace(
+        val gt : vx_core.Type_string = vx_core.f_string_from_string_find_replace(
           text,
           vx_core.vx_new_string("&gt;"),
           vx_core.vx_new_string(">")
         )
-        var amp : vx_core.Type_string = vx_core.f_string_from_string_find_replace(
+        val amp : vx_core.Type_string = vx_core.f_string_from_string_find_replace(
           gt,
           vx_core.vx_new_string("&amp;"),
           vx_core.vx_new_string("&")
         )
-        var result : vx_core.Type_string = vx_core.f_string_from_string_find_replace(
+        val result : vx_core.Type_string = vx_core.f_string_from_string_find_replace(
           text,
           vx_core.c_quote,
           vx_core.vx_new_string("\\\"")
         )
-        var output_1 : vx_core.Type_any = result
+        val output_1 : vx_core.Type_any = result
         output_1
       })
     )
@@ -1063,12 +1064,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "string-first<-xml", // name
         0, // idx
@@ -1091,12 +1092,12 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_string_first_from_xml
+      val output : vx_core.Type_any = vx_data_xml.e_string_first_from_xml
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_string_first_from_xml
+      val output : vx_core.Type_any = vx_data_xml.t_string_first_from_xml
       return output
     }
 
@@ -1106,21 +1107,21 @@ object vx_data_xml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_xml.Type_xml = value as vx_data_xml.Type_xml
-      var outputval : vx_core.Type_any = vx_data_xml.f_string_first_from_xml(inputval)
+      val inputval : vx_data_xml.Type_xml = value as vx_data_xml.Type_xml
+      val outputval : vx_core.Type_any = vx_data_xml.f_string_first_from_xml(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var xml : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
+      val xml : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_xml.f_string_first_from_xml(xml)
       return output
     }
 
     override fun vx_string_first_from_xml(xml : vx_data_xml.Type_xml) : vx_core.Type_string {
-      var output : vx_core.Type_string = vx_data_xml.f_string_first_from_xml(xml)
+      val output : vx_core.Type_string = vx_data_xml.f_string_first_from_xml(xml)
       return output
     }
 
@@ -1134,23 +1135,23 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_core.t_string,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var children : vx_data_xml.Type_xmllist = xml.children()
-        var first : vx_data_xml.Type_xml = vx_core.f_any_from_list(
+        val children : vx_data_xml.Type_xmllist = xml.children()
+        val first : vx_data_xml.Type_xml = vx_core.f_any_from_list(
           vx_data_xml.t_xml,
           children,
           vx_core.vx_new_int(1)
         )
-        var text : vx_core.Type_string = first.text()
-        var decode : vx_core.Type_string = vx_data_xml.f_string_decodexml_from_string(
+        val text : vx_core.Type_string = first.text()
+        val decode : vx_core.Type_string = vx_data_xml.f_string_decodexml_from_string(
           text
         )
-        var outdent : vx_core.Type_string = vx_type.f_string_outdent(
+        val outdent : vx_core.Type_string = vx_type.f_string_outdent(
           decode
         )
-        var trim : vx_core.Type_string = vx_type.f_string_trim(
+        val trim : vx_core.Type_string = vx_type.f_string_trim(
           outdent
         )
-        var output_1 : vx_core.Type_any = trim
+        val output_1 : vx_core.Type_any = trim
         output_1
       })
     )
@@ -1182,12 +1183,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "textblock-xml<-string", // name
         0, // idx
@@ -1210,12 +1211,12 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_textblock_xml_from_string
+      val output : vx_core.Type_any = vx_data_xml.e_textblock_xml_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_textblock_xml_from_string
+      val output : vx_core.Type_any = vx_data_xml.t_textblock_xml_from_string
       return output
     }
 
@@ -1225,21 +1226,21 @@ object vx_data_xml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_data_xml.f_textblock_xml_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_data_xml.f_textblock_xml_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_xml.f_textblock_xml_from_string(text)
       return output
     }
 
     override fun vx_textblock_xml_from_string(text : vx_core.Type_string) : vx_data_textblock.Type_textblock {
-      var output : vx_data_textblock.Type_textblock = vx_data_xml.f_textblock_xml_from_string(text)
+      val output : vx_data_textblock.Type_textblock = vx_data_xml.f_textblock_xml_from_string(text)
       return output
     }
 
@@ -1283,12 +1284,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml-angle<-xml-textblock", // name
         0, // idx
@@ -1311,25 +1312,25 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_angle_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.e_xml_angle_from_xml_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_angle_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.t_xml_angle_from_xml_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
-      var tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
+      val tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_xml.f_xml_angle_from_xml_textblock(xmlarg, tb)
       return output
     }
 
     override fun vx_xml_angle_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tb : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_angle_from_xml_textblock(xmlarg, tb)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_angle_from_xml_textblock(xmlarg, tb)
       return output
     }
 
@@ -1373,8 +1374,8 @@ object vx_data_xml {
             var output_3 : vx_core.Type_any = vx_core.f_let(
               vx_data_xml.t_xml,
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var children : vx_data_textblock.Type_textblocklist = tb.children()
-                var xmlchg : vx_data_xml.Type_xml = vx_core.f_new(
+                val children : vx_data_textblock.Type_textblocklist = tb.children()
+                val xmlchg : vx_data_xml.Type_xml = vx_core.f_new(
                   vx_data_xml.t_xml,
                   vx_core.vx_new(
                     vx_core.t_anylist,
@@ -1384,7 +1385,7 @@ object vx_data_xml {
                     xmlarg
                   )
                 )
-                var output_4 : vx_core.Type_any = vx_data_xml.f_xml_properties_from_xml_textblocklist(
+                val output_4 : vx_core.Type_any = vx_data_xml.f_xml_properties_from_xml_textblocklist(
                   xmlchg,
                   children
                 )
@@ -1425,12 +1426,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml-close<-xml-textblock", // name
         0, // idx
@@ -1453,25 +1454,25 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_close_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.e_xml_close_from_xml_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_close_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.t_xml_close_from_xml_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
-      var tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
+      val tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_xml.f_xml_close_from_xml_textblock(xmlarg, tb)
       return output
     }
 
     override fun vx_xml_close_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tb : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_close_from_xml_textblock(xmlarg, tb)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_close_from_xml_textblock(xmlarg, tb)
       return output
     }
 
@@ -1485,13 +1486,13 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var tag : vx_core.Type_string = xmlarg.tag()
-        var text : vx_core.Type_string = tb.text()
-        var parent : vx_data_xml.Type_xml = xmlarg.parent()
-        var isnoparent : vx_core.Type_boolean = vx_core.f_is_empty_1(
+        val tag : vx_core.Type_string = xmlarg.tag()
+        val text : vx_core.Type_string = tb.text()
+        val parent : vx_data_xml.Type_xml = xmlarg.parent()
+        val isnoparent : vx_core.Type_boolean = vx_core.f_is_empty_1(
           parent
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_xml.t_xml,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -1524,11 +1525,11 @@ object vx_data_xml {
                     vx_core.t_thenelselist,
                     vx_core.f_then(
                       vx_core.t_boolean_from_func.vx_fn_new({ ->
-                        var output_4 : vx_core.Type_any = isnoparent
+                        val output_4 : vx_core.Type_any = isnoparent
                         output_4
                       }),
                       vx_core.t_any_from_func.vx_fn_new({ ->
-                        var output_5 : vx_core.Type_any = xmlarg
+                        val output_5 : vx_core.Type_any = xmlarg
                         output_5
                       })
                     ),
@@ -1630,12 +1631,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml-parse<-xml-textblock", // name
         0, // idx
@@ -1658,25 +1659,25 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_parse_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.e_xml_parse_from_xml_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_parse_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.t_xml_parse_from_xml_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
-      var tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
+      val tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_xml.f_xml_parse_from_xml_textblock(xmlarg, tb)
       return output
     }
 
     override fun vx_xml_parse_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tb : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_parse_from_xml_textblock(xmlarg, tb)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_parse_from_xml_textblock(xmlarg, tb)
       return output
     }
 
@@ -1690,10 +1691,10 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var delim : vx_data_textblock.Type_delim = tb.delim()
-        var text : vx_core.Type_string = tb.text()
-        var starttext : vx_core.Type_string = delim.starttext()
-        var output_1 : vx_core.Type_any = vx_core.f_switch(
+        val delim : vx_data_textblock.Type_delim = tb.delim()
+        val text : vx_core.Type_string = tb.text()
+        val starttext : vx_core.Type_string = delim.starttext()
+        val output_1 : vx_core.Type_any = vx_core.f_switch(
           vx_data_xml.t_xml,
           starttext,
           vx_core.vx_new(
@@ -1721,21 +1722,21 @@ object vx_data_xml {
             vx_core.f_case_1(
               vx_data_textblock.c_delimwhitespace.starttext(),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_4 : vx_core.Type_any = xmlarg
+                val output_4 : vx_core.Type_any = xmlarg
                 output_4
               })
             ),
             vx_core.f_case_1(
               vx_data_xml.c_delimxmlcomment.starttext(),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = xmlarg
+                val output_5 : vx_core.Type_any = xmlarg
                 output_5
               })
             ),
             vx_core.f_case_1(
               vx_data_xml.c_delimxmlcdata.starttext(),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_6 : vx_core.Type_any = xmlarg
+                val output_6 : vx_core.Type_any = xmlarg
                 output_6
               })
             )
@@ -1773,12 +1774,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml-parse<-xml-textblocklist", // name
         0, // idx
@@ -1801,25 +1802,25 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_parse_from_xml_textblocklist
+      val output : vx_core.Type_any = vx_data_xml.e_xml_parse_from_xml_textblocklist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_parse_from_xml_textblocklist
+      val output : vx_core.Type_any = vx_data_xml.t_xml_parse_from_xml_textblocklist
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
-      var textblocklist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblocklist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_xml.f_xml_parse_from_xml_textblocklist(xmlarg, textblocklist)
       return output
     }
 
     override fun vx_xml_parse_from_xml_textblocklist(xmlarg : vx_data_xml.Type_xml, textblocklist : vx_data_textblock.Type_textblocklist) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_parse_from_xml_textblocklist(xmlarg, textblocklist)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_parse_from_xml_textblocklist(xmlarg, textblocklist)
       return output
     }
 
@@ -1870,12 +1871,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml-properties<-xml-textblocklist", // name
         0, // idx
@@ -1898,25 +1899,25 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_properties_from_xml_textblocklist
+      val output : vx_core.Type_any = vx_data_xml.e_xml_properties_from_xml_textblocklist
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_properties_from_xml_textblocklist
+      val output : vx_core.Type_any = vx_data_xml.t_xml_properties_from_xml_textblocklist
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
-      var textblocklist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblocklist : vx_data_textblock.Type_textblocklist = vx_core.f_any_from_any(vx_data_textblock.t_textblocklist, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_xml.f_xml_properties_from_xml_textblocklist(xmlarg, textblocklist)
       return output
     }
 
     override fun vx_xml_properties_from_xml_textblocklist(xmlarg : vx_data_xml.Type_xml, textblocklist : vx_data_textblock.Type_textblocklist) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_properties_from_xml_textblocklist(xmlarg, textblocklist)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_properties_from_xml_textblocklist(xmlarg, textblocklist)
       return output
     }
 
@@ -1930,13 +1931,13 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var xmlchg : vx_data_xml.Type_xml = vx_core.f_any_from_list_start_reduce(
+        val xmlchg : vx_data_xml.Type_xml = vx_core.f_any_from_list_start_reduce(
           vx_data_xml.t_xml,
           textblocklist,
           xmlarg,
           vx_core.t_any_from_reduce.vx_fn_new({reduce_any : vx_core.Type_any, current_any : vx_core.Type_any ->
-            var reduce : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, reduce_any)
-            var current : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, current_any)
+            val reduce : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, reduce_any)
+            val current : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, current_any)
             var output_2 : vx_core.Type_any = vx_data_xml.f_xml_property_from_xml_textblock(
               reduce,
               current
@@ -1944,7 +1945,7 @@ object vx_data_xml {
             output_2
           })
         )
-        var output_1 : vx_core.Type_any = xmlchg
+        val output_1 : vx_core.Type_any = xmlchg
         output_1
       })
     )
@@ -1977,12 +1978,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml-property<-xml-textblock", // name
         0, // idx
@@ -2005,25 +2006,25 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_property_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.e_xml_property_from_xml_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_property_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.t_xml_property_from_xml_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
-      var tbarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
+      val tbarg : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_xml.f_xml_property_from_xml_textblock(xmlarg, tbarg)
       return output
     }
 
     override fun vx_xml_property_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tbarg : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_property_from_xml_textblock(xmlarg, tbarg)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_property_from_xml_textblock(xmlarg, tbarg)
       return output
     }
 
@@ -2037,13 +2038,13 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var delim : vx_data_textblock.Type_delim = tbarg.delim()
-        var text : vx_core.Type_string = tbarg.text()
-        var delimname : vx_core.Type_string = delim.name()
-        var tag : vx_core.Type_string = xmlarg.tag()
-        var prop : vx_core.Type_string = xmlarg.prop()
-        var propmap : vx_core.Type_stringmap = xmlarg.propmap()
-        var output_1 : vx_core.Type_any = vx_core.f_switch(
+        val delim : vx_data_textblock.Type_delim = tbarg.delim()
+        val text : vx_core.Type_string = tbarg.text()
+        val delimname : vx_core.Type_string = delim.name()
+        val tag : vx_core.Type_string = xmlarg.tag()
+        val prop : vx_core.Type_string = xmlarg.prop()
+        val propmap : vx_core.Type_stringmap = xmlarg.propmap()
+        val output_1 : vx_core.Type_any = vx_core.f_switch(
           vx_data_xml.t_xml,
           delimname,
           vx_core.vx_new(
@@ -2161,7 +2162,7 @@ object vx_data_xml {
             ),
             vx_core.f_else(
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_10 : vx_core.Type_any = xmlarg
+                val output_10 : vx_core.Type_any = xmlarg
                 output_10
               })
             )
@@ -2198,12 +2199,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml-read<-file", // name
         0, // idx
@@ -2226,12 +2227,12 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_read_from_file
+      val output : vx_core.Type_any = vx_data_xml.e_xml_read_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_read_from_file
+      val output : vx_core.Type_any = vx_data_xml.t_xml_read_from_file
       return output
     }
 
@@ -2241,22 +2242,22 @@ object vx_data_xml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_xml.f_xml_read_from_file(context, inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_xml.f_xml_read_from_file(context, inputval)
       output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_xml.f_xml_read_from_file(context, file)
       return output
     }
 
     override fun vx_xml_read_from_file(context : vx_core.Type_context, file : vx_data_file.Type_file) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_read_from_file(context, file)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_read_from_file(context, file)
       return output
     }
 
@@ -2270,11 +2271,11 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var loaded : vx_data_file.Type_file = vx_data_file.f_file_read_from_file(
+        val loaded : vx_data_file.Type_file = vx_data_file.f_file_read_from_file(
           context,
           file
         )
-        var output_1 : vx_core.Type_any = vx_data_xml.f_xml_from_file(
+        val output_1 : vx_core.Type_any = vx_data_xml.f_xml_from_file(
           loaded
         )
         output_1
@@ -2309,12 +2310,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml-text<-xml-textblock", // name
         0, // idx
@@ -2337,25 +2338,25 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_text_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.e_xml_text_from_xml_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_text_from_xml_textblock
+      val output : vx_core.Type_any = vx_data_xml.t_xml_text_from_xml_textblock
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
-      var tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
+      val xmlarg : vx_data_xml.Type_xml = vx_core.f_any_from_any(vx_data_xml.t_xml, arglist.vx_any(vx_core.vx_new_int(0)))
+      val tb : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(1)))
       output = vx_data_xml.f_xml_text_from_xml_textblock(xmlarg, tb)
       return output
     }
 
     override fun vx_xml_text_from_xml_textblock(xmlarg : vx_data_xml.Type_xml, tb : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_text_from_xml_textblock(xmlarg, tb)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_text_from_xml_textblock(xmlarg, tb)
       return output
     }
 
@@ -2369,8 +2370,8 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = tb.text()
-        var xmlchg : vx_data_xml.Type_xml = vx_core.f_new(
+        val text : vx_core.Type_string = tb.text()
+        val xmlchg : vx_data_xml.Type_xml = vx_core.f_new(
           vx_data_xml.t_xml,
           vx_core.vx_new(
             vx_core.t_anylist,
@@ -2378,7 +2379,7 @@ object vx_data_xml {
             text
           )
         )
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
+        val output_1 : vx_core.Type_any = vx_core.f_if_2(
           vx_data_xml.t_xml,
           vx_core.vx_new(
             vx_core.t_thenelselist,
@@ -2390,7 +2391,7 @@ object vx_data_xml {
                 output_2
               }),
               vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = xmlchg
+                val output_3 : vx_core.Type_any = xmlchg
                 output_3
               })
             ),
@@ -2447,12 +2448,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml<-file", // name
         0, // idx
@@ -2475,12 +2476,12 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_from_file
+      val output : vx_core.Type_any = vx_data_xml.e_xml_from_file
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_from_file
+      val output : vx_core.Type_any = vx_data_xml.t_xml_from_file
       return output
     }
 
@@ -2490,21 +2491,21 @@ object vx_data_xml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
-      var outputval : vx_core.Type_any = vx_data_xml.f_xml_from_file(inputval)
+      val inputval : vx_data_file.Type_file = value as vx_data_file.Type_file
+      val outputval : vx_core.Type_any = vx_data_xml.f_xml_from_file(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
+      val file : vx_data_file.Type_file = vx_core.f_any_from_any(vx_data_file.t_file, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_xml.f_xml_from_file(file)
       return output
     }
 
     override fun vx_xml_from_file(file : vx_data_file.Type_file) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_from_file(file)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_from_file(file)
       return output
     }
 
@@ -2518,8 +2519,8 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var text : vx_core.Type_string = file.text()
-        var output_1 : vx_core.Type_any = vx_data_xml.f_xml_from_string(
+        val text : vx_core.Type_string = file.text()
+        val output_1 : vx_core.Type_any = vx_data_xml.f_xml_from_string(
           text
         )
         output_1
@@ -2553,12 +2554,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml<-string", // name
         0, // idx
@@ -2581,12 +2582,12 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_from_string
+      val output : vx_core.Type_any = vx_data_xml.e_xml_from_string
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_from_string
+      val output : vx_core.Type_any = vx_data_xml.t_xml_from_string
       return output
     }
 
@@ -2596,21 +2597,21 @@ object vx_data_xml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_core.Type_string = value as vx_core.Type_string
-      var outputval : vx_core.Type_any = vx_data_xml.f_xml_from_string(inputval)
+      val inputval : vx_core.Type_string = value as vx_core.Type_string
+      val outputval : vx_core.Type_any = vx_data_xml.f_xml_from_string(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_xml.f_xml_from_string(text)
       return output
     }
 
     override fun vx_xml_from_string(text : vx_core.Type_string) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_from_string(text)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_from_string(text)
       return output
     }
 
@@ -2624,10 +2625,10 @@ object vx_data_xml {
     output = vx_core.f_let(
       vx_data_xml.t_xml,
       vx_core.t_any_from_func.vx_fn_new({ ->
-        var tb : vx_data_textblock.Type_textblock = vx_data_xml.f_textblock_xml_from_string(
+        val tb : vx_data_textblock.Type_textblock = vx_data_xml.f_textblock_xml_from_string(
           text
         )
-        var output_1 : vx_core.Type_any = vx_data_xml.f_xml_from_textblock(
+        val output_1 : vx_core.Type_any = vx_data_xml.f_xml_from_textblock(
           tb
         )
         output_1
@@ -2661,12 +2662,12 @@ object vx_data_xml {
     }
 
     override fun vx_typedef() : vx_core.Type_typedef {
-      var output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
+      val output : vx_core.Type_typedef = vx_core.t_func.vx_typedef()
       return output
     }
 
     override fun vx_funcdef() : vx_core.Type_funcdef {
-      var output : vx_core.Type_funcdef = vx_core.funcdef_new(
+      val output : vx_core.Type_funcdef = vx_core.funcdef_new(
         "vx/data/xml", // pkgname
         "xml<-textblock", // name
         0, // idx
@@ -2689,12 +2690,12 @@ object vx_data_xml {
     }
 
     override fun vx_empty() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.e_xml_from_textblock
+      val output : vx_core.Type_any = vx_data_xml.e_xml_from_textblock
       return output
     }
 
     override fun vx_type() : vx_core.Type_any {
-      var output : vx_core.Type_any = vx_data_xml.t_xml_from_textblock
+      val output : vx_core.Type_any = vx_data_xml.t_xml_from_textblock
       return output
     }
 
@@ -2704,21 +2705,21 @@ object vx_data_xml {
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
-      var inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
-      var outputval : vx_core.Type_any = vx_data_xml.f_xml_from_textblock(inputval)
+      val inputval : vx_data_textblock.Type_textblock = value as vx_data_textblock.Type_textblock
+      val outputval : vx_core.Type_any = vx_data_xml.f_xml_from_textblock(inputval)
       output = vx_core.f_any_from_any(generic_any_1, outputval)
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      var textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
+      val textblock : vx_data_textblock.Type_textblock = vx_core.f_any_from_any(vx_data_textblock.t_textblock, arglist.vx_any(vx_core.vx_new_int(0)))
       output = vx_data_xml.f_xml_from_textblock(textblock)
       return output
     }
 
     override fun vx_xml_from_textblock(textblock : vx_data_textblock.Type_textblock) : vx_data_xml.Type_xml {
-      var output : vx_data_xml.Type_xml = vx_data_xml.f_xml_from_textblock(textblock)
+      val output : vx_data_xml.Type_xml = vx_data_xml.f_xml_from_textblock(textblock)
       return output
     }
 
@@ -2767,7 +2768,12 @@ object vx_data_xml {
     mapfunc.put("xml<-file", vx_data_xml.t_xml_from_file)
     mapfunc.put("xml<-string", vx_data_xml.t_xml_from_string)
     mapfunc.put("xml<-textblock", vx_data_xml.t_xml_from_textblock)
-    vx_core.vx_global_package_set("vx/data/xml", maptype, mapconst, mapfunc)
+    vx_core.vx_global_package_set(
+      "vx/data/xml",
+      vx_core.vx_mapimmutable(maptype),
+      vx_core.vx_mapimmutable(mapconst),
+      vx_core.vx_mapimmutable(mapfunc)
+    )
   }
 
 }

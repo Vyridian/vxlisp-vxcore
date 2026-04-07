@@ -138,7 +138,7 @@ public final class File {
       map.put(":path", this.path());
       map.put(":permission", this.permission());
       map.put(":text", this.text());
-      Map<String, Core.Type_any> output = Core.immutablemap(map);
+      final Map<String, Core.Type_any> output = Core.vx_mapimmutable(map);
       return output;
     }
 
@@ -234,7 +234,7 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -255,7 +255,7 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("format"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -279,7 +279,7 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("path"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -300,7 +300,7 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("permission"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -324,7 +324,7 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(mapany);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
               msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
               msgblock = Core.vx_copy(msgblock, msg);
             }
@@ -467,13 +467,13 @@ public final class File {
 
   public static class Class_filelist extends Core.Class_base implements Type_filelist {
 
-    public List<File.Type_file> vx_p_list = Core.immutablelist(
+    public List<File.Type_file> vx_p_list = Core.vx_listimmutable(
       new ArrayList<File.Type_file>()
     );
 
     @Override
     public List<Core.Type_any> vx_list() {
-      List<Core.Type_any> output = Core.immutablelist(
+      List<Core.Type_any> output = Core.vx_listimmutable(
         new ArrayList<Core.Type_any>(this.vx_p_list)
       );
       return output;
@@ -558,7 +558,7 @@ public final class File {
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
         File.Class_filelist work = new File.Class_filelist();
-        work.vx_p_list = Core.immutablelist(listval);
+        work.vx_p_list = Core.vx_listimmutable(listval);
         if (msgblock != Core.e_msgblock) {
           work.vxmsgblock = msgblock;
         }
@@ -629,13 +629,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "boolean-exists<-file", // name
         0, // idx
@@ -659,13 +659,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_boolean_exists_from_file;
+      final Core.Type_any output = File.e_boolean_exists_from_file;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_boolean_exists_from_file;
+      final Core.Type_any output = File.t_boolean_exists_from_file;
       return output;
     }
 
@@ -677,8 +677,8 @@ public final class File {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      File.Type_file inputval = (File.Type_file)value;
-      Core.Type_any outputval = File.f_boolean_exists_from_file(inputval);
+      final File.Type_file inputval = (File.Type_file)value;
+      final Core.Type_any outputval = File.f_boolean_exists_from_file(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -686,14 +686,14 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
       output = File.f_boolean_exists_from_file(file);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_exists_from_file(final File.Type_file file) {
-      Core.Type_boolean output = File.f_boolean_exists_from_file(file);
+      final Core.Type_boolean output = File.f_boolean_exists_from_file(file);
       return output;
     }
 
@@ -740,13 +740,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "boolean-write<-file", // name
         0, // idx
@@ -770,13 +770,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_boolean_write_from_file;
+      final Core.Type_any output = File.e_boolean_write_from_file;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_boolean_write_from_file;
+      final Core.Type_any output = File.t_boolean_write_from_file;
       return output;
     }
 
@@ -788,8 +788,8 @@ public final class File {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      File.Type_file inputval = (File.Type_file)value;
-      Core.Type_any outputval = File.f_boolean_write_from_file(context, inputval);
+      final File.Type_file inputval = (File.Type_file)value;
+      final Core.Type_any outputval = File.f_boolean_write_from_file(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -797,15 +797,15 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
       output = File.f_boolean_write_from_file(context, file);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_write_from_file(final Core.Type_context context, final File.Type_file file) {
-      Core.Type_boolean output = File.f_boolean_write_from_file(context, file);
+      final Core.Type_boolean output = File.f_boolean_write_from_file(context, file);
       return output;
     }
 
@@ -852,13 +852,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "boolean-write<-file-any", // name
         0, // idx
@@ -882,29 +882,29 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_boolean_write_from_file_any;
+      final Core.Type_any output = File.e_boolean_write_from_file_any;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_boolean_write_from_file_any;
+      final Core.Type_any output = File.t_boolean_write_from_file_any;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
       output = File.f_boolean_write_from_file_any(context, file, value);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_write_from_file_any(final Core.Type_context context, final File.Type_file file, final Core.Type_any value) {
-      Core.Type_boolean output = File.f_boolean_write_from_file_any(context, file, value);
+      final Core.Type_boolean output = File.f_boolean_write_from_file_any(context, file, value);
       return output;
     }
 
@@ -953,13 +953,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "boolean-write<-file-string", // name
         0, // idx
@@ -983,29 +983,29 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_boolean_write_from_file_string;
+      final Core.Type_any output = File.e_boolean_write_from_file_string;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_boolean_write_from_file_string;
+      final Core.Type_any output = File.t_boolean_write_from_file_string;
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
-      Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
       output = File.f_boolean_write_from_file_string(context, file, text);
       return output;
     }
 
     @Override
     public Core.Type_boolean vx_boolean_write_from_file_string(final Core.Type_context context, final File.Type_file file, final Core.Type_string text) {
-      Core.Type_boolean output = File.f_boolean_write_from_file_string(context, file, text);
+      final Core.Type_boolean output = File.f_boolean_write_from_file_string(context, file, text);
       return output;
     }
 
@@ -1016,7 +1016,10 @@ public final class File {
 
   public static Core.Type_boolean f_boolean_write_from_file_string(final Core.Type_context context, final File.Type_file file, final Core.Type_string text) {
     Core.Type_boolean output = Core.e_boolean;
-    if (Core.f_boolean_permission_from_func(context, File.t_boolean_write_from_file_string).vx_boolean()) {
+    if (Core.f_boolean_permission_from_func(
+      context,
+      File.t_boolean_write_from_file_string
+    ).vx_boolean()) {
       try {
         Core.Type_string fullpath = File.f_pathfull_from_file(file);
         String sfullpath = fullpath.vx_string();
@@ -1026,11 +1029,20 @@ public final class File {
         java.nio.file.Files.write(path, bytes);
         output = Core.c_true;
       } catch (Exception err) {
-        Core.Type_msg msg = Core.vx_msg_from_exception("vx/data/file/boolean-write<-file-string", err);
+        Core.Type_msg msg = Core.vx_msg_from_exception(
+          "vx/data/file/boolean-write<-file-string",
+          err
+        );
         output = Core.vx_copy(output, msg);
       }
     } else {
-      Core.Type_msg msg = Core.vx_msg_from_error("vx/core/func", ":permissiondenied", Core.vx_new_string("boolean-write<-file-string"));
+      Core.Type_msg msg = Core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        Core.vx_new_string(
+          "boolean-write<-file-string"
+        )
+      );
       output = Core.vx_copy(output, msg);
     }
     return output;
@@ -1063,13 +1075,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "file-read<-file", // name
         0, // idx
@@ -1093,13 +1105,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_file_read_from_file;
+      final Core.Type_any output = File.e_file_read_from_file;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_file_read_from_file;
+      final Core.Type_any output = File.t_file_read_from_file;
       return output;
     }
 
@@ -1111,8 +1123,8 @@ public final class File {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      File.Type_file inputval = (File.Type_file)value;
-      Core.Type_any outputval = File.f_file_read_from_file(context, inputval);
+      final File.Type_file inputval = (File.Type_file)value;
+      final Core.Type_any outputval = File.f_file_read_from_file(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -1120,15 +1132,15 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
       output = File.f_file_read_from_file(context, file);
       return output;
     }
 
     @Override
     public File.Type_file vx_file_read_from_file(final Core.Type_context context, final File.Type_file file) {
-      File.Type_file output = File.f_file_read_from_file(context, file);
+      final File.Type_file output = File.f_file_read_from_file(context, file);
       return output;
     }
 
@@ -1139,7 +1151,10 @@ public final class File {
 
   public static File.Type_file f_file_read_from_file(final Core.Type_context context, final File.Type_file file) {
     File.Type_file output = File.e_file;
-    if (Core.f_boolean_permission_from_func(context, File.t_file_read_from_file).vx_boolean()) {
+    if (Core.f_boolean_permission_from_func(
+      context,
+      File.t_file_read_from_file
+    ).vx_boolean()) {
       output = Core.f_copy(
         file,
         Core.vx_new(
@@ -1152,7 +1167,11 @@ public final class File {
         )
       );
     } else {
-      Core.Type_msg msg = Core.vx_msg_from_error("vx/core/func", ":permissiondenied", Core.vx_new_string("file-read<-file"));
+      Core.Type_msg msg = Core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        Core.vx_new_string("file-read<-file")
+      );
       output = Core.vx_copy(output, msg);
     }
     return output;
@@ -1185,13 +1204,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "file<-path", // name
         0, // idx
@@ -1215,13 +1234,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_file_from_path;
+      final Core.Type_any output = File.e_file_from_path;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_file_from_path;
+      final Core.Type_any output = File.t_file_from_path;
       return output;
     }
 
@@ -1233,8 +1252,8 @@ public final class File {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      Core.Type_string inputval = (Core.Type_string)value;
-      Core.Type_any outputval = File.f_file_from_path(inputval);
+      final Core.Type_string inputval = (Core.Type_string)value;
+      final Core.Type_any outputval = File.f_file_from_path(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1242,14 +1261,14 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_string path = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string path = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
       output = File.f_file_from_path(path);
       return output;
     }
 
     @Override
     public File.Type_file vx_file_from_path(final Core.Type_string path) {
-      File.Type_file output = File.f_file_from_path(path);
+      final File.Type_file output = File.f_file_from_path(path);
       return output;
     }
 
@@ -1263,23 +1282,23 @@ public final class File {
     output = Core.f_let(
       File.t_file,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_int pos = Type.f_int_from_string_findlast(
+        final Core.Type_int pos = Type.f_int_from_string_findlast(
           path,
           Core.vx_new_string("/")
         );
-        Core.Type_string name = Type.f_string_from_string_start(
+        final Core.Type_string name = Type.f_string_from_string_start(
           path,
           Core.f_plus1(
             pos
           )
         );
-        Core.Type_string pth = Type.f_string_from_string_end(
+        final Core.Type_string pth = Type.f_string_from_string_end(
           path,
           Core.f_minus1(
             pos
           )
         );
-        Core.Type_any output_1 = Core.f_new(
+        final Core.Type_any output_1 = Core.f_new(
           File.t_file,
           Core.vx_new(
             Core.t_anylist,
@@ -1322,13 +1341,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "name<-file", // name
         0, // idx
@@ -1352,13 +1371,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_name_from_file;
+      final Core.Type_any output = File.e_name_from_file;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_name_from_file;
+      final Core.Type_any output = File.t_name_from_file;
       return output;
     }
 
@@ -1370,8 +1389,8 @@ public final class File {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      File.Type_file inputval = (File.Type_file)value;
-      Core.Type_any outputval = File.f_name_from_file(inputval);
+      final File.Type_file inputval = (File.Type_file)value;
+      final Core.Type_any outputval = File.f_name_from_file(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1379,14 +1398,14 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
       output = File.f_name_from_file(file);
       return output;
     }
 
     @Override
     public Core.Type_string vx_name_from_file(final File.Type_file file) {
-      Core.Type_string output = File.f_name_from_file(file);
+      final Core.Type_string output = File.f_name_from_file(file);
       return output;
     }
 
@@ -1428,13 +1447,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "path<-file", // name
         0, // idx
@@ -1458,13 +1477,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_path_from_file;
+      final Core.Type_any output = File.e_path_from_file;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_path_from_file;
+      final Core.Type_any output = File.t_path_from_file;
       return output;
     }
 
@@ -1476,8 +1495,8 @@ public final class File {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      File.Type_file inputval = (File.Type_file)value;
-      Core.Type_any outputval = File.f_path_from_file(inputval);
+      final File.Type_file inputval = (File.Type_file)value;
+      final Core.Type_any outputval = File.f_path_from_file(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1485,14 +1504,14 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
       output = File.f_path_from_file(file);
       return output;
     }
 
     @Override
     public Core.Type_string vx_path_from_file(final File.Type_file file) {
-      Core.Type_string output = File.f_path_from_file(file);
+      final Core.Type_string output = File.f_path_from_file(file);
       return output;
     }
 
@@ -1533,13 +1552,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "pathcurrent<-os", // name
         0, // idx
@@ -1563,13 +1582,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_pathcurrent_from_os;
+      final Core.Type_any output = File.e_pathcurrent_from_os;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_pathcurrent_from_os;
+      final Core.Type_any output = File.t_pathcurrent_from_os;
       return output;
     }
 
@@ -1582,7 +1601,7 @@ public final class File {
 
     @Override
     public Core.Type_string vx_pathcurrent_from_os() {
-      Core.Type_string output = File.f_pathcurrent_from_os();
+      final Core.Type_string output = File.f_pathcurrent_from_os();
       return output;
     }
 
@@ -1627,13 +1646,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "pathfull<-file", // name
         0, // idx
@@ -1657,13 +1676,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_pathfull_from_file;
+      final Core.Type_any output = File.e_pathfull_from_file;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_pathfull_from_file;
+      final Core.Type_any output = File.t_pathfull_from_file;
       return output;
     }
 
@@ -1675,8 +1694,8 @@ public final class File {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
-      File.Type_file inputval = (File.Type_file)value;
-      Core.Type_any outputval = File.f_pathfull_from_file(inputval);
+      final File.Type_file inputval = (File.Type_file)value;
+      final Core.Type_any outputval = File.f_pathfull_from_file(inputval);
       output = Core.f_any_from_any(generic_any_1, outputval);
       return output;
     }
@@ -1684,14 +1703,14 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
       output = File.f_pathfull_from_file(file);
       return output;
     }
 
     @Override
     public Core.Type_string vx_pathfull_from_file(final File.Type_file file) {
-      Core.Type_string output = File.f_pathfull_from_file(file);
+      final Core.Type_string output = File.f_pathfull_from_file(file);
       return output;
     }
 
@@ -1705,13 +1724,13 @@ public final class File {
     output = Core.f_let(
       Core.t_string,
       Core.t_any_from_func.vx_fn_new(() -> {
-        Core.Type_string path = File.f_path_from_file(
+        final Core.Type_string path = File.f_path_from_file(
           file
         );
-        Core.Type_string name = File.f_name_from_file(
+        final Core.Type_string name = File.f_name_from_file(
           file
         );
-        Core.Type_any output_1 = Core.f_if_2(
+        final Core.Type_any output_1 = Core.f_if_2(
           Core.t_string,
           Core.vx_new(
             Core.t_thenelselist,
@@ -1723,7 +1742,7 @@ public final class File {
                 return output_2;
               }),
               Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = name;
+                final Core.Type_any output_3 = name;
                 return output_3;
               })
             ),
@@ -1776,13 +1795,13 @@ public final class File {
 
     @Override
     public Core.Type_typedef vx_typedef() {
-      Core.Type_typedef output = Core.t_func.vx_typedef();
+      final Core.Type_typedef output = Core.t_func.vx_typedef();
       return output;
     }
 
     @Override
     public Core.Type_funcdef vx_funcdef() {
-      Core.Type_funcdef output = Core.funcdef_new(
+      final Core.Type_funcdef output = Core.funcdef_new(
         "vx/data/file", // pkgname
         "string-read<-file", // name
         0, // idx
@@ -1806,13 +1825,13 @@ public final class File {
 
     @Override
     public Core.Type_any vx_empty() {
-      Core.Type_any output = File.e_string_read_from_file;
+      final Core.Type_any output = File.e_string_read_from_file;
       return output;
     }
 
     @Override
     public Core.Type_any vx_type() {
-      Core.Type_any output = File.t_string_read_from_file;
+      final Core.Type_any output = File.t_string_read_from_file;
       return output;
     }
 
@@ -1824,8 +1843,8 @@ public final class File {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any_context(final T generic_any_1, final Core.Type_context context, final U value) {
       T output = Core.f_empty(generic_any_1);
-      File.Type_file inputval = (File.Type_file)value;
-      Core.Type_any outputval = File.f_string_read_from_file(context, inputval);
+      final File.Type_file inputval = (File.Type_file)value;
+      final Core.Type_any outputval = File.f_string_read_from_file(context, inputval);
       output = Core.f_any_from_any_context(generic_any_1, context, outputval);
       return output;
     }
@@ -1833,15 +1852,15 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
       output = File.f_string_read_from_file(context, file);
       return output;
     }
 
     @Override
     public Core.Type_string vx_string_read_from_file(final Core.Type_context context, final File.Type_file file) {
-      Core.Type_string output = File.f_string_read_from_file(context, file);
+      final Core.Type_string output = File.f_string_read_from_file(context, file);
       return output;
     }
 
@@ -1852,15 +1871,25 @@ public final class File {
 
   public static Core.Type_string f_string_read_from_file(final Core.Type_context context, final File.Type_file file) {
     Core.Type_string output = Core.e_string;
-    if (Core.f_boolean_permission_from_func(context, File.t_string_read_from_file).vx_boolean()) {
+    if (Core.f_boolean_permission_from_func(
+      context,
+      File.t_string_read_from_file
+    ).vx_boolean()) {
       try {
         output = vx_string_read_from_file(file);
       } catch (Exception err) {
-        Core.Type_msg msg = Core.vx_msg_from_exception("vx/data/file/string-read<-file", err);
+        Core.Type_msg msg = Core.vx_msg_from_exception(
+          "vx/data/file/string-read<-file",
+          err
+        );
         output = Core.vx_copy(output, msg);
       }
     } else {
-      Core.Type_msg msg = Core.vx_msg_from_error("vx/core/func", ":permissiondenied", Core.vx_new_string("string-read<-file"));
+      Core.Type_msg msg = Core.vx_msg_from_error(
+        "vx/core/func",
+        ":permissiondenied",
+        Core.vx_new_string("string-read<-file")
+      );
       output = Core.vx_copy(output, msg);
     }
     return output;
@@ -1884,7 +1913,12 @@ public final class File {
     mapfunc.put("pathcurrent<-os", File.t_pathcurrent_from_os);
     mapfunc.put("pathfull<-file", File.t_pathfull_from_file);
     mapfunc.put("string-read<-file", File.t_string_read_from_file);
-    Core.vx_global_package_set("vx/data/file", maptype, mapconst, mapfunc);
+    Core.vx_global_package_set(
+      "vx/data/file",
+      Core.vx_mapimmutable(maptype),
+      Core.vx_mapimmutable(mapconst),
+      Core.vx_mapimmutable(mapfunc)
+    );
   }
 
 }

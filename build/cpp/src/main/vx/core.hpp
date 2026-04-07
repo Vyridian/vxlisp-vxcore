@@ -1228,6 +1228,10 @@ namespace vx_core {
   int vx_int_from_string(
     std::string text);
 
+  // vx_int_from_string(string)
+  vx_core::Type_int vx_int_from_string(
+    vx_core::Type_string text);
+
   // vx_is_float(string)
   bool vx_is_float(
     std::string value);
@@ -3819,7 +3823,7 @@ namespace vx_core {
   vx_core::Type_typelist f_allowtypes_from_typedef(vx_core::Type_typedef vtypedef);
 
   // (func boolean-permission<-func)
-  vx_core::Type_boolean f_boolean_permission_from_func(vx_core::Type_context context, vx_core::Type_func func);
+  vx_core::Type_boolean f_boolean_permission_from_func(vx_core::Type_context context, vx_core::Type_func fnc);
 
   // (func boolean-write<-map-name-value)
   vx_core::Type_boolean f_boolean_write_from_map_name_value(vx_core::Type_map valuemap, vx_core::Type_string name, vx_core::Type_any value);
@@ -3957,7 +3961,7 @@ namespace vx_core {
   vx_core::Type_setting f_setting_from_context(vx_core::Type_context context);
 
   // (func string-repeat)
-  vx_core::Type_string f_string_repeat(vx_core::Type_string text, vx_core::Type_int repeat);
+  vx_core::Type_string f_string_repeat(vx_core::Type_string text, vx_core::Type_int num);
 
   // (func string<-any)
   vx_core::Type_string f_string_from_any(vx_core::Type_any value);

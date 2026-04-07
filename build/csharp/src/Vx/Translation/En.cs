@@ -527,7 +527,12 @@ public static class En {
     mapfunc.put("securitydata-test", Vx.Translation.En.t_securitydata_test);
     mapfunc.put("translation-en", Vx.Translation.En.t_translation_en);
     mapfunc.put("words", Vx.Translation.En.t_words);
-    Vx.Core.vx_global_package_set("vx/translation/en", maptype, mapconst, mapfunc);
+    Vx.Core.vx_global_package_set(
+      "vx/translation/en",
+      Vx.Core.vx_mapimmutable(maptype),
+      Vx.Core.vx_mapimmutable(mapconst),
+      Vx.Core.vx_mapimmutable(mapfunc)
+    );
       return true;
     }
   }
